@@ -2,7 +2,7 @@
  "name": "Dressuraufgaben Theorie",
  "short_name": "Theorie",
  "start_url": "theorie.html",
- "scope": "theorie.html",
+ "scope": "./",
  "display": "standalone",
  "background_color": "#f5f6f2",
  "theme_color": "#f5f6f2",
