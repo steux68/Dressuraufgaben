@@ -163,6 +163,18 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 .copy span{font-size:.68rem;color:var(--muted);line-height:1.1}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .copy img{background:#fff;border-radius:4px;padding:1px 4px}}
 :root[data-theme="dark"] .copy img{background:#fff;border-radius:4px;padding:1px 4px}
+
+/* ---- Farbenblind-freundlich (25.10.) ---- */
+:root{--trab:#0b5fa5;--leicht:#3a9ad6;--galopp:#e07b00;--learnbg:#8c918a;--learnfg:#ffffff;--gamebg:#ffbf00;--gamefg:#2a1a00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--trab:#5b9be8;--leicht:#a8dcfa;--galopp:#f0a040;--learnbg:#8c918a;--learnfg:#ffffff}}
+:root[data-theme="dark"]{--trab:#5b9be8;--leicht:#a8dcfa;--galopp:#f0a040;--learnbg:#8c918a;--learnfg:#ffffff}
+#mLearn[aria-pressed="true"]{background:var(--learnbg);color:var(--learnfg);font-weight:700}
+#mGame[aria-pressed="true"]{background:var(--gamebg);color:var(--gamefg);font-weight:700}
+#mTheo[aria-pressed="true"]{font-weight:700}
+.opt.ok::after,.opt.bad::after{margin-left:auto;padding-left:8px;font-weight:700;font-size:1.15rem;line-height:1}
+.opt.ok::after{content:"✓";color:var(--ok)}
+.opt.bad::after{content:"✗";color:var(--bad)}
+#theo .opt.ok::after,#theo .opt.bad::after{float:right}
 @media (max-height:720px){.app{gap:6px;padding-block:6px 8px;min-height:540px}.logo svg{height:66px}.card{padding:5px 10px}button{padding:6px 8px}.opt{padding:3px 10px}.stage{min-height:140px}.panels{height:196px}.opt{height:38px}}
 </style>
 <div class="app">
