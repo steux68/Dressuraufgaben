@@ -1,5 +1,5 @@
 <!doctype html><html><head><meta charset=utf8><base href="../"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<meta name="app-version" content="2026-10-25f">
+<meta name="app-version" content="2026-10-25g">
 <title>Dressuraufgaben · Theorie</title>
 <link rel="manifest" href="theorie.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Theorie"><meta name="theme-color" content="#f5f6f2">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
@@ -210,6 +210,9 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 #egg .cap{align-self:center;margin-top:8px;padding:5px 12px;border-radius:8px;background:rgba(0,0,0,.55);color:#fff;font-size:.72rem;line-height:1.3;text-align:center}
 #egg .cap a{color:#fff;text-decoration:underline}
 @media (prefers-reduced-motion:reduce){#egg .print{animation:none}}
+
+/* Spiel-Fortschritt (25.10.) */
+#gq .gc{display:inline-block;margin-right:8px;padding:1px 8px;border-radius:7px;background:var(--sand);color:var(--fg);font-size:.8rem;font-weight:700;font-variant-numeric:tabular-nums;vertical-align:1px}
 @media (max-height:720px){.app{gap:6px;padding-block:6px 8px;min-height:540px}.logo svg{height:66px}.card{padding:5px 10px}button{padding:6px 8px}.opt{padding:3px 10px}.stage{min-height:140px}.panels{height:196px}.opt{height:38px}}
 </style>
 <div class="app">
@@ -420,7 +423,7 @@ function gDraw(reveal){P.innerHTML='';const end=reveal?gk:gk-1;
 for(let k=0;k<=end;k++){const s=S[k],cur=reveal&&k===gk;if(s[3])mk(s[3],s[2],cur,cur?1:0.3);if(s[4]&&cur)dot(true,s[4])}}
 function shuffle(a){for(let n=a.length-1;n>0;n--){const r=Math.floor(Math.random()*(n+1));[a[n],a[r]]=[a[r],a[n]]}return a}
 function ask(){answered=false;$('gq').style.color='var(--fg)';$('gn').hidden=true;
-$('gq').textContent=gk===0?'Wie beginnt die Aufgabe?':'Lektion '+(gk+1)+': Was kommt als Nächstes?';
+$('gq').innerHTML='<span class="gc"></span>';$('gq').firstChild.textContent=(gk+1)+' / '+S.length;$('gq').append(gk===0?'Wie beginnt die Aufgabe?':'Was kommt als Nächstes?');
 gDraw(false);const right=S[gk];
 const seen=new Set([right[0]+'|'+right[1]]);const pool=shuffle(S.map((s,k)=>k)).filter(k=>{const key=S[k][0]+'|'+S[k][1];if(S[k][1]===right[1]||seen.has(key))return false;seen.add(key);return true});
 const picks=shuffle([gk,pool[0],pool[1]]);const box=$('opts');box.innerHTML='';
