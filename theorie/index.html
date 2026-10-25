@@ -182,6 +182,12 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 /* Logos verlinkt (25.10.) */
 .lockup a.cell{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
 .lockup a.cell:active{opacity:.6}
+
+/* Theorie „In Arbeit“ (25.10.) */
+#thWip{flex:1 1 auto;justify-content:center}
+#thWip .card{align-items:center;text-align:center;padding:22px 16px;border:1.5px dashed color-mix(in srgb,var(--theo) 45%,transparent);gap:8px}
+#thWip .wipt{margin:0;font-weight:700;color:var(--theo);font-size:1.1rem;letter-spacing:.02em}
+#thWip .wipn{margin-top:6px;font-size:.8rem}
 @media (max-height:720px){.app{gap:6px;padding-block:6px 8px;min-height:540px}.logo svg{height:66px}.card{padding:5px 10px}button{padding:6px 8px}.opt{padding:3px 10px}.stage{min-height:140px}.panels{height:196px}.opt{height:38px}}
 </style>
 <div class="app">
@@ -292,6 +298,7 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 <div class="opts" id="thOpts"></div>
 <p class="fb" id="thFb" aria-live="polite"></p>
 </div>
+<div class="tp" id="thWip" hidden><div class="card wip"><p class="wipt">In Arbeit · Work in progress</p><p class="ds">Die Theoriefragen für diese Prüfung werden gerade erstellt.</p><p class="ds">Theory questions for this test are being prepared.</p><p class="ds wipn">Hufschlagfiguren und Figuren-Quiz gibt es schon für alle Aufgaben.</p></div></div>
 <div class="tp" id="thQuest" hidden>
 <div class="score"><select id="thChap" aria-label="Kapitel"></select><span>Punkte <strong id="thQsc">0</strong> / <span id="thQmx">0</span></span></div>
 <div class="card">
@@ -483,7 +490,7 @@ const NS='http://www.w3.org/2000/svg';
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const mix=a=>{for(let k=a.length-1;k>0;k--){const r=Math.floor(Math.random()*(k+1));[a[k],a[r]]=[a[r],a[k]]}return a};
 const store={get(k){try{return +localStorage.getItem(k)||0}catch(e){return 0}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
-const TESTS_WITH=['R1','R2'];
+const TESTS_WITH=['R1','R2'];let curId='';
 
 /* Hufschlagfiguren. r = Aufgaben, in denen die Figur geritten wird. */
 const F=[
@@ -608,16 +615,16 @@ let current='thsF';
 function sub(which){
  current=which;
  ['thsF','thsG','thsQ'].forEach(id=>g(id).setAttribute('aria-pressed',id===which));
- g('thLearn').hidden=which!=='thsF';g('thGame').hidden=which!=='thsG';g('thQuest').hidden=which!=='thsQ';
+ const wip=which==='thsQ'&&!TESTS_WITH.includes(curId);g('thLearn').hidden=which!=='thsF';g('thGame').hidden=which!=='thsG';g('thQuest').hidden=which!=='thsQ'||wip;g('thWip').hidden=!wip;
  g('thStage').hidden=which==='thsQ';
- if(which==='thsF')showLearn();else if(which==='thsG')ask();else qask();
+ if(which==='thsF')showLearn();else if(which==='thsG')ask();else if(!wip)qask();
 }
 ['thsF','thsG','thsQ'].forEach(id=>g(id).onclick=()=>sub(id));
 
 const MAIN=['lg','stage','panels'];
 let isOn=false;
 return {
- avail(id){const ok=TESTS_WITH.includes(id);g('mTheo').hidden=!ok;g('seg').classList.toggle('three',ok);},
+ avail(id){curId=id;const ok=!!id;g('mTheo').hidden=!ok;g('seg').classList.toggle('three',ok);const t=(typeof TESTS!=='undefined')&&TESTS.find(x=>x.id===id);const bs=document.querySelector('#theo .band>span');if(bs&&t)bs.textContent='Theorie · '+(t.short||t.name)+(TESTS_WITH.includes(id)?' · Demo':'');},
  on(){isOn=true;MAIN.forEach(id=>g(id).hidden=true);g('theo').hidden=false;
   g('mTheo').setAttribute('aria-pressed',true);g('mLearn').setAttribute('aria-pressed',false);g('mGame').setAttribute('aria-pressed',false);
   sub(current);},
