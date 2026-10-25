@@ -1,5 +1,5 @@
 <!doctype html><html><head><meta charset=utf8><base href="../"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<meta name="app-version" content="2026-10-25b">
+<meta name="app-version" content="2026-10-25c">
 <title>Dressuraufgaben · Theorie</title>
 <link rel="manifest" href="theorie.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Theorie"><meta name="theme-color" content="#f5f6f2">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
@@ -517,13 +517,11 @@ $('backBtn').onclick=()=>{const b=$('backBtn');
   let k='reloaded_'+m[1];try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}
   location.reload()}).catch(()=>{})}catch(e){}})();
 
-/* ---- Easter Egg: 3x schnell auf Steinbach tippen ---- */
+/* ---- Easter Egg: 3x schnell auf das steux-Logo unten tippen ---- */
 (function(){
- const a=document.querySelector('.lockup a.cell[href*="reitstall-steinbach"]');if(!a)return;
+ const a=document.querySelector('.copy img');if(!a)return;
  let taps=0,timer=null,playing=false;
- a.addEventListener('click',e=>{e.preventDefault();taps++;clearTimeout(timer);
-  if(taps>=3){taps=0;egg();return}
-  timer=setTimeout(()=>{const n=taps;taps=0;if(n===1){const w=window.open(a.href,'_blank');if(w){try{w.opener=null}catch(e){}}else location.href=a.href}},450)});
+ a.addEventListener('click',()=>{taps++;clearTimeout(timer);timer=setTimeout(()=>taps=0,700);if(taps>=3){taps=0;egg()}});
  function egg(){if(playing)return;playing=true;
   const box=document.createElement('div');box.id='egg';box.innerHTML='<svg class="heart" viewBox="0 0 64 64" aria-hidden="true"><path fill="#e3000f" d="M32 57 C14 44 4 34 4 21 C4 12 11 6 19 6 C25 6 29 9 32 14 C35 9 39 6 45 6 C53 6 60 12 60 21 C60 34 50 44 32 57 Z"/></svg>'+'<svg class="horse" viewBox="0 0 150 100" aria-hidden="true"><g class="flip"><g class="bob" fill="var(--logo)"><path d="M36 40 C30 30 18 30 10 40 C6 46 6 56 9 62 C12 52 20 46 30 48 Z"/><ellipse cx="66" cy="50" rx="36" ry="15"/><path d="M88 46 L101 17 C103 11 110 8 115 12 L131 34 C134 39 130 44 124 41 L115 36 L111 52 Z"/><path d="M106 14 L108 3 L113 12 Z"/><path d="M104 18 C97 22 93 30 90 40 L96 38 C98 30 101 24 106 20 Z" opacity=".55"/><rect class="leg" x="88" y="56" width="6" height="34" rx="3"/><rect class="leg b" x="80" y="57" width="6" height="34" rx="3"/><rect class="leg b" x="44" y="56" width="6" height="34" rx="3"/><rect class="leg" x="36" y="55" width="6" height="34" rx="3"/></g></g></svg>';document.body.appendChild(box);
   const W=innerWidth,H=innerHeight,r=a.getBoundingClientRect();
