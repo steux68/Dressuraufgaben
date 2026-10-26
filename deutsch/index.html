@@ -874,22 +874,24 @@ const ADJ_Q=[
 
 /* ---------- Theorie: Fälle, Adjektive ---------- */
 const TH_FALL=`
-<div class="tc df"><h3>Alle Artikel</h3>`+BOX+`<p class="tline">Light cells: Nominativ and Akkusativ look the same. Only masculine changes: der → den.</p></div>
-<div class="tc df"><h3>Die vier Fragen</h3><div class="rows">
-<div><span>Wer? Was?</span><span>Nominativ · <b>Der Architekt</b> zeichnet.</span></div>
-<div><span style="color:var(--akk)">Wen? Was?</span><span>Akkusativ · Er zeichnet <mark class="a">den Plan</mark>.</span></div>
-<div><span style="color:var(--dat)">Wem?</span><span>Dativ · Er zeigt <mark class="d">dem Kunden</mark> den Plan.</span></div>
-<div><span>Wessen?</span><span>Genitiv · das Büro <b>des Architekten</b></span></div></div></div>
-<div class="tc df"><h3>Was bestimmt den Fall?</h3><div class="rows">
-<div><span>das Verb</span><span>sehen + Akk · helfen + Dat · gedenken + Gen · sein + Nom</span></div>
-<div><span>die Präposition</span><span>mit + Dat · für + Akk · wegen + Gen · in: Wo? Dat / Wohin? Akk</span></div>
-<div><span>feste Ausdrücke</span><span>Mir ist kalt. Guten Morgen! (Akk) · eines Tages (Gen)</span></div></div></div>
-<div class="tc df"><h3>ein · kein · mein</h3>`+BOXE+`</div>
-<div class="tc df"><h3>Fallen</h3><div class="rows">
+<div class="tc df"><h3>Alle Artikel <small>A1</small></h3>`+BOX+BOXE+`<p class="tline">Nominativ and Akkusativ look the same except masculine: der → den, ein → einen. kein and mein follow ein.</p></div>
+<div class="tc df"><h3>Die vier Fragen <small>A1</small></h3><div class="rows">
+<div><span>Wer? Was?</span><span>NOM · <b>Der Architekt</b> zeichnet.</span></div>
+<div><span style="color:var(--akk)">Wen? Was?</span><span>AKK · Er zeichnet <mark class="a">den Plan</mark>.</span></div>
+<div><span style="color:var(--dat)">Wem?</span><span>DAT · Er zeigt <mark class="d">dem Kunden</mark> den Plan.</span></div>
+<div><span>Wessen?</span><span>GEN · das Büro <b>des Architekten</b></span></div></div>
+<p class="tline">Cases as actors: NOM does it, AKK receives it, DAT gets something from it, GEN owns it. The case comes from the verb (helfen + DAT), the preposition (mit + DAT, für + AKK) or a fixed phrase (Guten Morgen!).</p></div>
+<div class="tc df"><h3>Pronomen <small>A1</small></h3><div class="ptab"><span class="h">Nom.</span><span class="h a">Akk.</span><span class="h d">Dat.</span>`+PRON.map(([n,a,d])=>'<span>'+n+'</span><span class="a">'+a+'</span><span class="d">'+d+'</span>').join("")+`</div><p class="tline">Only uns and euch are the same in AKK and DAT. Reflexiv: mich if there is no other object (Ich freue mich), mir if there is (Ich wasche mir die Hände).</p></div>
+<div class="tc df"><h3>Verben mit Dativ <small>A2</small></h3>`+pcs("d",["helfen","danken","gefallen","gehören","antworten","folgen","gratulieren","passen","schmecken","fehlen","glauben","vertrauen","zuhören","begegnen","raten","verzeihen","zustimmen","widersprechen"])+`<p class="tline">Der Entwurf gefällt mir = I like the design: the English subject becomes the German DAT. Also: Mir ist kalt. Es tut mir leid. Das ist mir egal.</p></div>
+<div class="tc df"><h3>Zwei Objekte <small>B1</small></h3><div class="rows">
+<div><span>2 Nomen</span><span>DAT first: Ich gebe <mark class="d">dem Kind</mark> <mark class="a">den Ball</mark>.</span></div>
+<div><span>1 Pronomen</span><span>Pronoun first: Ich gebe <mark class="a">ihn</mark> <mark class="d">dem Kind</mark>.</span></div>
+<div><span>2 Pronomen</span><span>AKK first: Ich gebe <mark class="a">es</mark> <mark class="d">ihm</mark>.</span></div></div><p class="tline">DAT person, AKK thing: geben, schenken, schicken, bringen, zeigen, erklären, erzählen, leihen, empfehlen.</p></div>
+<div class="tc df"><h3>Fallen <small>A2–B1</small></h3><div class="rows">
 <div><span>Wortstellung</span><span>Den Plan zeichnet <b>der Architekt</b>. The article shows the subject, not the position.</span></div>
 <div><span>sein / werden</span><span>Er ist <b>ein</b> guter Lehrer. Never einen.</span></div>
 <div><span>n-Deklination</span><span>der Kollege → den / dem / des Kollegen. Also Kunde, Nachbar, Architekt, Bauherr.</span></div>
-<div><span>Dativ Plural</span><span>mit den Kinder<b>n</b>, den Pferde<b>n</b> (not after -s or -n: den Autos, den Frauen)</span></div></div></div>`;
+<div><span>Dativ Plural</span><span>mit den Kinder<b>n</b>, den Pferde<b>n</b> (not after -s or -n: den Autos, den Frauen)</span></div></div><p class="tline">Four traps: word order, sein, n-Deklination, Dativ plural -n.</p></div>`;
 const TH_ADJ=`
 <div class="tc df"><h3>Nach der · die · das</h3>`+adjTab("best","der neu<b>e</b> Plan · mit dem neu<b>en</b> Plan")+`</div>
 <div class="tc df"><h3>Nach ein · kein · mein</h3>`+adjTab("unb","ein neu<b>er</b> Plan · ein schön<b>es</b> Haus")+`</div>
@@ -1511,7 +1513,7 @@ function setMode(m){closePop();mode=m;document.querySelector(".app").dataset.mod
   const th=m==="theo";$("theo").hidden=!th;$("lg").hidden=th;$("stage").hidden=th;$("panel").hidden=th;
   if(m==="game"){gi=0;MC=null;}if(T&&T!=="test"&&T!=="links"){store.last={t:T,m};save();}render();}
 $("mLearn").onclick=()=>setMode("learn");$("mTheo").onclick=()=>setMode("theo");$("mGame").onclick=()=>setMode("game");
-const TH={satz:()=>TH_SATZ+srcCard("satz"),prep:()=>TH_PREP+srcCard("prep"),art:()=>TH_ART+ownHTML()+srcCard("art"),pron:()=>TH_PRON+srcCard("pron"),gen:()=>TH_GEN+srcCard("gen"),fall:()=>TH_FALL+TH_PRON+srcCard("fall"),adj:()=>TH_ADJ+srcCard("adj"),links:()=>TH_LINKS};
+const TH={satz:()=>TH_SATZ+srcCard("satz"),prep:()=>TH_PREP+srcCard("prep"),art:()=>TH_ART+ownHTML()+srcCard("art"),pron:()=>TH_PRON+srcCard("pron"),gen:()=>TH_GEN+srcCard("gen"),fall:()=>TH_FALL+srcCard("fall"),adj:()=>TH_ADJ+srcCard("adj"),links:()=>TH_LINKS};
 Object.keys(GT).forEach(k=>{SRC[k]=GT[k].src;TH[k]=()=>GT[k].th+srcCard(k);});
 const LG={fall:'<span class="lgc nom">Nom</span><span class="lgc akk">Akk</span><span class="lgc dat">Dat</span><span class="lgc gen">Gen</span>',adj:'<span><b class="lgx">-e/-er/-es</b> Merkzellen</span><span><b class="lgx en">-en</b> überall sonst</span>',art:'<span><b>der</b> · <b>die</b> · <b>das</b></span>',pron:'<span><i class="sw" style="background:var(--grey)"></i>Nominativ</span><span style="color:var(--akk)"><i class="sw" style="box-shadow:inset 0 0 0 2px var(--akk)"></i>Akkusativ</span><span style="color:var(--dat)"><i class="sw" style="box-shadow:inset 0 0 0 2px var(--dat)"></i>Dativ</span>',gen:'<span><i class="sw" style="background:var(--cream);box-shadow:inset 0 0 0 1px var(--line)"></i>Genitiv: des · der</span>'};
 function render(){clearTimeout(MC&&MC.tm);
