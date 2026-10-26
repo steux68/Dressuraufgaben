@@ -698,6 +698,7 @@ const PRON_Q=[
  {s:"Der Entwurf gefällt ___. (wir)",lv:"A2",o:["uns","wir"],why:"gefallen + Dativ: the person who likes it.",p:"wir",cs:"dat"},
  {s:"Ich danke ___ für die Hilfe. (Sie)",lv:"A1",o:["Ihnen","Sie"],why:"danken + Dativ.",p:"Sie",cs:"dat"},
  {s:"Ich rufe ___ später an. (ihr)",lv:"A2",o:["euch","ihr"],why:"anrufen + Akkusativ.",p:"ihr",cs:"akk"},
+ {s:"Gib es ___, bitte. (ich)",lv:"A1",o:["mir","mich"],why:"geben: the person who receives is Dativ. Two pronouns: es (Akk) before mir (Dat).",p:"ich",cs:"dat"},
  {s:"Ich gebe ___ das Buch. (er)",lv:"A2",o:["ihm","ihn"],why:"The person receiving = Dativ.",p:"er",cs:"dat"},
  {s:"Ich gebe ___ ihm. (das Buch)",lv:"B1",o:["es","ihm"],why:"Two pronouns: Akkusativ first.",p:"es",cs:"akk"},
  {s:"Wie geht es ___? (du)",lv:"A1",o:["dir","dich"],why:"Fixed phrase: Wie geht es dir?",p:"du",cs:"dat"},
@@ -752,7 +753,7 @@ const TH_PRON=`
 <div class="tc df"><h3>Zwei Objekte</h3><div class="rows">
 <div><span>2 Nomen</span><span>Dativ first: Ich gebe <mark class="d">dem Kind</mark> <mark class="a">den Ball</mark>.</span></div>
 <div><span>1 Pronomen</span><span>Pronoun first: Ich gebe <mark class="a">ihn</mark> <mark class="d">dem Kind</mark>.</span></div>
-<div><span>2 Pronomen</span><span>Akkusativ first: Ich gebe <mark class="a">es</mark> <mark class="d">ihm</mark>.</span></div></div></div>
+<div><span>2 Pronomen</span><span>Akkusativ first: Ich gebe <mark class="a">es</mark> <mark class="d">ihm</mark>.</span></div></div><p class="tline">Typical verbs with a DAT person and an AKK thing: geben, schenken, schicken, bringen, zeigen, erklären, erzählen, schreiben, leihen, empfehlen, sagen.</p></div>
 <div class="tc df"><h3>Reflexiv: mich oder mir?</h3><div class="rows">
 <div><span>mich</span><span>No other object: Ich freue <mark class="a">mich</mark>. Ich wasche <mark class="a">mich</mark>.</span></div>
 <div><span>mir</span><span>There is another object: Ich wasche <mark class="d">mir</mark> die Hände. Ich merke <mark class="d">mir</mark> das.</span></div></div></div>
@@ -818,7 +819,10 @@ const FALL_Q=[
  {s:"Den Plan zeichnet [der Architekt].",c:0,why:"The subject can stand after the verb. der = Nominativ.",lv:"B1"},
  {s:"Dem Kind schenkt [die Oma] ein Buch.",c:0,why:"die Oma gives: subject, Nominativ.",lv:"B1"},
  {s:"Ich schicke [Ihnen] die Rechnung morgen.",c:2,why:"Ihnen receives: Dativ.",lv:"A2"},
- {s:"Wir gedenken [der Opfer].",c:3,why:"gedenken + Genitiv (formal, C1).",lv:"C1"}
+ {s:"Wir gedenken [der Opfer].",c:3,why:"gedenken + Genitiv (formal, C1).",lv:"C1"},
+ {s:"Er schenkt [seiner Tochter] ein Fahrrad.",c:2,why:"schenken: the person who receives is Dativ.",lv:"A2"},
+ {s:"Wir senden [Ihnen] die Unterlagen bis Freitag.",c:2,why:"senden: Ihnen receives, Dativ. Office German.",lv:"A2"},
+ {s:"Ich empfehle Ihnen [eine Begehung] vor Ort.",c:1,why:"empfehlen: the thing recommended is Akkusativ.",lv:"B1"}
 ].map(q=>Object.assign({k:"c",o:["Nominativ","Akkusativ","Dativ","Genitiv"]},q)).concat([
  {s:"Ich sehe ___ Mann.",n:"der Mann",cs:"Akkusativ",o:["den","der","dem"],why:"sehen + Akkusativ: der → den.",lv:"A1"},
  {s:"Das Handy gehört ___ Frau.",n:"die Frau",cs:"Dativ",o:["der","die","den"],why:"gehören + Dativ: die → der.",lv:"A2"},
@@ -829,7 +833,10 @@ const FALL_Q=[
  {s:"Sie wohnt bei ___ Freundin.",n:"eine Freundin",cs:"Dativ",o:["einer","eine","einem"],why:"bei + Dativ: eine → einer.",lv:"A2"},
  {s:"Das Auto ___ Kollegin ist rot.",n:"die Kollegin",cs:"Genitiv",o:["der","die","des"],why:"Genitiv feminine: der.",lv:"B1"},
  {s:"Ich habe heute ___ Zeit.",n:"keine Zeit",cs:"Akkusativ",o:["keine","keinen","keiner"],why:"Feminine Akkusativ stays keine.",lv:"A1"},
- {s:"Mit ___ Pferden reiten wir aus.",n:"die Pferde",cs:"Dativ",o:["den","die","der"],why:"mit + Dativ plural: den Pferden.",lv:"A2"}
+ {s:"Mit ___ Pferden reiten wir aus.",n:"die Pferde",cs:"Dativ",o:["den","die","der"],why:"mit + Dativ plural: den Pferden.",lv:"A2"},
+ {s:"Wir danken ___ Kollegen für die Hilfe.",n:"die Kollegen",cs:"Dativ",o:["den","die","der"],why:"danken + Dativ plural: den Kollegen. Already ends in -n, so no extra -n.",lv:"A2"},
+ {s:"Ohne ___ Laptop kann ich nicht arbeiten.",n:"mein Laptop",cs:"Akkusativ",o:["meinen","mein","meinem"],why:"ohne is always Akkusativ: mein → meinen.",lv:"A2"},
+ {s:"Seit ___ Jahr wohne ich in Wien.",n:"ein Jahr",cs:"Dativ",o:["einem","ein","einen"],why:"seit is always Dativ: ein → einem. Present tense, where English says \"have lived\".",lv:"A2"}
 ].map(q=>Object.assign({k:"f",c:0},q)));
 /* ---------- data: Adjektivendungen ---------- */
 const ADJ_T={best:[["e","e","e","en"],["en","e","e","en"],["en","en","en","en"],["en","en","en","en"]],unb:[["er","es","e","en"],["en","es","e","en"],["en","en","en","en"],["en","en","en","en"]],ohne:[["er","es","e","e"],["en","es","e","e"],["em","em","er","en"],["en","en","er","er"]]};
