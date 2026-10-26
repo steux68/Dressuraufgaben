@@ -76,16 +76,16 @@ mark.d{color:var(--dat)} mark.a{color:var(--akk)}
 .copy img{height:18px;width:auto;display:block}
 .copy span{font-size:.72rem;color:var(--muted);line-height:1.1}
 /* Satzbau */
-.en{font-size:1.4rem;line-height:1.3;color:var(--muted);text-align:center;margin:0;text-wrap:balance}
-.en.big{font-size:1.45rem;color:var(--fg);font-weight:700}
-.frame{display:flex;flex-direction:column;gap:14px}
+.en{font-size:1.15rem;line-height:1.3;color:var(--muted);text-align:center;margin:0;text-wrap:balance}
+.en.big{font-size:1.2rem;color:var(--fg);font-weight:700}
+.frame{display:flex;flex-direction:column;gap:10px}
 .clause{display:flex;flex-direction:column;gap:3px}
 .ctag{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
 .grid{display:grid;gap:3px;grid-template-columns:auto auto minmax(0,1fr) auto}
 .grid.subc{grid-template-columns:auto minmax(0,1fr) auto}
-.cell{padding:6px 9px 9px;display:flex;flex-direction:column;gap:1px;min-width:0;position:relative}
+.cell{padding:5px 8px 7px;display:flex;flex-direction:column;gap:1px;min-width:0;position:relative}
 .cell small{font-size:.66rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
-.cell span{font-size:1.55rem;line-height:1.15;font-weight:700;overflow-wrap:anywhere;color:var(--fg)}
+.cell span{font-size:1.08rem;line-height:1.2;font-weight:700;overflow-wrap:anywhere;color:var(--fg)}
 .cell.vf{background:var(--grey)}
 .cell.v1,.cell.v2{background:var(--lime);box-shadow:inset 0 0 0 1px var(--ink)}
 .cell.mf{background:var(--bg)}
@@ -101,7 +101,7 @@ mark.d{color:var(--dat)} mark.a{color:var(--akk)}
 .mic svg{width:24px;height:24px}
 .tip{font-size:.85rem;color:var(--muted);margin:0;text-align:center}
 .mine{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
-.w{font-size:1.25rem;font-weight:700;padding:2px 8px}
+.w{font-size:1.05rem;font-weight:700;padding:2px 8px}
 .w.vf{background:var(--grey)}
 .w.v1,.w.v2{background:var(--lime);box-shadow:inset 0 0 0 1px var(--ink)}
 .w.mf{font-weight:400;box-shadow:inset 0 0 0 1px var(--dot)}
@@ -116,7 +116,7 @@ svg.room{width:100%;height:100%;max-height:100%;display:block}
 .room .st{stroke:var(--ink);stroke-width:1.3;fill:var(--bg);stroke-linejoin:miter;stroke-linecap:square}
 .room .st-thin{stroke:var(--ink);stroke-width:.9;fill:none}
 .room .hatch{fill:url(#hatch);stroke:var(--ink);stroke-width:1.1}
-.room .floorbg{fill:var(--pale);stroke:var(--ink);stroke-width:1.4}
+.room .floorbg{fill:var(--pale)}
 .room .outer{fill:none;stroke:var(--dot);stroke-width:1;stroke-dasharray:1 2}
 .room .setback{fill:none;stroke:var(--ink);stroke-width:.8;stroke-dasharray:1 2}
 .room .guide{stroke:var(--line);stroke-width:.8;stroke-dasharray:4 3;fill:none}
@@ -169,7 +169,7 @@ svg.room{width:100%;height:100%;max-height:100%;display:block}
     <div class="titlebar"><h1 class="logo">deutsch<b>-grammatik</b></h1></div>
     <p class="intro">Jedes Thema kannst du lernen oder als Spiel üben.</p>
     <button class="tile ready df" id="t-satz" data-t="satz"><span class="code">01</span><span><span class="nm">Satzbau <small class="n">[Satz]</small></span><span class="ds" style="display:block">Verb an Position 2 und die Satzklammer · A1–B1 · 12 Sätze</span></span><span class="st ready">üben</span></button>
-    <button class="tile ready df" id="t-prep" data-t="prep"><span class="code">02</span><span><span class="nm">Wo oder wohin? <small class="n">[Präp]</small></span><span class="ds" style="display:block">Präpositionen mit Dativ und Akkusativ · A1–C1 · 26 Karten</span></span><span class="st ready">üben</span></button>
+    <button class="tile ready df" id="t-prep" data-t="prep"><span class="code">02</span><span><span class="nm">Wo oder wohin? <small class="n">[Präp]</small></span><span class="ds" style="display:block">Präpositionen mit Dativ und Akkusativ · A1–C1 · 27 Karten</span></span><span class="st ready">üben</span></button>
     <div class="tile soon df"><span class="code">03</span><span><span class="nm">Die vier Fälle</span><span class="ds" style="display:block">Nominativ, Akkusativ, Dativ, Genitiv</span></span><span class="st soon">bald</span></div>
     <div class="tile soon df"><span class="code">04</span><span><span class="nm">Adjektivendungen</span><span class="ds" style="display:block">der gute Plan · ein guter Plan · guter Plan</span></span><span class="st soon">bald</span></div>
     <div class="tile soon df"><span class="code">05</span><span><span class="nm">Konjunktiv II</span><span class="ds" style="display:block">Wünsche, Bitten, Hypothesen · B1–C1</span></span><span class="st soon">bald</span></div>
@@ -219,6 +219,7 @@ const SB=[
 const PR=[
  {k:"room",p:"in",en:"in / into",wo:"Die Bücher stehen [im] Regal.",wohin:"Ich stelle die Bücher [ins] Regal."},
  {k:"room",p:"zwischen",en:"between",wo:"Die Stehlampe steht zwischen [dem] Regal und [dem] Sofa.",wohin:"Ich stelle die Stehlampe zwischen [das] Regal und [das] Sofa."},
+ {k:"room",p:"an",o:"fenster",en:"at (the window)",wo:"Die Vase steht [am] Fenster.",wohin:"Ich stelle die Vase [ans] Fenster."},
  {k:"room",p:"an",en:"on (a wall), at",wo:"Das Bild hängt an [der] Wand.",wohin:"Ich hänge das Bild an [die] Wand."},
  {k:"room",p:"hinter",en:"behind",wo:"Die Tasche steht hinter [dem] Sofa.",wohin:"Ich stelle die Tasche hinter [das] Sofa."},
  {k:"room",p:"neben",en:"next to",wo:"Die Pflanze steht neben [dem] Sofa.",wohin:"Ich stelle die Pflanze neben [das] Sofa."},
@@ -255,6 +256,7 @@ const PQ=[
  {s:"Ich stelle die Pflanze neben ___ Sofa.",o:["das","dem"],c:0,why:"Wohin? stellen → Akkusativ. das stays das.",p:"neben",m:"wohin"},
  {s:"Sie kommt aus ___ Haus.",o:["das","dem"],c:1,why:"aus is always Dativ.",f:"aus"},
  {s:"Das ist für ___ Kunden.",o:["den","dem"],c:0,why:"für is always Akkusativ.",f:"für"},
+ {s:"Ich stelle die Vase ___ Fenster.",o:["ans","am"],c:0,why:"Wohin? stellen → Akkusativ. an das → ans.",p:"fenster",m:"wohin"},
  {s:"Ich stelle die Bücher ___ Regal.",o:["ins","im"],c:0,why:"Wohin? in das → ins.",p:"in",m:"wohin"},
  {s:"Der Stuhl steht vor ___ Tisch.",o:["den","dem"],c:1,why:"Wo? stehen → Dativ.",p:"vor",m:"wo"},
  {s:"Wir reiten ___ Fluss entlang.",o:["den","dem"],c:0,why:"entlang after the noun takes Akkusativ.",f:"entlang"},
@@ -285,9 +287,10 @@ const ICON={
 const ROOM=`<svg class="room" viewBox="0 0 360 252" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Section through a living room">
 <defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" style="stroke:var(--muted)" stroke-width="1"/></pattern>
 <marker id="head" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--akk)"/></marker></defs>
-<rect class="outer" x="4" y="8" width="352" height="223"/>
-<rect class="floorbg" x="10" y="14" width="340" height="211"/>
-<g class="win"><rect class="st" x="22" y="24" width="56" height="54"/><rect class="setback" x="27" y="29" width="46" height="44"/><path class="st-thin" d="M50 29 V73 M27 51 H73"/><path class="st" d="M18 78 H82"/></g>
+<rect class="floorbg" x="14" y="14" width="332" height="211"/>
+<rect class="hatch" x="4" y="6" width="352" height="8"/><rect class="hatch" x="4" y="225" width="352" height="8"/>
+<g class="door"><rect class="hatch" x="4" y="14" width="10" height="62"/><path class="st-thin" d="M4 76 V225 M14 76 V225"/><rect class="st" x="14" y="78" width="5" height="147"/><circle class="st-thin" cx="17" cy="152" r="1.5"/></g>
+<g class="window"><rect class="hatch" x="346" y="14" width="10" height="34"/><rect class="hatch" x="346" y="140" width="10" height="85"/><path class="st-thin" d="M349 48 V140 M353 48 V140 M346 48 H356 M346 94 H356"/><rect class="st" x="328" y="140" width="28" height="3"/></g>
 <g class="obj" data-p="in"><rect class="st" x="22" y="92" width="56" height="133"/><line class="st-thin" x1="22" y1="125" x2="78" y2="125"/><line class="st-thin" x1="22" y1="158" x2="78" y2="158"/><line class="st-thin" x1="22" y1="191" x2="78" y2="191"/><rect class="st" x="28" y="133" width="6" height="25"/><rect class="st" x="36" y="129" width="7" height="29"/><rect class="st" x="45" y="135" width="5" height="23"/><rect class="st" x="52" y="131" width="8" height="27"/></g>
 <g class="obj" data-p="zwischen"><line class="st" x1="95" y1="120" x2="95" y2="224"/><path class="st" d="M85 222 h20"/><path class="st" d="M84 122 L106 122 L101 104 L89 104 Z"/></g>
 <g class="obj" data-p="an"><rect class="st" x="128" y="54" width="62" height="42"/><path class="st-thin" d="M133 90 L148 72 L158 82 L168 68 L185 90"/><circle class="st-thin" cx="176" cy="64" r="4"/></g>
@@ -298,6 +301,7 @@ const ROOM=`<svg class="room" viewBox="0 0 360 252" preserveAspectRatio="xMidYMi
 <g class="obj" data-p="auf"><rect class="st" x="268" y="160" width="28" height="8" rx="1"/><line class="st-thin" x1="272" y1="164" x2="292" y2="164"/></g>
 <g class="obj" data-p="über"><line class="st-thin" x1="300" y1="14" x2="300" y2="78"/><path class="st" d="M284 94 L316 94 L308 78 L292 78 Z"/></g>
 <g class="obj" data-p="unter"><path class="st-thin" d="M304 208 L314 198"/><rect class="st" x="276" y="206" width="28" height="13"/><path class="st" d="M264 219 V202 L268 197 L271 202 H275 L278 197 L282 202 V219 Z"/><path class="st-thin" d="M279 219 V224 M300 219 V224"/></g>
+<g class="obj" data-p="fenster"><path class="st" d="M334 140 L332 128 L336 122 L342 122 L344 128 L342 140 Z"/><path class="st-thin" d="M338 122 V112 M338 116 L333 110 M338 118 L343 112"/></g>
 <g class="obj" data-p="vor"><rect class="st" x="326" y="150" width="7" height="75" rx="2"/><rect class="st" x="303" y="192" width="30" height="6" rx="1"/><line class="st" x1="306" y1="198" x2="306" y2="224"/></g>
 <g class="mk" data-p="in"><circle class="dot" cx="50" cy="112" r="6"/><path class="arrow" marker-end="url(#head)" d="M50 82 V108"/></g>
 <g class="mk" data-p="zwischen"><circle class="dot" cx="95" cy="96" r="6"/><path class="arrow" marker-end="url(#head)" d="M95 30 L 95 96"/></g>
@@ -305,9 +309,10 @@ const ROOM=`<svg class="room" viewBox="0 0 360 252" preserveAspectRatio="xMidYMi
 <g class="mk" data-p="hinter"><circle class="dot" cx="174" cy="132" r="6"/><path class="arrow" marker-end="url(#head)" d="M174 104 L 174 136"/></g>
 <g class="mk" data-p="neben"><circle class="dot" cx="240" cy="200" r="6"/><path class="arrow" marker-end="url(#head)" d="M246 140 V200 H234"/></g>
 <g class="mk" data-p="auf"><circle class="dot" cx="282" cy="150" r="6"/><path class="arrow" marker-end="url(#head)" d="M248 128 H282 V150"/></g>
-<g class="mk" data-p="über"><circle class="dot" cx="322" cy="86" r="6"/><path class="arrow" marker-end="url(#head)" d="M344 86 H322"/></g>
+<g class="mk" data-p="über"><circle class="dot" cx="274" cy="86" r="6"/><path class="arrow" marker-end="url(#head)" d="M252 86 H278"/></g>
 <g class="mk" data-p="unter"><circle class="dot" cx="288" cy="196" r="6"/><path class="arrow" marker-end="url(#head)" d="M238 212 H260"/></g>
-<g class="mk" data-p="vor"><circle class="dot" cx="342" cy="184" r="6"/><path class="arrow" marker-end="url(#head)" d="M342 116 V144"/></g>
+<g class="mk" data-p="vor"><circle class="dot" cx="318" cy="184" r="6"/><path class="arrow" marker-end="url(#head)" d="M318 120 V146 H322"/></g>
+<g class="mk" data-p="fenster"><circle class="dot" cx="338" cy="100" r="6"/><path class="arrow" marker-end="url(#head)" d="M322 104 H338 V108"/></g>
 <g class="titleblock"><text x="6" y="246">ANSICHT · WOHNZIMMER</text><text x="354" y="246" text-anchor="end">M 1:50</text></g></svg>`;
 
 /* ---------- helpers ---------- */
@@ -501,8 +506,8 @@ function pictStage(it,reveal){$("stage").innerHTML='<div class="pict '+(reveal?i
 function verbStage(q,reveal){$("stage").innerHTML='<div class="pict '+(reveal?q.cs:"hide")+'"><b style="font-size:2.1rem">'+esc(q.v)+' + '+(reveal?(q.cs==="akk"?"Akk":"Dat"):"?")+'</b><span>Verb mit fester Präposition</span></div>';$("stage").onclick=null;}
 function prLearn(){prLegend(true);const it=PR[idx];
   $("bd").textContent=it.p;$("ct").textContent=(idx+1)+" / "+PR.length;
-  if(it.k==="room"){const svg=roomStage(it.p,caseMode,true);
-    svg.querySelectorAll(".obj").forEach(g=>g.addEventListener("click",()=>{const j=PR.findIndex(x=>x.p===g.dataset.p);if(j>=0){idx=j;render();}}));
+  if(it.k==="room"){const svg=roomStage(it.o||it.p,caseMode,true);
+    svg.querySelectorAll(".obj").forEach(g=>g.addEventListener("click",()=>{const j=PR.findIndex(x=>(x.o||x.p)===g.dataset.p);if(j>=0){idx=j;render();}}));
     $("cardbody").innerHTML='<p id="tx" style="'+(caseMode==="wo"?"":"opacity:.5")+'">'+mk(it.wo,"d")+'</p><p id="gt" style="font-size:1.1rem;color:var(--fg);'+(caseMode==="wohin"?"":"opacity:.5")+'">'+mk(it.wohin,"a")+'</p>';}
   else{pictStage(it,true);$("cardbody").innerHTML='<p id="tx">'+mk(it.ex,it.c==="akk"?"a":"d")+'</p><p id="gt">'+esc(it.en)+' · immer '+(it.c==="akk"?"Akkusativ":"Dativ")+'</p>';}
   setBtns("btns1",[btn("bZ","← Zurück","",()=>{idx=(idx-1+PR.length)%PR.length;render()}),btn("bW","Weiter →","primary",()=>{idx=(idx+1)%PR.length;render()})]);
