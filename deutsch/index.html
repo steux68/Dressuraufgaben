@@ -205,7 +205,7 @@ svg.room{width:100%;height:100%;max-height:100%;display:block}
 .own select,.own input{font:inherit;font-size:1rem;padding:8px;border:0;border-radius:0;background:var(--pale);min-width:0;color:var(--fg)}
 .del{background:transparent;padding:0 6px;color:var(--muted)}
 .nf{margin:2px 0 0;font-size:.95rem;color:var(--muted)}.nf b{color:var(--fg)}
-.links a{color:var(--dat);text-decoration:none;font-weight:700;background:var(--df) left bottom/100% 1px no-repeat;padding-bottom:1px}
+.links a{overflow-wrap:anywhere;color:var(--dat);text-decoration:none;font-weight:700;background:var(--df) left bottom/100% 1px no-repeat;padding-bottom:1px}
 .timer small.n{margin-left:6px}
 .gintro{margin:0;font-size:.85rem;color:var(--muted);letter-spacing:.04em}
 .gal{display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -312,6 +312,18 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .tt .r{display:flex;justify-content:space-between;align-items:baseline;gap:4px}.tt b{font-size:1rem;line-height:1.15}.tt small{font-size:.72rem;color:#555;white-space:nowrap}
 .tt.dim{opacity:.45}
 .soonl{grid-column:1/-1;font-size:.82rem;color:#555;padding-top:2px}
+.dbar{flex:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:var(--df) left top/100% 1px no-repeat,var(--df) left bottom/100% 1px no-repeat}
+.db{display:flex;align-items:center;gap:4px;height:30px;padding:0 9px;background:#fff;font-size:.8rem;text-align:left;white-space:nowrap;overflow:hidden;border-right:1px dotted var(--dot)}
+.db:nth-child(3n){border-right:0}.db:nth-child(n+4){background:var(--df) left top/100% 1px no-repeat,#fff}
+.db b{font-weight:700}.db small{font-size:.62rem;color:#555}
+.db.on{background-color:var(--limepale)}.db:nth-child(n+4).on{background:var(--df) left top/100% 1px no-repeat,var(--limepale)}.db:active{background-color:var(--lime)}
+.drawer{position:absolute;z-index:50;left:max(18px,env(safe-area-inset-left,0px));right:max(18px,env(safe-area-inset-right,0px));top:60px;bottom:30px;background:#fff;display:flex;flex-direction:column;gap:8px;transform:translateY(105%);transition:transform .28s ease}
+.drawer.up{transform:none}
+.dbody{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding-bottom:10px}
+.dbody .tc h3{margin:0 0 6px;font-size:1.1rem}
+.dgo{background:var(--yellow);font-weight:700;min-height:48px;width:100%}
+.hist{display:grid;grid-template-columns:4.2em minmax(0,1fr);font-size:.98rem;line-height:1.3}
+.hist>*{padding:7px 0;background:var(--df) left bottom/100% 1px no-repeat}.hist b{font-weight:700}.hist span{padding-left:8px;background:var(--df) left bottom/100% 1px no-repeat,var(--dfv) left top/1px 100% no-repeat}
 .hbar{flex:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding-top:6px;background:var(--df) left top/100% 1px no-repeat}
 .hbar button{min-height:44px}.hbar .t{background:var(--yellow);font-weight:700}
 /* ---- Theorie as a list ---- */
@@ -353,7 +365,7 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 <div class="app"><i class="rule l"></i><i class="rule r"></i><i class="tk t"></i><i class="tk b"></i>
   <!-- HOME -->
   <section id="home" class="home">
-    <div class="titlebar"><span class="brand"><button class="markb" id="markb" aria-label="Logo: Flaggenfarben zeigen"><svg class="mark" viewBox="-3 -3 306 106" aria-hidden="true"><g class="fl"><rect width="100" height="33.4" fill="#000"/><rect y="33.3" width="100" height="33.4" fill="#dd0000"/><rect y="66.6" width="100" height="33.4" fill="#ffce00"/><rect x="100" width="100" height="100" fill="#c8102e"/><rect x="100" y="33.3" width="100" height="33.4" fill="#fff"/><rect x="200" width="100" height="100" fill="#da291c"/><rect x="233.3" width="33.4" height="100" fill="#fff"/><rect x="200" y="33.3" width="100" height="33.4" fill="#fff"/></g><path d="M0 33.3H200M0 66.7H200M233.3 0V33.3M266.7 0V33.3M233.3 66.7V100M266.7 66.7V100M200 33.3H233.3M266.7 33.3H300M200 66.7H233.3M266.7 66.7H300" class="mi"/><path d="M100 0V100M200 0V100" class="md"/><rect width="300" height="100" class="mo"/></svg></button><h1 class="logo"><b>Deutsch</b><span>Grammatik</span></h1></span><button id="gear" class="gear" aria-label="Einstellungen" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.2 5.2l2.1 2.1M16.7 16.7l2.1 2.1M5.2 18.8l2.1-2.1M16.7 7.3l2.1-2.1"/></svg></button></div>
+    <div class="titlebar"><span class="brand"><button class="markb" id="markb" aria-label="Logo: Flaggenfarben zeigen"><svg class="mark" viewBox="-3 -3 306 106" aria-hidden="true"><g class="fl"><rect width="100" height="33.4" fill="#000"/><rect y="33.3" width="100" height="33.4" fill="#dd0000"/><rect y="66.6" width="100" height="33.4" fill="#ffce00"/><rect x="100" width="100" height="100" fill="#c8102e"/><rect x="100" y="33.3" width="100" height="33.4" fill="#fff"/><rect x="200" width="100" height="100" fill="#da291c"/><rect x="233.3" width="33.4" height="100" fill="#fff"/><rect x="200" y="33.3" width="100" height="33.4" fill="#fff"/></g><path d="M0 33.3H200M0 66.7H200M233.3 0V33.3M266.7 0V33.3M233.3 66.7V100M266.7 66.7V100M200 33.3H233.3M266.7 33.3H300M200 66.7H233.3M266.7 66.7H300" class="mi"/><path d="M100 0V100M200 0V100" class="md"/><rect width="300" height="100" class="mo"/></svg></button><h1 class="logo"><b>Deutsch</b><span>Grammatik</span></h1></span></div>
     <div class="sets" id="sets" hidden>
       <div class="timer"><span>Timer im Spiel</span><button id="tmr" aria-pressed="false">aus</button></div>
       <div class="timer"><span>Artikel-Hilfe <small class="n">Grundform vor der Antwort zeigen</small></span><button id="ahp" aria-pressed="false">aus</button></div>
@@ -363,7 +375,7 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
       <button class="resume" id="resume" hidden></button>
       <div id="groups"></div>
     </div>
-    <div class="hbar"><button id="hTest" class="t">Test</button><button id="hLinks">Links</button><button id="hWords">Meine Wörter</button></div>
+    <nav class="dbar" id="dbar" aria-label="Mehr"></nav>
   </section>
 
   <!-- TOPIC -->
@@ -386,6 +398,7 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
     </div>
   </section>
 
+  <div class="drawer" id="drawer" hidden><nav class="dbar" id="dbar2" aria-label="Mehr"></nav><div class="dbody" id="dbody"></div></div>
   <div class="pop" id="pop" hidden role="dialog" aria-modal="true" aria-labelledby="pt">
     <div class="pbar"><b id="pt"></b><span class="count" id="pc"></span><button id="px" aria-label="Schließen">×</button></div>
     <div class="pbody" id="pb"></div>
@@ -1464,7 +1477,7 @@ const tInfo=t=>TOPICS.find(x=>x.t===t);
 function tRange(t){const m=(tInfo(t).ds||"").match(/([ABC][12])(?:–([ABC][12]))?\s*$/);return m?[m[1],m[2]||m[1]]:["A1","C1"];}
 function inLevel(t){const L=store.level;if(!L||L==="all")return true;const [a,b]=tRange(t),i=LVLS.indexOf(L);return i>=LVLS.indexOf(a)&&i<=LVLS.indexOf(b);}
 const MNAME={learn:"Lernen",game:"Spiel",theo:"Theorie"};
-function renderHome(){
+function renderHome(){renderBars();
   if(store.grp==null){const last=store.last&&GROUPS.findIndex(g=>g.t.includes(store.last.t));store.grp=last>=0?last:0;}
   $("groups").innerHTML=GROUPS.map((g,gi)=>{const sc=g.t.map(t=>score(t)||0),avg=sc.reduce((a,b)=>a+b,0)/sc.length;
     const lo=g.t.map(t=>tRange(t)[0]).sort((a,b)=>LVLS.indexOf(a)-LVLS.indexOf(b))[0],hi=g.t.map(t=>tRange(t)[1]).sort((a,b)=>LVLS.indexOf(b)-LVLS.indexOf(a))[0];
@@ -1479,9 +1492,6 @@ function renderHome(){
   $("lvs").innerHTML=["all"].concat(LVLS.slice(0,5)).map(l=>'<button class="lvb" data-l="'+l+'" id="lv-'+l+'" aria-pressed="'+((store.level||"all")===l)+'">'+(l==="all"?"Alle":l)+'</button>').join("");
   document.querySelectorAll(".lvb").forEach(b=>b.onclick=()=>{store.level=b.dataset.l;save();renderHome();});
   const ah=$("ahp");ah.setAttribute("aria-pressed",!!store.arthelp);ah.textContent=store.arthelp?"an":"aus";}
-$("gear").onclick=()=>{const o=$("sets").hidden;$("sets").hidden=!o;$("gear").setAttribute("aria-expanded",o);};
-$("hTest").onclick=()=>openTopic("test");$("hLinks").onclick=()=>openTopic("links");
-$("hWords").onclick=()=>{openTopic("art");setMode("theo");const i=GP.items.findIndex(el=>/Eigene Wörter/.test(el.textContent));if(i>=0)openPop(i);};
 /* ---------- navigation ---------- */
 let T=null,mode="learn",idx=0,self=false,caseMode="wo",gi=0,MC=null;
 function openTopic(t){navPush("topic");T=t;idx=0;gi=0;MC=null;$("home").hidden=true;$("topic").hidden=false;
@@ -1531,7 +1541,7 @@ function openPop(i){if(!GP.items.length)return;if(!GP.open)navPush("pop");const 
   $("pt").textContent=h?h.childNodes[0].textContent.trim():"";$("pc").textContent=(GP.i+1)+" / "+n;
   $("pb").innerHTML=el.innerHTML;$("pop").hidden=false;$("pb").scrollTop=0;arcsSoon($("pb"));if(T==="art")bindOwn();}
 function closePop(){GP.open=false;$("pop").hidden=true;$("pnav").hidden=false;}
-function refreshTheo(){const i=GP.i,o=GP.open;theoGallery();if(o)openPop(i);}
+function refreshTheo(){if(DR.open&&DR.k==="words"){renderDrawer();return;}const i=GP.i,o=GP.open;theoGallery();if(o)openPop(i);}
 $("px").onclick=()=>{if(navState()==="pop")history.back();else closePop();};$("pp").onclick=()=>openPop(GP.i-1);$("pn").onclick=()=>openPop(GP.i+1);
 document.addEventListener("keydown",e=>{if(!GP.open)return;if(e.key==="Escape")closePop();if(e.key==="ArrowRight")openPop(GP.i+1);if(e.key==="ArrowLeft")openPop(GP.i-1);});
 (()=>{let x0=null,y0=0;const pb=$("pb");pb.addEventListener("touchstart",e=>{x0=e.touches[0].clientX;y0=e.touches[0].clientY;},{passive:true});
@@ -1572,11 +1582,46 @@ function loadPics(root){const cache=store.pics2||(store.pics2={});root.querySele
   const next=i=>{if(i>=list.length){cache[key]=0;save();return;}const [lg,t]=list[i].split(":");
     fetch("https://"+lg+".wikipedia.org/api/rest_v1/page/summary/"+t).then(r=>r.ok?r.json():null).then(j=>{const u=j&&(j.thumbnail&&j.thumbnail.source||j.originalimage&&j.originalimage.source);if(u){cache[key]=u;save();show(u);}else next(i+1);}).catch(()=>next(i+1));};
   next(0);});}
-function openQuotes(){if(!GP.open)navPush("pop");GP.open=true;GP.items=[];$("pt").textContent="Über die deutsche Sprache";$("pc").textContent="";$("pnav").hidden=true;
-  $("pb").innerHTML=QUOTES.map(x=>x.sec?'<h4 class="qsec">'+esc(x.sec)+'</h4>':'<a class="qt" href="'+x.u+'" target="_blank" rel="noopener"><span class="pic" aria-hidden="true"><i>'+x.pic+'</i>'+(x.w?'<img alt="" loading="lazy" data-w="'+x.w.join("|")+'">':'')+'</span><span class="qb"><b class="who">'+esc(x.who)+'</b><small>'+esc(x.when)+'</small><q>'+esc(x.q)+'</q><span class="qen">'+esc(x.en)+'</span>'+'</span></a>').join("")+'<p class="tline">Antippen öffnet die Quelle. Bilder: Wikipedia / Wikimedia Commons.</p>';
-  $("pop").hidden=false;$("pb").scrollTop=0;loadPics($("pb"));}
-(()=>{let n=0,t0=0;$("markb").onclick=()=>{const now=Date.now();n=now-t0<700?n+1:1;t0=now;$("markb").classList.toggle("on");store.flags=$("markb").classList.contains("on");save();
-  if(n>=3){n=0;$("markb").classList.add("on");store.flags=true;save();openQuotes();}};if(store.flags)$("markb").classList.add("on");})();
+function quotesHTML(){return QUOTES.map(x=>x.sec?'<h4 class="qsec">'+esc(x.sec)+'</h4>':'<a class="qt" href="'+x.u+'" target="_blank" rel="noopener"><span class="pic" aria-hidden="true"><i>'+x.pic+'</i>'+(x.w?'<img alt="" loading="lazy" data-w="'+x.w.join("|")+'">':'')+'</span><span class="qb"><b class="who">'+esc(x.who)+'</b><small>'+esc(x.when)+'</small><q>'+esc(x.q)+'</q><span class="qen">'+esc(x.en)+'</span>'+'</span></a>').join("")+'<p class="tline">Antippen öffnet die Quelle. Bilder: Wikipedia / Wikimedia Commons.</p>';}
+$("markb").onclick=()=>{$("markb").classList.toggle("on");store.flags=$("markb").classList.contains("on");save();};if(store.flags)$("markb").classList.add("on");
+/* ---------- bottom bars and the drawer that rises (like dasein-design) ---------- */
+const HIST=`<div class="tc df"><h3>Kleine Geschichte</h3><div class="hist">
+<b>um 770</b><span><b>Abrogans</b>, das älteste Buch auf Deutsch: ein Wörterbuch Latein – Althochdeutsch.</span>
+<b>um 1200</b><span><b>Nibelungenlied</b>, Mittelhochdeutsch.</span>
+<b>1522</b><span><b>Luther</b> übersetzt das Neue Testament, 1534 die ganze Bibel. Sein Deutsch wird zum Vorbild.</span>
+<b>1854</b><span><b>Brüder Grimm</b>: erster Band des Deutschen Wörterbuchs. Fertig erst 1961.</span>
+<b>1880</b><span><b>Konrad Duden</b>: Vollständiges Orthographisches Wörterbuch.</span>
+<b>1901</b><span>Eine Rechtschreibung für alle deutschsprachigen Länder (in Kraft 1902).</span>
+<b>1951</b><span>Erstes <b>Österreichisches Wörterbuch</b>.</span>
+<b>1996</b><span><b>Rechtschreibreform</b>: daß → dass. Überarbeitet 2006.</span>
+<b>2017</b><span>Das große <b>ẞ</b> ist offiziell erlaubt.</span></div></div>
+<div class="tc df"><h3>Wussten Sie …?</h3><div class="rows">
+<div><span>6 Länder</span><span>Amtssprache in Deutschland, Österreich, der Schweiz, Liechtenstein, Luxemburg und Belgien.</span></div>
+<div><span>Groß</span><span>Alle Nomen schreibt man groß – als einzige große Sprache.</span></div>
+<div><span>kein ß</span><span>Die Schweiz schreibt ss statt ß: Strasse, gross.</span></div>
+<div><span>23 Wörter</span><span>Seit dem EU-Beitritt 1995 sind 23 österreichische Wörter geschützt: Paradeiser, Erdäpfel, Marillen …</span></div>
+<div><span>63 Buchstaben</span><span>Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz – ein Gesetz aus Mecklenburg-Vorpommern, 2013 abgeschafft.</span></div>
+<div><span>Handy</span><span>Klingt englisch, ist aber deutsch. Englisch sagt mobile phone.</span></div></div></div>`;
+const DITEMS=[["test","Test"],["words","Meine Wörter"],["links","Links"],["quotes","Zitate"],["hist","Geschichte"],["sets","Einstellungen"]];
+const DR={open:false,k:null};
+function dbarHTML(cur){return DITEMS.map(([k,n],i)=>'<button class="db'+(k===cur?' on':'')+'" data-k="'+k+'"><b>'+n+'</b><small>['+String(i+1).padStart(2,"0")+']</small></button>').join("");}
+function bindBars(el){el.querySelectorAll(".db").forEach(b=>b.onclick=()=>{const k=b.dataset.k;if(DR.open&&DR.k===k){if(navState()==="drawer")history.back();else closeDrawer();}else openDrawer(k);});}
+function renderBars(){$("dbar").innerHTML=dbarHTML(null);bindBars($("dbar"));}
+function parkSets(){const st=$("sets");if(st.parentNode!==$("home")){st.hidden=true;$("home").insertBefore(st,$("home").querySelector(".lvsel"));}}
+function renderDrawer(){const k=DR.k,b=$("dbody");parkSets();
+  if(k==="sets"){b.innerHTML='<div class="tc df"><h3>Einstellungen</h3></div>';b.firstChild.appendChild($("sets"));$("sets").hidden=false;return;}
+  if(k==="test"){const L=store.level&&store.level!=="all"?store.level:null;b.innerHTML='<div class="tc df"><h3>Test</h3><p class="tline">15 Fragen aus allen Themen'+(L?', Niveau '+L+' und darunter':'')+', wie in der Prüfung. Das Niveau wählst du oben auf der Startseite.</p></div><button class="dgo" id="dTest">Test starten →</button>';
+    $("dTest").onclick=()=>{try{history.replaceState({dg:"home"},"");}catch(e){}DR.open=false;$("drawer").classList.remove("up");$("drawer").hidden=true;openTopic("test");};return;}
+  if(k==="words"){b.innerHTML=ownHTML();bindOwn();return;}
+  if(k==="links"){b.innerHTML=TH_LINKS;return;}
+  if(k==="quotes"){b.innerHTML='<div class="tc df"><h3>Über die deutsche Sprache</h3>'+quotesHTML()+'</div>';loadPics(b);return;}
+  if(k==="hist"){b.innerHTML=HIST;return;}}
+function openDrawer(k){if(!DR.open)navPush("drawer");DR.open=true;DR.k=k;$("dbar2").innerHTML=dbarHTML(k);bindBars($("dbar2"));renderDrawer();$("dbody").scrollTop=0;
+  const d=$("drawer");d.hidden=false;requestAnimationFrame(()=>requestAnimationFrame(()=>d.classList.add("up")));}
+function closeDrawer(){DR.open=false;const d=$("drawer");d.classList.remove("up");setTimeout(()=>{if(!DR.open){d.hidden=true;parkSets();}},300);renderHome();}
+(()=>{let y0=null;const on=(el,f)=>{el.addEventListener("touchstart",e=>{y0=e.touches[0].clientY;},{passive:true});el.addEventListener("touchend",e=>{if(y0==null)return;const dy=e.changedTouches[0].clientY-y0;y0=null;f(dy);},{passive:true});};
+  on($("dbar"),dy=>{if(dy<-25)openDrawer(DR.k||"test");});
+  on($("dbar2"),dy=>{if(dy>25&&DR.open){if(navState()==="drawer")history.back();else closeDrawer();}});})();
 /* ---------- multiple-choice engine (all Spiel modes except Satzbau) ---------- */
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 function artQ(w){return {t:"art",lv:w[4]||"B1",s:"___ "+w[1],o:["der","die","das"],c:["der","die","das"].indexOf(w[0]),why:w[3]||"No rule here: learn it with the noun.",noun:w[1],en:w[2]};}
@@ -1714,6 +1759,7 @@ function navPush(v){try{history.pushState({dg:v},"");}catch(e){}}
 try{history.replaceState({dg:"base"},"");history.pushState({dg:"home"},"");}catch(e){}
 window.addEventListener("popstate",e=>{const st=e.state&&e.state.dg;
   if(GP.open){closePop();if(st==="topic")return;}
+  if(DR.open&&st!=="drawer"){closeDrawer();if(st==="home")return;}
   if(!$("topic").hidden&&st!=="topic"){goHome();}
   if(st==="base"||!st){navPush("home");}});
 renderHome();
