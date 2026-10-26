@@ -1616,9 +1616,9 @@ function renderDrawer(){const k=DR.k,b=$("dbody");parkSets();
   if(k==="links"){b.innerHTML=TH_LINKS;return;}
   if(k==="quotes"){b.innerHTML='<div class="tc df"><h3>Über die deutsche Sprache</h3>'+quotesHTML()+'</div>';loadPics(b);return;}
   if(k==="hist"){b.innerHTML=HIST;return;}}
-function openDrawer(k){if(!DR.open)navPush("drawer");DR.open=true;DR.k=k;$("dbar2").innerHTML=dbarHTML(k);bindBars($("dbar2"));renderDrawer();$("dbody").scrollTop=0;
-  const d=$("drawer");d.hidden=false;requestAnimationFrame(()=>requestAnimationFrame(()=>d.classList.add("up")));}
-function closeDrawer(){DR.open=false;const d=$("drawer");d.classList.remove("up");setTimeout(()=>{if(!DR.open){d.hidden=true;parkSets();}},300);renderHome();}
+function openDrawer(k){if(!DR.open)navPush("drawer");DR.open=true;DR.k=k;$("dbar2").innerHTML=dbarHTML(k);bindBars($("dbar2"));renderDrawer();const d=$("drawer"),db=$("dbody");d.hidden=false;db.scrollTop=0;
+  requestAnimationFrame(()=>{db.scrollTop=0;requestAnimationFrame(()=>{db.scrollTop=0;d.classList.add("up");});});}
+function closeDrawer(){DR.open=false;const d=$("drawer");$("dbody").scrollTop=0;d.classList.remove("up");setTimeout(()=>{if(!DR.open){d.hidden=true;parkSets();}},300);renderHome();}
 (()=>{let y0=null;const on=(el,f)=>{el.addEventListener("touchstart",e=>{y0=e.touches[0].clientY;},{passive:true});el.addEventListener("touchend",e=>{if(y0==null)return;const dy=e.changedTouches[0].clientY-y0;y0=null;f(dy);},{passive:true});};
   on($("dbar"),dy=>{if(dy<-25)openDrawer(DR.k||"test");});
   on($("dbar2"),dy=>{if(dy>25&&DR.open){if(navState()==="drawer")history.back();else closeDrawer();}});})();
