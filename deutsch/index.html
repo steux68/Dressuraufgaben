@@ -1,5 +1,5 @@
 <!doctype html><html lang="de"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Deutsch"></head><body>
-<meta name="app-version" content="2026-10-26f">
+<meta name="app-version" content="2026-10-26g">
 <title>Deutsch Grammatik</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#ffffff">
@@ -1794,7 +1794,8 @@ let T=null,mode="learn",idx=0,self=false,caseMode="wo",gi=0,MC=null;
 function openTopic(t){navPush("topic");T=t;idx=0;gi=0;MC=null;$("home").hidden=true;$("topic").hidden=false;
   $("ttl").textContent=TOPICS.find(x=>x.t===t).n;$("seg").hidden=t==="test"||t==="links";setMode(t==="test"?"game":t==="links"?"theo":"learn");}
 function goHome(){closePop();delete document.querySelector(".app").dataset.mode;$("topic").hidden=true;$("home").hidden=false;renderHome();}
-$("back").onclick=()=>{if(navState()==="topic")history.back();else goHome();};
+/* the Start button (house) goes back to the title page; the phone's back button returns to where you were */
+$("back").onclick=()=>{if(navState()==="topic")history.back();else goHome();setTimeout(()=>{$("hscroll").scrollTop=0;typeof enterMap==="function"&&enterMap();},90);};
 $("tmr").onclick=()=>{store.timer=!store.timer;save();renderHome();};
 $("ahp").onclick=()=>{store.arthelp=!store.arthelp;save();renderHome();};
 function setMode(m){closePop();mode=m;document.querySelector(".app").dataset.mode=m;$("mLearn").setAttribute("aria-pressed",m==="learn");$("mGame").setAttribute("aria-pressed",m==="game");$("mTheo").setAttribute("aria-pressed",m==="theo");
