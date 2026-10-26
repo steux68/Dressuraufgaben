@@ -1,5 +1,5 @@
 <!doctype html><html lang="de"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Deutsch"></head><body>
-<meta name="app-version" content="2026-10-26c">
+<meta name="app-version" content="2026-10-26d">
 <title>Deutsch Grammatik</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#ffffff">
@@ -300,7 +300,6 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .gear[aria-expanded="true"]{background:var(--ink);color:#fff}
 .sets{display:flex;flex-direction:column;gap:4px;padding:4px 0 8px;background:var(--df) left bottom/100% 1px no-repeat}
 .lvsel #lvs{display:flex;gap:4px;width:100%}.lvsel .lvb{flex:1;min-height:34px}
-.hscroll{flex:1 1 auto;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:8px}
 .resume{display:flex;justify-content:space-between;align-items:center;gap:10px;text-align:left;background:#fff6b0;padding:9px 12px;flex:none}
 .resume small{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#555}.resume b{font-size:1.08rem}
 .grp{background:var(--df) left bottom/100% 1px no-repeat}
@@ -315,24 +314,43 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .tt .r{display:flex;justify-content:space-between;align-items:baseline;gap:4px}.tt b{font-size:1rem;line-height:1.15}.tt small{font-size:.72rem;color:#555;white-space:nowrap}
 .tt.dim{opacity:.45}
 .soonl{grid-column:1/-1;font-size:.82rem;color:#555;padding-top:2px}
-.hbody{flex:1 1 auto;min-height:0;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:8px}
 .dbar{flex:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:2px;background:var(--dfk) left top/100% 2px no-repeat,var(--df) left bottom/100% 1px no-repeat;padding-top:2px;touch-action:pan-y}
 .db{display:flex;align-items:center;gap:5px;height:40px;padding:0 9px;background:#fff;font-size:.95rem;text-align:left;white-space:nowrap;overflow:hidden;border-right:1px dotted var(--dot)}
 .db:nth-child(3n){border-right:0}.db:nth-child(n+4){background:var(--df) left top/100% 1px no-repeat,#fff}
 .db b{font-weight:700}.db small{font-size:.66rem;color:#555}
 .db.on{background-color:var(--limepale)}.db:nth-child(n+4).on{background:var(--df) left top/100% 1px no-repeat,var(--limepale)}.db.on small{color:var(--fg)}.db:active{background-color:var(--lime)}
-/* bottom arrow bar copied from the dasein-design phone site: dashed lines above and below, the round compass arrow in the middle, its word hanging off to the right; faded when there is nothing to scroll, "nach oben" at the end, thin pulsing rings at the top of the start page */
-.sbar{flex:none;height:26px;margin:-4px -10px 0;display:flex;align-items:center;justify-content:center;border-top:1px dashed var(--line);border-bottom:1px dashed var(--line);background:#fff}
-.sbar button{position:relative;border:0;background:none;height:24px;padding:0 24px;display:flex;align-items:center;-webkit-tap-highlight-color:transparent;transition:opacity .2s}
-.sbar button:active{background:none}.sbar button:disabled{opacity:.2}
-.sbar i{font-style:normal;position:absolute;left:calc(50% + 17px);top:50%;transform:translateY(-50%);white-space:nowrap;font-size:11px;letter-spacing:.06em;color:#666}
-.sbar .tp{display:none;font-size:12px;color:#3a3c37}.sbar .top .tp{display:block}.sbar .top .sc{display:none}
+/* start page = dasein-design phone site (?stack=2): one long page of six sections; each section's half bar flows above it,
+   sticks at the top once its page has arrived and waits at the bottom while it is still to come; the page you are in is pale lime,
+   the others pale grey; a tap lights the bar (lime) and then the page moves there */
+.hbody{flex:1 1 auto;min-height:0;position:relative;overflow:hidden}
+.hscroll{position:relative;height:100%;overflow-y:auto;display:block;scrollbar-width:none;overscroll-behavior:contain}.hscroll::-webkit-scrollbar{display:none}
+.hb{position:sticky;z-index:14;display:flex;align-items:center;height:23px;padding:0 10px;font-size:12px;color:#000;cursor:pointer;white-space:nowrap;overflow:hidden;-webkit-tap-highlight-color:transparent;transition:background-color .15s;
+  background:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left top/100% 1px no-repeat,repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left bottom/100% 1px no-repeat,#fff}
+.hb b{font-weight:700}.hb small{font-size:8.5px;margin-left:4px}
+.hb.hl{margin:39px 50% -1px 0}.hb.hr{margin:39px 0 -1px 50%}.hb.first{margin-top:0}
+.hbody.inpg .hb{background-color:#f2f2f2}.hb.on{background-color:#eaffae!important}.hb.hit{background-color:#cdff3e!important}
+.sback{position:absolute;left:0;right:0;z-index:13;background:#fff;pointer-events:none}
+.hp{display:flex;flex-direction:column;gap:10px;padding-top:10px}#p-home{gap:8px}
+.hp .tc h3{margin:0 0 6px;font-size:1.1rem}
+.hp .copy{margin-top:6px}
+/* bottom arrow bar, as on the dasein-design phone site: dashed line above (hidden where the waiting bars already draw one) and below, the round N arrow in the middle, its word hanging off to the right */
+.abar{flex:none;position:relative;height:30px;margin:-8px -10px 0;display:flex;align-items:center;justify-content:center;border-top:1px dashed var(--line);background:#fff}
+.abar::after{content:"";position:absolute;left:0;right:0;top:29px;border-top:1px dashed var(--line);pointer-events:none}
+.hbody.bstk+.abar{border-top-color:transparent}
+.abar button{position:relative;border:0;background:none;padding:3px 24px;display:flex;align-items:center;-webkit-tap-highlight-color:transparent;transition:opacity .2s}
+.abar button:active{background:none}
+.abar i{font-style:normal;position:absolute;left:calc(50% + 17px);top:50%;transform:translateY(-50%);white-space:nowrap;font-size:11px;letter-spacing:.06em;color:#666}
+.abar .tp{display:none;font-size:12px;color:#3a3c37}.abar .top .tp{display:block}.abar .top .sc{display:none}
 .ar{overflow:visible}.ar .rg{fill:none;stroke:#3a3c37;stroke-width:1px}.ar .dt{fill:#4d4f4a;stroke:#1a1a1a;stroke-width:1px;stroke-linejoin:round}
 .ar text{fill:#3a3c37;font:700 6.4px Calibri,Carlito,sans-serif;text-anchor:middle;dominant-baseline:central}.ar .tr{display:none}
-.sbar .go .tr{display:block;fill:none;stroke:#3a3c37;stroke-width:.7;transform-box:fill-box;transform-origin:center;animation:ring 2.2s ease-out infinite}.sbar .go .tr2{animation-delay:1.1s}
+.abar .go .tr{display:block;fill:none;stroke:#3a3c37;stroke-width:.7;transform-box:fill-box;transform-origin:center;animation:ring 2.2s ease-out infinite}.abar .go .tr2{animation-delay:1.1s}
 @keyframes ring{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.7);opacity:0}}
 @media (prefers-reduced-motion:reduce){.ar .tr{animation:none!important;display:none!important}}
-#home{overflow:clip}
+#home{overflow:clip;gap:8px}
+/* on the start page the arrow bar is the foot of the screen (the copyright moves to the end of the last section); the bottom tick pair sits inside it, level with the arrow */
+#home:not([hidden]) ~ footer.copy{display:none}
+.app:has(#home:not([hidden])){padding-bottom:0}
+.app:has(#home:not([hidden])) .tk.b{bottom:9px;height:11px}
 .drawer{position:absolute;inset:0;z-index:5;background:#fff;display:flex;flex-direction:column;transform:translateY(105%);transition:transform .28s ease}
 .drawer.up{transform:none}
 .dbody{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding-bottom:10px}
@@ -387,15 +405,21 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
       <div class="timer"><span>Artikel-Hilfe <small class="n">Grundform vor der Antwort zeigen</small></span><button id="ahp" aria-pressed="false">aus</button></div>
     </div>
     <div class="hbody" id="hbody">
-    <div class="lvsel" role="group" aria-label="Niveau"><div id="lvs"></div></div>
     <div class="hscroll" id="hscroll">
-      <button class="resume" id="resume" hidden></button>
-      <div id="groups"></div>
+      <section class="hp" id="p-home">
+        <div class="lvsel" role="group" aria-label="Niveau"><div id="lvs"></div></div>
+        <button class="resume" id="resume" hidden></button>
+        <div id="groups"></div>
+      </section>
+      <section class="hp" id="p-test"></section>
+      <section class="hp" id="p-links"></section>
+      <section class="hp" id="p-quotes"></section>
+      <section class="hp" id="p-hist"></section>
+      <section class="hp" id="p-sets"></section>
     </div>
-    <div class="drawer" id="drawer" hidden><div class="dbody" id="dbody"></div></div>
+    <div class="sback t" id="sbt"></div><div class="sback b" id="sbb"></div>
     </div>
-    <nav class="dbar" id="dbar" aria-label="Tabs"></nav>
-    <div class="sbar"><button type="button" id="scrD" aria-label="weiter scrollen"><svg class="ar" width="24" height="24" viewBox="-12 -12 24 24" aria-hidden="true"><circle class="tr" r="9.5"/><circle class="tr tr2" r="9.5"/><path class="rg" d="M5.31 -7.88A9.5 9.5 0 1 1 -5.31 -7.88"/><path class="dt" transform="rotate(270)" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="-0.00" y="-9.50">N</text></svg><i class="sc">scroll</i><i class="tp">nach oben</i></button></div>
+    <div class="abar" id="abar"><button type="button" id="scrD" aria-label="weiter scrollen"><svg class="ar" width="24" height="24" viewBox="-12 -12 24 24" aria-hidden="true"><circle class="tr" r="9.5"/><circle class="tr tr2" r="9.5"/><path class="rg" d="M5.31 -7.88A9.5 9.5 0 1 1 -5.31 -7.88"/><path class="dt" transform="rotate(270)" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="-0.00" y="-9.50">N</text></svg><i class="sc">scroll</i><i class="tp">nach oben</i></button></div>
   </section>
 
   <!-- TOPIC -->
@@ -1570,7 +1594,7 @@ function renderHome(){renderBars();
   const tb=$("tmr");tb.setAttribute("aria-pressed",!!store.timer);tb.textContent=store.timer?"an · 15 s":"aus";
   $("lvs").innerHTML=["all"].concat(LVLS.slice(0,5)).map(l=>'<button class="lvb" data-l="'+l+'" id="lv-'+l+'" aria-pressed="'+((store.level||"all")===l)+'">'+(l==="all"?"Alle":l)+'</button>').join("");
   document.querySelectorAll(".lvb").forEach(b=>b.onclick=()=>{store.level=b.dataset.l;save();renderHome();});
-  const ah=$("ahp");ah.setAttribute("aria-pressed",!!store.arthelp);ah.textContent=store.arthelp?"an":"aus";}
+  const ah=$("ahp");ah.setAttribute("aria-pressed",!!store.arthelp);ah.textContent=store.arthelp?"an":"aus";requestAnimationFrame(()=>{lastFit();stackUpd();});}
 /* ---------- navigation ---------- */
 let T=null,mode="learn",idx=0,self=false,caseMode="wo",gi=0,MC=null;
 function openTopic(t){navPush("topic");T=t;idx=0;gi=0;MC=null;$("home").hidden=true;$("topic").hidden=false;
@@ -1681,40 +1705,48 @@ const HIST=`<div class="tc df"><h3>Kleine Geschichte</h3><div class="hist">
 <div><span>23 Wörter</span><span>Seit dem EU-Beitritt 1995 sind 23 österreichische Wörter geschützt: Paradeiser, Erdäpfel, Marillen …</span></div>
 <div><span>63 Buchstaben</span><span>Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz – ein Gesetz aus Mecklenburg-Vorpommern, 2013 abgeschafft.</span></div>
 <div><span>Handy</span><span>Klingt englisch, ist aber deutsch. Englisch sagt mobile phone.</span></div></div></div>`;
-const DITEMS=[["home","Grammatik"],["test","Test"],["links","Links"],["quotes","Zitate"],["hist","Geschichte"],["sets","Einstellungen"]];
-const DR={open:false,k:null};
-const curTab=()=>DR.open?DR.k:"home";
-function dbarHTML(cur){return DITEMS.map(([k,n],i)=>'<button class="db'+(k===cur?' on':'')+'" data-k="'+k+'"'+(k===cur?' aria-current="page"':'')+'><b>'+n+'</b><small>['+String(i+1).padStart(2,"0")+']</small></button>').join("");}
-function goTab(k){if(k==="home"||(DR.open&&DR.k===k&&k!=="home")){if(!DR.open)return;if(navState()==="drawer")history.back();else closeDrawer();}else openDrawer(k);}
-function stepTab(d){const i=DITEMS.findIndex(x=>x[0]===curTab()),j=i+d;if(j<0||j>=DITEMS.length)return;goTab(DITEMS[j][0]);}
-function bindBars(el){el.querySelectorAll(".db").forEach(b=>b.onclick=()=>{const k=b.dataset.k;if(k===curTab()){scrBox().scrollTo({top:0,behavior:"smooth"});return;}goTab(k);});}
-function renderBars(){$("dbar").innerHTML=dbarHTML(curTab());bindBars($("dbar"));updScr();}
-function parkSets(){const st=$("sets");if(st.parentNode!==$("home")){st.hidden=true;$("home").insertBefore(st,$("hbody"));}}
-function renderDrawer(){const k=DR.k,b=$("dbody");parkSets();
-  if(k==="sets"){b.innerHTML='<div class="tc df"><h3>Einstellungen</h3></div>';b.firstChild.appendChild($("sets"));$("sets").hidden=false;return;}
-  if(k==="test"){const L=store.level&&store.level!=="all"?store.level:null;b.innerHTML='<div class="tc df"><h3>Test</h3><p class="tline">15 Fragen aus allen Themen'+(L?', Niveau '+L+' und darunter':'')+', wie in der Prüfung. Das Niveau wählst du im Tab Grammatik.</p></div><button class="dgo" id="dTest">Test starten →</button>';
-    $("dTest").onclick=()=>{try{history.replaceState({dg:"home"},"");}catch(e){}DR.open=false;$("drawer").classList.remove("up");$("drawer").hidden=true;openTopic("test");};return;}
-  if(k==="words"){b.innerHTML=ownHTML();bindOwn();return;}
-  if(k==="links"){b.innerHTML=TH_LINKS;return;}
-  if(k==="quotes"){b.innerHTML='<div class="tc df"><h3>Über die deutsche Sprache</h3>'+quotesHTML()+'</div>';loadPics(b);return;}
-  if(k==="hist"){b.innerHTML=HIST;return;}}
-function openDrawer(k){if(!DR.open)navPush("drawer");const was=DR.open;DR.open=true;DR.k=k;renderBars();renderDrawer();const d=$("drawer"),db=$("dbody");d.hidden=false;db.scrollTop=0;
-  if(was){updScrSoon();return;}
-  requestAnimationFrame(()=>{db.scrollTop=0;requestAnimationFrame(()=>{db.scrollTop=0;d.classList.add("up");updScrSoon();});});}
-function closeDrawer(){DR.open=false;const d=$("drawer");$("dbody").scrollTop=0;d.classList.remove("up");setTimeout(()=>{if(!DR.open){d.hidden=true;parkSets();}},300);renderHome();updScrSoon();}
-/* scroll signs: yellow when there is more to see in that direction, grey when not; tap to scroll */
-const scrBox=()=>DR.open?$("dbody"):$("hscroll");
-function updScr(){const el=scrBox(),g=$("scrD");if(!el||!g)return;const can=el.scrollHeight>el.clientHeight+2,end=el.scrollTop+el.clientHeight>=el.scrollHeight-4;
-  g.disabled=!can;g.classList.toggle("top",can&&end);g.classList.toggle("go",can&&el.scrollTop<4&&curTab()==="home");g.setAttribute("aria-label",can&&end?"nach oben":"weiter scrollen");}
-function updScrSoon(){[60,320,1200].forEach(t=>setTimeout(updScr,t));}
-$("hscroll").addEventListener("scroll",updScr,{passive:true});$("dbody").addEventListener("scroll",updScr,{passive:true});window.addEventListener("resize",updScr);
-$("scrD").onclick=()=>{const el=scrBox(),g=$("scrD");if(g.classList.contains("top")){el.scrollTo({top:0,behavior:"smooth"});return;}el.scrollBy({top:el.clientHeight-40,behavior:"smooth"});};
-/* swipe: left/right on the tabs or the page moves to the next tab; up on the tabs opens Test, down closes */
-(()=>{let p0=null;const on=(el,strict)=>{el.addEventListener("touchstart",e=>{p0=[e.touches[0].clientX,e.touches[0].clientY];},{passive:true});
-  el.addEventListener("touchend",e=>{if(!p0)return;const dx=e.changedTouches[0].clientX-p0[0],dy=e.changedTouches[0].clientY-p0[1];p0=null;
-    if(Math.abs(dx)>(strict?70:40)&&Math.abs(dx)>Math.abs(dy)*(strict?2:1.2)){stepTab(dx<0?1:-1);return;}
-    if(strict)return;if(dy<-25&&!DR.open)openDrawer("test");else if(dy>25&&DR.open)goTab("home");},{passive:true});};
-  on($("dbar"),false);on($("hbody"),true);})();
+const SECS=[["home","Grammatik"],["test","Test"],["links","Links"],["quotes","Zitate"],["hist","Geschichte"],["sets","Einstellungen"]];
+const DR={open:false,k:null};   /* the old rising panel is gone; kept so older checks stay false */
+const HB=22,ROWS=Math.ceil(SECS.length/2),SC=$("hscroll"),HBODY=$("hbody");
+const secEl=k=>$("p-"+k);
+const BARS=SECS.map(([k,n],i)=>{const r=i>>1,b=document.createElement("div");b.className="hb "+(i&1?"hr":"hl")+(i===0?" first":"");b.dataset.i=i;
+  b.innerHTML="<b>"+n+"</b><small>["+String(i+1).padStart(2,"0")+"]</small>";b.style.top=r*HB+"px";b.style.bottom=(ROWS-1-r)*HB+"px";
+  b.setAttribute("role","link");b.tabIndex=0;SC.insertBefore(b,secEl(k));secEl(k).style.scrollMarginTop=(r*HB+22)+"px";
+  const go=()=>tapGo(b,i);b.addEventListener("click",go);b.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go();}});return b;});
+const PAGES=SECS.map(([k])=>secEl(k));
+const secTop=i=>Math.max(0,PAGES[i].offsetTop-((i>>1)*HB+22));
+const reduceM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function tapGo(el,i){el.classList.add("hit");setTimeout(()=>{SC.scrollTo({top:secTop(i),behavior:reduceM?"auto":"smooth"});setTimeout(()=>el.classList.remove("hit"),500);},reduceM?60:280);}
+/* sections other than Grammatik, filled once (Test again when the level changes) */
+function renderTest(){const L=store.level&&store.level!=="all"?store.level:null;$("p-test").innerHTML='<div class="tc df"><h3>Test</h3><p class="tline">15 Fragen aus allen Themen'+(L?', Niveau '+L+' und darunter':'')+', wie in der Prüfung. Das Niveau wählst du oben unter Grammatik.</p></div><button class="dgo" id="dTest">Test starten →</button>';
+  $("dTest").onclick=()=>openTopic("test");}
+$("p-links").innerHTML=TH_LINKS;
+$("p-quotes").innerHTML='<div class="tc df"><h3>Über die deutsche Sprache</h3>'+quotesHTML()+'</div>';loadPics($("p-quotes"));
+$("p-hist").innerHTML=HIST;
+(()=>{const st=$("sets");$("p-sets").innerHTML='<div class="tc df"><h3>Einstellungen</h3></div>';$("p-sets").firstChild.appendChild(st);st.hidden=false;
+  const f=document.querySelector("footer.copy");if(f){const c=f.cloneNode(true);$("p-sets").appendChild(c);}})();
+/* which page are we in: the last bar that has left the bottom stack */
+const isUp=b=>{const r=b.getBoundingClientRect(),R=SC.getBoundingClientRect();return r.bottom<R.bottom-parseFloat(b.style.bottom)-3;};
+function curBar(){let c=-1;BARS.forEach((b,k)=>{if(isUp(b))c=k;});BARS.forEach((b,k)=>b.classList.toggle("on",k===c));HBODY.classList.toggle("inpg",c>=0);}
+/* white backing behind both stacks, so no page shows through the empty half of a row */
+function backs(){const R=SC.getBoundingClientRect();let tb=R.top,bt=R.bottom;
+  BARS.forEach(b=>{const r=b.getBoundingClientRect(),t=parseFloat(b.style.top),bo=parseFloat(b.style.bottom);if(r.top<=R.top+t+.5)tb=Math.max(tb,r.bottom);if(r.bottom>=R.bottom-bo-.5)bt=Math.min(bt,r.top);});
+  $("sbt").style.top="0px";$("sbt").style.height=Math.max(0,tb-R.top)+"px";$("sbb").style.top=(bt-R.top)+"px";$("sbb").style.height=Math.max(0,R.bottom-bt)+"px";
+  HBODY.classList.toggle("tstk",tb>R.top+1);HBODY.classList.toggle("bstk",bt<R.bottom-1);}
+/* the last page can always scroll up into place */
+function lastFit(){const H=SC.clientHeight,n=PAGES.length;
+  /* every section is at least one screen: when it has arrived under its bar, the next bar still waits in its place at the bottom */
+  PAGES.forEach((p,i)=>{const r=i>>1,next=i+1<n?((i+1)>>1):null;
+    p.style.minHeight=Math.max(0,next===null?H-ROWS*HB+1:H-(ROWS-next)*HB-40-(r+1)*HB)+"px";});}
+/* N arrow at the foot: next page; at the end "nach oben"; pulsing rings at the very top */
+const curIdx=()=>{let i=0;PAGES.forEach((p,k)=>{if(p.offsetTop-SC.scrollTop<=parseFloat(p.style.scrollMarginTop)+4)i=k;});return i;};
+function arrowUpd(){const g=$("scrD");if(!g)return;const i=curIdx(),atTop=SC.scrollTop<4,atEnd=i===PAGES.length-1||SC.scrollTop+SC.clientHeight>=SC.scrollHeight-4;
+  g.classList.toggle("top",atEnd);g.setAttribute("aria-label",atEnd?"nach oben":"nächste Seite");g.classList.toggle("go",i===0&&atTop);}
+$("scrD").onclick=()=>{if($("scrD").classList.contains("top")){SC.scrollTo({top:0,behavior:reduceM?"auto":"smooth"});return;}const i=curIdx();if(PAGES[i+1])SC.scrollTo({top:secTop(i+1),behavior:reduceM?"auto":"smooth"});};
+function stackUpd(){curBar();backs();arrowUpd();}
+function renderBars(){renderTest();lastFit();stackUpd();}
+SC.addEventListener("scroll",stackUpd,{passive:true});window.addEventListener("resize",()=>{lastFit();stackUpd();});
+new ResizeObserver(()=>{lastFit();stackUpd();}).observe(SC);
 /* ---------- multiple-choice engine (all Spiel modes except Satzbau) ---------- */
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 function artQ(w){return {t:"art",lv:w[4]||"B1",s:"___ "+w[1],o:["der","die","das"],c:["der","die","das"].indexOf(w[0]),why:w[3]||"No rule here: learn it with the noun.",noun:w[1],en:w[2]};}
@@ -1852,7 +1884,6 @@ function navPush(v){try{history.pushState({dg:v},"");}catch(e){}}
 try{history.replaceState({dg:"base"},"");history.pushState({dg:"home"},"");}catch(e){}
 window.addEventListener("popstate",e=>{const st=e.state&&e.state.dg;
   if(GP.open){closePop();if(st==="topic")return;}
-  if(DR.open&&st!=="drawer"){closeDrawer();if(st==="home")return;}
   if(!$("topic").hidden&&st!=="topic"){goHome();}
   if(st==="base"||!st){navPush("home");}});
 document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-go]");if(!b||!tInfo(b.dataset.go))return;const t=b.dataset.go;
