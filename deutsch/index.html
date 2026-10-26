@@ -1,5 +1,5 @@
 <!doctype html><html lang="de"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Deutsch"></head><body>
-<meta name="app-version" content="2026-10-26a">
+<meta name="app-version" content="2026-10-26b">
 <title>Deutsch Grammatik</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#ffffff">
@@ -11,7 +11,7 @@
 --lime:#cdff3e;--limepale:#eaffae;--red:#e30613;--yellow:#ffd400;--cream:#fffbd6;
 --m-learn:#8c918a;--m-game:#ffd400;--m-theo:#3a3c37;
 --dat:#1a5fd0;--akk:#e30613;--ok:#3f8f1f;--bad:#e30613;
---df:repeating-linear-gradient(to right,var(--dot) 0 1px,transparent 1px 3px);--dfv:repeating-linear-gradient(to bottom,var(--dot) 0 1px,transparent 1px 3px);
+--df:repeating-linear-gradient(to right,var(--dot) 0 1px,transparent 1px 3px);--dfk:repeating-linear-gradient(to right,var(--ink) 0 2px,transparent 2px 4px);--dash:repeating-linear-gradient(to right,var(--line) 0 4px,transparent 4px 7px);--dfv:repeating-linear-gradient(to bottom,var(--dot) 0 1px,transparent 1px 3px);
 --body:"Carlito",Calibri,"Segoe UI",system-ui,sans-serif}
 html{height:100%}
 *,*::before,*::after{box-sizing:border-box}
@@ -278,6 +278,9 @@ text.alt{stroke:none;font-family:var(--body);font-size:11px;font-weight:700}text
 .tlc{position:relative;display:grid;grid-template-columns:8.6em minmax(0,1fr);gap:0 10px;padding:6px 0;background:var(--df) left bottom/100% 1px no-repeat}
 .tlc::before{content:"";position:absolute;left:-20px;top:15px;width:12px;height:1px;background:var(--ink)}
 .tlc b{font-size:1rem}.tlc span{font-size:1rem}.tlc small{grid-column:2;font-size:.78rem;color:var(--muted)}
+.tlc .clk{display:inline-block;padding:0 5px;background:var(--grey);color:var(--fg);font-size:.76rem}
+.go{display:inline;padding:0 0 0 4px;min-height:0;background:transparent;font-size:.82rem;color:var(--dat);text-decoration:underline dotted;text-underline-offset:3px;white-space:nowrap}.go:active{background:var(--limepale)}
+.nt.wq>div>*{padding-top:6px;padding-bottom:6px}
 .tlc.now b{background:var(--lime);box-shadow:inset 0 0 0 1px var(--ink);padding:0 5px;justify-self:start}
 .box .c.new{background:var(--cream)}
 .pict b.gh{font-size:1.45rem;line-height:1.35;text-align:center;text-wrap:balance;font-weight:700}
@@ -312,12 +315,18 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .tt .r{display:flex;justify-content:space-between;align-items:baseline;gap:4px}.tt b{font-size:1rem;line-height:1.15}.tt small{font-size:.72rem;color:#555;white-space:nowrap}
 .tt.dim{opacity:.45}
 .soonl{grid-column:1/-1;font-size:.82rem;color:#555;padding-top:2px}
-.dbar{flex:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:var(--df) left top/100% 1px no-repeat,var(--df) left bottom/100% 1px no-repeat}
-.db{display:flex;align-items:center;gap:4px;height:30px;padding:0 9px;background:#fff;font-size:.8rem;text-align:left;white-space:nowrap;overflow:hidden;border-right:1px dotted var(--dot)}
+.hbody{flex:1 1 auto;min-height:0;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:8px}
+.dbar{flex:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:2px;background:var(--dfk) left top/100% 2px no-repeat,var(--df) left bottom/100% 1px no-repeat;padding-top:2px;touch-action:pan-y}
+.db{display:flex;align-items:center;gap:5px;height:40px;padding:0 9px;background:#fff;font-size:.95rem;text-align:left;white-space:nowrap;overflow:hidden;border-right:1px dotted var(--dot)}
 .db:nth-child(3n){border-right:0}.db:nth-child(n+4){background:var(--df) left top/100% 1px no-repeat,#fff}
-.db b{font-weight:700}.db small{font-size:.62rem;color:#555}
-.db.on{background-color:var(--limepale)}.db:nth-child(n+4).on{background:var(--df) left top/100% 1px no-repeat,var(--limepale)}.db:active{background-color:var(--lime)}
-.drawer{position:absolute;z-index:50;left:max(18px,env(safe-area-inset-left,0px));right:max(18px,env(safe-area-inset-right,0px));top:60px;bottom:30px;background:#fff;display:flex;flex-direction:column;gap:8px;transform:translateY(105%);transition:transform .28s ease}
+.db b{font-weight:700}.db small{font-size:.66rem;color:#555}
+.db.on{background-color:var(--limepale)}.db:nth-child(n+4).on{background:var(--df) left top/100% 1px no-repeat,var(--limepale)}.db.on small{color:var(--fg)}.db:active{background-color:var(--lime)}
+.scr{flex:none;height:30px;display:flex;align-items:center;justify-content:center;gap:9px;margin:0 -10px;padding:0;background:transparent;color:#a8a8a8;font-size:1rem;letter-spacing:.06em}
+.scr.up{background:var(--dash) left bottom/100% 1px no-repeat}
+.scr svg{width:26px;height:26px;overflow:visible}.scr circle{fill:#fff;stroke:#c8c8c8;stroke-width:1.2}.scr .nd{fill:#e2e2e2;stroke:#bdbdbd;stroke-width:1;stroke-linejoin:round}.scr text{font-size:5px;text-anchor:middle;fill:#a8a8a8;font-weight:700}
+.scr.on{color:var(--ink)}.scr.on circle{stroke:var(--ink);stroke-width:1.6}.scr.on .nd{fill:var(--yellow);stroke:var(--ink)}.scr.on text{fill:var(--ink)}
+.scr:active{background-color:transparent}.scr:active svg{transform:scale(.92)}
+.drawer{position:absolute;inset:0;z-index:5;background:#fff;display:flex;flex-direction:column;transform:translateY(105%);transition:transform .28s ease}
 .drawer.up{transform:none}
 .dbody{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding-bottom:10px}
 .dbody .tc h3{margin:0 0 6px;font-size:1.1rem}
@@ -370,12 +379,17 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
       <div class="timer"><span>Timer im Spiel</span><button id="tmr" aria-pressed="false">aus</button></div>
       <div class="timer"><span>Artikel-Hilfe <small class="n">Grundform vor der Antwort zeigen</small></span><button id="ahp" aria-pressed="false">aus</button></div>
     </div>
+    <button class="scr up" id="scrU" aria-label="nach oben scrollen"><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="12.5"/><path class="nd" d="M14 23 L9.5 6.5 L14 10 L18.5 6.5 Z"/><text x="14" y="27.2">S</text></svg><span>scroll</span></button>
+    <div class="hbody" id="hbody">
     <div class="lvsel" role="group" aria-label="Niveau"><div id="lvs"></div></div>
-    <div class="hscroll">
+    <div class="hscroll" id="hscroll">
       <button class="resume" id="resume" hidden></button>
       <div id="groups"></div>
     </div>
-    <nav class="dbar" id="dbar" aria-label="Mehr"></nav>
+    <div class="drawer" id="drawer" hidden><div class="dbody" id="dbody"></div></div>
+    </div>
+    <nav class="dbar" id="dbar" aria-label="Tabs"></nav>
+    <button class="scr dn" id="scrD" aria-label="nach unten scrollen"><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="12.5"/><path class="nd" d="M14 5 L9.5 21.5 L14 18 L18.5 21.5 Z"/><text x="14" y="4.6">N</text></svg><span>scroll</span></button>
   </section>
 
   <!-- TOPIC -->
@@ -398,7 +412,6 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
     </div>
   </section>
 
-  <div class="drawer" id="drawer" hidden><nav class="dbar" id="dbar2" aria-label="Mehr"></nav><div class="dbody" id="dbody"></div></div>
   <div class="pop" id="pop" hidden role="dialog" aria-modal="true" aria-labelledby="pt">
     <div class="pbar"><b id="pt"></b><span class="count" id="pc"></span><button id="px" aria-label="Schließen">×</button></div>
     <div class="pbody" id="pb"></div>
@@ -563,6 +576,12 @@ const TH_PREP=`
 <div class="tc df"><h3>Die wichtigsten zuerst</h3><p>These eight come up constantly. Learn them first, with their case.</p>
 <div class="pcs"><span class="pc w star">in</span><span class="pc w star">an</span><span class="pc w star">auf</span><span class="pc d star">mit</span><span class="pc d star">zu</span><span class="pc d star">von</span><span class="pc a star">für</span><span class="pc d star">bei</span></div>
 <p class="tline">Blue = Dativ · Red = Akkusativ · Grey = either case</p></div>
+<div class="tc df"><h3>Die 25 häufigsten <small>A1–B1</small></h3><div class="nt" style="--nc:5.4em minmax(0,1fr)"><div class="hd"><span>Fall</span><span>Präpositionen</span></div>
+<div><span class="g">DAT</span><span>von · mit · zu · bei · nach · aus · seit</span></div>
+<div><span class="g">AKK</span><span>für · um · durch · bis · gegen · ohne</span></div>
+<div><span class="g">Wo? DAT<br>Wohin? AKK</span><span>in · auf · an · über · vor · unter · zwischen · hinter · neben</span></div>
+<div><span class="g">GEN</span><span>wegen · während · trotz</span></div></div>
+<p class="tline">Roughly by frequency: in, von, mit, zu, auf, für, an, bei, nach, aus, um, über, durch, vor, bis, unter, seit, gegen, ohne, zwischen, wegen, während, hinter, neben, trotz. Corpus counts differ a little in the order.</p></div>
 
 <div class="tc df"><h3>Immer Akkusativ <small>7</small></h3>
 <div class="pcs"><span class="pc a">durch</span><span class="pc a">ohne</span><span class="pc a">gegen</span><span class="pc a">für</span><span class="pc a">um</span><span class="pc a">bis</span><span class="pc a">entlang</span></div>
@@ -628,6 +647,18 @@ const TH_PREP=`
 <p class="tline">In speech, Austrians and Germans often use the Dativ here (wegen dem Regen). For exams and writing use the Genitiv.</p></div>`;
 
 const TH_SATZ=`
+<div class="tc df"><h3>Wortarten <small>A1</small></h3><div class="nt" style="--nc:7.2em minmax(0,1fr) 4.6em"><div class="hd"><span>Wortart</span><span>Beispiel</span><span>ändert sich?</span></div>
+<div><span class="g">Nomen</span><span>der Plan, die Wand</span><span>ja</span></div>
+<div><span class="g">Artikel</span><span>der, ein, kein</span><span>ja</span></div>
+<div><span class="g">Pronomen</span><span>ich, mich, mir, dieser</span><span>ja</span></div>
+<div><span class="g">Verb</span><span>zeichnen, ist, hat</span><span>ja</span></div>
+<div><span class="g">Adjektiv</span><span>neu, groß, schön</span><span>ja</span></div>
+<div><span class="g">Adverb</span><span>heute, hier, gern</span><span>nein</span></div>
+<div><span class="g">Präposition</span><span>in, mit, wegen</span><span>nein</span></div>
+<div><span class="g">Konjunktion</span><span>und, weil, dass</span><span>nein</span></div>
+<div><span class="g">Partikel</span><span>doch, ja, mal</span><span>nein</span></div>
+<div><span class="g">Zahlwort</span><span>zwei, drei, erste</span><span>meist nein</span></div></div>
+<p class="tline">Five word classes change their form (Nomen, Artikel, Pronomen, Verb, Adjektiv). The others never do, but they steer the sentence: a Präposition picks the case, a Konjunktion like weil sends the verb to the end.</p></div>
 <div class="tc df"><h3>Das Feldermodell</h3><p>Every German clause fits the same frame. The two verb parts form a bracket around the middle.</p>
 <div class="grid"><div class="cell vf"><small>Vorfeld</small><span>Heute</span></div><div class="cell v1"><small>Verb 1</small><span>habe</span></div><div class="cell mf"><small>Mittelfeld</small><span>ich das Pferd</span></div><div class="cell v2"><small>Verb 2</small><span>geputzt</span></div></div>
 <p class="memo">Merkhilfe: <b>one thing</b> before the verb, then the verb, then everything else, then the rest of the verb.</p></div>
@@ -638,6 +669,20 @@ const TH_SATZ=`
 <div><span >Position 1</span><span>Yes/no questions and commands: <b>Kommst</b> du mit? <b>Komm</b> mit!</span></div>
 <div><span >Am Ende</span><span>Nebensätze: …, weil ich morgen nach Graz <b>fahre</b>.</span></div></div></div>
 
+<div class="tc df"><h3>W-Fragen <small>A1–B1</small></h3><div class="nt wq" style="--nc:6.6em 3.6em minmax(0,1fr)"><div class="hd"><span>Frage</span><span>Fall</span><span>Beispiel</span></div>
+<div><span class="g">Wer?</span><span>NOM</span><span><b>Wer</b> kommt mit? <button class="go" data-go="fall">Fälle →</button></span></div>
+<div><span class="g">Wen? Was?</span><span>AKK</span><span><b>Wen</b> siehst du? <b>Was</b> zeichnest du? <button class="go" data-go="fall">Fälle →</button></span></div>
+<div><span class="g">Wem?</span><span>DAT</span><span><b>Wem</b> gehört das Pferd? <button class="go" data-go="fall">Fälle →</button></span></div>
+<div><span class="g">Wessen?</span><span>GEN</span><span><b>Wessen</b> Plan ist das? <button class="go" data-go="gen">Genitiv →</button></span></div>
+<div><span class="g">Wo?</span><span>DAT</span><span><b>Wo</b> liegt der Plan? – Auf <b>dem</b> Tisch. <button class="go" data-go="prep">Wo oder wohin? →</button></span></div>
+<div><span class="g">Wohin?</span><span>AKK</span><span><b>Wohin</b> legst du ihn? – Auf <b>den</b> Tisch. <button class="go" data-go="prep">Wo oder wohin? →</button></span></div>
+<div><span class="g">Woher?</span><span>DAT</span><span><b>Woher</b> kommst du? – Aus Wien. <button class="go" data-go="prep">Wo oder wohin? →</button></span></div>
+<div><span class="g">Wann?</span><span>Zeit</span><span><b>Wann</b> kommst du? <b>Seit wann</b>? <b>Wie lange</b>? <button class="go" data-go="perf">Zeitformen →</button></span></div>
+<div><span class="g">Warum?</span><span>Grund</span><span><b>Warum</b>? – Weil ich müde <b>bin</b>. <button class="go" data-go="konn">Konnektoren →</button></span></div>
+<div><span class="g">Wie?</span><span>Art</span><span><b>Wie</b> fährst du? – Mit dem Rad.</span></div>
+<div><span class="g">Wofür? Worauf?</span><span>Sache</span><span><b>Worauf</b> wartest du? – Auf den Bus. Person: <b>Auf wen</b>? <button class="go" data-go="vprep">Verben mit Präp. →</button></span></div>
+<div><span class="g">Welcher?</span><span>wie der</span><span><b>Welchen</b> Plan meinst du? Den neu<b>en</b>. <button class="go" data-go="adj">Adjektive →</button></span></div></div>
+<p class="tline">The question word asks for the case or the preposition. The verb stays in position 2: Wann kommst du? A yes/no question starts with the verb: Kommst du?</p></div>
 <div class="tc df"><h3>Was füllt Verb 2?</h3>
 <div class="pcs"><span class="pc k">Partizip: gemacht</span><span class="pc k">Infinitiv: machen</span><span class="pc k">Präfix: an, auf, mit</span><span class="pc k">Passiv: gemacht werden</span></div>
 <p>Modal verbs, Perfekt, Futur, Passiv and separable verbs all close the bracket at the end.</p></div>
@@ -762,6 +807,25 @@ const TH_GEN=`
 <div class="tc df"><h3>Die Formen</h3>`+pcs("g",["des Plans","der Wand","des Hauses","der Pläne","eines Plans","einer Wand"])+`<p class="memo">Masculine and neuter: <b>des</b> + noun <b>-(e)s</b>. Feminine and plural: <b>der</b>, noun unchanged.</p></div>
 <div class="tc df"><h3>-s oder -es?</h3><div class="rows"><div><span>-es</span><span>after s, ß, x, z, sch: des Hauses, des Platzes, des Tisches</span></div><div><span>-s</span><span>otherwise: des Plans, des Entwurfs, des Gebäudes</span></div><div><span>-(e)n</span><span>weak nouns: des Kollegen, des Architekten, des Kunden, des Nachbarn · special: des Namens</span></div></div></div>
 <div class="tc df"><h3>Präpositionen mit Genitiv</h3>`+pcs("g",["wegen","trotz","während","statt","anstatt","aufgrund","innerhalb","außerhalb"])+`</div>
+<div class="tc df"><h3>Mehr Präpositionen mit Genitiv <small>C1</small></h3><div class="nt" style="--nc:7.8em minmax(0,1fr)"><div class="hd"><span>GEN</span><span>Bedeutung · Beispiel</span></div>
+<div><span class="g">angesichts</span><span>in view of · <i>angesichts der Kosten</i></span></div>
+<div><span class="g">anhand</span><span>by means of, using · <i>anhand eines Beispiels</i></span></div>
+<div><span class="g">anlässlich</span><span>on the occasion of · <i>anlässlich des Jubiläums</i></span></div>
+<div><span class="g">bezüglich · hinsichtlich</span><span>regarding · <i>bezüglich Ihrer Anfrage</i></span></div>
+<div><span class="g">infolge</span><span>as a result of · <i>infolge des Hochwassers</i></span></div>
+<div><span class="g">mangels</span><span>for lack of · <i>mangels eindeutiger Beweise</i></span></div>
+<div><span class="g">mittels · mithilfe</span><span>by means of · <i>mittels eines Krans</i></span></div>
+<div><span class="g">kraft</span><span>by virtue of · <i>kraft seines Amtes</i></span></div>
+<div><span class="g">seitens</span><span>on the part of · <i>seitens der Behörde</i></span></div>
+<div><span class="g">ungeachtet</span><span>regardless of · <i>ungeachtet der Kritik</i></span></div>
+<div><span class="g">zugunsten · zulasten</span><span>in favour of · at the cost of · <i>zugunsten der Anrainer</i></span></div>
+<div><span class="g">zwecks</span><span>for the purpose of · <i>zwecks Klärung</i></span></div>
+<div><span class="g">oberhalb · unterhalb</span><span>above · below · <i>oberhalb des Dorfes</i></span></div>
+<div><span class="g">diesseits · jenseits</span><span>this side of · beyond · <i>jenseits der Grenze</i></span></div>
+<div><span class="g">binnen</span><span>within · <i>binnen eines Monats</i></span></div>
+<div><span class="g">entlang</span><span>along · <i>entlang des Flusses · den Fluss entlang (AKK)</i></span></div>
+<div><span class="g">laut · dank</span><span>according to · thanks to · <i>laut eines Berichts · dank seiner Hilfe</i></span></div></div>
+<p class="tline">Typical of letters, reports and the C1 exam. laut, dank, trotz and binnen also take DAT in standard German. If the Genitiv cannot be seen (plural without article or adjective), use DAT: mangels Beweisen.</p></div>
 <div class="tc df"><h3>Besitz</h3><p class="ex">das Büro <b>des Architekten</b> · die Fassade <b>des Gebäudes</b></p><p class="tline">Names: Annas Pferd, Steuarts Büro, with no apostrophe.</p></div>
 <div class="tc df"><h3>Gesprochen oder geschrieben</h3><p>In everyday Austrian and German speech the Genitiv is often replaced: <b>von</b> + Dativ (das Auto von meinem Kollegen), <b>wegen dem</b> Regen.</p><p class="memo">For the exam, letters and lectures: use the Genitiv.</p></div>
 <div class="tc df"><h3>Verben mit Genitiv <small>C1</small></h3>`+pcs("g",["bedürfen","gedenken","sich bedienen","sich vergewissern","sich enthalten"])+`<p class="tline">Das bedarf einer Erklärung. Wir gedenken der Opfer.</p></div>`;
@@ -988,7 +1052,7 @@ GT.konn={name:"Konnektoren",badge:"Konnektor",tip:"Ask first: does the connector
 <div><span>seit · bis · sobald</span><span>Seit ich in Wien wohne … · Warte, bis ich komme. · Sobald der Plan fertig ist …</span></div></div></div>`};
 
 /* ===== Zeitformen ===== */
-const TLZ=`<div class="tlz"><div class="tlax"></div>${[["Plusquamperfekt","hatte gezeichnet","Vorvergangenheit"],["Präteritum","zeichnete","geschrieben"],["Perfekt","habe gezeichnet","gesprochen"],["Präsens","zeichne","jetzt"],["Futur I","werde zeichnen","Zukunft"],["Futur II","werde gezeichnet haben","fertig in der Zukunft"]].map(([a,b,c],i)=>'<div class="tlc'+(i===3?" now":"")+'"><b>'+a+'</b><span>ich '+b+'</span><small>'+c+'</small></div>').join("")}</div>`;
+const TLZ=`<div class="tlz"><div class="tlax"></div>${[["Plusquamperfekt","hatte gezeichnet","Vorvergangenheit","gestern, 7 Uhr"],["Präteritum","zeichnete","geschrieben","gestern, 9 Uhr"],["Perfekt","habe gezeichnet","gesprochen","heute, 10 Uhr"],["Präsens","zeichne","jetzt","14 Uhr"],["Futur I","werde zeichnen","Zukunft","morgen, 9 Uhr"],["Futur II","werde gezeichnet haben","fertig in der Zukunft","bis morgen, 18 Uhr"]].map(([a,b,c,d],i)=>'<div class="tlc'+(i===3?" now":"")+'"><b>'+a+'</b><span>ich '+b+'</span><small><span class="clk">'+d+'</span> · '+c+'</small></div>').join("")}</div>`;
 GT.perf={name:"Zeitformen",badge:"Zeitform",tip:"Movement from A to B or a change of state → sein. Everything else → haben.",src:["dudenk","dg20","dw"],
  lg:'<span><b class="wt v lgk">habe</b> … <b class="wt v lgk">gemacht</b> Satzklammer</span>',
  cards:[
@@ -1611,26 +1675,41 @@ const HIST=`<div class="tc df"><h3>Kleine Geschichte</h3><div class="hist">
 <div><span>23 Wörter</span><span>Seit dem EU-Beitritt 1995 sind 23 österreichische Wörter geschützt: Paradeiser, Erdäpfel, Marillen …</span></div>
 <div><span>63 Buchstaben</span><span>Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz – ein Gesetz aus Mecklenburg-Vorpommern, 2013 abgeschafft.</span></div>
 <div><span>Handy</span><span>Klingt englisch, ist aber deutsch. Englisch sagt mobile phone.</span></div></div></div>`;
-const DITEMS=[["test","Test"],["words","Meine Wörter"],["links","Links"],["quotes","Zitate"],["hist","Geschichte"],["sets","Einstellungen"]];
+const DITEMS=[["home","Grammatik"],["test","Test"],["links","Links"],["quotes","Zitate"],["hist","Geschichte"],["sets","Einstellungen"]];
 const DR={open:false,k:null};
-function dbarHTML(cur){return DITEMS.map(([k,n],i)=>'<button class="db'+(k===cur?' on':'')+'" data-k="'+k+'"><b>'+n+'</b><small>['+String(i+1).padStart(2,"0")+']</small></button>').join("");}
-function bindBars(el){el.querySelectorAll(".db").forEach(b=>b.onclick=()=>{const k=b.dataset.k;if(DR.open&&DR.k===k){if(navState()==="drawer")history.back();else closeDrawer();}else openDrawer(k);});}
-function renderBars(){$("dbar").innerHTML=dbarHTML(null);bindBars($("dbar"));}
-function parkSets(){const st=$("sets");if(st.parentNode!==$("home")){st.hidden=true;$("home").insertBefore(st,$("home").querySelector(".lvsel"));}}
+const curTab=()=>DR.open?DR.k:"home";
+function dbarHTML(cur){return DITEMS.map(([k,n],i)=>'<button class="db'+(k===cur?' on':'')+'" data-k="'+k+'"'+(k===cur?' aria-current="page"':'')+'><b>'+n+'</b><small>['+String(i+1).padStart(2,"0")+']</small></button>').join("");}
+function goTab(k){if(k==="home"||(DR.open&&DR.k===k&&k!=="home")){if(!DR.open)return;if(navState()==="drawer")history.back();else closeDrawer();}else openDrawer(k);}
+function stepTab(d){const i=DITEMS.findIndex(x=>x[0]===curTab()),j=i+d;if(j<0||j>=DITEMS.length)return;goTab(DITEMS[j][0]);}
+function bindBars(el){el.querySelectorAll(".db").forEach(b=>b.onclick=()=>{const k=b.dataset.k;if(k===curTab()){scrBox().scrollTo({top:0,behavior:"smooth"});return;}goTab(k);});}
+function renderBars(){$("dbar").innerHTML=dbarHTML(curTab());bindBars($("dbar"));updScr();}
+function parkSets(){const st=$("sets");if(st.parentNode!==$("home")){st.hidden=true;$("home").insertBefore(st,$("scrU"));}}
 function renderDrawer(){const k=DR.k,b=$("dbody");parkSets();
   if(k==="sets"){b.innerHTML='<div class="tc df"><h3>Einstellungen</h3></div>';b.firstChild.appendChild($("sets"));$("sets").hidden=false;return;}
-  if(k==="test"){const L=store.level&&store.level!=="all"?store.level:null;b.innerHTML='<div class="tc df"><h3>Test</h3><p class="tline">15 Fragen aus allen Themen'+(L?', Niveau '+L+' und darunter':'')+', wie in der Prüfung. Das Niveau wählst du oben auf der Startseite.</p></div><button class="dgo" id="dTest">Test starten →</button>';
+  if(k==="test"){const L=store.level&&store.level!=="all"?store.level:null;b.innerHTML='<div class="tc df"><h3>Test</h3><p class="tline">15 Fragen aus allen Themen'+(L?', Niveau '+L+' und darunter':'')+', wie in der Prüfung. Das Niveau wählst du im Tab Grammatik.</p></div><button class="dgo" id="dTest">Test starten →</button>';
     $("dTest").onclick=()=>{try{history.replaceState({dg:"home"},"");}catch(e){}DR.open=false;$("drawer").classList.remove("up");$("drawer").hidden=true;openTopic("test");};return;}
   if(k==="words"){b.innerHTML=ownHTML();bindOwn();return;}
   if(k==="links"){b.innerHTML=TH_LINKS;return;}
   if(k==="quotes"){b.innerHTML='<div class="tc df"><h3>Über die deutsche Sprache</h3>'+quotesHTML()+'</div>';loadPics(b);return;}
   if(k==="hist"){b.innerHTML=HIST;return;}}
-function openDrawer(k){if(!DR.open)navPush("drawer");DR.open=true;DR.k=k;$("dbar2").innerHTML=dbarHTML(k);bindBars($("dbar2"));renderDrawer();const d=$("drawer"),db=$("dbody");d.hidden=false;db.scrollTop=0;
-  requestAnimationFrame(()=>{db.scrollTop=0;requestAnimationFrame(()=>{db.scrollTop=0;d.classList.add("up");});});}
-function closeDrawer(){DR.open=false;const d=$("drawer");$("dbody").scrollTop=0;d.classList.remove("up");setTimeout(()=>{if(!DR.open){d.hidden=true;parkSets();}},300);renderHome();}
-(()=>{let y0=null;const on=(el,f)=>{el.addEventListener("touchstart",e=>{y0=e.touches[0].clientY;},{passive:true});el.addEventListener("touchend",e=>{if(y0==null)return;const dy=e.changedTouches[0].clientY-y0;y0=null;f(dy);},{passive:true});};
-  on($("dbar"),dy=>{if(dy<-25)openDrawer(DR.k||"test");});
-  on($("dbar2"),dy=>{if(dy>25&&DR.open){if(navState()==="drawer")history.back();else closeDrawer();}});})();
+function openDrawer(k){if(!DR.open)navPush("drawer");const was=DR.open;DR.open=true;DR.k=k;renderBars();renderDrawer();const d=$("drawer"),db=$("dbody");d.hidden=false;db.scrollTop=0;
+  if(was){updScrSoon();return;}
+  requestAnimationFrame(()=>{db.scrollTop=0;requestAnimationFrame(()=>{db.scrollTop=0;d.classList.add("up");updScrSoon();});});}
+function closeDrawer(){DR.open=false;const d=$("drawer");$("dbody").scrollTop=0;d.classList.remove("up");setTimeout(()=>{if(!DR.open){d.hidden=true;parkSets();}},300);renderHome();updScrSoon();}
+/* scroll signs: yellow when there is more to see in that direction, grey when not; tap to scroll */
+const scrBox=()=>DR.open?$("dbody"):$("hscroll");
+function updScr(){const el=scrBox();if(!el)return;const u=el.scrollTop>2,d=el.scrollTop+el.clientHeight<el.scrollHeight-2;
+  $("scrU").classList.toggle("on",u);$("scrD").classList.toggle("on",d);$("scrU").disabled=!u;$("scrD").disabled=!d;}
+function updScrSoon(){[60,320,1200].forEach(t=>setTimeout(updScr,t));}
+$("hscroll").addEventListener("scroll",updScr,{passive:true});$("dbody").addEventListener("scroll",updScr,{passive:true});window.addEventListener("resize",updScr);
+$("scrU").onclick=()=>{const el=scrBox();el.scrollBy({top:-el.clientHeight*.8,behavior:"smooth"});};
+$("scrD").onclick=()=>{const el=scrBox();el.scrollBy({top:el.clientHeight*.8,behavior:"smooth"});};
+/* swipe: left/right on the tabs or the page moves to the next tab; up on the tabs opens Test, down closes */
+(()=>{let p0=null;const on=(el,strict)=>{el.addEventListener("touchstart",e=>{p0=[e.touches[0].clientX,e.touches[0].clientY];},{passive:true});
+  el.addEventListener("touchend",e=>{if(!p0)return;const dx=e.changedTouches[0].clientX-p0[0],dy=e.changedTouches[0].clientY-p0[1];p0=null;
+    if(Math.abs(dx)>(strict?70:40)&&Math.abs(dx)>Math.abs(dy)*(strict?2:1.2)){stepTab(dx<0?1:-1);return;}
+    if(strict)return;if(dy<-25&&!DR.open)openDrawer("test");else if(dy>25&&DR.open)goTab("home");},{passive:true});};
+  on($("dbar"),false);on($("hbody"),true);})();
 /* ---------- multiple-choice engine (all Spiel modes except Satzbau) ---------- */
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 function artQ(w){return {t:"art",lv:w[4]||"B1",s:"___ "+w[1],o:["der","die","das"],c:["der","die","das"].indexOf(w[0]),why:w[3]||"No rule here: learn it with the noun.",noun:w[1],en:w[2]};}
@@ -1771,5 +1850,7 @@ window.addEventListener("popstate",e=>{const st=e.state&&e.state.dg;
   if(DR.open&&st!=="drawer"){closeDrawer();if(st==="home")return;}
   if(!$("topic").hidden&&st!=="topic"){goHome();}
   if(st==="base"||!st){navPush("home");}});
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-go]");if(!b||!tInfo(b.dataset.go))return;const t=b.dataset.go;
+  if(GP.open&&navState()==="pop"){history.back();setTimeout(()=>openTopic(t),80);}else{closePop();openTopic(t);}});
 renderHome();
 </script>
