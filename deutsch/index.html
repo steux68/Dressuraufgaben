@@ -1,5 +1,5 @@
 <!doctype html><html lang="de"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Deutsch"></head><body>
-<meta name="app-version" content="2026-10-26e">
+<meta name="app-version" content="2026-10-26f">
 <title>Deutsch Grammatik</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#ffffff">
@@ -294,7 +294,7 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 /* ---- start page: groups ---- */
 .home{overflow:hidden;gap:8px;padding-bottom:0}
 .brand{display:flex;align-items:flex-end;gap:10px;min-width:0}
-.home h1.logo{display:flex;align-items:baseline;gap:7px;line-height:.74;font-size:1.75rem;white-space:nowrap;margin:0}.home h1.logo span{font-size:.95rem;letter-spacing:.07em;color:var(--ink)}.home .markb{padding-bottom:0;margin-bottom:0}.mark{width:60px;height:21px}
+.home h1.logo{display:flex;align-items:baseline;gap:7px;line-height:.74;font-size:1.75rem;white-space:nowrap;margin:0}.home h1.logo span{font-size:.95rem;letter-spacing:.07em;color:var(--ink)}.home .markb{padding-bottom:0;margin-bottom:0;order:2;margin-left:auto}.home .brand{width:100%}.mark{width:60px;height:21px}
 .markb{background:transparent;padding:12px 4px;margin:-12px -4px;flex:none;display:flex}.mark{width:54px;height:19px;flex:none}.mark .fl{opacity:0;transition:opacity .35s}.markb.on .mark .fl{opacity:1}.mark .mo{fill:none;stroke:var(--ink);stroke-width:6}.mark .mi{fill:none;stroke:var(--ink);stroke-width:3}.mark .md{fill:none;stroke:var(--ink);stroke-width:3;stroke-dasharray:3 9}
 .gear{width:44px;height:44px;padding:0;display:grid;place-items:center;flex:none}.gear svg{width:22px;height:22px}
 .gear[aria-expanded="true"]{background:var(--ink);color:#fff}
@@ -304,8 +304,9 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .resume small{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#555}.resume b{font-size:1.08rem}
 .grp{background:var(--df) left bottom/100% 1px no-repeat}
 /* striped rows: 01 grey, 02 white, 03 grey …; the open group turns pale lime, like the section you are in */
-.grp:nth-child(odd){background:var(--df) left bottom/100% 1px no-repeat,var(--pale)}
-.grp.open,.grp.open:nth-child(odd){background:var(--df) left bottom/100% 1px no-repeat,var(--limepale)}
+/* the stripes separate the groups, so no dotted line between them */
+.grp,.grp:nth-child(odd){background:var(--pale)}.grp:nth-child(even){background:#fff}
+.grp.open,.grp.open:nth-child(odd){background:var(--limepale)}
 .grp .grh .no{background-color:#fff}.grp.open .grh .no{background-color:var(--ink)}
 .grp .grh{padding-right:8px}
 .grp:nth-child(odd) .grh .prog,.grp.open .grh .prog{background:#fff}
@@ -332,12 +333,39 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .hb{position:sticky;z-index:14;display:flex;align-items:center;height:23px;padding:0 10px;font-size:12px;color:#000;cursor:pointer;white-space:nowrap;overflow:hidden;-webkit-tap-highlight-color:transparent;transition:background-color .15s;
   background:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left top/100% 1px no-repeat,repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left bottom/100% 1px no-repeat,#fff}
 .hb b{font-weight:700}.hb small{font-size:8.5px;margin-left:4px}
-.hb.hl{margin:39px 50% -1px 0}.hb.hr{margin:39px 0 -1px 50%}.hb.first{margin-top:0}
+.hb.hl{margin:39px 50% -1px 0}.hb.hr{margin:39px 0 -1px 50%}
 .hbody.inpg .hb{background-color:#f2f2f2}.hb.on{background-color:#eaffae!important}.hb.hit{background-color:#cdff3e!important}
 .sback{position:absolute;left:0;right:0;z-index:13;background:#fff;pointer-events:none}
 .hp{display:flex;flex-direction:column;gap:10px;padding-top:10px}#p-home{gap:8px}
 .hp .tc h3{margin:0 0 6px;font-size:1.1rem}
 .hp .copy{margin-top:6px}
+/* title page: the German-speaking countries, with the six round circles of the dasein-design start page around them */
+.tp{position:relative;overflow:clip}
+.tstage{position:relative;height:100%;min-height:inherit}
+.tmap{position:absolute;left:0;right:0;top:8%;bottom:9%;width:100%;height:83%;overflow:visible;cursor:pointer}
+.tmap path,.tmap circle{stroke:#fff;stroke-width:2.5;stroke-linejoin:round;transform-box:fill-box;transform-origin:center}
+.tmap .nb{fill:#f1f1ef}.tmap .co{fill:#e30613}.tmap .lt{fill:#f4b4b0}
+.tkey{position:absolute;left:0;right:0;bottom:2px;margin:0;text-align:center;font-size:11px;letter-spacing:.04em;color:#666}
+.tkey i{display:inline-block;width:10px;height:10px;margin:0 4px -1px 8px}.tkey i.co{background:#e30613}.tkey i.lt{background:#f4b4b0}
+.tp .pin{position:absolute;z-index:2;display:flex;flex-direction:column;align-items:center;gap:3px;width:25vw;max-width:110px;padding:0;border:0;background:none;font:inherit;color:#000;text-align:center;cursor:pointer;-webkit-tap-highlight-color:transparent;transform:translateY(-11.5px)}
+.tp .pin:active{background:none}
+.tp .pin.l{left:0}.tp .pin.r{right:0}
+.tp .pin b{position:relative;display:flex;align-items:center;justify-content:center;width:23px;height:23px;border-radius:50%;background:#bfbfbf;font-weight:400;font-size:11.5px;box-shadow:inset 0 0 0 1px #000;transition:background .15s;
+  animation:pinon 9s ease-in-out infinite;animation-delay:calc(var(--k) * 1.5s)}
+.tp .pin b::before,.tp .pin b::after{content:"";position:absolute;inset:-1px;border-radius:50%;border:1.6px solid var(--c1,var(--red));opacity:0;pointer-events:none;animation:pinring 9s ease-out infinite;animation-delay:calc(var(--k) * 1.5s + .3s)}
+.tp .pin b::after{border-color:var(--c2,var(--red));animation-delay:calc(var(--k) * 1.5s + .6s)}
+@keyframes pinon{0%{background:#bfbfbf}2.5%{background:#cdff3e}14%{background:#cdff3e}16.7%{background:#bfbfbf}100%{background:#bfbfbf}}
+@keyframes pinring{0%{transform:scale(1);opacity:.9}12.5%{transform:scale(2.3);opacity:0}100%{transform:scale(2.3);opacity:0}}
+.tp .pin:nth-of-type(1){--c1:#ffd400;--c2:#2f8cff}.tp .pin:nth-of-type(2){--c1:#2fbf4a;--c2:#ffd400}.tp .pin:nth-of-type(3){--c1:#2f8cff;--c2:#cdff3e}.tp .pin:nth-of-type(4){--c1:#e30613;--c2:#2fbf4a}.tp .pin:nth-of-type(5){--c1:#cdff3e;--c2:#e30613}.tp .pin:nth-of-type(6){--c1:#3a3c37;--c2:#ffd400}
+.tp .pin span{font-size:12px;line-height:1.15;background:rgba(255,255,255,.85);padding:1px 3px}
+.tp .pin.hit b{animation:none!important;background:#cdff3e!important;box-shadow:inset 0 0 0 1px var(--red)}.tp .pin.hit span{color:var(--red)}
+.tp .pin:active b{animation:none;background:#a5e35a;box-shadow:inset 0 0 0 1px var(--red)}
+.tp .leads{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:1}
+.tp .leads path{fill:none;stroke:#000;stroke-width:1.2;stroke-dasharray:1.2 2.2}
+.tp .leads circle{fill:#ffd400;stroke:#000;stroke-width:1.2}
+.tp.enter .pin,.tp.enter .leads,.tp.enter .tkey{opacity:0}.tp .pin,.tp .leads,.tp .tkey{transition:opacity .5s}
+@media (prefers-reduced-motion:reduce){.tp .pin b,.tp .pin b::before,.tp .pin b::after{animation:none}}
+.hb.first{margin-top:14px}
 /* bottom arrow bar, as on the dasein-design phone site: dashed line above (hidden where the waiting bars already draw one) and below, the round N arrow in the middle, its word hanging off to the right */
 .abar{flex:none;position:relative;height:30px;margin:-8px -10px 0;display:flex;align-items:center;justify-content:center;border-top:1px dashed var(--line);background:#fff}
 .abar::after{content:"";position:absolute;left:0;right:0;top:29px;border-top:1px dashed var(--line);pointer-events:none}
@@ -411,6 +439,7 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
     </div>
     <div class="hbody" id="hbody">
     <div class="hscroll" id="hscroll">
+      <section class="tp" id="p-title"><div class="tstage" id="tstage"><svg class="tmap" id="tmap" viewBox="0 0 930.6 960.0" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path class="nb" d="M367.2 1304.8L346.1 1382.0L317.2 1361.6L302.4 1294.3L315.3 1257.2L356.3 1219.0L367.2 1304.8ZM-13.5 482.1L31.0 529.3L63.7 521.5L119.5 567.1L133.7 575.7L152.1 573.6L182.2 599.8L274.0 618.2L241.8 686.7L233.7 757.9L216.2 775.0L187.2 765.8L189.2 791.2L142.6 847.4L141.7 892.7L172.1 877.0L194.0 920.9L191.4 949.1L210.1 986.7L188.0 1017.1L204.5 1094.5L239.0 1107.2L231.7 1150.6L174.0 1207.1L48.3 1180.0L-44.6 1212.5L-51.9 1272.7L-125.8 1285.7L-197.5 1240.4L-220.7 1262.0L-338.0 1216.6L-363.4 1177.7L-330.5 1117.7L-318.3 918.5L-384.1 813.6L-431.1 763.0L-528.5 724.5L-534.9 651.6L-452.3 629.8L-345.3 655.6L-365.5 542.4L-305.3 585.3L-156.9 507.3L-137.7 425.3L-82.0 405.1L-72.8 440.3L-43.1 442.0L-13.5 482.1Z"/><path class="nb" d="M145.0 169.0L197.9 171.8L209.8 205.6L194.0 297.2L177.8 334.8L139.5 334.8L150.2 439.6L115.2 416.3L74.8 372.5L15.7 393.3L-30.9 385.4L1.9 357.9L57.8 210.8L145.0 169.0Z"/><path class="nb" d="M566.7 -41.0L528.4 40.0L461.7 -16.5L452.8 -58.0L546.3 -91.1L566.7 -41.0ZM453.3 -125.9L437.8 -88.1L418.8 -99.0L372.9 -27.0L390.2 21.7L349.4 36.9L301.3 23.7L275.4 -31.8L273.5 -134.0L284.1 -161.0L302.4 -191.0L358.5 -197.2L380.9 -224.8L432.2 -253.0L430.0 -201.6L411.1 -169.0L418.8 -141.0L453.3 -125.9Z"/><path class="nb" d="M715.0 409.3L688.9 345.5L693.8 311.0L678.1 257.5L654.9 221.9L672.7 195.2L657.8 144.3L701.4 114.9L800.8 68.7L881.1 34.8L944.7 51.7L949.5 76.1L1011.0 77.4L1089.5 88.7L1206.7 87.2L1239.4 97.9L1254.7 128.8L1257.5 173.0L1275.2 211.0L1274.8 250.9L1236.6 271.3L1256.2 317.6L1257.5 362.2L1289.5 449.5L1282.7 477.5L1251.0 489.1L1193.2 572.3L1209.6 617.3L1195.7 611.4L1135.1 573.0L1089.2 587.1L1059.1 576.9L1021.5 598.3L989.3 562.8L963.1 576.4L959.5 570.4L930.2 521.1L882.8 515.1L876.7 483.8L833.0 472.6L823.5 498.4L788.9 477.7L792.9 450.2L745.2 441.5L715.0 409.3Z"/><path class="nb" d="M838.9 660.3L809.5 641.4L779.5 646.6L730.1 616.1L707.6 623.6L671.8 664.5L624.4 632.3L588.4 589.3L555.9 565.3L549.2 523.1L538.0 493.4L584.3 471.6L608.0 446.7L653.8 427.3L669.7 408.3L686.6 419.8L715.0 409.3L745.2 441.5L792.9 450.2L788.9 477.7L823.5 498.4L833.0 472.6L876.7 483.8L882.8 515.1L930.2 521.1L959.5 570.4L940.5 570.5L930.6 588.5L916.0 592.8L911.8 615.6L899.6 620.4L897.9 629.7L876.1 640.0L847.9 638.3L838.9 660.3Z"/><path class="nb" d="M959.5 570.4L963.1 576.4L989.3 562.8L1021.5 598.3L1059.1 576.9L1089.2 587.1L1135.1 573.0L1195.7 611.4L1178.0 637.5L1165.6 677.8L1152.0 688.0L1083.7 657.6L1062.8 663.7L1047.9 687.2L1017.9 699.7L1011.0 693.3L980.0 708.9L954.7 711.8L949.5 731.9L896.0 744.2L872.5 733.3L840.1 707.7L833.7 673.0L838.9 660.3L847.9 638.3L876.1 640.0L897.9 629.7L899.6 620.4L911.8 615.6L916.0 592.8L930.6 588.5L940.5 570.5L959.5 570.4Z"/><path class="nb" d="M790.6 834.8L811.7 770.4L799.4 748.7L835.3 748.5L840.1 707.7L872.5 733.3L896.0 744.2L949.5 731.9L954.7 711.8L980.0 708.9L1011.0 693.3L1017.9 699.7L1047.9 687.2L1062.8 663.7L1083.7 657.6L1152.0 688.0L1165.6 677.8L1201.0 705.0L1205.4 731.8L1166.5 752.8L1136.3 820.6L1097.8 888.4L1046.7 907.3L1006.9 902.8L958.0 929.1L934.2 944.1L881.6 924.8L833.9 881.9L813.7 869.6L801.3 835.9L790.6 834.8Z"/><path class="nb" d="M637.8 869.1L690.5 876.8L722.7 854.1L778.4 851.6L790.6 834.8L801.3 835.9L813.7 869.6L762.9 896.2L756.7 936.6L734.6 946.8L734.8 974.8L709.8 972.8L688.1 956.5L676.4 973.4L632.0 970.0L646.2 960.9L630.9 918.3L637.8 869.1Z"/><path class="nb" d="M747.1 1696.9L724.1 1775.6L733.7 1806.6L720.3 1858.0L671.5 1820.3L639.1 1809.5L550.2 1758.7L559.1 1707.4L633.7 1716.5L698.7 1705.6L747.1 1696.9ZM344.8 1399.0L383.1 1470.0L374.1 1602.3L345.2 1596.0L319.2 1629.3L295.0 1602.8L292.5 1482.2L277.9 1425.0L313.0 1430.0L344.8 1399.0ZM546.7 843.2L637.8 869.1L630.9 918.3L646.2 960.9L595.5 946.3L543.6 981.8L547.2 1031.5L539.4 1060.0L560.2 1110.9L620.0 1161.2L652.1 1243.9L723.0 1324.5L773.0 1323.9L788.5 1346.0L770.6 1365.9L827.7 1402.0L874.5 1432.3L929.2 1484.4L935.8 1503.1L923.8 1538.9L888.5 1492.2L833.1 1475.8L806.3 1540.5L852.3 1577.5L844.8 1629.7L818.1 1635.6L784.1 1721.4L757.5 1729.1L757.8 1698.5L770.8 1644.9L784.6 1623.5L759.7 1565.6L740.3 1515.2L713.8 1502.7L695.0 1459.5L654.0 1441.4L626.5 1401.2L579.3 1394.7L529.5 1349.5L471.2 1284.5L427.8 1226.9L408.0 1128.0L376.2 1116.4L324.4 1083.4L295.0 1096.9L258.2 1143.3L231.7 1150.6L239.0 1107.2L204.5 1094.5L188.0 1017.1L210.1 986.7L191.4 949.1L194.0 920.9L221.4 942.3L252.2 937.6L287.9 903.6L298.9 919.5L329.3 916.3L343.1 876.0L390.3 888.5L418.4 871.6L423.4 830.6L462.0 844.9L469.5 825.8L532.4 808.5L546.7 843.2Z"/><path class="lt" data-c="BEL" d="M-30.9 385.4L15.7 393.3L74.8 372.5L115.2 416.3L150.2 439.6L143.0 507.2L126.4 511.0L119.5 567.1L63.7 521.5L31.0 529.3L-13.5 482.1L-43.1 442.0L-72.8 440.3L-82.0 405.1L-30.9 385.4Z"/><path class="lt" data-c="LUX" d="M143.0 507.2L155.7 529.8L152.1 573.6L133.7 575.7L119.5 567.1L126.4 511.0L143.0 507.2Z"/><path class="co" data-c="DEU" d="M390.2 21.7L391.4 60.3L455.8 83.6L455.1 119.1L519.9 100.4L555.7 73.0L627.7 112.4L657.8 144.3L672.7 195.2L654.9 221.9L678.1 257.5L693.8 311.0L688.9 345.5L715.0 409.3L686.6 419.8L669.7 408.3L653.8 427.3L608.0 446.7L584.3 471.6L538.0 493.4L549.2 523.1L555.9 565.3L588.4 589.3L624.4 632.3L601.9 678.4L579.0 691.1L588.1 756.2L582.1 773.2L562.3 752.8L531.7 749.7L486.1 767.6L429.9 763.4L420.8 789.8L388.6 762.0L369.3 767.5L301.0 736.9L287.9 758.6L233.7 757.9L241.8 686.7L274.0 618.2L182.2 599.8L152.1 573.6L155.7 529.8L143.0 507.2L150.2 439.6L139.5 334.8L177.8 334.8L194.0 297.2L209.8 205.6L197.9 171.8L210.4 150.6L263.7 145.2L275.5 167.2L318.8 117.9L304.2 80.4L301.3 23.7L349.4 36.9L390.2 21.7Z"/><path class="co" data-c="AUT" d="M840.1 707.7L835.3 748.5L799.4 748.7L811.7 770.4L790.6 834.8L778.4 851.6L722.7 854.1L690.5 876.8L637.8 869.1L546.7 843.2L532.4 808.5L469.5 825.8L462.0 844.9L423.4 830.6L390.9 827.9L362.1 809.7L371.8 785.2L369.3 767.5L388.6 762.0L420.8 789.8L429.9 763.4L486.1 767.6L531.7 749.7L562.3 752.8L582.1 773.2L588.1 756.2L579.0 691.1L601.9 678.4L624.4 632.3L671.8 664.5L707.6 623.6L730.1 616.1L779.5 646.6L809.5 641.4L838.9 660.3L833.7 673.0L840.1 707.7Z"/><path class="co" data-c="CHE" d="M369.3 767.5L371.8 785.2L362.1 809.7L390.9 827.9L423.4 830.6L418.4 871.6L390.3 888.5L343.1 876.0L329.3 916.3L298.9 919.5L287.9 903.6L252.2 937.6L221.4 942.3L194.0 920.9L172.1 877.0L141.7 892.7L142.6 847.4L189.2 791.2L187.2 765.8L216.2 775.0L233.7 757.9L287.9 758.6L301.0 736.9L369.3 767.5Z"/><circle class="lt" data-c="LIE" cx="366.5" cy="805.0" r="6"/></svg><svg class="leads" id="tleads" aria-hidden="true"></svg><button class="pin l" data-k="home" data-x="297.7" data-y="571.0" style="--k:0" aria-label="Grammatik [01] – Mannheim"><b>01</b><span>Grammatik</span></button><button class="pin r" data-k="test" data-x="801.2" data-y="699.0" style="--k:1" aria-label="Test [02] – Wien"><b>02</b><span>Test</span></button><button class="pin l" data-k="links" data-x="232.7" data-y="825.0" style="--k:2" aria-label="Links [03] – Bern"><b>03</b><span>Links</span></button><button class="pin r" data-k="quotes" data-x="480.0" data-y="422.0" style="--k:3" aria-label="Zitate [04] – Weimar"><b>04</b><span>Zitate</span></button><button class="pin r" data-k="hist" data-x="564.1" data-y="333.0" style="--k:4" aria-label="Geschichte [05] – Wittenberg"><b>05</b><span>Geschichte</span></button><button class="pin l" data-k="sets" data-x="142.1" data-y="457.0" style="--k:5" aria-label="Einstellungen [06] – Eupen"><b>06</b><span>Einstellungen</span></button><p class="tkey"><i class="co"></i>Amtssprache · <i class="lt"></i>Amtssprache in einem Teil</p></div></section>
       <section class="hp" id="p-home">
         <div class="lvsel" role="group" aria-label="Niveau"><div id="lvs"></div></div>
         <button class="resume" id="resume" hidden></button>
@@ -789,7 +818,21 @@ const PRON_Q=[
  {s:"Du musst ___ beeilen. (du)",lv:"A2",o:["dich","dir"],why:"sich beeilen: reflexive Akkusativ.",p:"du",cs:"akk"},
  {s:"Ich kaufe ___ einen neuen Sattel. (ich)",lv:"B1",o:["mir","mich"],why:"There is another object (den Sattel): reflexive Dativ.",p:"ich",cs:"dat"},
  {s:"Interessierst du ___ für Architektur? (du)",lv:"A2",o:["dich","dir"],why:"sich interessieren für: reflexive Akkusativ.",p:"du",cs:"akk"},
- {s:"Das tut ___ leid. (ich)",lv:"A1",o:["mir","mich"],why:"Fixed phrase: Das tut mir leid.",p:"ich",cs:"dat"}
+ {s:"Das tut ___ leid. (ich)",lv:"A1",o:["mir","mich"],why:"Fixed phrase: Das tut mir leid.",p:"ich",cs:"dat"},
+ {s:"Wie gefällt ___ die Wohnung? (du)",lv:"A2",o:["dir", "dich"],why:"gefallen + Dativ.",p:"du",cs:"dat"},
+ {s:"Ich rufe ___ heute Abend an. (du)",lv:"A2",o:["dich", "dir"],why:"anrufen + Akkusativ.",p:"du",cs:"akk"},
+ {s:"Der Kaffee schmeckt ___ nicht. (er)",lv:"A2",o:["ihm", "ihn"],why:"schmecken + Dativ.",p:"er",cs:"dat"},
+ {s:"Kannst du ___ bitte fragen? (sie, she)",lv:"A2",o:["sie", "ihr"],why:"fragen + Akkusativ. Akkusativ of sie is sie.",p:"sie",cs:"akk"},
+ {s:"Ich danke ___ für Ihre Hilfe. (Sie)",lv:"B1",o:["Ihnen", "Sie"],why:"danken + Dativ: Ihnen.",p:"Sie",cs:"dat"},
+ {s:"Die Schuhe passen ___ nicht mehr. (ich)",lv:"A2",o:["mir", "mich"],why:"passen + Dativ.",p:"ich",cs:"dat"},
+ {s:"Wir laden ___ zur Feier ein. (sie, they)",lv:"A2",o:["sie", "ihnen"],why:"einladen + Akkusativ: plural sie.",p:"sie",cs:"akk"},
+ {s:"Gehört das Pferd ___? (sie, she)",lv:"A2",o:["ihr", "sie"],why:"gehören + Dativ: sie → ihr.",p:"sie",cs:"dat"},
+ {s:"Ich habe ___ gestern gesehen. (er)",lv:"A1",o:["ihn", "ihm"],why:"sehen + Akkusativ.",p:"er",cs:"akk"},
+ {s:"Glaubst du ___? (ich)",lv:"B1",o:["mir", "mich"],why:"jemandem glauben: the person is Dativ.",p:"ich",cs:"dat"},
+ {s:"Ich gebe es ___ morgen. (er)",lv:"B1",o:["ihm", "ihn"],why:"Two pronouns: es (Akk) first, then the person in Dativ.",p:"er",cs:"dat"},
+ {s:"Er hat ___ nicht geantwortet. (sie, they)",lv:"B1",o:["ihnen", "sie"],why:"antworten + Dativ: plural ihnen.",p:"sie",cs:"dat"},
+ {s:"Ich vermisse ___ sehr. (du)",lv:"B1",o:["dich", "dir"],why:"vermissen + Akkusativ, like English 'miss someone'.",p:"du",cs:"akk"},
+ {s:"Das erinnert ___ an meine Kindheit. (ich)",lv:"B2",o:["mich", "mir"],why:"jemanden an etwas erinnern: the person is Akkusativ.",p:"ich",cs:"akk"}
 ];
 /* ---------- data: Genitiv ---------- */
 const GEN_CARDS=[
@@ -935,7 +978,37 @@ const FALL_Q=[
  {s:"Mit ___ Pferden reiten wir aus.",n:"die Pferde",cs:"Dativ",o:["den","die","der"],why:"mit + Dativ plural: den Pferden.",lv:"A2"},
  {s:"Wir danken ___ Kollegen für die Hilfe.",n:"die Kollegen",cs:"Dativ",o:["den","die","der"],why:"danken + Dativ plural: den Kollegen. Already ends in -n, so no extra -n.",lv:"A2"},
  {s:"Ohne ___ Laptop kann ich nicht arbeiten.",n:"mein Laptop",cs:"Akkusativ",o:["meinen","mein","meinem"],why:"ohne is always Akkusativ: mein → meinen.",lv:"A2"},
- {s:"Seit ___ Jahr wohne ich in Wien.",n:"ein Jahr",cs:"Dativ",o:["einem","ein","einen"],why:"seit is always Dativ: ein → einem. Present tense, where English says \"have lived\".",lv:"A2"}
+ {s:"Seit ___ Jahr wohne ich in Wien.",n:"ein Jahr",cs:"Dativ",o:["einem","ein","einen"],why:"seit is always Dativ: ein → einem. Present tense, where English says \"have lived\".",lv:"A2"},
+ {s:"Der Mantel gefällt ___ Frau.",n:"die Frau",cs:"Dativ",o:["der", "die", "den"],why:"gefallen + Dativ: the person who likes it. die → der.",lv:"A2"},
+ {s:"Ich helfe ___ Nachbarn.",n:"der Nachbar",cs:"Dativ",o:["dem", "den", "der"],why:"helfen + Dativ. Nachbar is a weak noun: dem Nachbarn.",lv:"A2"},
+ {s:"Wir gratulieren ___ Chefin zum Geburtstag.",n:"die Chefin",cs:"Dativ",o:["der", "die", "den"],why:"gratulieren + Dativ: die → der.",lv:"A2"},
+ {s:"Ich frage ___ Lehrer.",n:"der Lehrer",cs:"Akkusativ",o:["den", "dem", "der"],why:"fragen + Akkusativ, like English 'ask someone'.",lv:"A2"},
+ {s:"Das Kleid steht ___ Tochter gut.",n:"deine Tochter",cs:"Dativ",o:["deiner", "deine", "deinen"],why:"stehen (= to suit) + Dativ.",lv:"B1"},
+ {s:"Der Hund folgt ___ Kind.",n:"das Kind",cs:"Dativ",o:["dem", "das", "den"],why:"folgen + Dativ.",lv:"A2"},
+ {s:"Er ruft ___ Mutter an.",n:"seine Mutter",cs:"Akkusativ",o:["seine", "seiner", "seinen"],why:"anrufen + Akkusativ, like English 'call someone'.",lv:"A2"},
+ {s:"Ich schicke ___ Kunden das Angebot.",n:"der Kunde",cs:"Dativ",o:["dem", "den", "der"],why:"schicken: DAT person, AKK thing. Kunde is a weak noun: dem Kunden.",lv:"B1"},
+ {s:"Sie erklärt ___ Studenten die Aufgabe.",n:"die Studenten",cs:"Dativ",o:["den", "die", "der"],why:"erklären: DAT person (plural den), AKK thing.",lv:"B1"},
+ {s:"Kannst du ___ Kollegin den Schlüssel geben?",n:"die Kollegin",cs:"Dativ",o:["der", "die", "den"],why:"geben: DAT person, AKK thing.",lv:"A2"},
+ {s:"Ich zeige dir ___ Garten.",n:"der Garten",cs:"Akkusativ",o:["den", "dem", "der"],why:"zeigen: dir is the DAT person, the thing shown is AKK.",lv:"A2"},
+ {s:"Das Fahrrad gehört ___ Bruder.",n:"mein Bruder",cs:"Dativ",o:["meinem", "meinen", "mein"],why:"gehören + Dativ.",lv:"A2"},
+ {s:"Wir brauchen ___ Termin.",n:"ein Termin",cs:"Akkusativ",o:["einen", "einem", "ein"],why:"brauchen + Akkusativ: ein → einen.",lv:"A1"},
+ {s:"Ich empfehle ___ Gästen das Restaurant.",n:"die Gäste",cs:"Dativ",o:["den", "die", "der"],why:"empfehlen: DAT person. Dativ plural: den Gästen (+n).",lv:"B1"},
+ {s:"Hast du ___ Großeltern geschrieben?",n:"deine Großeltern",cs:"Dativ",o:["deinen", "deine", "deiner"],why:"jemandem schreiben: the person is Dativ.",lv:"B1"},
+ {s:"Der Lehrer glaubt ___ Schüler nicht.",n:"der Schüler",cs:"Dativ",o:["dem", "den", "der"],why:"jemandem glauben: the person is Dativ.",lv:"B1"},
+ {s:"Ich besuche ___ Tante in Graz.",n:"meine Tante",cs:"Akkusativ",o:["meine", "meiner", "meinen"],why:"besuchen + Akkusativ: feminine stays meine.",lv:"A1"},
+ {s:"Wir laden ___ Nachbarn zum Essen ein.",n:"die Nachbarn",cs:"Akkusativ",o:["die", "den", "der"],why:"einladen + Akkusativ: plural die.",lv:"A2"},
+ {s:"Das Essen schmeckt ___ Kindern.",n:"die Kinder",cs:"Dativ",o:["den", "die", "der"],why:"schmecken + Dativ. Dativ plural: den Kindern.",lv:"A2"},
+ {s:"Bitte antworte ___ Kundin heute noch.",n:"die Kundin",cs:"Dativ",o:["der", "die", "den"],why:"antworten + Dativ.",lv:"B1"},
+ {s:"Die Stadt erteilt ___ Bauherrn die Genehmigung.",n:"der Bauherr",cs:"Dativ",o:["dem", "den", "der"],why:"erteilen: DAT person, AKK thing. Bauherr is weak: dem Bauherrn.",lv:"B2"},
+ {s:"Ich vertraue ___ Ärztin.",n:"meine Ärztin",cs:"Dativ",o:["meiner", "meine", "meinen"],why:"vertrauen + Dativ.",lv:"B1"},
+ {s:"Er widerspricht ___ Chef nie.",n:"sein Chef",cs:"Dativ",o:["seinem", "seinen", "sein"],why:"widersprechen + Dativ.",lv:"B2"},
+ {s:"Wir bitten ___ Gemeinde um Unterstützung.",n:"die Gemeinde",cs:"Akkusativ",o:["die", "der", "den"],why:"jemanden um etwas bitten: the person is Akkusativ.",lv:"B1"},
+ {s:"Ich danke ___ Team für die Arbeit.",n:"das Team",cs:"Dativ",o:["dem", "das", "den"],why:"danken + Dativ.",lv:"A2"},
+ {s:"Der Architekt überreicht ___ Bürgermeisterin die Pläne.",n:"die Bürgermeisterin",cs:"Dativ",o:["der", "die", "den"],why:"überreichen: DAT person, AKK thing.",lv:"B2"},
+ {s:"Ich habe ___ Freund mein Auto geliehen.",n:"mein Freund",cs:"Dativ",o:["meinem", "meinen", "mein"],why:"leihen: DAT person, AKK thing.",lv:"B1"},
+ {s:"Wir unterstützen ___ Projekt gern.",n:"das Projekt",cs:"Akkusativ",o:["das", "dem", "des"],why:"unterstützen + Akkusativ.",lv:"A2"},
+ {s:"Das Ergebnis überrascht ___ Experten.",n:"die Experten",cs:"Akkusativ",o:["die", "den", "der"],why:"überraschen + Akkusativ: plural die.",lv:"B2"},
+ {s:"Der Sattel passt ___ Pferd nicht.",n:"das Pferd",cs:"Dativ",o:["dem", "das", "den"],why:"passen (= to fit) + Dativ.",lv:"B1"}
 ].map(q=>Object.assign({k:"f",c:0},q)));
 /* ---------- data: Adjektivendungen ---------- */
 const ADJ_T={best:[["e","e","e","en"],["en","e","e","en"],["en","en","en","en"],["en","en","en","en"]],unb:[["er","es","e","en"],["en","es","e","en"],["en","en","en","en"],["en","en","en","en"]],ohne:[["er","es","e","e"],["en","es","e","e"],["em","em","er","en"],["en","en","er","er"]]};
@@ -968,7 +1041,45 @@ const ADJ_Q=[
  ["Wegen des stark___ Regens bleiben wir drinnen.",["en","es","e"],"des shows Genitiv: -en.","B2"],
  ["Trotz schlecht___ Wetters reiten wir aus.",["en","es","em"],"No article, Genitiv neuter: -en (the noun has -s).","C1"],
  ["Das ist ein gut___ Entwurf.",["er","en","e"],"ein, masculine Nominativ: -er.","A2"],
- ["Wir wohnen in einer klein___ Wohnung.",["en","er","e"],"einer shows Dativ: -en.","B1"]
+ ["Wir wohnen in einer klein___ Wohnung.",["en","er","e"],"einer shows Dativ: -en.","B1"],
+ ["Ich kaufe eine neu___ Jacke.", ["e", "en", "er"], "die, Akkusativ feminine: still -e.", "A2"],
+ ["Der alt___ Mann wohnt nebenan.", ["e", "en", "er"], "der, Nominativ masculine: -e.", "A2"],
+ ["Das klein___ Kind schläft.", ["e", "es", "en"], "das, Nominativ neuter: -e.", "A2"],
+ ["Ich habe ein klein___ Problem.", ["es", "e", "en"], "ein, Akkusativ neuter: ein shows no gender, so -es.", "A2"],
+ ["Er hat einen groß___ Hund.", ["en", "er", "e"], "einen, Akkusativ masculine: -en.", "A2"],
+ ["Sie trägt ein rot___ Kleid.", ["es", "e", "en"], "ein + neuter: -es.", "A2"],
+ ["Das ist eine gut___ Idee.", ["e", "en", "er"], "eine, Nominativ feminine: -e.", "A2"],
+ ["Wo ist der blau___ Stift?", ["e", "en", "er"], "der, Nominativ masculine: -e.", "A2"],
+ ["Kennst du die neu___ Kollegin?", ["e", "en", "er"], "die, Akkusativ feminine: -e.", "A2"],
+ ["Ich wohne in der neu___ Wohnung.", ["en", "e", "er"], "der here is Dativ (in + Wo?): -en.", "B1"],
+ ["Wir sprechen mit dem jung___ Architekten.", ["en", "em", "e"], "dem shows Dativ: -en.", "B1"],
+ ["Das ist kein schlecht___ Vorschlag.", ["er", "en", "e"], "kein works like ein: masculine Nominativ -er.", "B1"],
+ ["Ich habe keine neu___ Nachrichten.", ["en", "e", "er"], "keine + plural: -en.", "B1"],
+ ["Neu___ Besen kehren gut.", ["e", "en", "er"], "No article, plural Nominativ: -e, like die.", "B1"],
+ ["Er trinkt gern schwarz___ Kaffee.", ["en", "er", "es"], "No article, masculine Akkusativ: -en, like den.", "B1"],
+ ["Bei schön___ Wetter reiten wir aus.", ["em", "en", "es"], "No article, neuter Dativ: -em, like dem.", "B1"],
+ ["Lieb___ Anna, danke für deinen Brief.", ["e", "er", "en"], "No article, feminine Nominativ: -e. A man: Lieber Thomas.", "B1"],
+ ["Sehr geehrt___ Damen und Herren,", ["e", "en", "er"], "No article, plural Nominativ: -e.", "B1"],
+ ["Wir fahren mit unseren klein___ Kindern ans Meer.", ["en", "e", "em"], "unseren shows Dativ plural: -en.", "B1"],
+ ["Danke für den nett___ Brief.", ["en", "e", "er"], "für + Akkusativ, den: -en.", "B1"],
+ ["Wir haben einen langen, anstrengend___ Tag hinter uns.", ["en", "er", "e"], "Two adjectives in a row take the same ending: einen langen, anstrengenden Tag.", "B1"],
+ ["In einem modern___ Büro arbeitet man gern.", ["en", "em", "es"], "einem shows Dativ: -en.", "B1"],
+ ["Bei der nächst___ Sitzung besprechen wir das.", ["en", "e", "er"], "der here is Dativ (bei): -en.", "B1"],
+ ["Das ist das Haus meines alt___ Freundes.", ["en", "es", "e"], "meines shows Genitiv: -en.", "B2"],
+ ["Trotz des schlecht___ Wetters reiten wir aus.", ["en", "es", "e"], "des shows Genitiv: -en.", "B2"],
+ ["Mit freundlich___ Grüßen", ["en", "e", "er"], "No article, Dativ plural: -en, like den.", "B2"],
+ ["Nach lang___ Diskussion haben wir entschieden.", ["er", "e", "en"], "No article, feminine Dativ: -er, like der.", "B2"],
+ ["Die Wände des alt___ Hauses sind feucht.", ["en", "es", "e"], "des shows Genitiv: -en.", "B2"],
+ ["Viele jung___ Leute ziehen nach Wien.", ["e", "en", "er"], "viele works like no article: plural -e.", "B2"],
+ ["Alle neu___ Mitarbeiter bekommen einen Laptop.", ["en", "e", "er"], "alle works like die: plural -en.", "B2"],
+ ["Ich wünsche dir alles Gut___.", ["e", "es", "en"], "alles works like das: the adjective-noun takes -e.", "B2"],
+ ["Das gesamt___ Team dankt Ihnen.", ["e", "es", "en"], "das, Nominativ neuter: -e.", "B2"],
+ ["Eine Stadt mit zahlreich___ historischen Gebäuden.", ["en", "e", "er"], "No article, Dativ plural: both adjectives -en.", "B2"],
+ ["Er ist ein Mann von groß___ Erfahrung.", ["er", "e", "en"], "No article, feminine Dativ: -er.", "C1"],
+ ["Angesichts steigend___ Kosten verschieben wir das Projekt.", ["er", "en", "e"], "No article, Genitiv plural: -er, like der.", "C1"],
+ ["Der Bau des geplant___ Museums beginnt im Mai.", ["en", "es", "e"], "A participle as adjective follows the same rules: des → -en.", "C1"],
+ ["Die von der Stadt beauftragt___ Architektin stellt den Entwurf vor.", ["e", "en", "er"], "Long participle phrase, but the rule is simple: die, Nominativ feminine → -e.", "C1"],
+ ["Das ist das Ergebnis langjährig___ Forschung.", ["er", "e", "en"], "No article, feminine Genitiv: -er, like der.", "C1"]
 ].map(([s,o,why,lv])=>({s,o,c:0,why,lv}));
 
 /* ---------- Theorie: Fälle, Adjektive ---------- */
@@ -1088,6 +1199,83 @@ GT.konn={name:"Konnektoren",badge:"Konnektor",tip:"Ask first: does the connector
 
 /* ===== Zeitformen ===== */
 const TLZ=`<div class="tlz"><div class="tlax"></div>${[["Plusquamperfekt","hatte gezeichnet","Vorvergangenheit","gestern, 7 Uhr"],["Präteritum","zeichnete","geschrieben","gestern, 9 Uhr"],["Perfekt","habe gezeichnet","gesprochen","heute, 10 Uhr"],["Präsens","zeichne","jetzt","14 Uhr"],["Futur I","werde zeichnen","Zukunft","morgen, 9 Uhr"],["Futur II","werde gezeichnet haben","fertig in der Zukunft","bis morgen, 18 Uhr"]].map(([a,b,c,d],i)=>'<div class="tlc'+(i===3?" now":"")+'"><b>'+a+'</b><span>ich '+b+'</span><small><span class="clk">'+d+'</span> · '+c+'</small></div>').join("")}</div>`;
+GT.praes={name:"Präsens & Trennbare Verben",badge:"Präsens",tip:"du and er change the vowel (du fährst, er gibt); ich and wir never do. A stressed prefix goes to the end: ich rufe dich an.",src:["dudenk","dg20","dw"],
+ lg:'<span><b class="wt v lgk">rufe</b> … <b class="wt v lgk">an</b> Satzklammer</span>',
+ cards:[
+ {b:"Endungen",st:ruleSt("mach-e · mach-st · mach-t",["ich mache","du machst","er macht","wir machen","ihr macht","sie machen"]),tx:"Six persons, four endings",gt:"wir, sie and Sie look like the Infinitiv. er and ihr both end in -t."},
+ {b:"-est · -et",st:ruleSt("du arbeitest · er arbeitet",["du findest","er wartet","es regnet","du öffnest"]),tx:"Stem in -t or -d: add an e",gt:"Also after a consonant + m or n: es regnet, du öffnest, er rechnet."},
+ {b:"Vokalwechsel",st:ruleSt("e → i · e → ie · a → ä",["geben: du gibst","sehen: er sieht","fahren: du fährst","laufen: er läuft","nehmen: du nimmst"]),tx:"Many strong verbs change the vowel",gt:"Only in du and er/sie/es. ich and wir keep it: ich gebe, wir fahren."},
+ {b:"sein · haben · werden",st:ruleSt("bin · hast · wird",["ich bin, du bist, er ist","ich habe, du hast, er hat","ich werde, du wirst, er wird","ich weiß, er weiß"]),tx:"The irregular helpers",gt:"wissen, and the modal verbs, have no ending in ich and er: ich weiß, er kann."},
+ {b:"Trennbar",st:D("Ich~s|rufe~v|dich|morgen|an~v|.~p","1-4a:anrufen"),tx:"Separable verbs: the prefix goes to the end",gt:"Another verb bracket. Stressed prefixes separate: an-, auf-, aus-, ein-, mit-, vor-, zu-, zurück-, fern-.",say:"Ich rufe dich morgen an."},
+ {b:"Untrennbar",st:ruleSt("be- · ver- · er- · ent- · zer- · ge- · miss-",["ich bezahle","ich verstehe","ich erkläre","ich entscheide"]),tx:"These prefixes never separate",gt:"They are never stressed: be-ZAH-len. Stressed prefixes separate: AN-rufen."},
+ {b:"Nebensatz",st:D("Ich weiß,|dass~k|er|heute|ankommt~v|.~p","1-4a:zusammen am Ende"),tx:"In a Nebensatz the verb stays in one piece",gt:"dass, weil, wenn … send it to the end in one word. With zu: anzurufen, aufzustehen.",say:"Ich weiß, dass er heute ankommt."},
+ {b:"Zukunft · seit",st:ruleSt("Morgen fahre ich nach Graz.",["Nächste Woche ziehe ich um.","Ich wohne seit 2005 in Wien."]),tx:"Präsens for the future, and with seit",gt:"With a time word, the Präsens is the normal future. seit + Präsens = English 'have been doing'."}],
+ q:[
+ {s:"Du ___ sehr schnell. (sprechen)",o:["sprichst", "sprechst", "spricht"],why:"e → i in the du and er forms: du sprichst.",lv:"A1"},
+ {s:"Er ___ jeden Tag mit dem Rad. (fahren)",o:["fährt", "fahrt", "fährst"],why:"a → ä in the du and er forms: er fährt.",lv:"A1"},
+ {s:"Was ___ du am Wochenende? (machen)",o:["machst", "macht", "machest"],why:"du + -st: du machst.",lv:"A1"},
+ {s:"Ich rufe dich heute Abend ___.",o:["an", "auf", "zu"],why:"anrufen is separable: the prefix goes to the end.",lv:"A1"},
+ {s:"Wann kommt der Zug ___?",o:["an", "um", "aus"],why:"ankommen: the prefix goes to the end.",lv:"A1"},
+ {s:"Der Film fängt um acht Uhr ___.",o:["an", "auf", "ein"],why:"anfangen: fängt … an.",lv:"A2"},
+ {s:"___ du mir bitte das Salz? (geben)",o:["Gibst", "Gebst", "Gibt"],why:"e → i: du gibst.",lv:"A1"},
+ {s:"Er ___ die Zeitung. (lesen)",o:["liest", "lest", "lesst"],why:"e → ie: er liest.",lv:"A1"},
+ {s:"Es ___ schon wieder. (regnen)",o:["regnet", "regnt", "regent"],why:"Stem ends in -n after a consonant: an extra e, es regnet.",lv:"A1"},
+ {s:"Du ___ zu viel. (arbeiten)",o:["arbeitest", "arbeitst", "arbeitet"],why:"Stem ends in -t: an extra e, du arbeitest.",lv:"A1"},
+ {s:"Ich ___ nicht, wo er wohnt. (wissen)",o:["weiß", "weiße", "wisse"],why:"wissen: ich weiß, with no ending.",lv:"A1"},
+ {s:"Er ___ nicht, wo sie wohnt. (wissen)",o:["weiß", "weißt", "wisst"],why:"wissen: er weiß, also with no ending.",lv:"A2"},
+ {s:"___ ihr heute Abend Zeit? (haben)",o:["Habt", "Hat", "Habst"],why:"ihr + -t: ihr habt.",lv:"A1"},
+ {s:"Du siehst heute müde ___.",o:["aus", "an", "um"],why:"aussehen: siehst … aus.",lv:"A2"},
+ {s:"Ich ___ immer meinen Schlüssel. (vergessen)",o:["vergesse", "vergisse", "vergiss"],why:"The vowel only changes in du and er: ich vergesse, du vergisst.",lv:"A2"},
+ {s:"Wir ___ um sieben Uhr auf. (aufstehen)",o:["stehen", "steht", "stehn"],why:"wir: the same form as the Infinitiv.",lv:"A1"},
+ {s:"Ich weiß, dass er heute ___.",o:["ankommt", "kommt an", "an kommt"],why:"In a dass-clause the separable verb stays together at the end.",lv:"B1"},
+ {s:"Ich ___ die Rechnung. (bezahlen)",o:["bezahle", "zahle be", "be zahle"],why:"be- never separates.",lv:"A2"},
+ {s:"Ich ___ das nicht. (verstehen)",o:["verstehe", "stehe ver", "verstehst"],why:"ver- never separates.",lv:"A2"},
+ {s:"Räumst du heute dein Zimmer ___?",o:["auf", "an", "aus"],why:"aufräumen: räumst … auf.",lv:"A2"},
+ {s:"Sie steht jeden Morgen um sechs ___.",o:["auf", "an", "ab"],why:"aufstehen: steht … auf.",lv:"A1"},
+ {s:"Er ___ einen Kaffee. (nehmen)",o:["nimmt", "nehmt", "nimt"],why:"nehmen is irregular: du nimmst, er nimmt.",lv:"A1"},
+ {s:"Was ___ du? (essen)",o:["isst", "esst", "ist"],why:"e → i: du isst (ist is from sein).",lv:"A1"},
+ {s:"Wohin ___ du? (laufen)",o:["läufst", "laufst", "läuft"],why:"au → äu: du läufst.",lv:"A2"},
+ {s:"Ich ___ seit zehn Jahren in Wien.",o:["wohne", "habe gewohnt", "wohnte"],why:"seit + Präsens for something still going on. English says 'I have lived'.",lv:"B1"},
+ {s:"Morgen ___ ich nach Salzburg.",o:["fahre", "fuhr", "gefahren"],why:"Präsens with a time word for the future.",lv:"A2"},
+ {s:"Ich hoffe, dich bald ___.",o:["anzurufen", "zu anrufen", "anrufen zu"],why:"Separable verb + zu: zu goes in the middle.",lv:"B1"},
+ {s:"Ziehst du den Mantel ___? Es ist kalt.",o:["an", "um", "ab"],why:"anziehen: ziehst … an.",lv:"A2"},
+ {s:"Sie ___ ihm beim Umzug. (helfen)",o:["hilft", "helft", "hilfst"],why:"e → i: sie hilft.",lv:"A2"},
+ {s:"Der Zug ___ pünktlich ab. (fahren)",o:["fährt", "fahrt", "fahren"],why:"abfahren: er fährt … ab.",lv:"A2"},
+ {s:"Du ___ das Fenster. (öffnen)",o:["öffnest", "öffnst", "öffnet"],why:"After -fn an extra e: du öffnest.",lv:"B1"},
+ {s:"Er ___ Lehrer. (werden)",o:["wird", "werdet", "wirdt"],why:"werden: du wirst, er wird.",lv:"A2"},
+ {s:"Ich lade dich zum Essen ___.",o:["ein", "an", "auf"],why:"einladen: lade … ein.",lv:"A2"},
+ {s:"Wir kaufen heute im Supermarkt ___.",o:["ein", "an", "zu"],why:"einkaufen: kaufen … ein.",lv:"A1"},
+ {s:"Der Übersetzer ___ den Text ins Englische. (übersetzen)",o:["übersetzt", "setzt über", "übersetzen"],why:"übersetzen (translate) is not separable: the stress is on -setz-.",lv:"B2"}],
+ th:`<div class="tc df"><h3>Endungen <small>A1</small></h3><div class="nt" style="--nc:4.6em repeat(4,minmax(0,1fr))"><div class="hd"><span></span><span>machen</span><span>arbeiten</span><span>sein</span><span>haben</span></div>
+<div><span class="g">ich</span><span>mache</span><span>arbeite</span><span>bin</span><span>habe</span></div>
+<div><span class="g">du</span><span>machst</span><span>arbeitest</span><span>bist</span><span>hast</span></div>
+<div><span class="g">er · sie · es</span><span>macht</span><span>arbeitet</span><span>ist</span><span>hat</span></div>
+<div><span class="g">wir</span><span>machen</span><span>arbeiten</span><span>sind</span><span>haben</span></div>
+<div><span class="g">ihr</span><span>macht</span><span>arbeitet</span><span>seid</span><span>habt</span></div>
+<div><span class="g">sie · Sie</span><span>machen</span><span>arbeiten</span><span>sind</span><span>haben</span></div></div>
+<p class="tline">Stem in -t or -d (arbeiten, finden) takes an extra e in du, er and ihr. Stem in -s, -ß, -z: du only adds -t (du heißt, du sitzt).</p></div>
+<div class="tc df"><h3>Vokalwechsel <small>A1–A2</small></h3><div class="rows">
+<div><span>e → i</span><span>geben, helfen, nehmen, sprechen, treffen, vergessen, essen: du gibst, er hilft</span></div>
+<div><span>e → ie</span><span>sehen, lesen, empfehlen, stehlen: du siehst, er liest</span></div>
+<div><span>a → ä</span><span>fahren, schlafen, tragen, waschen, fallen, halten, laden, anfangen: du fährst</span></div>
+<div><span>au → äu</span><span>laufen: du läufst · o → ö: stoßen: er stößt</span></div></div>
+<p class="tline">Only du and er/sie/es change. The Imperativ du-form follows: gib!, nimm!, lies! (but fahr!).</p></div>
+<div class="tc df"><h3>Trennbar oder nicht? <small>A2–B2</small></h3><div class="rows">
+<div><span>trennbar</span><span>stressed prefix: an-, auf-, aus-, ab-, bei-, ein-, mit-, nach-, vor-, weg-, zu-, zurück-, fern-, statt-</span></div>
+<div><span>untrennbar</span><span>unstressed prefix: be-, emp-, ent-, er-, ge-, miss-, ver-, zer-</span></div>
+<div><span>beides</span><span>durch-, über-, um-, unter-, wieder-: the stress decides. Er setzt ans andere Ufer über (ferry across) · Er übersetzt den Text (translate).</span></div></div></div>
+<div class="tc df"><h3>Wo steht die Vorsilbe? <small>A2–B1</small></h3><div class="rows">
+<div><span>Hauptsatz</span><span>at the end: Ich <b>rufe</b> dich morgen <b>an</b>.</span></div>
+<div><span>Nebensatz</span><span>together at the end: …, weil ich dich morgen <b>anrufe</b>.</span></div>
+<div><span>mit Modalverb</span><span>Infinitiv in one piece: Ich muss dich <b>anrufen</b>.</span></div>
+<div><span>zu + Infinitiv</span><span>zu in the middle: Ich vergesse nie, dich <b>anzurufen</b>.</span></div>
+<div><span>Perfekt</span><span>ge in the middle: Ich habe dich <b>angerufen</b>.</span></div></div></div>
+<div class="tc df"><h3>Wofür das Präsens? <small>A2–B1</small></h3><div class="rows">
+<div><span>jetzt</span><span>Ich zeichne gerade. (no -ing form in German)</span></div>
+<div><span>Zukunft</span><span>Morgen fahre ich nach Graz.</span></div>
+<div><span>seit</span><span>Ich wohne seit 2005 in Wien. = I have lived …</span></div>
+<div><span>immer</span><span>Wasser kocht bei 100 Grad.</span></div></div></div>`};
+
 GT.perf={name:"Zeitformen",badge:"Zeitform",tip:"Movement from A to B or a change of state → sein. Everything else → haben.",src:["dudenk","dg20","dw"],
  lg:'<span><b class="wt v lgk">habe</b> … <b class="wt v lgk">gemacht</b> Satzklammer</span>',
  cards:[
@@ -1561,6 +1749,7 @@ const TOPICS=[
  {t:"gen",n:"Genitiv",tag:"des · der",ds:"Formen, Präpositionen, Besitz · B1–C1"},
  {t:"adj",n:"Adjektivendungen",tag:"-e · -en · -er",ds:"der neue Plan · ein neuer Plan · neue Pläne · A2–C1"},
  {t:"konn",n:"Konnektoren",tag:"weil · denn · deshalb",ds:"Wohin geht das Verb? · A2–B2"},
+ {t:"praes",n:"Präsens & Trennbare Verben",tag:"ich rufe … an",ds:"Endungen, Vokalwechsel, trennbare Verben · A1–B2"},
  {t:"perf",n:"Zeitformen",tag:"Perfekt",ds:"haben oder sein, Partizip II, Präteritum · A2–C1"},
  {t:"vprep",n:"Verben mit Präpositionen",tag:"warten auf",ds:"feste Präposition, darauf, woran · A2–B2"},
  {t:"rel",n:"Relativsätze",tag:"der · dem · dessen",ds:"Genus vom Nomen, Fall vom Satz · B1–B2"},
@@ -1579,7 +1768,7 @@ const GROUPS=[
  {n:"Nomen & Fälle",t:["art","fall","gen"],soon:"Plural · n-Deklination"},
  {n:"Adjektiv",t:["adj"],soon:"Vergleichen"},
  {n:"Präpositionen",t:["prep","vprep"],soon:"Zeitangaben"},
- {n:"Verb",t:["perf","pass","k2","k1"],soon:"Präsens · Trennbare Verben · Modalverben · Reflexiv"},
+ {n:"Verb",t:["praes","perf","pass","k2","k1"],soon:"Modalverben · Reflexiv"},
  {n:"Stil · C1",t:["nvv","nom"],soon:"Partikeln"}];
 const tInfo=t=>TOPICS.find(x=>x.t===t);
 function tRange(t){const m=(tInfo(t).ds||"").match(/([ABC][12])(?:–([ABC][12]))?\s*$/);return m?[m[1],m[2]||m[1]]:["A1","C1"];}
@@ -1691,7 +1880,7 @@ function loadPics(root){const cache=store.pics2||(store.pics2={});root.querySele
     fetch("https://"+lg+".wikipedia.org/api/rest_v1/page/summary/"+t).then(r=>r.ok?r.json():null).then(j=>{const u=j&&(j.thumbnail&&j.thumbnail.source||j.originalimage&&j.originalimage.source);if(u){cache[key]=u;save();show(u);}else next(i+1);}).catch(()=>next(i+1));};
   next(0);});}
 function quotesHTML(){return QUOTES.map(x=>x.sec?'<h4 class="qsec">'+esc(x.sec)+'</h4>':'<a class="qt" href="'+x.u+'" target="_blank" rel="noopener"><span class="pic" aria-hidden="true"><i>'+x.pic+'</i>'+(x.w?'<img alt="" loading="lazy" data-w="'+x.w.join("|")+'">':'')+'</span><span class="qb"><b class="who">'+esc(x.who)+'</b><small>'+esc(x.when)+'</small><q>'+esc(x.q)+'</q><span class="qen">'+esc(x.en)+'</span>'+'</span></a>').join("")+'<p class="tline">Antippen öffnet die Quelle. Bilder: Wikipedia / Wikimedia Commons.</p>';}
-$("markb").onclick=()=>{$("markb").classList.toggle("on");store.flags=$("markb").classList.contains("on");save();};if(store.flags)$("markb").classList.add("on");
+$("markb").onclick=toTitle;$("markb").setAttribute("aria-label","Zur Titelseite");document.querySelector("#home h1.logo").addEventListener("click",toTitle);document.querySelector("#home h1.logo").style.cursor="pointer";if(store.flags)$("markb").classList.add("on");
 /* ---------- bottom bars and the drawer that rises (like dasein-design) ---------- */
 const HIST=`<div class="tc df"><h3>Kleine Geschichte</h3><div class="hist">
 <b>um 770</b><span><b>Abrogans</b>, das älteste Buch auf Deutsch: ein Wörterbuch Latein – Althochdeutsch.</span>
@@ -1740,14 +1929,40 @@ function backs(){const R=SC.getBoundingClientRect();let tb=R.top,bt=R.bottom;
   HBODY.classList.toggle("tstk",tb>R.top+1);HBODY.classList.toggle("bstk",bt<R.bottom-1);}
 /* the last page can always scroll up into place */
 function lastFit(){const H=SC.clientHeight,n=PAGES.length;
+  /* the title page fills the screen: all six bars wait together at the bottom */
+  $("p-title").style.minHeight=Math.max(300,H-ROWS*HB-15)+"px";
   /* every section is at least one screen: when it has arrived under its bar, the next bar still waits in its place at the bottom */
   PAGES.forEach((p,i)=>{const r=i>>1,next=i+1<n?((i+1)>>1):null;
     p.style.minHeight=Math.max(0,next===null?H-ROWS*HB+1:H-(ROWS-next)*HB-40-(r+1)*HB)+"px";});}
 /* N arrow at the foot: next page; at the end "nach oben"; pulsing rings at the very top */
-const curIdx=()=>{let i=0;PAGES.forEach((p,k)=>{if(p.offsetTop-SC.scrollTop<=parseFloat(p.style.scrollMarginTop)+4)i=k;});return i;};
-function arrowUpd(){const g=$("scrD");if(!g)return;const i=curIdx(),atTop=SC.scrollTop<4,atEnd=i===PAGES.length-1||SC.scrollTop+SC.clientHeight>=SC.scrollHeight-4;
+const ALLP=[$("p-title")].concat(PAGES);const allTop=i=>i===0?0:secTop(i-1);
+const curIdx=()=>{let i=0;ALLP.forEach((p,k)=>{if(k&&p.offsetTop-SC.scrollTop<=parseFloat(p.style.scrollMarginTop)+4)i=k;});return i;};
+function arrowUpd(){const g=$("scrD");if(!g)return;const i=curIdx(),atTop=SC.scrollTop<4,atEnd=i===ALLP.length-1||SC.scrollTop+SC.clientHeight>=SC.scrollHeight-4;
   g.classList.toggle("top",atEnd);g.setAttribute("aria-label",atEnd?"nach oben":"nächste Seite");g.classList.toggle("go",i===0&&atTop);}
-$("scrD").onclick=()=>{if($("scrD").classList.contains("top")){SC.scrollTo({top:0,behavior:reduceM?"auto":"smooth"});return;}const i=curIdx();if(PAGES[i+1])SC.scrollTo({top:secTop(i+1),behavior:reduceM?"auto":"smooth"});};
+$("scrD").onclick=()=>{if($("scrD").classList.contains("top")){SC.scrollTo({top:0,behavior:reduceM?"auto":"smooth"});return;}const i=curIdx();if(ALLP[i+1])SC.scrollTo({top:allTop(i+1),behavior:reduceM?"auto":"smooth"});};
+/* title page: pins open their section; dotted leaders run from each circle to its town; the map assembles itself on arrival */
+const TP=$("p-title"),TST=$("tstage"),TMAP=$("tmap"),PINEL=[...TST.querySelectorAll(".pin")];
+PINEL.forEach(b=>b.addEventListener("click",()=>tapGo(b,SECS.findIndex(x=>x[0]===b.dataset.k))));
+function layoutPins(){const R=TST.getBoundingClientRect();if(!R.height)return;const m=TMAP.getScreenCTM();if(!m)return;const pt=TMAP.createSVGPoint();
+  const dots=PINEL.map(b=>{pt.x=+b.dataset.x;pt.y=+b.dataset.y;const q=pt.matrixTransform(m);return {b,x:q.x-R.left,y:q.y-R.top,l:b.classList.contains("l")};});
+  ["l","r"].forEach(side=>{const col=dots.filter(d=>d.l===(side==="l")).sort((a,b)=>a.y-b.y);let last=-1e9;col.forEach(d=>{d.py=Math.max(d.y,last+50);last=d.py;});
+    const over=last-(R.height-40);if(over>0)col.forEach(d=>d.py-=over);});
+  let h="",g="";dots.forEach(d=>{d.b.style.top=d.py+"px";const c=d.b.querySelector("b").getBoundingClientRect(),cx=c.left+c.width/2-R.left,cy=d.py;
+    const sx=d.x>cx?c.right-R.left+4:c.left-R.left-4,dy=d.y>cy?1:-1,r=4.5;
+    h+=Math.abs(d.y-cy)<1?'<path d="M'+sx+' '+cy+'H'+(d.x+(d.x>cx?-r:r))+'"/>':'<path d="M'+sx+' '+cy+'H'+d.x+'V'+(d.y-dy*r)+'"/>';g+='<circle cx="'+d.x+'" cy="'+d.y+'" r="'+r+'"/>';});
+  $("tleads").innerHTML=h+g;}
+function enterMap(){const parts=[...TMAP.querySelectorAll(".co,.lt")];layoutPins();
+  if(reduceM||!TMAP.animate){TP.classList.remove("enter");return;}
+  TP.classList.add("enter");let max=0;
+  parts.forEach((el,i)=>{const a=Math.random()*Math.PI*2,dist=260+Math.random()*160,d=i*140,dur=1100+Math.random()*300;max=Math.max(max,d+dur);
+    el.animate([{transform:"translate("+Math.cos(a)*dist+"px,"+Math.sin(a)*dist+"px) rotate("+(Math.random()*240-120)+"deg) scale(.6)",opacity:0},{opacity:1,offset:.25},{transform:"none",opacity:1}],{duration:dur,delay:d,easing:"cubic-bezier(.2,.7,.2,1)",fill:"backwards"});});
+  TMAP.querySelectorAll(".nb").forEach(el=>el.animate([{opacity:0},{opacity:1}],{duration:700,fill:"backwards"}));
+  setTimeout(()=>{TP.classList.remove("enter");layoutPins();},max-200);}
+TMAP.addEventListener("click",enterMap);
+new ResizeObserver(layoutPins).observe(TST);
+/* the logo takes you back to the title page */
+function toTitle(){const go=()=>{SC.scrollTo({top:0,behavior:reduceM?"auto":"smooth"});setTimeout(enterMap,SC.scrollTop>40?500:0);};
+  if(!$("topic").hidden){if(GP.open)closePop();if(navState()==="topic"||navState()==="pop")history.go(navState()==="pop"?-2:-1);else goHome();setTimeout(go,120);}else go();}
 function stackUpd(){curBar();backs();arrowUpd();}
 function renderBars(){renderTest();lastFit();stackUpd();}
 SC.addEventListener("scroll",stackUpd,{passive:true});window.addEventListener("resize",()=>{lastFit();stackUpd();});
@@ -1894,4 +2109,5 @@ window.addEventListener("popstate",e=>{const st=e.state&&e.state.dg;
 document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-go]");if(!b||!tInfo(b.dataset.go))return;const t=b.dataset.go;
   if(GP.open&&navState()==="pop"){history.back();setTimeout(()=>openTopic(t),80);}else{closePop();openTopic(t);}});
 renderHome();
+requestAnimationFrame(()=>{lastFit();stackUpd();enterMap();});
 </script>
