@@ -1326,10 +1326,10 @@ function renderHome(){$("tiles").innerHTML=TOPICS.map((x,i)=>{const sc=x.soon?nu
 
 /* ---------- navigation ---------- */
 let T=null,mode="learn",idx=0,self=false,caseMode="wo",gi=0,MC=null;
-function openTopic(t){T=t;idx=0;gi=0;MC=null;$("home").hidden=true;$("topic").hidden=false;
+function openTopic(t){navPush("topic");T=t;idx=0;gi=0;MC=null;$("home").hidden=true;$("topic").hidden=false;
   $("ttl").textContent=TOPICS.find(x=>x.t===t).n;$("seg").hidden=t==="test"||t==="links";setMode(t==="test"?"game":t==="links"?"theo":"learn");}
 function goHome(){closePop();delete document.querySelector(".app").dataset.mode;$("topic").hidden=true;$("home").hidden=false;renderHome();}
-$("back").onclick=goHome;
+$("back").onclick=()=>{if(navState()==="topic")history.back();else goHome();};
 $("tmr").onclick=()=>{store.timer=!store.timer;save();renderHome();};
 $("ahp").onclick=()=>{store.arthelp=!store.arthelp;save();renderHome();};
 function setMode(m){closePop();mode=m;document.querySelector(".app").dataset.mode=m;$("mLearn").setAttribute("aria-pressed",m==="learn");$("mGame").setAttribute("aria-pressed",m==="game");$("mTheo").setAttribute("aria-pressed",m==="theo");
@@ -1367,12 +1367,12 @@ function theoGallery(){const tmp=document.createElement("div");tmp.innerHTML=TH[
     const title=h?h.childNodes[0].textContent.trim():"";
     return '<button class="gt" id="gt'+i+'" data-i="'+i+'"><div class="thumb">'+el.innerHTML.replace(/ id="[^"]*"/g,"")+'</div><span class="cap"><b>'+esc(title)+'</b><small>'+String(i+1).padStart(2,"0")+(sm?" · "+esc(sm.textContent):"")+'</small></span></button>';}).join("")+'</div>';
   $("theo").querySelectorAll(".gt").forEach(b=>b.onclick=()=>openPop(+b.dataset.i));arcsSoon($("theo"));}
-function openPop(i){const n=GP.items.length;GP.i=(i+n)%n;GP.open=true;const el=GP.items[GP.i],h=el.querySelector("h3");
+function openPop(i){if(!GP.open)navPush("pop");const n=GP.items.length;GP.i=(i+n)%n;GP.open=true;const el=GP.items[GP.i],h=el.querySelector("h3");
   $("pt").textContent=h?h.childNodes[0].textContent.trim():"";$("pc").textContent=(GP.i+1)+" / "+n;
   $("pb").innerHTML=el.innerHTML;$("pop").hidden=false;$("pb").scrollTop=0;arcsSoon($("pb"));if(T==="art")bindOwn();}
 function closePop(){GP.open=false;$("pop").hidden=true;}
 function refreshTheo(){const i=GP.i,o=GP.open;theoGallery();if(o)openPop(i);}
-$("px").onclick=closePop;$("pp").onclick=()=>openPop(GP.i-1);$("pn").onclick=()=>openPop(GP.i+1);
+$("px").onclick=()=>{if(navState()==="pop")history.back();else closePop();};$("pp").onclick=()=>openPop(GP.i-1);$("pn").onclick=()=>openPop(GP.i+1);
 document.addEventListener("keydown",e=>{if(!GP.open)return;if(e.key==="Escape")closePop();if(e.key==="ArrowRight")openPop(GP.i+1);if(e.key==="ArrowLeft")openPop(GP.i-1);});
 (()=>{let x0=null,y0=0;const pb=$("pb");pb.addEventListener("touchstart",e=>{x0=e.touches[0].clientX;y0=e.touches[0].clientY;},{passive:true});
   pb.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;x0=null;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5)openPop(GP.i+(dx<0?1:-1));},{passive:true});})();
@@ -1509,6 +1509,14 @@ function prLearn(){prLegend(true);const it=PR[idx];
   setBtns("btns2",[it.k==="room"?btn("bC",caseMode==="wo"?"Zeig: Wohin?":"Zeig: Wo?","",()=>{caseMode=caseMode==="wo"?"wohin":"wo";render()}):btn("bC","Alle Präpositionen","",()=>{idx=0;render()}),
     btn("bH","Anhören","",()=>speak(plain(it.k==="room"?it[caseMode]:it.ex)))]);}
 try{speechSynthesis.getVoices();}catch(e){}
+/* phone back button: pop-up → topic → start page, and never leave the app */
+function navState(){try{return history.state&&history.state.dg;}catch(e){return null;}}
+function navPush(v){try{history.pushState({dg:v},"");}catch(e){}}
+try{history.replaceState({dg:"base"},"");history.pushState({dg:"home"},"");}catch(e){}
+window.addEventListener("popstate",e=>{const st=e.state&&e.state.dg;
+  if(GP.open){closePop();if(st==="topic")return;}
+  if(!$("topic").hidden&&st!=="topic"){goHome();}
+  if(st==="base"||!st){navPush("home");}});
 renderHome();
 </script>
 
