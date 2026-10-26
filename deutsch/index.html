@@ -160,6 +160,37 @@ svg.room{width:100%;height:100%;max-height:100%;display:block}
 .rows div{display:grid;grid-template-columns:7.6em minmax(0,1fr);gap:8px;align-items:baseline;padding-bottom:6px;font-size:1.02rem;background:var(--df) left bottom/100% 1px no-repeat}
 .rows div span:first-child{font-weight:700}
 .tline{font-size:.9rem;color:var(--muted)}
+.ring{position:absolute;inset:-4px;width:54px;height:54px;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke:var(--ink);stroke-width:2.5}
+.tile .code{position:relative}
+.timer{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.95rem;color:var(--muted);padding:2px 0}
+.timer button{padding:5px 12px;font-size:.9rem}
+.timer button[aria-pressed="true"]{background:var(--lime);font-weight:700;box-shadow:inset 0 0 0 1px var(--ink);color:var(--fg)}
+.rule{display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center}
+.rh{font-size:1.5rem;font-weight:700;margin:0;text-wrap:balance}
+.rh .a{color:var(--akk)}.rh .d{color:var(--dat)}
+.pcs.big{justify-content:center}.pcs.big .pc{font-size:1.08rem;font-weight:400}.pcs.big .pc b{font-weight:700}
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+.trio div{padding:8px 10px 12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.trio small{font-size:.66rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.trio b{font-size:1.9rem;line-height:1.1}
+.trio .nom{background:var(--grey)}.trio .akk{box-shadow:inset 0 0 0 1.5px var(--akk);color:var(--akk)}.trio .dat{box-shadow:inset 0 0 0 1.5px var(--dat);color:var(--dat)}
+.noun{display:flex;flex-direction:column;align-items:center;gap:14px;position:relative;padding-top:10px}
+.nw{font-size:2.3rem;font-weight:700;text-align:center;line-height:1.15}
+.nw .art{color:var(--muted);font-weight:400}.nw .art.on{color:var(--fg);background:var(--lime);padding:0 8px;font-weight:700;box-shadow:inset 0 0 0 1px var(--ink)}
+.trb{background:transparent;color:var(--dat);font-size:.9rem;letter-spacing:.1em;text-transform:uppercase}
+.star{position:absolute;right:0;top:-6px;background:transparent;font-size:1.6rem;color:var(--muted);padding:2px 8px}.star.on{color:var(--fg)}
+.opts.three{grid-template-columns:1fr 1fr 1fr}
+.tbar{height:4px;background:var(--grey);margin-top:6px}.tbar i{display:block;height:100%;width:100%;background:var(--ink)}
+.pict.gen b{background:var(--cream);padding:2px 12px;font-size:2.1rem}
+.ptab{display:grid;grid-template-columns:repeat(3,1fr);gap:2px 8px;font-size:1.1rem}
+.ptab span{padding:3px 0;background:var(--df) left bottom/100% 1px no-repeat}
+.ptab .h{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.ptab .a{color:var(--akk)}.ptab .d{color:var(--dat)}
+.pc.d{color:var(--dat)}
+.own{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,1fr) auto;gap:4px}
+.own select,.own input{font:inherit;font-size:1rem;padding:8px;border:0;border-radius:0;background:var(--pale);min-width:0;color:var(--fg)}
+.del{background:transparent;padding:0 6px;color:var(--muted)}
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
 </style>
 
@@ -168,12 +199,8 @@ svg.room{width:100%;height:100%;max-height:100%;display:block}
   <section id="home" class="home">
     <div class="titlebar"><h1 class="logo">deutsch<b>-grammatik</b></h1></div>
     <p class="intro">Jedes Thema kannst du lernen oder als Spiel üben.</p>
-    <button class="tile ready df" id="t-satz" data-t="satz"><span class="code">01</span><span><span class="nm">Satzbau <small class="n">[Satz]</small></span><span class="ds" style="display:block">Verb an Position 2 und die Satzklammer · A1–B1 · 12 Sätze</span></span><span class="st ready">üben</span></button>
-    <button class="tile ready df" id="t-prep" data-t="prep"><span class="code">02</span><span><span class="nm">Wo oder wohin? <small class="n">[Präp]</small></span><span class="ds" style="display:block">Präpositionen mit Dativ und Akkusativ · A1–C1 · 27 Karten</span></span><span class="st ready">üben</span></button>
-    <div class="tile soon df"><span class="code">03</span><span><span class="nm">Die vier Fälle</span><span class="ds" style="display:block">Nominativ, Akkusativ, Dativ, Genitiv</span></span><span class="st soon">bald</span></div>
-    <div class="tile soon df"><span class="code">04</span><span><span class="nm">Adjektivendungen</span><span class="ds" style="display:block">der gute Plan · ein guter Plan · guter Plan</span></span><span class="st soon">bald</span></div>
-    <div class="tile soon df"><span class="code">05</span><span><span class="nm">Konjunktiv II</span><span class="ds" style="display:block">Wünsche, Bitten, Hypothesen · B1–C1</span></span><span class="st soon">bald</span></div>
-    <div class="tile soon df"><span class="code">06</span><span><span class="nm">Passiv</span><span class="ds" style="display:block">werden-Passiv, sein-Passiv, Ersatzformen · B2–C1</span></span><span class="st soon">bald</span></div>
+    <div class="timer"><span>Timer im Spiel</span><button id="tmr" aria-pressed="false">aus</button></div>
+    <div id="tiles" style="display:flex;flex-direction:column;gap:10px"></div>
   </section>
 
   <!-- TOPIC -->
@@ -182,7 +209,7 @@ svg.room{width:100%;height:100%;max-height:100%;display:block}
       <button class="back" id="back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 L12 3 L21 11"/><path d="M5 9.5 V21 H19 V9.5"/><path d="M10 21 V14 H14 V21"/></svg>Start</button>
       <h1 id="ttl"></h1><span class="spacer"></span>
     </div>
-    <div class="seg"><button id="mLearn" aria-pressed="true">Lernen<small class="n">[01]</small></button><button id="mGame" aria-pressed="false">Spiel<small class="n">[02]</small></button><button id="mTheo" aria-pressed="false">Theorie<small class="n">[03]</small></button></div>
+    <div class="seg" id="seg"><button id="mLearn" aria-pressed="true">Lernen<small class="n">[01]</small></button><button id="mGame" aria-pressed="false">Spiel<small class="n">[02]</small></button><button id="mTheo" aria-pressed="false">Theorie<small class="n">[03]</small></button></div>
     <div class="lg" id="lg"></div>
     <div class="stage" id="stage"></div>
     <div class="theo" id="theo" hidden></div>
@@ -424,18 +451,195 @@ const TH_SATZ=`
 <div><span>✗ Weil es regnet, wir bleiben</span><span>✓ Weil es regnet, <b>bleiben</b> wir. The clause is the Vorfeld.</span></div>
 <div><span>✗ Ich habe gemacht es</span><span>✓ Ich habe es <b>gemacht</b>. The participle closes the bracket.</span></div></div></div>`;
 
+/* ---------- data: Artikel ---------- */
+const ART=[
+ ["der","Plan","plan",""],["der","Entwurf","design, draft",""],["der","Grundriss","floor plan",""],["der","Architekt","architect","People ending in -ant/-ent/-ekt are mostly der."],["der","Bauherr","client",""],["der","Sattel","saddle",""],["der","Stall","stable",""],["der","Verbrauch","consumption",""],["der","Montag","Monday","Days are der."],["der","Lehrling","apprentice","-ling → der"],["der","Motor","engine","-or → der"],["der","Bohrer","drill","Tools with -er → der"],["der","Termin","appointment",""],["der","Schnitt","section",""],["der","Maßstab","scale",""],["der","Sommer","summer","Seasons are der."],
+ ["die","Zeichnung","drawing","-ung → die"],["die","Wohnung","flat","-ung → die"],["die","Planung","planning","-ung → die"],["die","Möglichkeit","possibility","-keit → die"],["die","Konstruktion","construction","-ion → die"],["die","Qualität","quality","-tät → die"],["die","Architektur","architecture","-ur → die"],["die","Statik","structural engineering","-ik → die"],["die","Fassade","façade","-e → mostly die"],["die","Treppe","stairs","-e → mostly die"],["die","Wand","wall",""],["die","Tür","door",""],["die","Haustür","front door","Compound: die Tür decides."],["die","Genehmigung","permit","-ung → die"],["die","Weide","pasture","-e → mostly die"],["die","Mähne","mane","-e → mostly die"],
+ ["das","Fenster","window","-er trap: das Fenster."],["das","Zimmer","room","-er trap: das Zimmer."],["das","Gebäude","building","Ge- → mostly das"],["das","Fundament","foundation","-ment → das"],["das","Dokument","document","-ment → das"],["das","Zentrum","centre","-um → das"],["das","Museum","museum","-um → das"],["das","Ergebnis","result","-nis → mostly das"],["das","Pferd","horse",""],["das","Zeichnen","drawing (the activity)","Verb as noun → das"],["das","Dach","roof",""],["das","Haus","house",""],["das","Stalltor","stable gate","Compound: das Tor decides."],["das","Mädchen","girl","-chen → always das"],["das","Modell","model",""],["das","Büro","office",""]
+];
+const chipA=w=>w.replace(/^(der|die|das) /,'<b>$1</b> ');
+const ruleSt=(h,list)=>'<div class="rule"><p class="rh">'+h+'</p><div class="pcs big">'+list.map(w=>'<span class="pc">'+chipA(w)+'</span>').join("")+'</div></div>';
+const ART_CARDS=[
+ {b:"die",st:ruleSt("-ung · -heit · -keit · -schaft",["die Zeichnung","die Freiheit","die Möglichkeit","die Mannschaft"]),tx:"Always die",gt:"Every noun with these endings is feminine."},
+ {b:"die",st:ruleSt("-ion · -tät · -ik · -ur · -ei",["die Konstruktion","die Qualität","die Statik","die Architektur","die Bäckerei"]),tx:"Almost always die",gt:"Exceptions are rare, for example das Abitur."},
+ {b:"die",st:ruleSt("-e",["die Lampe","die Fassade","die Treppe","die Weide"]),tx:"Mostly die, about 9 in 10",gt:"Exceptions: der Junge, der Name, das Auge, das Ende."},
+ {b:"das",st:ruleSt("-chen · -lein · -ment · -um",["das Häuschen","das Fräulein","das Fundament","das Zentrum"]),tx:"Almost always das",gt:"Small things with -chen and -lein are always das, even das Mädchen."},
+ {b:"das",st:ruleSt("Ge- · -nis · Verb als Nomen",["das Gebäude","das Gelände","das Ergebnis","das Zeichnen","das Reiten"]),tx:"Usually das",gt:"Exceptions: die Erlaubnis, der Geruch."},
+ {b:"der",st:ruleSt("-ling · -ismus · -ant · -ent · -or",["der Lehrling","der Rationalismus","der Praktikant","der Student","der Motor"]),tx:"Almost always der",gt:"Exceptions: das Labor, das Talent."},
+ {b:"der",st:ruleSt("Tage · Monate · Jahreszeiten · Wetter",["der Montag","der Jänner","der Sommer","der Regen","der Wind"]),tx:"der",gt:"Compass points too: der Norden, der Süden."},
+ {b:"-er",st:ruleSt("-er: eine Falle",["der Lehrer","der Bohrer","das Fenster","das Zimmer","die Mauer"]),tx:"People and tools with -er are der",gt:"Many other -er words are das or die. Learn them with the article."},
+ {b:"Kompos.",st:ruleSt("das Haus + die Tür = die Haustür",["der Stall + das Tor = das Stalltor","das Büro + der Stuhl = der Bürostuhl"]),tx:"The last part decides",gt:"A compound always takes the gender of its last word."},
+ {b:"Plural",st:ruleSt("die Pläne · die Wände · die Häuser",["der Plan → die Pläne","die Wand → die Wände","das Haus → die Häuser"]),tx:"Plural is always die",gt:"der, die or das in the singular: in the plural it is always die."}
+];
+/* ---------- data: Pronomen ---------- */
+const trio=(n,a,d)=>'<div class="trio"><div class="nom"><small>Nominativ</small><b>'+n+'</b></div><div class="akk"><small>Akkusativ</small><b>'+a+'</b></div><div class="dat"><small>Dativ</small><b>'+d+'</b></div></div>';
+const PRON=[["ich","mich","mir","Er sieht [mich].","Er hilft [mir]."],["du","dich","dir","Ich rufe [dich] an.","Ich danke [dir]."],["er","ihn","ihm","Ich kenne [ihn].","Ich gebe [ihm] den Plan."],["sie","sie","ihr","Ich frage [sie].","Das Buch gehört [ihr]."],["es","es","ihm","Das Pferd? Ich putze [es].","Ich gebe [ihm] Wasser."],["wir","uns","uns","Besuchst du [uns]?","Das gefällt [uns]."],["ihr","euch","euch","Ich hole [euch] ab.","Ich zeige [euch] das Haus."],["sie","sie","ihnen","Ich sehe [sie] morgen.","Ich schreibe [ihnen] eine Mail."],["Sie","Sie","Ihnen","Darf ich [Sie] etwas fragen?","Kann ich [Ihnen] helfen?"]];
+const PRON_CARDS=PRON.map(([n,a,d,ea,ed],i)=>({b:n+(i===7?" (Pl.)":i===3?" (Sg.)":""),st:trio(n,a,d),tx:mk(ea,"a"),gt:'<span style="color:var(--fg)">'+mk(ed,"d")+'</span>',say:plain(ea)+" "+plain(ed)})).concat([
+ {b:"2 Pron.",st:'<div class="rule"><p class="rh">Ich gebe <span class="a">es</span> <span class="d">ihm</span>.</p><div class="pcs big"><span class="pc">Ich gebe dem Kind den Ball.</span><span class="pc">Ich gebe ihn dem Kind.</span></div></div>',tx:"Two pronouns: Akkusativ first",gt:"Two nouns: Dativ first. As soon as the Akkusativ is a pronoun, it moves to the front."},
+ {b:"fest",st:ruleSt("Mir ist kalt.",["Es tut mir leid.","Wie geht es dir?","Das ist mir egal.","Mir ist schlecht."]),tx:"Dativ in fixed phrases",gt:"Learn these as whole phrases. There is no Akkusativ logic to follow."}]);
+const PRON_Q=[
+ {s:"Kannst du ___ helfen? (ich)",o:["mir","mich"],why:"helfen + Dativ.",p:"ich",cs:"dat"},
+ {s:"Ich besuche ___ morgen. (du)",o:["dich","dir"],why:"besuchen + Akkusativ.",p:"du",cs:"akk"},
+ {s:"Das Haus gehört ___. (er)",o:["ihm","ihn"],why:"gehören + Dativ.",p:"er",cs:"dat"},
+ {s:"Ich habe ___ gestern gesehen. (sie, Sg.)",o:["sie","ihr"],why:"sehen + Akkusativ.",p:"sie",cs:"akk"},
+ {s:"Der Entwurf gefällt ___. (wir)",o:["uns","wir"],why:"gefallen + Dativ: the person who likes it.",p:"wir",cs:"dat"},
+ {s:"Ich danke ___ für die Hilfe. (Sie)",o:["Ihnen","Sie"],why:"danken + Dativ.",p:"Sie",cs:"dat"},
+ {s:"Ich rufe ___ später an. (ihr)",o:["euch","ihr"],why:"anrufen + Akkusativ.",p:"ihr",cs:"akk"},
+ {s:"Ich gebe ___ das Buch. (er)",o:["ihm","ihn"],why:"The person receiving = Dativ.",p:"er",cs:"dat"},
+ {s:"Ich gebe ___ ihm. (das Buch)",o:["es","ihm"],why:"Two pronouns: Akkusativ first.",p:"es",cs:"akk"},
+ {s:"Wie geht es ___? (du)",o:["dir","dich"],why:"Fixed phrase: Wie geht es dir?",p:"du",cs:"dat"},
+ {s:"Ich wasche ___ die Hände. (ich)",o:["mir","mich"],why:"Reflexive with a body part as object → Dativ.",p:"ich",cs:"dat"},
+ {s:"Ich freue ___ auf das Wochenende. (ich)",o:["mich","mir"],why:"sich freuen: reflexive Akkusativ.",p:"ich",cs:"akk"},
+ {s:"Wir haben ___ lange nicht gesehen. (sie, Pl.)",o:["sie","ihnen"],why:"sehen + Akkusativ.",p:"sie",cs:"akk"},
+ {s:"Das tut ___ leid. (ich)",o:["mir","mich"],why:"Fixed phrase: Das tut mir leid.",p:"ich",cs:"dat"}
+];
+/* ---------- data: Genitiv ---------- */
+const GEN_CARDS=[
+ {b:"Artikel",st:ruleSt("des · der · des · der",["des Plans","der Wand","des Hauses","der Pläne"]),tx:"Masculine and neuter: des + -(e)s",gt:"Feminine and plural: der, and the noun stays as it is."},
+ {b:"-es",st:ruleSt("des Hauses · des Platzes",["des Tisches","des Kreuzes","des Fußes"]),tx:"-es after s, ß, x, z, sch",gt:"Otherwise -s is normal: des Plans, des Entwurfs."},
+ {b:"n-Dekl.",st:ruleSt("des Kollegen · des Architekten",["der Kunde → des Kunden","der Nachbar → des Nachbarn","der Name → des Namens"]),tx:"Weak nouns take -(e)n, no -s",gt:"der Kollege, der Architekt, der Kunde, der Nachbar. Special case: des Namens."},
+ {b:"Besitz",st:ruleSt("die Fassade des Gebäudes",["das Büro des Architekten","das Ende des Films","Annas Pferd"]),tx:"Genitiv shows whose it is",gt:"Names take -s with no apostrophe: Annas Pferd."},
+ {b:"Präp.",st:ruleSt("wegen · trotz · während · statt",["wegen des Regens","trotz der Kälte","während der Sitzung","innerhalb einer Woche"]),tx:"Prepositions with Genitiv",gt:"Also: aufgrund, außerhalb, innerhalb, anstatt."},
+ {b:"Sprache",st:ruleSt("von + Dativ",["das Auto von meinem Kollegen","wegen dem Regen (gesprochen)"]),tx:"In speech, Dativ often replaces it",gt:"Use the Genitiv in exams and in writing."},
+ {b:"C1",st:ruleSt("bedürfen · gedenken",["Das bedarf einer Erklärung.","Wir gedenken der Opfer."]),tx:"A few verbs take Genitiv",gt:"Formal register. Useful at C1."}
+];
+const GEN_Q=[
+ {s:"Wegen ___ Regens bleiben wir drinnen.",o:["des","dem","den"],why:"wegen + Genitiv: des Regens.",h:"der Regen",r:"des Regens"},
+ {s:"Das Büro ___ Architekten liegt im 7. Bezirk.",o:["des","dem","der"],why:"Genitiv of possession; Architekt is a weak noun: des Architekten.",h:"der Architekt",r:"des Architekten"},
+ {s:"Trotz ___ Kälte reiten wir aus.",o:["der","die","des"],why:"trotz + Genitiv; feminine → der.",h:"die Kälte",r:"der Kälte"},
+ {s:"Die Fassade des ___ ist neu.",o:["Gebäudes","Gebäude","Gebäuden"],why:"Neuter Genitiv adds -s.",h:"das Gebäude",r:"des Gebäudes"},
+ {s:"Während ___ Sitzung ist das Handy aus.",o:["der","die","dem"],why:"während + Genitiv; feminine → der.",h:"die Sitzung",r:"der Sitzung"},
+ {s:"Das Ende des ___ war spannend.",o:["Films","Film","Filme"],why:"Masculine Genitiv adds -s.",h:"der Film",r:"des Films"},
+ {s:"Statt ___ Plans brauchen wir eine Skizze.",o:["eines","einen","einem"],why:"statt + Genitiv: eines Plans.",h:"ein Plan",r:"eines Plans"},
+ {s:"Innerhalb ___ Woche bekommen Sie Antwort.",o:["einer","eine","einem"],why:"innerhalb + Genitiv; feminine → einer.",h:"eine Woche",r:"einer Woche"},
+ {s:"Der Name ___ Kollegen ist mir entfallen.",o:["des","dem","den"],why:"Genitiv; Kollege is a weak noun: des Kollegen.",h:"der Kollege",r:"des Kollegen"},
+ {s:"Aufgrund ___ Wetters fällt das Turnier aus.",o:["des","dem","das"],why:"aufgrund + Genitiv.",h:"das Wetter",r:"des Wetters"},
+ {s:"Die Höhe ___ Hauses beträgt zwölf Meter.",o:["des","dem","der"],why:"Neuter Genitiv: des Hauses (-es after s).",h:"das Haus",r:"des Hauses"},
+ {s:"Das bedarf ___ Erklärung.",o:["einer","eine","einem"],why:"bedürfen + Genitiv (C1).",h:"eine Erklärung",r:"einer Erklärung"}
+];
+/* ---------- Theorie: Artikel, Pronomen, Genitiv ---------- */
+const pcs=(cls,list)=>'<div class="pcs">'+list.map(w=>'<span class="pc'+(cls?" "+cls:"")+'">'+chipA(w)+'</span>').join("")+'</div>';
+const TH_ART=`
+<div class="tc df"><h3>Der wichtigste Tipp</h3><p>Always learn a noun with its article, and say it aloud as one word: <b>die Wand</b>, never just “Wand”.</p><p class="memo">Plural is always <b>die</b>. The article you need to learn is the singular one.</p></div>
+<div class="tc df"><h3>Endungen → die</h3>`+pcs("",["-ung","-heit","-keit","-schaft","-ion","-tät","-ik","-ur","-ei","-enz","-anz"])+`<p class="tline">Almost no exceptions. -e is mostly die too (about 9 in 10): die Lampe, die Fassade.</p></div>
+<div class="tc df"><h3>Endungen → das</h3>`+pcs("",["-chen","-lein","-ment","-um","Ge-","-nis","Verb als Nomen"])+`<p class="tline">das Häuschen, das Fundament, das Zentrum, das Gebäude, das Ergebnis, das Reiten. Exceptions: die Erlaubnis, der Geruch.</p></div>
+<div class="tc df"><h3>Endungen → der</h3>`+pcs("",["-ling","-ismus","-ant","-ent","-or","Tage","Monate","Jahreszeiten","Wetter"])+`<p class="tline">der Lehrling, der Praktikant, der Motor, der Montag, der Sommer, der Regen.</p></div>
+<div class="tc df"><h3>Fallen</h3><div class="rows">
+<div><span>-er</span><span>People and tools are der (der Lehrer, der Bohrer), but <b>das</b> Fenster, <b>das</b> Zimmer, <b>die</b> Mauer.</span></div>
+<div><span>-e</span><span>der Junge, der Name, das Auge, das Ende.</span></div>
+<div><span>Mädchen</span><span>das Mädchen: -chen beats the meaning.</span></div></div></div>
+<div class="tc df"><h3>Komposita</h3><p class="memo">The last part decides: das Haus + die Tür = <b>die</b> Haustür.</p><p class="tline">der Stall + das Tor = das Stalltor · das Büro + der Stuhl = der Bürostuhl</p></div>`;
+const TH_PRON=`
+<div class="tc df"><h3>Alle Formen</h3><div class="ptab"><span class="h">Nom.</span><span class="h a">Akk.</span><span class="h d">Dat.</span>`+PRON.map(([n,a,d])=>'<span>'+n+'</span><span class="a">'+a+'</span><span class="d">'+d+'</span>').join("")+`</div><p class="tline">Only <b>uns</b> and <b>euch</b> are the same in both cases. <b>sie</b> (she) has Dativ <b>ihr</b>; <b>sie</b> (they) has <b>ihnen</b>.</p></div>
+<div class="tc df"><h3>Verben mit Dativ</h3>`+pcs("d",["helfen","danken","gefallen","gehören","antworten","folgen","gratulieren","passen","schmecken","fehlen","glauben","vertrauen","zuhören","begegnen","raten","verzeihen","zustimmen","widersprechen"])+`<p class="tline">Der Entwurf gefällt <b>mir</b> = I like the design. The English subject becomes the German Dativ.</p></div>
+<div class="tc df"><h3>Zwei Objekte</h3><div class="rows">
+<div><span>2 Nomen</span><span>Dativ first: Ich gebe <mark class="d">dem Kind</mark> <mark class="a">den Ball</mark>.</span></div>
+<div><span>1 Pronomen</span><span>Pronoun first: Ich gebe <mark class="a">ihn</mark> <mark class="d">dem Kind</mark>.</span></div>
+<div><span>2 Pronomen</span><span>Akkusativ first: Ich gebe <mark class="a">es</mark> <mark class="d">ihm</mark>.</span></div></div></div>
+<div class="tc df"><h3>Reflexiv: mich oder mir?</h3><div class="rows">
+<div><span>mich</span><span>No other object: Ich freue <mark class="a">mich</mark>. Ich wasche <mark class="a">mich</mark>.</span></div>
+<div><span>mir</span><span>There is another object: Ich wasche <mark class="d">mir</mark> die Hände. Ich merke <mark class="d">mir</mark> das.</span></div></div></div>
+<div class="tc df"><h3>Feste Ausdrücke mit Dativ</h3>`+pcs("",["Mir ist kalt.","Es tut mir leid.","Wie geht es dir?","Das ist mir egal.","Mir fällt ein …"])+`</div>`;
+const TH_GEN=`
+<div class="tc df"><h3>Die Formen</h3>`+pcs("g",["des Plans","der Wand","des Hauses","der Pläne","eines Plans","einer Wand"])+`<p class="memo">Masculine and neuter: <b>des</b> + noun <b>-(e)s</b>. Feminine and plural: <b>der</b>, noun unchanged.</p></div>
+<div class="tc df"><h3>-s oder -es?</h3><div class="rows"><div><span>-es</span><span>after s, ß, x, z, sch: des Hauses, des Platzes, des Tisches</span></div><div><span>-s</span><span>otherwise: des Plans, des Entwurfs, des Gebäudes</span></div><div><span>-(e)n</span><span>weak nouns: des Kollegen, des Architekten, des Kunden, des Nachbarn · special: des Namens</span></div></div></div>
+<div class="tc df"><h3>Präpositionen mit Genitiv</h3>`+pcs("g",["wegen","trotz","während","statt","anstatt","aufgrund","innerhalb","außerhalb"])+`</div>
+<div class="tc df"><h3>Besitz</h3><p class="ex">das Büro <b>des Architekten</b> · die Fassade <b>des Gebäudes</b></p><p class="tline">Names: Annas Pferd, Steuarts Büro, with no apostrophe.</p></div>
+<div class="tc df"><h3>Gesprochen oder geschrieben</h3><p>In everyday Austrian and German speech the Genitiv is often replaced: <b>von</b> + Dativ (das Auto von meinem Kollegen), <b>wegen dem</b> Regen.</p><p class="memo">For the exam, letters and lectures: use the Genitiv.</p></div>
+<div class="tc df"><h3>Verben mit Genitiv <small>C1</small></h3>`+pcs("g",["bedürfen","gedenken","sich bedienen","sich vergewissern","sich enthalten"])+`<p class="tline">Das bedarf einer Erklärung. Wir gedenken der Opfer.</p></div>`;
+
+/* ---------- topics + home ---------- */
+const TOPICS=[
+ {t:"satz",n:"Satzbau",tag:"Satz",ds:"Verb an Position 2 und die Satzklammer · A1–B1"},
+ {t:"art",n:"Artikel",tag:"der · die · das",ds:"Regeln nach Endung und ein schnelles Spiel · A1–B2"},
+ {t:"pron",n:"Pronomen",tag:"mir · mich",ds:"Personalpronomen im Akkusativ und Dativ · A1–B1"},
+ {t:"prep",n:"Wo oder wohin?",tag:"Präp",ds:"Präpositionen mit Dativ und Akkusativ · A1–C1"},
+ {t:"gen",n:"Genitiv",tag:"des · der",ds:"Formen, Präpositionen, Besitz · B1–C1"},
+ {t:"adj",n:"Adjektivendungen",soon:1,ds:"der gute Plan · ein guter Plan · guter Plan"},
+ {t:"k2",n:"Konjunktiv II",soon:1,ds:"Wünsche, Bitten, Hypothesen · B1–C1"},
+ {t:"pass",n:"Passiv",soon:1,ds:"werden-Passiv, sein-Passiv, Ersatzformen · B2–C1"},
+ {t:"test",n:"Test",tag:"gemischt",ds:"15 Fragen aus allen Themen, wie in der Prüfung"}
+];
+const TNAME={prep:"Präpositionen",art:"Artikel",pron:"Pronomen",gen:"Genitiv"};
+function score(t){if(t==="satz"){const n=SB.filter(x=>store["sb"+x.id]==="ok").length;return n?n/SB.length:null;}const b=(store.best||{})[t];return b==null?null:b;}
+function renderHome(){$("tiles").innerHTML=TOPICS.map((x,i)=>{const sc=x.soon?null:score(x.t),num=String(i+1).padStart(2,"0");
+  const ring=sc==null?"":'<svg class="ring" viewBox="0 0 54 54" aria-hidden="true"><circle class="fg" cx="27" cy="27" r="25" pathLength="100" stroke-dasharray="'+Math.round(sc*100)+' 100"/></svg>';
+  const st=x.soon?'<span class="st soon">bald</span>':'<span class="st ready">'+(sc==null?"üben":Math.round(sc*100)+" %")+'</span>';
+  return (x.soon?'<div class="tile soon df">':'<button class="tile ready df" id="t-'+x.t+'" data-t="'+x.t+'">')+'<span class="code">'+ring+num+'</span><span><span class="nm">'+x.n+(x.tag?' <small class="n">['+x.tag+']</small>':'')+'</span><span class="ds" style="display:block">'+x.ds+'</span></span>'+st+(x.soon?'</div>':'</button>');}).join("");
+  document.querySelectorAll(".tile.ready").forEach(b=>b.onclick=()=>openTopic(b.dataset.t));
+  const tb=$("tmr");tb.setAttribute("aria-pressed",!!store.timer);tb.textContent=store.timer?"an · 15 s":"aus";}
+
 /* ---------- navigation ---------- */
-let T=null,mode="learn",idx=0,self=false,caseMode="wo",gi=0,gscore=0,gdone=false;
-function openTopic(t){T=t;mode="learn";idx=0;gi=0;gscore=0;$("home").hidden=true;$("topic").hidden=false;
-  $("ttl").textContent=t==="satz"?"Satzbau":"Wo oder wohin?";setMode("learn");}
-function goHome(){$("topic").hidden=true;$("home").hidden=false;}
-document.querySelectorAll(".tile.ready").forEach(b=>b.onclick=()=>openTopic(b.dataset.t));
+let T=null,mode="learn",idx=0,self=false,caseMode="wo",gi=0,MC=null;
+function openTopic(t){T=t;idx=0;gi=0;MC=null;$("home").hidden=true;$("topic").hidden=false;
+  $("ttl").textContent=TOPICS.find(x=>x.t===t).n;$("seg").hidden=t==="test";setMode(t==="test"?"game":"learn");}
+function goHome(){$("topic").hidden=true;$("home").hidden=false;renderHome();}
 $("back").onclick=goHome;
+$("tmr").onclick=()=>{store.timer=!store.timer;save();renderHome();};
 function setMode(m){mode=m;$("mLearn").setAttribute("aria-pressed",m==="learn");$("mGame").setAttribute("aria-pressed",m==="game");$("mTheo").setAttribute("aria-pressed",m==="theo");
   const th=m==="theo";$("theo").hidden=!th;$("lg").hidden=th;$("stage").hidden=th;$("panel").hidden=th;
-  if(m==="game"){gi=0;gscore=0;}render();}
+  if(m==="game"){gi=0;MC=null;}render();}
 $("mLearn").onclick=()=>setMode("learn");$("mTheo").onclick=()=>setMode("theo");$("mGame").onclick=()=>setMode("game");
-function render(){if(mode==="theo"){$("theo").innerHTML=T==="satz"?TH_SATZ:TH_PREP;$("theo").scrollTop=0;return;}(T==="satz"?(mode==="learn"?sbLearn:sbGame):(mode==="learn"?prLearn:prGame))();}
+const TH={satz:()=>TH_SATZ,prep:()=>TH_PREP,art:()=>TH_ART+ownHTML(),pron:()=>TH_PRON,gen:()=>TH_GEN};
+const LG={art:'<span><b>der</b> · <b>die</b> · <b>das</b></span>',pron:'<span><i class="sw" style="background:var(--grey)"></i>Nominativ</span><span style="color:var(--akk)"><i class="sw" style="box-shadow:inset 0 0 0 2px var(--akk)"></i>Akkusativ</span><span style="color:var(--dat)"><i class="sw" style="box-shadow:inset 0 0 0 2px var(--dat)"></i>Dativ</span>',gen:'<span><i class="sw" style="background:var(--cream);box-shadow:inset 0 0 0 1px var(--line)"></i>Genitiv: des · der</span>'};
+function render(){clearTimeout(MC&&MC.tm);
+  if(mode==="theo"){$("theo").innerHTML=TH[T]();$("theo").scrollTop=0;if(T==="art")bindOwn();return;}
+  if(mode==="game"&&T!=="satz"){mcRender();return;}
+  ({satz:mode==="learn"?sbLearn:sbGame,prep:prLearn,art:()=>cardsLearn(ART_CARDS,LG.art),pron:()=>cardsLearn(PRON_CARDS,LG.pron),gen:()=>cardsLearn(GEN_CARDS,LG.gen)})[T]();}
+function cardsLearn(cards,lg){$("lg").innerHTML=lg;const c=cards[idx%cards.length];
+  $("stage").innerHTML=c.st;$("stage").onclick=null;$("bd").textContent=c.b;$("ct").textContent=(idx%cards.length+1)+" / "+cards.length;
+  $("cardbody").innerHTML='<p id="tx">'+c.tx+'</p><p id="gt">'+c.gt+'</p>';
+  setBtns("btns1",[btn("bZ","← Zurück","",()=>{idx=(idx-1+cards.length)%cards.length;render()}),btn("bW","Weiter →","primary",()=>{idx=(idx+1)%cards.length;render()})]);
+  setBtns("btns2",[btn("bH","Anhören","",()=>speak(c.say||(c.st+" "+c.tx).replace(/<[^>]+>/g," "))),btn("bG","Zum Spiel","",()=>setMode("game"))]);}
+
+/* ---------- own words + stars (Artikel) ---------- */
+function ownList(){return store.own||[];}
+function ownHTML(){return '<div class="tc df"><h3>Eigene Wörter <small>'+ownList().length+'</small></h3><p class="tline">Add nouns you meet at work or in the stable. They join the Spiel.</p><div class="own"><select id="owa" aria-label="Artikel"><option>der</option><option>die</option><option>das</option></select><input id="own" lang="de" placeholder="Nomen" aria-label="Nomen"><input id="owe" placeholder="English" aria-label="English"><button id="owb" class="primary" aria-label="Hinzufügen">+</button></div><div class="rows">'+ownList().map((w,i)=>'<div><span>'+esc(w[0])+' '+esc(w[1])+'</span><span>'+esc(w[2]||"")+' <button class="del" data-i="'+i+'" aria-label="Löschen">×</button></span></div>').join("")+'</div></div>';}
+function bindOwn(){const b=$("owb");if(!b)return;b.onclick=()=>{let n=$("own").value.trim();if(!n){$("own").focus();return;}n=n.charAt(0).toUpperCase()+n.slice(1);
+  store.own=ownList().concat([[$("owa").value,n,$("owe").value.trim(),""]]);save();render();$("theo").scrollTop=$("theo").scrollHeight;};
+  document.querySelectorAll(".del").forEach(d=>d.onclick=()=>{store.own=ownList().filter((_,i)=>i!==+d.dataset.i);save();render();$("theo").scrollTop=$("theo").scrollHeight;});}
+const starred=n=>(store.stars||[]).includes(n);
+function toggleStar(n){const s=store.stars||[];store.stars=s.includes(n)?s.filter(x=>x!==n):s.concat([n]);save();const b=$("star");if(b){b.classList.toggle("on",starred(n));b.textContent=starred(n)?"★":"☆";}}
+
+/* ---------- multiple-choice engine (all Spiel modes except Satzbau) ---------- */
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function artQ(w){return {t:"art",s:"___ "+w[1],o:["der","die","das"],c:["der","die","das"].indexOf(w[0]),why:w[3]||"No rule here: learn it with the noun.",noun:w[1],en:w[2]};}
+function bank(t){
+  if(t==="prep")return PQ.map(q=>Object.assign({t:"prep"},q));
+  if(t==="art"){const pool=ART.concat(ownList());const st=pool.filter(w=>starred(w[1]));return shuffle(st).concat(shuffle(pool.filter(w=>!starred(w[1])))).slice(0,15).map(artQ);}
+  if(t==="pron")return shuffle(PRON_Q).map(q=>Object.assign({t:"pron",c:0},q));
+  if(t==="gen")return shuffle(GEN_Q).map(q=>Object.assign({t:"gen",c:0},q));
+  const pick=(a,n)=>shuffle(a).slice(0,n);return shuffle([].concat(pick(bank("prep"),4),pick(bank("art"),4),pick(bank("pron"),4),pick(bank("gen"),3)));}
+function mix(q){if(q.t==="art")return q;const ord=shuffle(q.o.map((w,i)=>i));return Object.assign({},q,{o:ord.map(i=>q.o[i]),c:ord.indexOf(q.c)});}
+const STAGE={
+ prep:(q,rev)=>{if(q.p){if(!rev)roomStage(q.p,q.m,false);else{const svg=$("stage").querySelector("svg");if(svg)svg.classList.remove("nomk");}}else if(q.v)verbStage(q,rev);else pictStage(PR.find(x=>x.p===q.f),rev);},
+ art:(q,rev)=>{$("stage").innerHTML='<div class="noun"><button class="star'+(starred(q.noun)?" on":"")+'" id="star" aria-label="Merken">'+(starred(q.noun)?"★":"☆")+'</button><div class="nw"><span class="art'+(rev?" on":"")+'">'+(rev?q.o[q.c]:"___")+'</span> '+esc(q.noun)+'</div><button class="trb" id="trb">'+(rev?esc(q.en):"Übersetzung")+'</button></div>';
+   $("trb").onclick=()=>{$("trb").textContent=q.en;};$("star").onclick=()=>toggleStar(q.noun);},
+ pron:(q,rev)=>{$("stage").innerHTML='<div class="pict '+(rev?q.cs:"hide")+'"><b>'+esc(q.p)+(rev?" → "+esc(q.o[q.c]):"")+'</b><span class="case">'+(rev?(q.cs==="akk"?"Akkusativ":"Dativ"):"Akkusativ oder Dativ?")+'</span></div>';},
+ gen:(q,rev)=>{$("stage").innerHTML='<div class="pict gen"><b>'+esc(rev?q.r:q.h)+'</b><span class="case">'+(rev?"Genitiv":"→ Genitiv?")+'</span></div>';}
+};
+const BADGE={prep:q=>q.p==="fenster"?"an":(q.p||q.f||q.v.split(" ").pop()),art:q=>"Artikel",pron:q=>"Pronomen",gen:q=>"Genitiv"};
+const TIP={prep:"Das Verb verrät den Fall: liegen, stehen, hängen → Dativ. legen, stellen, hängen → Akkusativ.",art:"Mark hard words with ☆. They come first in the next round.",pron:"helfen, danken, gefallen, gehören take Dativ: mir, dir, ihm.",gen:"des + -(e)s for masculine and neuter, der for feminine and plural.",test:"Each topic has its own Lernen and Theorie to go back to."};
+function mcStart(t){MC={t,list:bank(t).map(mix),i:0,score:0,done:false,per:{}};}
+function mcCount(){$("ct").textContent=(MC.i+1)+" / "+MC.list.length+" · "+MC.score+" richtig";}
+function mcRender(){if(!MC||MC.t!==T)mcStart(T);clearTimeout(MC.tm);const q=MC.list[MC.i];MC.done=false;
+  if(q.t==="prep")prLegend(false);else $("lg").innerHTML=LG[q.t]||"";
+  STAGE[q.t](q,false);$("bd").textContent=BADGE[q.t](q);mcCount();
+  $("cardbody").innerHTML='<p id="tx">'+esc(q.s).replace("___",'<span class="gap" id="gap">&nbsp;</span>')+'</p><div class="opts'+(q.o.length===3?" three":"")+'">'+q.o.map((w,i)=>'<button class="opt" id="o'+i+'" data-i="'+i+'">'+esc(w)+'</button>').join("")+'</div>'+(store.timer?'<div class="tbar"><i id="tbi"></i></div>':'')+'<p id="gt"></p>';
+  document.querySelectorAll(".opt").forEach(b=>b.onclick=()=>mcAnswer(+b.dataset.i));
+  setBtns("btns1",[btn("bW","Weiter →","",mcNext),btn("bR","Neu starten","",()=>{MC=null;render()})]);setBtns("btns2",[]);
+  if(store.timer){const el=$("tbi");el.style.width="100%";setTimeout(()=>{el.style.transition="width 15s linear";el.style.width="0%";},30);MC.tm=setTimeout(()=>mcAnswer(-1),15000);}}
+function mcAnswer(i){if(!MC||MC.done)return;MC.done=true;clearTimeout(MC.tm);const q=MC.list[MC.i];const tb=$("tbi");if(tb){tb.style.transition="none";tb.style.width=getComputedStyle(tb).width;}
+  document.querySelectorAll(".opt").forEach((b,k)=>{if(k===q.c)b.classList.add("ok");else if(k===i)b.classList.add("bad");});
+  $("gap").textContent=q.o[q.c];const ok=i===q.c;if(ok)MC.score++;const p=MC.per[q.t]||(MC.per[q.t]=[0,0]);p[1]++;if(ok)p[0]++;
+  $("gt").textContent=(i<0?"Zeit ist um. ":ok?"Richtig. ":"Nicht ganz. ")+q.why;mcCount();
+  STAGE[q.t](q,true);$("bW").className="primary";if(MC.i===MC.list.length-1)$("bW").textContent="Ergebnis →";}
+function mcNext(){if(!MC.done){mcAnswer(-1);return;}if(MC.i<MC.list.length-1){MC.i++;mcRender();return;}
+  const n=MC.list.length,s=MC.score,b=store.best||(store.best={});if(b[MC.t]==null||s/n>b[MC.t])b[MC.t]=s/n;save();
+  const per=Object.entries(MC.per).map(([t,[a,m]])=>'<div><span>'+TNAME[t]+'</span><span>'+a+' / '+m+'</span></div>').join("");
+  $("lg").innerHTML="";$("stage").innerHTML='<p class="en big">'+s+' von '+n+' richtig</p><p class="en">'+(s/n>=.85?"Sehr gut!":s/n>=.6?"Gut. Noch eine Runde?":"Schau dir Lernen und Theorie noch einmal an.")+'</p>'+(MC.t==="test"?'<div class="rows" style="max-width:320px;margin:0 auto;width:100%">'+per+'</div>':'');
+  $("bd").textContent="Ergebnis";$("cardbody").innerHTML='<p id="tx">Runde fertig</p><p id="gt">'+esc(TIP[MC.t]||"")+'</p>';
+  setBtns("btns1",[btn("bR","Noch eine Runde","primary",()=>{MC=null;render()}),btn("bL",MC.t==="test"?"Start":"Zu Lernen","",()=>MC.t==="test"?goHome():setMode("learn"))]);}
 
 /* ---------- Satzbau ---------- */
 function sbTokens(it){const t=[];it.clauses.forEach(c=>c.seg.forEach(([ty,tx])=>{if(!tx)return;tx.split(" ").forEach(w=>t.push({w,n:norm1(w),type:ty,clause:c}))}));return t;}
@@ -513,25 +717,8 @@ function prLearn(){prLegend(true);const it=PR[idx];
   setBtns("btns1",[btn("bZ","← Zurück","",()=>{idx=(idx-1+PR.length)%PR.length;render()}),btn("bW","Weiter →","primary",()=>{idx=(idx+1)%PR.length;render()})]);
   setBtns("btns2",[it.k==="room"?btn("bC",caseMode==="wo"?"Zeig: Wohin?":"Zeig: Wo?","",()=>{caseMode=caseMode==="wo"?"wohin":"wo";render()}):btn("bC","Alle Präpositionen","",()=>{idx=0;render()}),
     btn("bH","Anhören","",()=>speak(plain(it.k==="room"?it[caseMode]:it.ex)))]);}
-function prGame(){prLegend(false);const q=PQ[gi];gdone=false;
-  if(q.p)roomStage(q.p,q.m,false);else if(q.v)verbStage(q,false);else pictStage(PR.find(x=>x.p===q.f),false);
-  $("bd").textContent=q.p||q.f||q.v.split(" ").pop();$("ct").textContent=(gi+1)+" / "+PQ.length+" · "+gscore+" richtig";
-  $("cardbody").innerHTML='<p id="tx">'+esc(q.s).replace("___",'<span class="gap" id="gap">&nbsp;</span>')+'</p><div class="opts">'+q.o.map((w,i)=>'<button class="opt" id="o'+i+'" data-i="'+i+'">'+w+'</button>').join("")+'</div><p id="gt"></p>';
-  document.querySelectorAll(".opt").forEach(b=>b.onclick=()=>prAnswer(+b.dataset.i));
-  setBtns("btns1",[btn("bW","Weiter →","",prNext),btn("bR","Neu starten","",()=>{gi=0;gscore=0;render()})]);setBtns("btns2",[]);}
-function prAnswer(i){if(gdone)return;gdone=true;const q=PQ[gi];
-  document.querySelectorAll(".opt").forEach((b,k)=>{if(k===q.c)b.classList.add("ok");else if(k===i)b.classList.add("bad");});
-  $("gap").textContent=q.o[q.c];if(i===q.c)gscore++;
-  $("gt").textContent=(i===q.c?"Richtig. ":"Nicht ganz. ")+q.why;
-  $("ct").textContent=(gi+1)+" / "+PQ.length+" · "+gscore+" richtig";
-  if(q.p){const svg=$("stage").querySelector("svg");svg.classList.remove("nomk");}else if(q.v)verbStage(q,true);else pictStage(PR.find(x=>x.p===q.f),true);
-  $("bW").className="primary";if(gi===PQ.length-1)$("bW").textContent="Ergebnis →";}
-function prNext(){if(gi===PQ.length-1){$("stage").innerHTML='<p class="en big">'+gscore+' von '+PQ.length+' richtig</p><p class="en">'+(gscore>=14?"Sehr gut!":gscore>=10?"Gut. Noch eine Runde?":"Schau dir die Karten in Lernen noch einmal an.")+'</p>';
-    $("cardbody").innerHTML='<p id="tx">Runde fertig</p><p id="gt">Tipp: Das Verb verrät den Fall. liegen, stehen, hängen → Dativ. legen, stellen, hängen → Akkusativ.</p>';
-    setBtns("btns1",[btn("bR","Noch eine Runde","primary",()=>{gi=0;gscore=0;render()}),btn("bL","Zu Lernen","",()=>setMode("learn"))]);return;}
-  gi++;render();}
-
 try{speechSynthesis.getVoices();}catch(e){}
+renderHome();
 </script>
 
 </body></html>
