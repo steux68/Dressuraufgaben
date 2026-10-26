@@ -1,5 +1,5 @@
 <!doctype html><html lang="de"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Deutsch"></head><body>
-<meta name="app-version" content="2026-10-26b">
+<meta name="app-version" content="2026-10-26c">
 <title>Deutsch Grammatik</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#ffffff">
@@ -321,11 +321,18 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .db:nth-child(3n){border-right:0}.db:nth-child(n+4){background:var(--df) left top/100% 1px no-repeat,#fff}
 .db b{font-weight:700}.db small{font-size:.66rem;color:#555}
 .db.on{background-color:var(--limepale)}.db:nth-child(n+4).on{background:var(--df) left top/100% 1px no-repeat,var(--limepale)}.db.on small{color:var(--fg)}.db:active{background-color:var(--lime)}
-.scr{flex:none;height:30px;display:flex;align-items:center;justify-content:center;gap:9px;margin:0 -10px;padding:0;background:transparent;color:#a8a8a8;font-size:1rem;letter-spacing:.06em}
-.scr.up{background:var(--dash) left bottom/100% 1px no-repeat}
-.scr svg{width:26px;height:26px;overflow:visible}.scr circle{fill:#fff;stroke:#c8c8c8;stroke-width:1.2}.scr .nd{fill:#e2e2e2;stroke:#bdbdbd;stroke-width:1;stroke-linejoin:round}.scr text{font-size:5px;text-anchor:middle;fill:#a8a8a8;font-weight:700}
-.scr.on{color:var(--ink)}.scr.on circle{stroke:var(--ink);stroke-width:1.6}.scr.on .nd{fill:var(--yellow);stroke:var(--ink)}.scr.on text{fill:var(--ink)}
-.scr:active{background-color:transparent}.scr:active svg{transform:scale(.92)}
+/* bottom arrow bar copied from the dasein-design phone site: dashed lines above and below, the round compass arrow in the middle, its word hanging off to the right; faded when there is nothing to scroll, "nach oben" at the end, thin pulsing rings at the top of the start page */
+.sbar{flex:none;height:26px;margin:-4px -10px 0;display:flex;align-items:center;justify-content:center;border-top:1px dashed var(--line);border-bottom:1px dashed var(--line);background:#fff}
+.sbar button{position:relative;border:0;background:none;height:24px;padding:0 24px;display:flex;align-items:center;-webkit-tap-highlight-color:transparent;transition:opacity .2s}
+.sbar button:active{background:none}.sbar button:disabled{opacity:.2}
+.sbar i{font-style:normal;position:absolute;left:calc(50% + 17px);top:50%;transform:translateY(-50%);white-space:nowrap;font-size:11px;letter-spacing:.06em;color:#666}
+.sbar .tp{display:none;font-size:12px;color:#3a3c37}.sbar .top .tp{display:block}.sbar .top .sc{display:none}
+.ar{overflow:visible}.ar .rg{fill:none;stroke:#3a3c37;stroke-width:1px}.ar .dt{fill:#4d4f4a;stroke:#1a1a1a;stroke-width:1px;stroke-linejoin:round}
+.ar text{fill:#3a3c37;font:700 6.4px Calibri,Carlito,sans-serif;text-anchor:middle;dominant-baseline:central}.ar .tr{display:none}
+.sbar .go .tr{display:block;fill:none;stroke:#3a3c37;stroke-width:.7;transform-box:fill-box;transform-origin:center;animation:ring 2.2s ease-out infinite}.sbar .go .tr2{animation-delay:1.1s}
+@keyframes ring{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.7);opacity:0}}
+@media (prefers-reduced-motion:reduce){.ar .tr{animation:none!important;display:none!important}}
+#home{overflow:clip}
 .drawer{position:absolute;inset:0;z-index:5;background:#fff;display:flex;flex-direction:column;transform:translateY(105%);transition:transform .28s ease}
 .drawer.up{transform:none}
 .dbody{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding-bottom:10px}
@@ -379,7 +386,6 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
       <div class="timer"><span>Timer im Spiel</span><button id="tmr" aria-pressed="false">aus</button></div>
       <div class="timer"><span>Artikel-Hilfe <small class="n">Grundform vor der Antwort zeigen</small></span><button id="ahp" aria-pressed="false">aus</button></div>
     </div>
-    <button class="scr up" id="scrU" aria-label="nach oben scrollen"><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="12.5"/><path class="nd" d="M14 23 L9.5 6.5 L14 10 L18.5 6.5 Z"/><text x="14" y="27.2">S</text></svg><span>scroll</span></button>
     <div class="hbody" id="hbody">
     <div class="lvsel" role="group" aria-label="Niveau"><div id="lvs"></div></div>
     <div class="hscroll" id="hscroll">
@@ -389,7 +395,7 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
     <div class="drawer" id="drawer" hidden><div class="dbody" id="dbody"></div></div>
     </div>
     <nav class="dbar" id="dbar" aria-label="Tabs"></nav>
-    <button class="scr dn" id="scrD" aria-label="nach unten scrollen"><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="12.5"/><path class="nd" d="M14 5 L9.5 21.5 L14 18 L18.5 21.5 Z"/><text x="14" y="4.6">N</text></svg><span>scroll</span></button>
+    <div class="sbar"><button type="button" id="scrD" aria-label="weiter scrollen"><svg class="ar" width="24" height="24" viewBox="-12 -12 24 24" aria-hidden="true"><circle class="tr" r="9.5"/><circle class="tr tr2" r="9.5"/><path class="rg" d="M5.31 -7.88A9.5 9.5 0 1 1 -5.31 -7.88"/><path class="dt" transform="rotate(270)" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="-0.00" y="-9.50">N</text></svg><i class="sc">scroll</i><i class="tp">nach oben</i></button></div>
   </section>
 
   <!-- TOPIC -->
@@ -1683,7 +1689,7 @@ function goTab(k){if(k==="home"||(DR.open&&DR.k===k&&k!=="home")){if(!DR.open)re
 function stepTab(d){const i=DITEMS.findIndex(x=>x[0]===curTab()),j=i+d;if(j<0||j>=DITEMS.length)return;goTab(DITEMS[j][0]);}
 function bindBars(el){el.querySelectorAll(".db").forEach(b=>b.onclick=()=>{const k=b.dataset.k;if(k===curTab()){scrBox().scrollTo({top:0,behavior:"smooth"});return;}goTab(k);});}
 function renderBars(){$("dbar").innerHTML=dbarHTML(curTab());bindBars($("dbar"));updScr();}
-function parkSets(){const st=$("sets");if(st.parentNode!==$("home")){st.hidden=true;$("home").insertBefore(st,$("scrU"));}}
+function parkSets(){const st=$("sets");if(st.parentNode!==$("home")){st.hidden=true;$("home").insertBefore(st,$("hbody"));}}
 function renderDrawer(){const k=DR.k,b=$("dbody");parkSets();
   if(k==="sets"){b.innerHTML='<div class="tc df"><h3>Einstellungen</h3></div>';b.firstChild.appendChild($("sets"));$("sets").hidden=false;return;}
   if(k==="test"){const L=store.level&&store.level!=="all"?store.level:null;b.innerHTML='<div class="tc df"><h3>Test</h3><p class="tline">15 Fragen aus allen Themen'+(L?', Niveau '+L+' und darunter':'')+', wie in der Prüfung. Das Niveau wählst du im Tab Grammatik.</p></div><button class="dgo" id="dTest">Test starten →</button>';
@@ -1698,12 +1704,11 @@ function openDrawer(k){if(!DR.open)navPush("drawer");const was=DR.open;DR.open=t
 function closeDrawer(){DR.open=false;const d=$("drawer");$("dbody").scrollTop=0;d.classList.remove("up");setTimeout(()=>{if(!DR.open){d.hidden=true;parkSets();}},300);renderHome();updScrSoon();}
 /* scroll signs: yellow when there is more to see in that direction, grey when not; tap to scroll */
 const scrBox=()=>DR.open?$("dbody"):$("hscroll");
-function updScr(){const el=scrBox();if(!el)return;const u=el.scrollTop>2,d=el.scrollTop+el.clientHeight<el.scrollHeight-2;
-  $("scrU").classList.toggle("on",u);$("scrD").classList.toggle("on",d);$("scrU").disabled=!u;$("scrD").disabled=!d;}
+function updScr(){const el=scrBox(),g=$("scrD");if(!el||!g)return;const can=el.scrollHeight>el.clientHeight+2,end=el.scrollTop+el.clientHeight>=el.scrollHeight-4;
+  g.disabled=!can;g.classList.toggle("top",can&&end);g.classList.toggle("go",can&&el.scrollTop<4&&curTab()==="home");g.setAttribute("aria-label",can&&end?"nach oben":"weiter scrollen");}
 function updScrSoon(){[60,320,1200].forEach(t=>setTimeout(updScr,t));}
 $("hscroll").addEventListener("scroll",updScr,{passive:true});$("dbody").addEventListener("scroll",updScr,{passive:true});window.addEventListener("resize",updScr);
-$("scrU").onclick=()=>{const el=scrBox();el.scrollBy({top:-el.clientHeight*.8,behavior:"smooth"});};
-$("scrD").onclick=()=>{const el=scrBox();el.scrollBy({top:el.clientHeight*.8,behavior:"smooth"});};
+$("scrD").onclick=()=>{const el=scrBox(),g=$("scrD");if(g.classList.contains("top")){el.scrollTo({top:0,behavior:"smooth"});return;}el.scrollBy({top:el.clientHeight-40,behavior:"smooth"});};
 /* swipe: left/right on the tabs or the page moves to the next tab; up on the tabs opens Test, down closes */
 (()=>{let p0=null;const on=(el,strict)=>{el.addEventListener("touchstart",e=>{p0=[e.touches[0].clientX,e.touches[0].clientY];},{passive:true});
   el.addEventListener("touchend",e=>{if(!p0)return;const dx=e.changedTouches[0].clientX-p0[0],dy=e.changedTouches[0].clientY-p0[1];p0=null;
