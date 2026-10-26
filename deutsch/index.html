@@ -1,5 +1,5 @@
 <!doctype html><html lang="de"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Deutsch"></head><body>
-<meta name="app-version" content="2026-10-26d">
+<meta name="app-version" content="2026-10-26e">
 <title>Deutsch Grammatik</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#ffffff">
@@ -303,7 +303,12 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .resume{display:flex;justify-content:space-between;align-items:center;gap:10px;text-align:left;background:#fff6b0;padding:9px 12px;flex:none}
 .resume small{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#555}.resume b{font-size:1.08rem}
 .grp{background:var(--df) left bottom/100% 1px no-repeat}
-.grp.open{background:var(--df) left bottom/100% 1px no-repeat,var(--pale)}
+/* striped rows: 01 grey, 02 white, 03 grey …; the open group turns pale lime, like the section you are in */
+.grp:nth-child(odd){background:var(--df) left bottom/100% 1px no-repeat,var(--pale)}
+.grp.open,.grp.open:nth-child(odd){background:var(--df) left bottom/100% 1px no-repeat,var(--limepale)}
+.grp .grh .no{background-color:#fff}.grp.open .grh .no{background-color:var(--ink)}
+.grp .grh{padding-right:8px}
+.grp:nth-child(odd) .grh .prog,.grp.open .grh .prog{background:#fff}
 .grh{display:grid;grid-template-columns:30px minmax(0,1fr) 64px 1.1em;align-items:center;gap:4px 12px;width:100%;min-height:58px;background:transparent;text-align:left;padding:4px 0}
 .grh .no{width:30px;height:30px;display:grid;place-items:center;font-size:.8rem;font-weight:700;color:var(--ink);position:relative}.grh .no::after{content:"";position:absolute;inset:0;background:var(--df) left top/100% 1px no-repeat,var(--df) left bottom/100% 1px no-repeat,var(--dfv) left top/1px 100% no-repeat,var(--dfv) right top/1px 100% no-repeat}.grp.open .grh .no{background:var(--ink);color:#fff}.grp.open .grh .no::after{display:none}.grh b{display:block;font-size:1.22rem;line-height:1.15}.grh small{font-size:.82rem;color:#555}
 .grh .pm{font-size:1.3rem;line-height:1;text-align:center}
