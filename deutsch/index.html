@@ -266,6 +266,7 @@ mark.fm{background:var(--limepale);color:var(--fg);border-bottom:2px solid var(-
 .wt.a{box-shadow:inset 0 0 0 1.5px var(--akk);color:var(--akk)}.wt.d{box-shadow:inset 0 0 0 1.5px var(--dat);color:var(--dat)}
 .wt.g{background:var(--cream)}.wt.k{background:var(--cream);box-shadow:inset 0 0 0 1px var(--line);font-weight:700}
 .wt.r{background:var(--cream);box-shadow:inset 0 -2px 0 var(--ink);font-weight:700}.wt.x{background:var(--limepale)}
+.wt.ng{background:var(--ink);color:#fff;font-weight:700}
 .wt.p{padding:2px 0;margin-left:-3px}
 .al{fill:none;stroke-width:1.6}.al-v{stroke:var(--ink)}.al-a{stroke:var(--akk)}.al-d{stroke:var(--dat)}.al-g{stroke:var(--muted);stroke-dasharray:3 3}
 text.alt{stroke:none;font-family:var(--body);font-size:11px;font-weight:700}text.al-v{fill:var(--ink)}text.al-a{fill:var(--akk)}text.al-d{fill:var(--dat)}text.al-g{fill:var(--muted);font-weight:400}
@@ -285,17 +286,73 @@ text.alt{stroke:none;font-family:var(--body);font-size:11px;font-weight:700}text
 .opts.long{grid-template-columns:1fr}.opts.long .opt{font-size:1.05rem;font-weight:400;text-align:left;padding:8px 12px}
 b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+[hidden]{display:none!important}
+/* ---- start page: groups ---- */
+.home{overflow:hidden;gap:8px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.mark{width:54px;height:19px;flex:none}.mark .mo{fill:none;stroke:var(--ink);stroke-width:6}.mark .mi{fill:none;stroke:var(--ink);stroke-width:3}.mark .md{fill:none;stroke:var(--ink);stroke-width:3;stroke-dasharray:3 9}
+.gear{width:44px;height:44px;padding:0;display:grid;place-items:center;flex:none}.gear svg{width:22px;height:22px}
+.gear[aria-expanded="true"]{background:var(--ink);color:#fff}
+.sets{display:flex;flex-direction:column;gap:4px;padding:4px 0 8px;background:var(--df) left bottom/100% 1px no-repeat}
+.lvsel #lvs{display:flex;gap:4px;width:100%}.lvsel .lvb{flex:1;min-height:34px}
+.hscroll{flex:1 1 auto;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:8px}
+.resume{display:flex;justify-content:space-between;align-items:center;gap:10px;text-align:left;background:#fff6b0;padding:9px 12px;flex:none}
+.resume small{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#555}.resume b{font-size:1.08rem}
+.grp{background:var(--df) left bottom/100% 1px no-repeat}
+.grp.open{background:var(--df) left bottom/100% 1px no-repeat,var(--pale)}
+.gh{display:grid;grid-template-columns:2.1em minmax(0,1fr) 64px 1.1em;align-items:center;gap:8px;width:100%;min-height:58px;background:transparent;text-align:left;padding:4px 0}
+.gh .no{font-size:.85rem;color:var(--muted);padding-left:4px}.gh b{display:block;font-size:1.22rem;line-height:1.15}.gh small{font-size:.82rem;color:#555}
+.gh .pm{font-size:1.3rem;line-height:1;text-align:center}
+.prog{display:block;height:3px;background:var(--grey)}.prog i{display:block;height:3px;background:var(--ink)}
+.gl{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:0 0 10px 2.6em}
+.tt{display:flex;flex-direction:column;justify-content:space-between;gap:5px;min-height:48px;padding:6px 8px;background:var(--bg);text-align:left;position:relative}
+.tt::after{content:"";position:absolute;inset:0;pointer-events:none;background:var(--df) left top/100% 1px no-repeat,var(--df) left bottom/100% 1px no-repeat,var(--dfv) left top/1px 100% no-repeat,var(--dfv) right top/1px 100% no-repeat}
+.tt .r{display:flex;justify-content:space-between;align-items:baseline;gap:4px}.tt b{font-size:1rem;line-height:1.15}.tt small{font-size:.72rem;color:#555;white-space:nowrap}
+.tt.dim{opacity:.45}
+.soonl{grid-column:1/-1;font-size:.82rem;color:#555;padding-top:2px}
+.hbar{flex:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding-top:6px;background:var(--df) left top/100% 1px no-repeat}
+.hbar button{min-height:48px}.hbar .t{background:var(--yellow);font-weight:700}
+/* ---- Theorie as a list ---- */
+.tlist{display:flex;flex-direction:column}
+.tli{display:grid;grid-template-columns:2em minmax(0,1fr) auto;gap:8px;align-items:center;padding:10px 0;background:var(--df) left bottom/100% 1px no-repeat;text-align:left;width:100%}
+.tli .no{font-size:.8rem;color:var(--muted)}.tli b{display:block;font-size:1.1rem;line-height:1.2}.tli .pv{display:block;font-size:.92rem;color:#555;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tli small{font-size:.75rem;color:#555;white-space:nowrap}
+.tli:active{background:var(--pale)}
+/* ---- tables: muted fills, fine dotted lines, no gaps ---- */
+:root{--mnom:#e6e6e3;--makk:#f4dcd8;--makk2:#e9b9b3;--mdat:#d3def0;--mgen:#f5efcf;--mkey:#e3efb4;--dl:#8c918a;--akkt:#a3241c;--datt:#1d4f9e}
+.box{gap:0}.box .c{border-right:1px dotted var(--dl);border-bottom:1px dotted var(--dl)}
+.c.nom,.c.same{background:var(--mnom)}.c.akk{background:var(--makk);box-shadow:none;color:var(--akkt)}.c.dat{background:var(--mdat);box-shadow:none;color:var(--datt)}.c.gen{background:var(--mgen);box-shadow:none}
+.qc.nom{background:var(--mnom)}.qc.akk{background:var(--makk);box-shadow:none}.qc.akk b{color:var(--akkt)}.qc.dat{background:var(--mdat);box-shadow:none}.qc.dat b{color:var(--datt)}.qc.gen{background:var(--mgen)}
+.all4 .nom,.all4k .nom,.lgc.nom{background:var(--mnom)}.all4 .akk,.all4k .akk,.lgc.akk{background:var(--makk);box-shadow:none;color:var(--akkt)}.all4 .dat,.all4k .dat,.lgc.dat{background:var(--mdat);box-shadow:none;color:var(--datt)}.all4 .gen,.all4k .gen,.lgc.gen{background:var(--mgen)}
+.pict.fc-nom b{background:var(--mnom)}.pict.fc-akk b{background:var(--makk);box-shadow:none;color:var(--akkt)}.pict.fc-dat b{background:var(--mdat);box-shadow:none;color:var(--datt)}.pict.fc-gen b{background:var(--mgen)}
+.adjt{gap:0}.adjt b{border-right:1px dotted var(--dl);border-bottom:1px dotted var(--dl)}.adjt b.en{background:var(--mnom)}.adjt b.x{background:var(--mkey);box-shadow:none}
+.lgx{background:var(--mkey);box-shadow:none}.lgx.en{background:var(--mnom)}
+.grid{gap:0}.grid .cell+.cell{border-left:1px dotted var(--dl)}
+.cell.vf{background:var(--mnom)}.cell.v1,.cell.v2{background:var(--mkey);box-shadow:none}.cell.ein{background:var(--mgen)}
+.pc{background:var(--mnom)}.pc.k{background:var(--mkey);box-shadow:none}.pc.g{background:var(--mgen)}.gn{background:var(--mgen)}
+.nt{display:grid;font-size:1rem;line-height:1.3;background:var(--df) left top/100% 1px no-repeat}
+.nt>div{display:grid;grid-template-columns:var(--nc,7em 3.6em minmax(0,1fr));background:var(--df) left bottom/100% 1px no-repeat}
+.nt>div>*{padding:7px 8px}.nt>div>*:first-child{padding-left:0}.nt>div>*+*{background:var(--dfv) left top/1px 100% no-repeat}
+.nt .hd>*{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#555;padding-top:4px;padding-bottom:4px}
+.nt .k{background:var(--dfv) left top/1px 100% no-repeat,var(--mkey)!important;font-weight:700}.nt .g{background:var(--dfv) left top/1px 100% no-repeat,var(--mnom)!important;font-weight:700}
+.wt.a{background:var(--makk);box-shadow:none;color:var(--akkt)}.wt.d{background:var(--mdat);box-shadow:none;color:var(--datt)}.wt.g{background:var(--mgen)}
+.kb{display:inline-block;background:var(--ink);color:#fff;padding:0 6px;font-weight:700}
 </style>
 
 <div class="app"><i class="rule l"></i><i class="rule r"></i><i class="tk t"></i><i class="tk b"></i>
   <!-- HOME -->
   <section id="home" class="home">
-    <div class="titlebar"><h1 class="logo">deutsch<b>-grammatik</b></h1></div>
-    <p class="intro">Jedes Thema kannst du lernen oder als Spiel üben.</p>
-    <div class="lvsel" role="group" aria-label="Niveau"><span>Niveau</span><div id="lvs"></div></div>
-    <div class="timer"><span>Timer im Spiel</span><button id="tmr" aria-pressed="false">aus</button></div>
-    <div class="timer"><span>Artikel-Hilfe <small class="n">Grundform vor der Antwort zeigen</small></span><button id="ahp" aria-pressed="false">aus</button></div>
-    <div id="tiles" style="display:flex;flex-direction:column;gap:10px"></div>
+    <div class="titlebar"><span class="brand"><svg class="mark" viewBox="-3 -3 306 106" role="img" aria-label="D A CH"><path d="M0 33.3H200M0 66.7H200M233.3 0V33.3M266.7 0V33.3M233.3 66.7V100M266.7 66.7V100M200 33.3H233.3M266.7 33.3H300M200 66.7H233.3M266.7 66.7H300" class="mi"/><path d="M100 0V100M200 0V100" class="md"/><rect width="300" height="100" class="mo"/></svg><h1 class="logo">deutsch<b>-grammatik</b></h1></span><button id="gear" class="gear" aria-label="Einstellungen" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.2 5.2l2.1 2.1M16.7 16.7l2.1 2.1M5.2 18.8l2.1-2.1M16.7 7.3l2.1-2.1"/></svg></button></div>
+    <div class="sets" id="sets" hidden>
+      <div class="timer"><span>Timer im Spiel</span><button id="tmr" aria-pressed="false">aus</button></div>
+      <div class="timer"><span>Artikel-Hilfe <small class="n">Grundform vor der Antwort zeigen</small></span><button id="ahp" aria-pressed="false">aus</button></div>
+    </div>
+    <div class="lvsel" role="group" aria-label="Niveau"><div id="lvs"></div></div>
+    <div class="hscroll">
+      <button class="resume" id="resume" hidden></button>
+      <div id="groups"></div>
+    </div>
+    <div class="hbar"><button id="hTest" class="t">Test</button><button id="hLinks">Links</button><button id="hWords">Meine Wörter</button></div>
   </section>
 
   <!-- TOPIC -->
@@ -1280,7 +1337,7 @@ GT.nom={name:"Nominalstil & Partizipien",badge:"Nominalstil",tip:"Long attribute
 /* ---------- Links & Quellen ---------- */
 const L={duden:["Duden","https://www.duden.de","Rechtschreibung, Bedeutung, Artikel, Grammatik"],dudenk:["Duden Konjugation","https://www.duden.de/konjugation","Verben in allen Formen"],dwds:["DWDS","https://www.dwds.de","Wörterbuch mit echten Beispielsätzen aus Zeitungen und Büchern"],grammis:["grammis (IDS Mannheim)","https://grammis.ids-mannheim.de","Wissenschaftliche Grammatik, sehr genau"],leo:["LEO","https://dict.leo.org","Deutsch–Englisch, mit Forum"],pons:["PONS","https://de.pons.com","Deutsch–Englisch mit Beispielen"],linguee:["Linguee","https://www.linguee.de","Übersetzungen in echten Sätzen"],lingolia:["Lingolia","https://www.lingolia.com","Grammatik mit Übungen, Erklärung auch auf Englisch"],dw:["DW Learn German","https://learngerman.dw.com","Kurse A1–C1, Grammatik-Übersicht, gratis"],goethe:["Goethe-Institut Prüfungen","https://www.goethe.de/pruefungen","Modellsätze und Infos A1–C2"],goetheb1:["Goethe/ÖSD B1 Wortliste","https://www.goethe.de/pro/relaunch/prf/da/Goethe-Zertifikat_B1_Wortliste.pdf","Offizielle Wortliste (PDF)"],osd:["ÖSD","https://www.osd.at","Österreichisches Sprachdiplom: Prüfungen und Übungen"],tatoeba:["Tatoeba","https://tatoeba.org","Freie Beispielsätze mit Übersetzung (Qualität prüfen)"],dg20:["deutschegrammatik20","https://deutschegrammatik20.de","Freie Online-Grammatik mit vielen Beispielen"],umich:["U Michigan German Resources","https://resources.german.lsa.umich.edu","Kurze, klare Erklärungen auf Englisch"],cefr:["GER / CEFR (Europarat)","https://www.coe.int/en/web/common-european-framework-reference-languages/official-translations-of-the-cefr-global-scale","Die offizielle Beschreibung der Stufen A1–C2, auch auf Deutsch"],profile:["Profile deutsch (Klett)","https://www.klett-sprachen.de/profile-deutsch/t-396/9783126065184","Wortschatz und Grammatik je Stufe A1–C2 (Buch)"],goethea1:["Goethe A1 Wortliste","https://www.goethe.de/pro/relaunch/prf/ca/A1_SD1_Wortliste_02.pdf","Offizielle Wortliste A1 (PDF)"],telc:["telc","https://www.telc.net","Prüfungen A1–C2"]};
 const lk=k=>{const [n,u,d]=L[k];return '<div><span><a href="'+u+'" target="_blank" rel="noopener">'+n+'</a></span><span>'+d+'</span></div>';};
-const SRC={fall:["duden","lingolia","dw"],adj:["lingolia","duden","dw"],satz:["grammis","lingolia","dw"],art:["duden","dwds","leo"],pron:["lingolia","dw","grammis"],prep:["dwds","lingolia","duden"],gen:["duden","grammis","lingolia"]};
+const SRC={fall:["duden","lingolia","dw","grammis"],adj:["lingolia","duden","dw"],satz:["grammis","lingolia","dw"],art:["duden","dwds","leo"],pron:["lingolia","dw","grammis"],prep:["dwds","lingolia","duden"],gen:["duden","grammis","lingolia"]};
 const srcCard=t=>SRC[t]?'<div class="tc df"><h3>Quellen <small>zum Nachschlagen</small></h3><div class="rows links">'+SRC[t].map(lk).join("")+'</div></div>':'';
 const TH_LINKS=`
 <div class="tc df"><h3>Wörterbücher</h3><div class="rows links">`+["duden","dwds","leo","pons","linguee"].map(lk).join("")+`</div><p class="tline">Tip: DWDS shows how a word is really used, with its typical partners. Duden settles spelling and grammar questions.</p></div>
@@ -1293,10 +1350,80 @@ const TH_LINKS=`
 <div class="tc df"><h3>Prüfungen</h3><div class="rows links">`+["goethe","osd","telc"].map(lk).join("")+`</div></div>
 <div class="tc df"><h3>Beispielsätze</h3><div class="rows links">`+["tatoeba","linguee","dwds"].map(lk).join("")+`</div><p class="tline">Free sentence collections vary in quality. Check them against Duden or DWDS.</p></div>`;
 /* ---------- topics + home ---------- */
+GT.neg={name:"Verneinung",badge:"nicht · kein",tip:"First ask: is it a noun with ein or no article? Then kein. Everything else: nicht.",src:["grammis","lingolia","dwds"],
+ lg:'<span><b class="wt ng lgk">nicht</b> Verneinung</span><span><b class="wt v lgk">Verb</b> Satzklammer</span>',
+ cards:[
+ {b:"kein",st:D("Ich~s|habe~v|kein~ng|Auto|.~p","2-3a:kein + Nomen"),tx:"kein = nicht + ein",gt:"A noun with <b>ein</b>, or with no article at all, is negated with <b>kein</b>. English: no, not a.",say:"Ich habe kein Auto."},
+ {b:"Endungen",st:D("Ich~s|trinke~v|keinen~ng|Kaffee~a|.~p","2-3a:Akkusativ mask."),tx:"kein takes the endings of ein",gt:"Kaffee → keinen Kaffee. Unlike ein, kein has a plural: <b>keine</b> Pläne.",say:"Ich trinke keinen Kaffee."},
+ {b:"nicht",st:D("Ich~s|kenne~v|den Mann~a|nicht~ng|.~p"),tx:"der · mein · Namen → nicht",gt:"With a definite article, a possessive (mein, dein …) or a name, use <b>nicht</b>. Das ist nicht mein Auto.",say:"Ich kenne den Mann nicht."},
+ {b:"Ganzer Satz",st:D("Ich~s|habe~v|den Plan|nicht~ng|gesehen~v|.~p","1-4a:Satzklammer"),tx:"nicht before Verb 2",gt:"To negate the whole sentence, <b>nicht</b> goes as late as possible, but before the second part of the bracket.",say:"Ich habe den Plan nicht gesehen."},
+ {b:"Trennbar",st:D("Ich~s|rufe~v|dich|morgen|nicht~ng|an~v|.~p","1-5a:Satzklammer"),tx:"nicht before the prefix",gt:"The prefix closes the bracket, so <b>nicht</b> comes just before it. Time words like morgen come before nicht.",say:"Ich rufe dich morgen nicht an."},
+ {b:"Adjektiv",st:D("Das Haus~s|ist~v|nicht~ng|groß|.~p","2-3b:vor dem Adjektiv"),tx:"nicht + adjective",gt:"<b>nicht</b> stands directly before an adjective or an adverb of manner: nicht groß, nicht gut, nicht schnell.",say:"Das Haus ist nicht groß."},
+ {b:"Ort · Richtung",st:D("Ich~s|fahre~v|heute|nicht~ng|nach Wien|.~p","3-4b:vor der Richtung"),tx:"nicht before place and direction",gt:"<b>nicht</b> goes before a phrase of place or direction: nicht nach Wien, nicht im Büro.",say:"Ich fahre heute nicht nach Wien."},
+ {b:"sondern",st:D("Nicht~ng|ich~s|war~v|das,|sondern~k|Anna|.~p","0-1a:nur dieser Teil"),tx:"nicht X, sondern Y",gt:"To negate one part only, put <b>nicht</b> directly before it and give the correction with <b>sondern</b>.",say:"Nicht ich war das, sondern Anna."}],
+ q:[
+ {s:"Ich habe ___ Zeit.",o:["keine","nicht","kein"],why:"Zeit is feminine with no article: keine Zeit.",lv:"A1"},
+ {s:"Das ist ___ mein Auto.",o:["nicht","kein","keine"],why:"A possessive (mein) is negated with nicht.",lv:"A1"},
+ {s:"Ich trinke ___ Kaffee.",o:["keinen","kein","nicht"],why:"Kaffee is masculine, Akkusativ, no article: keinen.",lv:"A1"},
+ {s:"Er ist heute ___ müde.",o:["nicht","kein","keine"],why:"An adjective is negated with nicht.",lv:"A1"},
+ {s:"Wir haben ___ Kinder.",o:["keine","keinen","nicht"],why:"Plural without article: keine.",lv:"A1"},
+ {s:"Ich habe ___ Lust.",o:["keine","kein","nicht"],why:"Lust is feminine: keine Lust.",lv:"A2"},
+ {s:"Hast du ___ Hunger?",o:["keinen","kein","nicht"],why:"Hunger is masculine, Akkusativ: keinen.",lv:"A2"},
+ {s:"Das ist ___ gute Idee.",o:["keine","nicht","kein"],why:"eine gute Idee → keine gute Idee.",lv:"A2"},
+ {s:"Ich kenne den Architekten ___.",o:["nicht","kein","keinen"],why:"Definite article (den): nicht, at the end.",lv:"A2"},
+ {s:"Ich habe den Plan ___.",o:["nicht gesehen","gesehen nicht","kein gesehen"],why:"nicht comes before Verb 2 (gesehen).",lv:"A2"},
+ {s:"Sie hat das Formular ___.",o:["nicht ausgefüllt","ausgefüllt nicht","kein ausgefüllt"],why:"nicht before the Partizip at the end.",lv:"A2"},
+ {s:"Ich rufe dich morgen ___.",o:["nicht an","an nicht","kein an"],why:"nicht comes before the separable prefix an.",lv:"A2"},
+ {s:"Wir fahren heute ___.",o:["nicht nach Graz","nach Graz nicht","kein nach Graz"],why:"nicht stands before a direction.",lv:"A2"},
+ {s:"Ich habe ___ Auto, sondern ein Fahrrad.",o:["kein","nicht","keine"],why:"ein Auto → kein Auto; sondern gives the correction.",lv:"A2"},
+ {s:"Nicht ich habe das gemacht, ___ Anna.",o:["sondern","aber","oder"],why:"After a negation, the correction comes with sondern.",lv:"A2"},
+ {s:"„Hast du keine Zeit?“ – „___, ich habe Zeit.“",o:["Doch","Ja","Nein"],why:"Saying yes to a negative question: doch.",lv:"A2"},
+ {s:"Ich habe heute noch ___ gegessen.",o:["nichts","nicht","kein"],why:"nothing = nichts.",lv:"A2"},
+ {s:"Er hat ___ Geld mehr.",o:["kein","keine","nicht"],why:"Geld is neuter: kein Geld mehr = no more money.",lv:"B1"},
+ {s:"Das Problem ist ___ gelöst.",o:["noch nicht","noch kein","nicht noch"],why:"not yet = noch nicht.",lv:"B1"},
+ {s:"Er kommt weder heute ___ morgen.",o:["noch","oder","nicht"],why:"Fixed pair: weder … noch = neither … nor.",lv:"B1"},
+ {s:"Wir brauchen ___ neuen Pläne.",o:["keine","keinen","nicht"],why:"Plural Akkusativ: keine (and the adjective takes -en).",lv:"B1"}],
+ th:`<div class="tc df"><h3>nicht oder kein? <small>A1</small></h3><p class="tline"><b>kein</b> = no, not a · <b>nicht</b> = not. English says „not“ for both.</p>
+<div class="nt"><div class="hd"><span>Verneint wird</span><span>Wort</span><span>Beispiel</span></div>
+<div><span>Nomen mit <i>ein</i> oder ohne Artikel</span><span class="k">kein</span><span>Ich habe <b>kein</b> Auto.<br>Ich trinke <b>keinen</b> Kaffee.</span></div>
+<div><span>alles andere: Verb, Adjektiv, <i>der</i>, <i>mein</i>, Namen</span><span class="g">nicht</span><span>Ich kenne den Mann <b>nicht</b>.<br>Das ist <b>nicht</b> mein Auto.<br>Er ist <b>nicht</b> müde.</span></div></div></div>
+<div class="tc df"><h3>Wo steht nicht? <small>A2</small></h3>${D("Ich~s|habe~v|den Plan|nicht~ng|gesehen~v|.~p","1-4a:Satzklammer")}<p class="tline">Whole sentence: as late as possible, but before Verb 2.</p>
+<div class="nt" style="--nc:8.2em minmax(0,1fr)"><div class="hd"><span>nicht steht …</span><span>Beispiel</span></div>
+<div><span>vor Verb 2</span><span>Ich habe ihn <b>nicht</b> gefragt.</span></div>
+<div><span>vor dem Präfix</span><span>Ich rufe dich <b>nicht</b> an.</span></div>
+<div><span>vor dem Adjektiv</span><span>Das Haus ist <b>nicht</b> groß.</span></div>
+<div><span>vor Ort, Richtung</span><span>Ich fahre <b>nicht</b> nach Wien.</span></div>
+<div><span>nach Zeit, Objekt</span><span>Ich sehe ihn heute <b>nicht</b>.</span></div></div></div>
+<div class="tc df"><h3>kein · Formen <small>A1–A2</small></h3><div class="box" role="img" aria-label="kein nach Fall und Genus">
+<span class="bh"></span><span class="bh">mask.</span><span class="bh">neutr.</span><span class="bh">fem.</span><span class="bh">Plural</span>
+<span class="bl" style="grid-row:2">Nom</span><span class="bl" style="grid-row:3">Akk</span><span class="bl" style="grid-row:4">Dat</span><span class="bl" style="grid-row:5">Gen</span>
+<b class="c nom" style="grid-area:2/2/3/3">kein</b><b class="c akk" style="grid-area:3/2/4/3">keinen</b>
+<b class="c same" style="grid-area:2/3/4/4">kein</b><b class="c same" style="grid-area:2/4/4/5">keine</b><b class="c same" style="grid-area:2/5/4/6">keine</b>
+<b class="c dat" style="grid-area:4/2/5/4">keinem</b><b class="c dat" style="grid-area:4/4/5/5">keiner</b><b class="c dat" style="grid-area:4/5/5/6">keinen <small>+n</small></b>
+<b class="c gen" style="grid-area:5/2/6/4">keines</b><b class="c gen" style="grid-area:5/4/6/6">keiner</b></div>
+<p class="tline">Like ein, plus a plural. Only <b>keinen</b> (Akk. mask.) differs from the Nominativ.</p></div>
+<div class="tc df"><h3>doch, nichts, nie <small>A2</small></h3>
+<div class="nt" style="--nc:6.4em 6em minmax(0,1fr)"><div class="hd"><span>Wort</span><span>English</span><span>Beispiel</span></div>
+<div><span class="k">doch</span><span>yes (after a no)</span><span>Kommst du nicht? – <b>Doch!</b></span></div>
+<div><span class="g">nichts</span><span>nothing</span><span>Ich habe <b>nichts</b> gehört.</span></div>
+<div><span class="g">nie</span><span>never</span><span>Er ist <b>nie</b> pünktlich.</span></div>
+<div><span class="g">niemand</span><span>nobody</span><span><b>Niemand</b> hat angerufen.</span></div>
+<div><span class="g">nirgends</span><span>nowhere</span><span>Ich finde den Schlüssel <b>nirgends</b>.</span></div>
+<div><span class="g">noch nicht</span><span>not yet</span><span>Der Plan ist <b>noch nicht</b> fertig.</span></div>
+<div><span class="g">nicht mehr</span><span>no longer</span><span>Sie wohnt <b>nicht mehr</b> in Graz.</span></div>
+<div><span class="g">kein … mehr</span><span>no more</span><span>Ich habe <b>keine</b> Zeit <b>mehr</b>.</span></div></div></div>
+<div class="tc df"><h3>sondern · weder … noch <small>B1</small></h3>
+<div class="nt" style="--nc:8.2em minmax(0,1fr)"><div class="hd"><span>Form</span><span>Beispiel</span></div>
+<div><span class="k">nicht …, sondern</span><span><b>Nicht</b> ich war das, <b>sondern</b> Anna.</span></div>
+<div><span class="k">kein …, sondern</span><span>Das ist <b>kein</b> Fehler, <b>sondern</b> Absicht.</span></div>
+<div><span class="k">weder … noch</span><span>Er kommt <b>weder</b> heute <b>noch</b> morgen.</span></div>
+<div><span class="k">gar nicht · gar kein</span><span>Das stimmt <b>gar nicht</b>. Ich habe <b>gar keine</b> Ahnung.</span></div></div>
+<p class="tline">sondern corrects after a negation; aber only adds a contrast.</p></div>`};
 const TOPICS=[
+ {t:"neg",n:"Verneinung",tag:"nicht · kein",ds:"nicht oder kein, und wo nicht steht · A1–B1"},
  {t:"satz",n:"Satzbau",tag:"Satz",ds:"Verb an Position 2 und die Satzklammer · A1–B1"},
  {t:"art",n:"Artikel",tag:"der · die · das",ds:"Regeln nach Endung und ein schnelles Spiel · A1–B2"},
- {t:"fall",n:"Die vier Fälle",tag:"der · den · dem · des",ds:"Nominativ, Akkusativ, Dativ, Genitiv auf einen Blick · A1–B1"},
+ {t:"fall",n:"Fälle & Pronomen",tag:"der · den · dem · des",ds:"Nominativ, Akkusativ, Dativ, Genitiv, mir · mich · A1–B1"},
  {t:"pron",n:"Pronomen",tag:"mir · mich",ds:"Personalpronomen im Akkusativ und Dativ · A1–B1"},
  {t:"prep",n:"Wo oder wohin?",tag:"Präp",ds:"Präpositionen mit Dativ und Akkusativ · A1–C1"},
  {t:"gen",n:"Genitiv",tag:"des · der",ds:"Formen, Präpositionen, Besitz · B1–C1"},
@@ -1315,15 +1442,35 @@ const TOPICS=[
 ];
 const TNAME={prep:"Präpositionen",art:"Artikel",pron:"Pronomen",gen:"Genitiv",fall:"Fälle",adj:"Adjektive"};
 function score(t){if(t==="links")return null;if(t==="satz"){const n=SB.filter(x=>store["sb"+x.id]==="ok").length;return n?n/SB.length:null;}const b=(store.best||{})[t];return b==null?null:b;}
-function renderHome(){$("tiles").innerHTML=TOPICS.map((x,i)=>{const sc=x.soon?null:score(x.t),num=String(i+1).padStart(2,"0");
-  const ring=sc==null?"":'<svg class="ring" viewBox="0 0 54 54" aria-hidden="true"><circle class="fg" cx="27" cy="27" r="25" pathLength="100" stroke-dasharray="'+Math.round(sc*100)+' 100"/></svg>';
-  const st=x.soon?'<span class="st soon">bald</span>':'<span class="st ready">'+(x.t==="links"?"öffnen":sc==null?"üben":Math.round(sc*100)+" %")+'</span>';
-  return (x.soon?'<div class="tile soon df">':'<button class="tile ready df" id="t-'+x.t+'" data-t="'+x.t+'">')+'<span class="code">'+ring+num+'</span><span><span class="nm">'+x.n+(x.tag?' <small class="n">['+x.tag+']</small>':'')+'</span><span class="ds" style="display:block">'+x.ds+'</span></span>'+st+(x.soon?'</div>':'</button>');}).join("");
-  document.querySelectorAll(".tile.ready").forEach(b=>b.onclick=()=>openTopic(b.dataset.t));
-  const tb=$("tmr");tb.setAttribute("aria-pressed",!!store.timer);tb.textContent=store.timer?"an · 15 s":"aus";$("lvs").innerHTML=["all"].concat(LVLS.slice(0,5)).map(l=>'<button class="lvb" data-l="'+l+'" id="lv-'+l+'" aria-pressed="'+((store.level||"all")===l)+'">'+(l==="all"?"Alle":l)+'</button>').join("");
+const GROUPS=[
+ {n:"Satz",t:["satz","neg","konn","rel"],soon:"zu + Infinitiv"},
+ {n:"Nomen & Fälle",t:["art","fall","gen"],soon:"Plural · n-Deklination"},
+ {n:"Adjektiv",t:["adj"],soon:"Vergleichen"},
+ {n:"Präpositionen",t:["prep","vprep"],soon:"Zeitangaben"},
+ {n:"Verb",t:["perf","pass","k2","k1"],soon:"Präsens · Trennbare Verben · Modalverben · Reflexiv"},
+ {n:"Stil · C1",t:["nvv","nom"],soon:"Partikeln"}];
+const tInfo=t=>TOPICS.find(x=>x.t===t);
+function tRange(t){const m=(tInfo(t).ds||"").match(/([ABC][12])(?:–([ABC][12]))?\s*$/);return m?[m[1],m[2]||m[1]]:["A1","C1"];}
+function inLevel(t){const L=store.level;if(!L||L==="all")return true;const [a,b]=tRange(t),i=LVLS.indexOf(L);return i>=LVLS.indexOf(a)&&i<=LVLS.indexOf(b);}
+const MNAME={learn:"Lernen",game:"Spiel",theo:"Theorie"};
+function renderHome(){
+  if(store.grp==null){const last=store.last&&GROUPS.findIndex(g=>g.t.includes(store.last.t));store.grp=last>=0?last:0;}
+  $("groups").innerHTML=GROUPS.map((g,gi)=>{const sc=g.t.map(t=>score(t)||0),avg=sc.reduce((a,b)=>a+b,0)/sc.length;
+    const lo=g.t.map(t=>tRange(t)[0]).sort((a,b)=>LVLS.indexOf(a)-LVLS.indexOf(b))[0],hi=g.t.map(t=>tRange(t)[1]).sort((a,b)=>LVLS.indexOf(b)-LVLS.indexOf(a))[0];
+    const open=store.grp===gi,shown=g.t.filter(inLevel).length;
+    return '<div class="grp'+(open?' open':'')+'"><button class="gh" id="g'+gi+'" data-g="'+gi+'" aria-expanded="'+open+'"><span class="no">'+String(gi+1).padStart(2,"0")+'</span><span><b>'+esc(g.n)+'</b><small>'+g.t.length+(g.t.length===1?' Thema':' Themen')+' · '+lo+(hi!==lo?'–'+hi:'')+(store.level&&store.level!=="all"?' · '+shown+' auf '+store.level:'')+'</small></span><span class="prog"><i style="width:'+Math.round(avg*100)+'%"></i></span><span class="pm" aria-hidden="true">'+(open?'–':'+')+'</span></button>'+
+    (open?'<div class="gl">'+g.t.map(t=>{const x=tInfo(t),s=score(t),[a,b]=tRange(t);return '<button class="tt'+(inLevel(t)?'':' dim')+'" id="t-'+t+'" data-t="'+t+'"><span class="r"><b>'+esc(x.n)+'</b><small>'+a+(b!==a?'–'+b:'')+'</small></span><span class="prog"><i style="width:'+Math.round((s||0)*100)+'%"></i></span></button>';}).join("")+(g.soon?'<span class="soonl">bald: '+esc(g.soon)+'</span>':'')+'</div>':'')+'</div>';}).join("");
+  document.querySelectorAll(".gh").forEach(b=>b.onclick=()=>{const g=+b.dataset.g;store.grp=store.grp===g?-1:g;save();renderHome();});
+  document.querySelectorAll(".tt").forEach(b=>b.onclick=()=>openTopic(b.dataset.t));
+  const r=$("resume"),L=store.last;
+  if(L&&tInfo(L.t)){const s=score(L.t);r.hidden=false;r.innerHTML='<span><small>Weitermachen</small><b>'+esc(tInfo(L.t).n)+' · '+MNAME[L.m]+'</b></span><b>'+(s!=null?Math.round(s*100)+' % ':'')+'→</b>';r.onclick=()=>{openTopic(L.t);if(L.m!=="learn")setMode(L.m);};}else r.hidden=true;
+  const tb=$("tmr");tb.setAttribute("aria-pressed",!!store.timer);tb.textContent=store.timer?"an · 15 s":"aus";
+  $("lvs").innerHTML=["all"].concat(LVLS.slice(0,5)).map(l=>'<button class="lvb" data-l="'+l+'" id="lv-'+l+'" aria-pressed="'+((store.level||"all")===l)+'">'+(l==="all"?"Alle":l)+'</button>').join("");
   document.querySelectorAll(".lvb").forEach(b=>b.onclick=()=>{store.level=b.dataset.l;save();renderHome();});
   const ah=$("ahp");ah.setAttribute("aria-pressed",!!store.arthelp);ah.textContent=store.arthelp?"an":"aus";}
-
+$("gear").onclick=()=>{const o=$("sets").hidden;$("sets").hidden=!o;$("gear").setAttribute("aria-expanded",o);};
+$("hTest").onclick=()=>openTopic("test");$("hLinks").onclick=()=>openTopic("links");
+$("hWords").onclick=()=>{openTopic("art");setMode("theo");const i=GP.items.findIndex(el=>/Eigene Wörter/.test(el.textContent));if(i>=0)openPop(i);};
 /* ---------- navigation ---------- */
 let T=null,mode="learn",idx=0,self=false,caseMode="wo",gi=0,MC=null;
 function openTopic(t){navPush("topic");T=t;idx=0;gi=0;MC=null;$("home").hidden=true;$("topic").hidden=false;
@@ -1334,16 +1481,16 @@ $("tmr").onclick=()=>{store.timer=!store.timer;save();renderHome();};
 $("ahp").onclick=()=>{store.arthelp=!store.arthelp;save();renderHome();};
 function setMode(m){closePop();mode=m;document.querySelector(".app").dataset.mode=m;$("mLearn").setAttribute("aria-pressed",m==="learn");$("mGame").setAttribute("aria-pressed",m==="game");$("mTheo").setAttribute("aria-pressed",m==="theo");
   const th=m==="theo";$("theo").hidden=!th;$("lg").hidden=th;$("stage").hidden=th;$("panel").hidden=th;
-  if(m==="game"){gi=0;MC=null;}render();}
+  if(m==="game"){gi=0;MC=null;}if(T&&T!=="test"&&T!=="links"){store.last={t:T,m};save();}render();}
 $("mLearn").onclick=()=>setMode("learn");$("mTheo").onclick=()=>setMode("theo");$("mGame").onclick=()=>setMode("game");
-const TH={satz:()=>TH_SATZ+srcCard("satz"),prep:()=>TH_PREP+srcCard("prep"),art:()=>TH_ART+ownHTML()+srcCard("art"),pron:()=>TH_PRON+srcCard("pron"),gen:()=>TH_GEN+srcCard("gen"),fall:()=>TH_FALL+srcCard("fall"),adj:()=>TH_ADJ+srcCard("adj"),links:()=>TH_LINKS};
+const TH={satz:()=>TH_SATZ+srcCard("satz"),prep:()=>TH_PREP+srcCard("prep"),art:()=>TH_ART+ownHTML()+srcCard("art"),pron:()=>TH_PRON+srcCard("pron"),gen:()=>TH_GEN+srcCard("gen"),fall:()=>TH_FALL+TH_PRON+srcCard("fall"),adj:()=>TH_ADJ+srcCard("adj"),links:()=>TH_LINKS};
 Object.keys(GT).forEach(k=>{SRC[k]=GT[k].src;TH[k]=()=>GT[k].th+srcCard(k);});
 const LG={fall:'<span class="lgc nom">Nom</span><span class="lgc akk">Akk</span><span class="lgc dat">Dat</span><span class="lgc gen">Gen</span>',adj:'<span><b class="lgx">-e/-er/-es</b> Merkzellen</span><span><b class="lgx en">-en</b> überall sonst</span>',art:'<span><b>der</b> · <b>die</b> · <b>das</b></span>',pron:'<span><i class="sw" style="background:var(--grey)"></i>Nominativ</span><span style="color:var(--akk)"><i class="sw" style="box-shadow:inset 0 0 0 2px var(--akk)"></i>Akkusativ</span><span style="color:var(--dat)"><i class="sw" style="box-shadow:inset 0 0 0 2px var(--dat)"></i>Dativ</span>',gen:'<span><i class="sw" style="background:var(--cream);box-shadow:inset 0 0 0 1px var(--line)"></i>Genitiv: des · der</span>'};
 function render(){clearTimeout(MC&&MC.tm);
   if(mode==="theo"){theoGallery();$("theo").scrollTop=0;return;}
   if(mode==="game"&&T!=="satz"){mcRender();return;}
   if(GT[T]){cardsLearn(GT[T].cards,GT[T].lg);return;}
-  ({satz:mode==="learn"?sbLearn:sbGame,prep:prLearn,art:()=>cardsLearn(ART_CARDS,LG.art),pron:()=>cardsLearn(PRON_CARDS,LG.pron),gen:()=>cardsLearn(GEN_CARDS,LG.gen),fall:()=>cardsLearn(FALL_CARDS,LG.fall),adj:()=>cardsLearn(ADJ_CARDS,LG.adj)})[T]();}
+  ({satz:mode==="learn"?sbLearn:sbGame,prep:prLearn,art:()=>cardsLearn(ART_CARDS,LG.art),pron:()=>cardsLearn(PRON_CARDS,LG.pron),gen:()=>cardsLearn(GEN_CARDS,LG.gen),fall:()=>cardsLearn(FALL_CARDS.concat(PRON_CARDS),LG.fall),adj:()=>cardsLearn(ADJ_CARDS,LG.adj)})[T]();}
 function cardsLearn(cards,lg){$("lg").innerHTML=lg;const c=cards[idx%cards.length];
   $("stage").innerHTML=c.st;$("stage").onclick=null;$("bd").textContent=c.b;$("ct").textContent=(idx%cards.length+1)+" / "+cards.length;
   $("cardbody").innerHTML='<p id="tx">'+c.tx+'</p><p id="gt">'+c.gt+'</p>';arcsSoon($("stage"));
@@ -1363,10 +1510,12 @@ function toggleStar(n){const s=store.stars||[];store.stars=s.includes(n)?s.filte
 /* ---------- Theorie as a gallery with pop-up (like the dasein-design projects) ---------- */
 const GP={items:[],i:0,open:false};
 function theoGallery(){const tmp=document.createElement("div");tmp.innerHTML=TH[T]();GP.items=[...tmp.querySelectorAll(".tc")];
-  $("theo").innerHTML='<p class="gintro">'+GP.items.length+' Merkblätter · antippen zum Öffnen</p><div class="gal">'+GP.items.map((el,i)=>{const h=el.querySelector("h3"),sm=h&&h.querySelector("small");
-    const title=h?h.childNodes[0].textContent.trim():"";
-    return '<button class="gt" id="gt'+i+'" data-i="'+i+'"><div class="thumb">'+el.innerHTML.replace(/ id="[^"]*"/g,"")+'</div><span class="cap"><b>'+esc(title)+'</b><small>'+String(i+1).padStart(2,"0")+(sm?" · "+esc(sm.textContent):"")+'</small></span></button>';}).join("")+'</div>';
-  $("theo").querySelectorAll(".gt").forEach(b=>b.onclick=()=>openPop(+b.dataset.i));arcsSoon($("theo"));}
+  $("theo").innerHTML='<div class="tlist">'+GP.items.map((el,i)=>{const h=el.querySelector("h3"),sm=h&&h.querySelector("small");
+    const title=h?h.childNodes[0].textContent.trim():"";const c=el.cloneNode(true);c.querySelectorAll("h3,button,select,input,svg,.hd,.bh,.bl,.h").forEach(x=>x.remove());
+    const tl=c.querySelector(".tline"),w=document.createTreeWalker(tl||c,NodeFilter.SHOW_TEXT),parts=[];while(w.nextNode())parts.push(w.currentNode.textContent);
+    const pv=parts.join(" ").replace(/\s+/g," ").replace(/ ([.,;:!?])/g,"$1").trim().slice(0,90);
+    return '<button class="tli" id="gt'+i+'" data-i="'+i+'"><span class="no">'+String(i+1).padStart(2,"0")+'</span><span><b>'+esc(title)+'</b><span class="pv">'+esc(pv)+'</span></span><small>'+(sm?esc(sm.textContent):"")+'</small></button>';}).join("")+'</div>';
+  $("theo").querySelectorAll(".tli").forEach(b=>b.onclick=()=>openPop(+b.dataset.i));}
 function openPop(i){if(!GP.open)navPush("pop");const n=GP.items.length;GP.i=(i+n)%n;GP.open=true;const el=GP.items[GP.i],h=el.querySelector("h3");
   $("pt").textContent=h?h.childNodes[0].textContent.trim():"";$("pc").textContent=(GP.i+1)+" / "+n;
   $("pb").innerHTML=el.innerHTML;$("pop").hidden=false;$("pb").scrollTop=0;arcsSoon($("pb"));if(T==="art")bindOwn();}
@@ -1389,7 +1538,7 @@ function bank(t){
   if(t==="prep"){const P=byLevel(PQ);const a=P.filter(q=>!q.x),b=shuffle(P.filter(q=>q.x));return shuffle(a.concat(b.slice(0,Math.max(8,15-a.length)))).slice(0,18).map(q=>Object.assign({t:"prep"},q));}
   if(t==="art"){const pool=byLevel(ART.concat(ownList()).map(w=>Object.assign([],w,{lv:w[4]||"B1"}))).map(w=>w);const st=pool.filter(w=>starred(w[1]));return shuffle(st).concat(shuffle(pool.filter(w=>!starred(w[1])))).slice(0,15).map(artQ);}
   if(t==="pron")return shuffle(byLevel(PRON_Q)).map(q=>Object.assign({t:"pron",c:0},q));
-  if(t==="fall")return shuffle(byLevel(FALL_Q)).slice(0,15).map(q=>Object.assign({t:"fall"},q));
+  if(t==="fall")return shuffle(shuffle(byLevel(FALL_Q)).slice(0,10).map(q=>Object.assign({t:"fall"},q)).concat(shuffle(byLevel(PRON_Q)).slice(0,5).map(q=>Object.assign({t:"pron",c:0},q))));
   if(t==="adj")return shuffle(byLevel(ADJ_Q)).slice(0,15).map(q=>Object.assign({t:"adj"},q));
   if(t==="gen")return shuffle(byLevel(GEN_Q)).map(q=>Object.assign({t:"gen",c:0},q));
   const L=store.level;if(L&&L!=="all"){const all=[].concat(PQ.map(q=>Object.assign({t:"prep"},q)),ART.concat(ownList()).map(artQ),PRON_Q.map(q=>Object.assign({t:"pron",c:0},q)),GEN_Q.map(q=>Object.assign({t:"gen",c:0},q)),FALL_Q.map(q=>Object.assign({t:"fall"},q)),ADJ_Q.map(q=>Object.assign({t:"adj"},q)),...Object.keys(GT).map(k=>GT[k].q.map(q=>Object.assign({t:k,c:0},q))));
@@ -1436,7 +1585,7 @@ function sbGerman(it){const s=it.clauses.map(c=>c.seg.map(x=>x[1]).filter(Boolea
 function frameHTML(it){return '<div class="frame">'+it.clauses.map(c=>{const L=c.k==="main"?{vf:"Vorfeld",v1:"Verb 1",mf:"Mittelfeld",v2:"Verb 2"}:{ein:"Einleitung",mf:"Mittelfeld",v2:"Verbende"};
   return '<div class="clause"><span class="ctag">'+(c.k==="main"?"Hauptsatz":"Nebensatz")+'</span><div class="grid'+(c.k==="sub"?" subc":"")+'">'+
    c.seg.map(([ty,tx])=>'<div class="cell '+ty+'"><small>'+L[ty]+'</small>'+(tx?'<span>'+esc(tx)+'</span>':'<span class="empty">'+(ty==="vf"?(c.ref?"↑ Nebensatz":"leer"):"–")+'</span>')+'</div>').join("")+'</div></div>';}).join("")+'</div>';}
-function sbLegend(){$("lg").innerHTML='<span><i class="sw" style="background:var(--grey)"></i>Vorfeld</span><span><i class="sw" style="background:var(--lime);box-shadow:inset 0 0 0 1px var(--ink)"></i>Satzklammer</span><span><i class="sw" style="box-shadow:inset 0 0 0 1px var(--dot)"></i>Mittelfeld</span><span><i class="sw" style="background:var(--cream);box-shadow:inset 0 0 0 1px var(--line)"></i>Einleitung</span>';}
+function sbLegend(){$("lg").innerHTML='<span><i class="sw" style="background:var(--grey)"></i>Vorfeld</span><span><i class="sw" style="background:var(--mkey)"></i>Satzklammer</span><span><i class="sw" style="box-shadow:inset 0 0 0 1px var(--dot)"></i>Mittelfeld</span><span><i class="sw" style="background:var(--cream);box-shadow:inset 0 0 0 1px var(--line)"></i>Einleitung</span>';}
 function sbLearn(){sbLegend();const it=SB[idx];
   $("stage").innerHTML='<p class="en">'+esc(it.en)+'</p><div id="fr" class="'+(self?"masked":"")+'">'+frameHTML(it)+'</div>';
   $("stage").onclick=()=>{const f=$("fr");if(f)f.classList.remove("masked");};
@@ -1519,5 +1668,3 @@ window.addEventListener("popstate",e=>{const st=e.state&&e.state.dg;
   if(st==="base"||!st){navPush("home");}});
 renderHome();
 </script>
-
-</body></html>
