@@ -212,6 +212,11 @@ svg.room{width:100%;height:100%;max-height:100%;display:block}
 .pbody{flex:1;overflow-y:auto;padding:16px max(18px,env(safe-area-inset-right,0px)) 30px max(18px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:12px;width:100%;max-width:560px;margin:0 auto;font-size:1.05rem}
 .pnav{flex:none;display:flex;justify-content:space-between;padding:8px 14px;border-top:1px dashed var(--line)}
 .pnav button{background:transparent;font-size:1rem}
+.lvsel{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:.95rem;color:var(--muted)}
+#lvs{display:flex;gap:3px}
+.lvb{padding:5px 8px;font-size:.88rem;min-width:2.4em}
+.lvb[aria-pressed="true"]{background:var(--lime);font-weight:700;box-shadow:inset 0 0 0 1px var(--ink)}
+.lv{display:inline-block;font-size:.72rem;font-weight:700;padding:1px 5px;margin-right:4px;box-shadow:inset 0 0 0 1px var(--ink);color:var(--fg);vertical-align:1px}
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
 </style>
 
@@ -220,6 +225,7 @@ svg.room{width:100%;height:100%;max-height:100%;display:block}
   <section id="home" class="home">
     <div class="titlebar"><h1 class="logo">deutsch<b>-grammatik</b></h1></div>
     <p class="intro">Jedes Thema kannst du lernen oder als Spiel üben.</p>
+    <div class="lvsel" role="group" aria-label="Niveau"><span>Niveau</span><div id="lvs"></div></div>
     <div class="timer"><span>Timer im Spiel</span><button id="tmr" aria-pressed="false">aus</button></div>
     <div class="timer"><span>Artikel-Hilfe <small class="n">Grundform vor der Antwort zeigen</small></span><button id="ahp" aria-pressed="false">aus</button></div>
     <div id="tiles" style="display:flex;flex-direction:column;gap:10px"></div>
@@ -300,43 +306,43 @@ const PR=[
  {k:"fix",c:"dat",p:"gegenüber",en:"opposite",ex:"Die Bäckerei liegt [dem] Park gegenüber."}
 ];
 const PQ=[
- {s:"Ich lege das Buch auf ___ Tisch.",n:"der Tisch",o:["den","dem"],c:0,why:"Wohin? legen = movement → Akkusativ.",p:"auf",m:"wohin"},
- {s:"Das Buch liegt auf ___ Tisch.",n:"der Tisch",o:["den","dem"],c:1,why:"Wo? liegen = position → Dativ.",p:"auf",m:"wo"},
- {s:"Ich hänge das Bild an ___ Wand.",n:"die Wand",o:["die","der"],c:0,why:"Wohin? → Akkusativ. die stays die.",p:"an",m:"wohin"},
- {s:"Das Bild hängt an ___ Wand.",n:"die Wand",o:["die","der"],c:1,why:"Wo? → Dativ. die becomes der.",p:"an",m:"wo"},
- {s:"Wir fahren mit ___ Rad.",n:"das Rad",o:["das","dem"],c:1,why:"mit is always Dativ.",f:"mit"},
- {s:"Ich gehe durch ___ Park.",n:"der Park",o:["den","dem"],c:0,why:"durch is always Akkusativ.",f:"durch"},
- {s:"Die Katze liegt unter ___ Tisch.",n:"der Tisch",o:["den","dem"],c:1,why:"Wo? liegen → Dativ.",p:"unter",m:"wo"},
- {s:"Ich stelle die Pflanze neben ___ Sofa.",n:"das Sofa",o:["das","dem"],c:0,why:"Wohin? stellen → Akkusativ. das stays das.",p:"neben",m:"wohin"},
- {s:"Sie kommt aus ___ Haus.",n:"das Haus",o:["das","dem"],c:1,why:"aus is always Dativ.",f:"aus"},
- {s:"Das ist für ___ Kunden.",n:"der Kunde (n-Deklination: den Kunden)",o:["den","dem"],c:0,why:"für is always Akkusativ.",f:"für"},
- {s:"Ich stelle die Vase ___ Fenster.",n:"das Fenster",o:["ans","am"],c:0,why:"Wohin? stellen → Akkusativ. an das → ans.",p:"fenster",m:"wohin"},
- {s:"Ich stelle die Bücher ___ Regal.",n:"das Regal",o:["ins","im"],c:0,why:"Wohin? in das → ins.",p:"in",m:"wohin"},
- {s:"Der Stuhl steht vor ___ Tisch.",n:"der Tisch",o:["den","dem"],c:1,why:"Wo? stehen → Dativ.",p:"vor",m:"wo"},
- {s:"Wir reiten ___ Fluss entlang.",n:"der Fluss",o:["den","dem"],c:0,why:"entlang after the noun takes Akkusativ.",f:"entlang"},
- {s:"Außer ___ Chef sind alle da.",n:"der Chef",o:["den","dem"],c:1,why:"außer is always Dativ.",f:"außer"},
- {s:"Ich warte auf ___ Genehmigung.",n:"die Genehmigung",o:["die","der"],c:0,why:"warten auf + Akkusativ. Fixed verb: no Wo/Wohin logic.",v:"warten auf",cs:"akk"},
- {s:"Wir nehmen an ___ Wettbewerb teil.",n:"der Wettbewerb",o:["den","dem"],c:1,why:"teilnehmen an + Dativ: one of the exceptions to learn.",v:"teilnehmen an",cs:"dat"},
- {s:"Ich gehe heute ___ Arzt.",n:"der Arzt",o:["zum","zur","beim"],c:0,why:"Wohin? To people and practices: zu + Dativ → zum.",x:1,w:"Wohin?",a:"zum Arzt"},
- {s:"Wir fahren morgen ___ Berlin.",n:"Berlin",o:["nach","zu","in"],c:0,why:"Cities and countries without article: nach.",x:1,w:"Wohin?",a:"nach Berlin"},
- {s:"Im Sommer fahren wir ___ Schweiz.",n:"die Schweiz",o:["in die","nach","in der"],c:0,why:"Countries with an article: in + Akkusativ.",x:1,w:"Wohin?",a:"in die Schweiz"},
- {s:"Ich komme gerade ___ Büro.",n:"das Büro",o:["aus dem","aus das","im"],c:0,why:"Woher? aus + Dativ.",x:1,w:"Woher?",a:"aus dem Büro"},
- {s:"Das Paket ist ___ meinem Bruder.",n:"mein Bruder",o:["von","aus","bei"],c:0,why:"A person as the source: von + Dativ.",x:1,w:"Von wem?",a:"von meinem Bruder"},
- {s:"Heute Abend bin ich ___ meiner Freundin.",n:"meine Freundin",o:["bei","zu","mit"],c:0,why:"Wo? At someone's place: bei + Dativ.",x:1,w:"Wo?",a:"bei meiner Freundin"},
- {s:"Das Gasthaus liegt direkt ___ Fluss.",n:"der Fluss",o:["am","im","zum"],c:0,why:"Wo? Beside the river: am (an dem).",x:1,w:"Wo?",a:"am Fluss"},
- {s:"Wir sitzen schon ___ Zug.",n:"der Zug",o:["im","in den","am"],c:0,why:"Wo? → im (in dem), Dativ.",x:1,w:"Wo?",a:"im Zug"},
- {s:"Sie steigt gerade ___ Zug.",n:"der Zug",o:["in den","im","am"],c:0,why:"Wohin? einsteigen in + Akkusativ.",x:1,w:"Wohin?",a:"in den Zug"},
- {s:"Die Pferde stehen ___ Weide.",n:"die Weide",o:["auf der","auf die","an der"],c:0,why:"Wo? stehen → auf der Weide (Dativ).",x:1,w:"Wo?",a:"auf der Weide"},
- {s:"Wir bringen die Pferde ___ Weide.",n:"die Weide",o:["auf die","auf der","in der"],c:0,why:"Wohin? bringen → auf die Weide (Akkusativ).",x:1,w:"Wohin?",a:"auf die Weide"},
- {s:"Nach der Arbeit gehe ich ___ Hause.",n:"das Haus",o:["nach","zu","zum"],c:0,why:"Movement home: nach Hause.",x:1,w:"Wohin?",a:"nach Hause"},
- {s:"Heute bleibe ich ___ Hause.",n:"das Haus",o:["zu","nach","im"],c:0,why:"Position at home: zu Hause.",x:1,w:"Wo?",a:"zu Hause"},
- {s:"___ Montag habe ich frei.",n:"der Montag",o:["Am","Im","Um"],c:0,why:"Days: am.",x:1,w:"Wann?",a:"am Montag"},
- {s:"___ Juni fahren wir weg.",n:"der Juni",o:["Im","Am","Um"],c:0,why:"Months and seasons: im.",x:1,w:"Wann?",a:"im Juni"},
- {s:"Die Besprechung beginnt ___ neun Uhr.",n:"neun Uhr",o:["um","am","im"],c:0,why:"Clock times: um.",x:1,w:"Wann?",a:"um neun Uhr"},
- {s:"Ich wohne ___ 2010 in Wien.",n:"2010",o:["seit","vor","ab"],c:0,why:"seit + present tense: since 2010 and still now.",x:1,w:"Seit wann?",a:"seit 2010"},
- {s:"Das Gespräch war ___ einer Woche.",n:"eine Woche",o:["vor","seit","in"],c:0,why:"vor + Dativ = ago.",x:1,w:"Wann?",a:"vor einer Woche"},
- {s:"Die Wohnung hat einen Blick ___ Park.",n:"der Park",o:["auf den","auf dem","in den"],c:0,why:"Fixed: der Blick auf + Akkusativ.",x:1,w:"Fest",a:"auf den Park"},
- {s:"Der Entwurf basiert auf ___ Studie.",n:"die Studie",o:["eine","einer"],c:1,why:"basieren auf + Dativ, another exception.",v:"basieren auf",cs:"dat"}
+ {s:"Ich lege das Buch auf ___ Tisch.",lv:"A2",n:"der Tisch",o:["den","dem"],c:0,why:"Wohin? legen = movement → Akkusativ.",p:"auf",m:"wohin"},
+ {s:"Das Buch liegt auf ___ Tisch.",lv:"A2",n:"der Tisch",o:["den","dem"],c:1,why:"Wo? liegen = position → Dativ.",p:"auf",m:"wo"},
+ {s:"Ich hänge das Bild an ___ Wand.",lv:"A2",n:"die Wand",o:["die","der"],c:0,why:"Wohin? → Akkusativ. die stays die.",p:"an",m:"wohin"},
+ {s:"Das Bild hängt an ___ Wand.",lv:"A2",n:"die Wand",o:["die","der"],c:1,why:"Wo? → Dativ. die becomes der.",p:"an",m:"wo"},
+ {s:"Wir fahren mit ___ Rad.",lv:"A1",n:"das Rad",o:["das","dem"],c:1,why:"mit is always Dativ.",f:"mit"},
+ {s:"Ich gehe durch ___ Park.",lv:"A1",n:"der Park",o:["den","dem"],c:0,why:"durch is always Akkusativ.",f:"durch"},
+ {s:"Die Katze liegt unter ___ Tisch.",lv:"A2",n:"der Tisch",o:["den","dem"],c:1,why:"Wo? liegen → Dativ.",p:"unter",m:"wo"},
+ {s:"Ich stelle die Pflanze neben ___ Sofa.",lv:"A2",n:"das Sofa",o:["das","dem"],c:0,why:"Wohin? stellen → Akkusativ. das stays das.",p:"neben",m:"wohin"},
+ {s:"Sie kommt aus ___ Haus.",lv:"A1",n:"das Haus",o:["das","dem"],c:1,why:"aus is always Dativ.",f:"aus"},
+ {s:"Das ist für ___ Kunden.",lv:"A2",n:"der Kunde (n-Deklination: den Kunden)",o:["den","dem"],c:0,why:"für is always Akkusativ.",f:"für"},
+ {s:"Ich stelle die Vase ___ Fenster.",lv:"A2",n:"das Fenster",o:["ans","am"],c:0,why:"Wohin? stellen → Akkusativ. an das → ans.",p:"fenster",m:"wohin"},
+ {s:"Ich stelle die Bücher ___ Regal.",lv:"A2",n:"das Regal",o:["ins","im"],c:0,why:"Wohin? in das → ins.",p:"in",m:"wohin"},
+ {s:"Der Stuhl steht vor ___ Tisch.",lv:"A2",n:"der Tisch",o:["den","dem"],c:1,why:"Wo? stehen → Dativ.",p:"vor",m:"wo"},
+ {s:"Wir reiten ___ Fluss entlang.",lv:"B1",n:"der Fluss",o:["den","dem"],c:0,why:"entlang after the noun takes Akkusativ.",f:"entlang"},
+ {s:"Außer ___ Chef sind alle da.",lv:"B1",n:"der Chef",o:["den","dem"],c:1,why:"außer is always Dativ.",f:"außer"},
+ {s:"Ich warte auf ___ Genehmigung.",lv:"B1",n:"die Genehmigung",o:["die","der"],c:0,why:"warten auf + Akkusativ. Fixed verb: no Wo/Wohin logic.",v:"warten auf",cs:"akk"},
+ {s:"Wir nehmen an ___ Wettbewerb teil.",lv:"B1",n:"der Wettbewerb",o:["den","dem"],c:1,why:"teilnehmen an + Dativ: one of the exceptions to learn.",v:"teilnehmen an",cs:"dat"},
+ {s:"Ich gehe heute ___ Arzt.",lv:"A1",n:"der Arzt",o:["zum","zur","beim"],c:0,why:"Wohin? To people and practices: zu + Dativ → zum.",x:1,w:"Wohin?",a:"zum Arzt"},
+ {s:"Wir fahren morgen ___ Berlin.",lv:"A1",n:"Berlin",o:["nach","zu","in"],c:0,why:"Cities and countries without article: nach.",x:1,w:"Wohin?",a:"nach Berlin"},
+ {s:"Im Sommer fahren wir ___ Schweiz.",lv:"A2",n:"die Schweiz",o:["in die","nach","in der"],c:0,why:"Countries with an article: in + Akkusativ.",x:1,w:"Wohin?",a:"in die Schweiz"},
+ {s:"Ich komme gerade ___ Büro.",lv:"A1",n:"das Büro",o:["aus dem","aus das","im"],c:0,why:"Woher? aus + Dativ.",x:1,w:"Woher?",a:"aus dem Büro"},
+ {s:"Das Paket ist ___ meinem Bruder.",lv:"A1",n:"mein Bruder",o:["von","aus","bei"],c:0,why:"A person as the source: von + Dativ.",x:1,w:"Von wem?",a:"von meinem Bruder"},
+ {s:"Heute Abend bin ich ___ meiner Freundin.",lv:"A1",n:"meine Freundin",o:["bei","zu","mit"],c:0,why:"Wo? At someone's place: bei + Dativ.",x:1,w:"Wo?",a:"bei meiner Freundin"},
+ {s:"Das Gasthaus liegt direkt ___ Fluss.",lv:"A2",n:"der Fluss",o:["am","im","zum"],c:0,why:"Wo? Beside the river: am (an dem).",x:1,w:"Wo?",a:"am Fluss"},
+ {s:"Wir sitzen schon ___ Zug.",lv:"A1",n:"der Zug",o:["im","in den","am"],c:0,why:"Wo? → im (in dem), Dativ.",x:1,w:"Wo?",a:"im Zug"},
+ {s:"Sie steigt gerade ___ Zug.",lv:"A2",n:"der Zug",o:["in den","im","am"],c:0,why:"Wohin? einsteigen in + Akkusativ.",x:1,w:"Wohin?",a:"in den Zug"},
+ {s:"Die Pferde stehen ___ Weide.",lv:"A2",n:"die Weide",o:["auf der","auf die","an der"],c:0,why:"Wo? stehen → auf der Weide (Dativ).",x:1,w:"Wo?",a:"auf der Weide"},
+ {s:"Wir bringen die Pferde ___ Weide.",lv:"A2",n:"die Weide",o:["auf die","auf der","in der"],c:0,why:"Wohin? bringen → auf die Weide (Akkusativ).",x:1,w:"Wohin?",a:"auf die Weide"},
+ {s:"Nach der Arbeit gehe ich ___ Hause.",lv:"A1",n:"das Haus",o:["nach","zu","zum"],c:0,why:"Movement home: nach Hause.",x:1,w:"Wohin?",a:"nach Hause"},
+ {s:"Heute bleibe ich ___ Hause.",lv:"A1",n:"das Haus",o:["zu","nach","im"],c:0,why:"Position at home: zu Hause.",x:1,w:"Wo?",a:"zu Hause"},
+ {s:"___ Montag habe ich frei.",lv:"A1",n:"der Montag",o:["Am","Im","Um"],c:0,why:"Days: am.",x:1,w:"Wann?",a:"am Montag"},
+ {s:"___ Juni fahren wir weg.",lv:"A1",n:"der Juni",o:["Im","Am","Um"],c:0,why:"Months and seasons: im.",x:1,w:"Wann?",a:"im Juni"},
+ {s:"Die Besprechung beginnt ___ neun Uhr.",lv:"A1",n:"neun Uhr",o:["um","am","im"],c:0,why:"Clock times: um.",x:1,w:"Wann?",a:"um neun Uhr"},
+ {s:"Ich wohne ___ 2010 in Wien.",lv:"A2",n:"2010",o:["seit","vor","ab"],c:0,why:"seit + present tense: since 2010 and still now.",x:1,w:"Seit wann?",a:"seit 2010"},
+ {s:"Das Gespräch war ___ einer Woche.",lv:"A2",n:"eine Woche",o:["vor","seit","in"],c:0,why:"vor + Dativ = ago.",x:1,w:"Wann?",a:"vor einer Woche"},
+ {s:"Die Wohnung hat einen Blick ___ Park.",lv:"B1",n:"der Park",o:["auf den","auf dem","in den"],c:0,why:"Fixed: der Blick auf + Akkusativ.",x:1,w:"Fest",a:"auf den Park"},
+ {s:"Der Entwurf basiert auf ___ Studie.",lv:"B2",n:"die Studie",o:["eine","einer"],c:1,why:"basieren auf + Dativ, another exception.",v:"basieren auf",cs:"dat"}
 ];
 const ICON={
  durch:'<rect x="15" y="9" width="10" height="22" rx="2"/><path d="M3 20 H35"/><path d="M30 15 L36 20 L30 25"/>',
@@ -499,9 +505,9 @@ const TH_SATZ=`
 
 /* ---------- data: Artikel ---------- */
 const ART=[
- ["der","Plan","plan",""],["der","Entwurf","design, draft",""],["der","Grundriss","floor plan",""],["der","Architekt","architect","People ending in -ant/-ent/-ekt are mostly der."],["der","Bauherr","client",""],["der","Sattel","saddle",""],["der","Stall","stable",""],["der","Verbrauch","consumption",""],["der","Montag","Monday","Days are der."],["der","Lehrling","apprentice","-ling → der"],["der","Motor","engine","-or → der"],["der","Bohrer","drill","Tools with -er → der"],["der","Termin","appointment",""],["der","Schnitt","section",""],["der","Maßstab","scale",""],["der","Sommer","summer","Seasons are der."],
- ["die","Zeichnung","drawing","-ung → die"],["die","Wohnung","flat","-ung → die"],["die","Planung","planning","-ung → die"],["die","Möglichkeit","possibility","-keit → die"],["die","Konstruktion","construction","-ion → die"],["die","Qualität","quality","-tät → die"],["die","Architektur","architecture","-ur → die"],["die","Statik","structural engineering","-ik → die"],["die","Fassade","façade","-e → mostly die"],["die","Treppe","stairs","-e → mostly die"],["die","Wand","wall",""],["die","Tür","door",""],["die","Haustür","front door","Compound: die Tür decides."],["die","Genehmigung","permit","-ung → die"],["die","Weide","pasture","-e → mostly die"],["die","Mähne","mane","-e → mostly die"],
- ["das","Fenster","window","-er trap: das Fenster."],["das","Zimmer","room","-er trap: das Zimmer."],["das","Gebäude","building","Ge- → mostly das"],["das","Fundament","foundation","-ment → das"],["das","Dokument","document","-ment → das"],["das","Zentrum","centre","-um → das"],["das","Museum","museum","-um → das"],["das","Ergebnis","result","-nis → mostly das"],["das","Pferd","horse",""],["das","Zeichnen","drawing (the activity)","Verb as noun → das"],["das","Dach","roof",""],["das","Haus","house",""],["das","Stalltor","stable gate","Compound: das Tor decides."],["das","Mädchen","girl","-chen → always das"],["das","Modell","model",""],["das","Büro","office",""]
+ ["der","Plan","plan","","A2"],["der","Entwurf","design, draft","","B1"],["der","Grundriss","floor plan","","B2"],["der","Architekt","architect","People ending in -ant/-ent/-ekt are mostly der.","A2"],["der","Bauherr","client","","C1"],["der","Sattel","saddle","","B1"],["der","Stall","stable","","B1"],["der","Verbrauch","consumption","","B2"],["der","Montag","Monday","Days are der.","A1"],["der","Lehrling","apprentice","-ling → der","B1"],["der","Motor","engine","-or → der","A2"],["der","Bohrer","drill","Tools with -er → der","B1"],["der","Termin","appointment","","A1"],["der","Schnitt","section","","B2"],["der","Maßstab","scale","","B2"],["der","Sommer","summer","Seasons are der.","A1"],
+ ["die","Zeichnung","drawing","-ung → die","A2"],["die","Wohnung","flat","-ung → die","A1"],["die","Planung","planning","-ung → die","B1"],["die","Möglichkeit","possibility","-keit → die","A2"],["die","Konstruktion","construction","-ion → die","B1"],["die","Qualität","quality","-tät → die","B1"],["die","Architektur","architecture","-ur → die","B1"],["die","Statik","structural engineering","-ik → die","C1"],["die","Fassade","façade","-e → mostly die","B2"],["die","Treppe","stairs","-e → mostly die","A2"],["die","Wand","wall","","A2"],["die","Tür","door","","A1"],["die","Haustür","front door","Compound: die Tür decides.","A2"],["die","Genehmigung","permit","-ung → die","B2"],["die","Weide","pasture","-e → mostly die","B1"],["die","Mähne","mane","-e → mostly die","B2"],
+ ["das","Fenster","window","-er trap: das Fenster.","A1"],["das","Zimmer","room","-er trap: das Zimmer.","A1"],["das","Gebäude","building","Ge- → mostly das","A2"],["das","Fundament","foundation","-ment → das","B2"],["das","Dokument","document","-ment → das","B1"],["das","Zentrum","centre","-um → das","A2"],["das","Museum","museum","-um → das","A1"],["das","Ergebnis","result","-nis → mostly das","B1"],["das","Pferd","horse","","A1"],["das","Zeichnen","drawing (the activity)","Verb as noun → das","A2"],["das","Dach","roof","","A2"],["das","Haus","house","","A1"],["das","Stalltor","stable gate","Compound: das Tor decides.","B1"],["das","Mädchen","girl","-chen → always das","A1"],["das","Modell","model","","B1"],["das","Büro","office","","A1"]
 ];
 const chipA=w=>w.replace(/^(der|die|das) /,'<b>$1</b> ');
 const ruleSt=(h,list)=>'<div class="rcard"><p class="rh">'+h+'</p><div class="pcs big">'+list.map(w=>'<span class="pc">'+chipA(w)+'</span>').join("")+'</div></div>';
@@ -528,20 +534,20 @@ const PRON_CARDS=PRON.map(([n,a,d,ea,ed],i)=>({b:n+(i===7?" (Pl.)":i===3?" (Sg.)
  {b:"2 Pron.",st:'<div class="rcard"><p class="rh">Ich gebe <span class="a">es</span> <span class="d">ihm</span>.</p><div class="pcs big"><span class="pc">Ich gebe dem Kind den Ball.</span><span class="pc">Ich gebe ihn dem Kind.</span></div></div>',tx:"Two pronouns: Akkusativ first",gt:"Two nouns: Dativ first. As soon as the Akkusativ is a pronoun, it moves to the front."},
  {b:"fest",st:ruleSt("Mir ist kalt.",["Es tut mir leid.","Wie geht es dir?","Das ist mir egal.","Mir ist schlecht."]),tx:"Dativ in fixed phrases",gt:"Learn these as whole phrases. There is no Akkusativ logic to follow."}]);
 const PRON_Q=[
- {s:"Kannst du ___ helfen? (ich)",o:["mir","mich"],why:"helfen + Dativ.",p:"ich",cs:"dat"},
- {s:"Ich besuche ___ morgen. (du)",o:["dich","dir"],why:"besuchen + Akkusativ.",p:"du",cs:"akk"},
- {s:"Das Haus gehört ___. (er)",o:["ihm","ihn"],why:"gehören + Dativ.",p:"er",cs:"dat"},
- {s:"Ich habe ___ gestern gesehen. (sie, Sg.)",o:["sie","ihr"],why:"sehen + Akkusativ.",p:"sie",cs:"akk"},
- {s:"Der Entwurf gefällt ___. (wir)",o:["uns","wir"],why:"gefallen + Dativ: the person who likes it.",p:"wir",cs:"dat"},
- {s:"Ich danke ___ für die Hilfe. (Sie)",o:["Ihnen","Sie"],why:"danken + Dativ.",p:"Sie",cs:"dat"},
- {s:"Ich rufe ___ später an. (ihr)",o:["euch","ihr"],why:"anrufen + Akkusativ.",p:"ihr",cs:"akk"},
- {s:"Ich gebe ___ das Buch. (er)",o:["ihm","ihn"],why:"The person receiving = Dativ.",p:"er",cs:"dat"},
- {s:"Ich gebe ___ ihm. (das Buch)",o:["es","ihm"],why:"Two pronouns: Akkusativ first.",p:"es",cs:"akk"},
- {s:"Wie geht es ___? (du)",o:["dir","dich"],why:"Fixed phrase: Wie geht es dir?",p:"du",cs:"dat"},
- {s:"Ich wasche ___ die Hände. (ich)",o:["mir","mich"],why:"Reflexive with a body part as object → Dativ.",p:"ich",cs:"dat"},
- {s:"Ich freue ___ auf das Wochenende. (ich)",o:["mich","mir"],why:"sich freuen: reflexive Akkusativ.",p:"ich",cs:"akk"},
- {s:"Wir haben ___ lange nicht gesehen. (sie, Pl.)",o:["sie","ihnen"],why:"sehen + Akkusativ.",p:"sie",cs:"akk"},
- {s:"Das tut ___ leid. (ich)",o:["mir","mich"],why:"Fixed phrase: Das tut mir leid.",p:"ich",cs:"dat"}
+ {s:"Kannst du ___ helfen? (ich)",lv:"A1",o:["mir","mich"],why:"helfen + Dativ.",p:"ich",cs:"dat"},
+ {s:"Ich besuche ___ morgen. (du)",lv:"A1",o:["dich","dir"],why:"besuchen + Akkusativ.",p:"du",cs:"akk"},
+ {s:"Das Haus gehört ___. (er)",lv:"A2",o:["ihm","ihn"],why:"gehören + Dativ.",p:"er",cs:"dat"},
+ {s:"Ich habe ___ gestern gesehen. (sie, Sg.)",lv:"A2",o:["sie","ihr"],why:"sehen + Akkusativ.",p:"sie",cs:"akk"},
+ {s:"Der Entwurf gefällt ___. (wir)",lv:"A2",o:["uns","wir"],why:"gefallen + Dativ: the person who likes it.",p:"wir",cs:"dat"},
+ {s:"Ich danke ___ für die Hilfe. (Sie)",lv:"A1",o:["Ihnen","Sie"],why:"danken + Dativ.",p:"Sie",cs:"dat"},
+ {s:"Ich rufe ___ später an. (ihr)",lv:"A2",o:["euch","ihr"],why:"anrufen + Akkusativ.",p:"ihr",cs:"akk"},
+ {s:"Ich gebe ___ das Buch. (er)",lv:"A2",o:["ihm","ihn"],why:"The person receiving = Dativ.",p:"er",cs:"dat"},
+ {s:"Ich gebe ___ ihm. (das Buch)",lv:"B1",o:["es","ihm"],why:"Two pronouns: Akkusativ first.",p:"es",cs:"akk"},
+ {s:"Wie geht es ___? (du)",lv:"A1",o:["dir","dich"],why:"Fixed phrase: Wie geht es dir?",p:"du",cs:"dat"},
+ {s:"Ich wasche ___ die Hände. (ich)",lv:"B1",o:["mir","mich"],why:"Reflexive with a body part as object → Dativ.",p:"ich",cs:"dat"},
+ {s:"Ich freue ___ auf das Wochenende. (ich)",lv:"B1",o:["mich","mir"],why:"sich freuen: reflexive Akkusativ.",p:"ich",cs:"akk"},
+ {s:"Wir haben ___ lange nicht gesehen. (sie, Pl.)",lv:"A2",o:["sie","ihnen"],why:"sehen + Akkusativ.",p:"sie",cs:"akk"},
+ {s:"Das tut ___ leid. (ich)",lv:"A1",o:["mir","mich"],why:"Fixed phrase: Das tut mir leid.",p:"ich",cs:"dat"}
 ];
 /* ---------- data: Genitiv ---------- */
 const GEN_CARDS=[
@@ -554,18 +560,18 @@ const GEN_CARDS=[
  {b:"C1",st:ruleSt("bedürfen · gedenken",["Das bedarf einer Erklärung.","Wir gedenken der Opfer."]),tx:"A few verbs take Genitiv",gt:"Formal register. Useful at C1."}
 ];
 const GEN_Q=[
- {s:"Wegen ___ Regens bleiben wir drinnen.",o:["des","dem","den"],why:"wegen + Genitiv: des Regens.",h:"der Regen",r:"des Regens"},
- {s:"Das Büro ___ Architekten liegt im 7. Bezirk.",o:["des","dem","der"],why:"Genitiv of possession; Architekt is a weak noun: des Architekten.",h:"der Architekt",r:"des Architekten"},
- {s:"Trotz ___ Kälte reiten wir aus.",o:["der","die","des"],why:"trotz + Genitiv; feminine → der.",h:"die Kälte",r:"der Kälte"},
- {s:"Die Fassade des ___ ist neu.",o:["Gebäudes","Gebäude","Gebäuden"],why:"Neuter Genitiv adds -s.",h:"das Gebäude",r:"des Gebäudes"},
- {s:"Während ___ Sitzung ist das Handy aus.",o:["der","die","dem"],why:"während + Genitiv; feminine → der.",h:"die Sitzung",r:"der Sitzung"},
- {s:"Das Ende des ___ war spannend.",o:["Films","Film","Filme"],why:"Masculine Genitiv adds -s.",h:"der Film",r:"des Films"},
- {s:"Statt ___ Plans brauchen wir eine Skizze.",o:["eines","einen","einem"],why:"statt + Genitiv: eines Plans.",h:"ein Plan",r:"eines Plans"},
- {s:"Innerhalb ___ Woche bekommen Sie Antwort.",o:["einer","eine","einem"],why:"innerhalb + Genitiv; feminine → einer.",h:"eine Woche",r:"einer Woche"},
- {s:"Der Name ___ Kollegen ist mir entfallen.",o:["des","dem","den"],why:"Genitiv; Kollege is a weak noun: des Kollegen.",h:"der Kollege",r:"des Kollegen"},
- {s:"Aufgrund ___ Wetters fällt das Turnier aus.",o:["des","dem","das"],why:"aufgrund + Genitiv.",h:"das Wetter",r:"des Wetters"},
- {s:"Die Höhe ___ Hauses beträgt zwölf Meter.",o:["des","dem","der"],why:"Neuter Genitiv: des Hauses (-es after s).",h:"das Haus",r:"des Hauses"},
- {s:"Das bedarf ___ Erklärung.",o:["einer","eine","einem"],why:"bedürfen + Genitiv (C1).",h:"eine Erklärung",r:"einer Erklärung"}
+ {s:"Wegen ___ Regens bleiben wir drinnen.",lv:"B1",o:["des","dem","den"],why:"wegen + Genitiv: des Regens.",h:"der Regen",r:"des Regens"},
+ {s:"Das Büro ___ Architekten liegt im 7. Bezirk.",lv:"B1",o:["des","dem","der"],why:"Genitiv of possession; Architekt is a weak noun: des Architekten.",h:"der Architekt",r:"des Architekten"},
+ {s:"Trotz ___ Kälte reiten wir aus.",lv:"B1",o:["der","die","des"],why:"trotz + Genitiv; feminine → der.",h:"die Kälte",r:"der Kälte"},
+ {s:"Die Fassade des ___ ist neu.",lv:"B1",o:["Gebäudes","Gebäude","Gebäuden"],why:"Neuter Genitiv adds -s.",h:"das Gebäude",r:"des Gebäudes"},
+ {s:"Während ___ Sitzung ist das Handy aus.",lv:"B1",o:["der","die","dem"],why:"während + Genitiv; feminine → der.",h:"die Sitzung",r:"der Sitzung"},
+ {s:"Das Ende des ___ war spannend.",lv:"B1",o:["Films","Film","Filme"],why:"Masculine Genitiv adds -s.",h:"der Film",r:"des Films"},
+ {s:"Statt ___ Plans brauchen wir eine Skizze.",lv:"B2",o:["eines","einen","einem"],why:"statt + Genitiv: eines Plans.",h:"ein Plan",r:"eines Plans"},
+ {s:"Innerhalb ___ Woche bekommen Sie Antwort.",lv:"B2",o:["einer","eine","einem"],why:"innerhalb + Genitiv; feminine → einer.",h:"eine Woche",r:"einer Woche"},
+ {s:"Der Name ___ Kollegen ist mir entfallen.",lv:"B2",o:["des","dem","den"],why:"Genitiv; Kollege is a weak noun: des Kollegen.",h:"der Kollege",r:"des Kollegen"},
+ {s:"Aufgrund ___ Wetters fällt das Turnier aus.",lv:"B2",o:["des","dem","das"],why:"aufgrund + Genitiv.",h:"das Wetter",r:"des Wetters"},
+ {s:"Die Höhe ___ Hauses beträgt zwölf Meter.",lv:"B1",o:["des","dem","der"],why:"Neuter Genitiv: des Hauses (-es after s).",h:"das Haus",r:"des Hauses"},
+ {s:"Das bedarf ___ Erklärung.",lv:"C1",o:["einer","eine","einem"],why:"bedürfen + Genitiv (C1).",h:"eine Erklärung",r:"einer Erklärung"}
 ];
 /* ---------- Theorie: Artikel, Pronomen, Genitiv ---------- */
 const pcs=(cls,list)=>'<div class="pcs">'+list.map(w=>'<span class="pc'+(cls?" "+cls:"")+'">'+chipA(w)+'</span>').join("")+'</div>';
@@ -600,14 +606,19 @@ const TH_GEN=`
 
 
 /* ---------- Links & Quellen ---------- */
-const L={duden:["Duden","https://www.duden.de","Rechtschreibung, Bedeutung, Artikel, Grammatik"],dudenk:["Duden Konjugation","https://www.duden.de/konjugation","Verben in allen Formen"],dwds:["DWDS","https://www.dwds.de","Wörterbuch mit echten Beispielsätzen aus Zeitungen und Büchern"],grammis:["grammis (IDS Mannheim)","https://grammis.ids-mannheim.de","Wissenschaftliche Grammatik, sehr genau"],leo:["LEO","https://dict.leo.org","Deutsch–Englisch, mit Forum"],pons:["PONS","https://de.pons.com","Deutsch–Englisch mit Beispielen"],linguee:["Linguee","https://www.linguee.de","Übersetzungen in echten Sätzen"],lingolia:["Lingolia","https://www.lingolia.com","Grammatik mit Übungen, Erklärung auch auf Englisch"],dw:["DW Learn German","https://learngerman.dw.com","Kurse A1–C1, Grammatik-Übersicht, gratis"],goethe:["Goethe-Institut Prüfungen","https://www.goethe.de/pruefungen","Modellsätze und Infos A1–C2"],goetheb1:["Goethe/ÖSD B1 Wortliste","https://www.goethe.de/pro/relaunch/prf/da/Goethe-Zertifikat_B1_Wortliste.pdf","Offizielle Wortliste (PDF)"],osd:["ÖSD","https://www.osd.at","Österreichisches Sprachdiplom: Prüfungen und Übungen"],tatoeba:["Tatoeba","https://tatoeba.org","Freie Beispielsätze mit Übersetzung (Qualität prüfen)"]};
+const L={duden:["Duden","https://www.duden.de","Rechtschreibung, Bedeutung, Artikel, Grammatik"],dudenk:["Duden Konjugation","https://www.duden.de/konjugation","Verben in allen Formen"],dwds:["DWDS","https://www.dwds.de","Wörterbuch mit echten Beispielsätzen aus Zeitungen und Büchern"],grammis:["grammis (IDS Mannheim)","https://grammis.ids-mannheim.de","Wissenschaftliche Grammatik, sehr genau"],leo:["LEO","https://dict.leo.org","Deutsch–Englisch, mit Forum"],pons:["PONS","https://de.pons.com","Deutsch–Englisch mit Beispielen"],linguee:["Linguee","https://www.linguee.de","Übersetzungen in echten Sätzen"],lingolia:["Lingolia","https://www.lingolia.com","Grammatik mit Übungen, Erklärung auch auf Englisch"],dw:["DW Learn German","https://learngerman.dw.com","Kurse A1–C1, Grammatik-Übersicht, gratis"],goethe:["Goethe-Institut Prüfungen","https://www.goethe.de/pruefungen","Modellsätze und Infos A1–C2"],goetheb1:["Goethe/ÖSD B1 Wortliste","https://www.goethe.de/pro/relaunch/prf/da/Goethe-Zertifikat_B1_Wortliste.pdf","Offizielle Wortliste (PDF)"],osd:["ÖSD","https://www.osd.at","Österreichisches Sprachdiplom: Prüfungen und Übungen"],tatoeba:["Tatoeba","https://tatoeba.org","Freie Beispielsätze mit Übersetzung (Qualität prüfen)"],cefr:["GER / CEFR (Europarat)","https://www.coe.int/en/web/common-european-framework-reference-languages/official-translations-of-the-cefr-global-scale","Die offizielle Beschreibung der Stufen A1–C2, auch auf Deutsch"],profile:["Profile deutsch (Klett)","https://www.klett-sprachen.de/profile-deutsch/t-396/9783126065184","Wortschatz und Grammatik je Stufe A1–C2 (Buch)"],goethea1:["Goethe A1 Wortliste","https://www.goethe.de/pro/relaunch/prf/ca/A1_SD1_Wortliste_02.pdf","Offizielle Wortliste A1 (PDF)"],telc:["telc","https://www.telc.net","Prüfungen A1–C2"]};
 const lk=k=>{const [n,u,d]=L[k];return '<div><span><a href="'+u+'" target="_blank" rel="noopener">'+n+'</a></span><span>'+d+'</span></div>';};
 const SRC={satz:["grammis","lingolia","dw"],art:["duden","dwds","leo"],pron:["lingolia","dw","grammis"],prep:["dwds","lingolia","duden"],gen:["duden","grammis","lingolia"]};
 const srcCard=t=>SRC[t]?'<div class="tc df"><h3>Quellen <small>zum Nachschlagen</small></h3><div class="rows links">'+SRC[t].map(lk).join("")+'</div></div>':'';
 const TH_LINKS=`
 <div class="tc df"><h3>Wörterbücher</h3><div class="rows links">`+["duden","dwds","leo","pons","linguee"].map(lk).join("")+`</div><p class="tline">Tip: DWDS shows how a word is really used, with its typical partners. Duden settles spelling and grammar questions.</p></div>
 <div class="tc df"><h3>Grammatik</h3><div class="rows links">`+["grammis","lingolia","dudenk","dw"].map(lk).join("")+`</div></div>
-<div class="tc df"><h3>Prüfungen</h3><div class="rows links">`+["osd","goethe","goetheb1"].map(lk).join("")+`</div></div>
+<div class="tc df"><h3>Niveaustufen A1–C2</h3><div class="rows">
+<div><span>A1 · A2</span><span>Elementar: everyday phrases, simple sentences about yourself, routine tasks.</span></div>
+<div><span>B1 · B2</span><span>Selbstständig: work and travel situations, opinions with reasons, B2 fluent with native speakers.</span></div>
+<div><span>C1 · C2</span><span>Kompetent: complex texts, flexible and precise for work, study and lectures.</span></div></div>
+<div class="rows links">`+["cefr","profile","goethea1","goetheb1"].map(lk).join("")+`</div><p class="tline">The levels are defined by the Council of Europe for all languages. Profile deutsch maps them to German grammar and vocabulary. Levels in this app are a guide.</p></div>
+<div class="tc df"><h3>Prüfungen</h3><div class="rows links">`+["goethe","osd","telc"].map(lk).join("")+`</div></div>
 <div class="tc df"><h3>Beispielsätze</h3><div class="rows links">`+["tatoeba","linguee","dwds"].map(lk).join("")+`</div><p class="tline">Free sentence collections vary in quality. Check them against Duden or DWDS.</p></div>`;
 /* ---------- topics + home ---------- */
 const TOPICS=[
@@ -636,7 +647,9 @@ function renderHome(){$("tiles").innerHTML=TOPICS.map((x,i)=>{const sc=x.soon?nu
   const st=x.soon?'<span class="st soon">bald</span>':'<span class="st ready">'+(x.t==="links"?"öffnen":sc==null?"üben":Math.round(sc*100)+" %")+'</span>';
   return (x.soon?'<div class="tile soon df">':'<button class="tile ready df" id="t-'+x.t+'" data-t="'+x.t+'">')+'<span class="code">'+ring+num+'</span><span><span class="nm">'+x.n+(x.tag?' <small class="n">['+x.tag+']</small>':'')+'</span><span class="ds" style="display:block">'+x.ds+'</span></span>'+st+(x.soon?'</div>':'</button>');}).join("");
   document.querySelectorAll(".tile.ready").forEach(b=>b.onclick=()=>openTopic(b.dataset.t));
-  const tb=$("tmr");tb.setAttribute("aria-pressed",!!store.timer);tb.textContent=store.timer?"an · 15 s":"aus";const ah=$("ahp");ah.setAttribute("aria-pressed",!!store.arthelp);ah.textContent=store.arthelp?"an":"aus";}
+  const tb=$("tmr");tb.setAttribute("aria-pressed",!!store.timer);tb.textContent=store.timer?"an · 15 s":"aus";$("lvs").innerHTML=["all"].concat(LVLS.slice(0,5)).map(l=>'<button class="lvb" data-l="'+l+'" id="lv-'+l+'" aria-pressed="'+((store.level||"all")===l)+'">'+(l==="all"?"Alle":l)+'</button>').join("");
+  document.querySelectorAll(".lvb").forEach(b=>b.onclick=()=>{store.level=b.dataset.l;save();renderHome();});
+  const ah=$("ahp");ah.setAttribute("aria-pressed",!!store.arthelp);ah.textContent=store.arthelp?"an":"aus";}
 
 /* ---------- navigation ---------- */
 let T=null,mode="learn",idx=0,self=false,caseMode="wo",gi=0,MC=null;
@@ -692,12 +705,17 @@ function goHomeClose(){closePop();}
 
 /* ---------- multiple-choice engine (all Spiel modes except Satzbau) ---------- */
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
-function artQ(w){return {t:"art",s:"___ "+w[1],o:["der","die","das"],c:["der","die","das"].indexOf(w[0]),why:w[3]||"No rule here: learn it with the noun.",noun:w[1],en:w[2]};}
+function artQ(w){return {t:"art",lv:w[4]||"B1",s:"___ "+w[1],o:["der","die","das"],c:["der","die","das"].indexOf(w[0]),why:w[3]||"No rule here: learn it with the noun.",noun:w[1],en:w[2]};}
+const LVLS=["A1","A2","B1","B2","C1","C2"];
+function byLevel(list){const L=store.level;if(!L||L==="all")return list;let i=LVLS.indexOf(L),out=list.filter(q=>q.lv===L);
+  while(out.length<6&&i>0){i--;out=out.concat(list.filter(q=>q.lv===LVLS[i]));}return out.length?out:list;}
 function bank(t){
-  if(t==="prep"){const a=PQ.filter(q=>!q.x),b=shuffle(PQ.filter(q=>q.x));return shuffle(a.concat(b.slice(0,8))).map(q=>Object.assign({t:"prep"},q));}
-  if(t==="art"){const pool=ART.concat(ownList());const st=pool.filter(w=>starred(w[1]));return shuffle(st).concat(shuffle(pool.filter(w=>!starred(w[1])))).slice(0,15).map(artQ);}
-  if(t==="pron")return shuffle(PRON_Q).map(q=>Object.assign({t:"pron",c:0},q));
-  if(t==="gen")return shuffle(GEN_Q).map(q=>Object.assign({t:"gen",c:0},q));
+  if(t==="prep"){const P=byLevel(PQ);const a=P.filter(q=>!q.x),b=shuffle(P.filter(q=>q.x));return shuffle(a.concat(b.slice(0,Math.max(8,15-a.length)))).slice(0,18).map(q=>Object.assign({t:"prep"},q));}
+  if(t==="art"){const pool=byLevel(ART.concat(ownList()).map(w=>Object.assign([],w,{lv:w[4]||"B1"}))).map(w=>w);const st=pool.filter(w=>starred(w[1]));return shuffle(st).concat(shuffle(pool.filter(w=>!starred(w[1])))).slice(0,15).map(artQ);}
+  if(t==="pron")return shuffle(byLevel(PRON_Q)).map(q=>Object.assign({t:"pron",c:0},q));
+  if(t==="gen")return shuffle(byLevel(GEN_Q)).map(q=>Object.assign({t:"gen",c:0},q));
+  const L=store.level;if(L&&L!=="all"){const all=[].concat(PQ.map(q=>Object.assign({t:"prep"},q)),ART.concat(ownList()).map(artQ),PRON_Q.map(q=>Object.assign({t:"pron",c:0},q)),GEN_Q.map(q=>Object.assign({t:"gen",c:0},q)));
+    const k=LVLS.indexOf(L),at=shuffle(all.filter(q=>q.lv===L)),below=shuffle(all.filter(q=>LVLS.indexOf(q.lv)<k));return shuffle(at.slice(0,10).concat(below).slice(0,15));}
   const pick=(a,n)=>shuffle(a).slice(0,n);return shuffle([].concat(pick(bank("prep"),4),pick(bank("art"),4),pick(bank("pron"),4),pick(bank("gen"),3)));}
 function baseOf(q){return q.n||q.h||(q.t==="art"?q.noun:"");}
 function mix(q){if(q.t==="art")return q;const ord=shuffle(q.o.map((w,i)=>i));return Object.assign({},q,{o:ord.map(i=>q.o[i]),c:ord.indexOf(q.c)});}
@@ -711,7 +729,7 @@ const STAGE={
 const BADGE={prep:q=>q.x?q.a.split(" ")[0].toLowerCase():q.p==="fenster"?"an":(q.p||q.f||q.v.split(" ").pop()),art:q=>"Artikel",pron:q=>"Pronomen",gen:q=>"Genitiv"};
 const TIP={prep:"Das Verb verrät den Fall: liegen, stehen, hängen → Dativ. legen, stellen, hängen → Akkusativ.",art:"Mark hard words with ☆. They come first in the next round.",pron:"helfen, danken, gefallen, gehören take Dativ: mir, dir, ihm.",gen:"des + -(e)s for masculine and neuter, der for feminine and plural.",test:"Each topic has its own Lernen and Theorie to go back to."};
 function mcStart(t){MC={t,list:bank(t).map(mix),i:0,score:0,done:false,per:{}};}
-function mcCount(){$("ct").textContent=(MC.i+1)+" / "+MC.list.length+" · "+MC.score+" richtig";}
+function mcCount(){const q=MC.list[MC.i];$("ct").innerHTML=(q&&q.lv?'<span class="lv">'+q.lv+'</span> ':"")+(MC.i+1)+" / "+MC.list.length+" · "+MC.score+" richtig";}
 function mcRender(){if(!MC||MC.t!==T)mcStart(T);clearTimeout(MC.tm);const q=MC.list[MC.i];MC.done=false;
   if(q.t==="prep")prLegend(false);else $("lg").innerHTML=LG[q.t]||"";
   STAGE[q.t](q,false);$("bd").textContent=BADGE[q.t](q);mcCount();
@@ -728,7 +746,7 @@ function mcNext(){if(!MC.done){mcAnswer(-1);return;}if(MC.i<MC.list.length-1){MC
   const n=MC.list.length,s=MC.score,b=store.best||(store.best={});if(b[MC.t]==null||s/n>b[MC.t])b[MC.t]=s/n;save();
   const per=Object.entries(MC.per).map(([t,[a,m]])=>'<div><span>'+TNAME[t]+'</span><span>'+a+' / '+m+'</span></div>').join("");
   $("lg").innerHTML="";$("stage").innerHTML='<p class="en big">'+s+' von '+n+' richtig</p><p class="en">'+(s/n>=.85?"Sehr gut!":s/n>=.6?"Gut. Noch eine Runde?":"Schau dir Lernen und Theorie noch einmal an.")+'</p>'+(MC.t==="test"?'<div class="rows" style="max-width:320px;margin:0 auto;width:100%">'+per+'</div>':'');
-  $("bd").textContent="Ergebnis";$("cardbody").innerHTML='<p id="tx">Runde fertig</p><p id="gt">'+esc(TIP[MC.t]||"")+'</p>';
+  $("bd").textContent="Ergebnis"+(store.level&&store.level!=="all"?" · "+store.level:"");$("cardbody").innerHTML='<p id="tx">Runde fertig</p><p id="gt">'+esc(TIP[MC.t]||"")+'</p>';
   setBtns("btns1",[btn("bR","Noch eine Runde","primary",()=>{MC=null;render()}),btn("bL",MC.t==="test"?"Start":"Zu Lernen","",()=>MC.t==="test"?goHome():setMode("learn"))]);}
 
 /* ---------- Satzbau ---------- */
@@ -747,14 +765,16 @@ function sbLearn(){sbLegend();const it=SB[idx];
   setBtns("btns2",[btn("bS","Selbsttest: "+(self?"an":"aus"),"",()=>{self=!self;render()}),btn("bH","Anhören","",()=>speak(sbGerman(it)))]);}
 const MIC='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>';
 let rec=null;
-function sbGame(){sbLegend();const it=SB[gi];
+function sbCur(){const L=sbList();return L[gi%L.length];}
+function sbList(){return byLevel(SB.map(x=>Object.assign({lv:x.lvl},x)));}
+function sbGame(){sbLegend();const L=sbList();const it=sbCur();
   $("stage").innerHTML='<p class="en big">'+esc(it.en)+'</p><div class="answer"><input id="ans" type="text" lang="de" autocomplete="off" autocorrect="off" autocapitalize="sentences" spellcheck="false" enterkeyhint="done" placeholder="Auf Deutsch …" aria-label="Deine Antwort"><button class="mic" id="mic" aria-label="Sprechen">'+MIC+'</button></div><p class="tip" id="tip">Sprechen: ins Feld tippen und das Mikrofon der Tastatur nutzen.</p><div id="res"></div>';
   $("stage").onclick=null;
-  $("bd").textContent=it.lvl;$("ct").textContent=(gi+1)+" / "+SB.length+" · "+SB.filter(x=>store["sb"+x.id]==="ok").length+" richtig";
+  $("bd").textContent=it.lvl;$("ct").innerHTML='<span class="lv">'+it.lvl+'</span> '+(gi%L.length+1)+" / "+L.length+" · "+SB.filter(x=>store["sb"+x.id]==="ok").length+" richtig";
   $("cardbody").innerHTML='<p id="tx">'+esc(it.topic)+'</p><p id="gt">Sag oder schreib den Satz auf Deutsch.</p>';
   $("ans").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();sbCheck();}});
   $("mic").onclick=micGo;
-  setBtns("btns1",[btn("bP","Prüfen","primary",sbCheck),btn("bW","Weiter →","",()=>{gi=(gi+1)%SB.length;render()})]);
+  setBtns("btns1",[btn("bP","Prüfen","primary",sbCheck),btn("bW","Weiter →","",()=>{gi=(gi+1)%sbList().length;render()})]);
   setBtns("btns2",[btn("bL","Lösung","",sbReveal),btn("bH","Anhören","",()=>speak(sbGerman(it)))]);}
 function micGo(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
   const fail=()=>{$("tip").textContent="Spracheingabe ist hier gesperrt. Nutze das Mikrofon der Tastatur.";};
@@ -769,7 +789,7 @@ function verbMsg(tk){const c=tk.clause,w="„"+tk.w+"“";
   if(c.ref)return w+" comes straight after the comma: the Nebensatz is the Vorfeld.";
   if(!vf)return w+" comes first: in a yes/no question the Vorfeld is empty.";
   return w+" is the conjugated verb: position 2, right after „"+vf+"“.";}
-function sbCheck(){const it=SB[gi],raw=$("ans").value.trim();if(!raw){$("ans").focus();return;}
+function sbCheck(){const it=sbCur(),raw=$("ans").value.trim();if(!raw){$("ans").focus();return;}
   const t=sbTokens(it),tn=t.map(x=>x.n),rawW=raw.split(/\s+/).filter(w=>norm1(w)),u=rawW.map(norm1),msgs=[];let ok=false;
   if(eq(u,tn))ok=true;else if(it.alt&&it.alt.some(a=>eq(normS(a),u))){ok=true;msgs.push("Correct German. This drill starts with „"+t[0].w+"“: try that version too.");}
   const used=t.map(()=>false),form=u.map(()=>false);let um=u.map(w=>{const i=t.findIndex((x,j)=>!used[j]&&x.n===w);if(i>=0)used[i]=true;return i;});
@@ -784,9 +804,9 @@ function sbCheck(){const it=SB[gi],raw=$("ans").value.trim();if(!raw){$("ans").f
   $("res").innerHTML='<div class="mine">'+rawW.map((w,k)=>'<span class="w '+(um[k]>=0?t[um[k]].type:"unk")+(form[k]?" form":"")+'">'+esc(w)+'</span>').join("")+'</div>'+(ok?"":frameHTML(it));
   $("cardbody").innerHTML='<p class="status '+(ok?"ok":"no")+'">'+(ok?"Richtig! "+esc(sbGerman(it)):"Fast. Zuerst das:")+'</p>'+(msgs.length?'<ul class="msgs">'+msgs.map(m=>'<li>'+esc(m)+'</li>').join("")+'</ul>':"");
   if(ok)store["sb"+it.id]="ok";else if(store["sb"+it.id]!=="ok")store["sb"+it.id]="try";save();
-  $("ct").textContent=(gi+1)+" / "+SB.length+" · "+SB.filter(x=>store["sb"+x.id]==="ok").length+" richtig";
+  $("ct").innerHTML='<span class="lv">'+it.lvl+'</span> '+(gi%sbList().length+1)+" / "+sbList().length+" · "+SB.filter(x=>store["sb"+x.id]==="ok").length+" richtig";
   if(ok)$("bW").className="primary",$("bP").className="";}
-function sbReveal(){const it=SB[gi];$("res").innerHTML=frameHTML(it);
+function sbReveal(){const it=sbCur();$("res").innerHTML=frameHTML(it);
   $("cardbody").innerHTML='<p id="tx">'+esc(sbGerman(it))+'</p><p id="gt">'+esc(it.note)+'</p>';}
 
 /* ---------- Präpositionen ---------- */
