@@ -9,6 +9,7 @@
 /* Layout: dasein-design language — white sheet, dashed guide lines down both sides with edge ticks, dotted frames, square grey bars, lime for "active". Single light theme on purpose, like the website. */
 :root{color-scheme:light;--bg:#ffffff;--fg:#222222;--ink:#3a3c37;--muted:#666666;--line:#c4c4c4;--dot:#b8b8b8;--grey:#ebebeb;--pale:#f4f4f2;
 --lime:#cdff3e;--limepale:#eaffae;--red:#e30613;--yellow:#ffd400;--cream:#fffbd6;
+--m-learn:#8c918a;--m-game:#ffd400;--m-theo:#3a3c37;
 --dat:#1a5fd0;--akk:#e30613;--ok:#3f8f1f;--bad:#e30613;
 --df:repeating-linear-gradient(to right,var(--dot) 0 1px,transparent 1px 3px);--dfv:repeating-linear-gradient(to bottom,var(--dot) 0 1px,transparent 1px 3px);
 --body:"Carlito",Calibri,"Segoe UI",system-ui,sans-serif}
@@ -54,7 +55,18 @@ h1.logo b{font-weight:700}
 /* topic */
 .seg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;flex:none}
 .seg button{background:var(--grey);padding:7px 4px;font-size:1rem}
-.seg button[aria-pressed="true"]{background:var(--limepale);font-weight:700}
+.seg button{position:relative}
+.seg button[aria-pressed="true"]{font-weight:700}
+#mLearn[aria-pressed="true"]{background:var(--m-learn);color:#fff}
+#mGame[aria-pressed="true"]{background:var(--m-game);color:#111}
+#mTheo[aria-pressed="true"]{background:var(--m-theo);color:#fff}
+.seg button[aria-pressed="true"] small.n{color:inherit;opacity:.8}
+.app[data-mode="learn"] .card{box-shadow:inset 0 3px 0 var(--m-learn)}
+.app[data-mode="game"] .card{box-shadow:inset 0 3px 0 var(--m-game)}
+.app[data-mode="learn"] button.primary{background:var(--m-learn);color:#fff;box-shadow:none}
+.app[data-mode="game"] button.primary{background:var(--m-game);color:#111;box-shadow:none}
+.app[data-mode="theo"] .gintro{color:var(--fg)}
+.opt.ok::after{content:" ✓"}
 .lg{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;font-size:.9rem;color:var(--muted);flex:none}
 .lg span,.lg button{display:inline-flex;align-items:center;gap:6px}
 .lg button{background:transparent;padding:2px 8px;font-size:.9rem;color:var(--muted)}
@@ -655,11 +667,11 @@ function renderHome(){$("tiles").innerHTML=TOPICS.map((x,i)=>{const sc=x.soon?nu
 let T=null,mode="learn",idx=0,self=false,caseMode="wo",gi=0,MC=null;
 function openTopic(t){T=t;idx=0;gi=0;MC=null;$("home").hidden=true;$("topic").hidden=false;
   $("ttl").textContent=TOPICS.find(x=>x.t===t).n;$("seg").hidden=t==="test"||t==="links";setMode(t==="test"?"game":t==="links"?"theo":"learn");}
-function goHome(){closePop();$("topic").hidden=true;$("home").hidden=false;renderHome();}
+function goHome(){closePop();delete document.querySelector(".app").dataset.mode;$("topic").hidden=true;$("home").hidden=false;renderHome();}
 $("back").onclick=goHome;
 $("tmr").onclick=()=>{store.timer=!store.timer;save();renderHome();};
 $("ahp").onclick=()=>{store.arthelp=!store.arthelp;save();renderHome();};
-function setMode(m){closePop();mode=m;$("mLearn").setAttribute("aria-pressed",m==="learn");$("mGame").setAttribute("aria-pressed",m==="game");$("mTheo").setAttribute("aria-pressed",m==="theo");
+function setMode(m){closePop();mode=m;document.querySelector(".app").dataset.mode=m;$("mLearn").setAttribute("aria-pressed",m==="learn");$("mGame").setAttribute("aria-pressed",m==="game");$("mTheo").setAttribute("aria-pressed",m==="theo");
   const th=m==="theo";$("theo").hidden=!th;$("lg").hidden=th;$("stage").hidden=th;$("panel").hidden=th;
   if(m==="game"){gi=0;MC=null;}render();}
 $("mLearn").onclick=()=>setMode("learn");$("mTheo").onclick=()=>setMode("theo");$("mGame").onclick=()=>setMode("game");
