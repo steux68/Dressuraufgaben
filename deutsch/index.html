@@ -229,6 +229,34 @@ svg.room{width:100%;height:100%;max-height:100%;display:block}
 .lvb{padding:5px 8px;font-size:.88rem;min-width:2.4em}
 .lvb[aria-pressed="true"]{background:var(--lime);font-weight:700;box-shadow:inset 0 0 0 1px var(--ink)}
 .lv{display:inline-block;font-size:.72rem;font-weight:700;padding:1px 5px;margin-right:4px;box-shadow:inset 0 0 0 1px var(--ink);color:var(--fg);vertical-align:1px}
+.box{display:grid;grid-template-columns:2.6em repeat(4,minmax(0,1fr));grid-template-rows:auto repeat(4,minmax(2.6em,auto));gap:3px;width:100%;max-width:420px;margin:0 auto}
+.box .bh{font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);align-self:end;padding-bottom:2px}
+.box .bl{grid-column:1;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);align-self:center}
+.box .c{display:grid;place-items:center;font-size:1.35rem;background:var(--bg)}
+.box .c small{font-size:.6em;font-weight:400}
+.c.nom,.c.same{background:var(--grey)}.c.akk{box-shadow:inset 0 0 0 2px var(--akk);color:var(--akk)}.c.dat{box-shadow:inset 0 0 0 2px var(--dat);color:var(--dat)}.c.gen{background:var(--cream);box-shadow:inset 0 0 0 1px var(--line)}
+.qc{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;padding:18px 16px;width:100%;max-width:360px;margin:0 auto}
+.qc .qq{font-size:1.1rem;color:var(--muted)}.qc b{font-size:2.4rem;line-height:1}.qc .job{font-size:.9rem;color:var(--muted)}.qc p{margin:8px 0 0;font-size:1.25rem}
+.qc.nom{background:var(--grey)}.qc.akk{box-shadow:inset 0 0 0 2px var(--akk)}.qc.akk b{color:var(--akk)}.qc.dat{box-shadow:inset 0 0 0 2px var(--dat)}.qc.dat b{color:var(--dat)}.qc.gen{background:var(--cream)}
+.gn{background:var(--cream);padding:0 3px}
+.all4{font-size:1.45rem;line-height:1.9;text-align:center;text-wrap:balance}
+.all4 span,.all4k span,.lgc{padding:1px 6px}
+.all4 .nom,.all4k .nom,.lgc.nom{background:var(--grey)}.all4 .akk,.all4k .akk,.lgc.akk{box-shadow:inset 0 0 0 2px var(--akk);color:var(--akk)}.all4 .dat,.all4k .dat,.lgc.dat{box-shadow:inset 0 0 0 2px var(--dat);color:var(--dat)}.all4 .gen,.all4k .gen,.lgc.gen{background:var(--cream)}
+.all4k{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:12px;font-size:.9rem}
+.lgc{font-size:.85rem}
+.pict.fc-nom b{background:var(--grey);padding:0 10px}.pict.fc-akk b{color:var(--akk);box-shadow:inset 0 0 0 2px var(--akk);padding:0 10px}.pict.fc-dat b{color:var(--dat);box-shadow:inset 0 0 0 2px var(--dat);padding:0 10px}.pict.fc-gen b{background:var(--cream);padding:0 10px}
+mark.fm{background:var(--limepale);color:var(--fg);border-bottom:2px solid var(--ink);font-weight:700}
+.adjt{display:grid;grid-template-columns:2.8em repeat(4,minmax(0,1fr));gap:3px;width:100%;max-width:420px;margin:0 auto}
+.adjt .h{font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);align-self:center}
+.adjt b{display:grid;place-items:center;height:2.3em;font-size:1.15rem}
+.adjt b.en{background:var(--grey);font-weight:400;color:var(--muted)}.adjt b.x{background:var(--bg);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.adjx{text-align:center;font-size:1.1rem;margin:12px 0 0}
+.pict .aend{font-size:inherit;color:var(--fg);background:var(--limepale);padding:0 4px}
+.all4 span{white-space:nowrap}
+.lgx{padding:0 5px;box-shadow:inset 0 0 0 1px var(--ink)}.lgx.en{background:var(--grey);box-shadow:none;font-weight:400}
+.www{display:grid;grid-template-columns:minmax(0,1.1fr) repeat(3,minmax(0,1fr));gap:2px 6px;font-size:.92rem;line-height:1.25}
+.www span{padding:5px 0;background:var(--df) left bottom/100% 1px no-repeat}
+.www .h{font-weight:700}.www .k{color:var(--muted);font-size:.8rem}
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
 </style>
 
@@ -449,6 +477,15 @@ const TH_PREP=`
 <p class="tline">Position verbs are strong (lag, stand, saß). Placing verbs are regular (legte, stellte, setzte).</p>
 <p class="memo">Österreich: liegen, stehen, sitzen take <b>sein</b> in the Perfekt: Ich <b>bin</b> lange gesessen. In Germany: Ich habe lange gesessen.</p></div>
 
+<div class="tc df"><h3>Wo · Wohin · Woher <small>B1–B2</small></h3><div class="www">
+<span></span><span class="h">Wohin?</span><span class="h">Wo?</span><span class="h">Woher?</span>
+<span class="k">Räume, Länder mit Artikel</span><span>in den Park<br>in die Schweiz</span><span>im Park<br>in der Schweiz</span><span>aus dem Park<br>aus der Schweiz</span>
+<span class="k">Städte, Länder ohne Artikel</span><span>nach Wien</span><span>in Wien</span><span>aus Wien</span>
+<span class="k">Rand, Wasser</span><span>an den Strand<br>ans Meer</span><span>am Strand<br>am Fluss</span><span>vom Strand</span>
+<span class="k">Fläche, Amt</span><span>auf den Platz<br>auf die Weide</span><span>auf dem Platz<br>auf der Weide</span><span>vom Platz</span>
+<span class="k">Personen, Firmen</span><span>zum Arzt<br>zu Anna</span><span>beim Arzt<br>bei Anna</span><span>vom Arzt<br>von Anna</span>
+<span class="k">Zuhause</span><span>nach Hause</span><span>zu Hause</span><span>von zu Hause</span></div>
+<p class="tline">Woher is always Dativ: aus or von.</p></div>
 <div class="tc df"><h3>Kurzformen</h3>
 <div class="rows"><div><span style="color:var(--dat)">am · im</span><span>an dem · in dem</span></div><div><span style="color:var(--dat)">beim · vom · zum</span><span>bei dem · von dem · zu dem</span></div><div><span style="color:var(--dat)">zur</span><span>zu der</span></div><div><span style="color:var(--akk)">ans · ins</span><span>an das · in das</span></div></div></div>
 
@@ -559,6 +596,10 @@ const PRON_Q=[
  {s:"Ich wasche ___ die Hände. (ich)",lv:"B1",o:["mir","mich"],why:"Reflexive with a body part as object → Dativ.",p:"ich",cs:"dat"},
  {s:"Ich freue ___ auf das Wochenende. (ich)",lv:"B1",o:["mich","mir"],why:"sich freuen: reflexive Akkusativ.",p:"ich",cs:"akk"},
  {s:"Wir haben ___ lange nicht gesehen. (sie, Pl.)",lv:"A2",o:["sie","ihnen"],why:"sehen + Akkusativ.",p:"sie",cs:"akk"},
+ {s:"Ich erinnere ___ gut an das Gespräch. (ich)",lv:"B1",o:["mich","mir"],why:"sich erinnern an: reflexive Akkusativ.",p:"ich",cs:"akk"},
+ {s:"Du musst ___ beeilen. (du)",lv:"A2",o:["dich","dir"],why:"sich beeilen: reflexive Akkusativ.",p:"du",cs:"akk"},
+ {s:"Ich kaufe ___ einen neuen Sattel. (ich)",lv:"B1",o:["mir","mich"],why:"There is another object (den Sattel): reflexive Dativ.",p:"ich",cs:"dat"},
+ {s:"Interessierst du ___ für Architektur? (du)",lv:"A2",o:["dich","dir"],why:"sich interessieren für: reflexive Akkusativ.",p:"du",cs:"akk"},
  {s:"Das tut ___ leid. (ich)",lv:"A1",o:["mir","mich"],why:"Fixed phrase: Das tut mir leid.",p:"ich",cs:"dat"}
 ];
 /* ---------- data: Genitiv ---------- */
@@ -617,10 +658,138 @@ const TH_GEN=`
 <div class="tc df"><h3>Verben mit Genitiv <small>C1</small></h3>`+pcs("g",["bedürfen","gedenken","sich bedienen","sich vergewissern","sich enthalten"])+`<p class="tline">Das bedarf einer Erklärung. Wir gedenken der Opfer.</p></div>`;
 
 
+/* ---------- data: Die vier Fälle ---------- */
+const BOX=`<div class="box" role="img" aria-label="Artikel nach Fall und Genus">
+<span class="bh"></span><span class="bh">mask.</span><span class="bh">neutr.</span><span class="bh">fem.</span><span class="bh">Plural</span>
+<span class="bl" style="grid-row:2">Nom</span><span class="bl" style="grid-row:3">Akk</span><span class="bl" style="grid-row:4">Dat</span><span class="bl" style="grid-row:5">Gen</span>
+<b class="c nom" style="grid-area:2/2/3/3">der</b><b class="c akk" style="grid-area:3/2/4/3">den</b>
+<b class="c same" style="grid-area:2/3/4/4">das</b><b class="c same" style="grid-area:2/4/4/6">die</b>
+<b class="c dat" style="grid-area:4/2/5/4">dem</b><b class="c gen" style="grid-area:5/2/6/4">des</b>
+<b class="c dat" style="grid-area:4/4/5/5">der</b><b class="c dat" style="grid-area:4/5/5/6">den <small>+n</small></b>
+<b class="c gen" style="grid-area:5/4/6/6">der</b></div>`;
+const BOXE=`<div class="box" role="img" aria-label="ein und kein nach Fall">
+<span class="bh"></span><span class="bh">mask.</span><span class="bh">neutr.</span><span class="bh">fem.</span><span class="bh">Pl. (kein)</span>
+<span class="bl" style="grid-row:2">Nom</span><span class="bl" style="grid-row:3">Akk</span><span class="bl" style="grid-row:4">Dat</span><span class="bl" style="grid-row:5">Gen</span>
+<b class="c nom" style="grid-area:2/2/3/3">ein</b><b class="c akk" style="grid-area:3/2/4/3">einen</b>
+<b class="c same" style="grid-area:2/3/4/4">ein</b><b class="c same" style="grid-area:2/4/4/5">eine</b><b class="c same" style="grid-area:2/5/4/6">keine</b>
+<b class="c dat" style="grid-area:4/2/5/4">einem</b><b class="c gen" style="grid-area:5/2/6/4">eines</b>
+<b class="c dat" style="grid-area:4/4/5/5">einer</b><b class="c dat" style="grid-area:4/5/5/6">keinen</b>
+<b class="c gen" style="grid-area:5/4/6/5">einer</b><b class="c gen" style="grid-area:5/5/6/6">keiner</b></div>`;
+const qcard=(cls,q,name,job,ex)=>'<div class="qc '+cls+'"><span class="qq">'+q+'</span><b>'+name+'</b><span class="job">'+job+'</span><p>'+ex+'</p></div>';
+const FALL_CARDS=[
+ {b:"Überblick",st:BOX,tx:"Every article in one drawing",gt:"Only masculine changes in the Akkusativ. Neuter, feminine and plural look the same in Nominativ and Akkusativ.",say:"der den dem des"},
+ {b:"Wer?",st:qcard("nom","Wer? Was?","Nominativ","Subjekt: who does it","<b>Der Architekt</b> zeichnet."),tx:"Nominativ: the subject",gt:"Also after sein, werden, bleiben: Er ist <b>ein</b> guter Lehrer."},
+ {b:"Wen?",st:qcard("akk","Wen? Was?","Akkusativ","direktes Objekt: what is acted on","Er zeichnet <mark class=\"a\">den Plan</mark>."),tx:"Akkusativ: the direct object",gt:"Most verbs take one: sehen, haben, brauchen, kaufen, zeichnen."},
+ {b:"Wem?",st:qcard("dat","Wem?","Dativ","indirektes Objekt: who receives","Er gibt <mark class=\"d\">dem Bauherrn</mark> den Plan."),tx:"Dativ: the receiver",gt:"Plus helfen, danken, gefallen, gehören … and the Dativ prepositions."},
+ {b:"Wessen?",st:qcard("gen","Wessen?","Genitiv","Besitz: whose","Der Plan <b class=\"gn\">des Hauses</b>."),tx:"Genitiv: whose",gt:"Written and formal German. In speech often von + Dativ."},
+ {b:"Ein Satz",st:'<div class="all4"><span class="nom">Der Architekt</span> zeigt <span class="dat">dem Bauherrn</span> <span class="akk">den Plan</span> <span class="gen">des Hauses</span>.</div><div class="all4k"><span class="nom">Nom: wer?</span><span class="dat">Dat: wem?</span><span class="akk">Akk: was?</span><span class="gen">Gen: wessen?</span></div>',tx:"All four in one sentence",gt:"Two nouns: Dativ before Akkusativ. Bauherr is a weak noun: dem Bauherrn."},
+ {b:"ein · kein",st:BOXE,tx:"ein, kein, mein work the same way",gt:"No ending in three places: ein Mann, ein Kind, ein Kind (Akk). Plural only exists for kein, mein, dein …",say:"ein einen einem eines"},
+ {b:"Fallen",st:ruleSt("Den Plan zeichnet der Architekt.",["Er ist ein guter Lehrer.","dem Kollegen, des Kollegen","mit den Kindern"]),tx:"Three traps",gt:"The case, not the position, shows the subject. sein takes Nominativ. Dativ plural adds -n: den Kindern."}
+];
+const FALL_Q=[
+ {s:"[Der Architekt] zeichnet den Plan.",c:0,why:"Who draws? → subject → Nominativ.",lv:"A1"},
+ {s:"Der Architekt zeichnet [den Plan].",c:1,why:"What does he draw? → Akkusativ.",lv:"A1"},
+ {s:"Ich gebe [dem Bauherrn] die Unterlagen.",c:2,why:"Who receives? → Dativ. Bauherr is a weak noun: dem Bauherrn.",lv:"A2"},
+ {s:"Das ist das Büro [meines Kollegen].",c:3,why:"Whose office? → Genitiv.",lv:"B1"},
+ {s:"[Das Pferd] steht im Stall.",c:0,why:"Subject → Nominativ.",lv:"A1"},
+ {s:"Wir sehen [den Hengst] auf der Weide.",c:1,why:"sehen + Akkusativ.",lv:"A1"},
+ {s:"Der Entwurf gefällt [der Kundin].",c:2,why:"gefallen + Dativ: the person who likes it.",lv:"A2"},
+ {s:"Die Fassade [des Gebäudes] ist neu.",c:3,why:"Whose façade? → Genitiv.",lv:"B1"},
+ {s:"Ich helfe [meinem Nachbarn].",c:2,why:"helfen + Dativ.",lv:"A2"},
+ {s:"Morgen besuche ich [meine Schwester].",c:1,why:"besuchen + Akkusativ. Feminine looks the same as Nominativ.",lv:"A1"},
+ {s:"Heute ist [ein schöner Tag].",c:0,why:"sein takes Nominativ, not Akkusativ.",lv:"A2"},
+ {s:"Er wird [ein guter Lehrer].",c:0,why:"werden takes Nominativ.",lv:"B1"},
+ {s:"Wir fahren mit [dem Zug].",c:2,why:"mit is always Dativ.",lv:"A1"},
+ {s:"Ich warte auf [den Bus].",c:1,why:"warten auf + Akkusativ.",lv:"A2"},
+ {s:"Trotz [des Regens] reiten wir aus.",c:3,why:"trotz + Genitiv.",lv:"B1"},
+ {s:"Das Fohlen folgt [seiner Mutter].",c:2,why:"folgen + Dativ.",lv:"B1"},
+ {s:"Kannst du [mir] helfen?",c:2,why:"helfen + Dativ: mir.",lv:"A1"},
+ {s:"Ich kenne [ihn] schon lange.",c:1,why:"kennen + Akkusativ: ihn.",lv:"A1"},
+ {s:"[Wem] gehört das Fahrrad?",c:2,why:"gehören + Dativ: the question word is Dativ too.",lv:"A2"},
+ {s:"[Wen] hast du gestern getroffen?",c:1,why:"treffen + Akkusativ: Wen?",lv:"A2"},
+ {s:"Den Plan zeichnet [der Architekt].",c:0,why:"The subject can stand after the verb. der = Nominativ.",lv:"B1"},
+ {s:"Dem Kind schenkt [die Oma] ein Buch.",c:0,why:"die Oma gives: subject, Nominativ.",lv:"B1"},
+ {s:"Ich schicke [Ihnen] die Rechnung morgen.",c:2,why:"Ihnen receives: Dativ.",lv:"A2"},
+ {s:"Wir gedenken [der Opfer].",c:3,why:"gedenken + Genitiv (formal, C1).",lv:"C1"}
+].map(q=>Object.assign({k:"c",o:["Nominativ","Akkusativ","Dativ","Genitiv"]},q)).concat([
+ {s:"Ich sehe ___ Mann.",n:"der Mann",cs:"Akkusativ",o:["den","der","dem"],why:"sehen + Akkusativ: der → den.",lv:"A1"},
+ {s:"Das Handy gehört ___ Frau.",n:"die Frau",cs:"Dativ",o:["der","die","den"],why:"gehören + Dativ: die → der.",lv:"A2"},
+ {s:"Wir danken ___ Team.",n:"das Team",cs:"Dativ",o:["dem","das","den"],why:"danken + Dativ: das → dem.",lv:"A2"},
+ {s:"Das ist der Hut ___ Mannes.",n:"der Mann",cs:"Genitiv",o:["des","dem","den"],why:"Genitiv: des Mannes.",lv:"B1"},
+ {s:"Ich gebe ___ Kindern Schokolade.",n:"die Kinder",cs:"Dativ",o:["den","die","der"],why:"Dativ plural: den Kindern (noun +n).",lv:"A2"},
+ {s:"Er hat ___ Hund.",n:"ein Hund",cs:"Akkusativ",o:["einen","ein","einem"],why:"haben + Akkusativ: ein → einen.",lv:"A1"},
+ {s:"Sie wohnt bei ___ Freundin.",n:"eine Freundin",cs:"Dativ",o:["einer","eine","einem"],why:"bei + Dativ: eine → einer.",lv:"A2"},
+ {s:"Das Auto ___ Kollegin ist rot.",n:"die Kollegin",cs:"Genitiv",o:["der","die","des"],why:"Genitiv feminine: der.",lv:"B1"},
+ {s:"Ich habe heute ___ Zeit.",n:"keine Zeit",cs:"Akkusativ",o:["keine","keinen","keiner"],why:"Feminine Akkusativ stays keine.",lv:"A1"},
+ {s:"Mit ___ Pferden reiten wir aus.",n:"die Pferde",cs:"Dativ",o:["den","die","der"],why:"mit + Dativ plural: den Pferden.",lv:"A2"}
+].map(q=>Object.assign({k:"f",c:0},q)));
+/* ---------- data: Adjektivendungen ---------- */
+const ADJ_T={best:[["e","e","e","en"],["en","e","e","en"],["en","en","en","en"],["en","en","en","en"]],unb:[["er","es","e","en"],["en","es","e","en"],["en","en","en","en"],["en","en","en","en"]],ohne:[["er","es","e","e"],["en","es","e","e"],["em","em","er","en"],["en","en","er","er"]]};
+function adjTab(k,ex){const R=["Nom","Akk","Dat","Gen"];return '<div class="adjt"><span></span><span class="h">mask.</span><span class="h">neutr.</span><span class="h">fem.</span><span class="h">Pl.</span>'+ADJ_T[k].map((r,i)=>'<span class="h">'+R[i]+'</span>'+r.map(e=>'<b class="'+(e==="en"?"en":"x")+'">-'+e+'</b>').join("")).join("")+'</div>'+(ex?'<p class="adjx">'+ex+'</p>':'');}
+const ADJ_CARDS=[
+ {b:"der · die · das",st:adjTab("best","der neu<b>e</b> Plan · den neu<b>en</b> Plan"),tx:"After der, die, das: only -e or -en",gt:"-e in the five light cells, -en everywhere else.",say:"der neue Plan, den neuen Plan, mit dem neuen Plan"},
+ {b:"ein · kein · mein",st:adjTab("unb","ein neu<b>er</b> Plan · ein schön<b>es</b> Haus"),tx:"After ein, kein, mein: the adjective shows the gender",gt:"ein has no ending for masculine Nominativ and neuter, so the adjective takes it: -er, -es. Then -e or -en as before.",say:"ein neuer Plan, ein schönes Haus, einen neuen Plan"},
+ {b:"ohne Artikel",st:adjTab("ohne","frisch<b>es</b> Brot · mit groß<b>er</b> Freude"),tx:"No article: the adjective does the article's job",gt:"The endings copy der, das, die, dem: -er, -es, -e, -em. Exception: Genitiv masculine and neuter -en (trotz schlecht<b>en</b> Wetters).",say:"frisches Brot, kaltes Wasser, mit großer Freude"},
+ {b:"Merkhilfe",st:ruleSt("Einer muss den Fall zeigen.",["der → neu<b>e</b>","ein → neu<b>er</b>","– → neu<b>er</b>"]),tx:"Someone has to show the case",gt:"If the article already shows it clearly, the adjective only needs -e or -en. If not, the adjective shows it."},
+ {b:"Plural",st:ruleSt("die neu<b>en</b> Pläne",["keine neu<b>en</b> Pläne","neu<b>e</b> Pläne"]),tx:"Plural: -en after an article, -e without",gt:"Dativ plural without article: mit neu<b>en</b> Plänen."},
+ {b:"Komparativ",st:ruleSt("alt · älter · am ältesten",["groß · größer · am größten","gut · besser · am besten","viel · mehr · am meisten","gern · lieber · am liebsten","hoch · höher · am höchsten"]),tx:"Comparing: -er and am -sten",gt:"Short words often take an umlaut: alt → älter, jung → jünger. Before a noun they still need an ending: das ältere Haus."}
+];
+const ADJ_Q=[
+ ["Der neu___ Plan liegt auf dem Tisch.",["e","en","er"],"der, Nominativ masculine: -e.","A2"],
+ ["Ich sehe den neu___ Plan.",["en","e","er"],"den, Akkusativ masculine: -en.","A2"],
+ ["Mit dem neu___ Plan sind wir zufrieden.",["en","em","e"],"dem already shows Dativ: -en.","B1"],
+ ["Ein neu___ Plan liegt auf dem Tisch.",["er","e","en"],"ein shows no gender: the adjective takes -er.","A2"],
+ ["Ich brauche einen neu___ Plan.",["en","er","e"],"einen, Akkusativ: -en.","B1"],
+ ["Das ist ein schön___ Haus.",["es","e","en"],"ein, neuter: the adjective takes -es.","A2"],
+ ["Sie wohnt in einem alt___ Haus.",["en","em","es"],"einem already shows Dativ: -en.","B1"],
+ ["Die alt___ Fassade wird renoviert.",["e","en","er"],"die, Nominativ feminine: -e.","A2"],
+ ["Das Dach der alt___ Scheune ist kaputt.",["en","e","er"],"der, Genitiv: -en.","B2"],
+ ["Frisch___ Brot schmeckt gut.",["es","e","en"],"No article, neuter: -es like das.","B1"],
+ ["Ich trinke gern kalt___ Wasser.",["es","em","e"],"No article, neuter Akkusativ: -es.","B1"],
+ ["Mit groß___ Freude nehmen wir teil.",["er","e","en"],"No article, Dativ feminine: -er like der.","B2"],
+ ["Wir suchen erfahren___ Mitarbeiter.",["e","en","er"],"No article, plural Akkusativ: -e.","B2"],
+ ["Die neu___ Pläne sind fertig.",["en","e","er"],"die, plural: -en.","B1"],
+ ["Das ist mein neu___ Pferd.",["es","e","en"],"mein works like ein: neuter -es.","B1"],
+ ["Wir reiten mit unserem jung___ Pferd aus.",["en","em","es"],"unserem shows Dativ: -en.","B1"],
+ ["Wegen des stark___ Regens bleiben wir drinnen.",["en","es","e"],"des shows Genitiv: -en.","B2"],
+ ["Trotz schlecht___ Wetters reiten wir aus.",["en","es","em"],"No article, Genitiv neuter: -en (the noun has -s).","C1"],
+ ["Das ist ein gut___ Entwurf.",["er","en","e"],"ein, masculine Nominativ: -er.","A2"],
+ ["Wir wohnen in einer klein___ Wohnung.",["en","er","e"],"einer shows Dativ: -en.","B1"]
+].map(([s,o,why,lv])=>({s,o,c:0,why,lv}));
+
+/* ---------- Theorie: Fälle, Adjektive ---------- */
+const TH_FALL=`
+<div class="tc df"><h3>Alle Artikel</h3>`+BOX+`<p class="tline">Light cells: Nominativ and Akkusativ look the same. Only masculine changes: der → den.</p></div>
+<div class="tc df"><h3>Die vier Fragen</h3><div class="rows">
+<div><span>Wer? Was?</span><span>Nominativ · <b>Der Architekt</b> zeichnet.</span></div>
+<div><span style="color:var(--akk)">Wen? Was?</span><span>Akkusativ · Er zeichnet <mark class="a">den Plan</mark>.</span></div>
+<div><span style="color:var(--dat)">Wem?</span><span>Dativ · Er zeigt <mark class="d">dem Kunden</mark> den Plan.</span></div>
+<div><span>Wessen?</span><span>Genitiv · das Büro <b>des Architekten</b></span></div></div></div>
+<div class="tc df"><h3>Was bestimmt den Fall?</h3><div class="rows">
+<div><span>das Verb</span><span>sehen + Akk · helfen + Dat · gedenken + Gen · sein + Nom</span></div>
+<div><span>die Präposition</span><span>mit + Dat · für + Akk · wegen + Gen · in: Wo? Dat / Wohin? Akk</span></div>
+<div><span>feste Ausdrücke</span><span>Mir ist kalt. Guten Morgen! (Akk) · eines Tages (Gen)</span></div></div></div>
+<div class="tc df"><h3>ein · kein · mein</h3>`+BOXE+`</div>
+<div class="tc df"><h3>Fallen</h3><div class="rows">
+<div><span>Wortstellung</span><span>Den Plan zeichnet <b>der Architekt</b>. The article shows the subject, not the position.</span></div>
+<div><span>sein / werden</span><span>Er ist <b>ein</b> guter Lehrer. Never einen.</span></div>
+<div><span>n-Deklination</span><span>der Kollege → den / dem / des Kollegen. Also Kunde, Nachbar, Architekt, Bauherr.</span></div>
+<div><span>Dativ Plural</span><span>mit den Kinder<b>n</b>, den Pferde<b>n</b> (not after -s or -n: den Autos, den Frauen)</span></div></div></div>`;
+const TH_ADJ=`
+<div class="tc df"><h3>Nach der · die · das</h3>`+adjTab("best","der neu<b>e</b> Plan · mit dem neu<b>en</b> Plan")+`</div>
+<div class="tc df"><h3>Nach ein · kein · mein</h3>`+adjTab("unb","ein neu<b>er</b> Plan · ein schön<b>es</b> Haus")+`</div>
+<div class="tc df"><h3>Ohne Artikel</h3>`+adjTab("ohne","frisch<b>es</b> Brot · mit groß<b>er</b> Freude")+`</div>
+<div class="tc df"><h3>Merkhilfe</h3><p class="memo">One word must show the case. Article clear → adjective <b>-e / -en</b>. Article missing or unclear → adjective takes the article's ending.</p><p class="tline">Grey cells are -en. In all three tables most cells are grey: when in doubt, -en is the best guess.</p></div>
+<div class="tc df"><h3>Komparativ &amp; Superlativ</h3><div class="rows">
+<div><span>regelmäßig</span><span>schnell · schneller · am schnellsten</span></div>
+<div><span>mit Umlaut</span><span>alt · älter · am ältesten · jung · jünger · groß · größer · kurz · kürzer · warm · wärmer</span></div>
+<div><span>unregelmäßig</span><span>gut · besser · am besten · viel · mehr · am meisten · gern · lieber · am liebsten · hoch · höher · nah · näher · am nächsten</span></div>
+<div><span>Vergleich</span><span>so alt <b>wie</b> · älter <b>als</b></span></div></div></div>`;
+
 /* ---------- Links & Quellen ---------- */
 const L={duden:["Duden","https://www.duden.de","Rechtschreibung, Bedeutung, Artikel, Grammatik"],dudenk:["Duden Konjugation","https://www.duden.de/konjugation","Verben in allen Formen"],dwds:["DWDS","https://www.dwds.de","Wörterbuch mit echten Beispielsätzen aus Zeitungen und Büchern"],grammis:["grammis (IDS Mannheim)","https://grammis.ids-mannheim.de","Wissenschaftliche Grammatik, sehr genau"],leo:["LEO","https://dict.leo.org","Deutsch–Englisch, mit Forum"],pons:["PONS","https://de.pons.com","Deutsch–Englisch mit Beispielen"],linguee:["Linguee","https://www.linguee.de","Übersetzungen in echten Sätzen"],lingolia:["Lingolia","https://www.lingolia.com","Grammatik mit Übungen, Erklärung auch auf Englisch"],dw:["DW Learn German","https://learngerman.dw.com","Kurse A1–C1, Grammatik-Übersicht, gratis"],goethe:["Goethe-Institut Prüfungen","https://www.goethe.de/pruefungen","Modellsätze und Infos A1–C2"],goetheb1:["Goethe/ÖSD B1 Wortliste","https://www.goethe.de/pro/relaunch/prf/da/Goethe-Zertifikat_B1_Wortliste.pdf","Offizielle Wortliste (PDF)"],osd:["ÖSD","https://www.osd.at","Österreichisches Sprachdiplom: Prüfungen und Übungen"],tatoeba:["Tatoeba","https://tatoeba.org","Freie Beispielsätze mit Übersetzung (Qualität prüfen)"],cefr:["GER / CEFR (Europarat)","https://www.coe.int/en/web/common-european-framework-reference-languages/official-translations-of-the-cefr-global-scale","Die offizielle Beschreibung der Stufen A1–C2, auch auf Deutsch"],profile:["Profile deutsch (Klett)","https://www.klett-sprachen.de/profile-deutsch/t-396/9783126065184","Wortschatz und Grammatik je Stufe A1–C2 (Buch)"],goethea1:["Goethe A1 Wortliste","https://www.goethe.de/pro/relaunch/prf/ca/A1_SD1_Wortliste_02.pdf","Offizielle Wortliste A1 (PDF)"],telc:["telc","https://www.telc.net","Prüfungen A1–C2"]};
 const lk=k=>{const [n,u,d]=L[k];return '<div><span><a href="'+u+'" target="_blank" rel="noopener">'+n+'</a></span><span>'+d+'</span></div>';};
-const SRC={satz:["grammis","lingolia","dw"],art:["duden","dwds","leo"],pron:["lingolia","dw","grammis"],prep:["dwds","lingolia","duden"],gen:["duden","grammis","lingolia"]};
+const SRC={fall:["duden","lingolia","dw"],adj:["lingolia","duden","dw"],satz:["grammis","lingolia","dw"],art:["duden","dwds","leo"],pron:["lingolia","dw","grammis"],prep:["dwds","lingolia","duden"],gen:["duden","grammis","lingolia"]};
 const srcCard=t=>SRC[t]?'<div class="tc df"><h3>Quellen <small>zum Nachschlagen</small></h3><div class="rows links">'+SRC[t].map(lk).join("")+'</div></div>':'';
 const TH_LINKS=`
 <div class="tc df"><h3>Wörterbücher</h3><div class="rows links">`+["duden","dwds","leo","pons","linguee"].map(lk).join("")+`</div><p class="tline">Tip: DWDS shows how a word is really used, with its typical partners. Duden settles spelling and grammar questions.</p></div>
@@ -636,14 +805,15 @@ const TH_LINKS=`
 const TOPICS=[
  {t:"satz",n:"Satzbau",tag:"Satz",ds:"Verb an Position 2 und die Satzklammer · A1–B1"},
  {t:"art",n:"Artikel",tag:"der · die · das",ds:"Regeln nach Endung und ein schnelles Spiel · A1–B2"},
+ {t:"fall",n:"Die vier Fälle",tag:"der · den · dem · des",ds:"Nominativ, Akkusativ, Dativ, Genitiv auf einen Blick · A1–B1"},
  {t:"pron",n:"Pronomen",tag:"mir · mich",ds:"Personalpronomen im Akkusativ und Dativ · A1–B1"},
  {t:"prep",n:"Wo oder wohin?",tag:"Präp",ds:"Präpositionen mit Dativ und Akkusativ · A1–C1"},
  {t:"gen",n:"Genitiv",tag:"des · der",ds:"Formen, Präpositionen, Besitz · B1–C1"},
+ {t:"adj",n:"Adjektivendungen",tag:"-e · -en · -er",ds:"der neue Plan · ein neuer Plan · neue Pläne · A2–C1"},
  {t:"test",n:"Test",tag:"gemischt",ds:"15 Fragen aus allen Themen, wie in der Prüfung"},
  {t:"links",n:"Links & Wörterbücher",tag:"Quellen",ds:"Duden, DWDS, grammis, LEO, ÖSD und mehr"},
  {t:"konn",n:"Konnektoren",soon:1,ds:"und, weil, deshalb: wohin geht das Verb? · A2–B2"},
  {t:"perf",n:"Perfekt",soon:1,ds:"haben oder sein, Partizip II · A2–B1"},
- {t:"adj",n:"Adjektivendungen",soon:1,ds:"der gute Plan · ein guter Plan · guter Plan"},
  {t:"vprep",n:"Verben mit Präpositionen",soon:1,ds:"warten auf, teilnehmen an … · B1–C1"},
  {t:"rel",n:"Relativsätze",soon:1,ds:"der, die, das, dem, dessen … · B1–B2"},
  {t:"pass",n:"Passiv",soon:1,ds:"werden-Passiv, sein-Passiv, Ersatzformen · B2–C1"},
@@ -652,7 +822,7 @@ const TOPICS=[
  {t:"nvv",n:"Nomen-Verb-Verbindungen",soon:1,ds:"in Frage stellen, zur Verfügung stehen · C1"},
  {t:"nom",n:"Nominalstil & Partizipien",soon:1,ds:"Partizipialattribute, Nominalisierung · C1"}
 ];
-const TNAME={prep:"Präpositionen",art:"Artikel",pron:"Pronomen",gen:"Genitiv"};
+const TNAME={prep:"Präpositionen",art:"Artikel",pron:"Pronomen",gen:"Genitiv",fall:"Fälle",adj:"Adjektive"};
 function score(t){if(t==="links")return null;if(t==="satz"){const n=SB.filter(x=>store["sb"+x.id]==="ok").length;return n?n/SB.length:null;}const b=(store.best||{})[t];return b==null?null:b;}
 function renderHome(){$("tiles").innerHTML=TOPICS.map((x,i)=>{const sc=x.soon?null:score(x.t),num=String(i+1).padStart(2,"0");
   const ring=sc==null?"":'<svg class="ring" viewBox="0 0 54 54" aria-hidden="true"><circle class="fg" cx="27" cy="27" r="25" pathLength="100" stroke-dasharray="'+Math.round(sc*100)+' 100"/></svg>';
@@ -675,12 +845,12 @@ function setMode(m){closePop();mode=m;document.querySelector(".app").dataset.mod
   const th=m==="theo";$("theo").hidden=!th;$("lg").hidden=th;$("stage").hidden=th;$("panel").hidden=th;
   if(m==="game"){gi=0;MC=null;}render();}
 $("mLearn").onclick=()=>setMode("learn");$("mTheo").onclick=()=>setMode("theo");$("mGame").onclick=()=>setMode("game");
-const TH={satz:()=>TH_SATZ+srcCard("satz"),prep:()=>TH_PREP+srcCard("prep"),art:()=>TH_ART+ownHTML()+srcCard("art"),pron:()=>TH_PRON+srcCard("pron"),gen:()=>TH_GEN+srcCard("gen"),links:()=>TH_LINKS};
-const LG={art:'<span><b>der</b> · <b>die</b> · <b>das</b></span>',pron:'<span><i class="sw" style="background:var(--grey)"></i>Nominativ</span><span style="color:var(--akk)"><i class="sw" style="box-shadow:inset 0 0 0 2px var(--akk)"></i>Akkusativ</span><span style="color:var(--dat)"><i class="sw" style="box-shadow:inset 0 0 0 2px var(--dat)"></i>Dativ</span>',gen:'<span><i class="sw" style="background:var(--cream);box-shadow:inset 0 0 0 1px var(--line)"></i>Genitiv: des · der</span>'};
+const TH={satz:()=>TH_SATZ+srcCard("satz"),prep:()=>TH_PREP+srcCard("prep"),art:()=>TH_ART+ownHTML()+srcCard("art"),pron:()=>TH_PRON+srcCard("pron"),gen:()=>TH_GEN+srcCard("gen"),fall:()=>TH_FALL+srcCard("fall"),adj:()=>TH_ADJ+srcCard("adj"),links:()=>TH_LINKS};
+const LG={fall:'<span class="lgc nom">Nom</span><span class="lgc akk">Akk</span><span class="lgc dat">Dat</span><span class="lgc gen">Gen</span>',adj:'<span><b class="lgx">-e/-er/-es</b> Merkzellen</span><span><b class="lgx en">-en</b> überall sonst</span>',art:'<span><b>der</b> · <b>die</b> · <b>das</b></span>',pron:'<span><i class="sw" style="background:var(--grey)"></i>Nominativ</span><span style="color:var(--akk)"><i class="sw" style="box-shadow:inset 0 0 0 2px var(--akk)"></i>Akkusativ</span><span style="color:var(--dat)"><i class="sw" style="box-shadow:inset 0 0 0 2px var(--dat)"></i>Dativ</span>',gen:'<span><i class="sw" style="background:var(--cream);box-shadow:inset 0 0 0 1px var(--line)"></i>Genitiv: des · der</span>'};
 function render(){clearTimeout(MC&&MC.tm);
   if(mode==="theo"){theoGallery();$("theo").scrollTop=0;return;}
   if(mode==="game"&&T!=="satz"){mcRender();return;}
-  ({satz:mode==="learn"?sbLearn:sbGame,prep:prLearn,art:()=>cardsLearn(ART_CARDS,LG.art),pron:()=>cardsLearn(PRON_CARDS,LG.pron),gen:()=>cardsLearn(GEN_CARDS,LG.gen)})[T]();}
+  ({satz:mode==="learn"?sbLearn:sbGame,prep:prLearn,art:()=>cardsLearn(ART_CARDS,LG.art),pron:()=>cardsLearn(PRON_CARDS,LG.pron),gen:()=>cardsLearn(GEN_CARDS,LG.gen),fall:()=>cardsLearn(FALL_CARDS,LG.fall),adj:()=>cardsLearn(ADJ_CARDS,LG.adj)})[T]();}
 function cardsLearn(cards,lg){$("lg").innerHTML=lg;const c=cards[idx%cards.length];
   $("stage").innerHTML=c.st;$("stage").onclick=null;$("bd").textContent=c.b;$("ct").textContent=(idx%cards.length+1)+" / "+cards.length;
   $("cardbody").innerHTML='<p id="tx">'+c.tx+'</p><p id="gt">'+c.gt+'</p>';
@@ -725,33 +895,38 @@ function bank(t){
   if(t==="prep"){const P=byLevel(PQ);const a=P.filter(q=>!q.x),b=shuffle(P.filter(q=>q.x));return shuffle(a.concat(b.slice(0,Math.max(8,15-a.length)))).slice(0,18).map(q=>Object.assign({t:"prep"},q));}
   if(t==="art"){const pool=byLevel(ART.concat(ownList()).map(w=>Object.assign([],w,{lv:w[4]||"B1"}))).map(w=>w);const st=pool.filter(w=>starred(w[1]));return shuffle(st).concat(shuffle(pool.filter(w=>!starred(w[1])))).slice(0,15).map(artQ);}
   if(t==="pron")return shuffle(byLevel(PRON_Q)).map(q=>Object.assign({t:"pron",c:0},q));
+  if(t==="fall")return shuffle(byLevel(FALL_Q)).slice(0,15).map(q=>Object.assign({t:"fall"},q));
+  if(t==="adj")return shuffle(byLevel(ADJ_Q)).slice(0,15).map(q=>Object.assign({t:"adj"},q));
   if(t==="gen")return shuffle(byLevel(GEN_Q)).map(q=>Object.assign({t:"gen",c:0},q));
-  const L=store.level;if(L&&L!=="all"){const all=[].concat(PQ.map(q=>Object.assign({t:"prep"},q)),ART.concat(ownList()).map(artQ),PRON_Q.map(q=>Object.assign({t:"pron",c:0},q)),GEN_Q.map(q=>Object.assign({t:"gen",c:0},q)));
+  const L=store.level;if(L&&L!=="all"){const all=[].concat(PQ.map(q=>Object.assign({t:"prep"},q)),ART.concat(ownList()).map(artQ),PRON_Q.map(q=>Object.assign({t:"pron",c:0},q)),GEN_Q.map(q=>Object.assign({t:"gen",c:0},q)),FALL_Q.map(q=>Object.assign({t:"fall"},q)),ADJ_Q.map(q=>Object.assign({t:"adj"},q)));
     const k=LVLS.indexOf(L),at=shuffle(all.filter(q=>q.lv===L)),below=shuffle(all.filter(q=>LVLS.indexOf(q.lv)<k));return shuffle(at.slice(0,10).concat(below).slice(0,15));}
-  const pick=(a,n)=>shuffle(a).slice(0,n);return shuffle([].concat(pick(bank("prep"),4),pick(bank("art"),4),pick(bank("pron"),4),pick(bank("gen"),3)));}
+  const pick=(a,n)=>shuffle(a).slice(0,n);return shuffle([].concat(pick(bank("prep"),3),pick(bank("art"),2),pick(bank("fall"),3),pick(bank("pron"),2),pick(bank("gen"),2),pick(bank("adj"),3)));}
 function baseOf(q){return q.n||q.h||(q.t==="art"?q.noun:"");}
-function mix(q){if(q.t==="art")return q;const ord=shuffle(q.o.map((w,i)=>i));return Object.assign({},q,{o:ord.map(i=>q.o[i]),c:ord.indexOf(q.c)});}
+function mix(q){if(q.t==="art"||q.k==="c")return q;const ord=shuffle(q.o.map((w,i)=>i));return Object.assign({},q,{o:ord.map(i=>q.o[i]),c:ord.indexOf(q.c)});}
 const STAGE={
+ fall:(q,rev)=>{if(q.k==="c"){const ph=(q.s.match(/\[(.+?)\]/)||[])[1]||"";$("stage").innerHTML='<div class="pict'+(rev?" fc-"+["nom","akk","dat","gen"][q.c]:" hide")+'"><b>'+esc(ph)+'</b><span class="case">'+(rev?q.o[q.c]:"Welcher Fall?")+'</span></div>';return;}
+   $("stage").innerHTML='<div class="pict hide"><b>'+esc(q.n)+'</b><span class="case">→ '+esc(q.cs)+'</span></div>';},
+ adj:(q,rev)=>{const w=q.s.match(/(\S*)___(\S*)/);$("stage").innerHTML='<div class="pict hide"><b>'+esc(w?w[1]:"")+'<span class="aend">'+(rev?"-"+esc(q.o[q.c]):"___")+'</span></b><span class="case">'+(rev?esc(q.why.split(":")[0]):"Welche Endung?")+'</span></div>';},
  prep:(q,rev)=>{if(q.x){$("stage").innerHTML='<div class="pict hide"><b>'+esc(rev?q.a:q.n)+'</b><span class="case">'+esc(q.w)+'</span></div>';return;}if(q.p){if(!rev)roomStage(q.p,q.m,false);else{const svg=$("stage").querySelector("svg");if(svg)svg.classList.remove("nomk");}}else if(q.v)verbStage(q,rev);else pictStage(PR.find(x=>x.p===q.f),rev);},
  art:(q,rev)=>{$("stage").innerHTML='<div class="noun"><button class="star'+(starred(q.noun)?" on":"")+'" id="star" aria-label="Merken">'+(starred(q.noun)?"★":"☆")+'</button><div class="nw"><span class="art'+(rev?" on":"")+'">'+(rev?q.o[q.c]:"___")+'</span> '+esc(q.noun)+'</div><button class="trb" id="trb">'+(rev?esc(q.en):"Übersetzung")+'</button></div>';
    $("trb").onclick=()=>{$("trb").textContent=q.en;};$("star").onclick=()=>toggleStar(q.noun);},
  pron:(q,rev)=>{$("stage").innerHTML='<div class="pict '+(rev?q.cs:"hide")+'"><b>'+esc(q.p)+(rev?" → "+esc(q.o[q.c]):"")+'</b><span class="case">'+(rev?(q.cs==="akk"?"Akkusativ":"Dativ"):"Akkusativ oder Dativ?")+'</span></div>';},
  gen:(q,rev)=>{$("stage").innerHTML='<div class="pict gen"><b>'+esc(rev?q.r:q.h)+'</b><span class="case">'+(rev?"Genitiv":"→ Genitiv?")+'</span></div>';}
 };
-const BADGE={prep:q=>q.x?q.a.split(" ")[0].toLowerCase():q.p==="fenster"?"an":(q.p||q.f||q.v.split(" ").pop()),art:q=>"Artikel",pron:q=>"Pronomen",gen:q=>"Genitiv"};
-const TIP={prep:"Das Verb verrät den Fall: liegen, stehen, hängen → Dativ. legen, stellen, hängen → Akkusativ.",art:"Mark hard words with ☆. They come first in the next round.",pron:"helfen, danken, gefallen, gehören take Dativ: mir, dir, ihm.",gen:"des + -(e)s for masculine and neuter, der for feminine and plural.",test:"Each topic has its own Lernen and Theorie to go back to."};
+const BADGE={fall:q=>q.k==="c"?"Welcher Fall?":"Artikel",adj:q=>"Endung",prep:q=>q.x?q.a.split(" ")[0].toLowerCase():q.p==="fenster"?"an":(q.p||q.f||q.v.split(" ").pop()),art:q=>"Artikel",pron:q=>"Pronomen",gen:q=>"Genitiv"};
+const TIP={fall:"Ask the question: Wer? Wen? Wem? Wessen? The answer names the case.",adj:"When in doubt, -en. It covers most cells.",prep:"Das Verb verrät den Fall: liegen, stehen, hängen → Dativ. legen, stellen, hängen → Akkusativ.",art:"Mark hard words with ☆. They come first in the next round.",pron:"helfen, danken, gefallen, gehören take Dativ: mir, dir, ihm.",gen:"des + -(e)s for masculine and neuter, der for feminine and plural.",test:"Each topic has its own Lernen and Theorie to go back to."};
 function mcStart(t){MC={t,list:bank(t).map(mix),i:0,score:0,done:false,per:{}};}
 function mcCount(){const q=MC.list[MC.i];$("ct").innerHTML=(q&&q.lv?'<span class="lv">'+q.lv+'</span> ':"")+(MC.i+1)+" / "+MC.list.length+" · "+MC.score+" richtig";}
 function mcRender(){if(!MC||MC.t!==T)mcStart(T);clearTimeout(MC.tm);const q=MC.list[MC.i];MC.done=false;
   if(q.t==="prep")prLegend(false);else $("lg").innerHTML=LG[q.t]||"";
   STAGE[q.t](q,false);$("bd").textContent=BADGE[q.t](q);mcCount();
-  $("cardbody").innerHTML='<p id="tx">'+esc(q.s).replace("___",'<span class="gap" id="gap">&nbsp;</span>')+'</p><div class="opts'+(q.o.length===3?" three":"")+'">'+q.o.map((w,i)=>'<button class="opt" id="o'+i+'" data-i="'+i+'">'+esc(w)+'</button>').join("")+'</div>'+(store.timer?'<div class="tbar"><i id="tbi"></i></div>':'')+'<p id="gt"></p><p class="nf" id="nf">'+(store.arthelp&&baseOf(q)&&q.t!=="art"?'Grundform: <b>'+esc(baseOf(q))+'</b>':'')+'</p>';
+  $("cardbody").innerHTML='<p id="tx">'+esc(q.s).replace("___",'<span class="gap" id="gap">&nbsp;</span>').replace(/\[(.+?)\]/,'<mark class="fm">$1</mark>')+'</p><div class="opts'+(q.o.length===3?" three":"")+'">'+q.o.map((w,i)=>'<button class="opt" id="o'+i+'" data-i="'+i+'">'+esc(w)+'</button>').join("")+'</div>'+(store.timer?'<div class="tbar"><i id="tbi"></i></div>':'')+'<p id="gt"></p><p class="nf" id="nf">'+(store.arthelp&&baseOf(q)&&q.t!=="art"?'Grundform: <b>'+esc(baseOf(q))+'</b>':'')+'</p>';
   document.querySelectorAll(".opt").forEach(b=>b.onclick=()=>mcAnswer(+b.dataset.i));
   setBtns("btns1",[btn("bW","Weiter →","",mcNext),btn("bR","Neu starten","",()=>{MC=null;render()})]);setBtns("btns2",[]);
   if(store.timer){const el=$("tbi");el.style.width="100%";setTimeout(()=>{el.style.transition="width 15s linear";el.style.width="0%";},30);MC.tm=setTimeout(()=>mcAnswer(-1),15000);}}
 function mcAnswer(i){if(!MC||MC.done)return;MC.done=true;clearTimeout(MC.tm);const q=MC.list[MC.i];const tb=$("tbi");if(tb){tb.style.transition="none";tb.style.width=getComputedStyle(tb).width;}
   document.querySelectorAll(".opt").forEach((b,k)=>{if(k===q.c)b.classList.add("ok");else if(k===i)b.classList.add("bad");});
-  $("gap").textContent=q.o[q.c];const ok=i===q.c;if(ok)MC.score++;const p=MC.per[q.t]||(MC.per[q.t]=[0,0]);p[1]++;if(ok)p[0]++;
+  {const g=$("gap");if(g)g.textContent=q.o[q.c];}const ok=i===q.c;if(ok)MC.score++;const p=MC.per[q.t]||(MC.per[q.t]=[0,0]);p[1]++;if(ok)p[0]++;
   $("gt").textContent=(i<0?"Zeit ist um. ":ok?"Richtig. ":"Nicht ganz. ")+q.why;mcCount();if(baseOf(q)&&q.t!=="art")$("nf").innerHTML="Grundform: <b>"+esc(baseOf(q))+"</b>";
   STAGE[q.t](q,true);$("bW").className="primary";if(MC.i===MC.list.length-1)$("bW").textContent="Ergebnis →";}
 function mcNext(){if(!MC.done){mcAnswer(-1);return;}if(MC.i<MC.list.length-1){MC.i++;mcRender();return;}
