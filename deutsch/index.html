@@ -116,7 +116,9 @@ svg.room{width:100%;height:100%;max-height:100%;display:block}
 .room .st{stroke:var(--ink);stroke-width:1.3;fill:var(--bg);stroke-linejoin:miter;stroke-linecap:square}
 .room .st-thin{stroke:var(--ink);stroke-width:.9;fill:none}
 .room .hatch{fill:url(#hatch);stroke:var(--ink);stroke-width:1.1}
-.room .floorbg{fill:var(--pale)}
+.room .floorbg{fill:var(--pale);stroke:var(--ink);stroke-width:1.4}
+.room .outer{fill:none;stroke:var(--dot);stroke-width:1;stroke-dasharray:1 2}
+.room .setback{fill:none;stroke:var(--ink);stroke-width:.8;stroke-dasharray:1 2}
 .room .guide{stroke:var(--line);stroke-width:.8;stroke-dasharray:4 3;fill:none}
 .room .obj{transition:opacity .2s;cursor:pointer}
 .room.dim .obj:not(.sel){opacity:.2}
@@ -149,10 +151,10 @@ svg.room{width:100%;height:100%;max-height:100%;display:block}
 .pcs{display:flex;flex-wrap:wrap;gap:5px}
 .pc{font-weight:700;font-size:1.05rem;padding:3px 10px;background:var(--grey)}
 .pc.d{color:var(--dat)} .pc.a{color:var(--akk)}
-.pc.w{background:linear-gradient(90deg,color-mix(in srgb,var(--dat) 14%,#fff) 50%,color-mix(in srgb,var(--akk) 12%,#fff) 50%)}
+.pc.w{background:#e2e2e2;color:var(--fg)}
 .pc.g{background:var(--cream)} .pc.k{background:var(--lime);box-shadow:inset 0 0 0 1px var(--ink)} .pc.n{color:var(--muted)}
 .pc.star{box-shadow:inset 0 0 0 1px var(--ink)}
-.pc.star::after{content:" ●";font-size:.6em;vertical-align:.25em;color:var(--yellow);-webkit-text-stroke:.6px var(--ink)}
+
 .memo{background:var(--limepale);padding:8px 11px;font-size:1.02rem}
 .rows{display:flex;flex-direction:column;gap:6px}
 .rows div{display:grid;grid-template-columns:7.6em minmax(0,1fr);gap:8px;align-items:baseline;padding-bottom:6px;font-size:1.02rem;background:var(--df) left bottom/100% 1px no-repeat}
@@ -283,9 +285,9 @@ const ICON={
 const ROOM=`<svg class="room" viewBox="0 0 360 252" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Section through a living room">
 <defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" style="stroke:var(--muted)" stroke-width="1"/></pattern>
 <marker id="head" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--akk)"/></marker></defs>
-<rect class="floorbg" x="10" y="14" width="340" height="211"/><path class="guide" d="M180 14 V225 M10 120 H350"/>
-<rect class="hatch" x="4" y="4" width="352" height="10"/><rect class="hatch" x="4" y="225" width="352" height="12"/>
-<line class="st-thin" x1="10" y1="14" x2="10" y2="225"/><line class="st-thin" x1="350" y1="14" x2="350" y2="225"/>
+<rect class="outer" x="4" y="8" width="352" height="223"/>
+<rect class="floorbg" x="10" y="14" width="340" height="211"/>
+<g class="win"><rect class="st" x="22" y="24" width="56" height="54"/><rect class="setback" x="27" y="29" width="46" height="44"/><path class="st-thin" d="M50 29 V73 M27 51 H73"/><path class="st" d="M18 78 H82"/></g>
 <g class="obj" data-p="in"><rect class="st" x="22" y="92" width="56" height="133"/><line class="st-thin" x1="22" y1="125" x2="78" y2="125"/><line class="st-thin" x1="22" y1="158" x2="78" y2="158"/><line class="st-thin" x1="22" y1="191" x2="78" y2="191"/><rect class="st" x="28" y="133" width="6" height="25"/><rect class="st" x="36" y="129" width="7" height="29"/><rect class="st" x="45" y="135" width="5" height="23"/><rect class="st" x="52" y="131" width="8" height="27"/></g>
 <g class="obj" data-p="zwischen"><line class="st" x1="95" y1="120" x2="95" y2="224"/><path class="st" d="M85 222 h20"/><path class="st" d="M84 122 L106 122 L101 104 L89 104 Z"/></g>
 <g class="obj" data-p="an"><rect class="st" x="128" y="54" width="62" height="42"/><path class="st-thin" d="M133 90 L148 72 L158 82 L168 68 L185 90"/><circle class="st-thin" cx="176" cy="64" r="4"/></g>
@@ -297,7 +299,7 @@ const ROOM=`<svg class="room" viewBox="0 0 360 252" preserveAspectRatio="xMidYMi
 <g class="obj" data-p="über"><line class="st-thin" x1="300" y1="14" x2="300" y2="78"/><path class="st" d="M284 94 L316 94 L308 78 L292 78 Z"/></g>
 <g class="obj" data-p="unter"><path class="st-thin" d="M304 208 L314 198"/><rect class="st" x="276" y="206" width="28" height="13"/><path class="st" d="M264 219 V202 L268 197 L271 202 H275 L278 197 L282 202 V219 Z"/><path class="st-thin" d="M279 219 V224 M300 219 V224"/></g>
 <g class="obj" data-p="vor"><rect class="st" x="326" y="150" width="7" height="75" rx="2"/><rect class="st" x="303" y="192" width="30" height="6" rx="1"/><line class="st" x1="306" y1="198" x2="306" y2="224"/></g>
-<g class="mk" data-p="in"><circle class="dot" cx="50" cy="118" r="6"/><path class="arrow" marker-end="url(#head)" d="M118 66 H50 V110"/></g>
+<g class="mk" data-p="in"><circle class="dot" cx="50" cy="112" r="6"/><path class="arrow" marker-end="url(#head)" d="M50 82 V108"/></g>
 <g class="mk" data-p="zwischen"><circle class="dot" cx="95" cy="96" r="6"/><path class="arrow" marker-end="url(#head)" d="M95 30 L 95 96"/></g>
 <g class="mk" data-p="an"><circle class="dot" cx="159" cy="46" r="6"/><path class="arrow" marker-end="url(#head)" d="M236 75 H198"/></g>
 <g class="mk" data-p="hinter"><circle class="dot" cx="174" cy="132" r="6"/><path class="arrow" marker-end="url(#head)" d="M174 104 L 174 136"/></g>
@@ -306,7 +308,7 @@ const ROOM=`<svg class="room" viewBox="0 0 360 252" preserveAspectRatio="xMidYMi
 <g class="mk" data-p="über"><circle class="dot" cx="322" cy="86" r="6"/><path class="arrow" marker-end="url(#head)" d="M344 86 H322"/></g>
 <g class="mk" data-p="unter"><circle class="dot" cx="288" cy="196" r="6"/><path class="arrow" marker-end="url(#head)" d="M238 212 H260"/></g>
 <g class="mk" data-p="vor"><circle class="dot" cx="342" cy="184" r="6"/><path class="arrow" marker-end="url(#head)" d="M342 116 V144"/></g>
-<g class="titleblock"><text x="8" y="248">SCHNITT A–A · WOHNZIMMER</text><text x="352" y="248" text-anchor="end">M 1:50</text></g></svg>`;
+<g class="titleblock"><text x="6" y="246">ANSICHT · WOHNZIMMER</text><text x="354" y="246" text-anchor="end">M 1:50</text></g></svg>`;
 
 /* ---------- helpers ---------- */
 const $=id=>document.getElementById(id);
@@ -328,7 +330,7 @@ function setBtns(row,list){const r=$(row);r.innerHTML="";list.forEach(b=>r.appen
 const TH_PREP=`
 <div class="tc df"><h3>Die wichtigsten zuerst</h3><p>These eight come up constantly. Learn them first, with their case.</p>
 <div class="pcs"><span class="pc w star">in</span><span class="pc w star">an</span><span class="pc w star">auf</span><span class="pc d star">mit</span><span class="pc d star">zu</span><span class="pc d star">von</span><span class="pc a star">für</span><span class="pc d star">bei</span></div>
-<p class="tline">Blue = Dativ · Red = Akkusativ · Split = either case</p></div>
+<p class="tline">Blue = Dativ · Red = Akkusativ · Grey = either case</p></div>
 
 <div class="tc df"><h3>Immer Akkusativ <small>7</small></h3>
 <div class="pcs"><span class="pc a">durch</span><span class="pc a">ohne</span><span class="pc a">gegen</span><span class="pc a">für</span><span class="pc a">um</span><span class="pc a">bis</span><span class="pc a">entlang</span></div>
