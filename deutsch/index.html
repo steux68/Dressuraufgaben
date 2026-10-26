@@ -338,13 +338,15 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .nt .hd>*{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#555;padding-top:4px;padding-bottom:4px}
 .nt .k{background:var(--dfv) left top/1px 100% no-repeat,var(--mkey)!important;font-weight:700}.nt .g{background:var(--dfv) left top/1px 100% no-repeat,var(--mnom)!important;font-weight:700}
 .wt.a{background:var(--makk);box-shadow:none;color:var(--akkt)}.wt.d{background:var(--mdat);box-shadow:none;color:var(--datt)}.wt.g{background:var(--mgen)}
-.qt{text-align:left;display:grid;grid-template-columns:64px minmax(0,1fr);gap:12px;padding:12px 0;background:var(--df) left bottom/100% 1px no-repeat}
-.qt .pic{width:64px;height:80px;display:grid;place-items:center;font-size:1.3rem;font-weight:700;color:var(--ink);position:relative;background:var(--pale)}
+.qsec{margin:10px 0 0;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:#555;font-weight:700;padding-bottom:3px;background:var(--df) left bottom/100% 1px no-repeat}
+.qt{text-align:left;display:grid;grid-template-columns:46px minmax(0,1fr);gap:10px;padding:9px 0;background:var(--df) left bottom/100% 1px no-repeat;color:inherit;text-decoration:none}
+.qt:active{background:var(--df) left bottom/100% 1px no-repeat,var(--pale)}
+.qt .pic{width:46px;height:58px;display:grid;place-items:center;font-size:.95rem;font-weight:700;color:var(--ink);position:relative;background:var(--pale);overflow:hidden}
 .qt .pic::after{content:"";position:absolute;inset:0;background:var(--df) left top/100% 1px no-repeat,var(--df) left bottom/100% 1px no-repeat,var(--dfv) left top/1px 100% no-repeat,var(--dfv) right top/1px 100% no-repeat}
-.qt .pic img{width:100%;height:100%;object-fit:cover}
-.qt b.who{display:block;font-size:1.1rem}.qt small{display:block;font-size:.8rem;color:#555;margin-bottom:6px}
-.qt q{display:block;font-size:1.08rem;line-height:1.35;quotes:"„" "“"}.qt .en{display:block;font-size:.92rem;color:#555;margin-top:4px}
-.qt .lang{display:flex;flex-wrap:wrap;gap:0;margin-top:8px;font-size:.85rem}.qt .lang span{padding:3px 7px;background:var(--mnom)}.qt .lang span+span{border-left:1px dotted var(--dl)}.qt .lang .de{background:var(--mkey);font-weight:700}
+.qt .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;opacity:0;filter:grayscale(1)}.qt .pic.has img{opacity:1}.qt .pic.has i{visibility:hidden}.qt .pic i{font-style:normal}
+.qt .qb{min-width:0}.qt b.who{display:inline;font-size:1rem}.qt small{display:block;font-size:.76rem;color:#555;margin-bottom:3px}
+.qt q{display:block;font-size:.98rem;line-height:1.3;quotes:"„" "“"}.qt .qen{display:block;text-align:left;font-size:.84rem;color:#555;margin-top:2px;line-height:1.3}
+.qt .lang{display:flex;flex-wrap:wrap;margin-top:5px;font-size:.76rem}.qt .lang span{padding:2px 6px;background:var(--mnom)}.qt .lang span+span{border-left:1px dotted var(--dl)}.qt .lang .de{background:var(--mkey);font-weight:700}
 .kb{display:inline-block;background:var(--ink);color:#fff;padding:0 6px;font-weight:700}
 </style>
 
@@ -1538,26 +1540,42 @@ function goHomeClose(){closePop();}
 
 
 /* ---------- logo: 1 tap = flag colours, 3 taps = quotes ---------- */
+const HORSE="https://de.wikipedia.org/wiki/Ich_spreche_Spanisch_zu_Gott,_Italienisch_zu_den_Frauen,_Franz%C3%B6sisch_zu_den_M%C3%A4nnern_und_Deutsch_zu_meinem_Pferd";
 const QUOTES=[
- {pic:"K V",who:"Karl V.",when:"1500–1558 · Kaiser, König von Spanien, Erzherzog von Österreich",
-  q:"Spanisch mit Gott, Italienisch mit Freunden, Französisch zum Schmeicheln, Deutsch zum Drohen.",
-  en:"The oldest record (sinngemäß aus dem Latein): Girolamo Fabrizio, De locutione, 1601, „ut audio“ – as I hear.",
+ {sec:"Deutsch zu meinem Pferd"},
+ {pic:"K V",w:"Charles_V,_Holy_Roman_Emperor",who:"Karl V.",when:"überliefert 1601 von Girolamo Fabrizio · „ut audio“",
+  q:"Spanisch mit Gott, Italienisch mit Freunden, Französisch zum Schmeicheln, Deutsch zum Drohen.",en:"Oldest record, second-hand, from the Latin. No horse yet.",u:HORSE,
   l:[["Gott","Spanisch"],["Freunde","Italienisch"],["Schmeicheln","Französisch"],["Drohen","Deutsch",1]]},
- {pic:"J S",who:"Jonathan Swift",when:"Gulliver's Travels, 1726",
-  q:"If he were to speak to his horse, it should be in High Dutch.",
-  en:"Gulliver says the language of the clever horses sounds most like German – and quotes Karl V. Here the horse appears for the first time.",
-  l:[["Pferd","Hochdeutsch",1]]},
+ {pic:"J S",w:"Jonathan_Swift",who:"Jonathan Swift",when:"Gulliver's Travels, 1726",
+  q:"If he were to speak to his horse, it should be in High Dutch.",en:"Gulliver quotes Karl V. – the horse arrives.",u:"https://en.wikipedia.org/wiki/Gulliver%27s_Travels",l:[["Pferd","Hochdeutsch",1]]},
  {pic:"GM",who:"The Gentleman's Magazine",when:"London, 1785",
-  q:"Ich spreche Spanisch zu Gott, Italienisch zu den Frauen, Französisch zu den Männern und Deutsch zu meinem Pferd.",
-  en:"I speak Spanish to God, Italian to women, French to men and German to my horse – plus English to the birds.",
+  q:"Ich spreche Spanisch zu Gott, Italienisch zu den Frauen, Französisch zu den Männern und Deutsch zu meinem Pferd.",en:"The version everyone knows, plus English to the birds.",u:HORSE,
   l:[["Gott","Spanisch"],["Frauen","Italienisch"],["Männer","Französisch"],["Pferd","Deutsch",1],["Vögel","Englisch"]]},
- {pic:"H O",who:"Heinrich G. Ollendorff",when:"Sprachlehrer · Grammatik, 1850",
-  q:"Deutsch zu den Soldaten, Ungarisch zu den Pferden, Englisch zu den Gänsen, Böhmisch zum Teufel.",
-  en:"A grammar-book version: German moves from the horse to the soldiers.",
-  l:[["Gott","Spanisch"],["Frauen","Italienisch"],["Männer","Französisch"],["Soldaten","Deutsch",1],["Pferde","Ungarisch"],["Gänse","Englisch"],["Teufel","Böhmisch"]]}];
-function openQuotes(){if(!GP.open)navPush("pop");GP.open=true;GP.items=[];$("pt").textContent="Deutsch zu meinem Pferd";$("pc").textContent="";$("pnav").hidden=true;
-  $("pb").innerHTML='<p class="tline">Ein Spruch, vier Fassungen. Die Zuschreibung an Karl V. ist unsicher.</p>'+QUOTES.map(x=>'<div class="qt"><div class="pic" aria-hidden="true">'+x.pic+'</div><div><b class="who">'+esc(x.who)+'</b><small>'+esc(x.when)+'</small><q>'+esc(x.q)+'</q><span class="en">'+esc(x.en)+'</span><div class="lang">'+x.l.map(([a,b,d])=>'<span'+(d?' class="de"':'')+'>'+a+' · '+b+'</span>').join("")+'</div></div></div>').join("")+'<p class="tline">Quelle: Wikipedia, „Ich spreche Spanisch zu Gott …“</p>';
-  $("pop").hidden=false;$("pb").scrollTop=0;}
+ {pic:"H O",w:"Heinrich_Gottfried_Ollendorff",who:"Heinrich G. Ollendorff",when:"Sprachlehrer · 1850",
+  q:"Deutsch zu den Soldaten, Ungarisch zu den Pferden, Englisch zu den Gänsen, Böhmisch zum Teufel.",en:"A grammar-book version: German goes to the soldiers.",u:HORSE,
+  l:[["Soldaten","Deutsch",1],["Pferde","Ungarisch"],["Gänse","Englisch"],["Teufel","Böhmisch"]]},
+ {sec:"Zu kurz, zu lang, zu schwer"},
+ {pic:"T P",w:"Thomas_Love_Peacock",who:"Thomas Love Peacock",when:"Gryll Grange, 1860, Kap. 3",
+  q:"Life is too short to learn German.",en:"Credited in the novel to the scholar Richard Porson – probably Peacock's own joke. Later pinned on Wilde and Twain.",u:"https://www.gutenberg.org/ebooks/21514"},
+ {pic:"M T",w:"Mark_Twain",who:"Mark Twain",when:"The Awful German Language, 1880",
+  q:"… English in thirty hours, French in thirty days, and German in thirty years.",en:"What a gifted person ought to need, according to Twain.",u:"https://en.wikipedia.org/wiki/The_Awful_German_Language"},
+ {pic:"M T",w:"Mark_Twain",who:"Mark Twain",when:"The Awful German Language, 1880",
+  q:"In German, a young lady has no sex, while a turnip has.",en:"das Mädchen (neutral) · die Rübe (feminin). Grammatical gender is not biology.",u:"https://en.wikipedia.org/wiki/The_Awful_German_Language"},
+ {pic:"M T",w:"Mark_Twain",who:"Mark Twain",when:"A Connecticut Yankee in King Arthur's Court, 1889",
+  q:"Whenever the literary German dives into a sentence, that is the last you are going to see of him till he emerges on the other side of his Atlantic with his verb in his mouth.",en:"The Satzklammer, described by a fan who suffered.",u:"https://en.wikipedia.org/wiki/A_Connecticut_Yankee_in_King_Arthur%27s_Court"},
+ {pic:"K F",who:"Karl Farkas",when:"Kabarett, Wien · oft Karl Kraus zugeschrieben",
+  q:"Der Österreicher unterscheidet sich vom Deutschen durch die gemeinsame Sprache.",en:"Not in any of Kraus's texts; first documented in Farkas's cabaret programmes.",u:"https://www.derstandard.at/story/1794877/was-karl-kraus-so-wohl-nicht-gesagt-hat"},
+ {sec:"Ernsthaft"},
+ {pic:"J G",w:"Johann_Wolfgang_von_Goethe",who:"Johann Wolfgang von Goethe",when:"Maximen und Reflexionen",
+  q:"Wer fremde Sprachen nicht kennt, weiß nichts von seiner eigenen.",en:"Whoever knows no foreign language knows nothing of their own.",u:"https://de.wikipedia.org/wiki/Maximen_und_Reflexionen"},
+ {pic:"L W",w:"Ludwig_Wittgenstein",who:"Ludwig Wittgenstein",when:"Tractatus logico-philosophicus 5.6, Wien 1921",
+  q:"Die Grenzen meiner Sprache bedeuten die Grenzen meiner Welt.",en:"The limits of my language mean the limits of my world.",u:"https://de.wikipedia.org/wiki/Tractatus_logico-philosophicus"}];
+function loadPics(root){const cache=store.pics||(store.pics={});root.querySelectorAll("img[data-w]").forEach(im=>{const w=im.dataset.w,show=u=>{im.onload=()=>im.parentNode.classList.add("has");im.src=u;};
+  if(cache[w]){show(cache[w]);return;}if(cache[w]===0)return;
+  fetch("https://en.wikipedia.org/api/rest_v1/page/summary/"+w).then(r=>r.ok?r.json():null).then(j=>{const u=j&&j.thumbnail&&j.thumbnail.source;cache[w]=u||0;save();if(u)show(u);}).catch(()=>{});});}
+function openQuotes(){if(!GP.open)navPush("pop");GP.open=true;GP.items=[];$("pt").textContent="Über die deutsche Sprache";$("pc").textContent="";$("pnav").hidden=true;
+  $("pb").innerHTML=QUOTES.map(x=>x.sec?'<h4 class="qsec">'+esc(x.sec)+'</h4>':'<a class="qt" href="'+x.u+'" target="_blank" rel="noopener"><span class="pic" aria-hidden="true"><i>'+x.pic+'</i>'+(x.w?'<img alt="" loading="lazy" data-w="'+x.w+'">':'')+'</span><span class="qb"><b class="who">'+esc(x.who)+'</b><small>'+esc(x.when)+'</small><q>'+esc(x.q)+'</q><span class="qen">'+esc(x.en)+'</span>'+(x.l?'<span class="lang">'+x.l.map(([a,b,d])=>'<span'+(d?' class="de"':'')+'>'+a+' · '+b+'</span>').join("")+'</span>':'')+'</span></a>').join("")+'<p class="tline">Antippen öffnet die Quelle. Bilder: Wikipedia, gemeinfrei.</p>';
+  $("pop").hidden=false;$("pb").scrollTop=0;loadPics($("pb"));}
 (()=>{let n=0,t0=0;$("markb").onclick=()=>{const now=Date.now();n=now-t0<700?n+1:1;t0=now;$("markb").classList.toggle("on");store.flags=$("markb").classList.contains("on");save();
   if(n>=3){n=0;$("markb").classList.add("on");store.flags=true;save();openQuotes();}};if(store.flags)$("markb").classList.add("on");})();
 /* ---------- multiple-choice engine (all Spiel modes except Satzbau) ---------- */
