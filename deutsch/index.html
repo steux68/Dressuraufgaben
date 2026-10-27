@@ -2011,7 +2011,7 @@ $("p-links").innerHTML=TH_LINKS;
 $("p-quotes").innerHTML='<div class="tc df"><h3>Über die deutsche Sprache</h3>'+quotesHTML()+'</div>';loadPics($("p-quotes"));
 $("p-hist").innerHTML=HIST;
 (()=>{const st=$("sets");$("p-sets").innerHTML='<div class="tc df"><h3>Einstellungen</h3></div>';$("p-sets").firstChild.appendChild(st);st.hidden=false;
-  const f=document.querySelector("footer.copy");if(f){const c=f.cloneNode(true);$("p-sets").appendChild(c);}}const vm=document.querySelector('meta[name="app-version"]');if(vm){const v=document.createElement("p");v.className="tline";v.style.textAlign="center";v.textContent="Version "+vm.content;$("p-sets").appendChild(v);}})();
+  const f=document.querySelector("footer.copy");if(f){const c=f.cloneNode(true);$("p-sets").appendChild(c);}const vm=document.querySelector('meta[name="app-version"]');if(vm){const v=document.createElement("p");v.className="tline";v.style.textAlign="center";v.textContent="Version "+vm.content;$("p-sets").appendChild(v);}})();
 /* which page are we in: the last bar that has left the bottom stack */
 const isUp=b=>{const r=b.getBoundingClientRect(),R=SC.getBoundingClientRect();return r.bottom<R.bottom-parseFloat(b.style.bottom)-3;};
 function curBar(){let c=-1;BARS.forEach((b,k)=>{if(isUp(b))c=k;});BARS.forEach((b,k)=>b.classList.toggle("on",k===c));HBODY.classList.toggle("inpg",c>=0);}
