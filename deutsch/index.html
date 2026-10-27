@@ -1,5 +1,5 @@
 <!doctype html><html lang="de"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Deutsch"></head><body>
-<meta name="app-version" content="2026-10-27c">
+<meta name="app-version" content="2026-10-27d">
 <title>Deutsch Grammatik</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#ffffff">
@@ -464,6 +464,38 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .qt q{display:block;font-size:.98rem;line-height:1.3;quotes:"„" "“"}.qt .qen{display:block;text-align:left;font-size:.84rem;color:#555;margin-top:2px;line-height:1.3}
 .qt .lang{display:flex;flex-wrap:wrap;margin-top:5px;font-size:.76rem}.qt .lang span{padding:2px 6px;background:var(--mnom)}.qt .lang span+span{border-left:1px dotted var(--dl)}.qt .lang .de{background:var(--mkey);font-weight:700}
 .kb{display:inline-block;background:var(--ink);color:#fff;padding:0 6px;font-weight:700}
+/* ---- topic page in the dasein grammar: the same line rule as the start page ----
+   dashed = frame of the screen (under the header, the arrow bar); dotted = between items; no boxes round content, no box inside a box;
+   the three modes are half bars (a choice is a fill); the arrow bar is the foot of the screen */
+#topic .titlebar{position:relative;background:none}
+#topic .titlebar::after{content:"";position:absolute;left:-10px;right:-10px;bottom:0;border-bottom:1px dashed var(--line)}
+.app:has(#topic:not([hidden])) .tk.t{display:none}
+.app:has(#topic:not([hidden])){padding-bottom:0}
+.app:has(#topic:not([hidden])) .tk.b{bottom:9px;height:11px}
+#topic:not([hidden]) ~ footer.copy{display:none}
+.seg{--hl:var(--df) left top/100% 1px no-repeat,var(--df) left bottom/100% 1px no-repeat;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:6px}
+.seg button{height:23px;padding:0 10px;display:flex;align-items:center;justify-content:flex-start;font-size:12px;font-weight:400;color:#000;white-space:nowrap;overflow:hidden;background:var(--hl),#f2f2f2;border-left:1px dotted var(--dot)}
+.seg button:first-child{border-left:0}
+.seg button small.n{font-size:8.5px;margin-left:4px;color:inherit;opacity:1}
+.seg button[aria-pressed="true"]{font-weight:700}
+.seg #mLearn[aria-pressed="true"]{background:var(--hl),var(--m-learn);color:#fff}
+.seg #mGame[aria-pressed="true"]{background:var(--hl),var(--m-game);color:#111}
+.seg #mTheo[aria-pressed="true"]{background:var(--hl),var(--m-theo);color:#fff}
+.seg button:active:not([aria-pressed="true"]){background:var(--hl),var(--lime)}
+#topic .card{padding:10px 0 0;box-shadow:none;background:var(--df) left top/100% 1px no-repeat}
+#topic .card.df::after{display:none}
+.app[data-mode] .card{box-shadow:none}
+/* a choice is a fill, not a line */
+button.primary,.opt.ok,.w.v1,.w.v2,.w.mf,.nw .art.on,.lv,.trio .akk,.trio .dat,.wt.v,.wt.k,.tlc.now b,.pict b.grh b,.mic{box-shadow:none}
+.opt.ok{background:var(--lime)}
+.opt.bad{box-shadow:none;background:#fbe3e1}
+.w.vf{background:var(--mnom)}.w.v1,.w.v2{background:var(--mkey)}.w.ein{background:var(--mgen)}.w.mf{background:var(--pale)}
+.cell.mf{background:none}.cell.mf::after{display:none}
+.trio .akk{background:var(--makk);color:var(--akkt)}.trio .dat{background:var(--mdat);color:var(--datt)}
+.lv{background:var(--mnom)}
+.wt.v{background:var(--mkey)}.wt.k{background:var(--mgen)}
+.tlc.now b,.pict b.grh b{background:var(--mkey)}
+.mic{background:#fbe3e1}.mic.on{background:var(--red)}
 </style>
 
 <div class="app"><i class="rule l"></i><i class="rule r"></i><i class="tk t"></i><i class="tk b"></i>
@@ -512,6 +544,7 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
       <div class="btns" id="btns1"></div>
       <div class="btns" id="btns2"></div>
     </div>
+    <div class="abar" id="tabar"><button type="button" id="tNext" aria-label="weiter"><svg class="ar" width="24" height="24" viewBox="-12 -12 24 24" aria-hidden="true"><circle class="tr" r="9.5"/><circle class="tr tr2" r="9.5"/><path class="rg" d="M5.31 -7.88A9.5 9.5 0 1 1 -5.31 -7.88"/><path class="dt" transform="rotate(270)" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="-0.00" y="-9.50">N</text></svg><i class="sc" id="tnw">Spiel</i></button></div>
   </section>
 
   <div class="pop" id="pop" hidden role="dialog" aria-modal="true" aria-labelledby="pt">
@@ -1842,7 +1875,11 @@ $("tmr").onclick=()=>{store.timer=!store.timer;save();renderHome();};
 $("ahp").onclick=()=>{store.arthelp=!store.arthelp;save();renderHome();};
 function setMode(m){closePop();mode=m;if(m!=="game")document.querySelector(".app").classList.remove("typ");document.querySelector(".app").dataset.mode=m;$("mLearn").setAttribute("aria-pressed",m==="learn");$("mGame").setAttribute("aria-pressed",m==="game");$("mTheo").setAttribute("aria-pressed",m==="theo");
   const th=m==="theo";$("theo").hidden=!th;$("lg").hidden=th;$("stage").hidden=th;$("panel").hidden=th;
-  if(m==="game"){gi=0;MC=null;}if(T&&T!=="test"&&T!=="links"){store.last={t:T,m};save();}render();}
+  if(m==="game"){gi=0;MC=null;}if(T&&T!=="test"&&T!=="links"){store.last={t:T,m};save();}tabarUpd();render();}
+/* arrow bar at the foot of a topic page: on to the next mode; after the last one (or where there is only one) back to the title page */
+function tabarUpd(){const b=$("tNext");if(!b)return;const nx=$("seg").hidden?null:mode==="learn"?"Spiel":mode==="game"?"Theorie":null;
+  $("tnw").textContent=nx||"Start";b.setAttribute("aria-label",nx?"weiter zu "+nx:"zur Titelseite");}
+$("tNext").onclick=()=>{if(!$("seg").hidden){if(mode==="learn")return setMode("game");if(mode==="game")return setMode("theo");}$("back").onclick();};
 $("mLearn").onclick=()=>setMode("learn");$("mTheo").onclick=()=>setMode("theo");$("mGame").onclick=()=>setMode("game");
 const TH={satz:()=>TH_SATZ+srcCard("satz"),prep:()=>TH_PREP+srcCard("prep"),art:()=>TH_ART+ownHTML()+srcCard("art"),pron:()=>TH_PRON+srcCard("pron"),gen:()=>TH_GEN+srcCard("gen"),fall:()=>TH_FALL+srcCard("fall"),adj:()=>TH_ADJ+srcCard("adj"),links:()=>TH_LINKS};
 
