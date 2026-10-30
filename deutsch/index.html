@@ -1,5 +1,5 @@
 <!doctype html><html lang="de"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Deutsch"></head><body>
-<meta name="app-version" content="2026-10-30k">
+<meta name="app-version" content="2026-10-30l">
 <title>Deutsch Grammatik</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#ffffff">
@@ -578,12 +578,12 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .tlln.a1{top:calc(50% - 42px);height:24px}.tlln.a2{top:calc(50% - 52px - var(--th));height:calc(34px + var(--th))}
 .tlln.b1{top:calc(50% + 16px);height:26px}.tlln.b2{top:calc(50% + 16px);height:calc(36px + var(--th))}
 /* a card: the picture (as big as the height allows) with date and title beside it, like the poster */
-.tlcd{position:absolute;height:var(--th);width:calc(var(--th) + 94px);display:flex;align-items:stretch;gap:6px;padding:0;border:0;border-radius:0;background:none;text-align:left;font:inherit;color:#222;cursor:pointer;-webkit-tap-highlight-color:transparent;min-height:0}
+.tlcd{position:absolute;height:var(--th);width:calc(var(--th) + 78px);display:flex;align-items:stretch;gap:6px;padding:0;border:0;border-radius:0;background:none;text-align:left;font:inherit;color:#222;cursor:pointer;-webkit-tap-highlight-color:transparent;min-height:0}
 .tlcd.a1{bottom:calc(50% + 42px)}.tlcd.a2{bottom:calc(50% + 52px + var(--th))}.tlcd.b1{top:calc(50% + 42px)}.tlcd.b2{top:calc(50% + 52px + var(--th))}
-.tltx{width:88px;display:flex;flex-direction:column;gap:2px;overflow:hidden}
+.tltx{width:72px;display:flex;flex-direction:column;gap:2px;overflow:hidden}
 .tlcd.a1 .tltx,.tlcd.a2 .tltx{justify-content:flex-end}
 .tltx small{font-size:9.5px;font-weight:700;letter-spacing:.05em;color:var(--red);line-height:1.2}
-.tltx b{font-size:12px;line-height:1.15;font-weight:700;overflow-wrap:anywhere;hyphens:auto}
+.tltx b{font-size:11.5px;line-height:1.15;font-weight:700;overflow-wrap:anywhere;hyphens:auto}
 .tltx em{font-style:normal;font-size:7.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#6b6b66}
 .tlcd.h .tltx small{color:#555}
 .tlth{position:relative;width:var(--th);height:var(--th);flex:none;background:#f4f4f2;overflow:hidden;display:grid;place-items:center}
@@ -610,7 +610,7 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .tlar.pw{left:6px}.tlar.pe{right:6px}
 .tls{flex:none;display:flex;gap:1px;overflow-x:auto;scrollbar-width:none;padding:8px 10px 10px;border-top:1px dashed var(--line)}.tls::-webkit-scrollbar{display:none}
 .tls button{flex:none;min-width:44px;min-height:0;padding:6px 6px 7px;border:0;border-radius:0;background:#f2f2f2;font:inherit;font-size:11px;font-weight:700;color:#3a3c37;box-shadow:inset 0 -3px 0 var(--ec);-webkit-tap-highlight-color:transparent}
-.tls button.h{background:#e2e2df}.tls button.on{background:#cdff3e}
+.tls button.h{background:#e2e2df}.tlsm{border-top:0;padding:6px 0 0}.tls button.on{background:#cdff3e}
 .hp .tline a.wk,.tlbody a.wk{display:inline-block;padding:1px 8px 2px;font-size:11px;font-weight:700;letter-spacing:.04em;color:#1a5fd0;background:#dfe9fa;text-decoration:none;vertical-align:1px}
 /* the pop-up for a picture */
 .gfig{position:relative;margin:0;aspect-ratio:1/1;background:#f6f6f6;outline:1px dotted #b8b8b8;outline-offset:-1px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;overflow:hidden;text-align:center}
@@ -618,12 +618,18 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .gfig .ty{font-size:56px;line-height:1.05;padding:0 10px}.gfig .abc{font-size:21px;line-height:1.35;padding:0 12px;color:#444}
 .gs{font-size:.8rem;color:var(--muted);letter-spacing:.04em}
 .pbody a.wk{display:inline-block;padding:1px 8px 2px;font-size:11px;font-weight:700;letter-spacing:.04em;color:#1a5fd0;background:#dfe9fa;text-decoration:none}
-/* Zitate: every quote a rectangle in a dotted box, 8 px apart */
-.hp .qsec{margin:12px 0 0;background:none;padding-bottom:0}
-.hp .qt,.hp .qt.alt{position:relative;margin:0;padding:10px;background:#fff}
-.hp .qt:active{background:var(--pale)}
-.hp .qt .pic::after{display:none}
+/* Zitate: one list, rows grey / white to the bar edges, a single dotted line between them, text 10 px in */
+#p-quotes .tc{gap:0}
+.qchips{padding:2px 0 8px}
+.hp .qsec{margin:14px 0 4px;background:none;padding-bottom:0}
+.qlist{display:flex;flex-direction:column}
+.hp .qt,.hp .qt.alt{position:relative;margin:0;padding:10px}
+.hp .qt{background:var(--df) left bottom/100% 1px no-repeat,#fff}.hp .qt.alt{background:var(--df) left bottom/100% 1px no-repeat,#f4f4f2}
+.hp .qt:active{background:var(--df) left bottom/100% 1px no-repeat,var(--pale)}
+.hp .qt::after,.hp .qt .pic::after{display:none}
+.hp .qt .pic{background:#e6e6e3}
 .hp .qt .who{font-size:.95rem}.hp .qt small{font-size:.74rem}.hp .qt q{font-size:.9rem}.hp .qt .qen{font-size:.8rem}
+.qmore{display:block;width:100%;min-height:40px;margin-top:8px;border:0;border-radius:0;background:#f2f2f2;font:inherit;font-size:.95rem;font-weight:700;color:#000}.qmore small{font-weight:400;color:var(--muted)}
 /* ---- bars: only one dotted line where two bars meet (the upper one drops its bottom line while another bar is right below it) ---- */
 .hb{--bl:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px)}.hb.nb{--bl:linear-gradient(transparent,transparent)}
 .hb.hl{background:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left top/100% 1px no-repeat,var(--bl) left bottom/100% 1px no-repeat,var(--hv) right top/1px 100% no-repeat,#fff}
@@ -2373,17 +2379,44 @@ const QUOTES=[
   q:"Whenever the literary German dives into a sentence, that is the last you are going to see of him till he emerges on the other side of his Atlantic with his verb in his mouth.",en:"The Satzklammer, described by a fan who suffered.",u:"https://en.wikipedia.org/wiki/A_Connecticut_Yankee_in_King_Arthur%27s_Court"},
  {pic:"K F",w:["de:Karl_Farkas","en:Karl_Farkas"],who:"Karl Farkas",when:"Kabarett, Wien · oft Karl Kraus zugeschrieben",
   q:"Der Österreicher unterscheidet sich vom Deutschen durch die gemeinsame Sprache.",en:"Not in any of Kraus's texts; first documented in Farkas's cabaret programmes.",u:"https://www.derstandard.at/story/1794877/was-karl-kraus-so-wohl-nicht-gesagt-hat"},
+ {pic:"M T",w:["en:Mark_Twain"],who:"Mark Twain",when:"The Awful German Language, 1880",
+  q:"Some German words are so long that they have a perspective.",en:"His example: Freundschaftsbezeigungen. Today: Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz.",u:"https://en.wikipedia.org/wiki/The_Awful_German_Language"},
  {sec:"Ernsthaft"},
  {pic:"J G",w:["en:Johann_Wolfgang_von_Goethe"],who:"Johann Wolfgang von Goethe",when:"Maximen und Reflexionen",
   q:"Wer fremde Sprachen nicht kennt, weiß nichts von seiner eigenen.",en:"Whoever knows no foreign language knows nothing of their own.",u:"https://de.wikipedia.org/wiki/Maximen_und_Reflexionen"},
  {pic:"L W",w:["en:Ludwig_Wittgenstein"],who:"Ludwig Wittgenstein",when:"Tractatus logico-philosophicus 5.6, Wien 1921",
-  q:"Die Grenzen meiner Sprache bedeuten die Grenzen meiner Welt.",en:"The limits of my language mean the limits of my world.",u:"https://de.wikipedia.org/wiki/Tractatus_logico-philosophicus"}];
+  q:"Die Grenzen meiner Sprache bedeuten die Grenzen meiner Welt.",en:"The limits of my language mean the limits of my world.",u:"https://de.wikipedia.org/wiki/Tractatus_logico-philosophicus"},
+ {pic:"L W",w:["en:Ludwig_Wittgenstein"],who:"Ludwig Wittgenstein",when:"Philosophische Untersuchungen § 109, 1953",
+  q:"Die Philosophie ist ein Kampf gegen die Verhexung unseres Verstandes durch die Mittel unserer Sprache.",en:"Philosophy is a battle against the bewitchment of our intelligence by means of our language.",u:"https://de.wikipedia.org/wiki/Philosophische_Untersuchungen"},
+ {pic:"K K",w:["de:Karl_Kraus","en:Karl_Kraus_(writer)"],who:"Karl Kraus",when:"Die Fackel Nr. 288, Wien 1909",
+  q:"Die Sprache ist die Mutter, nicht die Magd des Gedankens.",en:"Language is the mother, not the maid, of thought. – This one really is Kraus.",u:"https://quoteinvestigator.com/2025/05/15/language-thought/"},
+ {pic:"K T",w:["de:Kurt_Tucholsky"],who:"Kurt Tucholsky",when:"titelgebend für seine Sprachglossen",
+  q:"Sprache ist eine Waffe. Haltet sie scharf.",en:"Language is a weapon. Keep it sharp.",u:"https://de.wikipedia.org/wiki/Kurt_Tucholsky"},
+ {pic:"H H",w:["de:Heinrich_Heine"],who:"Heinrich Heine",when:"Almansor, 1821",
+  q:"Dort wo man Bücher verbrennt, verbrennt man auch am Ende Menschen.",en:"Written 112 years before the book burning of 1933. The line is now set in the memorial on Bebelplatz in Berlin.",u:"https://de.wikipedia.org/wiki/Almansor_(Heine)"},
+ {sec:"Sprachwitz"},
+ {pic:"K V",w:["de:Karl_Valentin"],who:"Karl Valentin",when:"Münchner Komiker · zugeschrieben",
+  q:"Es ist schon alles gesagt, nur noch nicht von allen.",en:"Everything has been said already – just not by everyone.",u:"https://de.wikipedia.org/wiki/Karl_Valentin"},
+ {pic:"B S",w:["de:Bastian_Sick"],who:"Bastian Sick",when:"Buchtitel, 2004",
+  q:"Der Dativ ist dem Genitiv sein Tod.",en:"Deliberately wrong: correct would be „des Genitivs Tod“. The dative creeping into genitive phrases.",u:"https://de.wikipedia.org/wiki/Der_Dativ_ist_dem_Genitiv_sein_Tod"},
+ {pic:"JFK",w:["en:Ich_bin_ein_Berliner","en:John_F._Kennedy"],who:"John F. Kennedy",when:"Rede in West-Berlin, 26. Juni 1963",
+  q:"Ich bin ein Berliner.",en:"No, he did not call himself a doughnut: in Berlin that pastry is a Pfannkuchen. The grammar is fine.",u:"https://de.wikipedia.org/wiki/Ich_bin_ein_Berliner"}];
 function loadPics(root){const cache=store.pics2||(store.pics2={});root.querySelectorAll("img[data-w]").forEach(im=>{const list=im.dataset.w.split("|"),key=list.join("|"),show=u=>{im.onload=()=>im.parentNode.classList.add("has");im.src=u;};
   if(cache[key]){show(cache[key]);return;}if(cache[key]===0)return;
   const next=i=>{if(i>=list.length){cache[key]=0;save();return;}const [lg,t]=list[i].split(":");
     fetch("https://"+lg+".wikipedia.org/api/rest_v1/page/summary/"+t).then(r=>r.ok?r.json():null).then(j=>{const u=j&&(j.thumbnail&&j.thumbnail.source||j.originalimage&&j.originalimage.source);if(u){cache[key]=u;save();show(u);}else next(i+1);}).catch(()=>next(i+1));};
   next(0);});}
-function quotesHTML(){let qi=0;return QUOTES.map(x=>x.sec?(qi=0,'<h4 class="qsec">'+esc(x.sec)+'</h4>'):'<a class="qt'+(qi++%2?' alt':'')+'" href="'+x.u+'" target="_blank" rel="noopener"><span class="pic" aria-hidden="true"><i>'+x.pic+'</i>'+(x.w?'<img alt="" loading="lazy" data-w="'+x.w.join("|")+'">':'')+'</span><span class="qb"><b class="who">'+esc(x.who)+'</b><small>'+esc(x.when)+'</small><q>'+esc(x.q)+'</q><span class="qen">'+esc(x.en)+'</span>'+'</span></a>').join("")+'<p class="tline">Antippen öffnet die Quelle. Bilder: Wikipedia / Wikimedia Commons.</p>';}
+/* Zitate (Steuart, 30 Oct): one striped list, grey / white, a single dotted line between quotes; filter chips by topic (like the Wonder categories of dasein-design); in "Alle" the first 8, then "mehr" */
+const QS={f:"Alle",all:false};
+function quotesHTML(){const secs=QUOTES.filter(x=>x.sec).map(x=>x.sec);let sec="",qi=0,n=0,hid=0;const items=[];
+  QUOTES.forEach(x=>{if(x.sec){sec=x.sec;qi=0;return;}if(QS.f!=="Alle"&&sec!==QS.f)return;if(QS.f==="Alle"&&!QS.all&&n>=8){hid++;return;}
+    if(qi===0&&QS.f==="Alle")items.push('<h4 class="qsec">'+esc(sec)+'</h4>');n++;
+    items.push('<a class="qt'+(qi++%2?' alt':'')+'" href="'+x.u+'" target="_blank" rel="noopener"><span class="pic" aria-hidden="true"><i>'+x.pic+'</i>'+(x.w?'<img alt="" loading="lazy" data-w="'+x.w.join("|")+'">':'')+'</span><span class="qb"><b class="who">'+esc(x.who)+'</b><small>'+esc(x.when)+'</small><q>'+esc(x.q)+'</q><span class="qen">'+esc(x.en)+'</span></span></a>');});
+  return '<div class="wchips qchips" id="qchips">'+["Alle"].concat(secs).map(f=>'<button data-f="'+esc(f)+'" aria-pressed="'+(QS.f===f)+'">'+esc(f==="Deutsch zu meinem Pferd"?"Pferd":f==="Zu kurz, zu lang, zu schwer"?"Zu schwer":f)+'</button>').join("")+'</div>'+
+   '<div class="qlist">'+items.join("")+'</div>'+(hid?'<button class="qmore" id="qmore">mehr Zitate <small>(+'+hid+')</small></button>':'')+'<p class="tline">Antippen öffnet die Quelle. Bilder: Wikipedia / Wikimedia Commons.</p>';}
+function renderQuotes(){$("p-quotes").innerHTML='<div class="tc df"><h3>Über die deutsche Sprache</h3>'+quotesHTML()+'</div>';loadPics($("p-quotes"));
+  $("p-quotes").querySelectorAll("#qchips button").forEach(b=>b.onclick=()=>{QS.f=b.dataset.f;QS.all=false;renderQuotes();});
+  const m=$("qmore");if(m)m.onclick=()=>{QS.all=true;renderQuotes();};}
 $("markb").onclick=toTitle;$("markL").onclick=toTitle;$("markb").setAttribute("aria-label","Zur Titelseite");document.querySelector("#home h1.logo").addEventListener("click",toTitle);document.querySelector("#home h1.logo").style.cursor="pointer";
 /* ---------- bottom bars and the drawer that rises (like dasein-design) ---------- */
 const WK=t=>"https://de.wikipedia.org/wiki/"+encodeURIComponent(t.replace(/ /g,"_"));
@@ -2463,8 +2496,8 @@ const ERAS=[[-200,700,"Germanisch","#ececea","#6b6b66"],[700,1050,"Althochdeutsc
 const eraOf=y=>ERAS.find(e=>y>=e[0]&&y<e[1])||ERAS[4];
 const tlCol=e=>e.h?"#3a3c37":eraOf(e.y)[4];
 /* geometry (Steuart, 30 Oct): as tall as the phone allows, two rows above and two below; the pictures as big as fit; entries spaced so no line crosses a card */
-const TXW=88;let TLG=null;
-function tlGeo(){const H=Math.round(Math.min(780,Math.max(440,(window.innerHeight||700)-210))),th=Math.max(64,Math.floor((H/2-58)/2)),S=Math.ceil((th/2+TXW+16)/2),X0=Math.ceil(th/2)+12;
+const TXW=72;let TLG=null;
+function tlGeo(){const H=Math.round(Math.min(780,Math.max(440,(window.innerHeight||700)-210))),th=Math.max(64,Math.floor((H/2-58)/2)),S=Math.ceil((th/2+TXW+8)/2),X0=Math.ceil(th/2)+12;
   return {H,th,S,X0,W:Math.ceil(X0+(TL.length-1)*S+th/2+TXW+18)};}
 const tlX=(y,G)=>{const P=TL.map((e,i)=>[e.y,G.X0+i*G.S]);if(y<=P[0][0])return Math.max(2,P[0][1]-(P[0][0]-y)*.2);for(let i=1;i<P.length;i++)if(y<=P[i][0]){const a=P[i-1],b=P[i];return a[1]+(b[1]-a[1])*(y-a[0])/(b[0]-a[0]);}const L=P[P.length-1];return Math.min(G.W-2,L[1]+(y-L[0])*3);};
 const tlLab=e=>e.lab||String(Math.floor(e.y));
@@ -2477,8 +2510,16 @@ function tlHTML(){const G=TLG=tlGeo(),lanes={a:[],b:[]};let sp="";
    '<i class="tlyr"></i>'+sp+
    TL.map((e,i)=>{const ln=["a1","b1","a2","b2"][i%4],x=G.X0+i*G.S;return '<span class="tltk" style="left:'+x+'px">'+tlLab(e)+'</span><i class="tlln '+ln+'" style="left:'+x+'px;background:'+tlCol(e)+'"></i>'+
      '<button type="button" class="tlcd '+ln+(e.h?' h':'')+'" data-i="'+i+'" style="left:'+(x-G.th/2)+'px" aria-label="'+esc(e.d)+': '+esc(e.t)+(e.h?' (Zeitgeschehen)':'')+'"><span class="tlth">'+tlThumb(e)+'</span><span class="tltx"><small>'+esc(e.d)+'</small><b>'+esc(e.t)+'</b>'+(e.h?'<em>Zeitgeschehen</em>':'')+'</span></button>';}).join("")+
-   '</div></div></div>';}
-function tlBind(){const P=$("p-hist");P.querySelectorAll(".tlcd").forEach(b=>b.onclick=()=>tlOpen(+b.dataset.i));loadPics(P);}
+   '</div></div></div><div class="tls tlsm" id="tlsm" aria-label="Zeitleiste – Jahre">'+TL.map((e,i)=>'<button type="button" data-i="'+i+'" class="'+(e.h?'h':'')+'" style="--ec:'+tlCol(e)+'" aria-label="'+esc(e.d)+': '+esc(e.t)+'">'+tlLab(e)+'</button>').join("")+'</div>';}
+/* the year strip under the timeline moves with it (Steuart, 30 Oct): drag either one, the other follows; the entry in the middle is lime */
+function tlBind(){const P=$("p-hist");P.querySelectorAll(".tlcd").forEach(b=>b.onclick=()=>tlOpen(+b.dataset.i));loadPics(P);
+  const T=$("tl"),M=$("tlsm");if(!T||!M)return;let who=null,t0=0;const now=()=>performance.now(),frac=e=>e.scrollLeft/Math.max(1,e.scrollWidth-e.clientWidth);
+  const cur=()=>Math.max(0,Math.min(TL.length-1,Math.round((T.scrollLeft+T.clientWidth/2-TLG.X0)/TLG.S)));let last=-1;
+  const mark=()=>{const i=cur();if(i===last)return;last=i;M.querySelectorAll("button").forEach((b,k)=>b.classList.toggle("on",k===i));};
+  T.addEventListener("scroll",()=>{mark();if(who==="M"&&now()-t0<150)return;who="T";t0=now();M.scrollLeft=frac(T)*(M.scrollWidth-M.clientWidth);},{passive:true});
+  M.addEventListener("scroll",()=>{if(who==="T"&&now()-t0<150)return;who="M";t0=now();T.scrollLeft=frac(M)*(T.scrollWidth-T.clientWidth);},{passive:true});
+  M.querySelectorAll("button").forEach(b=>b.onclick=()=>{who="T";t0=now()+400;const i=+b.dataset.i;T.scrollTo({left:TLG.X0+i*TLG.S-T.clientWidth/2,behavior:reduceM?"auto":"smooth"});setTimeout(()=>{M.scrollTo({left:b.offsetLeft-M.clientWidth/2+b.offsetWidth/2,behavior:reduceM?"auto":"smooth"});},50);});
+  mark();}
 /* rebuild when the phone turns or the height changes a lot */
 let tlRT=0;window.addEventListener("resize",()=>{clearTimeout(tlRT);tlRT=setTimeout(()=>{const box=$("tlbox");if(!box||!TLG)return;const G=tlGeo();if(Math.abs(G.H-TLG.H)<30)return;const sl=$("tl").scrollLeft/TLG.W;box.innerHTML=tlHTML();tlBind();$("tl").scrollLeft=sl*TLG.W;},250);});
 const TLO={i:0,open:false};
@@ -2537,7 +2578,7 @@ function renderTest(){const n={};const all=[].concat(PQ,PRON_Q,GEN_Q,FALL_Q,ADJ_
   $("goWrite").onclick=()=>openTopic("write");$("goLueck").onclick=()=>openTopic("lueck");
   $("p-test").querySelectorAll(".tst[data-l]").forEach(x=>x.onclick=()=>{TESTLV=x.dataset.l==="mix"?"all":x.dataset.l;openTopic("test");});}
 $("p-links").innerHTML=TH_LINKS;
-$("p-quotes").innerHTML='<div class="tc df"><h3>Über die deutsche Sprache</h3>'+quotesHTML()+'</div>';loadPics($("p-quotes"));
+renderQuotes();
 $("p-hist").innerHTML=HIST;loadPics($("p-hist"));
 tlBind();
 (()=>{const st=$("sets");$("p-sets").innerHTML='<div class="tc df"><h3>Einstellungen</h3></div>';$("p-sets").firstChild.appendChild(st);st.hidden=false;
