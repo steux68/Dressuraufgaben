@@ -1,5 +1,5 @@
 <!doctype html><html data-theme="light"><head><meta charset=utf8><base href="../"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<meta name="app-version" content="2026-10-30k">
+<meta name="app-version" content="2026-10-30l">
 <title>Dressuraufgaben · Theorie</title>
 <link rel="manifest" href="theorie.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Theorie"><meta name="theme-color" content="#f5f6f2">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
@@ -1322,4 +1322,18 @@ const GAL=[
 .lk:active{background:#eaffae}
 .lknote{font-size:.76rem;color:var(--muted);margin:10px 0 4px}
 </style>
+<script>
+/* Zurück auf der langen Startseite: erst nach oben zur Titelseite, dann aus der App */
+(function(){const $=id=>document.getElementById(id),SC=$('hscroll');if(!SC)return;
+ let gd=0,back=false;   /* gd = Tiefe des Wächter-Eintrags (0 = keiner) */
+ const free=()=>view==='home'&&$('info').hidden&&(!$('gpop')||$('gpop').hidden);
+ const arm=()=>{if(back){if(SC.scrollTop<60)back=false;return}
+  if(gd||!free()||SC.scrollTop<60)return;try{history.pushState({app:1,g:1},'')}catch(e){return}gd=NAVD();};
+ SC.addEventListener('scroll',arm,{passive:true});SC.addEventListener('click',arm,true);SC.addEventListener('touchend',arm,{passive:true});
+ addEventListener('popstate',()=>{if(!gd||NAVD()>=gd)return;gd=0;
+  if(!free())return;
+  if(SC.scrollTop<60){history.back();return}
+  back=true;SC.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});
+})();
+</script>
 </body></html>
