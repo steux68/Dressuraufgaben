@@ -1,5 +1,5 @@
 <!doctype html><html lang="de"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Deutsch"></head><body>
-<meta name="app-version" content="2026-10-30o">
+<meta name="app-version" content="2026-10-31a">
 <title>Deutsch Grammatik</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#ffffff">
@@ -577,13 +577,14 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .tlw>.tlar{z-index:4}.tlw>.tlar[data-off]{opacity:.3}
 .tlsp{height:4px;opacity:.75}.tlsp.a{top:calc(50% - 25px - var(--k)*6px)}.tlsp.b{top:calc(50% + 19px + var(--k)*6px)}
 .tlln{width:1px}
-.tlln.a1{top:calc(50% - 42px);height:24px}.tlln.a2{top:calc(50% - 52px - var(--th));height:calc(34px + var(--th))}
-.tlln.b1{top:calc(50% + 16px);height:26px}.tlln.b2{top:calc(50% + 16px);height:calc(36px + var(--th))}
+.tlln.a1{top:calc(50% - 42px - var(--g));height:calc(24px + var(--g))}.tlln.a2{top:calc(50% - 52px - var(--g) - var(--th) + var(--d));height:calc(34px + var(--g) + var(--th) - var(--d))}
+.tlln.b1{top:calc(50% + 16px);height:calc(26px + var(--g))}.tlln.b2{top:calc(50% + 16px);height:calc(36px + var(--g) + var(--th) - var(--d))}
+.tlwash{top:0;bottom:0;opacity:.45}
 /* a card: the picture (as big as the height allows) with date and title beside it, like the poster */
 .tlcd{position:absolute;height:var(--th);width:calc(var(--th) + 78px);display:flex;align-items:stretch;gap:6px;padding:0;border:0;border-radius:0;background:none;text-align:left;font:inherit;color:#222;cursor:pointer;-webkit-tap-highlight-color:transparent;min-height:0}
-.tlcd.a1{bottom:calc(50% + 42px)}.tlcd.a2{bottom:calc(50% + 52px + var(--th))}.tlcd.b1{top:calc(50% + 42px)}.tlcd.b2{top:calc(50% + 52px + var(--th))}
+.tlcd.a1{bottom:calc(50% + 42px + var(--g))}.tlcd.a2{bottom:calc(50% + 52px + var(--g) + var(--th) - var(--d))}.tlcd.b1{top:calc(50% + 42px + var(--g))}.tlcd.b2{top:calc(50% + 52px + var(--g) + var(--th) - var(--d))}
 .tltx{width:72px;display:flex;flex-direction:column;gap:2px;overflow:hidden}
-.tltx{justify-content:flex-end}
+.tltx{justify-content:flex-end}.tlcd.a2 .tltx,.tlcd.b1 .tltx{justify-content:flex-start}
 .tltx small{font-size:9.5px;font-weight:700;letter-spacing:.05em;color:var(--red);line-height:1.2}
 .tltx b{font-size:11.5px;line-height:1.15;font-weight:700;overflow-wrap:anywhere;hyphens:auto}
 .tltx em{font-style:normal;font-size:7.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#6b6b66}
@@ -2688,16 +2689,16 @@ const eraOf=y=>ERAS.find(e=>y>=e[0]&&y<e[1])||ERAS[4];
 const tlCol=e=>e.h?"#3a3c37":eraOf(e.y)[4];
 /* geometry (Steuart, 30 Oct): as tall as the phone allows, two rows above and two below; the pictures as big as fit; entries spaced so no line crosses a card */
 const TXW=72;let TLG=null;
-function tlGeo(){const sc=document.getElementById("hscroll"),vh=sc&&sc.clientHeight>200?sc.clientHeight:(window.innerHeight||700)-82,H=Math.round(Math.min(760,Math.max(360,vh-66-23-46))),th=Math.max(56,Math.floor((H/2-54)/2)),S=Math.ceil((th/2+TXW+8)/2),X0=Math.ceil(th/2)+12;
-  return {H,th,S,X0,W:Math.ceil(X0+(TL.length-1)*S+th/2+TXW+18)};}
+function tlGeo(){const sc=document.getElementById("hscroll"),vh=sc&&sc.clientHeight>200?sc.clientHeight:(window.innerHeight||700)-82,H=Math.round(Math.min(760,Math.max(360,vh-66-23-46))),th=Math.max(52,Math.floor((H/2-54)/2*.86)),d=Math.max(0,th-64),g=Math.max(0,Math.floor((H/2-(52+2*th-d)-8)*.6)),S=Math.ceil((th/2+TXW+8)/2),X0=Math.ceil(th/2)+12;
+  return {H,th,d,g,S,X0,W:Math.ceil(X0+(TL.length-1)*S+th/2+TXW+18)};}
 const tlX=(y,G)=>{const P=TL.map((e,i)=>[e.y,G.X0+i*G.S]);if(y<=P[0][0])return Math.max(2,P[0][1]-(P[0][0]-y)*.2);for(let i=1;i<P.length;i++)if(y<=P[i][0]){const a=P[i-1],b=P[i];return a[1]+(b[1]-a[1])*(y-a[0])/(b[0]-a[0]);}const L=P[P.length-1];return Math.min(G.W-2,L[1]+(y-L[0])*3);};
 const tlLab=e=>e.lab||String(Math.floor(e.y));
 const tlThumb=e=>e.ty?'<span class="ty '+e.ty+'">'+e.smp+'</span>':'<i>'+e.ini+'</i>'+(e.w?'<img alt="" loading="lazy" data-w="'+e.w.join("|")+'">':'');
 function tlHTML(){const G=TLG=tlGeo(),lanes={a:[],b:[]};let sp="";
   TL.forEach((e,i)=>{if(!e.e)return;const s=i%2?"b":"a",x1=tlX(e.y,G),x2=tlX(e.e,G),L=lanes[s];let k=0;while(L[k]!=null&&L[k]>x1-2&&k<2)k++;L[k]=x2;
     sp+='<i class="tlsp '+s+'" style="left:'+x1+'px;width:'+Math.max(6,x2-x1)+'px;--k:'+k+';background:'+tlCol(e)+'" title="'+esc(e.d)+'"></i>';});
-  return '<div class="tlw"><div class="tl" id="tl" style="height:'+G.H+'px;--th:'+G.th+'px"><div class="tlc" style="width:'+G.W+'px">'+
-   ERAS.map(r=>{const a=Math.max(0,tlX(r[0],G)),b=tlX(r[1],G);return '<i class="tlera" style="left:'+a+'px;width:'+(b-a)+'px;background:'+r[3]+';color:'+r[4]+'">'+r[2]+'</i>';}).join("")+
+  return '<div class="tlw"><div class="tl" id="tl" style="height:'+G.H+'px;--th:'+G.th+'px;--d:'+G.d+'px;--g:'+G.g+'px"><div class="tlc" style="width:'+G.W+'px">'+
+   ERAS.map(r=>{const a=Math.max(0,tlX(r[0],G)),b=tlX(r[1],G);return '<i class="tlwash" style="left:'+a+'px;width:'+(b-a)+'px;background:'+r[3]+'"></i><i class="tlera" style="left:'+a+'px;width:'+(b-a)+'px;background:'+r[3]+';color:'+r[4]+'">'+r[2]+'</i>';}).join("")+
    '<i class="tlyr"></i>'+sp+
    TL.map((e,i)=>{const ln=["a1","b1","a2","b2"][i%4],x=G.X0+i*G.S;return '<span class="tltk'+(e.h?' h':'')+'" data-i="'+i+'" style="left:'+x+'px;--ec:'+tlCol(e)+'">'+tlLab(e)+'</span><i class="tlln '+ln+'" style="left:'+x+'px;background:'+tlCol(e)+'"></i>'+
      '<button type="button" class="tlcd '+ln+(e.h?' h':'')+'" data-i="'+i+'" style="left:'+(x-G.th/2)+'px" aria-label="'+esc(e.d)+': '+esc(e.t)+(e.h?' (Zeitgeschehen)':'')+'"><span class="tlth">'+tlThumb(e)+'</span><span class="tltx"><small>'+esc(e.d)+'</small><b>'+esc(e.t)+'</b>'+(e.h?'<em>Zeitgeschehen</em>':'')+'</span></button>';}).join("")+
