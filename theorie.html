@@ -1,5 +1,5 @@
 <!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<meta name="app-version" content="2026-10-30h">
+<meta name="app-version" content="2026-10-30i">
 <title>Dressuraufgaben · Theorie</title>
 <link rel="manifest" href="theorie.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Theorie"><meta name="theme-color" content="#f5f6f2">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
@@ -895,6 +895,7 @@ function quotes(){
  });
 }
 
+window.THEO_LISTS=function(){hist();quotes();};
 /* ---- Unsere Pferde ---- */
 function horses(){
  const box=g('thHlist');if(box.childElementCount)return;
@@ -1126,13 +1127,142 @@ const GAL=[
  $('gpx').onclick=gClose;$('gpp').onclick=()=>{if(gi>0){gi--;gShow();}};$('gpf').onclick=()=>{if(gi<GAL.length-1){gi++;gShow();}};
  addEventListener('keydown',e=>{if($('gpop').hidden)return;if(e.key==='Escape')gClose();if(e.key==='ArrowLeft')$('gpp').click();if(e.key==='ArrowRight')$('gpf').click();});
  addEventListener('popstate',()=>{if(!$('gpop').hidden)gClose();});
- window.galRaw=function(){show('gal');$('note').hidden=true;grid();};
+ window.galGrid=grid;window.galRaw=function(){show('gal');$('note').hidden=true;grid();};
  window.openGal=function(){if(view!=='gal'){try{history.pushState({app:1},'',location.pathname+location.search+'#galerie')}catch(e){}}galRaw();};
  window.xyzRaw=function(){show('xyz');$('note').hidden=true;};
  window.openXyz=function(){if(view!=='xyz'){try{history.pushState({app:1},'',location.pathname+location.search+'#xyz')}catch(e){}}xyzRaw();};
  if(window.START_H==='#galerie'){try{history.replaceState({app:1},'',location.pathname+location.search+'#galerie')}catch(e){}galRaw();}
  else if(window.START_H==='#xyz'){try{history.replaceState({app:1},'',location.pathname+location.search+'#xyz')}catch(e){}xyzRaw();}
  if(window.navMark)navMark();
+})();
+</script>
+<style>#theo2 .wsec{margin:12px 0 4px;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--theo)}
+#theo2 .wsec:first-child{margin-top:2px}
+#theo2 .hr{display:grid;grid-template-columns:5.6em minmax(0,1fr);gap:10px;padding:8px 6px;border-bottom:1.5px dotted color-mix(in srgb,var(--muted) 40%,transparent);font-size:.88rem;line-height:1.32}
+#theo2 .hr.alt,#theo2 .zq.alt{background:color-mix(in srgb,var(--sand) 45%,transparent)}
+#theo2 .hr .d{font-weight:700;color:var(--theo);font-size:.8rem;line-height:1.3;padding-top:1px}
+#theo2 .hr a{white-space:nowrap;margin-left:6px;font-size:.78rem;color:var(--theo);font-weight:600;text-decoration:none}
+#theo2 .zq{display:grid;grid-template-columns:44px minmax(0,1fr);gap:10px;padding:9px 6px;border-bottom:1.5px dotted color-mix(in srgb,var(--muted) 40%,transparent);color:inherit;text-decoration:none}
+#theo2 .zq .pic{width:44px;height:54px;display:grid;place-items:center;font-weight:700;font-size:.9rem;color:var(--theo);border:1.5px dotted color-mix(in srgb,var(--theo) 55%,transparent);border-radius:4px;background:var(--surface)}
+#theo2 .zq b{font-size:.95rem}
+#theo2 .zq small{display:block;font-size:.74rem;color:var(--muted);margin-bottom:3px}
+#theo2 .zq q{display:block;font-size:.95rem;line-height:1.3;quotes:'„' '“'}
+#theo2 .zq .o{display:block;font-size:.8rem;font-style:italic;color:var(--muted);margin-top:2px}
+#theo2 .zq .n{display:block;font-size:.8rem;color:var(--muted);margin-top:3px;line-height:1.3}
+#theo2 .zq .go{font-size:.74rem;color:var(--theo);font-weight:600;margin-top:3px;display:block}
+#theo2 .tline{font-size:.76rem;color:var(--muted);margin:8px 6px 4px;line-height:1.35}
+/* Listen: Geschichte und Zitate wie in der Deutsch-App */
+#theo2 .wsec{color:var(--dred);letter-spacing:.14em;font-size:.72rem}
+#theo2 .hr,#theo2 .zq{border-bottom:0!important;background:var(--df) left bottom/100% 1px no-repeat!important;padding:11px 2px!important}
+#theo2 .hr.alt,#theo2 .zq.alt{background:var(--df) left bottom/100% 1px no-repeat!important}
+#theo2 .hr .d{color:var(--fg)!important}
+#theo2 .hr a,#theo2 .zq .go{display:inline-block;background:var(--grey);color:#1a5fd0!important;padding:1px 8px;margin-top:4px;font-weight:700}
+#theo2 .zq .pic{border:0!important;border-radius:0!important;background:var(--pale)!important;color:var(--ink)!important;letter-spacing:.18em;font-weight:400;
+ box-shadow:inset 0 0 0 1px var(--dot)}
+#theo2 .wsec{color:var(--dred)!important}
+#theo2 .hr a,#theo2 .zq .go{display:inline-block!important;width:auto!important;background:var(--grey)!important;color:#1a5fd0!important;padding:1px 8px!important}
+#theo2 .hr .d{color:var(--fg)!important;font-weight:700}
+#theo2 .zq .pic{color:var(--ink)!important;background:var(--pale)!important}
+#theo2 .hr,#theo2 .zq{padding:10px 8px!important;background:#fff!important}
+#theo2 .hr.alt,#theo2 .zq.alt{background:#f4f4f2!important}
+#theo2 .hr a,#theo2 .zq .go{background:#dfe9fa!important;color:#1a5fd0!important;font-size:11px!important;letter-spacing:.04em;padding:1px 8px 2px!important}
+#dnav{display:none!important}
+#home{overflow:hidden!important;padding:0!important;gap:0!important;position:relative}
+.hbody{flex:1 1 auto;min-height:0;position:relative;overflow:hidden}
+.hscroll{position:relative;height:100%;overflow-y:auto;overflow-x:hidden;touch-action:pan-y;display:block;scrollbar-width:none;overscroll-behavior:contain}
+.hscroll::-webkit-scrollbar{display:none}
+.hb{position:sticky;z-index:14;display:flex;align-items:center;height:23px;padding:0 10px;font-size:12px;color:#000;cursor:pointer;white-space:nowrap;overflow:hidden;
+ -webkit-tap-highlight-color:transparent;transition:background-color .15s;--hv:repeating-linear-gradient(to bottom,#b8b8b8 0 1px,transparent 1px 3px);--bl:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px)}
+.hb.nb{--bl:linear-gradient(transparent,transparent)}
+.hb b{font-weight:700}.hb small{font-size:8.5px;margin-left:4px}
+.hb.hl{margin:39px 50% -1px 0;background:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left top/100% 1px no-repeat,var(--bl) left bottom/100% 1px no-repeat,var(--hv) right top/1px 100% no-repeat,#fff}
+.hb.hr{margin:39px 0 -1px 50%;background:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left top/100% 1px no-repeat,var(--bl) left bottom/100% 1px no-repeat,var(--hv) left top/1px 100% no-repeat,#fff}
+.hb.first{margin-top:14px}
+.hbody.inpg .hb{background-color:#f2f2f2}.hb.on{background-color:#eaffae!important}.hb.hit{background-color:#cdff3e!important}
+.sback{position:absolute;left:0;right:0;z-index:13;background:#fff;pointer-events:none}
+.hsec{padding:10px 0 6px;display:flex;flex-direction:column;gap:8px}
+#hscroll .home{overflow:visible!important;flex:none!important;min-height:0!important;padding:0!important}
+#hscroll #intro{flex:1 1 auto}
+.tpg{display:flex;flex-direction:column;gap:6px;padding-top:4px}
+.tpg .ipic{flex:1 1 auto;min-height:200px}
+.tpg .iph{min-height:200px}
+.wrow .code{font-size:.85rem!important}
+</style>
+<script>
+(function(){
+ const $=id=>document.getElementById(id),reduceM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const SECS=[['a','Dressuraufgaben'],['w','Pferdewissen'],['g','Geschichte und Zitate'],['b','Galerie'],['m','Materialien'],['x','XYZ']];
+ const HB=22,ROWS=Math.ceil(SECS.length/2),HOME=$('home');
+ const HBODY=document.createElement('div');HBODY.className='hbody';HBODY.id='hbody';
+ const SC=document.createElement('div');SC.className='hscroll';SC.id='hscroll';HBODY.appendChild(SC);
+ const sbt=document.createElement('div');sbt.className='sback t';const sbb=document.createElement('div');sbb.className='sback b';HBODY.append(sbt,sbb);
+ const mk=(id,cls)=>{const s=document.createElement('section');s.id=id;s.className=cls;return s;};
+ const move=(from,to)=>{while(from&&from.firstChild)to.appendChild(from.firstChild);};
+ /* Titelseite */
+ const TP=mk('p-title','tpg');TP.appendChild($('intro'));
+ /* 01 Dressuraufgaben: die bisherige Startseite als Ganzes */
+ HOME.parentNode.insertBefore(HBODY,HOME);
+ const PA=mk('p-a','hsec');PA.appendChild(HOME);
+ /* 02 Pferdewissen: Einstiege */
+ const PW=mk('p-w','hsec');
+ [['thsS','Si','Situationen','„Was tust du, wenn …?“ Reitbahn, Stall, Gelände, Straße'],
+  ['thsV','Se','Sehen','Wie das Pferd sieht: Gesichtsfeld, tote Winkel, Quiz'],
+  ['thsP','Pf','Unsere Pferde','Die Pferde der Reitschule (in Vorbereitung)']].forEach(([id,c,n,d])=>{
+  const b=document.createElement('button');b.className='tile ready wrow';
+  b.innerHTML='<span class="code"></span><span><div class="nm"></div><div class="ds"></div></span><span class="st ready">Öffnen</span>';
+  b.querySelector('.code').textContent=c;b.querySelector('.nm').textContent=n;b.querySelector('.ds').textContent=d;
+  b.onclick=()=>{openWissen();setTimeout(()=>$(id).click(),0);};PW.appendChild(b);});
+ /* 03 Geschichte und Zitate */
+ const PG=mk('p-g','hsec');if(window.THEO_LISTS)THEO_LISTS();
+ const h1=document.createElement('p');h1.className='wsec';h1.textContent='Kleine Geschichte des Pferdes';
+ const h2=document.createElement('p');h2.className='wsec';h2.textContent='Zitate';
+ const pg=document.createElement('div');pg.id='theo2';pg.append(h1,$('thHl'),h2,$('thZl'));PG.appendChild(pg);
+ /* 04 Galerie, 05 Materialien, 06 XYZ: ganze Abschnitte */
+ const PB=mk('p-b','hsec');PB.appendChild($('gal'));
+ const PM=mk('p-m','hsec');PM.appendChild($('mat'));
+ const PX=mk('p-x','hsec');PX.appendChild($('xyz'));
+ const PAGES=[PA,PW,PG,PB,PM,PX];
+ SC.appendChild(TP);
+ const BARS=SECS.map(([k,n],i)=>{const r=i>>1,b=document.createElement('div');b.className='hb '+(i&1?'hr':'hl')+(i===0?' first':'');
+  b.innerHTML='<b></b><small>['+String(i+1).padStart(2,'0')+']</small>';b.firstChild.textContent=n;
+  b.style.top=r*HB+'px';b.style.bottom=(ROWS-1-r)*HB+'px';b.setAttribute('role','link');b.tabIndex=0;
+  SC.appendChild(b);SC.appendChild(PAGES[i]);PAGES[i].style.scrollMarginTop=(r*HB+22)+'px';
+  const go=()=>tapGo(b,i);b.addEventListener('click',go);b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});return b;});
+ if(window.galGrid)galGrid();if(typeof renderMat==='function')renderMat();
+ const secTop=i=>Math.max(0,PAGES[i].offsetTop-((i>>1)*HB+22));
+ function tapGo(el,i){el.classList.add('hit');setTimeout(()=>{SC.scrollTo({top:secTop(i),behavior:reduceM?'auto':'smooth'});setTimeout(()=>el.classList.remove('hit'),500);},reduceM?60:280);}
+ const isUp=b=>{const r=b.getBoundingClientRect(),R=SC.getBoundingClientRect();return r.bottom<R.bottom-parseFloat(b.style.bottom)-3;};
+ function curBar(){let c=-1;BARS.forEach((b,k)=>{if(isUp(b))c=k;});BARS.forEach((b,k)=>b.classList.toggle('on',k===c));HBODY.classList.toggle('inpg',c>=0);}
+ function backs(){const R=SC.getBoundingClientRect();let tb=R.top,bt=R.bottom;
+  BARS.forEach(b=>{const r=b.getBoundingClientRect(),t=parseFloat(b.style.top),bo=parseFloat(b.style.bottom);if(r.top<=R.top+t+.5)tb=Math.max(tb,r.bottom);if(r.bottom>=R.bottom-bo-.5)bt=Math.min(bt,r.top);});
+  sbt.style.top='0px';sbt.style.height=Math.max(0,tb-R.top)+'px';sbb.style.top=(bt-R.top)+'px';sbb.style.height=Math.max(0,R.bottom-bt)+'px';}
+ function lastFit(){const H=SC.clientHeight,n=PAGES.length;if(!H)return;
+  TP.style.minHeight=Math.max(260,H-ROWS*HB-15)+'px';
+  PAGES.forEach((p,i)=>{const r=i>>1,next=i+1<n?((i+1)>>1):null;p.style.minHeight=Math.max(0,next===null?H-ROWS*HB+1:H-(ROWS-next)*HB-40-(r+1)*HB)+'px';});}
+ function seams(){const rs=BARS.map(b=>b.getBoundingClientRect());BARS.forEach((b,k)=>{const a=rs[k];b.classList.toggle('nb',rs.some((o,m)=>m!==k&&o.left<a.right-2&&o.right>a.left+2&&o.top>a.bottom-6&&o.top<a.bottom+8));});}
+ function upd(){curBar();backs();seams();}
+ SC.addEventListener('scroll',upd,{passive:true});addEventListener('resize',()=>{lastFit();upd();});
+ new ResizeObserver(()=>{lastFit();upd();}).observe(SC);
+ /* Ansichten umleiten: alles, was jetzt auf der langen Seite liegt, scrollt dorthin */
+ function sync(){HBODY.hidden=!(view==='home'&&$('info').hidden);['home','mat','gal','xyz','intro'].forEach(id=>{const e=$(id);if(e)e.hidden=false;});if(!HBODY.hidden){lastFit();upd();}}
+ const _info=info;window.info=function(o){_info(o);sync();};$('infoBtn').onclick=()=>info($('info').hidden);$('infoClose').onclick=()=>info(false);
+ addEventListener('popstate',()=>setTimeout(sync,0));
+ const IDX={mat:4,gal:3,gesch:2,xyz:5};let saved=0;const _show=show;
+ const goSec=(i,smooth)=>{sync();requestAnimationFrame(()=>{lastFit();SC.scrollTo({top:i<0?0:secTop(i),behavior:smooth&&!reduceM?'smooth':'auto'});upd();});};
+ window.show=function(v){if(view==='home'&&v!=='home')saved=SC.scrollTop;
+  if(v==='intro'){_show('home');goSec(-1);return;}
+  if(v in IDX){_show('home');goSec(IDX[v]);return;}
+  _show(v);sync();if(v==='home')requestAnimationFrame(()=>{lastFit();SC.scrollTop=saved;upd();});};
+ const toHome=i=>{if(view!=='home'){try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}home();}goSec(i,true);};
+ window.openMat=()=>toHome(4);window.openGal=()=>toHome(3);window.openGesch=()=>toHome(2);window.openXyz=()=>toHome(5);window.openIntro=()=>toHome(-1);
+ window.galRaw=()=>{_show('home');goSec(3);};window.geschRaw=()=>{_show('home');goSec(2);};window.xyzRaw=()=>{_show('home');goSec(5);};window.introRaw=()=>{_show('home');goSec(-1);};
+ $('introGo').onclick=()=>goSec(0,true);
+ $('title').onclick=()=>{if(view==='home')goSec(-1,true);else home();};
+ /* Start: Adresszusatz auswerten */
+ const S=window.START_H||'';const m={'#material':4,'#galerie':3,'#geschichte':2,'#xyz':5};
+ if(S in m){try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}_show('home');goSec(m[S]);}
+ else if(!S||S==='#start'){_show('home');goSec(-1);}
+ requestAnimationFrame(()=>{lastFit();upd();});
 })();
 </script>
 </body></html>
