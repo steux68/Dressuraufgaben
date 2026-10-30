@@ -1,5 +1,5 @@
 <!doctype html><html lang="de"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Deutsch"></head><body>
-<meta name="app-version" content="2026-10-30m">
+<meta name="app-version" content="2026-10-30n">
 <title>Deutsch Grammatik</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#ffffff">
@@ -2064,6 +2064,8 @@ const TOPICS=[
  {t:"perf",n:"Zeitformen",tag:"Perfekt",ds:"haben oder sein, Partizip II, Präteritum · A2–C1"},
  {t:"vprep",n:"Verben mit Präpositionen",tag:"warten auf",ds:"feste Präposition, darauf, woran · A2–B2"},
  {t:"rel",n:"Relativsätze",tag:"der · dem · dessen",ds:"Genus vom Nomen, Fall vom Satz · B1–B2"},
+ {t:"modal",n:"Modalverben",tag:"kann · muss · soll",ds:"Formen, Perfekt, Vermutung, Behauptung · A1–C1"},
+ {t:"zuinf",n:"zu + Infinitiv",tag:"um … zu",ds:"zu oder nicht, um / ohne / statt, haben / sein zu · A2–C1"},
  {t:"pass",n:"Passiv",tag:"wird … gebaut",ds:"alle Zeiten, Zustand, Ersatzformen · B1–C1"},
  {t:"k2",n:"Konjunktiv II",tag:"wäre · hätte · würde",ds:"irreal, höflich, Wunsch, Vergangenheit · A2–C1"},
  {t:"k1",n:"Konjunktiv I",tag:"er sei · er habe",ds:"Indirekte Rede, Berichte · B2–C1"},
@@ -2077,11 +2079,11 @@ const TOPICS=[
 const TNAME={prep:"Präpositionen",art:"Artikel",pron:"Pronomen",gen:"Genitiv",fall:"Fälle",adj:"Adjektive"};
 function score(t){if(t==="links"||t==="write"||t==="lueck")return null;if(t==="satz"){const n=SB.filter(x=>store["sb"+x.id]==="ok").length;return n?n/SB.length:null;}const b=(store.best||{})[t];return b==null?null:b;}
 const GROUPS=[
- {n:"Satz",t:["satz","tekamolo","neg","konn","rel"],soon:"zu + Infinitiv"},
+ {n:"Satz",t:["satz","tekamolo","neg","konn","rel","zuinf"],soon:"Nebensätze"},
  {n:"Nomen & Fälle",t:["art","fall","gen"],soon:"Plural · n-Deklination"},
  {n:"Adjektiv",t:["adj"],soon:"Vergleichen"},
  {n:"Präpositionen",t:["prep","vprep"],soon:"Zeitangaben"},
- {n:"Verb",t:["praes","perf","pass","k2","k1"],soon:"Modalverben · Reflexiv"},
+ {n:"Verb",t:["praes","modal","perf","pass","k2","k1"],soon:"Reflexiv"},
  {n:"Stil · C1",t:["nvv","nom"],soon:"Partikeln"}];
 const tInfo=t=>TOPICS.find(x=>x.t===t);
 function tRange(t){const m=(tInfo(t).ds||"").match(/([ABC][12])(?:–([ABC][12]))?\s*$/);return m?[m[1],m[2]||m[1]]:["A1","C1"];}
@@ -2125,6 +2127,176 @@ const TH={satz:()=>TH_SATZ+srcCard("satz"),prep:()=>TH_PREP+srcCard("prep"),art:
 
 /* ---------- "Warum?": the story behind each rule, the first Lernen card of every topic ---------- */
 const WHY={"neg": ["nicht = ni + wiht", "Althochdeutsch, um 800", "Why does nicht end in -t?", "Old High German niwiht meant 'not a thing' – the same word as English 'not a whit'. It once came with a second ni, like French ne … pas; the little ni fell away and nicht did the whole job. kein is the same idea: ni + ein, 'not one'."], "art": ["das Mädchen", "Mark Twain, 1880", "Why is a girl neuter?", "Because of -chen, not because of the girl: every -chen and -lein word is neuter, whatever it means. Twain complained that in German a young lady has no sex, while a turnip has. Gender belongs to the word, not to the thing: der Löffel, die Gabel, das Messer."], "fall": ["se · þone · þæm", "Altenglisch: der · den · dem", "Why does German keep four cases?", "English once had them too: Old English said se, þone, þæm for 'the'. English dropped the endings and relies on word order; only he/him and who/whom are left. German kept them in the article – so Den Plan zeichnet der Architekt is perfectly clear."], "gen": ["Der Dativ ist dem Genitiv sein Tod", "Bastian Sick, 2004", "Is the Genitiv dying?", "In speech it is retreating: wegen dem Regen, das Auto von meinem Bruder. Bastian Sick's best-selling book even makes the joke in the 'wrong' grammar. In writing it is very much alive, and it survives in fixed phrases: eines Tages, meines Wissens, guten Mutes."], "adj": ["stark · schwach", "Jacob Grimm, Deutsche Grammatik, 1819", "Why do the endings change?", "Jacob Grimm named the two sets of endings strong and weak. The rule behind them is thrift: one word has to show the case. If der or dem already shows it, the adjective takes the weak -e or -en. If nothing shows it, the adjective does the job itself: frischer Kaffee."], "konn": ["weil ich hab keine Zeit", "gesprochenes Deutsch", "Why do people say weil with the verb second?", "In speech, weil is drifting towards denn: 'weil ich hab keine Zeit', with a little pause after weil, is now common. It is still wrong in writing and in the exam. The rule to keep: weil, dass, ob, wenn send the verb to the end; und, aber, oder, denn do not."], "rel": ["der Mann, der dort steht", "aus dem alten Zeigewort der", "Why do relative pronouns look like articles?", "They grew out of the old pointing word der, 'that one'. Der Mann, der dort steht, is literally 'the man – that one stands there'. Only dessen, deren and denen show they are something extra: the Genitiv and the Dativ plural grew longer forms."], "perf": ["ich bin gegangen", "Präteritumschwund", "Why does Austria hardly use the Präteritum?", "In southern German – Bavaria, Austria, Switzerland – the simple past has almost vanished from speech over the last centuries; Swiss German has practically none. People say ich bin gegangen, not ich ging. Only war, hatte and the modal verbs stay. In the north and in writing the Präteritum is alive."], "vprep": ["warten auf · Angst vor", "feste Paare", "Why auf and not für?", "These prepositions are fixed by history, not logic – English is no better: wait for, think of, afraid of. German often thinks in space: warten auf (looking towards it), Angst vor (it stands in front of you), denken an (touching it in thought). Learn verb and preposition as one word."], "pass": ["Hier wird getanzt.", "ein Passiv ohne Subjekt", "What can the German Passiv do that English can't?", "German can build a passive with no subject at all: Hier wird nicht geraucht. Sonntags wird gearbeitet. English needs 'there is no smoking here'. It names an activity without saying who does it – very useful for rules, reports and building specifications."], "k2": ["ich hülfe · ich stürbe", "die alten Formen", "Why does everyone say würde?", "The old Konjunktiv II of many verbs looks like the past or sounds bookish: ich hülfe, ich stürbe, ich würfe. So speakers moved to würde + Infinitiv. A handful of short forms stayed alive and are used every day: wäre, hätte, könnte, müsste, sollte, wüsste, käme, ginge."], "k1": ["Er sagte, er sei krank.", "die Sprache der Nachrichten", "Why do the news say er sei?", "Konjunktiv I marks reported speech: the speaker passes on what someone said without vouching for it. Journalists use it to keep their distance – er sei krank means 'he says he is ill'. In everyday speech people use the indicative or würde instead."], "nvv": ["zur Anwendung kommen", "Kanzleisprache", "Why do officials say zur Anwendung kommen?", "Since the chancelleries of the late Middle Ages, official German has loved nouns: a noun plus an almost empty verb such as kommen, stellen, nehmen. zur Anwendung kommen simply means angewendet werden. It sounds formal and precise – good in letters and reports, tiring when overdone."], "tekamolo": ["TE · KA · MO · LO", "eine Eselsbrücke aus dem DaF-Unterricht", "Is TEKAMOLO a rule?", "It is a memory aid, not a law. It describes the neutral order, the one you can always use. Native speakers shift things for emphasis: the newer or more important the information, the further back it goes. Learn TEKAMOLO as your safe default, then watch how real texts bend it."], "nom": ["Donaudampfschifffahrt", "Mark Twain, 1880", "Why is German so fond of long nouns?", "German glues words together where English uses 'of': one word for a whole phrase. Twain joked that some German words are so long they have a perspective. Nominalstil packs a clause into a noun: die Planung des Neubaus instead of dass man den Neubau plant."], "praes": ["er reiste … ab", "Mark Twain, 1880", "Why does the prefix run to the end?", "A separable verb is a verb plus a small adverb, and in a main clause the adverb waits at the end of the verb bracket. Twain mocked a novel in which the hero packs, kisses his mother and sisters and, many words later, finally 'reiste … ab'. The good side: the end of a German sentence always holds a surprise."]};
+/* ===== Modalverben (30 Oct) ===== */
+GT.modal={name:"Modalverben",badge:"Modalverb",tip:"Modalverb in position 2, infinitive at the end – without zu. ich and er have the same form: ich kann, er kann.",src:["dudenk","dg20","grammis"],
+ lg:'<span><b class="wt v lgk">Verb</b> Satzklammer</span><span><b class="wt ng lgk">nicht</b> Verneinung</span>',
+ cards:[
+ {b:"Satzklammer",st:D("Ich~s|muss~v|morgen|den Plan~a|zeichnen~v|.~p","1-4a:Modalverb … Infinitiv"),tx:"Modalverb in position 2, infinitive at the end",gt:"The modal verb is conjugated; the main verb waits at the end as a plain infinitive, <b>without zu</b>: Ich muss den Plan zeichnen.",say:"Ich muss morgen den Plan zeichnen."},
+ {b:"Formen",st:D("Er~s|kann~v|gut|zeichnen~v|.~p","1-3a:er kann – ohne -t"),tx:"ich kann · er kann – no ending",gt:"ich and er/sie/es look the same and have no ending. Most change the vowel in the singular: können → <b>kann</b>, dürfen → <b>darf</b>, müssen → <b>muss</b>, wollen → <b>will</b>, mögen → <b>mag</b>. Only sollen keeps its o.",say:"Er kann gut zeichnen."},
+ {b:"nicht müssen",st:D("Du~s|musst~v|das|nicht~ng|machen~v|.~p","1-4a:nicht müssen"),tx:"nicht müssen ≠ nicht dürfen",gt:"<b>Du musst nicht</b> = you don't have to. <b>Du darfst nicht</b> = you mustn't. The classic trap for English speakers. Instead of nicht müssen you can say <b>nicht brauchen zu</b>: Du brauchst das nicht zu machen.",say:"Du musst das nicht machen."},
+ {b:"möchte",st:D("Ich~s|möchte~v|einen Kaffee~a|.~p"),tx:"möchte = polite want",gt:"<b>möchte</b> is the Konjunktiv II of mögen, used as a polite present: Ich möchte zahlen. ich mag = I like. A modal verb can stand without an infinitive when the meaning is clear: Ich kann Deutsch.",say:"Ich möchte einen Kaffee."},
+ {b:"Nebensatz",st:D("…, weil~k|ich|morgen|arbeiten~v|muss~v|.~p","0-4a:Modalverb ans Ende"),tx:"In a Nebensatz the modal verb goes last",gt:"weil ich morgen arbeiten <b>muss</b>: infinitive first, then the conjugated modal verb.",say:"…, weil ich morgen arbeiten muss."},
+ {b:"Perfekt",st:D("Ich~s|habe~v|länger|arbeiten müssen~v|.~p","1-3a:haben … zwei Infinitive"),tx:"Ersatzinfinitiv: müssen, not gemusst",gt:"With a second verb, the Perfekt uses the infinitive of the modal: Ich habe arbeiten <b>müssen</b>. Without one, the Partizip: Das habe ich nicht <b>gewollt</b>. In speech the Präteritum is usual: Ich musste arbeiten.",say:"Ich habe länger arbeiten müssen."},
+ {b:"Nebensatz · Perfekt",st:D("…, dass~k|er|hat~v|kommen müssen~v|.~p","2-3a:hat vor die Infinitive"),tx:"dass er hat kommen müssen (C1)",gt:"The one exception to „verb last“: with two infinitives, <b>hat</b> jumps in front of them. dass er hat kommen müssen, ob sie hat bleiben dürfen.",say:"…, dass er hat kommen müssen."},
+ {b:"Vermutung",st:D("Er~s|dürfte~v|recht|haben~v|.~p","1-3a:wahrscheinlich"),tx:"How sure am I?",gt:"Modals also show how certain the speaker is: <b>muss</b> = almost certain, <b>dürfte</b> = probably, <b>kann / könnte</b> = possibly, <b>kann nicht</b> = impossible. Past: Er muss es vergessen <b>haben</b>.",say:"Er dürfte recht haben."},
+ {b:"Behauptung",st:D("Er~s|soll~v|sehr reich|sein~v|.~p","1-3a:man sagt"),tx:"soll = people say · will = he claims",gt:"<b>Er soll reich sein</b>: that is what people say. <b>Er will nichts gewusst haben</b>: that is what he claims – and I doubt it. Typical of newspapers and C1 texts.",say:"Er soll sehr reich sein."}],
+ q:[
+ {s:"Ich ___ gut schwimmen.",o:["kann","kanne","kannst"],why:"ich kann – no ending, same as er kann.",lv:"A1"},
+ {s:"Er ___ heute lange arbeiten.",o:["muss","musst","müsst"],why:"er muss: no ending, vowel ü → u in the singular.",lv:"A1"},
+ {s:"___ du mir bitte helfen?",o:["Kannst","Kann","Könnt"],why:"du kannst. The question starts with the verb.",lv:"A1"},
+ {s:"Ich ___ einen Kaffee, bitte.",o:["möchte","möchten","mag"],why:"Ordering politely: ich möchte.",lv:"A1"},
+ {s:"Hier ___ man nicht rauchen.",o:["darf","dürfen","darfst"],why:"man takes the er-form: man darf.",lv:"A1"},
+ {s:"Wir ___ morgen ins Kino gehen.",o:["wollen","will","wollt"],why:"wir wollen – the plural keeps the infinitive vowel.",lv:"A1"},
+ {s:"Wenn du keine Zeit hast, ___ du nicht kommen.",o:["musst","darfst","sollst"],why:"No obligation: du musst nicht = you don't have to. darfst nicht would forbid it.",lv:"A2"},
+ {s:"Im Museum ___ man nicht fotografieren. Es ist verboten.",o:["darf","muss","will"],why:"verboten → nicht dürfen.",lv:"A2"},
+ {s:"Ich ___ keinen Fisch.",o:["mag","möchte","magst"],why:"mögen as a full verb = to like: ich mag.",lv:"A2"},
+ {s:"Der Arzt sagt, ich ___ mehr Wasser trinken.",o:["soll","will","darf"],why:"Someone else's instruction: sollen.",lv:"A2"},
+ {s:"Gestern ___ ich nicht kommen, ich war krank.",o:["konnte","kann","könnte"],why:"Präteritum of können: konnte, without Umlaut.",lv:"A2"},
+ {s:"Als Kind ___ er Pilot werden.",o:["wollte","will","wolle"],why:"Präteritum: er wollte.",lv:"A2"},
+ {s:"Ich muss dich morgen ___.",o:["anrufen","rufen an","angerufen"],why:"After a modal verb the separable verb stays in one piece at the end.",lv:"A2"},
+ {s:"Wenn du willst, ___ du gern mitkommen.",o:["kannst","musst","sollst"],why:"Permission or possibility: können.",lv:"A2"},
+ {s:"Ich gehe früh schlafen, weil ich morgen um fünf aufstehen ___.",o:["muss","müssen","gemusst"],why:"Nebensatz: the conjugated modal verb goes last.",lv:"B1"},
+ {s:"Ich weiß nicht, ob er morgen kommen ___.",o:["kann","können","gekonnt"],why:"ob-Satz: the conjugated verb (kann) goes last.",lv:"B1"},
+ {s:"Gestern habe ich länger arbeiten ___.",o:["müssen","gemusst","musste"],why:"Two infinitives in the Perfekt: arbeiten müssen (Ersatzinfinitiv).",lv:"B1"},
+ {s:"___ Sie bitte das Fenster schließen?",o:["Könnten","Konnten","Kannten"],why:"Polite request: Konjunktiv II könnten, with Umlaut.",lv:"B1"},
+ {s:"Du ___ mehr schlafen. Du siehst müde aus.",o:["solltest","sollst","solltet"],why:"Advice: Konjunktiv II of sollen, du solltest.",lv:"B1"},
+ {s:"Du ___ nicht zu warten, ich komme allein.",o:["brauchst","musst","darfst"],why:"With zu only brauchen works: nicht brauchen zu = nicht müssen.",lv:"B1"},
+ {s:"Das neue Museum ___ im Juni eröffnet werden.",o:["soll","will","mag"],why:"A plan made by others: sollen.",lv:"B1"},
+ {s:"„Wolltest du das?“ – „Nein, das habe ich nicht ___.“",o:["gewollt","wollen","wollte"],why:"No second verb → normal Partizip II: gewollt.",lv:"B2"},
+ {s:"Wir haben das Haus nicht verkaufen ___.",o:["wollen","gewollt","wollten"],why:"Second verb present → Ersatzinfinitiv: verkaufen wollen.",lv:"B2"},
+ {s:"Er ist nicht im Büro. Er ___ krank sein – er fehlt nie.",o:["muss","soll","will"],why:"Almost certain conclusion: müssen.",lv:"B2"},
+ {s:"Bis Linz ___ es etwa zwei Stunden sein – genau weiß ich es nicht.",o:["dürfte","darf","durfte"],why:"Probability: dürfte (Konjunktiv II of dürfen).",lv:"B2"},
+ {s:"Laut Zeitung ___ der Minister von dem Vertrag gewusst haben.",o:["soll","will","muss"],why:"Reported by others: sollen.",lv:"B2"},
+ {s:"Er ___ den Unfall nicht gesehen haben – das behauptet er jedenfalls.",o:["will","soll","muss"],why:"His own claim, which the speaker doubts: wollen.",lv:"B2"},
+ {s:"Das Dach muss dringend repariert ___.",o:["werden","worden","wird"],why:"Modalverb + Passiv: Partizip II + werden.",lv:"B2"},
+ {s:"Ich weiß, dass er gestern länger ___.",o:["hat arbeiten müssen","arbeiten müssen hat","arbeiten gemusst hat"],why:"Nebensatz with two infinitives: hat comes before them.",lv:"C1"},
+ {s:"Er ist nicht gekommen. Er muss den Termin vergessen ___.",o:["haben","hat","gehabt"],why:"Guess about the past: Modalverb + Partizip II + haben.",lv:"C1"},
+ {s:"Sie soll schon gestern abgereist ___.",o:["sein","haben","ist"],why:"abreisen takes sein: abgereist sein.",lv:"C1"},
+ {s:"Er war die ganze Zeit hier. Er ___ den Brief nicht geschrieben haben.",o:["kann","will","darf"],why:"Logically impossible: kann nicht.",lv:"C1"},
+ {s:"Er hätte den Fehler früher bemerken ___.",o:["müssen","gemusst","muss"],why:"Konjunktiv II past with a modal: hätte + two infinitives.",lv:"C1"},
+ {s:"___ er auch reich sein – glücklich ist er nicht.",o:["Mag","Muss","Darf"],why:"mögen + auch = concession: however rich he may be.",lv:"C1"}],
+ th:`<div class="tc df"><h3>Die sechs Modalverben <small>A1–A2</small></h3><p class="tline">Six verbs, one pattern: Modalverb in position 2, infinitive at the end, no zu.</p>
+<div class="nt" style="--nc:4.4em 3.2em 4.2em minmax(0,1fr)"><div class="hd"><span>Verb</span><span>ich, er</span><span>Prät.</span><span>Bedeutung</span></div>
+<div><span class="k">können</span><span>kann</span><span>konnte</span><span>can, be able to</span></div>
+<div><span class="k">dürfen</span><span>darf</span><span>durfte</span><span>may, be allowed</span></div>
+<div><span class="k">müssen</span><span>muss</span><span>musste</span><span>must, have to</span></div>
+<div><span class="k">sollen</span><span>soll</span><span>sollte</span><span>should, be told to</span></div>
+<div><span class="k">wollen</span><span>will</span><span>wollte</span><span>want (≠ will)</span></div>
+<div><span class="k">mögen</span><span>mag</span><span>mochte</span><span>like · möchte = would like</span></div></div>
+<p class="tline">Plural and Präteritum: no Umlaut – wir können, ich konnte. Konjunktiv II: with Umlaut – könnte, dürfte, müsste, möchte.</p></div>
+<div class="tc df"><h3>Wo steht was? <small>A2–C1</small></h3><p class="tline">Main clause, Nebensatz, Perfekt, Passiv – where the modal goes.</p>${D("Ich~s|muss~v|morgen|arbeiten~v|.~p","1-3a:Satzklammer")}
+<div class="nt" style="--nc:7.6em minmax(0,1fr)"><div class="hd"><span>Satz</span><span>Beispiel</span></div>
+<div><span>Hauptsatz</span><span>Ich <b>muss</b> morgen arbeiten.</span></div>
+<div><span>Nebensatz</span><span>…, weil ich morgen arbeiten <b>muss</b>.</span></div>
+<div><span>Perfekt</span><span>Ich habe arbeiten <b>müssen</b>.</span></div>
+<div><span>ohne 2. Verb</span><span>Das habe ich nicht <b>gewollt</b>.</span></div>
+<div><span>Nebensatz Perfekt</span><span>…, dass ich <b>habe</b> arbeiten müssen.</span></div>
+<div><span>Passiv</span><span>Das <b>muss</b> repariert werden.</span></div></div></div>
+<div class="tc df"><h3>Wie sicher? <small>B2–C1</small></h3><p class="tline">The same verbs show how sure the speaker is. Past: + Partizip II + haben / sein.</p>
+<div class="nt" style="--nc:5em 6.6em minmax(0,1fr)"><div class="hd"><span>Verb</span><span>sicher?</span><span>Beispiel</span></div>
+<div><span class="k">muss</span><span>fast sicher</span><span>Er <b>muss</b> krank sein.</span></div>
+<div><span class="k">dürfte</span><span>wahrscheinlich</span><span>Das <b>dürfte</b> stimmen.</span></div>
+<div><span class="k">kann · könnte</span><span>möglich</span><span>Er <b>könnte</b> im Stau stehen.</span></div>
+<div><span class="g">kann nicht</span><span>unmöglich</span><span>Er <b>kann</b> es nicht gewesen sein.</span></div>
+<div><span class="g">soll</span><span>man sagt</span><span>Er <b>soll</b> reich sein.</span></div>
+<div><span class="g">will</span><span>er sagt</span><span>Er <b>will</b> nichts gewusst haben.</span></div></div></div>`};
+
+/* ===== zu + Infinitiv (30 Oct) ===== */
+GT.zuinf={name:"zu + Infinitiv",badge:"zu + Infinitiv",tip:"After modal verbs, werden, lassen and sehen / hören: no zu. Separable verbs take zu in the middle: anzurufen.",src:["grammis","dg20","lingolia"],
+ lg:'<span><b class="wt v lgk">Verb</b> Infinitiv</span><span><b class="wt k lgk">um</b> Konnektor</span>',
+ cards:[
+ {b:"zu + Infinitiv",st:D("Ich~s|habe~v|keine Zeit,|den Plan~a|zu zeichnen~v|.~p","3-4a:Infinitivsatz"),tx:"zu + infinitive goes to the end",gt:"After many nouns (Zeit, Lust, Angst), adjectives (es ist schwer) and verbs (versuchen, vergessen, anfangen): <b>zu</b> + infinitive at the end of its clause.",say:"Ich habe keine Zeit, den Plan zu zeichnen."},
+ {b:"Trennbar",st:D("Vergiss~v|nicht,|mich|anzurufen~v|!~p"),tx:"zu goes inside a separable verb",gt:"anrufen → an<b>zu</b>rufen, aufstehen → auf<b>zu</b>stehen. Written as one word.",say:"Vergiss nicht, mich anzurufen!"},
+ {b:"ohne zu",st:D("Ich~s|muss~v|morgen|arbeiten~v|.~p","1-3a:kein zu"),tx:"No zu after modal verbs",gt:"No zu after modal verbs, werden, lassen, bleiben, gehen and verbs of perception: Ich <b>höre</b> ihn singen. Ich <b>lasse</b> das Auto reparieren.",say:"Ich muss morgen arbeiten."},
+ {b:"um … zu",st:D("Ich~s|lerne~v|Deutsch,|um~k|in Wien|zu arbeiten~v|.~p","3-5b:um … zu"),tx:"um … zu = in order to",gt:"Purpose, same subject in both clauses. Different subjects → <b>damit</b>: Ich spreche langsam, damit alle mich verstehen.",say:"Ich lerne Deutsch, um in Wien zu arbeiten."},
+ {b:"ohne · statt",st:D("Er~s|ging,~v|ohne~k|ein Wort|zu sagen~v|.~p","2-4b:ohne … zu"),tx:"ohne … zu · statt … zu",gt:"<b>ohne … zu</b> = without doing. <b>(an)statt … zu</b> = instead of doing. English uses -ing; German uses zu + infinitive.",say:"Er ging, ohne ein Wort zu sagen."},
+ {b:"haben · sein zu",st:D("Die Rechnung~s|ist~v|sofort|zu bezahlen~v|.~p","1-3a:muss bezahlt werden"),tx:"sein zu = must / can be done",gt:"<b>Ich habe zu arbeiten</b> = I have to work. <b>Das ist zu bezahlen</b> = it must be paid (passive). <b>Das ist leicht zu lösen</b> = it can be solved easily. Typical of forms and official letters.",say:"Die Rechnung ist sofort zu bezahlen."},
+ {b:"Vergangenheit",st:D("Er~s|behauptet,~v|ihn~a|gesehen zu haben~v|.~p","1-3a:früher als behauptet"),tx:"gesehen zu haben (C1)",gt:"When the action lies before the main verb: Partizip II + <b>zu haben / zu sein</b>. Passive: <b>gefragt zu werden</b>, <b>gefragt worden zu sein</b>.",say:"Er behauptet, ihn gesehen zu haben."},
+ {b:"scheinen",st:D("Sie~s|scheint~v|müde|zu sein~v|.~p","1-3a:scheinen … zu"),tx:"scheinen, pflegen, versprechen",gt:"<b>Sie scheint müde zu sein</b> = she seems to be tired. Also: Er pflegt früh aufzustehen (he tends to), Das verspricht spannend zu werden.",say:"Sie scheint müde zu sein."}],
+ q:[
+ {s:"Ich habe keine Lust, heute ___.",o:["zu kochen","kochen","zu gekocht"],why:"keine Lust + zu + Infinitiv.",lv:"A2"},
+ {s:"Vergiss nicht, mich ___!",o:["anzurufen","zu anrufen","anrufen"],why:"Separable verb: zu goes inside – anzurufen.",lv:"A2"},
+ {s:"Ich muss morgen früh ___.",o:["aufstehen","aufzustehen","zu aufstehen"],why:"After a modal verb: no zu.",lv:"A2"},
+ {s:"Es ist nicht leicht, Deutsch ___.",o:["zu lernen","lernen","lernen zu"],why:"es ist leicht / schwer + zu + Infinitiv.",lv:"A2"},
+ {s:"Hast du Zeit, mir ___?",o:["zu helfen","helfen","zu geholfen"],why:"Zeit haben + zu + Infinitiv.",lv:"A2"},
+ {s:"Ich lerne Deutsch, ___ in Wien zu arbeiten.",o:["um","damit","für"],why:"Purpose, same subject: um … zu.",lv:"B1"},
+ {s:"Ich spreche langsam, ___ alle mich verstehen.",o:["damit","um","dass zu"],why:"Two subjects (ich / alle): damit.",lv:"B1"},
+ {s:"Er hat das Büro verlassen, ___ ein Wort zu sagen.",o:["ohne","um","damit"],why:"ohne … zu = without saying.",lv:"B1"},
+ {s:"___ selbst zu kochen, bestellt er jeden Abend Pizza.",o:["Statt","Ohne","Um"],why:"statt … zu = instead of cooking.",lv:"B1"},
+ {s:"Ich höre ihn im Garten ___.",o:["singen","zu singen","gesungen"],why:"Verbs of perception (hören, sehen): no zu.",lv:"B1"},
+ {s:"Wir haben vor, im Sommer nach Triest ___.",o:["zu fahren","fahren","gefahren"],why:"vorhaben + zu + Infinitiv.",lv:"B1"},
+ {s:"Er hat vergessen, die Tür ___.",o:["abzuschließen","zu abschließen","abschließen"],why:"abschließen → abzuschließen.",lv:"B1"},
+ {s:"Ich lasse mein Fahrrad ___.",o:["reparieren","zu reparieren","repariert"],why:"lassen + Infinitiv without zu.",lv:"B1"},
+ {s:"Die Rechnung ist innerhalb von 14 Tagen ___.",o:["zu bezahlen","bezahlt zu","zu bezahlt"],why:"sein + zu + Infinitiv = muss bezahlt werden.",lv:"B2"},
+ {s:"Seine Handschrift ist kaum ___.",o:["zu lesen","lesen","gelesen zu"],why:"sein zu with kaum = can hardly be read.",lv:"B2"},
+ {s:"Sie scheint die Antwort nicht ___.",o:["zu kennen","kennen","gekannt"],why:"scheinen + zu + Infinitiv.",lv:"B2"},
+ {s:"Ich habe heute noch viel ___.",o:["zu tun","tun","getan"],why:"haben + zu = have to.",lv:"B2"},
+ {s:"Es ist mir endlich gelungen, den Fehler ___.",o:["zu finden","finden","gefunden"],why:"es gelingt mir + zu + Infinitiv.",lv:"B2"},
+ {s:"Ich freue mich ___, dich bald wiederzusehen.",o:["darauf","damit","dafür"],why:"sich freuen auf → darauf, … zu (future). Something already past: darüber.",lv:"B2"},
+ {s:"Anstatt die Ursache ___, beschuldigte er das Team.",o:["zu untersuchen","untersuchen","untersucht zu"],why:"anstatt … zu + Infinitiv.",lv:"B2"},
+ {s:"Er pflegt jeden Morgen eine Stunde ___.",o:["spazieren zu gehen","zu spazieren gehen","spazieren gehen"],why:"pflegen + zu (= usually does). zu goes before the last verb.",lv:"B2"},
+ {s:"Er behauptet, den Mann nie ___.",o:["gesehen zu haben","zu sehen haben","gesehen haben zu"],why:"Earlier action: Partizip II + zu haben.",lv:"C1"},
+ {s:"Sie bedauert, so früh ___.",o:["gegangen zu sein","gegangen zu haben","zu gehen sein"],why:"gehen takes sein: gegangen zu sein.",lv:"C1"},
+ {s:"Er scheint den Termin ___.",o:["vergessen zu haben","zu vergessen haben","vergessen haben zu"],why:"scheinen + Infinitiv Perfekt: vergessen zu haben.",lv:"C1"},
+ {s:"Ohne gefragt ___, gab er seine Meinung ab.",o:["worden zu sein","geworden zu sein","zu worden sein"],why:"Passiv, earlier action: gefragt worden zu sein.",lv:"C1"},
+ {s:"Er besteht darauf, sofort ___ zu werden.",o:["informiert","informieren","informiert worden"],why:"Passive infinitive: informiert zu werden.",lv:"C1"},
+ {s:"Die Risiken sind nicht ___ unterschätzen.",o:["zu","um zu","für"],why:"sein + zu = dürfen nicht unterschätzt werden.",lv:"C1"}],
+ th:`<div class="tc df"><h3>zu oder nicht? <small>A2–B1</small></h3><p class="tline">zu after many nouns, adjectives and verbs – never after modal verbs.</p>
+<div class="nt" style="--nc:8.6em minmax(0,1fr)"><div class="hd"><span>nach …</span><span>Beispiel</span></div>
+<div><span class="k">mit zu</span><span>Ich habe keine Zeit, das <b>zu</b> lesen.</span></div>
+<div><span>Nomen: Lust, Zeit, Angst</span><span>Ich habe Lust, <b>zu</b> tanzen.</span></div>
+<div><span>es ist + Adjektiv</span><span>Es ist schwer, das <b>zu</b> erklären.</span></div>
+<div><span>Verben: versuchen, vergessen, anfangen, vorhaben</span><span>Ich versuche, pünktlich <b>zu</b> sein.</span></div>
+<div><span class="g">ohne zu</span><span>Ich muss arbeiten.</span></div>
+<div><span>Modalverben, werden</span><span>Er wird kommen.</span></div>
+<div><span>lassen, bleiben, gehen</span><span>Ich lasse das Auto reparieren.</span></div>
+<div><span>sehen, hören, fühlen</span><span>Ich höre ihn singen.</span></div></div>
+<p class="tline">Separable verbs: an<b>zu</b>rufen, auf<b>zu</b>stehen – one word.</p></div>
+<div class="tc df"><h3>um · ohne · statt <small>B1</small></h3><p class="tline">Purpose, without, instead of – all with zu at the end.</p>${D("Ich~s|lerne~v|Deutsch,|um~k|in Wien|zu arbeiten~v|.~p","3-5b:um … zu")}
+<div class="nt" style="--nc:5.6em minmax(0,1fr)"><div class="hd"><span>Konnektor</span><span>Beispiel</span></div>
+<div><span class="k">um … zu</span><span>Ich spare, <b>um</b> ein Pferd <b>zu</b> kaufen.</span></div>
+<div><span class="k">damit</span><span>Ich spare, <b>damit</b> meine Kinder studieren können.</span></div>
+<div><span class="k">ohne … zu</span><span>Er ging, <b>ohne</b> zu grüßen.</span></div>
+<div><span class="k">statt … zu</span><span><b>Statt</b> zu lernen, schläft er.</span></div></div>
+<p class="tline">um … zu only with the same subject. Two subjects → damit.</p></div>
+<div class="tc df"><h3>Mehr Formen <small>B2–C1</small></h3><p class="tline">haben zu, sein zu, scheinen zu, past and passive infinitives.</p>
+<div class="nt" style="--nc:7.4em minmax(0,1fr)"><div class="hd"><span>Form</span><span>Beispiel</span></div>
+<div><span>haben zu = müssen</span><span>Ich <b>habe</b> noch viel <b>zu</b> tun.</span></div>
+<div><span>sein zu = muss / kann + Passiv</span><span>Der Antrag <b>ist</b> bis Montag ein<b>zu</b>reichen.</span></div>
+<div><span>scheinen zu</span><span>Er <b>scheint</b> krank <b>zu</b> sein.</span></div>
+<div><span>Vergangenheit</span><span>Er behauptet, sie gesehen <b>zu haben</b>.</span></div>
+<div><span>Passiv</span><span>Sie hofft, gewählt <b>zu werden</b>.</span></div>
+<div><span>Passiv · früher</span><span>…, ohne gefragt <b>worden zu sein</b>.</span></div></div></div>`};
+
+/* ===== more B2 / C1 questions for existing topics (30 Oct) ===== */
+GT.konn.q.push(
+ {s:"Je länger ich warte, ___ nervöser werde ich.",o:["desto","als","so"],why:"je + Komparativ …, desto + Komparativ.",lv:"B2"},
+ {s:"Das Projekt war teuer; ___ hat es sich gelohnt.",o:["dennoch","obwohl","sondern"],why:"dennoch = trotzdem: takes position 1, verb follows.",lv:"B2"},
+ {s:"Er spricht so leise, ___ ihn niemand versteht.",o:["dass","damit","weil"],why:"so … dass: the result, verb at the end.",lv:"B2"},
+ {s:"Die Mieten steigen, ___ die Löhne stagnieren.",o:["während","nachdem","damit"],why:"während can mark a contrast (whereas), not only time.",lv:"B2"},
+ {s:"Kaum ___ er angekommen, klingelte das Telefon.",o:["war","hatte","ist"],why:"Kaum + verb in position 2 (Plusquamperfekt): kaum war er angekommen.",lv:"C1"},
+ {s:"Wir fahren morgen, ___ es nicht regnet.",o:["sofern","sodass","damit"],why:"sofern = provided that.",lv:"C1"},
+ {s:"Ich bleibe zu Hause, ___ ich ohnehin müde bin.",o:["zumal","sodass","obgleich"],why:"zumal = especially since; adds a second reason.",lv:"C1"});
+GT.rel.q.push(
+ {s:"Die Stadt, ___ ich komme, liegt am Meer.",o:["aus der","in der","die"],why:"kommen aus + Dativ, feminine: aus der (or woher).",lv:"B2"},
+ {s:"Er hat den Termin verpasst, ___ mich sehr ärgert.",o:["was","das","der"],why:"Refers to the whole clause: was.",lv:"B2"},
+ {s:"Die Kinder, ___ Eltern arbeiten, essen in der Schule.",o:["deren","dessen","denen"],why:"Plural owner: deren.",lv:"B2"},
+ {s:"Die Leute, mit ___ ich arbeite, sind sehr freundlich.",o:["denen","den","deren"],why:"mit + Dativ plural: denen.",lv:"B2"},
+ {s:"Wer viel arbeitet, ___ braucht Pausen.",o:["der","den","dem"],why:"wer …, der …: der is the subject of braucht.",lv:"C1"},
+ {s:"Wem das nicht gefällt, ___ kann gehen.",o:["der","dem","den"],why:"The second clause needs a subject: der (wem only belongs to gefällt).",lv:"C1"},
+ {s:"Das Haus, in ___ Garten eine alte Linde steht, gehört meiner Tante.",o:["dessen","deren","dem"],why:"in + dessen Garten: das Haus is neuter, so dessen.",lv:"C1"},
+ {s:"Die Frage, über ___ Antwort wir lange gestritten haben, bleibt offen.",o:["deren","dessen","die"],why:"die Frage is feminine: deren Antwort.",lv:"C1"});
+GT.k2.q.push(
+ {s:"Wenn er doch nur endlich ___!",o:["käme","kam","kommt"],why:"Wish: Konjunktiv II käme (with Umlaut).",lv:"B2"},
+ {s:"Ohne deine Hilfe ___ ich das nie geschafft.",o:["hätte","habe","würde"],why:"Past unreal: hätte + Partizip II.",lv:"B2"},
+ {s:"Das ___ nicht nötig gewesen.",o:["wäre","hätte","würde"],why:"sein takes wäre: wäre … gewesen.",lv:"B2"},
+ {s:"Ich ___ gern gekommen, aber ich war krank.",o:["wäre","hätte","würde"],why:"kommen takes sein: wäre gekommen.",lv:"B2"},
+ {s:"Es wäre besser gewesen, wenn du früher gefragt ___.",o:["hättest","hast","wärst"],why:"fragen takes haben: hättest gefragt.",lv:"B2"},
+ {s:"Fast ___ ich den Zug verpasst.",o:["hätte","habe","wäre"],why:"fast + Konjunktiv II: it nearly happened, but didn't.",lv:"C1"},
+ {s:"Sie ist zu müde, als dass sie noch arbeiten ___.",o:["könnte","kann","konnte"],why:"zu …, als dass + Konjunktiv II.",lv:"C1"});
+
+WHY.modal=["ich kann, er kann","Präterito-Präsentia","Why does er kann have no -t?","Most modal verbs are old past tenses with a present meaning: 'I have learnt' became 'I can'. A past tense has no ending for er (er kam), so neither has er kann, er muss. English kept the same trace: he can, he must – no -s."];
+WHY.zuinf=["zi nemanne","Althochdeutsch, um 800","Why does German need zu?","Old High German could decline the infinitive like a noun: after zi ('to') it took a dative ending – zi nemanne, 'to the taking'. The ending wore away, zu stayed. Old English did the same: tō nimanne. So zu still behaves a little like a preposition: it points to a goal or a task."];
 const whyCard=([sq,sx,tx,gt])=>({b:"Warum?",st:'<div class="story"><span class="sk">Warum?</span><p class="sq">'+sq+'</p><p class="sx">'+sx+'</p><p class="sb">'+gt+'</p></div>',tx,gt:"Weiter → zu den Regeln.",say:sq+". "+gt});
 Object.keys(WHY).forEach(k=>{const c=whyCard(WHY[k]);if(GT[k])GT[k].cards.unshift(c);else({art:ART_CARDS,fall:FALL_CARDS,gen:GEN_CARDS,adj:ADJ_CARDS})[k].unshift(c);});
 Object.keys(GT).forEach(k=>{SRC[k]=GT[k].src;TH[k]=()=>GT[k].th+srcCard(k);});
@@ -2398,6 +2570,12 @@ const QUOTES=[
   q:"Die Philosophie ist ein Kampf gegen die Verhexung unseres Verstandes durch die Mittel unserer Sprache.",en:"Philosophy is a battle against the bewitchment of our intelligence by means of our language.",u:"https://de.wikipedia.org/wiki/Philosophische_Untersuchungen"},
  {pic:"K K",w:["de:Karl_Kraus","en:Karl_Kraus_(writer)"],who:"Karl Kraus",when:"Die Fackel Nr. 288, Wien 1909",
   q:"Die Sprache ist die Mutter, nicht die Magd des Gedankens.",en:"Language is the mother, not the maid, of thought. – This one really is Kraus.",u:"https://quoteinvestigator.com/2025/05/15/language-thought/"},
+ {pic:"K K",w:["de:Karl_Kraus","en:Karl_Kraus_(writer)"],who:"Karl Kraus",when:"Die Fackel Nr. 326–328, Wien 1911",
+  q:"Je näher man ein Wort ansieht, desto ferner sieht es zurück.",en:"The closer you look at a word, the further away it looks back. Often misquoted as „Je länger man ein Wort anschaut …“.",u:"https://falschzitate.blogspot.com/2019/02/je-langer-man-ein-wort-anschaut-desto.html"},
+ {pic:"H H",w:["de:Hugo_von_Hofmannsthal","en:Hugo_von_Hofmannsthal"],who:"Hugo von Hofmannsthal",when:"Ein Brief („Chandos-Brief“), Wien 1902",
+  q:"… zerfielen mir im Munde wie modrige Pilze.",en:"The abstract words crumbled in my mouth like mouldy mushrooms – a fictional English lord of 1603 who can no longer trust language.",u:"https://de.wikipedia.org/wiki/Ein_Brief"},
+ {pic:"I B",w:["de:Ingeborg_Bachmann","en:Ingeborg_Bachmann"],who:"Ingeborg Bachmann",when:"Rede zum Hörspielpreis der Kriegsblinden, Bonn, 17. März 1959",
+  q:"Die Wahrheit nämlich ist dem Menschen zumutbar.",en:"For truth is something people can be expected to bear. Usually quoted without „nämlich“, as in the title of the speech.",u:"https://de.wikipedia.org/wiki/Ingeborg_Bachmann"},
  {pic:"K T",w:["de:Kurt_Tucholsky"],who:"Kurt Tucholsky",when:"titelgebend für seine Sprachglossen",
   q:"Sprache ist eine Waffe. Haltet sie scharf.",en:"Language is a weapon. Keep it sharp.",u:"https://de.wikipedia.org/wiki/Kurt_Tucholsky"},
  {pic:"H H",w:["de:Heinrich_Heine"],who:"Heinrich Heine",when:"Almansor, 1821",
@@ -2405,6 +2583,8 @@ const QUOTES=[
  {sec:"Sprachwitz"},
  {pic:"K V",w:["de:Karl_Valentin"],who:"Karl Valentin",when:"Münchner Komiker · zugeschrieben",
   q:"Es ist schon alles gesagt, nur noch nicht von allen.",en:"Everything has been said already – just not by everyone.",u:"https://de.wikipedia.org/wiki/Karl_Valentin"},
+ {pic:"J N",w:["de:Johann_Nestroy","en:Johann_Nestroy"],who:"Johann Nestroy",when:"Der Schützling, IV,10, Wien 1847",
+  q:"Überhaupt hat der Fortschritt das an sich, daß er viel größer ausschaut, als er wirklich ist.",en:"Progress always looks much bigger than it really is. Wienerisch „ausschaut“; Wittgenstein made it the motto of his Philosophische Untersuchungen.",u:"https://de.wikipedia.org/wiki/Der_Sch%C3%BCtzling"},
  {pic:"B S",w:["de:Bastian_Sick"],who:"Bastian Sick",when:"Buchtitel, 2004",
   q:"Der Dativ ist dem Genitiv sein Tod.",en:"Deliberately wrong: correct would be „des Genitivs Tod“. The dative creeping into genitive phrases.",u:"https://de.wikipedia.org/wiki/Der_Dativ_ist_dem_Genitiv_sein_Tod"},
  {pic:"JFK",w:["en:Ich_bin_ein_Berliner","en:John_F._Kennedy"],who:"John F. Kennedy",when:"Rede in West-Berlin, 26. Juni 1963",
