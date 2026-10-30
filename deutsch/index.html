@@ -1,5 +1,5 @@
 <!doctype html><html lang="de"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Deutsch"></head><body>
-<meta name="app-version" content="2026-10-30a">
+<meta name="app-version" content="2026-10-30b">
 <title>Deutsch Grammatik</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#ffffff">
@@ -179,7 +179,8 @@ svg.room{width:100%;height:100%;max-height:100%;display:block}
 .rows{display:flex;flex-direction:column;gap:6px}
 .rows div{display:grid;grid-template-columns:7.6em minmax(0,1fr);gap:8px;align-items:baseline;padding-bottom:6px;font-size:1.02rem;background:var(--df) left bottom/100% 1px no-repeat}
 .rows div span:first-child{font-weight:700}
-.rows div span,.hist span,.qt q{overflow-wrap:anywhere;hyphens:auto}
+.hist span,.qt q{overflow-wrap:anywhere;hyphens:auto}
+.rows div span{overflow-wrap:break-word}
 html,body{overflow-x:hidden}
 .tline{font-size:.9rem;color:var(--muted)}
 .ring{position:absolute;inset:-4px;width:54px;height:54px;transform:rotate(-90deg)}
@@ -466,7 +467,7 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .wchips button[aria-pressed="true"]{background:var(--lime);font-weight:700;box-shadow:none}
 .wprompt{margin:6px 0 0;font-size:1.05rem;line-height:1.35}
 #wtask,#wlang{font:inherit;font-size:1rem;padding:8px;border:0;border-radius:0;background:var(--pale);color:var(--fg);min-width:0;max-width:100%;box-shadow:inset 0 -2px 0 var(--ink)}
-#wtx{display:block;width:100%;min-height:210px;font:inherit;font-size:1.08rem;line-height:1.4;padding:10px 12px;border:0;border-radius:0;background:var(--pale);color:var(--fg);box-shadow:inset 0 -2px 0 var(--ink);resize:vertical}
+#wtx{display:block;width:100%;min-height:340px;font:inherit;font-size:1.08rem;line-height:1.4;padding:10px 12px;border:0;border-radius:0;background:var(--pale);color:var(--fg);box-shadow:inset 0 -2px 0 var(--ink);resize:vertical}
 .wrow{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
 .wfile{font-size:.95rem;color:#1a5fd0;font-weight:700;cursor:pointer;padding:4px 0}
 .wscore{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
@@ -474,6 +475,13 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .wtxt{white-space:pre-wrap;overflow-wrap:anywhere;font-size:1.05rem;line-height:1.5;margin:0;padding:0}
 .wtxt mark.er{background:#fbe3e1;color:var(--fg);border-bottom:2px solid var(--red);font-weight:400;padding:0}
 .wtxt mark.st{background:none;border-bottom:2px dotted var(--muted);font-weight:400;padding:0}
+.wsl{display:flex;flex-direction:column}
+.ws{display:grid;grid-template-columns:26px minmax(0,1fr);gap:2px 8px;padding:8px 10px 9px;align-items:start}
+.ws.g{background:#e3efb4}.ws.r{background:#f5e0dd}.ws:nth-child(odd).g{background:#d9e8a4}
+.ws>b{grid-row:1;font-size:1.15rem;line-height:1.3;text-align:center}.ws.g>b{color:#2f5d0a}.ws.r>b{color:var(--red)}
+.ws .wtxt{grid-column:2}.ws .wwhy{grid-column:2;display:flex;flex-direction:column;gap:3px;font-size:.92rem;line-height:1.3;padding:5px 0 0;background:var(--df) left top/100% 1px no-repeat}
+.ws .wwhy .sg{display:flex;flex-wrap:wrap;gap:4px}.ws .wwhy .sg i{font-style:normal;font-weight:700;padding:1px 7px;background:var(--mkey)}
+.wup{align-self:flex-start;font:inherit;font-size:.8rem;font-weight:700;border:0;border-radius:0;padding:3px 9px;background:var(--mdat,#d3def0);color:var(--ink);cursor:pointer}
 .wf{padding:8px 10px 9px;display:flex;flex-direction:column;gap:3px;font-size:.98rem;line-height:1.3}
 .wf:nth-child(odd){background:#f4f4f2}
 .wf .cx{overflow-wrap:anywhere}.wf .cx mark.er{background:#fbe3e1;border-bottom:2px solid var(--red);font-weight:700;padding:0}
@@ -505,6 +513,8 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .wt.a{background:var(--makk);box-shadow:none;color:var(--akkt)}.wt.d{background:var(--mdat);box-shadow:none;color:var(--datt)}.wt.g{background:var(--mgen)}
 .qsec{margin:10px 0 0;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:#555;font-weight:700;padding-bottom:3px;background:var(--df) left bottom/100% 1px no-repeat}
 .qt{text-align:left;display:grid;grid-template-columns:46px minmax(0,1fr);gap:10px;padding:9px 0;background:var(--df) left bottom/100% 1px no-repeat;color:inherit;text-decoration:none}
+.qt.alt{background:var(--df) left bottom/100% 1px no-repeat,#f4f4f2;margin:0 -8px;padding-left:8px;padding-right:8px}
+.qt{margin:0 -8px;padding-left:8px;padding-right:8px}
 .qt:active{background:var(--df) left bottom/100% 1px no-repeat,var(--pale)}
 .qt .pic{width:46px;height:58px;display:grid;place-items:center;font-size:.95rem;font-weight:700;color:var(--ink);position:relative;background:var(--pale);overflow:hidden}
 .qt .pic::after{content:"";position:absolute;inset:0;background:var(--df) left top/100% 1px no-repeat,var(--df) left bottom/100% 1px no-repeat,var(--dfv) left top/1px 100% no-repeat,var(--dfv) right top/1px 100% no-repeat}
@@ -1783,9 +1793,9 @@ const SRC={fall:["duden","lingolia","dw","grammis"],adj:["lingolia","duden","dw"
 const srcCard=t=>SRC[t]?'<div class="tc df"><h3>Quellen <small>zum Nachschlagen</small></h3><div class="rows links">'+SRC[t].map(lk).join("")+'</div></div>':'';
 const TH_LINKS=`
 <div class="tc df"><h3>Wörterbücher</h3><div class="rows links">`+["duden","dwds","leo","pons","linguee","wikt","wsl"].map(lk).join("")+`</div><p class="tline">Tip: DWDS shows how a word is really used, with its typical partners. Duden settles spelling and grammar questions.</p></div>
-<div class="tc df"><h3>Grammatik</h3><div class="rows links">`+["grammis","dg20","lingolia","dudenk","dw","umich"].map(lk).join("")+`</div></div>
-<div class="tc df"><h3>Verben &amp; Formen</h3><div class="rows links">`+["verbformen","dudenk","wikt"].map(lk).join("")+`</div><p class="tline">Look up a verb here when you are unsure of the Perfekt, the Präteritum or the Konjunktiv.</p></div>
-<div class="tc df"><h3>Aussprache</h3><div class="rows links">`+["forvo","wikt","dwds"].map(lk).join("")+`</div></div>
+<div class="tc df"><h3>Grammatik</h3><div class="rows links">`+["grammis","dg20","lingolia","dw","umich"].map(lk).join("")+`</div></div>
+<div class="tc df"><h3>Verben &amp; Formen</h3><div class="rows links">`+["verbformen","dudenk"].map(lk).join("")+`</div><p class="tline">Look up a verb here when you are unsure of the Perfekt, the Präteritum or the Konjunktiv.</p></div>
+<div class="tc df"><h3>Aussprache</h3><div class="rows links">`+["forvo"].map(lk).join("")+`</div></div>
 <div class="tc df"><h3>Lesen &amp; Hören</h3><div class="rows links">`+["nleicht","dwlang","tages","orf","srf"].map(lk).join("")+`</div><p class="tline">Read the same story in Austrian, German and Swiss news and notice the different words (Jänner / Januar, Paradeiser / Tomate).</p></div>
 <div class="tc df"><h3>Schreiben prüfen</h3><div class="rows links">`+["lt"].map(lk).join("")+`</div><p class="tline">Write first from your own head, then check. A spell checker that corrects while you type teaches you nothing.</p></div>
 <div class="tc df"><h3>Niveaustufen A1–C2</h3><div class="rows">
@@ -1794,7 +1804,7 @@ const TH_LINKS=`
 <div><span>C1 · C2</span><span>Kompetent: complex texts, flexible and precise for work, study and lectures.</span></div></div>
 <div class="rows links">`+["cefr","profile","goethea1","goetheb1"].map(lk).join("")+`</div><p class="tline">The levels are defined by the Council of Europe for all languages. Profile deutsch maps them to German grammar and vocabulary. Levels in this app are a guide.</p></div>
 <div class="tc df"><h3>Prüfungen</h3><div class="rows links">`+["goethe","osd","telc"].map(lk).join("")+`</div></div>
-<div class="tc df"><h3>Beispielsätze</h3><div class="rows links">`+["tatoeba","linguee","dwds"].map(lk).join("")+`</div><p class="tline">Free sentence collections vary in quality. Check them against Duden or DWDS.</p></div>`;
+<div class="tc df"><h3>Beispielsätze</h3><div class="rows links">`+["tatoeba"].map(lk).join("")+`</div><p class="tline">Free sentence collections vary in quality. Check them against Duden or DWDS (see Wörterbücher).</p></div>`;
 /* ---------- topics + home ---------- */
 GT.neg={name:"Verneinung",badge:"nicht · kein",tip:"First ask: is it a noun with ein or no article? Then kein. Everything else: nicht.",src:["grammis","lingolia","dwds"],
  lg:'<span><b class="wt ng lgk">nicht</b> Verneinung</span><span><b class="wt v lgk">Verb</b> Satzklammer</span>',
@@ -1939,7 +1949,7 @@ const TOPICS=[
  {t:"k1",n:"Konjunktiv I",tag:"er sei · er habe",ds:"Indirekte Rede, Berichte · B2–C1"},
  {t:"nvv",n:"Nomen-Verb-Verbindungen",tag:"in Frage stellen",ds:"formelles Deutsch für Briefe und Vorträge · B1–C1"},
  {t:"nom",n:"Nominalstil & Partizipien",tag:"die geplante Brücke",ds:"Partizipialattribute, Nominalisierung · B2–C1"},
- {t:"write",n:"Text prüfen",tag:"Schreiben",ds:"Schreibaufgabe B1–C1, Prüfung mit LanguageTool"},
+ {t:"write",n:"Text prüfen",tag:"Schreiben",ds:"Schreibaufgabe A1–C1 bis zur A4-Seite, Prüfung mit LanguageTool"},
  {t:"test",n:"Test",tag:"gemischt",ds:"15, 30 oder 45 Fragen aus allen Themen, wie in der Prüfung"},
  {t:"links",n:"Links & Hilfsmittel",tag:"Quellen",ds:"Wörterbücher, Grammatik, Verben, Aussprache, Nachrichten"},
 ];
@@ -2022,23 +2032,32 @@ function toggleStar(n){const s=store.stars||[];store.stars=s.includes(n)?s.filte
 
 /* ---------- Text prüfen: a writing task, checked with LanguageTool (public service), with a rough language mark ---------- */
 const WTASKS=[
+ {id:"a1a",lv:"A1",min:25,t:"Karte aus dem Urlaub",p:"Sie sind im Urlaub. Schreiben Sie Ihrem Freund eine Karte: Wo sind Sie? Wie ist das Wetter? Was machen Sie?"},
+ {id:"a2a",lv:"A2",min:40,t:"Einladung zur Party",p:"Sie haben Geburtstag. Schreiben Sie eine Einladung: Wann und wo ist die Party? Was sollen die Gäste mitbringen? Bitten Sie um eine Antwort."},
  {id:"b1a",lv:"B1",min:80,t:"E-Mail an die Nachbarin",p:"Sie ziehen bald um. Schreiben Sie Ihrer Nachbarin eine E-Mail: Sie verabschieden sich, laden sie zu einem kleinen Fest ein und fragen, ob sie Möbel brauchen kann."},
  {id:"b1b",lv:"B1",min:80,t:"Brief an die Kursleiterin",p:"Ihr Deutschkurs findet nächste Woche für Sie nicht statt. Schreiben Sie der Kursleiterin: warum Sie nicht kommen können, was Sie nachholen möchten und eine Frage zum nächsten Termin."},
  {id:"b2a",lv:"B2",min:150,t:"Leserbrief",p:"In Ihrer Stadt soll ein Parkplatz zu einem kleinen Park werden. Schreiben Sie einen Leserbrief: Ihre Meinung, zwei Argumente und ein Vorschlag."},
  {id:"b2b",lv:"B2",min:150,t:"Beschwerde",p:"Sie haben online einen Tisch bestellt. Er kam beschädigt an, und der Kundendienst antwortet nicht. Schreiben Sie eine Beschwerde: Was ist passiert, was haben Sie versucht, was verlangen Sie?"},
  {id:"c1a",lv:"C1",min:250,t:"Stellungnahme",p:"Sollte es ein gesetzliches Recht auf Homeoffice geben? Schreiben Sie eine Stellungnahme: Position, Argumente, ein Gegenargument und Ihr Fazit."},
  {id:"c1b",lv:"C1",min:250,t:"Bericht",p:"Beschreiben Sie ein Bauprojekt in Ihrer Stadt (gebaut oder geplant): Ausgangslage, Entwurf, Probleme und Ihre Bewertung."},
- {id:"free",lv:"Frei",min:0,t:"Eigener Text",p:"Schreiben Sie über ein Thema Ihrer Wahl oder fügen Sie einen Text ein, den Sie schon geschrieben haben."}];
+ {id:"a4",lv:"Frei",min:400,t:"Eine A4-Seite (ca. 400–500 Wörter)",p:"Schreiben Sie über ein Thema Ihrer Wahl oder fügen Sie einen Text ein, den Sie schon geschrieben haben. Eine einzeilig beschriebene A4-Seite hat etwa 400 bis 500 Wörter (Schätzung)."},
+ {id:"free",lv:"Frei",min:0,t:"Eigener Text, beliebig lang",p:"Fügen Sie einen Text ein, den Sie schon geschrieben haben, oder schreiben Sie hier. Kurze Texte sind auch in Ordnung."}];
 const WS={lv:"B1",id:"b1a"};
+const WLEN={A1:"ÖSD A1: ab 25 Wörter ohne Abzug",A2:"ÖSD A2: ab 40 Wörter ohne Abzug",B1:"B1: unsere Annahme, die ÖSD-Zahl ist nicht geprüft",B2:"B2: unsere Annahme, die ÖSD-Zahl ist nicht geprüft",C1:"ÖSD C1: ab 250 Wörter, darunter gibt es Abzüge",Frei:"A4-Seite: Schätzung"};
+const WTOP=[[/KASUS|CASE|DATIV|AKKUSATIV|GENITIV|DE_AGREEMENT|DAT_|AKK_/i,"fall","Fälle"],[/ARTIKEL|DET_|ARTICLE/i,"art","Artikel"],[/ADJ|ENDUNG/i,"adj","Adjektivendungen"],[/KONJUNKTIV|K2|SUBJUNCT/i,"k2","Konjunktiv II"],[/PRAEP|PREP/i,"prep","Präpositionen"],[/KOMMA|COMMA|SATZBAU|VERB_|WORDORDER|WORD_ORDER|NEBENSATZ/i,"satz","Satzbau"],[/PASSIV/i,"pass","Passiv"],[/PERFEKT|PARTIZIP|TENSE|PRAET/i,"perf","Zeitformen"],[/PRONOM/i,"pron","Pronomen"]];
+function wTopic(m){const r=m.rule||{},k=(r.id||"")+" "+((r.category||{}).id||"")+" "+(r.issueType||"");const x=WTOP.find(a=>a[0].test(k));return x||null;}
+function wSents(txt){const re=/[^.!?\n]*[.!?]+["“”)]*|[^.!?\n]+/g,o=[];let m;while((m=re.exec(txt))){const raw=m[0],t=raw.replace(/^\s+/,""),off=m.index+raw.length-t.length,tr=t.replace(/\s+$/,"");if(!tr)continue;
+    if(o.length&&/^[a-zäöüß0-9]/.test(tr)){const p=o[o.length-1];p.len=off+tr.length-p.off;continue;}
+    o.push({off:off,len:tr.length});}return o;}
 const wWords=t=>t.split(/\s+/).filter(w=>/[A-Za-zÄÖÜäöüß]/.test(w)).length;
 function renderWrite(){const T0=WTASKS.find(x=>x.id===WS.id)||WTASKS[0];
-  $("theo").innerHTML='<div class="tc"><h3>Aufgabe</h3><div class="wchips" id="wlv">'+["B1","B2","C1","Frei"].map(l=>'<button data-l="'+l+'" aria-pressed="'+(WS.lv===l)+'">'+l+'</button>').join("")+'</div>'+
+  $("theo").innerHTML='<div class="tc"><h3>Aufgabe</h3><div class="wchips" id="wlv">'+["A1","A2","B1","B2","C1","Frei"].map(l=>'<button data-l="'+l+'" aria-pressed="'+(WS.lv===l)+'">'+l+'</button>').join("")+'</div>'+
    '<select id="wtask" aria-label="Aufgabe">'+WTASKS.filter(x=>x.lv===WS.lv).map(x=>'<option value="'+x.id+'"'+(x.id===T0.id?' selected':'')+'>'+esc(x.t)+'</option>').join("")+'</select>'+
-   '<p class="wprompt" id="wprompt">'+esc(T0.p)+'</p><p class="tline" id="wmin">'+(T0.min?'Richtwert: mindestens '+T0.min+' Wörter. Die Aufgaben sind ähnlich wie in ÖSD-Prüfungen, aber selbst geschrieben.':'')+'</p></div>'+
-   '<div class="tc"><h3>Dein Text</h3><textarea id="wtx" lang="de" rows="10" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Schreibe hier, ohne Hilfe …" aria-label="Dein Text"></textarea>'+
+   '<p class="wprompt" id="wprompt">'+esc(T0.p)+'</p><p class="tline" id="wmin">'+(T0.min?'Richtwert: mindestens '+T0.min+' Wörter ('+WLEN[T0.lv]+'). Die Aufgaben sind selbst geschrieben, ähnlich wie in ÖSD-Prüfungen.':'')+'</p></div>'+
+   '<div class="tc"><h3>Dein Text</h3><textarea id="wtx" lang="de" rows="16" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Schreibe hier, ohne Hilfe …" aria-label="Dein Text"></textarea>'+
    '<div class="wrow"><span class="tline" id="wcnt">0 Wörter</span><label class="wfile">Textdatei laden (.txt)<input type="file" id="wfile" accept=".txt,text/plain" hidden></label></div>'+
    '<div class="wrow"><select id="wlang" aria-label="Sprachvariante"><option value="de-AT">Deutsch (Österreich)</option><option value="de-DE">Deutsch (Deutschland)</option><option value="de-CH">Deutsch (Schweiz)</option></select><button id="wgo" class="primary">Prüfen</button></div>'+
-   '<p class="tline">Der Text wird zum Prüfen an den öffentlichen Dienst languagetool.org gesendet. Schreibe erst selbst, prüfe danach.</p></div><div id="wres"></div>';
+   '<p class="tline">Schreibe erst selbst, prüfe danach. Beim Prüfen wird der Text über das Internet an den freien Dienst <a href="https://languagetool.org/" target="_blank" rel="noopener">LanguageTool</a> gesendet und dort ausgewertet; wie LanguageTool mit Texten umgeht, steht in der <a href="https://languagetool.org/privacy" target="_blank" rel="noopener">Datenschutzerklärung</a>. Höchstens 20 Prüfungen pro Minute, etwa 19 000 Zeichen je Text.</p></div><div id="wres"></div>';
   const tx=$("wtx"),cnt=()=>{const n=wWords(tx.value);$("wcnt").textContent=n+(n===1?" Wort":" Wörter")+(T0.min?" · Ziel "+T0.min:"");};
   try{tx.value=store.wtext||"";$("wlang").value=store.wlang||"de-AT";}catch(e){}cnt();
   let tm=null;tx.oninput=()=>{cnt();clearTimeout(tm);tm=setTimeout(()=>{store.wtext=tx.value;save();},700);};
@@ -2062,16 +2081,20 @@ async function wCheck(){const txt=$("wtx").value;store.wtext=txt;save();const T0
 function showWrite(txt,all,T0){const words=wWords(txt);
   const err=all.filter(m=>!W_IGN.includes((m.rule||{}).issueType)&&!/^(STYLE|TYPOGRAPHY|REDUNDANCY|COLLOQUIALISMS|WIKIPEDIA)$/.test(((m.rule||{}).category||{}).id||"")),sty=all.filter(m=>!err.includes(m));
   const e100=words?err.length/words*100:0,pct=Math.max(0,Math.min(100,Math.round(100-7*e100))),band=W_BANDS.find(b=>pct>=b[0])[1];
-  const marks=all.slice().sort((a,b)=>a.offset-b.offset);let out="",pos=0;
-  marks.forEach(m=>{if(m.offset<pos)return;out+=esc(txt.slice(pos,m.offset))+'<mark class="'+(err.includes(m)?"er":"st")+'">'+esc(txt.substr(m.offset,m.length))+'</mark>';pos=m.offset+m.length;});out+=esc(txt.slice(pos));
-  const item=m=>{const c=m.context||{},a=c.text||"",o=c.offset||0,l=c.length||0,rp=(m.replacements||[]).slice(0,3).map(x=>'<i>'+esc(x.value)+'</i>').join("");
-    return '<div class="wf"><small>'+esc(((m.rule||{}).category||{}).name||"")+'</small><span class="cx">'+esc(a.slice(0,o))+'<mark class="er">'+esc(a.substr(o,l))+'</mark>'+esc(a.slice(o+l))+'</span><span>'+esc(m.message||"")+'</span>'+(rp?'<span class="sg">'+rp+'</span>':'')+'</div>';};
+  const sents=wSents(txt),ok=[];let nG=0,nR=0;
+  const rows=sents.map(se=>{const end=se.off+se.len,hit=all.filter(m=>m.offset<end&&m.offset+m.length>se.off&&err.includes(m)),hs=all.filter(m=>m.offset<end&&m.offset+m.length>se.off&&!err.includes(m)).sort((x,y)=>x.offset-y.offset);
+    let out="",pos=se.off;hit.concat(hs).sort((x,y)=>x.offset-y.offset).forEach(m=>{if(m.offset<pos)return;const e2=Math.min(m.offset+m.length,end);out+=esc(txt.slice(pos,m.offset))+'<mark class="'+(err.includes(m)?"er":"st")+'">'+esc(txt.slice(m.offset,e2))+'</mark>';pos=e2;});out+=esc(txt.slice(pos,end));
+    if(!hit.length){nG++;return '<div class="ws g"><b aria-label="richtig">✓</b><span class="wtxt">'+out+'</span></div>';}
+    nR++;const why=hit.slice(0,6).map(m=>{const rp=(m.replacements||[]).slice(0,3).map(x=>'<i>'+esc(x.value)+'</i>').join(""),tp=wTopic(m);
+      return '<div class="wwhy"><span>'+esc(txt.substr(m.offset,m.length).slice(0,40)||"…")+' – '+esc(m.message||"")+'</span>'+(rp?'<span class="sg">'+rp+'</span>':'')+(tp?'<button class="wup" data-t="'+tp[1]+'">Üben: '+esc(tp[2])+'</button>':'')+'</div>';}).join("");
+    return '<div class="ws r"><b aria-label="Fehler">✗</b><span class="wtxt">'+out+'</span>'+why+'</div>';}).join("");
   const lenTxt=T0.min?(words>=T0.min?'Länge: '+words+' Wörter – Richtwert erreicht.':'Länge: '+words+' von mindestens '+T0.min+' Wörtern – noch zu kurz.'):'Länge: '+words+' Wörter.';
   $("wres").innerHTML='<div class="tc"><h3>Ergebnis · Sprachrichtigkeit</h3><div class="wscore"><b>'+pct+' %</b><span>'+band+'</span></div>'+
    '<p class="tline">'+err.length+(err.length===1?' Fehler':' Fehler')+' in '+words+' Wörtern ('+e100.toFixed(1).replace(".",",")+' pro 100 Wörter)'+(sty.length?' · '+sty.length+' Stil- oder Schreibhinweise (zählen nicht)':'')+'. '+lenTxt+'</p>'+
    '<p class="tline">Das ist eine grobe Schätzung nur der Sprache (Rechtschreibung und Grammatik). Aufgabenerfüllung, Aufbau und Wortschatz prüft LanguageTool nicht, und es meldet auch Fehlalarme, vor allem bei Namen und Fachwörtern. Das ist kein ÖSD-Ergebnis.</p></div>'+
-   '<div class="tc"><h3>Dein Text mit Markierungen</h3><p class="wtxt">'+out+'</p></div>'+
-   (all.length?'<div class="tc"><h3>Hinweise <small>'+all.length+'</small></h3><div>'+all.slice(0,40).map(item).join("")+(all.length>40?'<p class="tline">… und '+(all.length-40)+' weitere.</p>':'')+'</div></div>':'<div class="tc"><p class="tline">Keine Hinweise gefunden.</p></div>');
+   '<div class="tc"><h3>Satz für Satz <small>'+nG+' ✓ · '+nR+' ✗</small></h3><p class="tline">✓ = keine Auffälligkeit, ✗ = mindestens ein Fehler (rot unterstrichen, darunter die Erklärung). Gepunktet unterstrichen sind Stilhinweise, die nicht zählen.</p><div class="wsl">'+(rows||'<p class="tline">Kein Satz erkannt.</p>')+'</div></div>'+
+   '<div class="tc"><p class="tline">Geprüft mit <a href="https://languagetool.org/" target="_blank" rel="noopener">LanguageTool</a> (<a href="https://languagetool.org/privacy" target="_blank" rel="noopener">Datenschutz</a>).</p></div>';
+  document.querySelectorAll("#wres .wup").forEach(b=>b.onclick=()=>{store.wtext=$("wtx").value;save();openTopic(b.dataset.t);});
   $("wres").scrollIntoView&&$("wres").scrollIntoView({behavior:"smooth",block:"start"});}
 /* ---------- Theorie as a gallery with pop-up (like the dasein-design projects) ---------- */
 const GP={items:[],i:0,open:false};
@@ -2127,36 +2150,44 @@ function loadPics(root){const cache=store.pics2||(store.pics2={});root.querySele
   const next=i=>{if(i>=list.length){cache[key]=0;save();return;}const [lg,t]=list[i].split(":");
     fetch("https://"+lg+".wikipedia.org/api/rest_v1/page/summary/"+t).then(r=>r.ok?r.json():null).then(j=>{const u=j&&(j.thumbnail&&j.thumbnail.source||j.originalimage&&j.originalimage.source);if(u){cache[key]=u;save();show(u);}else next(i+1);}).catch(()=>next(i+1));};
   next(0);});}
-function quotesHTML(){return QUOTES.map(x=>x.sec?'<h4 class="qsec">'+esc(x.sec)+'</h4>':'<a class="qt" href="'+x.u+'" target="_blank" rel="noopener"><span class="pic" aria-hidden="true"><i>'+x.pic+'</i>'+(x.w?'<img alt="" loading="lazy" data-w="'+x.w.join("|")+'">':'')+'</span><span class="qb"><b class="who">'+esc(x.who)+'</b><small>'+esc(x.when)+'</small><q>'+esc(x.q)+'</q><span class="qen">'+esc(x.en)+'</span>'+'</span></a>').join("")+'<p class="tline">Antippen öffnet die Quelle. Bilder: Wikipedia / Wikimedia Commons.</p>';}
+function quotesHTML(){let qi=0;return QUOTES.map(x=>x.sec?(qi=0,'<h4 class="qsec">'+esc(x.sec)+'</h4>'):'<a class="qt'+(qi++%2?' alt':'')+'" href="'+x.u+'" target="_blank" rel="noopener"><span class="pic" aria-hidden="true"><i>'+x.pic+'</i>'+(x.w?'<img alt="" loading="lazy" data-w="'+x.w.join("|")+'">':'')+'</span><span class="qb"><b class="who">'+esc(x.who)+'</b><small>'+esc(x.when)+'</small><q>'+esc(x.q)+'</q><span class="qen">'+esc(x.en)+'</span>'+'</span></a>').join("")+'<p class="tline">Antippen öffnet die Quelle. Bilder: Wikipedia / Wikimedia Commons.</p>';}
 $("markb").onclick=toTitle;$("markL").onclick=toTitle;$("markb").setAttribute("aria-label","Zur Titelseite");document.querySelector("#home h1.logo").addEventListener("click",toTitle);document.querySelector("#home h1.logo").style.cursor="pointer";
 /* ---------- bottom bars and the drawer that rises (like dasein-design) ---------- */
 const WK=t=>"https://de.wikipedia.org/wiki/"+encodeURIComponent(t.replace(/ /g,"_"));
-const hi=(a,b,w)=>'<div class="hi"><b>'+a+'</b><span>'+b+(w?'<a class="wk" href="'+WK(w)+'" target="_blank" rel="noopener" aria-label="Wikipedia: '+w+'">mehr bei Wikipedia ↗</a>':'')+'</span></div>';
+const SRCL=(w)=>Array.isArray(w)?w:[WK(w),"Wikipedia"];
+const hi=(a,b,w)=>{const l=w?SRCL(w):null;return '<div class="hi"><b>'+a+'</b><span>'+b+(l?'<a class="wk" href="'+l[0]+'" target="_blank" rel="noopener" aria-label="Mehr bei '+l[1]+'" title="'+l[1]+'">mehr ↗</a>':'')+'</span></div>';};
 const HIST='<div class="tc"><h3>Kleine Geschichte</h3><div class="hlist">'+[
- ["um 770","<b>Abrogans</b>, das älteste Buch auf Deutsch: ein Wörterbuch Latein – Althochdeutsch.","Abrogans"],
+ ["um 770","<b>Abrogans</b>, das älteste Buch auf Deutsch: ein Wörterbuch Latein – Althochdeutsch.",["https://www.e-codices.ch/en/list/one/csg/0911","e-codices, Stiftsbibliothek St. Gallen"]],
  ["um 830","Das <b>Hildebrandslied</b> wird aufgeschrieben, das einzige erhaltene Heldenlied auf Althochdeutsch.","Hildebrandslied"],
+ ["9./10. Jh.","Die <b>Merseburger Zaubersprüche</b>: zwei heidnische Zaubersprüche, alt aufgeschrieben in einer Kirchenhandschrift.","Merseburger Zaubersprüche"],
  ["um 1200","<b>Nibelungenlied</b>, Mittelhochdeutsch.","Nibelungenlied"],
+ ["um 1230","<b>Sachsenspiegel</b>: Eike von Repgow schreibt das Recht auf Deutsch statt Latein auf.","Sachsenspiegel"],
  ["um 1450","<b>Gutenberg</b> druckt in Mainz mit beweglichen Buchstaben. Bücher werden billiger, die Schreibweisen gleichen sich langsam an.","Johannes Gutenberg"],
  ["1522","<b>Luther</b> übersetzt das Neue Testament, 1534 die ganze Bibel. Sein Deutsch wird zum Vorbild.","Lutherbibel"],
+  ["1530","<b>Luther</b>, Sendbrief vom Dolmetschen: Man soll dem Volk aufs Maul schauen, nicht dem Latein aufs Wort.","Sendbrief vom Dolmetschen"],
  ["1617","Die <b>Fruchtbringende Gesellschaft</b> entsteht, die erste große Sprachgesellschaft: Sie will Deutsch pflegen und Fremdwörter ersetzen.","Fruchtbringende Gesellschaft"],
- ["1748","<b>Gottsched</b> veröffentlicht eine deutsche Sprachkunst, eine Grammatik für das Hochdeutsche.","Johann Christoph Gottsched"],
- ["1774","<b>Adelung</b> beginnt sein großes Wörterbuch der hochdeutschen Mundart (bis 1786).","Johann Christoph Adelung"],
- ["1854","<b>Brüder Grimm</b>: erster Band des Deutschen Wörterbuchs. Fertig erst 1961.","Deutsches Wörterbuch"],
+ ["1748","<b>Gottsched</b> veröffentlicht eine deutsche Sprachkunst, eine Grammatik für das Hochdeutsche.",null],
+ ["1774","<b>Adelung</b> beginnt sein großes Wörterbuch der hochdeutschen Mundart (bis 1786).",null],
+ ["1801","<b>Campe</b> ersetzt Fremdwörter durch deutsche: Zerrbild für Karikatur, Stelldichein für Rendezvous. Manches bleibt, vieles nicht.","Joachim Heinrich Campe"],
+ ["1854","<b>Brüder Grimm</b>: erster Band des Deutschen Wörterbuchs. Fertig erst 1961. Heute online durchsuchbar.",["https://tcdh.uni-trier.de/en/projekt/digital-grimm","Trier Center for Digital Humanities, Der digitale Grimm"]],
+ ["1876","Die <b>Erste Orthographische Konferenz</b> in Berlin sucht eine einheitliche Rechtschreibung. Der Erfolg bleibt klein.","Orthographische Konferenz"],
  ["1880","<b>Konrad Duden</b>: Vollständiges Orthographisches Wörterbuch.","Konrad Duden"],
- ["1901","Eine Rechtschreibung für alle deutschsprachigen Länder (in Kraft 1902).","Zweite Orthographische Konferenz"],
- ["1941","Die Antiqua ersetzt die Fraktur als Normalschrift.","Normalschrifterlass"],
- ["1951","Erstes <b>Österreichisches Wörterbuch</b>.","Österreichisches Wörterbuch"],
- ["1996","<b>Rechtschreibreform</b>: daß → dass. Überarbeitet 2006.","Rechtschreibreform von 1996"],
- ["2017","Das große <b>ẞ</b> ist offiziell erlaubt.","Großes ß"],
+ ["1901","Eine Rechtschreibung für alle deutschsprachigen Länder (in Kraft 1902).",null],
+ ["1941","Die Antiqua ersetzt die Fraktur als Normalschrift.",null],
+ ["1955","Die Kultusminister erklären den <b>Duden</b> in Zweifelsfällen für verbindlich.","Duden"],
+ ["1951","Erstes <b>Österreichisches Wörterbuch</b>.",null],
+ ["1996","<b>Rechtschreibreform</b>: daß → dass. Seit 1998 in Schulen, überarbeitet 2006.","Rechtschreibreform von 1996"],
+ ["2004","Der <b>Rat für deutsche Rechtschreibung</b> wird gegründet. Er pflegt das amtliche Regelwerk für alle deutschsprachigen Länder.",["https://www.rechtschreibrat.com/","Rat für deutsche Rechtschreibung"]],
+ ["2017","Das große <b>ẞ</b> ist offiziell erlaubt.",["https://www.rechtschreibrat.com/DOX/rfdr_PM_2017-06-29_Aktualisierung_Regelwerk.pdf","Rat für deutsche Rechtschreibung, Pressemitteilung 2017 (PDF)"]],
  ["mehr","Der ganze Bogen, von den Anfängen bis heute.","Geschichte der deutschen Sprache"]
 ].map(r=>hi(r[0],r[1],r[2])).join("")+'</div></div>'+
 '<div class="tc"><h3>Wussten Sie …?</h3><div class="hlist">'+[
  ["6 Länder","Amtssprache in Deutschland, Österreich, der Schweiz, Liechtenstein, Luxemburg und Belgien.","Deutsche Sprache"],
  ["Groß","Alle Nomen schreibt man groß – als einzige große Sprache.","Substantivgroßschreibung"],
- ["kein ß","Die Schweiz schreibt ss statt ß: Strasse, gross.","Eszett"],
+ ["kein ß","Die Schweiz schreibt ss statt ß: Strasse, gross.",["https://de.wikipedia.org/wiki/Eszett","Wikipedia: Eszett"]],
  ["23 Wörter","Seit dem EU-Beitritt 1995 sind 23 österreichische Wörter geschützt: Paradeiser, Erdäpfel, Marillen …","Österreichisches Deutsch"],
  ["63 Buchstaben","Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz – ein Gesetz aus Mecklenburg-Vorpommern, 2013 abgeschafft.","Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz"],
- ["Handy","Klingt englisch, ist aber deutsch. Englisch sagt mobile phone.","Handy"]
+ ["Handy","Klingt englisch, ist aber deutsch. Englisch sagt mobile phone.",["https://www.duden.de/rechtschreibung/Handy","Duden"]]
 ].map(r=>hi(r[0],r[1],r[2])).join("")+'</div></div>';
 const SECS=[["home","Grammatik"],["test","Tests"],["links","Hilfsmittel"],["quotes","Zitate"],["hist","Geschichte"],["sets","Einstellungen"]];
 const DR={open:false,k:null};   /* the old rising panel is gone; kept so older checks stay false */
