@@ -1,5 +1,5 @@
 <!doctype html><html lang="de"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Deutsch"></head><body>
-<meta name="app-version" content="2026-10-30c">
+<meta name="app-version" content="2026-10-30d">
 <title>Deutsch Grammatik</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#ffffff">
@@ -522,6 +522,19 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .qt .qb{min-width:0}.qt b.who{display:inline;font-size:1rem}.qt small{display:block;font-size:.76rem;color:#555;margin-bottom:3px}
 .qt q{display:block;font-size:.98rem;line-height:1.3;quotes:"„" "“"}.qt .qen{display:block;text-align:left;font-size:.84rem;color:#555;margin-top:2px;line-height:1.3}
 .qt .lang{display:flex;flex-wrap:wrap;margin-top:5px;font-size:.76rem}.qt .lang span{padding:2px 6px;background:var(--mnom)}.qt .lang span+span{border-left:1px dotted var(--dl)}.qt .lang .de{background:var(--mkey);font-weight:700}
+/* ---- start-page lists (Hilfsmittel, Zitate, Geschichte): one grammar – text flush with the headings and bars on both edges, a dotted line between items, no fills ---- */
+.hp .rows{gap:0}
+.hp .rows div,.hp .hi{display:grid;grid-template-columns:5.6em minmax(0,1fr);gap:10px;align-items:baseline;padding:9px 0 10px;margin:0;font-size:.9rem;line-height:1.32;background:var(--df) left bottom/100% 1px no-repeat}
+.hp .hi:nth-child(odd){background:var(--df) left bottom/100% 1px no-repeat}
+.hp .rows div>:first-child,.hp .hi>b{font-weight:700}
+.hp .hi a.wk{display:block;width:fit-content;margin:5px 0 0}
+.hp .tline{font-size:.82rem;line-height:1.35;color:var(--muted);margin:8px 0 0}
+.hp .qt,.hp .qt.alt{margin:0;padding:10px 0;background:var(--df) left bottom/100% 1px no-repeat}
+.hp .qt .who{font-size:.95rem}.hp .qt small{font-size:.74rem}.hp .qt q{font-size:.9rem}.hp .qt .qen{font-size:.8rem}
+/* ---- bars: only one dotted line where two bars meet (the upper one drops its bottom line while another bar is right below it) ---- */
+.hb{--bl:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px)}.hb.nb{--bl:linear-gradient(transparent,transparent)}
+.hb.hl{background:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left top/100% 1px no-repeat,var(--bl) left bottom/100% 1px no-repeat,var(--hv) right top/1px 100% no-repeat,#fff}
+.hb.hr{background:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left top/100% 1px no-repeat,var(--bl) left bottom/100% 1px no-repeat,var(--hv) left top/1px 100% no-repeat,#fff}
 .kb{display:inline-block;background:var(--ink);color:#fff;padding:0 6px;font-weight:700}
 /* ---- topic page in the dasein grammar: the same line rule as the start page ----
    dashed = frame of the screen (under the header, the arrow bar); dotted = between items; no boxes round content, no box inside a box;
@@ -2206,7 +2219,7 @@ const TLEN=()=>[15,30,45].includes(store.tlen)?store.tlen:15;
 function renderTest(){const n={};const all=[].concat(PQ,PRON_Q,GEN_Q,FALL_Q,ADJ_Q,...Object.keys(GT).map(k=>GT[k].q));all.forEach(q=>{n[q.lv]=(n[q.lv]||0)+1;});
   $("p-test").innerHTML='<div class="tc"><h3>Tests</h3><p class="tline">Fragen aus allen Themen, wie in der Prüfung. Ein Stufentest nimmt zwei Drittel Fragen der Stufe und ein Drittel von darunter.</p>'+
    '<div class="tlen"><span>Länge</span>'+[15,30,45].map(k=>'<button data-n="'+k+'" aria-pressed="'+(TLEN()===k)+'">'+k+'</button>').join("")+'<span>Fragen</span></div>'+
-   '<div class="tests">'+[["mix","Gemischt","alle Stufen"]].concat(LVLS.slice(0,5).map(l=>[l,l,(n[l]||0)+" Fragen"])).map(([k,a,b])=>'<button class="tst" data-l="'+k+'"><b>'+a+'</b><small>'+b+'</small></button>').join("")+'<button class="tst wide" id="goWrite"><b>Text prüfen</b><small>Schreiben B1–C1 · mit LanguageTool</small></button></div></div>';
+   '<div class="tests">'+[["mix","Gemischt","alle Stufen"]].concat(LVLS.slice(0,5).map(l=>[l,l,(n[l]||0)+" Fragen"])).map(([k,a,b])=>'<button class="tst" data-l="'+k+'"><b>'+a+'</b><small>'+b+'</small></button>').join("")+'<button class="tst wide" id="goWrite"><b>Text prüfen</b><small>Schreiben A1–C1 · mit LanguageTool</small></button></div></div>';
   $("p-test").querySelectorAll(".tlen button").forEach(x=>x.onclick=()=>{store.tlen=+x.dataset.n;save();renderTest();});
   $("goWrite").onclick=()=>openTopic("write");
   $("p-test").querySelectorAll(".tst").forEach(x=>x.onclick=()=>{TESTLV=x.dataset.l==="mix"?"all":x.dataset.l;openTopic("test");});}
@@ -2259,7 +2272,9 @@ new ResizeObserver(layoutPins).observe(TST);
 /* the logo takes you back to the title page */
 function toTitle(){const go=()=>{SC.scrollTo({top:0,behavior:reduceM?"auto":"smooth"});setTimeout(enterMap,SC.scrollTop>40?500:0);};
   if(!$("topic").hidden){if(GP.open)closePop();if(navState()==="topic"||navState()==="pop")history.go(navState()==="pop"?-2:-1);else goHome();setTimeout(go,120);}else go();}
-function stackUpd(){curBar();backs();arrowUpd();}
+/* one line where bars meet: a bar hides its bottom line when another bar of the same half starts within a few pixels below it */
+function seams(){const rs=BARS.map(b=>b.getBoundingClientRect());BARS.forEach((b,k)=>{const a=rs[k];b.classList.toggle("nb",rs.some((o,m)=>m!==k&&o.left<a.right-2&&o.right>a.left+2&&o.top>a.bottom-6&&o.top<a.bottom+8));});}
+function stackUpd(){curBar();backs();seams();arrowUpd();}
 function renderBars(){renderTest();lastFit();stackUpd();}
 SC.addEventListener("scroll",()=>{if(SC.scrollLeft)SC.scrollLeft=0;stackUpd();},{passive:true});window.addEventListener("resize",()=>{lastFit();stackUpd();});
 new ResizeObserver(()=>{lastFit();stackUpd();}).observe(SC);
