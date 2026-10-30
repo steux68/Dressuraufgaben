@@ -1,5 +1,5 @@
 <!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<meta name="app-version" content="2026-10-30j">
+<meta name="app-version" content="2026-10-30k">
 <title>Dressuraufgaben · Theorie</title>
 <link rel="manifest" href="theorie.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Theorie"><meta name="theme-color" content="#f5f6f2">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
@@ -520,6 +520,12 @@ $('infoBtn').onclick=()=>info($('info').hidden);$('infoClose').onclick=()=>info(
 if(ls('r2tip'))$('tip').hidden=true;
 $('tipx').onclick=()=>{$('tip').hidden=true;ls('r2tip','1')};
 
+/* ---- Verlaufstiefe: jeder App-Eintrag kennt seine Tiefe d (0 = unterster Eintrag der App) ---- */
+(function(){const P=history.pushState.bind(history),R=history.replaceState.bind(history);
+ const d=()=>{try{return (history.state&&history.state.d)||0}catch(e){return 0}};
+ history.pushState=function(s,t,u){return P(Object.assign({},s||{},{d:d()+1}),t,u)};
+ history.replaceState=function(s,t,u){return R(Object.assign({},s||{},{d:d()}),t,u)};
+ window.NAVD=d;})();
 /* ---- Navigation mit Verlauf (Android-Zurück-Taste) ---- */
 (function(){
  const _open=openTest,_home=home,_mat=openMat,_info=info;
@@ -528,9 +534,9 @@ $('tipx').onclick=()=>{$('tip').hidden=true;ls('r2tip','1')};
  const push=h=>{try{history.pushState({app:1},'',location.pathname+location.search+h)}catch(e){}};
  openTest=function(id){const was=view==='test';if(!nav&&!was)push('#'+id.toLowerCase());_open(id);mark()};
  openMat=function(){if(!nav&&view!=='mat')push('#material');_mat();mark()};
- home=function(){if(!nav&&view!=='home'&&history.state&&history.state.app){history.back();return}_home()};
+ home=function(){if(!nav&&view!=='home'&&NAVD()>0){history.back();return}_home();try{history.replaceState({app:1},'',location.pathname+location.search)}catch(e){}};
  info=function(open){if(!nav){if(open&&$('info').hidden){push('#info');mark()}
-   else if(!open&&!$('info').hidden&&location.hash==='#info'){history.back();return}}_info(open)};
+   else if(!open&&!$('info').hidden&&location.hash==='#info'){if(NAVD()>0){history.back();return}try{history.replaceState({app:1},'',location.pathname+location.search)}catch(e){}}}_info(open)};
  $('backBtn').onclick=()=>home();
  $('infoBtn').onclick=()=>info($('info').hidden);$('infoClose').onclick=()=>info(false);
  $('title').style.cursor='pointer';$('title').onclick=()=>{if(view==='home'&&window.openIntro)openIntro();else if(view!=='home'&&view!=='intro')home()};
@@ -1144,9 +1150,9 @@ const GAL=[
  function gShow(){const x=GAL[gi];$('gpi').style.maxWidth='';$('gpi').onload=function(){this.style.maxWidth='min(100%,'+Math.round(this.naturalWidth*1.6)+'px)'};$('gpi').src=x.f;$('gpi').alt=x.n;$('gpn').textContent='Galerie · '+(gi+1)+' / '+GAL.length;
   $('gpt').textContent=x.n;$('gpa').textContent=x.a;$('gpw').textContent=x.w+(x.j?', '+x.j:'');$('gpl').textContent=x.l+(x.x?' · '+x.x:'');$('gpu').href=x.u;
   $('gpp').disabled=gi===0;$('gpf').disabled=gi===GAL.length-1;document.querySelector('.gpnav').hidden=GAL.length<2;}
- function gOpen(k){gi=k;gShow();$('gpop').hidden=false;$('gpx').focus();}
+ function gOpen(k){gi=k;gShow();if($('gpop').hidden){try{history.pushState({app:1,pop:1},'')}catch(e){}}$('gpop').hidden=false;$('gpx').focus();}
  function gClose(){$('gpop').hidden=true;}
- $('gpx').onclick=gClose;$('gpp').onclick=()=>{if(gi>0){gi--;gShow();}};$('gpf').onclick=()=>{if(gi<GAL.length-1){gi++;gShow();}};
+ $('gpx').onclick=()=>{if(history.state&&history.state.pop)history.back();else gClose();};$('gpp').onclick=()=>{if(gi>0){gi--;gShow();}};$('gpf').onclick=()=>{if(gi<GAL.length-1){gi++;gShow();}};
  addEventListener('keydown',e=>{if($('gpop').hidden)return;if(e.key==='Escape')gClose();if(e.key==='ArrowLeft')$('gpp').click();if(e.key==='ArrowRight')$('gpf').click();});
  addEventListener('popstate',()=>{if(!$('gpop').hidden)gClose();});
  window.galGrid=grid;window.galRaw=function(){show('gal');$('note').hidden=true;grid();};
@@ -1284,7 +1290,7 @@ const GAL=[
  const S=window.START_H||'';const m={'#material':4,'#galerie':3,'#geschichte':2,'#xyz':5,'#links':5};
  if(S in m){try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}_show('home');goSec(m[S]);}
  else if(!S||S==='#start'){_show('home');goSec(-1);}
- requestAnimationFrame(()=>{lastFit();upd();});
+ sync();requestAnimationFrame(()=>{lastFit();upd();});
 })();
 </script>
 <style>

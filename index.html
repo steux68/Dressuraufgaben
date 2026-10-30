@@ -1,5 +1,5 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<meta name="app-version" content="2026-10-25g">
+<meta name="app-version" content="2026-10-25h">
 <title>Dressuraufgaben</title>
 <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Dressur"><meta name="theme-color" content="#f5f6f2">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
@@ -392,6 +392,12 @@ $('infoBtn').onclick=()=>info($('info').hidden);$('infoClose').onclick=()=>info(
 if(ls('r2tip'))$('tip').hidden=true;
 $('tipx').onclick=()=>{$('tip').hidden=true;ls('r2tip','1')};
 
+/* ---- Verlaufstiefe: jeder App-Eintrag kennt seine Tiefe d (0 = unterster Eintrag der App) ---- */
+(function(){const P=history.pushState.bind(history),R=history.replaceState.bind(history);
+ const d=()=>{try{return (history.state&&history.state.d)||0}catch(e){return 0}};
+ history.pushState=function(s,t,u){return P(Object.assign({},s||{},{d:d()+1}),t,u)};
+ history.replaceState=function(s,t,u){return R(Object.assign({},s||{},{d:d()}),t,u)};
+ window.NAVD=d;})();
 /* ---- Navigation mit Verlauf (Android-Zurück-Taste) ---- */
 (function(){
  const _open=openTest,_home=home,_mat=openMat,_info=info;
@@ -400,9 +406,9 @@ $('tipx').onclick=()=>{$('tip').hidden=true;ls('r2tip','1')};
  const push=h=>{try{history.pushState({app:1},'',location.pathname+location.search+h)}catch(e){}};
  openTest=function(id){const was=view==='test';if(!nav&&!was)push('#'+id.toLowerCase());_open(id);mark()};
  openMat=function(){if(!nav&&view!=='mat')push('#material');_mat();mark()};
- home=function(){if(!nav&&view!=='home'&&history.state&&history.state.app){history.back();return}_home()};
+ home=function(){if(!nav&&view!=='home'&&NAVD()>0){history.back();return}_home();try{history.replaceState({app:1},'',location.pathname+location.search)}catch(e){}};
  info=function(open){if(!nav){if(open&&$('info').hidden){push('#info');mark()}
-   else if(!open&&!$('info').hidden&&location.hash==='#info'){history.back();return}}_info(open)};
+   else if(!open&&!$('info').hidden&&location.hash==='#info'){if(NAVD()>0){history.back();return}try{history.replaceState({app:1},'',location.pathname+location.search)}catch(e){}}}_info(open)};
  $('backBtn').onclick=()=>home();
  $('infoBtn').onclick=()=>info($('info').hidden);$('infoClose').onclick=()=>info(false);
  $('title').style.cursor='pointer';$('title').onclick=()=>{if(view!=='home')home()};
