@@ -1,5 +1,5 @@
 <!doctype html><html lang="de"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Deutsch"></head><body>
-<meta name="app-version" content="2026-10-30h">
+<meta name="app-version" content="2026-10-30i">
 <title>Deutsch Grammatik</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#ffffff">
@@ -109,13 +109,29 @@ mark.d{color:var(--dat)} mark.a{color:var(--akk)}
 .masked .cell span{filter:blur(7px)}
 .answer{display:flex;gap:6px}
 .answer.typ{margin-top:6px}.answer.typ button{min-width:84px}
-.answer input.ok{background:var(--limepale);box-shadow:inset 0 -2px 0 var(--ink)}.answer input.near{background:#fff6b0;box-shadow:inset 0 -2px 0 var(--ink)}.answer input.bad{background:#fbe3e1;box-shadow:inset 0 -2px 0 var(--red);color:var(--red);text-decoration:line-through}
-.answer input:focus,.answer input:focus-visible{outline:none}.uml{display:flex;gap:4px;margin-top:6px}.uml button{flex:1;min-height:34px;padding:0;font-size:1.05rem;background:var(--pale)}
+.answer input.ok{background:var(--limepale)}.answer input.near{background:#fff6b0}.answer input.bad{background:#fbe3e1;color:var(--red);text-decoration:line-through}
+/* text fields (Steuart, 30 Oct): light grey, a dotted frame all round, no dark underline */
+.answer input,#wtx,#wtask,#wlang,.fld{background:#f8f8f6;box-shadow:none;outline:1px dotted #b8b8b8;outline-offset:-1px}
+.answer input:focus,.answer input:focus-visible,#wtx:focus,#wtx:focus-visible,.fld:focus,.fld:focus-visible{outline:1px dotted #6f736c;outline-offset:-1px;background:#fff}
+.answer input.ok,.answer input.near,.answer input.bad{box-shadow:none}
+/* Lückentext */
+.ltx{white-space:pre-line;font-size:1.02rem;line-height:2.15}
+.lgap{white-space:nowrap}
+.lg{display:inline-block;width:auto;min-height:0;font:inherit;font-size:.98rem;line-height:1.3;padding:2px 6px;margin:0 2px;border:0;border-radius:0;color:var(--fg);vertical-align:baseline;max-width:60vw}
+.lg::placeholder{color:#a9a9a4;font-size:.72rem}
+.lg.ok{background:var(--limepale)}.lg.near{background:#fff6b0}.lg.bad{background:#fbe3e1;color:var(--red);text-decoration:line-through}
+.lh{font-size:.8rem;color:var(--muted);margin-left:1px}
+.lc i{font-style:normal;font-weight:700;margin-left:3px}.lc .lok{color:#2f6b12}.lc .lno{color:var(--red)}.lc b{margin-left:3px;font-weight:700;background:var(--limepale);padding:0 4px}
+.lbtn{display:flex;gap:6px;margin-top:12px}.lbtn button{flex:1;min-height:46px}
+#ltask{margin-top:6px;font:inherit;font-size:1rem;padding:8px;border:0;border-radius:0;color:var(--fg);min-width:0;max-width:100%}
+.lerr{display:flex;flex-direction:column}
+.lerr>div{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;padding:8px 0 9px;background:var(--df) left bottom/100% 1px no-repeat;font-size:.95rem;line-height:1.35}
+.lerr .lans{font-weight:700}.lerr s{color:var(--red)}.lerr small{display:block;color:var(--muted);font-size:.82rem;margin-top:2px}.uml{display:flex;gap:4px;margin-top:6px}.uml button{flex:1;min-height:34px;padding:0;font-size:1.05rem;background:var(--pale)}
 .nr{margin:6px 0 0;font-size:1rem}.nr u{text-decoration:none;background:#fbe3e1;color:var(--red);font-weight:700;padding:0 1px}.nr.bad{color:var(--fg)}
 .btns button.on{background:var(--limepale);font-weight:700}
 .errc{display:flex;justify-content:space-between;align-items:center;gap:10px;text-align:left;background:#fbe3e1;padding:9px 12px;flex:none}
 .errc small{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#7a2a24}.errc b{font-size:1.08rem}
-.answer input{flex:1;min-width:0;font:inherit;font-size:1.25rem;padding:11px 12px;border:0;border-radius:0;background:var(--pale);color:var(--fg);box-shadow:inset 0 -2px 0 var(--ink)}
+.answer input{flex:1;min-width:0;font:inherit;font-size:1.25rem;padding:11px 12px;border:0;border-radius:0;background:#f8f8f6;color:var(--fg);outline:1px dotted #b8b8b8;outline-offset:-1px}
 .mic{flex:none;width:52px;padding:0;display:grid;place-items:center;border-radius:50%;height:52px;background:var(--bg);box-shadow:inset 0 0 0 1.5px var(--red);color:var(--red)}
 .mic.on{background:var(--red);color:#fff}
 .mic svg{width:24px;height:24px}
@@ -466,8 +482,8 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .wchips button{padding:4px 12px;font-size:.95rem;background:var(--pale)}
 .wchips button[aria-pressed="true"]{background:var(--lime);font-weight:700;box-shadow:none}
 .wprompt{margin:6px 0 0;font-size:1.05rem;line-height:1.35}
-#wtask,#wlang{font:inherit;font-size:1rem;padding:8px;border:0;border-radius:0;background:var(--pale);color:var(--fg);min-width:0;max-width:100%;box-shadow:inset 0 -2px 0 var(--ink)}
-#wtx{display:block;width:100%;min-height:340px;font:inherit;font-size:1.08rem;line-height:1.4;padding:10px 12px;border:0;border-radius:0;background:var(--pale);color:var(--fg);box-shadow:inset 0 -2px 0 var(--ink);resize:vertical}
+#wtask,#wlang{font:inherit;font-size:1rem;padding:8px;border:0;border-radius:0;background:#f8f8f6;color:var(--fg);min-width:0;max-width:100%;outline:1px dotted #b8b8b8;outline-offset:-1px}
+#wtx{display:block;width:100%;min-height:340px;font:inherit;font-size:1.08rem;line-height:1.4;padding:10px 12px;border:0;border-radius:0;background:#f8f8f6;color:var(--fg);outline:1px dotted #b8b8b8;outline-offset:-1px;resize:vertical}
 .wrow{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
 .wfile{font-size:.95rem;color:#1a5fd0;font-weight:700;cursor:pointer;padding:4px 0}
 .wscore{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
@@ -1991,12 +2007,13 @@ const TOPICS=[
  {t:"k1",n:"Konjunktiv I",tag:"er sei · er habe",ds:"Indirekte Rede, Berichte · B2–C1"},
  {t:"nvv",n:"Nomen-Verb-Verbindungen",tag:"in Frage stellen",ds:"formelles Deutsch für Briefe und Vorträge · B1–C1"},
  {t:"nom",n:"Nominalstil & Partizipien",tag:"die geplante Brücke",ds:"Partizipialattribute, Nominalisierung · B2–C1"},
+ {t:"lueck",n:"Lückentext",tag:"ganze Texte",ds:"Ganze Texte mit Lücken, A1–C1, mit Korrektur"},
  {t:"write",n:"Text prüfen",tag:"Schreiben",ds:"Schreibaufgabe A1–C1 bis zur A4-Seite, Prüfung mit LanguageTool"},
  {t:"test",n:"Test",tag:"gemischt",ds:"15, 30 oder 45 Fragen aus allen Themen, wie in der Prüfung"},
  {t:"links",n:"Links & Hilfsmittel",tag:"Quellen",ds:"Wörterbücher, Grammatik, Verben, Aussprache, Nachrichten"},
 ];
 const TNAME={prep:"Präpositionen",art:"Artikel",pron:"Pronomen",gen:"Genitiv",fall:"Fälle",adj:"Adjektive"};
-function score(t){if(t==="links"||t==="write")return null;if(t==="satz"){const n=SB.filter(x=>store["sb"+x.id]==="ok").length;return n?n/SB.length:null;}const b=(store.best||{})[t];return b==null?null:b;}
+function score(t){if(t==="links"||t==="write"||t==="lueck")return null;if(t==="satz"){const n=SB.filter(x=>store["sb"+x.id]==="ok").length;return n?n/SB.length:null;}const b=(store.best||{})[t];return b==null?null:b;}
 const GROUPS=[
  {n:"Satz",t:["satz","tekamolo","neg","konn","rel"],soon:"zu + Infinitiv"},
  {n:"Nomen & Fälle",t:["art","fall","gen"],soon:"Plural · n-Deklination"},
@@ -2028,7 +2045,7 @@ function renderHome(){renderBars();
 /* ---------- navigation ---------- */
 let T=null,mode="learn",idx=0,self=false,caseMode="wo",gi=0,MC=null;
 function openTopic(t){navPush("topic");T=t;idx=0;gi=0;MC=null;$("home").hidden=true;$("topic").hidden=false;
-  $("ttl").textContent=TOPICS.find(x=>x.t===t).n;$("seg").hidden=t==="test"||t==="links"||t==="write";setMode(t==="test"?"game":(t==="links"||t==="write")?"theo":"learn");}
+  $("ttl").textContent=TOPICS.find(x=>x.t===t).n;$("seg").hidden=t==="test"||t==="links"||t==="write"||t==="lueck";setMode(t==="test"?"game":(t==="links"||t==="write"||t==="lueck")?"theo":"learn");}
 function goHome(){TESTLV=null;ERRMODE=false;document.querySelector(".app").classList.remove("typ");closePop();delete document.querySelector(".app").dataset.mode;$("topic").hidden=true;$("home").hidden=false;renderHome();}
 /* the Start button (house) goes back to the title page; the phone's back button returns to where you were */
 $("back").onclick=()=>{if(navState()==="topic")history.back();else goHome();setTimeout(()=>{$("hscroll").scrollTop=0;typeof enterMap==="function"&&enterMap();},90);};
@@ -2036,7 +2053,7 @@ $("tmr").onclick=()=>{store.timer=!store.timer;save();renderHome();};
 $("ahp").onclick=()=>{store.arthelp=!store.arthelp;save();renderHome();};
 function setMode(m){closePop();mode=m;if(m!=="game")document.querySelector(".app").classList.remove("typ");document.querySelector(".app").dataset.mode=m;$("mLearn").setAttribute("aria-pressed",m==="learn");$("mGame").setAttribute("aria-pressed",m==="game");$("mTheo").setAttribute("aria-pressed",m==="theo");
   const th=m==="theo";$("theo").hidden=!th;$("lg").hidden=th;$("stage").hidden=th;$("panel").hidden=th;
-  if(m==="game"){gi=0;MC=null;}if(T&&T!=="test"&&T!=="links"&&T!=="write"){store.last={t:T,m};save();}tabarUpd();render();}
+  if(m==="game"){gi=0;MC=null;}if(T&&T!=="test"&&T!=="links"&&T!=="write"&&T!=="lueck"){store.last={t:T,m};save();}tabarUpd();render();}
 /* arrow bar at the foot of a topic page: on to the next mode; after the last one (or where there is only one) back to the title page */
 function tabarUpd(){const b=$("tNext");if(!b)return;const nx=$("seg").hidden?null:mode==="learn"?"Spiel":mode==="game"?"Theorie":null;
   $("tnw").textContent=nx||"Start";b.setAttribute("aria-label",nx?"weiter zu "+nx:"zur Titelseite");}
@@ -2051,7 +2068,7 @@ Object.keys(WHY).forEach(k=>{const c=whyCard(WHY[k]);if(GT[k])GT[k].cards.unshif
 Object.keys(GT).forEach(k=>{SRC[k]=GT[k].src;TH[k]=()=>GT[k].th+srcCard(k);});
 const LG={fall:'<span class="lgc nom">Nom</span><span class="lgc akk">Akk</span><span class="lgc dat">Dat</span><span class="lgc gen">Gen</span>',adj:'<span><b class="lgx">-e/-er/-es</b> Merkzellen</span><span><b class="lgx en">-en</b> überall sonst</span>',art:'<span><b>der</b> · <b>die</b> · <b>das</b></span>',pron:'<span><i class="sw" style="background:var(--grey)"></i>Nominativ</span><span style="color:var(--akk)"><i class="sw" style="box-shadow:inset 0 0 0 2px var(--akk)"></i>Akkusativ</span><span style="color:var(--dat)"><i class="sw" style="box-shadow:inset 0 0 0 2px var(--dat)"></i>Dativ</span>',gen:'<span><i class="sw" style="background:var(--cream);box-shadow:inset 0 0 0 1px var(--line)"></i>Genitiv: des · der</span>'};
 function render(){clearTimeout(MC&&MC.tm);
-  if(mode==="theo"){if(T==="write"){renderWrite();$("theo").scrollTop=0;return;}theoGallery();$("theo").scrollTop=0;return;}
+  if(mode==="theo"){if(T==="write"){renderWrite();$("theo").scrollTop=0;return;}if(T==="lueck"){renderLueck();$("theo").scrollTop=0;return;}theoGallery();$("theo").scrollTop=0;return;}
   if(mode==="game"&&T!=="satz"){mcRender();return;}
   if(GT[T]){cardsLearn(GT[T].cards,GT[T].lg);return;}
   ({satz:mode==="learn"?sbLearn:sbGame,prep:prLearn,art:()=>cardsLearn(ART_CARDS,LG.art),pron:()=>cardsLearn(PRON_CARDS,LG.pron),gen:()=>cardsLearn(GEN_CARDS,LG.gen),fall:()=>cardsLearn(FALL_CARDS.concat(PRON_CARDS),LG.fall),adj:()=>cardsLearn(ADJ_CARDS,LG.adj)})[T]();}
@@ -2092,6 +2109,132 @@ function wSents(txt){const re=/[^.!?\n]*[.!?]+["“”)]*|[^.!?\n]+/g,o=[];let m
     if(o.length&&/^[a-zäöüß0-9]/.test(tr)){const p=o[o.length-1];p.len=off+tr.length-p.off;continue;}
     o.push({off:off,len:tr.length});}return o;}
 const wWords=t=>t.split(/\s+/).filter(w=>/[A-Za-zÄÖÜäöüß]/.test(w)).length;
+/* ---------- Lückentext: whole texts with gaps, written for this app. Gap = {Antwort/Alternative|Grundform|Schwierigkeit 1 leicht · 2 mittel · 3 schwer|Erklärung}. Aim per text: about 50 % schwer, 20 % mittel, 30 % leicht ---------- */
+const LT=[
+{id:"a1a",lv:"A1",t:"Mein Tag in Wien",x:`Ich heiße Lena und {wohne|wohnen|1|Verb mit „ich“: Endung -e.} in Wien. Jeden Morgen {stehe|aufstehen|3|Trennbares Verb: ich stehe … auf – die Vorsilbe „auf“ steht am Satzende.} ich um sechs Uhr auf. Zuerst trinke ich {einen|ein|3|Akkusativ maskulin: der Kaffee → Ich trinke einen Kaffee.} Kaffee. Dann fahre ich mit {dem|der|3|„mit“ + Dativ: der Bus → mit dem Bus.} Bus zur Arbeit.
+
+Ich arbeite in {einem|ein|3|„in“ + Dativ, Frage „wo?“: das Büro → in einem Büro.} Büro. Meine Kollegin {heißt|heißen|1|sie → Endung -t.} Sara. Sie {spricht|sprechen|2|Vokalwechsel e → i: ich spreche, du sprichst, sie spricht.} drei Sprachen. Mittags essen wir zusammen.
+
+Am Abend {kann|können|2|Modalverb: ich kann, du kannst, er kann (ohne Endung).} ich nicht kochen, ich bin zu müde. Ich {habe|haben|1|ich habe.} {keine|kein|3|Verneinung eines Nomens mit „kein“. Lust ist feminin → keine Lust.} Lust. Also bestellen wir eine Pizza. Mein Freund {isst|essen|2|essen: du isst, er isst (e → i).} gern Pizza mit Pilzen. Und du? Was {machst|machen|1|du → Endung -st.} du am Abend?`},
+{id:"a1b",lv:"A1",t:"Am Naschmarkt",x:`„Grüß Gott! Was {darf|dürfen|3|Modalverb dürfen: es darf. „Was darf es sein?“ ist die feste Frage im Geschäft.} es sein?“, fragt der Verkäufer am Naschmarkt.
+
+„Ich {nehme|nehmen|2|nehmen: ich nehme, du nimmst, er nimmt.} ein Kilo Tomaten und {den|der|3|Akkusativ maskulin: der Käse → Ich nehme den Käse.} Käse da vorne.“
+
+„Das {macht|machen|1|das/es → Endung -t.} zwölf Euro.“ Ich {gebe|geben|2|geben: ich gebe, du gibst, er gibt.} {ihm|er|3|Dativ von „er“: Wem gebe ich das Geld? – Ihm.} zwanzig Euro.
+
+Dann kaufe ich noch Blumen für {meine|mein|3|„für“ + Akkusativ, feminin: die Mutter → für meine Mutter.} Mutter. Sie {hat|haben|1|haben ist unregelmäßig: sie hat.} morgen Geburtstag. Um elf Uhr {treffe|treffen|2|ich treffe (du triffst, er trifft).} ich {meinen|mein|3|Akkusativ maskulin: der Bruder → Ich treffe meinen Bruder.} Bruder im Café. Wir {trinken|trinken|1|wir → Endung -en.} einen Kaffee und {essen|essen|1|wir essen.} Kuchen.`},
+{id:"a1c",lv:"A1",t:"Eine E-Mail aus Graz",x:`Lieber Tom,
+
+wie {geht|gehen|1|„Wie geht es dir?“ – es geht.} es dir? Ich bin jetzt in Graz. Die Stadt ist klein, aber sehr schön. Ich {wohne|wohnen|1|ich → Endung -e.} bei {einer|eine|3|„bei“ + Dativ, feminin: die Familie → bei einer Familie.} Familie. Die Familie hat zwei Kinder und {einen|ein|3|„haben“ + Akkusativ, maskulin: der Hund → einen Hund.} Hund. Der Hund heißt Max und {schläft|schlafen|2|Vokalwechsel a → ä: du schläfst, er schläft.} immer auf dem Sofa.
+
+Morgens {fängt|anfangen|3|anfangen: er fängt … an (a → ä, die Vorsilbe steht am Ende).} mein Kurs um neun Uhr an. Meine Lehrerin ist sehr nett, aber sie {spricht|sprechen|2|Vokalwechsel e → i.} sehr schnell.
+
+Am Wochenende {will|wollen|2|Modalverb: ich will, du willst, er will.} ich nach Wien fahren. {Hast|haben|1|du hast.} du Zeit? Dann {können|können|2|wir können – der Infinitiv „gehen“ steht am Ende.} wir zusammen ins Museum gehen.
+
+Ich {freue|sich freuen|3|„sich freuen auf“: ich freue mich.} mich auf {deine|dein|3|„auf“ + Akkusativ, feminin: die Antwort → auf deine Antwort.} Antwort!
+
+Viele Grüße
+Anna`},
+{id:"a2a",lv:"A2",t:"Ein Wochenende am Neusiedler See",x:`Letztes Wochenende {sind|sein|1|Perfekt mit „sein“ bei Bewegung von A nach B: wir sind gefahren.} wir an den Neusiedler See {gefahren|fahren|1|fahren – fuhr – ist gefahren.}. Wir haben in {einem|ein|3|„in“ + Dativ, Frage „wo?“: das Hotel → in einem kleinen Hotel.} kleinen Hotel {übernachtet|übernachten|3|„übernachten“ ist untrennbar: kein ge- → übernachtet.}.
+
+Am Samstag war das Wetter {besser|gut|3|gut – besser – am besten (unregelmäßig).} als am Freitag, deshalb {haben|haben|2|Nach „deshalb“ auf Position 1 kommt sofort das Verb: deshalb haben wir …} wir ein Boot gemietet. Mein Bruder ist ins Wasser {gesprungen|springen|3|springen – sprang – ist gesprungen (unregelmäßig, mit sein).}, obwohl das Wasser noch sehr kalt {war|sein|2|„obwohl“-Satz: das Verb steht am Ende; Präteritum von sein: war.}.
+
+Am Abend haben wir bei einem Heurigen gegessen. Ich habe {meiner|meine|3|Dativ feminin: Wem? – meiner Schwester.} Schwester ein Glas Wein {bestellt|bestellen|2|Verben mit be- haben kein ge-: bestellt.}. Sie hat gesagt, dass der Wein sehr gut {schmeckt|schmecken|2|„dass“-Satz: das Verb steht am Ende.}.
+
+Am Sonntag sind wir mit {dem|das|1|„mit“ + Dativ: das Rad → mit dem Rad.} Rad um den See gefahren. Weil wir so viel gefahren {sind|sein|3|„weil“-Satz: das Hilfsverb steht am Ende; fahren → Perfekt mit sein.}, war ich am Abend sehr müde. Ich {freue|sich freuen|1|ich freue mich.} mich schon auf den nächsten Ausflug.`},
+{id:"a2b",lv:"A2",t:"Beim Arzt",x:`Seit drei Tagen {habe|haben|1|ich habe.} ich Halsschmerzen. Deshalb {bin|sein|3|„gehen“ bildet das Perfekt mit sein; nach „deshalb“ steht das Verb auf Position 2.} ich heute zum Arzt {gegangen|gehen|2|gehen – ging – ist gegangen.}. Im Wartezimmer {saßen|sitzen|3|Präteritum von sitzen: ich saß, sie saßen.} schon viele Leute.
+
+Nach einer Stunde hat die Ärztin mich {aufgerufen|aufrufen|3|Trennbares Verb: auf-ge-rufen.}. Sie hat {mir|ich|3|Dativ von „ich“: Wem hat sie in den Hals geschaut? – mir.} in den Hals geschaut und gesagt: „Sie {müssen|müssen|1|Sie (höflich) → müssen.} viel Tee trinken und im Bett bleiben.“ Dann hat sie mir ein Rezept {gegeben|geben|1|geben – gab – gegeben.}.
+
+Ich {soll|sollen|2|„sollen“: eine andere Person (die Ärztin) sagt, was ich tun muss.} die Tabletten dreimal am Tag nehmen. Danach habe ich die Medikamente in der Apotheke {abgeholt|abholen|3|Trennbares Verb: ab-ge-holt.}.
+
+Morgen {kann|können|1|ich kann.} ich nicht arbeiten, deshalb rufe ich {meinen|mein|3|„anrufen“ + Akkusativ, maskulin: der Chef → meinen Chef.} Chef an. Ich hoffe, dass ich bald wieder gesund {bin|sein|2|„dass“-Satz: das Verb steht am Ende.}.`},
+{id:"a2c",lv:"A2",t:"Die neue Wohnung",x:`Im März {sind|sein|1|„umziehen“ bildet das Perfekt mit sein.} wir in eine neue Wohnung {umgezogen|umziehen|3|Trennbar: um-ge-zogen (ziehen – zog – gezogen).}. Die alte Wohnung war {kleiner|klein|2|Komparativ: klein → kleiner.} und {dunkler|dunkel|3|Komparativ von dunkel: dunkler – das e in -el fällt weg.}. Jetzt haben wir einen Balkon, und das Wohnzimmer ist fast so groß {wie||2|Gleich groß: so … wie. Nicht gleich: größer als.} die ganze alte Wohnung.
+
+Meine Freunde haben {uns|wir|3|„helfen“ + Dativ: Wem helfen sie? – uns.} beim Umzug geholfen. Wir haben das Sofa in {den|der|3|„in“ + Akkusativ, Frage „wohin?“: der Stock → in den dritten Stock.} dritten Stock {getragen|tragen|2|tragen – trug – getragen.}, denn es gibt leider keinen Lift. Am Abend {haben|haben|1|wir haben … bestellt.} wir Pizza bestellt, weil niemand mehr kochen {wollte|wollen|3|Präteritum von wollen: wollte; im „weil“-Satz am Ende.}.
+
+Jetzt fehlt nur noch {ein|ein|2|Hier ist der Schrank das Subjekt → Nominativ: ein Schrank.} Schrank für das Schlafzimmer. Am Samstag fahren wir ins Möbelhaus. Ich freue mich, dass wir jetzt so schön {wohnen|wohnen|1|„dass“-Satz: das Verb steht am Ende.}.`},
+{id:"b1a",lv:"B1",t:"Brief an die Hausverwaltung",x:`Sehr geehrte Damen und Herren,
+
+ich wohne {seit||1|Zeitraum bis jetzt: seit + Dativ (seit zwei Jahren).} zwei Jahren in der Wohnung Nummer 12 und {wende|sich wenden|3|„sich wenden an“ + Akkusativ: ich wende mich an Sie.} mich heute mit {einer||3|„mit“ + Dativ, feminin: die Bitte → mit einer Bitte.} Bitte an Sie. Seit Anfang Oktober funktioniert die Heizung nicht mehr richtig. Ich habe schon zweimal {beim||2|bei + dem = beim (Dativ).} Hausmeister angerufen, {der||3|Relativpronomen, Nominativ maskulin: der Hausmeister – der …} mir versprochen hat, sich darum zu kümmern. Leider ist bis heute nichts {passiert|passieren|2|passieren – ist passiert (mit sein; Verben auf -ieren ohne ge-).}.
+
+In der Wohnung ist es so kalt, {dass||2|Folge: so …, dass …} ich abends mit Mütze und Schal am Schreibtisch sitze. Wenn die Heizung nicht bald repariert {wird|werden|3|Passiv Präsens: wird + Partizip II (wird repariert).}, werde ich die Miete mindern müssen.
+
+Ich {wäre|sein|3|Höfliche Bitte mit Konjunktiv II: Ich wäre Ihnen dankbar, wenn …} Ihnen dankbar, wenn Sie {sich||2|„sich kümmern um“: reflexiv – Sie kümmern sich.} so schnell wie möglich um die Reparatur kümmern {könnten|können|3|Konjunktiv II von können: könnten (höflich); im „wenn“-Satz am Ende.}. Am Wochenende {können|können|1|Sie können.} Sie mich jederzeit erreichen.
+
+Mit freundlich{en||1|Feste Grußformel: mit freundlichen Grüßen (Dativ Plural ohne Artikel → -en).} Grüßen
+Martin Berger`},
+{id:"b1b",lv:"B1",t:"Das Wiener Kaffeehaus",x:`Das Wiener Kaffeehaus hat eine lange Tradition. Der Legende nach {brachten|bringen|3|bringen – brachte – gebracht (unregelmäßig); Plural: brachten.} die Osmanen nach der Belagerung von 1683 Kaffeebohnen nach Wien. Ob das stimmt, {weiß|wissen|2|wissen ist unregelmäßig: ich weiß, er weiß.} niemand genau.
+
+Sicher ist: {Im||2|in + dem = im (Zeitpunkt).} 19. Jahrhundert {wurden|werden|3|Passiv Präteritum: wurden + Partizip II (wurden eröffnet).} in Wien Hunderte Kaffeehäuser eröffnet. Viele Künstler, {die||3|Relativpronomen, Nominativ Plural: die Künstler – die …} kein Geld für eine warme Wohnung hatten, saßen {den||3|Zeitangabe ohne Präposition steht im Akkusativ: den ganzen Tag.} ganzen Tag im Café. Dort {konnten|können|2|Präteritum von können: konnten (ohne Umlaut).} sie lesen, schreiben und diskutieren. Für den Preis {eines||3|Genitiv maskulin: der Kaffee → der Preis eines kleinen Kaffees.} kleinen Kaffees {durfte|dürfen|2|Präteritum von dürfen: durfte.} man stundenlang bleiben. Bis heute bringt der Kellner zu jedem Kaffee {ein||1|Akkusativ neutral: das Glas → ein Glas.} Glas Wasser.
+
+Heute kommen nicht nur Wiener, sondern {auch||1|nicht nur …, sondern auch …} viele Touristen. Seit 2011 steht die Wiener Kaffeehauskultur auf der österreichischen Liste des immateriellen Kulturerbes der UNESCO. Wenn ich mehr Zeit {hätte|haben|3|Irrealer Wunsch: Konjunktiv II von haben → hätte.}, würde ich jeden Tag ins Café {gehen|gehen|1|würde + Infinitiv am Ende.}.`},
+{id:"b1c",lv:"B1",t:"Homeoffice – Fluch oder Segen?",x:`Seit {der|die|2|„seit“ + Dativ, feminin: die Pandemie → seit der Pandemie.} Pandemie arbeiten viele Menschen von zu Hause aus. Für manche {ist|sein|1|das → ist.} das ein Traum, für {andere|ander-|3|„für“ + Akkusativ Plural: für andere (Menschen).} eher ein Albtraum.
+
+Ein großer Vorteil ist, dass man keine Zeit im Verkehr {verliert|verlieren|2|„dass“-Satz: das Verb steht am Ende; man → -t.}. Außerdem kann man sich die Arbeitszeit {freier|frei|3|Komparativ als Adverb: frei → freier (ohne Endung).} einteilen. Auf der anderen Seite fehlt vielen der Kontakt zu {den|die|3|„zu“ + Dativ Plural: die Kollegen → zu den Kollegen.} Kollegen. Wer allein am Küchentisch sitzt, {fühlt|sich fühlen|2|Nach dem „wer“-Satz folgt der Hauptsatz mit dem Verb zuerst: fühlt sich …} sich schnell einsam.
+
+Mein Chef hat vorgeschlagen, zwei Tage pro Woche im Büro {zu arbeiten|arbeiten|3|Nach „vorschlagen“ folgt ein Infinitivsatz mit „zu“: … zu arbeiten.}. Ich finde diese Lösung gut, {weil/da||1|Grund: weil (das Verb steht am Ende).} ich so das Beste aus beiden Welten {habe|haben|2|„weil“-Satz: das Verb steht am Ende.}. Wenn ich jeden Tag zu Hause bleiben {müsste|müssen|3|Irreale Bedingung: Konjunktiv II von müssen → müsste; das Modalverb steht am Ende.}, würde mir die Decke auf den Kopf {fallen|fallen|1|würde + Infinitiv.}.`},
+{id:"b2a",lv:"B2",t:"Wer schreibt, bleibt",x:`Immer mehr Schulen {verzichten|verzichten|2|„verzichten auf“ + Akkusativ; hier: darauf, … zu …} darauf, Kindern eine verbundene Schreibschrift beizubringen. Kritiker warnen jedoch, dass dadurch eine wichtige Kulturtechnik verloren gehen {könnte|können|3|Möglichkeit/Vermutung: Konjunktiv II von können am Ende des Nebensatzes.}.
+
+{Einigen|einige|3|„zufolge“ steht nach dem Nomen und verlangt den Dativ: einigen Studien zufolge.} Studien zufolge {werden|werden|3|Passiv Präsens Plural: Inhalte werden … behalten.} handschriftlich notierte Inhalte besser behalten als getippte. Das liegt {daran||3|„liegen an“ + Nebensatz → Pronominaladverb: Das liegt daran, dass …}, dass das Gehirn beim Schreiben mit der Hand stärker {gefordert|fordern|2|Passiv: wird + Partizip II (gefordert).} wird. {Je||1|je + Komparativ …, desto/umso + Komparativ …} langsamer man schreibt, {desto/umso||2|„je …, desto …“: der zweite Teil beginnt mit desto (oder umso).} gründlicher denkt man nach.
+
+Befürworter der Digitalisierung halten dem entgegen, dass Kinder ohnehin den größten Teil {ihres|ihr|3|Genitiv maskulin: der Teil ihres Lebens (Possessiv + -es, Nomen + -s).} Lebens am Bildschirm verbringen {werden|werden|1|Futur I: werden + Infinitiv.}. Statt Schönschrift {zu üben|üben|2|„statt … zu“ + Infinitiv.}, sollten sie lieber lernen, schnell und fehlerfrei {zu tippen|tippen|1|„lernen“ + zu + Infinitiv.}. Vermutlich wird es auf eine Kombination aus {beidem|beide|3|„aus“ + Dativ; für zwei Dinge als Ganzes: beidem.} hinauslaufen.`},
+{id:"b2b",lv:"B2",t:"Der Donauradweg",x:`Der Donauradweg {gehört|gehören|1|gehören zu + Dativ: er gehört zu …} zu den beliebtesten Radwegen Europas. Die {meisten|meist-|3|Superlativ von „viel“ als Artikelwort: die meisten Radfahrer.} Radfahrer starten in Passau und fahren flussabwärts bis Wien, {wofür||3|Relativsatz mit „für + was“ → wofür (bezieht sich auf die ganze Fahrt).} sie meist eine Woche brauchen. Die Strecke ist flach und gut {ausgeschildert|ausschildern|3|Partizip II eines trennbaren Verbs: aus-ge-schildert.}, sodass sie auch für Familien mit Kindern geeignet ist.
+
+Besonders reizvoll ist die Wachau, {deren||3|Relativpronomen im Genitiv, feminin: die Wachau → deren Weinberge.} Weinberge und Klöster seit 2000 zum UNESCO-Welterbe {gehören|gehören|1|Relativsatz: das Verb steht am Ende; Plural → gehören.}. Wer {sich||1|„sich interessieren für“: reflexiv.} nicht nur für Natur, sondern auch für Geschichte interessiert, sollte in Melk Halt machen. Die im 18. Jahrhundert {erbaute|erbauen|3|Partizipialattribut: die … erbaute Abtei (Partizip II + Adjektivendung -e).} Benediktinerabtei thront hoch über der Donau.
+
+Übernachten kann man in Pensionen, {die||2|Relativpronomen, Nominativ Plural: die Pensionen – die …} sich auf Radfahrer spezialisiert haben. Viele bieten einen Gepäcktransport an, sodass man sein Gepäck nicht selbst {zu tragen|tragen|3|„nicht brauchen + zu + Infinitiv“ = nicht müssen: … nicht selbst zu tragen braucht.} braucht. Allerdings {sollte|sollen|2|Ratschlag: Konjunktiv II von sollen.} man in der Hochsaison früh reservieren, {da/weil||2|Grund: da (wie „weil“) – das Verb steht am Ende.} viele Unterkünfte schnell ausgebucht {sind|sein|1|Plural → sind; am Satzende.}.`},
+{id:"b2c",lv:"B2",t:"Hitze in der Stadt",x:`In einem Interview mit einer Wiener Zeitung {erklärte|erklären|1|Präteritum im Bericht: erklärte.} die Stadtplanerin Maria Huber, die Stadt {müsse|müssen|3|Indirekte Rede: Konjunktiv I von müssen → sie müsse.} sich auf heiß{ere||2|Komparativ + Endung ohne Artikel, Akkusativ Plural: heißere Sommer.} Sommer vorbereiten. Es {sei|sein|2|Indirekte Rede: Konjunktiv I von sein → es sei.} wissenschaftlich belegt, dass die Zahl der Hitzetage in {den||1|„in“ + Dativ Plural (Zeit): in den letzten Jahrzehnten.} letzten Jahrzehnten deutlich {gestiegen|steigen|1|steigen – stieg – ist gestiegen.} sei.
+
+Deshalb {würden|werden|3|Konjunktiv I „sie werden“ sieht aus wie der Indikativ → Ersatzform Konjunktiv II: würden.} in den kommenden Jahren Hunderte Bäume gepflanzt. Besonders wichtig {seien|sein|3|Konjunktiv I Plural von sein: seien.} Grünflächen in dicht bebauten Bezirken, {in denen|in + Relativpronomen|3|Relativsatz mit Präposition: in + Dativ Plural → in denen.} es kaum Parks gebe.
+
+Auf die Frage, {ob||1|Indirekte Ja/Nein-Frage: ob.} die geplanten Maßnahmen ausreichten, antwortete Huber, man {habe|haben|2|Konjunktiv I von haben: man habe.} keine Wahl. Wenn man jetzt nicht {handle/handele|handeln|3|Konjunktiv I von handeln: man handle (bei -eln fällt oft ein e weg).}, {werde|werden|2|Konjunktiv I von werden (3. Person Singular): werde.} es in zwanzig Jahren zu spät sein.`},
+{id:"c1a",lv:"C1",t:"Sprachpurismus",x:`Angesichts {des||3|„angesichts“ verlangt den Genitiv: der Einfluss → angesichts des zunehmenden Einflusses.} zunehmenden Einflusses des Englischen warnen Sprachkritiker seit Jahren {vor||1|„warnen vor“ + Dativ.} einem Verfall der deutschen Sprache. Ihre Sorge ist keineswegs neu: Bereits {im||1|in + dem = im (Zeitpunkt).} 17. Jahrhundert {setzten|setzen|2|„sich einsetzen für“; Präteritum Plural: setzten … ein.} sich Sprachgesellschaften für die Reinheit des Deutschen ein.
+
+Die Bemühungen, Fremdwörter durch deutsche Neubildungen zu ersetzen, waren allerdings nur teilweise von Erfolg {gekrönt|krönen|3|Feste Wendung: von Erfolg gekrönt sein (= erfolgreich sein).}. Während sich Wörter wie „Leidenschaft“ oder „Verfasser“ {durchgesetzt|durchsetzen|2|„sich durchsetzen“: trennbar → durch-ge-setzt.} haben, wurden andere Vorschläge belächelt und {gerieten|geraten|3|Präteritum von geraten: gerieten (in Vergessenheit geraten).} rasch in Vergessenheit.
+
+Die meisten Sprachwissenschaftler halten die Aufregung {für||1|„etwas für übertrieben halten“: halten für.} übertrieben. Sprachen {seien|sein|2|Indirekte Rede: Konjunktiv I Plural von sein → seien.}, so ihr Argument, keine abgeschlossenen Systeme, sondern {unterlägen|unterliegen|3|Konjunktiv I „sie unterliegen“ = Indikativ → Ersatzform Konjunktiv II: unterlägen.} einem ständigen Wandel. Entlehnungen verrieten weniger über den Zustand einer Sprache als über die Lebenswelt {ihrer||3|Genitiv Plural: die Sprecher → die Lebenswelt ihrer Sprecher.} Sprecher. Zudem {lässt|lassen|3|Passiversatz: „sich lassen“ + Infinitiv = kann … werden.} sich beobachten, dass viele Anglizismen nach kurzer Zeit wieder verschwinden.
+
+Ob man Wörter wie „downloaden“ nun begrüßt oder ablehnt – {ungeachtet|trotz|3|„ungeachtet“ (+ Genitiv) bedeutet „trotz“, gehobener Stil.} aller Debatten entscheiden letztlich die Sprecher selbst, welche Wörter bleiben.`},
+{id:"c1b",lv:"C1",t:"Die Viertagewoche",x:`Die Forderung {nach||2|„die Forderung nach“ + Dativ.} einer Viertagewoche bei vollem Lohnausgleich {stößt|stoßen|3|„auf Kritik stoßen“: es stößt (o → ö).} bei vielen Arbeitgebern auf heftige Kritik. Befürworter verweisen hingegen {auf||2|„verweisen auf“ + Akkusativ.} Pilotprojekte, in {deren||3|Relativpronomen im Genitiv Plural: in deren Verlauf (= im Verlauf dieser Projekte).} Verlauf die Produktivität nicht gesunken, sondern sogar gestiegen {sei|sein|3|Indirekte Rede: Konjunktiv I von sein → sei.}. Die Beschäftigten {seien|sein|2|Konjunktiv I Plural: seien.} seltener krank und zufriedener mit ihrer Arbeit.
+
+Kritiker geben jedoch zu bedenken, dass sich die Ergebnisse kleiner Studien nicht ohne Weiteres auf die gesamte Wirtschaft {übertragen|übertragen|2|„sich übertragen lassen“: lassen + Infinitiv.} lassen. Gerade in der Pflege, in der ohnehin akuter Personalmangel {herrscht|herrschen|2|„Mangel herrscht“; im Relativsatz am Ende.}, sei eine Verkürzung der Arbeitszeit kaum {umsetzbar|umsetzen|3|Adjektiv auf -bar = kann … werden (Passiversatz): umsetzbar.}.
+
+Ungeachtet {dessen||3|Genitiv des Demonstrativpronomens „das“: ungeachtet dessen (= trotzdem).} experimentieren immer mehr Unternehmen mit flexiblen Modellen. Es bleibt abzuwarten, {inwiefern/inwieweit||3|Indirekter Fragesatz: inwiefern / inwieweit = in welchem Maß.} sich die Viertagewoche flächendeckend durchsetzen {wird|werden|1|Futur I: wird + Infinitiv, im Nebensatz am Ende.}. Fest {steht|stehen|1|„fest steht“ = sicher ist.} jedoch: Die Debatte um die Arbeitszeit ist noch lange nicht {beendet|beenden|1|Partizip II: beendet (kein ge- bei be-).}.`},
+{id:"c1c",lv:"C1",t:"Das Burgtheater",x:`Das 1888 an der Ringstraße {eröffnete|eröffnen|3|Erweitertes Partizipialattribut: das … eröffnete Gebäude (Partizip II + Adjektivendung -e).} Gebäude des Burgtheaters zählt {zu||1|„zählen zu“ + Dativ.} den bedeutendsten Bühnen des deutschsprachigen Raums. Die Institution selbst ist jedoch wesentlich älter: Sie {geht|zurückgehen|2|„zurückgehen auf“: sie geht … zurück.} auf ein 1741 von Maria Theresia {gegründetes|gründen|3|Partizipialattribut nach „ein“, neutral: ein … gegründetes Theater.} Theater am Michaelerplatz zurück. Unter Joseph II. {wurde|werden|2|Passiv Präteritum: wurde … erhoben.} es 1776 zum „Teutschen Nationaltheater“ erhoben.
+
+Im Zweiten Weltkrieg schwer {beschädigt|beschädigen|2|Partizipialkonstruktion: (Weil es) schwer beschädigt (war), …}, konnte das Haus erst 1955 wiedereröffnet werden. Bis heute {gilt||3|„gelten als“: es gilt als (e → i, unregelmäßig).} ein Engagement an der „Burg“ als Höhepunkt {einer||3|Genitiv feminin: die Laufbahn → der Höhepunkt einer Laufbahn.} schauspielerischen Laufbahn.
+
+Nicht selten {sorgen|sorgen|1|Plural (Inszenierungen) → sorgen.} Inszenierungen für Kontroversen: So löste Thomas Bernhards „Heldenplatz“ 1988 einen der größten Theaterskandale der Zweiten Republik {aus||3|Trennbares Verb „auslösen“: löste … aus.}. Die von zahlreichen Touristen {besuchten|besuchen|3|Partizipialattribut im Plural: die … besuchten Stiegenhäuser.} Stiegenhäuser mit Deckengemälden des jungen Gustav Klimt {können|können|1|Plural → können.} im Rahmen von Führungen besichtigt werden.`}
+];
+const LS={lv:null,id:null};
+function ltParse(x){const P=[],re=/\{([^}]*)\}/g;let m,i=0,n=0;while((m=re.exec(x))){P.push({s:x.slice(i,m.index)});const f=m[1].split("|");P.push({g:n++,a:f[0].split("/"),h:f[1]||"",d:+f[2]||2,w:f[3]||""});i=re.lastIndex;}P.push({s:x.slice(i)});return P;}
+const ltW=a=>{const L=Math.max(...a.map(s=>s.length));return L<=4?"6ch":L<=8?"9.5ch":"13ch";};
+const escA=s=>esc(s).replace(/"/g,"&quot;");
+function renderLueck(){if(!LS.lv)LS.lv=store.ltlv||(LVLS.slice(0,5).includes(store.level)?store.level:"B1");
+  const list=LT.filter(x=>x.lv===LS.lv);if(!list.find(x=>x.id===LS.id))LS.id=list[0].id;const T0=LT.find(x=>x.id===LS.id),P=ltParse(T0.x),G=P.filter(p=>p.a),sv=(store.lt||{})[T0.id]||{};
+  $("theo").innerHTML='<div class="tc"><h3>Lückentext</h3><div class="wchips" id="llv">'+LVLS.slice(0,5).map(l=>'<button data-l="'+l+'" aria-pressed="'+(LS.lv===l)+'">'+l+'</button>').join("")+'</div>'+
+   '<select id="ltask" class="fld" aria-label="Text">'+list.map(x=>{const o=(store.lt||{})[x.id];return '<option value="'+x.id+'"'+(x.id===T0.id?' selected':'')+'>'+esc(x.t)+(o&&o.done?'  ·  '+o.ok+' / '+ltParse(x.x).filter(p=>p.a).length:'')+'</option>';}).join("")+'</select>'+
+   '<p class="tline">'+G.length+' Lücken, je ein Wort (selten zwei). In Klammern steht die Grundform. Etwa die Hälfte ist schwer, ein Fünftel mittel, der Rest leicht. Die Texte sind für diese App geschrieben.</p></div>'+
+   '<div class="tc"><h3>'+esc(T0.t)+'</h3><div class="ltx" id="ltx" lang="de">'+P.map(p=>p.a?'<span class="lgap"><input class="lg fld" data-g="'+p.g+'" style="width:'+ltW(p.a)+'" placeholder="'+(p.g+1)+'" value="'+escA(sv.v&&sv.v[p.g]||"")+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="next" aria-label="Lücke '+(p.g+1)+(p.h?', Grundform '+escA(p.h):'')+'">'+(p.h?'<span class="lh">('+esc(p.h)+')</span>':'')+'<span class="lc" id="lc'+p.g+'"></span></span>':esc(p.s)).join("")+'</div>'+
+   '<div class="lbtn"><button class="primary" id="lchk">Prüfen</button><button id="lnew">Leeren</button></div></div><div id="lres"></div>';
+  $("theo").querySelectorAll("#llv button").forEach(b=>b.onclick=()=>{LS.lv=b.dataset.l;LS.id=null;store.ltlv=LS.lv;save();renderLueck();});
+  $("ltask").onchange=e=>{LS.id=e.target.value;renderLueck();$("theo").scrollTop=0;};
+  const ins=[...$("theo").querySelectorAll("input.lg")];
+  ins.forEach((el,k)=>{el.oninput=()=>{const s=store.lt||(store.lt={}),o=s[T0.id]||(s[T0.id]={v:[]});o.v[+el.dataset.g]=el.value;save();};
+    el.onkeydown=e=>{if(e.key==="Enter"){e.preventDefault();(ins[k+1]||$("lchk")).focus();}};});
+  $("lchk").onclick=()=>ltCheck(T0,G,false);
+  $("lnew").onclick=()=>{if(store.lt)delete store.lt[T0.id];save();renderLueck();};
+  if(sv.done)ltCheck(T0,G,true);}
+function ltCheck(T0,G,quiet){const ins=[...$("theo").querySelectorAll("input.lg")],nrm=s=>s.trim().replace(/\s+/g," ").replace(/[’']/g,"'");let ok=0;const by={1:[0,0],2:[0,0],3:[0,0]},bad=[],lab={3:"schwer",2:"mittel",1:"leicht"};
+  G.forEach(p=>{const el=ins[p.g],v=nrm(el.value),hit=p.a.includes(v),near=!hit&&!!v&&p.a.some(a=>a.toLowerCase()===v.toLowerCase());by[p.d][1]++;if(hit){ok++;by[p.d][0]++;}
+    el.classList.remove("ok","bad","near");el.classList.add(hit?"ok":near?"near":"bad");
+    $("lc"+p.g).innerHTML=hit?'<i class="lok" aria-label="richtig">✓</i>':'<i class="lno" aria-label="falsch">✗</i><b>'+esc(p.a[0])+'</b>';
+    if(!hit)bad.push({p,v,near});});
+  const s=store.lt||(store.lt={}),o=s[T0.id]||(s[T0.id]={v:[]});o.done=true;o.ok=ok;save();
+  $("lres").innerHTML='<div class="tc"><h3>Ergebnis <small>'+ok+' / '+G.length+' richtig</small></h3><p class="tline">'+[3,2,1].filter(d=>by[d][1]).map(d=>lab[d]+' '+by[d][0]+' / '+by[d][1]).join(' · ')+'</p>'+
+   (bad.length?'<div class="lerr">'+bad.map(({p,v,near})=>'<div><b>'+(p.g+1)+'</b><span><span class="lans">'+esc(p.a.join(" / "))+'</span>'+(v?' <s>'+esc(v)+'</s>':' <i>(leer)</i>')+(near?'<small>Fast: nur Groß- und Kleinschreibung.</small>':'')+'<small>'+lab[p.d]+(p.w?' · '+esc(p.w):'')+'</small></span></div>').join("")+'</div><p class="tline">Du kannst die roten Lücken ändern und noch einmal prüfen.</p>':'<p>Alles richtig – sehr gut!</p>')+'</div>';
+  if(!quiet)$("lres").scrollIntoView({behavior:"smooth",block:"start"});}
 function renderWrite(){const T0=WTASKS.find(x=>x.id===WS.id)||WTASKS[0];
   $("theo").innerHTML='<div class="tc"><h3>Aufgabe</h3><div class="wchips" id="wlv">'+["A1","A2","B1","B2","C1","Frei"].map(l=>'<button data-l="'+l+'" aria-pressed="'+(WS.lv===l)+'">'+l+'</button>').join("")+'</div>'+
    '<select id="wtask" aria-label="Aufgabe">'+WTASKS.filter(x=>x.lv===WS.lv).map(x=>'<option value="'+x.id+'"'+(x.id===T0.id?' selected':'')+'>'+esc(x.t)+'</option>').join("")+'</select>'+
@@ -2280,11 +2423,11 @@ function tapGo(el,i){el.classList.add("hit");setTimeout(()=>{SC.scrollTo({top:se
 /* sections other than Grammatik, filled once (Test again when the level changes) */
 const TLEN=()=>[15,30,45].includes(store.tlen)?store.tlen:15;
 function renderTest(){const n={};const all=[].concat(PQ,PRON_Q,GEN_Q,FALL_Q,ADJ_Q,...Object.keys(GT).map(k=>GT[k].q));all.forEach(q=>{n[q.lv]=(n[q.lv]||0)+1;});
-  $("p-test").innerHTML='<div class="tc"><h3>Tests</h3><p class="tline">Fragen aus allen Themen, wie in der Prüfung. Ein Stufentest nimmt zwei Drittel Fragen der Stufe und ein Drittel von darunter.</p>'+
+  $("p-test").innerHTML='<div class="tc"><h3>Tests</h3><p class="tline">Fragen aus allen Themen, wie in der Prüfung. Ein Stufentest mischt etwa: die Hälfte schwer (Fragen der Stufe), ein Fünftel mittel (eine Stufe darunter), der Rest leicht (noch tiefer).</p>'+
    '<div class="tlen"><span>Länge</span>'+[15,30,45].map(k=>'<button data-n="'+k+'" aria-pressed="'+(TLEN()===k)+'">'+k+'</button>').join("")+'<span>Fragen</span></div>'+
-   '<div class="tests">'+[["mix","Gemischt","alle Stufen"]].concat(LVLS.slice(0,5).map(l=>[l,l,(n[l]||0)+" Fragen"])).map(([k,a,b])=>'<button class="tst" data-l="'+k+'"><b>'+a+'</b><small>'+b+'</small></button>').join("")+'<button class="tst wide" id="goWrite"><b>Text prüfen</b><small>Schreiben A1–C1 · mit LanguageTool</small></button></div></div>';
+   '<div class="tests">'+[["mix","Gemischt","alle Stufen"]].concat(LVLS.slice(0,5).map(l=>[l,l,(n[l]||0)+" Fragen"])).map(([k,a,b])=>'<button class="tst" data-l="'+k+'"><b>'+a+'</b><small>'+b+'</small></button>').join("")+'<button class="tst wide" id="goLueck"><b>Lückentext</b><small>ganze Texte · A1–C1 · mit Korrektur</small></button><button class="tst wide" id="goWrite"><b>Text prüfen</b><small>Schreiben A1–C1 · mit LanguageTool</small></button></div></div>';
   $("p-test").querySelectorAll(".tlen button").forEach(x=>x.onclick=()=>{store.tlen=+x.dataset.n;save();renderTest();});
-  $("goWrite").onclick=()=>openTopic("write");
+  $("goWrite").onclick=()=>openTopic("write");$("goLueck").onclick=()=>openTopic("lueck");
   $("p-test").querySelectorAll(".tst[data-l]").forEach(x=>x.onclick=()=>{TESTLV=x.dataset.l==="mix"?"all":x.dataset.l;openTopic("test");});}
 $("p-links").innerHTML=TH_LINKS;
 $("p-quotes").innerHTML='<div class="tc df"><h3>Über die deutsche Sprache</h3>'+quotesHTML()+'</div>';loadPics($("p-quotes"));
@@ -2358,7 +2501,9 @@ function bank(t){
   if(t==="adj")return shuffle(byLevel(ADJ_Q)).slice(0,15).map(q=>Object.assign({t:"adj"},q));
   if(t==="gen")return shuffle(byLevel(GEN_Q)).map(q=>Object.assign({t:"gen",c:0},q));
   const L=TESTLV||store.level;if(L&&L!=="all"){const all=[].concat(PQ.map(q=>Object.assign({t:"prep"},q)),ART.concat(ownList()).map(artQ),PRON_Q.map(q=>Object.assign({t:"pron",c:0},q)),GEN_Q.map(q=>Object.assign({t:"gen",c:0},q)),FALL_Q.map(q=>Object.assign({t:"fall"},q)),ADJ_Q.map(q=>Object.assign({t:"adj"},q)),...Object.keys(GT).map(k=>GT[k].q.map(q=>Object.assign({t:k,c:0},q))));
-    const k=LVLS.indexOf(L),at=shuffle(all.filter(q=>q.lv===L)),below=shuffle(all.filter(q=>LVLS.indexOf(q.lv)<k)),N=TLEN();return shuffle(at.slice(0,Math.round(N*2/3)).concat(below).slice(0,N));}
+    /* mix (Steuart, 30 Oct): about 50 % hard = the level itself, 20 % medium = one level below, 30 % easy = further below; gaps are filled in that order */
+    const k=LVLS.indexOf(L),N=TLEN(),at=shuffle(all.filter(q=>q.lv===L)),mid=shuffle(all.filter(q=>LVLS.indexOf(q.lv)===k-1)),easy=shuffle(all.filter(q=>LVLS.indexOf(q.lv)<k-1));
+    const A=at.slice(0,Math.round(N*.5)),M=mid.slice(0,Math.round(N*.2)),E=easy.slice(0,N-A.length-M.length),rest=at.slice(A.length).concat(mid.slice(M.length),easy.slice(E.length));return shuffle(A.concat(M,E,rest).slice(0,N));}
   const pick=(a,n)=>shuffle(a).slice(0,n);const keys=shuffle(["prep","art","fall","pron","gen","adj"].concat(Object.keys(GT)));const N=TLEN(),per=Math.ceil(N/keys.length);return shuffle([].concat(...keys.map(k=>pick(bank(k),per)))).slice(0,N);}
 function baseOf(q){return q.n||q.h||(q.t==="art"?q.noun:"");}
 function mix(q){if(q.t==="art"||q.k==="c")return q;const ord=shuffle(q.o.map((w,i)=>i));return Object.assign({},q,{o:ord.map(i=>q.o[i]),c:ord.indexOf(q.c)});}
