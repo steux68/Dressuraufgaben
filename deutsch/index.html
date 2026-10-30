@@ -1,5 +1,5 @@
 <!doctype html><html lang="de"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Deutsch"></head><body>
-<meta name="app-version" content="2026-10-30n">
+<meta name="app-version" content="2026-10-30o">
 <title>Deutsch Grammatik</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#ffffff">
@@ -583,7 +583,7 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .tlcd{position:absolute;height:var(--th);width:calc(var(--th) + 78px);display:flex;align-items:stretch;gap:6px;padding:0;border:0;border-radius:0;background:none;text-align:left;font:inherit;color:#222;cursor:pointer;-webkit-tap-highlight-color:transparent;min-height:0}
 .tlcd.a1{bottom:calc(50% + 42px)}.tlcd.a2{bottom:calc(50% + 52px + var(--th))}.tlcd.b1{top:calc(50% + 42px)}.tlcd.b2{top:calc(50% + 52px + var(--th))}
 .tltx{width:72px;display:flex;flex-direction:column;gap:2px;overflow:hidden}
-.tlcd.a1 .tltx,.tlcd.a2 .tltx{justify-content:flex-end}
+.tltx{justify-content:flex-end}
 .tltx small{font-size:9.5px;font-weight:700;letter-spacing:.05em;color:var(--red);line-height:1.2}
 .tltx b{font-size:11.5px;line-height:1.15;font-weight:700;overflow-wrap:anywhere;hyphens:auto}
 .tltx em{font-style:normal;font-size:7.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#6b6b66}
@@ -637,6 +637,8 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .mrow:active{background:var(--df) left top/100% 1px no-repeat,var(--lime)}
 /* sections grey / white throughout, each bar the colour of its page, so a bar and its page are one block */
 #p-home,#p-links,#p-hist{background:#f4f4f2}
+#hscroll{scroll-snap-type:y proximity}#p-hist{scroll-snap-align:start}
+.tc.tlsec{padding-top:0;margin-top:0}.tc.tlsec>.tline{margin-top:10px}
 .hbody .hb:is([data-i="0"],[data-i="2"],[data-i="4"]){background-color:#f4f4f2}
 /* ---- bars: only one dotted line where two bars meet (the upper one drops its bottom line while another bar is right below it) ---- */
 .hb{--bl:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px)}.hb.nb{--bl:linear-gradient(transparent,transparent)}
@@ -2686,7 +2688,7 @@ const eraOf=y=>ERAS.find(e=>y>=e[0]&&y<e[1])||ERAS[4];
 const tlCol=e=>e.h?"#3a3c37":eraOf(e.y)[4];
 /* geometry (Steuart, 30 Oct): as tall as the phone allows, two rows above and two below; the pictures as big as fit; entries spaced so no line crosses a card */
 const TXW=72;let TLG=null;
-function tlGeo(){const H=Math.round(Math.min(780,Math.max(440,(window.innerHeight||700)-210))),th=Math.max(64,Math.floor((H/2-58)/2)),S=Math.ceil((th/2+TXW+8)/2),X0=Math.ceil(th/2)+12;
+function tlGeo(){const sc=document.getElementById("hscroll"),vh=sc&&sc.clientHeight>200?sc.clientHeight:(window.innerHeight||700)-82,H=Math.round(Math.min(760,Math.max(360,vh-66-23-46))),th=Math.max(56,Math.floor((H/2-54)/2)),S=Math.ceil((th/2+TXW+8)/2),X0=Math.ceil(th/2)+12;
   return {H,th,S,X0,W:Math.ceil(X0+(TL.length-1)*S+th/2+TXW+18)};}
 const tlX=(y,G)=>{const P=TL.map((e,i)=>[e.y,G.X0+i*G.S]);if(y<=P[0][0])return Math.max(2,P[0][1]-(P[0][0]-y)*.2);for(let i=1;i<P.length;i++)if(y<=P[i][0]){const a=P[i-1],b=P[i];return a[1]+(b[1]-a[1])*(y-a[0])/(b[0]-a[0]);}const L=P[P.length-1];return Math.min(G.W-2,L[1]+(y-L[0])*3);};
 const tlLab=e=>e.lab||String(Math.floor(e.y));
@@ -2712,7 +2714,8 @@ function tlBind(){const P=$("p-hist");P.querySelectorAll(".tlcd").forEach(b=>b.o
   M.querySelectorAll("button").forEach(b=>b.onclick=()=>{who="T";t0=now()+400;const i=+b.dataset.i;T.scrollTo({left:TLG.X0+i*TLG.S-T.clientWidth/2,behavior:reduceM?"auto":"smooth"});setTimeout(()=>{M.scrollTo({left:b.offsetLeft-M.clientWidth/2+b.offsetWidth/2,behavior:reduceM?"auto":"smooth"});},50);});
   mark();}
 /* rebuild when the phone turns or the height changes a lot */
-let tlRT=0;window.addEventListener("resize",()=>{clearTimeout(tlRT);tlRT=setTimeout(()=>{const box=$("tlbox");if(!box||!TLG)return;const G=tlGeo();if(Math.abs(G.H-TLG.H)<30)return;const sl=$("tl").scrollLeft/TLG.W;box.innerHTML=tlHTML();tlBind();$("tl").scrollLeft=sl*TLG.W;},250);});
+function tlFit(){const box=$("tlbox");if(!box||!TLG)return;const G=tlGeo();if(Math.abs(G.H-TLG.H)<8)return;const sl=$("tl").scrollLeft/TLG.W;box.innerHTML=tlHTML();tlBind();$("tl").scrollLeft=sl*TLG.W;}
+let tlRT=0;window.addEventListener("resize",()=>{clearTimeout(tlRT);tlRT=setTimeout(tlFit,250);});
 const TLO={i:0,open:false};
 const ARW=k=>'<svg class="ar" width="34" height="34" viewBox="-12 -12 24 24" aria-hidden="true"><path class="rg" d="'+(k<0?'M-7.88 -5.31A9.5 9.5 0 1 1 -7.88 5.31':'M7.88 5.31A9.5 9.5 0 1 1 7.88 -5.31')+'"/><path class="dt" transform="rotate('+(k<0?180:0)+')" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="'+(k<0?-9.5:9.5)+'" y="0">'+(k<0?"W":"E")+'</text></svg>';
 function tlOpen(i){const n=TL.length;i=(i+n)%n;TLO.i=i;const e=TL[i],r=eraOf(e.y),l=SRCL(e.l);
@@ -2738,7 +2741,7 @@ function tlClose(){TLO.open=false;$("tlpop").hidden=true;}
   document.addEventListener("keydown",e=>{if(!TLO.open)return;if(e.key==="Escape"){if(navState()==="tl")history.back();else tlClose();}if(e.key==="ArrowRight")tlOpen(TLO.i+1);if(e.key==="ArrowLeft")tlOpen(TLO.i-1);});
   let x0=null,y0=0;const tb=$("tlb");tb.addEventListener("touchstart",e=>{x0=e.touches[0].clientX;y0=e.touches[0].clientY;},{passive:true});
   tb.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;x0=null;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5)tlOpen(TLO.i+(dx<0?1:-1));},{passive:true});})();
-const HIST='<div class="tc"><h3>Zeitleiste</h3><div id="tlbox">'+tlHTML()+'</div><p class="tline">Seitlich wischen · antippen für Bild und Text. Dunkle Felder: Zeitgeschehen. Bilder: Wikipedia / Wikimedia Commons. Der ganze Bogen: <a class="wk" href="'+WK("Geschichte der deutschen Sprache")+'" target="_blank" rel="noopener" aria-label="Mehr bei Wikipedia: Geschichte der deutschen Sprache">mehr ↗</a></p></div>'+
+const HIST='<div class="tc tlsec"><div id="tlbox">'+tlHTML()+'</div><p class="tline">Seitlich wischen · antippen für Bild und Text. Dunkle Felder: Zeitgeschehen. Bilder: Wikipedia / Wikimedia Commons. Der ganze Bogen: <a class="wk" href="'+WK("Geschichte der deutschen Sprache")+'" target="_blank" rel="noopener" aria-label="Mehr bei Wikipedia: Geschichte der deutschen Sprache">mehr ↗</a></p></div>'+
 '<div class="tc"><h3>Wussten Sie …?</h3><div class="hlist">'+[
  ["6 Länder","Amtssprache in Deutschland, Österreich, der Schweiz, Liechtenstein, Luxemburg und Belgien.","Deutsche Sprache"],
  ["Groß","Alle Nomen schreibt man groß – als einzige große Sprache.","Großschreibung"],
@@ -2771,7 +2774,7 @@ function renderTest(){const n={};const all=[].concat(PQ,PRON_Q,GEN_Q,FALL_Q,ADJ_
 $("p-links").innerHTML=TH_LINKS;
 renderQuotes();
 $("p-hist").innerHTML=HIST;loadPics($("p-hist"));
-tlBind();
+tlBind();requestAnimationFrame(()=>requestAnimationFrame(tlFit));
 (()=>{const st=$("sets");$("p-sets").innerHTML='<div class="tc df"><h3>Einstellungen</h3></div>';$("p-sets").firstChild.appendChild(st);st.hidden=false;
   const f=document.querySelector("footer.copy");if(f){const c=f.cloneNode(true);$("p-sets").appendChild(c);}const vm=document.querySelector('meta[name="app-version"]');if(vm){const v=document.createElement("p");v.className="tline";v.style.textAlign="center";v.textContent="Version "+vm.content;$("p-sets").appendChild(v);}})();
 /* which page are we in: the last bar that has left the bottom stack */
