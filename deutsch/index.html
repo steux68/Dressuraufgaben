@@ -1,5 +1,5 @@
 <!doctype html><html lang="de"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Deutsch"></head><body>
-<meta name="app-version" content="2026-10-30l">
+<meta name="app-version" content="2026-10-30m">
 <title>Deutsch Grammatik</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#ffffff">
@@ -372,7 +372,7 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
   background:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left top/100% 1px no-repeat,repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left bottom/100% 1px no-repeat,#fff}
 .hb b{font-weight:700}.hb small{font-size:8.5px;margin-left:4px}
 .hb.hl{margin:39px 50% -1px 0}.hb.hr{margin:39px 0 -1px calc(50% - 1px)}
-.hbody.inpg .hb{background-color:#f2f2f2}.hb.on{background-color:#eaffae!important}.hb.hit{background-color:#cdff3e!important}
+.hb.on{background-color:#eaffae!important}.hb.hit{background-color:#cdff3e!important}
 .sback{position:absolute;left:0;right:0;z-index:13;background:#fff;pointer-events:none}
 .hp{display:flex;flex-direction:column;gap:10px;padding-top:10px}#p-home{gap:8px}
 /* LINES (as on dasein-design): dashed = the frame of the screen (side guides, under the header, the arrow bar);
@@ -571,8 +571,10 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .tlc{position:relative;height:100%}
 .tlc>i{position:absolute;display:block;font-style:normal}
 .tlera{top:calc(50% - 18px);height:12px;font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:12px;padding-left:5px;white-space:nowrap;overflow:hidden;box-sizing:border-box}
-.tlyr{left:0;right:0;top:calc(50% - 6px);height:22px;background:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left top/100% 1px no-repeat,repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left bottom/100% 1px no-repeat,#f2f2f2}
-.tlc .tltk{position:absolute;top:calc(50% - 6px);height:22px;transform:translateX(-50%);font-size:10px;font-weight:700;line-height:22px;color:#3a3c37;white-space:nowrap;z-index:1}
+.tlyr{display:none}
+.tlc .tltk{position:absolute;top:calc(50% - 6px);height:23px;min-width:44px;padding:0 6px;box-sizing:border-box;transform:translateX(-50%);text-align:center;font-size:11px;font-weight:700;line-height:20px;color:#3a3c37;white-space:nowrap;z-index:1;background:#f2f2f2;box-shadow:inset 0 -3px 0 var(--ec)}
+.tlc .tltk.h{background:#e2e2df}.tlc .tltk.on{background:#cdff3e}
+.tlw>.tlar{z-index:4}.tlw>.tlar[data-off]{opacity:.3}
 .tlsp{height:4px;opacity:.75}.tlsp.a{top:calc(50% - 25px - var(--k)*6px)}.tlsp.b{top:calc(50% + 19px + var(--k)*6px)}
 .tlln{width:1px}
 .tlln.a1{top:calc(50% - 42px);height:24px}.tlln.a2{top:calc(50% - 52px - var(--th));height:calc(34px + var(--th))}
@@ -629,7 +631,13 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .hp .qt::after,.hp .qt .pic::after{display:none}
 .hp .qt .pic{background:#e6e6e3}
 .hp .qt .who{font-size:.95rem}.hp .qt small{font-size:.74rem}.hp .qt q{font-size:.9rem}.hp .qt .qen{font-size:.8rem}
-.qmore{display:block;width:100%;min-height:40px;margin-top:8px;border:0;border-radius:0;background:#f2f2f2;font:inherit;font-size:.95rem;font-weight:700;color:#000}.qmore small{font-weight:400;color:var(--muted)}
+.mrow{display:flex;align-items:center;gap:12px;width:100%;min-height:44px;margin:-1px 0 0;padding:6px 10px;border:0;border-radius:0;background:var(--df) left top/100% 1px no-repeat;font:inherit;font-size:1rem;font-weight:400;color:#000;text-align:left;-webkit-tap-highlight-color:transparent}
+.mrow b{color:var(--red)}.mrow small{font-size:.75rem;color:var(--muted)}
+.mrow .pl{flex:none;width:26px;height:26px;overflow:visible;border-radius:50%;box-shadow:0 0 0 4px #e6f7a8}.mrow .pl circle{fill:#fff;stroke:var(--red);stroke-width:1.2}.mrow .pl path{fill:none;stroke:var(--red);stroke-width:1.4;stroke-linecap:round}
+.mrow:active{background:var(--df) left top/100% 1px no-repeat,var(--lime)}
+/* sections grey / white throughout, each bar the colour of its page, so a bar and its page are one block */
+#p-home,#p-links,#p-hist{background:#f4f4f2}
+.hbody .hb:is([data-i="0"],[data-i="2"],[data-i="4"]){background-color:#f4f4f2}
 /* ---- bars: only one dotted line where two bars meet (the upper one drops its bottom line while another bar is right below it) ---- */
 .hb{--bl:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px)}.hb.nb{--bl:linear-gradient(transparent,transparent)}
 .hb.hl{background:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left top/100% 1px no-repeat,var(--bl) left bottom/100% 1px no-repeat,var(--hv) right top/1px 100% no-repeat,#fff}
@@ -2408,12 +2416,13 @@ function loadPics(root){const cache=store.pics2||(store.pics2={});root.querySele
   next(0);});}
 /* Zitate (Steuart, 30 Oct): one striped list, grey / white, a single dotted line between quotes; filter chips by topic (like the Wonder categories of dasein-design); in "Alle" the first 8, then "mehr" */
 const QS={f:"Alle",all:false};
+const PLUS='<svg class="pl" viewBox="-12 -12 24 24" aria-hidden="true"><circle r="10.5"/><path d="M-5.5 0H5.5M0 -5.5V5.5"/></svg>';
 function quotesHTML(){const secs=QUOTES.filter(x=>x.sec).map(x=>x.sec);let sec="",qi=0,n=0,hid=0;const items=[];
   QUOTES.forEach(x=>{if(x.sec){sec=x.sec;qi=0;return;}if(QS.f!=="Alle"&&sec!==QS.f)return;if(QS.f==="Alle"&&!QS.all&&n>=8){hid++;return;}
     if(qi===0&&QS.f==="Alle")items.push('<h4 class="qsec">'+esc(sec)+'</h4>');n++;
     items.push('<a class="qt'+(qi++%2?' alt':'')+'" href="'+x.u+'" target="_blank" rel="noopener"><span class="pic" aria-hidden="true"><i>'+x.pic+'</i>'+(x.w?'<img alt="" loading="lazy" data-w="'+x.w.join("|")+'">':'')+'</span><span class="qb"><b class="who">'+esc(x.who)+'</b><small>'+esc(x.when)+'</small><q>'+esc(x.q)+'</q><span class="qen">'+esc(x.en)+'</span></span></a>');});
   return '<div class="wchips qchips" id="qchips">'+["Alle"].concat(secs).map(f=>'<button data-f="'+esc(f)+'" aria-pressed="'+(QS.f===f)+'">'+esc(f==="Deutsch zu meinem Pferd"?"Pferd":f==="Zu kurz, zu lang, zu schwer"?"Zu schwer":f)+'</button>').join("")+'</div>'+
-   '<div class="qlist">'+items.join("")+'</div>'+(hid?'<button class="qmore" id="qmore">mehr Zitate <small>(+'+hid+')</small></button>':'')+'<p class="tline">Antippen öffnet die Quelle. Bilder: Wikipedia / Wikimedia Commons.</p>';}
+   '<div class="qlist">'+items.join("")+'</div>'+(hid?'<button class="mrow" id="qmore">'+PLUS+'<span>mehr <b>Zitate</b> <small>(+'+hid+')</small></span></button>':'')+'<p class="tline">Antippen öffnet die Quelle. Bilder: Wikipedia / Wikimedia Commons.</p>';}
 function renderQuotes(){$("p-quotes").innerHTML='<div class="tc df"><h3>Über die deutsche Sprache</h3>'+quotesHTML()+'</div>';loadPics($("p-quotes"));
   $("p-quotes").querySelectorAll("#qchips button").forEach(b=>b.onclick=()=>{QS.f=b.dataset.f;QS.all=false;renderQuotes();});
   const m=$("qmore");if(m)m.onclick=()=>{QS.all=true;renderQuotes();};}
@@ -2508,14 +2517,16 @@ function tlHTML(){const G=TLG=tlGeo(),lanes={a:[],b:[]};let sp="";
   return '<div class="tlw"><div class="tl" id="tl" style="height:'+G.H+'px;--th:'+G.th+'px"><div class="tlc" style="width:'+G.W+'px">'+
    ERAS.map(r=>{const a=Math.max(0,tlX(r[0],G)),b=tlX(r[1],G);return '<i class="tlera" style="left:'+a+'px;width:'+(b-a)+'px;background:'+r[3]+';color:'+r[4]+'">'+r[2]+'</i>';}).join("")+
    '<i class="tlyr"></i>'+sp+
-   TL.map((e,i)=>{const ln=["a1","b1","a2","b2"][i%4],x=G.X0+i*G.S;return '<span class="tltk" style="left:'+x+'px">'+tlLab(e)+'</span><i class="tlln '+ln+'" style="left:'+x+'px;background:'+tlCol(e)+'"></i>'+
+   TL.map((e,i)=>{const ln=["a1","b1","a2","b2"][i%4],x=G.X0+i*G.S;return '<span class="tltk'+(e.h?' h':'')+'" data-i="'+i+'" style="left:'+x+'px;--ec:'+tlCol(e)+'">'+tlLab(e)+'</span><i class="tlln '+ln+'" style="left:'+x+'px;background:'+tlCol(e)+'"></i>'+
      '<button type="button" class="tlcd '+ln+(e.h?' h':'')+'" data-i="'+i+'" style="left:'+(x-G.th/2)+'px" aria-label="'+esc(e.d)+': '+esc(e.t)+(e.h?' (Zeitgeschehen)':'')+'"><span class="tlth">'+tlThumb(e)+'</span><span class="tltx"><small>'+esc(e.d)+'</small><b>'+esc(e.t)+'</b>'+(e.h?'<em>Zeitgeschehen</em>':'')+'</span></button>';}).join("")+
-   '</div></div></div><div class="tls tlsm" id="tlsm" aria-label="Zeitleiste – Jahre">'+TL.map((e,i)=>'<button type="button" data-i="'+i+'" class="'+(e.h?'h':'')+'" style="--ec:'+tlCol(e)+'" aria-label="'+esc(e.d)+': '+esc(e.t)+'">'+tlLab(e)+'</button>').join("")+'</div>';}
+   '</div></div><button type="button" class="tlar pw" aria-label="zurück">'+ARW(-1)+'</button><button type="button" class="tlar pe" aria-label="weiter">'+ARW(1)+'</button></div><div class="tls tlsm" id="tlsm" aria-label="Zeitleiste – Jahre">'+TL.map((e,i)=>'<button type="button" data-i="'+i+'" class="'+(e.h?'h':'')+'" style="--ec:'+tlCol(e)+'" aria-label="'+esc(e.d)+': '+esc(e.t)+'">'+tlLab(e)+'</button>').join("")+'</div>';}
 /* the year strip under the timeline moves with it (Steuart, 30 Oct): drag either one, the other follows; the entry in the middle is lime */
 function tlBind(){const P=$("p-hist");P.querySelectorAll(".tlcd").forEach(b=>b.onclick=()=>tlOpen(+b.dataset.i));loadPics(P);
   const T=$("tl"),M=$("tlsm");if(!T||!M)return;let who=null,t0=0;const now=()=>performance.now(),frac=e=>e.scrollLeft/Math.max(1,e.scrollWidth-e.clientWidth);
   const cur=()=>Math.max(0,Math.min(TL.length-1,Math.round((T.scrollLeft+T.clientWidth/2-TLG.X0)/TLG.S)));let last=-1;
-  const mark=()=>{const i=cur();if(i===last)return;last=i;M.querySelectorAll("button").forEach((b,k)=>b.classList.toggle("on",k===i));};
+  const mark=()=>{const i=cur();if(i===last)return;last=i;M.querySelectorAll("button").forEach((b,k)=>b.classList.toggle("on",k===i));T.querySelectorAll(".tltk").forEach((b,k)=>b.classList.toggle("on",k===i));};
+  const pw=P.querySelector(".tlw>.pw"),pe=P.querySelector(".tlw>.pe"),ends=()=>{pw.toggleAttribute("data-off",T.scrollLeft<4);pe.toggleAttribute("data-off",T.scrollLeft>T.scrollWidth-T.clientWidth-4);};
+  pw.onclick=()=>T.scrollBy({left:-T.clientWidth*.6,behavior:reduceM?"auto":"smooth"});pe.onclick=()=>T.scrollBy({left:T.clientWidth*.6,behavior:reduceM?"auto":"smooth"});T.addEventListener("scroll",ends,{passive:true});ends();
   T.addEventListener("scroll",()=>{mark();if(who==="M"&&now()-t0<150)return;who="T";t0=now();M.scrollLeft=frac(T)*(M.scrollWidth-M.clientWidth);},{passive:true});
   M.addEventListener("scroll",()=>{if(who==="T"&&now()-t0<150)return;who="M";t0=now();T.scrollLeft=frac(M)*(T.scrollWidth-T.clientWidth);},{passive:true});
   M.querySelectorAll("button").forEach(b=>b.onclick=()=>{who="T";t0=now()+400;const i=+b.dataset.i;T.scrollTo({left:TLG.X0+i*TLG.S-T.clientWidth/2,behavior:reduceM?"auto":"smooth"});setTimeout(()=>{M.scrollTo({left:b.offsetLeft-M.clientWidth/2+b.offsetWidth/2,behavior:reduceM?"auto":"smooth"});},50);});
