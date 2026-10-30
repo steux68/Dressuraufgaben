@@ -1,5 +1,5 @@
 <!doctype html><html lang="de"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Deutsch"></head><body>
-<meta name="app-version" content="2026-10-30i">
+<meta name="app-version" content="2026-10-30j">
 <title>Deutsch Grammatik</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#ffffff">
@@ -564,6 +564,45 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .htile .cap b{display:block;font-size:11.5px}.htile .cap small{font-size:10px}
 .htile:active{outline:1px solid var(--red);outline-offset:-1px}
 .ty.frak{font-family:"DdFrak",serif}.ty.anti{font-family:"DdCor","DdEsz",Georgia,serif;font-weight:500}
+/* ---- Geschichte: timeline in a square that scrolls sideways (like the history-of-design poster), dasein lines ---- */
+.tlw{position:relative}
+.tlw::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:3;background:var(--df) left top/100% 1px no-repeat,var(--df) left bottom/100% 1px no-repeat,var(--dfv) left top/1px 100% no-repeat,var(--dfv) right top/1px 100% no-repeat}
+.tl{aspect-ratio:1/1;overflow-x:auto;overflow-y:hidden;touch-action:pan-x pan-y;scrollbar-width:none;overscroll-behavior-x:contain;background:#fff}.tl::-webkit-scrollbar{display:none}
+.tlc{position:relative;height:100%}
+.tlc>i{position:absolute;display:block;font-style:normal}
+.tlera{top:calc(50% - 18px);height:12px;font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:12px;padding-left:5px;white-space:nowrap;overflow:hidden;box-sizing:border-box}
+.tlyr{left:0;right:0;top:calc(50% - 6px);height:22px;background:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left top/100% 1px no-repeat,repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left bottom/100% 1px no-repeat,#f2f2f2}
+.tlc .tltk{position:absolute;top:calc(50% - 6px);height:22px;transform:translateX(-50%);font-size:10px;font-weight:700;line-height:22px;color:#3a3c37;white-space:nowrap;z-index:1}
+.tlsp{height:4px;opacity:.75}.tlsp.a{top:calc(50% - 25px - var(--k)*6px)}.tlsp.b{top:calc(50% + 19px + var(--k)*6px)}
+.tlln{width:1px}.tlln.a{top:calc(50% - 38px);height:20px}.tlln.b{top:calc(50% + 16px);height:20px}
+.tlcd{position:absolute;width:112px;margin-left:-56px;display:flex;flex-direction:column;align-items:center;gap:2px;padding:0;border:0;border-radius:0;background:none;text-align:center;font:inherit;color:#222;cursor:pointer;-webkit-tap-highlight-color:transparent;min-height:0}
+.tlcd.a{bottom:calc(50% + 38px)}.tlcd.b{top:calc(50% + 36px)}
+.tlcd small{font-size:9.5px;font-weight:700;letter-spacing:.06em;color:var(--red);line-height:1.2;margin-top:2px}
+.tlcd b{font-size:11.5px;line-height:1.15;max-height:2.35em;overflow:hidden}
+.tlth{position:relative;width:54px;height:54px;flex:none;background:#f4f4f2;overflow:hidden;display:grid;place-items:center}
+.tlth::after{content:"";position:absolute;inset:0;pointer-events:none;background:var(--df) left top/100% 1px no-repeat,var(--df) left bottom/100% 1px no-repeat,var(--dfv) left top/1px 100% no-repeat,var(--dfv) right top/1px 100% no-repeat}
+.tlth>i{font-style:normal;font-weight:700;font-size:.85rem;color:#9a9a96}.tlth.has>i{visibility:hidden}
+.tlth img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s}.tlth.has img{opacity:1}
+.tlth .ty{font-size:32px;line-height:1;color:#222}
+.tlcd:active .tlth{outline:1px solid var(--red);outline-offset:-1px}
+/* pop-up: a floating card over the page, like the Wonder pop-up of dasein-design; the date strip at its foot */
+.tlpop{position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;padding:calc(env(safe-area-inset-top,0px) + 14px) 12px calc(env(safe-area-inset-bottom,0px) + 14px);background:rgba(255,255,255,.62);-webkit-backdrop-filter:blur(1.5px);backdrop-filter:blur(1.5px)}
+.tlpop[hidden]{display:none}
+.tlcard{position:relative;width:100%;max-width:520px;max-height:100%;display:flex;flex-direction:column;background:#fff;box-shadow:0 2px 18px rgba(0,0,0,.18)}
+.tlcard::after{content:"";position:absolute;inset:0;pointer-events:none;background:var(--df) left top/100% 1px no-repeat,var(--df) left bottom/100% 1px no-repeat,var(--dfv) left top/1px 100% no-repeat,var(--dfv) right top/1px 100% no-repeat}
+.tltop{flex:none;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:9px 10px 6px}
+.tlk{grid-column:2;font-size:12.5px;letter-spacing:.06em;color:#666}.tlk b{color:var(--red);font-weight:400}
+.tlx{grid-column:3;justify-self:end;border:0;background:none;padding:6px;margin:-6px;display:flex;min-height:0;-webkit-tap-highlight-color:transparent}
+.tlx svg{width:24px;height:24px}.tlx .rg{fill:none;stroke:#3a3c37;stroke-width:1px}.tlx .xx{fill:none;stroke:#1a1a1a;stroke-width:1.15;stroke-linecap:round}
+.tlbody{flex:1 1 auto;min-height:0;overflow-y:auto;padding:0 12px 10px;display:flex;flex-direction:column;gap:6px;touch-action:pan-y}
+.tlbody h4{margin:0;font-size:1.15rem;line-height:1.2}.tlbody p{margin:0;font-size:1rem;line-height:1.42}.tlbody .gs{margin-top:4px}
+.tlfig{flex:none}
+.tlar{position:absolute;top:50%;margin-top:-21px;width:42px;height:42px;border:0;padding:0;border-radius:50%;background:rgba(255,255,255,.82);display:flex;align-items:center;justify-content:center;min-height:0;z-index:1;-webkit-tap-highlight-color:transparent}
+.tlar.pw{left:6px}.tlar.pe{right:6px}
+.tls{flex:none;display:flex;gap:1px;overflow-x:auto;scrollbar-width:none;padding:8px 10px 10px;border-top:1px dashed var(--line)}.tls::-webkit-scrollbar{display:none}
+.tls button{flex:none;min-width:44px;min-height:0;padding:6px 6px 7px;border:0;border-radius:0;background:#f2f2f2;font:inherit;font-size:11px;font-weight:700;color:#3a3c37;box-shadow:inset 0 -3px 0 var(--ec);-webkit-tap-highlight-color:transparent}
+.tls button.on{background:#cdff3e}
+.hp .tline a.wk,.tlbody a.wk{display:inline-block;padding:1px 8px 2px;font-size:11px;font-weight:700;letter-spacing:.04em;color:#1a5fd0;background:#dfe9fa;text-decoration:none;vertical-align:1px}
 /* the pop-up for a picture */
 .gfig{position:relative;margin:0;aspect-ratio:1/1;background:#f6f6f6;outline:1px dotted #b8b8b8;outline-offset:-1px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;overflow:hidden;text-align:center}
 .gfig img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0}.gfig.has img{opacity:1}.gfig>i{font-style:normal;color:#9a9a96;font-weight:700;font-size:2rem}.gfig.has>i{visibility:hidden}
@@ -2341,65 +2380,80 @@ $("markb").onclick=toTitle;$("markL").onclick=toTitle;$("markb").setAttribute("a
 const WK=t=>"https://de.wikipedia.org/wiki/"+encodeURIComponent(t.replace(/ /g,"_"));
 const SRCL=(w)=>Array.isArray(w)?w:[WK(w),"Wikipedia"];
 const hi=(a,b,w)=>{const l=w?SRCL(w):null;return '<div class="hi"><b>'+a+'</b><span>'+b+(l?'<a class="wk" href="'+l[0]+'" target="_blank" rel="noopener" aria-label="Mehr bei '+l[1]+'" title="'+l[1]+'">mehr ↗</a>':'')+'</span></div>';};
-/* Geschichte in Bildern: three type samples drawn here, the rest Wikipedia pictures loaded on the phone (like the Zitate portraits) */
-const HPIC=[
- {t:"Fraktur",s:"gebrochene Schrift · bis 1941",ty:"frak",smp:"Deutsch",big:"Deutsche Schrift",abc:"ABCDEFGHIJKLM<br>NOPQRSTUVWXYZ<br>abcdefghijklm<br>nopqrstuvwxyz äöüß",
-  x:"Bei der Fraktur sind die Bögen der Buchstaben „gebrochen“, also geknickt. Etwa vierhundert Jahre lang druckte man die meisten deutschen Bücher und Zeitungen so. Über Fraktur oder Antiqua stritt man lange. 1941 machte ein Erlass die Antiqua zur Normalschrift.",l:"Fraktur (Schrift)"},
- {t:"Antiqua",s:"runde Schrift · seit 1941",ty:"anti",smp:"Deutsch",big:"Deutsche Schrift",abc:"ABCDEFGHIJKLM<br>NOPQRSTUVWXYZ<br>abcdefghijklm<br>nopqrstuvwxyz äöüß",
-  x:"Die Antiqua hat runde Bögen, wie die Inschriften der Römer. Gelehrte schrieben Latein in Antiqua, Deutsch aber lange in Fraktur. Heute ist die Antiqua überall die Normalschrift – auch in dieser App.",l:"Antiqua-Fraktur-Streit"},
- {t:"Abrogans",s:"um 770 · St. Gallen",ini:"Ab",w:["de:Abrogans","en:Abrogans"],
-  x:"Ein Wörterbuch Latein – Althochdeutsch, das älteste Buch auf Deutsch. Es heißt nach seinem ersten Wort: <i>abrogans</i>, „demütig“. Die Handschrift liegt in der Stiftsbibliothek St. Gallen.",l:["https://www.e-codices.ch/en/list/one/csg/0911","e-codices, Stiftsbibliothek St. Gallen"]},
- {t:"Nibelungenlied",s:"um 1200 · Mittelhochdeutsch",ini:"NL",w:["de:Nibelungenlied","en:Nibelungenlied"],
-  x:"Ein Heldenepos über Siegfried, Kriemhild und den Untergang der Burgunden. Es ist in mehr als 30 Handschriften erhalten und gehört zum Weltdokumentenerbe der UNESCO.",l:"Nibelungenlied"},
- {t:"Gutenberg-Bibel",s:"um 1455 · Mainz",ini:"GB",w:["de:Gutenberg-Bibel","en:Gutenberg_Bible"],
-  x:"Das erste große Buch, das in Europa mit beweglichen Lettern gedruckt wurde – auf Latein, in einer gotischen Schrift. Von rund 180 Exemplaren sind knapp 50 erhalten.",l:"Gutenberg-Bibel"},
- {t:"Lutherbibel",s:"1534 · Wittenberg",ini:"LB",w:["de:Lutherbibel","en:Luther_Bible"],
-  x:"Die erste vollständige Bibel in Luthers Deutsch. Sie wurde viel gekauft und viel gelesen. So verbreitete sich ein gemeinsames Schriftdeutsch über die Dialekte hinweg.",l:"Lutherbibel"},
- {t:"Deutsches Wörterbuch",s:"1854–1961 · Brüder Grimm",ini:"DWB",w:["de:Deutsches_Wörterbuch","de:Brüder_Grimm"],
-  x:"Jacob und Wilhelm Grimm begannen das größte Wörterbuch der deutschen Sprache. Fertig war es erst nach über 120 Jahren, lange nach ihrem Tod: 32 Bände und ein Quellenverzeichnis.",l:["https://tcdh.uni-trier.de/en/projekt/digital-grimm","Trier Center for Digital Humanities, Der digitale Grimm"]},
- {t:"Konrad Duden",s:"1880 · Rechtschreibung",ini:"KD",w:["de:Konrad_Duden","en:Konrad_Duden"],
-  x:"Der Schuldirektor Konrad Duden veröffentlichte 1880 sein Wörterbuch der deutschen Rechtschreibung. Sein Name steht bis heute für richtiges Schreiben.",l:"Konrad Duden"},
- {t:"Sütterlin",s:"1915 · Schulschrift",ini:"Sü",w:["de:Sütterlinschrift","en:Sütterlin"],
-  x:"Ludwig Sütterlin entwarf eine einfache Schreibschrift. Ab 1915 lernten Kinder in Preußen damit schreiben. Viele alte Familienbriefe sind in Sütterlin oder Kurrent geschrieben.",l:"Sütterlinschrift"},
- {t:"Großes ẞ",s:"2017 · amtlich erlaubt",ty:"anti",smp:"ß ẞ",big:"STRAẞE",abc:"STRASSE · STRAẞE",
-  x:"Das ß gab es lange nur klein. Wer in Großbuchstaben schrieb, nahm SS: STRASSE. Seit 2017 erlaubt das amtliche Regelwerk auch das große ẞ: STRAẞE. SS bleibt richtig.",l:["https://www.rechtschreibrat.com/DOX/rfdr_PM_2017-06-29_Aktualisierung_Regelwerk.pdf","Rat für deutsche Rechtschreibung, Pressemitteilung 2017 (PDF)"]}
+/* ---------- Geschichte as a timeline (Steuart, 30 Oct): a square that scrolls sideways, the date strip through the middle, entries alternating above and below;
+   a tap opens a floating card like the Wonder pop-up of dasein-design, with the date strip at its foot ---------- */
+const ABC="ABCDEFGHIJKLM<br>NOPQRSTUVWXYZ<br>abcdefghijklm<br>nopqrstuvwxyz äöüß";
+const TL=[
+ {y:770,d:"um 770",t:"Abrogans",ini:"Ab",w:["de:Abrogans","en:Abrogans"],x:"Das älteste Buch auf Deutsch: ein Wörterbuch Latein – Althochdeutsch. Es heißt nach seinem ersten Wort: <i>abrogans</i>, „demütig“. Die Handschrift liegt in der Stiftsbibliothek St. Gallen.",l:["https://www.e-codices.ch/en/list/one/csg/0911","e-codices, Stiftsbibliothek St. Gallen"]},
+ {y:830,d:"um 830",t:"Hildebrandslied",ini:"Hi",w:["de:Hildebrandslied"],x:"Das <b>Hildebrandslied</b> wird aufgeschrieben – das einzige erhaltene Heldenlied auf Althochdeutsch. Ein Vater und sein Sohn stehen einander im Kampf gegenüber; das Ende fehlt.",l:"Hildebrandslied"},
+ {y:900,d:"9./10. Jh.",lab:"10. Jh.",t:"Merseburger Zaubersprüche",ini:"MZ",w:["de:Merseburger_Zaubersprüche"],x:"Zwei heidnische Zaubersprüche, aufgeschrieben in einer Kirchenhandschrift. Der erste soll Gefangene befreien, der zweite das verletzte Bein eines Pferdes heilen.",l:"Merseburger Zaubersprüche"},
+ {y:1200,d:"um 1200",t:"Nibelungenlied",ini:"NL",w:["de:Nibelungenlied","en:Nibelungenlied"],x:"Ein Heldenepos auf Mittelhochdeutsch über Siegfried, Kriemhild und den Untergang der Burgunden. Es ist in mehr als 30 Handschriften erhalten und gehört zum Weltdokumentenerbe der UNESCO.",l:"Nibelungenlied"},
+ {y:1230,d:"um 1230",t:"Sachsenspiegel",ini:"Sa",w:["de:Sachsenspiegel"],x:"Eike von Repgow schreibt das Recht auf Deutsch statt auf Latein auf. Der <b>Sachsenspiegel</b> ist eines der ältesten Rechtsbücher in deutscher Sprache.",l:"Sachsenspiegel"},
+ {y:1450,d:"um 1450",t:"Gutenberg",ini:"GB",w:["de:Gutenberg-Bibel","en:Gutenberg_Bible"],x:"<b>Johannes Gutenberg</b> druckt in Mainz mit beweglichen Buchstaben. Bücher werden billiger, die Schreibweisen gleichen sich langsam an. Um 1455 erscheint die Gutenberg-Bibel – auf Latein, in einer gotischen Schrift. Von rund 180 Exemplaren sind knapp 50 erhalten.",l:"Johannes Gutenberg"},
+ {y:1522,e:1534,d:"1522–1534",t:"Lutherbibel",ini:"LB",w:["de:Lutherbibel","en:Luther_Bible"],x:"<b>Martin Luther</b> übersetzt 1522 das Neue Testament, 1534 erscheint die ganze Bibel. Sie wird viel gekauft und viel gelesen; so verbreitet sich ein gemeinsames Schriftdeutsch über die Dialekte hinweg.",l:"Lutherbibel"},
+ {y:1530,d:"1530",t:"Sendbrief vom Dolmetschen",ini:"SD",w:["de:Sendbrief_vom_Dolmetschen"],x:"Luther erklärt, wie er übersetzt: Man müsse die Mutter im Haus, die Kinder auf der Gasse und den einfachen Mann auf dem Markt fragen und ihnen „auf das Maul sehen“ – nicht Wort für Wort dem Latein folgen.",l:"Sendbrief vom Dolmetschen"},
+ {y:1540,e:1941,d:"16. Jh. bis 1941",lab:"16. Jh.",t:"Fraktur",ty:"frak",smp:"A",big:"Deutsche Schrift",abc:ABC,x:"Bei der Fraktur sind die Bögen der Buchstaben „gebrochen“, also geknickt. Etwa vierhundert Jahre lang druckte man die meisten deutschen Bücher und Zeitungen so. Über Fraktur oder Antiqua stritt man lange.",l:"Fraktur (Schrift)"},
+ {y:1617,d:"1617",t:"Fruchtbringende Gesellschaft",ini:"FG",w:["de:Fruchtbringende_Gesellschaft"],x:"In Weimar entsteht die <b>Fruchtbringende Gesellschaft</b>, die erste große Sprachgesellschaft. Sie will Deutsch pflegen und Fremdwörter durch deutsche Wörter ersetzen.",l:"Fruchtbringende Gesellschaft"},
+ {y:1663,d:"1663",t:"Schottelius",ini:"Sc",w:["de:Justus_Georg_Schottelius"],x:"Justus Georg <b>Schottelius</b> veröffentlicht die <i>Ausführliche Arbeit von der Teutschen HaubtSprache</i>, die erste große Grammatik des Deutschen.",l:"Justus Georg Schottelius"},
+ {y:1748,d:"1748",t:"Gottsched",ini:"Go",w:["de:Johann_Christoph_Gottsched"],x:"Johann Christoph <b>Gottsched</b> veröffentlicht seine <i>Grundlegung einer Deutschen Sprachkunst</i>, eine Grammatik für das Hochdeutsche. Sie prägt den Unterricht über Jahrzehnte.",l:"Johann Christoph Gottsched"},
+ {y:1774,e:1786,d:"1774–1786",t:"Adelung",ini:"Ad",w:["de:Johann_Christoph_Adelung"],x:"Johann Christoph <b>Adelung</b> veröffentlicht sein großes Wörterbuch der hochdeutschen Mundart. Es gilt lange als Maßstab für richtiges Deutsch.",l:"Johann Christoph Adelung"},
+ {y:1801,d:"1801",t:"Campe",ini:"Ca",w:["de:Joachim_Heinrich_Campe"],x:"Joachim Heinrich <b>Campe</b> ersetzt Fremdwörter durch deutsche: Zerrbild für Karikatur, Stelldichein für Rendezvous. Manches bleibt, vieles nicht.",l:"Joachim Heinrich Campe"},
+ {y:1854,e:1961,d:"1854–1961",t:"Grimms Wörterbuch",ini:"DWB",w:["de:Deutsches_Wörterbuch","de:Brüder_Grimm"],x:"Jacob und Wilhelm Grimm veröffentlichen den ersten Band des <b>Deutschen Wörterbuchs</b>. Fertig wird es erst 1961, lange nach ihrem Tod: 32 Bände und ein Quellenverzeichnis. Heute ist es online durchsuchbar.",l:["https://tcdh.uni-trier.de/en/projekt/digital-grimm","Trier Center for Digital Humanities, Der digitale Grimm"]},
+ {y:1876,d:"1876",t:"Orthographische Konferenz",ini:"OK",w:["de:Orthographische_Konferenz_von_1876"],x:"Die erste <b>Orthographische Konferenz</b> in Berlin sucht eine einheitliche Rechtschreibung. Der Erfolg bleibt klein.",l:"Orthographische Konferenz von 1876"},
+ {y:1880,d:"1880",t:"Konrad Duden",ini:"KD",w:["de:Konrad_Duden","en:Konrad_Duden"],x:"Der Schuldirektor <b>Konrad Duden</b> veröffentlicht sein <i>Vollständiges Orthographisches Wörterbuch</i>. Sein Name steht bis heute für richtiges Schreiben.",l:"Konrad Duden"},
+ {y:1898,d:"1898",t:"Bühnenaussprache",ini:"Si",w:["de:Theodor_Siebs"],x:"<b>Theodor Siebs</b>: <i>Deutsche Bühnenaussprache</i>. So soll man Hochdeutsch sprechen – zuerst im Theater, später auch in Schule und Radio.",l:"Theodor Siebs"},
+ {y:1901,d:"1901",t:"Eine Rechtschreibung",ini:"OK",w:["de:Orthographische_Konferenz_von_1901"],x:"Die zweite Orthographische Konferenz in Berlin beschließt eine gemeinsame Rechtschreibung für alle deutschsprachigen Länder. Sie gilt ab 1902.",l:"Orthographische Konferenz von 1901"},
+ {y:1915,d:"1915",t:"Sütterlin",ini:"Sü",w:["de:Sütterlinschrift","en:Sütterlin"],x:"Ludwig <b>Sütterlin</b> entwirft eine einfache Schreibschrift. Ab 1915 lernen Kinder in Preußen damit schreiben. Viele alte Familienbriefe sind in Sütterlin oder Kurrent geschrieben.",l:"Sütterlinschrift"},
+ {y:1941,d:"1941",t:"Antiqua",ty:"anti",smp:"A",big:"Deutsche Schrift",abc:ABC,x:"Der <b>Normalschrifterlass</b> macht die Antiqua zur Normalschrift; die Fraktur verschwindet aus Schulen und Zeitungen. Die Antiqua hat runde Bögen, wie die Inschriften der Römer – heute ist sie überall die Normalschrift, auch in dieser App.",l:"Normalschrifterlass"},
+ {y:1951,d:"1951",t:"Österreichisches Wörterbuch",ini:"ÖW",w:["de:Österreichisches_Wörterbuch"],x:"Das erste <b>Österreichische Wörterbuch</b> erscheint. Es gilt bis heute in Österreichs Schulen und Ämtern, mit Wörtern wie Jänner, Paradeiser und Marille.",l:"Österreichisches Wörterbuch"},
+ {y:1955,d:"1955",t:"Duden verbindlich",ini:"Du",w:["de:Duden"],x:"Die Kultusminister in Westdeutschland erklären den <b>Duden</b> in Zweifelsfällen für verbindlich – das „Dudenprivileg“. Es gilt bis zur Reform 1996.",l:"Duden"},
+ {y:1996,e:2006,d:"1996–2006",t:"Rechtschreibreform",ini:"RR",w:["de:Reform_der_deutschen_Rechtschreibung_von_1996"],x:"Die <b>Rechtschreibreform</b>: daß → dass, Schiffahrt → Schifffahrt. Seit 1998 gilt sie in den Schulen; nach viel Streit wird sie 2006 überarbeitet.",l:"Reform der deutschen Rechtschreibung von 1996"},
+ {y:2004,d:"2004",t:"Rechtschreibrat",ini:"RdR",w:["de:Rat_für_deutsche_Rechtschreibung"],x:"Der <b>Rat für deutsche Rechtschreibung</b> wird gegründet. Er pflegt das amtliche Regelwerk für alle deutschsprachigen Länder.",l:["https://www.rechtschreibrat.com/","Rat für deutsche Rechtschreibung"]},
+ {y:2017,d:"2017",t:"Großes ẞ",ty:"anti",smp:"ẞ",big:"STRAẞE",abc:"STRASSE · STRAẞE",x:"Das ß gab es lange nur klein. Wer in Großbuchstaben schrieb, nahm SS: STRASSE. Seit 2017 erlaubt das amtliche Regelwerk auch das große ẞ: STRAẞE. SS bleibt richtig.",l:["https://www.rechtschreibrat.com/DOX/rfdr_PM_2017-06-29_Aktualisierung_Regelwerk.pdf","Rat für deutsche Rechtschreibung, Pressemitteilung 2017 (PDF)"]},
+ {y:2021,d:"2021",t:"Genderzeichen",ini:"*",x:"Der Rechtschreibrat empfiehlt geschlechtergerechte Sprache, nimmt Genderstern, Doppelpunkt und Unterstrich aber nicht ins amtliche Regelwerk auf.",l:"Rat für deutsche Rechtschreibung"}
 ];
-const hpTile=(p,i)=>'<button type="button" class="htile" data-i="'+i+'" aria-label="'+esc(p.t)+', '+esc(p.s)+'">'+(p.ty?'<span class="ty '+p.ty+'" aria-hidden="true">'+p.smp+'</span>':'<i aria-hidden="true">'+p.ini+'</i><img alt="" loading="lazy" data-w="'+p.w.join("|")+'">')+'<span class="cap"><b>'+esc(p.t)+'</b><small>'+esc(p.s)+'</small></span></button>';
-function hpItems(){return HPIC.map(p=>{const d=document.createElement("div"),l=SRCL(p.l);d.className="tc";
-  d.innerHTML='<h3>'+esc(p.t)+'</h3><div class="gfig">'+(p.ty?'<span class="ty '+p.ty+'">'+p.big+'</span><span class="ty '+p.ty+' abc">'+p.abc+'</span>':'<i>'+p.ini+'</i><img alt="'+esc(p.t)+'" data-w="'+p.w.join("|")+'">')+'</div>'+
-   '<p class="gs">'+esc(p.s)+'</p><p>'+p.x+'</p><p class="tline">'+(p.ty?'':'Bild: Wikipedia / Wikimedia Commons · ')+'<a class="wk" href="'+l[0]+'" target="_blank" rel="noopener" title="'+l[1]+'" aria-label="Mehr bei '+l[1]+'">mehr ↗</a></p>';return d;});}
-/* in the pop-up: the same picture, asked for at 800 px (falls back to the small one) */
-function hpBig(){const pb=$("pb");loadPics(pb);pb.querySelectorAll(".gfig img[data-w]").forEach(im=>{const u=store.pics2&&store.pics2[im.dataset.w];if(u&&/\/\d+px-/.test(u)){im.onerror=()=>{im.onerror=null;im.src=u;};im.src=u.replace(/\/\d+px-/,"/800px-");}});}
-const HIST='<div class="tc"><h3>In Bildern</h3><div class="hgal">'+HPIC.map(hpTile).join("")+'</div><p class="tline">Antippen: großes Bild und ein paar Sätze. Bilder: Wikipedia / Wikimedia Commons.</p></div>'+
-'<div class="tc"><h3>Kleine Geschichte</h3><div class="hlist">'+[
- ["um 770","<b>Abrogans</b>, das älteste Buch auf Deutsch: ein Wörterbuch Latein – Althochdeutsch.",["https://www.e-codices.ch/en/list/one/csg/0911","e-codices, Stiftsbibliothek St. Gallen"]],
- ["um 830","Das <b>Hildebrandslied</b> wird aufgeschrieben, das einzige erhaltene Heldenlied auf Althochdeutsch.","Hildebrandslied"],
- ["9./10. Jh.","Die <b>Merseburger Zaubersprüche</b>: zwei heidnische Zaubersprüche, alt aufgeschrieben in einer Kirchenhandschrift.","Merseburger Zaubersprüche"],
- ["um 1200","<b>Nibelungenlied</b>, Mittelhochdeutsch.","Nibelungenlied"],
- ["um 1230","<b>Sachsenspiegel</b>: Eike von Repgow schreibt das Recht auf Deutsch statt Latein auf.","Sachsenspiegel"],
- ["um 1450","<b>Gutenberg</b> druckt in Mainz mit beweglichen Buchstaben. Bücher werden billiger, die Schreibweisen gleichen sich langsam an.","Johannes Gutenberg"],
- ["1522","<b>Luther</b> übersetzt das Neue Testament, 1534 die ganze Bibel. Sein Deutsch wird zum Vorbild.","Lutherbibel"],
-  ["1530","<b>Luther</b>, Sendbrief vom Dolmetschen: Man soll dem Volk aufs Maul schauen, nicht dem Latein aufs Wort.","Sendbrief vom Dolmetschen"],
- ["1617","Die <b>Fruchtbringende Gesellschaft</b> entsteht, die erste große Sprachgesellschaft: Sie will Deutsch pflegen und Fremdwörter ersetzen.","Fruchtbringende Gesellschaft"],
- ["1663","<b>Schottelius</b>: Ausführliche Arbeit von der Teutschen HaubtSprache, die erste große Grammatik des Deutschen.","Justus Georg Schottelius"],
- ["1748","<b>Gottsched</b> veröffentlicht eine deutsche Sprachkunst, eine Grammatik für das Hochdeutsche.",null],
- ["1774","<b>Adelung</b> beginnt sein großes Wörterbuch der hochdeutschen Mundart (bis 1786).",null],
- ["1801","<b>Campe</b> ersetzt Fremdwörter durch deutsche: Zerrbild für Karikatur, Stelldichein für Rendezvous. Manches bleibt, vieles nicht.","Joachim Heinrich Campe"],
- ["1854","<b>Brüder Grimm</b>: erster Band des Deutschen Wörterbuchs. Fertig erst 1961. Heute online durchsuchbar.",["https://tcdh.uni-trier.de/en/projekt/digital-grimm","Trier Center for Digital Humanities, Der digitale Grimm"]],
- ["1876","Die <b>Erste Orthographische Konferenz</b> in Berlin sucht eine einheitliche Rechtschreibung. Der Erfolg bleibt klein.","Orthographische Konferenz von 1876"],
- ["1880","<b>Konrad Duden</b>: Vollständiges Orthographisches Wörterbuch.","Konrad Duden"],
- ["1898","<b>Theodor Siebs</b>: Deutsche Bühnenaussprache. So soll man Hochdeutsch sprechen – zuerst im Theater, später auch in Schule und Radio.","Theodor Siebs"],
- ["1901","Eine Rechtschreibung für alle deutschsprachigen Länder (in Kraft 1902).",null],
- ["1915","Die <b>Sütterlin</b>-Schrift kommt in die Schulen Preußens.","Sütterlinschrift"],
- ["1941","Der <b>Normalschrifterlass</b>: Die Antiqua ersetzt die Fraktur als Normalschrift.","Normalschrifterlass"],
- ["1951","Erstes <b>Österreichisches Wörterbuch</b>.",null],
- ["1955","Die Kultusminister erklären den <b>Duden</b> in Zweifelsfällen für verbindlich.","Duden"],
- ["1996","<b>Rechtschreibreform</b>: daß → dass. Seit 1998 in Schulen, überarbeitet 2006.","Reform der deutschen Rechtschreibung von 1996"],
- ["2004","Der <b>Rat für deutsche Rechtschreibung</b> wird gegründet. Er pflegt das amtliche Regelwerk für alle deutschsprachigen Länder.",["https://www.rechtschreibrat.com/","Rat für deutsche Rechtschreibung"]],
- ["2017","Das große <b>ẞ</b> ist offiziell erlaubt.",["https://www.rechtschreibrat.com/DOX/rfdr_PM_2017-06-29_Aktualisierung_Regelwerk.pdf","Rat für deutsche Rechtschreibung, Pressemitteilung 2017 (PDF)"]],
- ["2021","Der <b>Rechtschreibrat</b> empfiehlt geschlechtergerechte Sprache, nimmt Genderstern und Co. aber nicht ins amtliche Regelwerk auf.","Rat für deutsche Rechtschreibung"],
- ["mehr","Der ganze Bogen, von den Anfängen bis heute.","Geschichte der deutschen Sprache"]
-].map(r=>hi(r[0],r[1],r[2])).join("")+'</div></div>'+
+/* the usual periods of German, as coloured bands on the strip (name + colour, so colour is never the only cue) */
+const ERAS=[[700,1050,"Althochdeutsch","#e3efb4","#6f8a1a"],[1050,1350,"Mittelhochdeutsch","#f5efcf","#9a7d0a"],[1350,1650,"Frühneuhochdeutsch","#f4dcd8","#a3241c"],[1650,2040,"Neuhochdeutsch","#d3def0","#1d4f9e"]];
+const eraOf=y=>ERAS.find(e=>y>=e[0]&&y<e[1])||ERAS[3];
+const TLS=64,TL0=80,TLW=TL0*2+(TL.length-1)*TLS;
+const tlX=y=>{const P=TL.map((e,i)=>[e.y,TL0+i*TLS]);if(y<=P[0][0])return Math.max(4,P[0][1]-(P[0][0]-y)*.5);for(let i=1;i<P.length;i++)if(y<=P[i][0]){const a=P[i-1],b=P[i];return a[1]+(b[1]-a[1])*(y-a[0])/(b[0]-a[0]);}const L=P[P.length-1];return Math.min(TLW-4,L[1]+(y-L[0])*3);};
+const tlThumb=e=>e.ty?'<span class="ty '+e.ty+'">'+e.smp+'</span>':'<i>'+e.ini+'</i>'+(e.w?'<img alt="" loading="lazy" data-w="'+e.w.join("|")+'">':'');
+function tlHTML(){const lanes={a:[],b:[]};let sp="";
+  TL.forEach((e,i)=>{if(!e.e)return;const s=i%2?"b":"a",x1=tlX(e.y),x2=tlX(e.e),L=lanes[s];let k=0;while(L[k]!=null&&L[k]>x1-2)k++;L[k]=x2;
+    sp+='<i class="tlsp '+s+'" style="left:'+x1+'px;width:'+Math.max(6,x2-x1)+'px;--k:'+k+';background:'+eraOf(e.y)[4]+'" title="'+esc(e.d)+'"></i>';});
+  return '<div class="tlw"><div class="tl" id="tl"><div class="tlc" style="width:'+TLW+'px">'+
+   ERAS.map(r=>{const a=tlX(r[0]),b=tlX(r[1]);return '<i class="tlera" style="left:'+a+'px;width:'+(b-a)+'px;background:'+r[3]+';color:'+r[4]+'">'+r[2]+'</i>';}).join("")+
+   '<i class="tlyr"></i>'+sp+
+   TL.map((e,i)=>{const s=i%2?"b":"a",x=TL0+i*TLS,c=eraOf(e.y)[4];return '<span class="tltk" style="left:'+x+'px">'+(e.lab||e.y)+'</span><i class="tlln '+s+'" style="left:'+x+'px;background:'+c+'"></i>'+
+     '<button type="button" class="tlcd '+s+'" data-i="'+i+'" style="left:'+x+'px" aria-label="'+esc(e.d)+': '+esc(e.t)+'"><span class="tlth">'+tlThumb(e)+'</span><small>'+esc(e.d)+'</small><b>'+esc(e.t)+'</b></button>';}).join("")+
+   '</div></div></div><p class="tline">Seitlich wischen · antippen für Bild und Text. Bilder: Wikipedia / Wikimedia Commons. Der ganze Bogen: <a class="wk" href="'+WK("Geschichte der deutschen Sprache")+'" target="_blank" rel="noopener" aria-label="Mehr bei Wikipedia: Geschichte der deutschen Sprache">mehr ↗</a></p>';}
+const TLO={i:0,open:false};
+const ARW=k=>'<svg class="ar" width="34" height="34" viewBox="-12 -12 24 24" aria-hidden="true"><path class="rg" d="'+(k<0?'M-7.88 -5.31A9.5 9.5 0 1 1 -7.88 5.31':'M7.88 5.31A9.5 9.5 0 1 1 7.88 -5.31')+'"/><path class="dt" transform="rotate('+(k<0?180:0)+')" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="'+(k<0?-9.5:9.5)+'" y="0">'+(k<0?"W":"E")+'</text></svg>';
+function tlOpen(i){const n=TL.length;i=(i+n)%n;TLO.i=i;const e=TL[i],r=eraOf(e.y),l=SRCL(e.l);
+  if(!TLO.open){TLO.open=true;navPush("tl");$("tlpop").hidden=false;}
+  $("tlk").innerHTML='Geschichte <b>'+String(i+1).padStart(2,"0")+'</b> / '+n;
+  $("tlb").innerHTML='<div class="gfig tlfig">'+(e.ty?'<span class="ty '+e.ty+'">'+e.big+'</span><span class="ty '+e.ty+' abc">'+e.abc+'</span>':e.w?'<i>'+e.ini+'</i><img alt="'+esc(e.t)+'" data-w="'+e.w.join("|")+'">':'<span class="ty anti">'+e.y+'</span>')+
+    '<button type="button" class="tlar pw" aria-label="früher">'+ARW(-1)+'</button><button type="button" class="tlar pe" aria-label="später">'+ARW(1)+'</button></div>'+
+    '<p class="gs">'+esc(e.d)+' · '+r[2]+'</p><h4>'+esc(e.t)+'</h4><p>'+e.x+'</p><p class="tline">'+(e.w?'Bild: Wikipedia / Wikimedia Commons · ':'')+'<a class="wk" href="'+l[0]+'" target="_blank" rel="noopener" title="'+l[1]+'" aria-label="Mehr bei '+l[1]+'">mehr ↗</a></p>';
+  $("tlb").scrollTop=0;$("tlb").querySelector(".pw").onclick=()=>tlOpen(TLO.i-1);$("tlb").querySelector(".pe").onclick=()=>tlOpen(TLO.i+1);
+  loadPics($("tlb"));$("tlb").querySelectorAll(".gfig img[data-w]").forEach(im=>{const u=store.pics2&&store.pics2[im.dataset.w];if(u&&/\/\d+px-/.test(u)){im.onerror=()=>{im.onerror=null;im.src=u;};im.src=u.replace(/\/\d+px-/,"/800px-");}});
+  $("tls").querySelectorAll("button").forEach((b,k)=>{b.classList.toggle("on",k===i);b.setAttribute("aria-current",k===i?"true":"false");});
+  const on=$("tls").children[i];if(on){const S=$("tls");S.scrollTo({left:on.offsetLeft-S.clientWidth/2+on.offsetWidth/2,behavior:reduceM?"auto":"smooth"});}
+  /* keep the big strip in step, so closing lands where you were */
+  const T=$("tl");if(T)T.scrollLeft=TL0+i*TLS-T.clientWidth/2;}
+function tlClose(){TLO.open=false;$("tlpop").hidden=true;}
+(()=>{const p=document.createElement("div");p.className="tlpop";p.id="tlpop";p.hidden=true;p.setAttribute("role","dialog");p.setAttribute("aria-modal","true");p.setAttribute("aria-labelledby","tlk");
+  p.innerHTML='<div class="tlcard"><div class="tltop"><span class="tlk" id="tlk"></span><button type="button" class="tlx" id="tlx" aria-label="Schließen"><svg viewBox="-12 -12 24 24" aria-hidden="true"><circle class="rg" r="9.5"/><path class="xx" d="M-3.6 -3.6L3.6 3.6M3.6 -3.6L-3.6 3.6"/></svg></button></div><div class="tlbody" id="tlb"></div>'+
+   '<div class="tls" id="tls" aria-label="Zeitleiste">'+TL.map((e,i)=>'<button type="button" data-i="'+i+'" style="--ec:'+eraOf(e.y)[4]+'" aria-label="'+esc(e.d)+': '+esc(e.t)+'">'+(e.lab||e.y)+'</button>').join("")+'</div></div>';
+  document.body.appendChild(p);
+  p.addEventListener("click",e=>{if(e.target===p){if(navState()==="tl")history.back();else tlClose();}});
+  $("tlx").onclick=()=>{if(navState()==="tl")history.back();else tlClose();};
+  $("tls").querySelectorAll("button").forEach(b=>b.onclick=()=>tlOpen(+b.dataset.i));
+  window.addEventListener("popstate",()=>{if(TLO.open)tlClose();});
+  document.addEventListener("keydown",e=>{if(!TLO.open)return;if(e.key==="Escape"){if(navState()==="tl")history.back();else tlClose();}if(e.key==="ArrowRight")tlOpen(TLO.i+1);if(e.key==="ArrowLeft")tlOpen(TLO.i-1);});
+  let x0=null,y0=0;const tb=$("tlb");tb.addEventListener("touchstart",e=>{x0=e.touches[0].clientX;y0=e.touches[0].clientY;},{passive:true});
+  tb.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;x0=null;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5)tlOpen(TLO.i+(dx<0?1:-1));},{passive:true});})();
+const HIST='<div class="tc"><h3>Zeitleiste</h3>'+tlHTML()+'</div>'+
 '<div class="tc"><h3>Wussten Sie …?</h3><div class="hlist">'+[
  ["6 Länder","Amtssprache in Deutschland, Österreich, der Schweiz, Liechtenstein, Luxemburg und Belgien.","Deutsche Sprache"],
  ["Groß","Alle Nomen schreibt man groß – als einzige große Sprache.","Großschreibung"],
@@ -2432,7 +2486,7 @@ function renderTest(){const n={};const all=[].concat(PQ,PRON_Q,GEN_Q,FALL_Q,ADJ_
 $("p-links").innerHTML=TH_LINKS;
 $("p-quotes").innerHTML='<div class="tc df"><h3>Über die deutsche Sprache</h3>'+quotesHTML()+'</div>';loadPics($("p-quotes"));
 $("p-hist").innerHTML=HIST;loadPics($("p-hist"));
-$("p-hist").querySelectorAll(".htile").forEach(b=>b.onclick=()=>{GP.items=hpItems();GP.after=hpBig;openPop(+b.dataset.i);});
+$("p-hist").querySelectorAll(".tlcd").forEach(b=>b.onclick=()=>tlOpen(+b.dataset.i));
 (()=>{const st=$("sets");$("p-sets").innerHTML='<div class="tc df"><h3>Einstellungen</h3></div>';$("p-sets").firstChild.appendChild(st);st.hidden=false;
   const f=document.querySelector("footer.copy");if(f){const c=f.cloneNode(true);$("p-sets").appendChild(c);}const vm=document.querySelector('meta[name="app-version"]');if(vm){const v=document.createElement("p");v.className="tline";v.style.textAlign="center";v.textContent="Version "+vm.content;$("p-sets").appendChild(v);}})();
 /* which page are we in: the last bar that has left the bottom stack */
