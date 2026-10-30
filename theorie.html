@@ -1,5 +1,5 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<meta name="app-version" content="2026-10-25g">
+<meta name="app-version" content="2026-10-30a">
 <title>Dressuraufgaben · Theorie</title>
 <link rel="manifest" href="theorie.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Theorie"><meta name="theme-color" content="#f5f6f2">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
@@ -153,7 +153,7 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 #theo #thQuest{flex:1 1 auto;min-height:0}
 #thQuest .card{flex:1 1 auto;justify-content:center;gap:8px;min-height:0;overflow-y:auto}
 #thQuest .q{font-size:1.05rem}
-#theo .draft{font-size:.7rem;color:var(--muted)}
+#theo .draft{font-size:.7rem;color:var(--muted)}#theo .sub{display:grid;grid-template-columns:repeat(3,1fr);width:100%;gap:4px}#theo .sub button{padding:3px 4px;white-space:nowrap}#theo .why{margin:0;font-size:.85rem;line-height:1.3;color:var(--fg)}#theo .why b{color:var(--theo);font-weight:700}#theo .why:empty{display:none}#thEye .z{cursor:pointer;transition:opacity .2s}#thEye .zb{fill:var(--theo);fill-opacity:.42}#thEye .zm{fill:var(--theo);fill-opacity:.14}#thEye .zh,#thEye .zv{fill:url(#thHatch)}#thEye .z.sel{stroke:#ffbf00;stroke-width:3.5;stroke-linejoin:round}#thEye.dim .z:not(.sel){opacity:.45}#thEye .lbl{font-family:'Source Sans 3',system-ui,sans-serif;font-size:12px;font-weight:600;fill:var(--fg);pointer-events:none;text-anchor:middle}#thEye .hz{fill:var(--surface);stroke:var(--fg);stroke-width:1.6;stroke-linejoin:round;pointer-events:none}#thEye .you circle{fill:#ffbf00;stroke:#2b2118;stroke-width:2}#thEye .you text{font-family:'Source Sans 3',system-ui,sans-serif;font-size:10px;font-weight:700;fill:#2b2118;text-anchor:middle;dominant-baseline:central}#thSee .btns{display:grid;grid-template-columns:1fr 1fr auto;gap:6px}#theo .vq{display:flex;flex-direction:column;gap:6px}#thHorse{flex:1 1 auto;min-height:0;overflow-y:auto}#theo .hp{display:grid;grid-template-columns:76px 1fr;gap:10px;align-items:start;padding:10px 12px;position:relative}#theo .hp .ph{width:76px;height:76px;border:1.5px dashed var(--line);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.72rem;color:var(--muted);overflow:hidden}#theo .hp .ph img{width:100%;height:100%;object-fit:cover}#theo .hp dl{margin:4px 0 0;display:grid;grid-template-columns:auto 1fr;gap:2px 8px;font-size:.82rem}#theo .hp dt{color:var(--theo);font-weight:600}#theo .hp dd{margin:0}#theo .hp .mu{position:absolute;top:8px;right:10px;font-size:.66rem;font-weight:700;letter-spacing:.06em;color:var(--muted);border:1px dashed var(--line);border-radius:5px;padding:0 5px}#theo .hp.muster .nm,#theo .hp.muster dd{color:var(--muted);font-style:italic}#thEye.quiz .z{fill:var(--sand);fill-opacity:.5;stroke:var(--line);stroke-width:.8}#thEye.quiz .lbl{display:none}#theo .fb:has(+ .why:not(:empty)){display:none}#thStage{flex:1 1 0!important;min-height:120px!important}#thQuest .card,#thSee .card{overflow-y:auto;min-height:0}@media (max-height:720px){#theo .why{font-size:.78rem;line-height:1.22}#theo .fb{font-size:.78rem}#theo{gap:6px}}
 @media (prefers-reduced-motion:reduce){#thFig path{transition:none!important}}
 
 
@@ -294,9 +294,12 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 <button id="thsF" aria-pressed="true">Figuren</button>
 <button id="thsG" aria-pressed="false">Figuren-Quiz</button>
 <button id="thsQ" aria-pressed="false">Fragen</button>
+<button id="thsS" aria-pressed="false">Situationen</button>
+<button id="thsV" aria-pressed="false">Sehen</button>
+<button id="thsP" aria-pressed="false">Unsere Pferde</button>
 </div></div>
 <div id="thStage">
-<svg viewBox="70 6 240 386" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Dressurviereck 20 × 40 m mit der Hufschlagfigur">
+<svg id="thArena" viewBox="70 6 240 386" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Dressurviereck 20 × 40 m mit der Hufschlagfigur">
 <defs><marker id="thArrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1L8 5L1 9" fill="none" stroke="var(--trab)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
 <rect x="110" y="40" width="160" height="320" rx="2" fill="var(--sand)" stroke="var(--muted)" stroke-width="1"/>
 <line x1="190" y1="40" x2="190" y2="360" stroke="var(--line)" stroke-width="0.8" stroke-dasharray="3 5"/>
@@ -309,6 +312,7 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 </g>
 <g id="thFig"></g>
 </svg>
+<svg id="thEye" viewBox="0 0 320 320" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Gesichtsfeld des Pferdes von oben" style="display:none"><defs><pattern id="thHatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" fill="var(--sand)"/><line x1="0" y1="0" x2="0" y2="7" stroke="var(--muted)" stroke-width="2"/></pattern></defs><g id="thEz"></g><g id="thEh"></g><g id="thEl"></g><g id="thEy"></g></svg>
 </div>
 <div class="tp" id="thLearn">
 <div class="card">
@@ -322,6 +326,7 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 <div class="qrow"><p class="q">Welche Hufschlagfigur ist das?</p><button id="thGn" class="primary" disabled>Weiter →</button></div>
 <div class="opts" id="thOpts"></div>
 <p class="fb" id="thFb" aria-live="polite"></p>
+<p class="why" id="thWhy"></p>
 </div>
 <div class="tp" id="thWip" hidden><div class="card wip"><p class="wipt">In Arbeit · Work in progress</p><p class="ds">Die Theoriefragen für diese Prüfung werden gerade erstellt.</p><p class="ds">Theory questions for this test are being prepared.</p><p class="ds wipn">Hufschlagfiguren und Figuren-Quiz gibt es schon für alle Aufgaben.</p></div></div>
 <div class="tp" id="thQuest" hidden>
@@ -331,8 +336,29 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 <p class="q" id="thQq"></p>
 <div class="opts" id="thQopts"></div>
 <p class="fb" id="thQfb" aria-live="polite"></p>
+<p class="why" id="thQwhy"></p>
 </div>
 <button id="thQn" class="primary" disabled>Nächste Frage →</button>
+</div>
+<div class="tp" id="thSee" hidden>
+<div id="thVlearn" class="vq">
+<div class="card">
+<div class="top"><span class="badge">Sehen</span><span class="count" id="thVct"></span></div>
+<p class="nm" id="thVnm"></p><p class="ds" id="thVds"></p>
+</div>
+<div class="btns"><button id="thVpv">← Zurück</button><button id="thVnx" class="primary">Weiter →</button><button id="thVgo" class="mini">Quiz</button></div>
+</div>
+<div id="thVquiz" class="vq" hidden>
+<div class="score"><span>Punkte <strong id="thVsc">0</strong> / <span id="thVmx">0</span></span><span id="thVn">1 / 10</span><button id="thVback" class="mini">Erklärung</button></div>
+<div class="qrow"><p class="q">Wo bist du? Kann dich das Pferd sehen?</p><button id="thVnext" class="primary" disabled>Weiter →</button></div>
+<div class="opts" id="thVopts"></div>
+<p class="fb" id="thVfb" aria-live="polite"></p>
+<p class="why" id="thVwhy"></p>
+</div>
+</div>
+<div class="tp" id="thHorse" hidden>
+<div class="card wip"><p class="wipt">In Vorbereitung</p><p class="ds">Hier stellen wir die Pferde der Reitschule Steinbach vor: mit Foto, Wesen und Eigenheiten, dazu ein kleines Quiz. Die Profile kommen erst mit Zustimmung der Reitschule.</p></div>
+<div id="thHlist"></div>
 </div>
 </section>
 <section class="info" id="info" hidden>
@@ -566,34 +592,70 @@ const F=[
  {n:'Umkehrt wechseln',g:'Kehrtvolte',r:[],d:'Halbe Tour, dann schräg zurück auf den Hufschlag. Danach reitet man auf der anderen Hand.',p:'M110,190 L110,240 A40,40 0 0 0 190,240 L110,170 L110,120'}
 ];
 
-/* Theoriefragen: a = richtig, w = zwei falsche. Entwurf, mit dem FENA-Lehrbuch abzugleichen. */
+/* Theoriefragen: a = richtig, w = zwei falsche, x = Warum. Entwurf, mit dem FENA-Lehrbuch abzugleichen. */
 const Q=[
- {c:'Pferdekunde',q:'Wie heißt die höchste Stelle am Übergang vom Hals zum Rücken?',a:'Widerrist',w:['Kruppe','Genick']},
- {c:'Pferdekunde',q:'In welchem Takt geht der Schritt?',a:'Viertakt',w:['Zweitakt','Dreitakt']},
- {c:'Pferdekunde',q:'In welchem Takt geht der Trab?',a:'Zweitakt, diagonale Beinpaare',w:['Viertakt','Dreitakt']},
- {c:'Pferdekunde',q:'In welchem Takt geht der Galopp?',a:'Dreitakt',w:['Zweitakt','Viertakt']},
- {c:'Pferdekunde',q:'Braunes Fell, schwarze Mähne, schwarzer Schweif und schwarze Beine. Welche Farbe?',a:'Brauner',w:['Fuchs','Rappe']},
- {c:'Pferdekunde',q:'Rotbraunes Fell, Mähne und Schweif gleichfarbig oder heller. Welche Farbe?',a:'Fuchs',w:['Brauner','Schimmel']},
- {c:'Pferdekunde',q:'Normale Körpertemperatur eines erwachsenen Pferdes in Ruhe?',a:'37,5 bis 38,2 °C',w:['36,0 bis 36,8 °C','39,0 bis 40,0 °C']},
- {c:'Pferdekunde',q:'Normaler Ruhepuls eines erwachsenen Pferdes?',a:'28 bis 40 Schläge pro Minute',w:['60 bis 80 Schläge pro Minute','100 bis 120 Schläge pro Minute']},
- {c:'Pferdehaltung und Fütterung',q:'Was ist die Grundlage der Pferdefütterung?',a:'Raufutter wie Heu',w:['Kraftfutter wie Hafer','Obst und Karotten']},
- {c:'Pferdehaltung und Fütterung',q:'Wie viel Wasser trinkt ein Großpferd ungefähr am Tag?',a:'Etwa 30 bis 50 Liter',w:['Etwa 5 Liter','Etwa 150 Liter']},
- {c:'Umgang mit dem Pferd',q:'Von welcher Seite führt man ein Pferd üblicherweise?',a:'Von links',w:['Von rechts','Von hinten']},
- {c:'Umgang mit dem Pferd',q:'Wie nähert man sich einem Pferd?',a:'Von vorne seitlich und spricht es dabei an',w:['Leise von hinten','Schnell und direkt von vorne']},
- {c:'Sattel- und Zaumzeugkunde',q:'Welcher Riemen der Trense verläuft unter der Kehle?',a:'Kehlriemen',w:['Stirnriemen','Backenstück']},
- {c:'Sattel- und Zaumzeugkunde',q:'Wie weit wird der Kehlriemen verschnallt?',a:'Eine Hand breit Platz zur Ganasche',w:['Eng anliegend','Gar nicht geschlossen']},
- {c:'Sattel- und Zaumzeugkunde',q:'Woran befestigt man den Sattelgurt?',a:'An den Gurtstrippen',w:['An den Steigbügelriemen','Am Rand des Sattelblatts']},
- {c:'Pferdekrankheiten und Erste Hilfe',q:'Was ist ein typisches Anzeichen einer Kolik?',a:'Scharren, Umschauen zum Bauch, häufiges Wälzen',w:['Mehr Appetit als sonst','Besonders glänzendes Fell']},
- {c:'Pferdekrankheiten und Erste Hilfe',q:'Was tut man zuerst bei Verdacht auf Kolik?',a:'Tierarzt rufen, Futter wegnehmen, Pferd beobachten',w:['Kraftfutter geben','Pferd im Galopp bewegen']},
- {c:'Reitbahnregeln',q:'Zwei Reiter kommen sich auf dem Hufschlag entgegen. Wer behält den Hufschlag?',a:'Der Reiter auf der linken Hand',w:['Der Reiter auf der rechten Hand','Der schnellere Reiter']},
- {c:'Reitbahnregeln',q:'Was macht ein Reiter, der im Schritt reitet, während andere traben oder galoppieren?',a:'Er gibt den Hufschlag frei',w:['Er bleibt auf dem Hufschlag','Er hält in der Ecke an']},
- {c:'Reitbahnregeln',q:'Welchen Abstand hält man zum vorderen Pferd?',a:'Mindestens eine Pferdelänge',w:['Eine halbe Pferdelänge','Kein Abstand nötig']},
- {c:'Reitbahnregeln',q:'Was tut man, bevor man die Reitbahn betritt oder verlässt?',a:'Laut fragen, ob die Tür frei ist',w:['Einfach hineinreiten','Pfeifen']},
- {c:'Verhalten im Gelände und im Straßenverkehr',q:'Darf man in Österreich ohne Erlaubnis im Wald reiten?',a:'Nein, nur mit Zustimmung des Waldeigentümers oder auf Reitwegen',w:['Ja, überall','Ja, wenn man im Schritt reitet']},
- {c:'Verhalten im Gelände und im Straßenverkehr',q:'Auf welcher Seite der Straße reitet man?',a:'Rechts, in Fahrtrichtung',w:['Links, dem Verkehr entgegen','In der Mitte der Fahrbahn']},
- {c:'Verhalten im Gelände und im Straßenverkehr',q:'Was gilt beim Ausritt in der Gruppe für den Gangartwechsel?',a:'Die Spitze kündigt ihn an, alle halten Abstand',w:['Jeder wechselt, wann er will','Nur das letzte Pferd darf antraben']},
- {c:'Reitlehre',q:'Welche drei Hilfengruppen unterscheidet man?',a:'Gewichts-, Schenkel- und Zügelhilfen',w:['Gerte, Sporen und Stimme','Sitz, Blick und Atmung']},
- {c:'Reitlehre',q:'Wann sitzt man beim Leichttraben ein?',a:'Wenn das äußere Vorderbein vorfußt',w:['Wenn das innere Vorderbein vorfußt','Bei jedem Tritt']}
+ {c:'Pferdekunde',q:'Wie heißt die höchste Stelle am Übergang vom Hals zum Rücken?',a:'Widerrist',w:['Kruppe','Genick'],x:'Der Widerrist liegt über den ersten Brustwirbeln. Dort misst man die Größe des Pferdes (Stockmaß). Die Kruppe ist hinten über dem Becken, das Genick direkt hinter den Ohren.'},
+ {c:'Pferdekunde',q:'In welchem Takt geht der Schritt?',a:'Viertakt',w:['Zweitakt','Dreitakt'],x:'Jedes Bein fußt einzeln auf, man hört vier gleichmäßige Hufschläge. Der Schritt hat keine Schwebephase.'},
+ {c:'Pferdekunde',q:'In welchem Takt geht der Trab?',a:'Zweitakt, diagonale Beinpaare',w:['Viertakt','Dreitakt'],x:'Immer ein diagonales Beinpaar fußt gleichzeitig auf, zum Beispiel links vorne mit rechts hinten. Dazwischen liegt eine kurze Schwebephase.'},
+ {c:'Pferdekunde',q:'In welchem Takt geht der Galopp?',a:'Dreitakt',w:['Zweitakt','Viertakt'],x:'Zuerst das äußere Hinterbein, dann gleichzeitig das innere Hinterbein und das äußere Vorderbein, zuletzt das innere Vorderbein. Danach folgt eine Schwebephase.'},
+ {c:'Pferdekunde',q:'Braunes Fell, schwarze Mähne, schwarzer Schweif und schwarze Beine. Welche Farbe?',a:'Brauner',w:['Fuchs','Rappe'],x:'Das schwarze Langhaar (Mähne, Schweif) und die schwarzen Beine machen den Braunen aus. Ein Fuchs hat kein schwarzes Langhaar, ein Rappe ist ganz schwarz.'},
+ {c:'Pferdekunde',q:'Rotbraunes Fell, Mähne und Schweif gleichfarbig oder heller. Welche Farbe?',a:'Fuchs',w:['Brauner','Schimmel'],x:'Füchse haben kein schwarzes Haar. Mähne und Schweif sind so rot wie das Fell oder heller, beim Lichtfuchs fast blond.'},
+ {c:'Pferdekunde',q:'Normale Körpertemperatur eines erwachsenen Pferdes in Ruhe?',a:'37,5 bis 38,2 °C',w:['36,0 bis 36,8 °C','39,0 bis 40,0 °C'],x:'Gemessen wird im After. Deutlich mehr beim ruhenden Pferd kann Fieber bedeuten. Dann sofort Reitlehrer oder Stall Bescheid geben.'},
+ {c:'Pferdekunde',q:'Normaler Ruhepuls eines erwachsenen Pferdes?',a:'28 bis 40 Schläge pro Minute',w:['60 bis 80 Schläge pro Minute','100 bis 120 Schläge pro Minute'],x:'Pferde haben einen langsameren Puls als Menschen. Ertasten kann man ihn zum Beispiel an der Arterie innen am Unterkiefer.'},
+ {c:'Pferdehaltung und Fütterung',q:'Was ist die Grundlage der Pferdefütterung?',a:'Raufutter wie Heu',w:['Kraftfutter wie Hafer','Obst und Karotten'],x:'Pferde fressen von Natur aus viele Stunden am Tag faserreiches Futter. Heu oder Gras ist die Grundlage, Kraftfutter nur eine Ergänzung.'},
+ {c:'Pferdehaltung und Fütterung',q:'Wie viel Wasser trinkt ein Großpferd ungefähr am Tag?',a:'Etwa 30 bis 50 Liter',w:['Etwa 5 Liter','Etwa 150 Liter'],x:'Bei Hitze, Arbeit und trockenem Futter auch mehr. Pferde brauchen jederzeit frisches Wasser.'},
+ {c:'Umgang mit dem Pferd',q:'Von welcher Seite führt man ein Pferd üblicherweise?',a:'Von links',w:['Von rechts','Von hinten'],x:'Links ist die übliche Seite, auch beim Aufsteigen. Ein gut erzogenes Pferd sollte sich aber von beiden Seiten führen lassen.'},
+ {c:'Umgang mit dem Pferd',q:'Wie nähert man sich einem Pferd?',a:'Von vorne seitlich und spricht es dabei an',w:['Leise von hinten','Schnell und direkt von vorne'],x:'Direkt hinter sich und direkt vor der Stirn sieht das Pferd nicht. Wer dort plötzlich auftaucht, kann es erschrecken. Mehr dazu im Bereich „Sehen“.'},
+ {c:'Sattel- und Zaumzeugkunde',q:'Welcher Riemen der Trense verläuft unter der Kehle?',a:'Kehlriemen',w:['Stirnriemen','Backenstück'],x:'Der Kehlriemen hält die Trense am Kopf, damit sie nicht über die Ohren rutscht. Der Stirnriemen liegt vorne unter den Ohren, die Backenstücke an den Seiten.'},
+ {c:'Sattel- und Zaumzeugkunde',q:'Wie weit wird der Kehlriemen verschnallt?',a:'Eine Hand breit Platz zur Ganasche',w:['Eng anliegend','Gar nicht geschlossen'],x:'So drückt er nicht, wenn das Pferd den Kopf beugt, und die Atmung bleibt frei.'},
+ {c:'Sattel- und Zaumzeugkunde',q:'Woran befestigt man den Sattelgurt?',a:'An den Gurtstrippen',w:['An den Steigbügelriemen','Am Rand des Sattelblatts'],x:'Die Gurtstrippen sind Lederriemen unter dem Sattelblatt, links und rechts. Der Gurt wird dort angeschnallt und vor dem Aufsteigen nachgezogen.'},
+ {c:'Pferdekrankheiten und Erste Hilfe',q:'Was ist ein typisches Anzeichen einer Kolik?',a:'Scharren, Umschauen zum Bauch, häufiges Wälzen',w:['Mehr Appetit als sonst','Besonders glänzendes Fell'],x:'Kolik heißt Bauchschmerzen. Das Pferd ist unruhig, schaut zum Bauch, scharrt, legt sich oft hin oder schwitzt.'},
+ {c:'Pferdekrankheiten und Erste Hilfe',q:'Was tut man zuerst bei Verdacht auf Kolik?',a:'Tierarzt rufen, Futter wegnehmen, Pferd beobachten',w:['Kraftfutter geben','Pferd im Galopp bewegen'],x:'Kolik kann lebensgefährlich sein. Sofort Reitlehrer oder Stall Bescheid geben, damit der Tierarzt kommt, und bis dahin nichts füttern.'},
+ {c:'Reitbahnregeln',q:'Zwei Reiter kommen sich auf dem Hufschlag entgegen. Wer behält den Hufschlag?',a:'Der Reiter auf der linken Hand',w:['Der Reiter auf der rechten Hand','Der schnellere Reiter'],x:'Die linke Hand hat Vorrang. Der Reiter auf der rechten Hand weicht nach innen aus, man reitet links an links vorbei.'},
+ {c:'Reitbahnregeln',q:'Was macht ein Reiter, der im Schritt reitet, während andere traben oder galoppieren?',a:'Er gibt den Hufschlag frei',w:['Er bleibt auf dem Hufschlag','Er hält in der Ecke an'],x:'Langsamere Reiter weichen nach innen aus, damit die schnelleren nicht ständig überholen müssen. Auch Halten und Nachgurten gehören nicht auf den Hufschlag.'},
+ {c:'Reitbahnregeln',q:'Welchen Abstand hält man zum vorderen Pferd?',a:'Mindestens eine Pferdelänge',w:['Eine halbe Pferdelänge','Kein Abstand nötig'],x:'So bleibt Zeit zu reagieren, wenn das vordere Pferd langsamer wird, und man ist außer Reichweite seiner Hinterbeine.'},
+ {c:'Reitbahnregeln',q:'Was tut man, bevor man die Reitbahn betritt oder verlässt?',a:'Laut fragen, ob die Tür frei ist',w:['Einfach hineinreiten','Pfeifen'],x:'Üblich ist ein Ruf wie „Tür frei?“. Erst wenn drinnen jemand „Ist frei!“ antwortet, öffnet man. So reitet niemand in die offene Tür.'},
+ {c:'Verhalten im Gelände und im Straßenverkehr',q:'Darf man in Österreich ohne Erlaubnis im Wald reiten?',a:'Nein, nur mit Zustimmung des Waldeigentümers oder auf Reitwegen',w:['Ja, überall','Ja, wenn man im Schritt reitet'],x:'Zu Fuß darf man den Wald betreten, Reiten ist nach dem Forstgesetz aber nur mit Zustimmung des Eigentümers erlaubt, zum Beispiel auf markierten Reitwegen.'},
+ {c:'Verhalten im Gelände und im Straßenverkehr',q:'Auf welcher Seite der Straße reitet man?',a:'Rechts, in Fahrtrichtung',w:['Links, dem Verkehr entgegen','In der Mitte der Fahrbahn'],x:'Reiter benutzen die Fahrbahn wie Fahrzeuge: rechts, am Fahrbahnrand, in Fahrtrichtung.'},
+ {c:'Verhalten im Gelände und im Straßenverkehr',q:'Was gilt beim Ausritt in der Gruppe für den Gangartwechsel?',a:'Die Spitze kündigt ihn an, alle halten Abstand',w:['Jeder wechselt, wann er will','Nur das letzte Pferd darf antraben'],x:'Pferde sind Herdentiere: Trabt eines plötzlich an, wollen die anderen mit. Deshalb sagt die Spitze jeden Wechsel laut an.'},
+ {c:'Reitlehre',q:'Welche drei Hilfengruppen unterscheidet man?',a:'Gewichts-, Schenkel- und Zügelhilfen',w:['Gerte, Sporen und Stimme','Sitz, Blick und Atmung'],x:'Gewicht, Schenkel und Zügel wirken immer zusammen. Stimme, Gerte und Sporen sind nur unterstützende Hilfen.'},
+ {c:'Reitlehre',q:'Wann sitzt man beim Leichttraben ein?',a:'Wenn das äußere Vorderbein auffußt',w:['Wenn das innere Vorderbein auffußt','Bei jedem Tritt'],x:'Man steht auf, wenn das äußere Vorderbein nach vorne schwingt, und sitzt ein, wenn es auffußt. Beim Handwechsel bleibt man einen Tritt sitzen, so „wechselt man den Fuß“.'}
+];
+
+/* Situationsfragen: „Was tust du, wenn …?“ Entwurf, mit dem FENA-Lehrbuch abzugleichen. */
+const S=[
+ {c:'Reitbahn',q:'Du reitest auf der rechten Hand. Ein Reiter auf der linken Hand kommt dir auf dem Hufschlag entgegen. Was tust du?',a:'Ich weiche nach innen aus, wir reiten links an links vorbei',w:['Ich bleibe auf dem Hufschlag, er muss ausweichen','Ich halte auf dem Hufschlag an und warte'],x:'Die linke Hand hat Vorrang. Wer auf der rechten Hand reitet, macht rechtzeitig Platz.'},
+ {c:'Reitbahn',q:'Du willst ein langsameres Pferd überholen. Wie?',a:'Innen, mit genügend Abstand',w:['Außen, zwischen Pferd und Bande','Knapp dahinter, bis es Platz macht'],x:'Zwischen Pferd und Bande ist kein Platz, und dicht hinter einem Pferd droht ein Tritt. Überholt wird innen, mit Abstand.'},
+ {c:'Reitbahn',q:'Du musst während der Stunde nachgurten. Wo hältst du an?',a:'In der Bahnmitte, nicht auf dem Hufschlag',w:['Auf dem Hufschlag in der Ecke','Direkt vor der Tür'],x:'Auf dem Hufschlag würdest du die anderen behindern, vor der Tür versperrst du den Weg.'},
+ {c:'Reitbahn',q:'Ein Reiter ist gestürzt, sein Pferd läuft frei durch die Halle. Was tun alle anderen?',a:'Durchparieren, anhalten und ruhig warten',w:['Weiterreiten, das betrifft mich nicht','Hinterherreiten, um das Pferd einzufangen'],x:'Ein frei laufendes Pferd steckt die anderen an. Wenn alle stehen, beruhigt es sich schneller. Weiter geht es erst, wenn der Reitlehrer es sagt.'},
+ {c:'Umgang und Stall',q:'Du musst hinter einem Pferd vorbeigehen. Wie?',a:'Mit großem Abstand oder ganz nah, die Hand auf der Kruppe, und dabei ansprechen',w:['Leise und schnell, damit es nicht gestört wird','Mit etwa einem Meter Abstand'],x:'Etwa einen Meter hinter dem Pferd trifft ein Huftritt mit voller Wucht. Ganz nah, mit der Hand auf der Kruppe, weiß das Pferd, wo du bist.'},
+ {c:'Umgang und Stall',q:'Du bindest ein Pferd zum Putzen an. Wie?',a:'Am Halfter, mit einem Knoten, der sich mit einem Zug löst',w:['Am Zügel, mit einem festen Doppelknoten','Am Halfter, mit einem festen Doppelknoten'],x:'Erschrickt das Pferd und zieht zurück, kannst du es so schnell losmachen. Am Zügel kann es sich am Maul verletzen.'},
+ {c:'Umgang und Stall',q:'Wo gehst du beim Führen?',a:'Links neben dem Pferd, auf Höhe von Kopf und Schulter',w:['Vor dem Pferd, am langen Strick','Hinter dem Pferd'],x:'Dort sieht dich das Pferd und du kannst es lenken und anhalten. Den Strick nie um die Hand wickeln.'},
+ {c:'Umgang und Stall',q:'Ein Pferd legt die Ohren an und dreht dir das Hinterteil zu. Was bedeutet das?',a:'Es droht, ich halte Abstand und hole den Reitlehrer',w:['Es freut sich, mich zu sehen','Es möchte gestreichelt werden'],x:'Angelegte Ohren heißen „Lass mich in Ruhe“. Wer weitergeht, riskiert einen Biss oder Tritt.'},
+ {c:'Umgang und Stall',q:'Du kratzt einen Huf aus. Wie stehst du?',a:'Seitlich neben dem Pferd, mit Blick Richtung Schweif',w:['Vor dem Pferd, mit Blick zum Huf','Kniend unter dem Bauch'],x:'So bist du nah am Pferd, aber nicht im Weg, wenn es den Fuß wegzieht. Nicht hinknien: im Stehen kommst du schneller weg.'},
+ {c:'Gelände',q:'Im Gelände kommt euch ein Spaziergänger mit Hund entgegen. Was tust du?',a:'Zum Schritt durchparieren und mit Abstand freundlich vorbeireiten',w:['Antraben, um schnell vorbei zu sein','Stehen bleiben und den Hund wegschicken'],x:'Im Schritt bleiben Pferd und Hund ruhiger, und der Spaziergänger fühlt sich sicher. Ein freundlicher Gruß hilft dem Ruf aller Reiter.'},
+ {c:'Gelände',q:'Dein Pferd scheut vor einer flatternden Plane. Was tust du?',a:'Ruhig bleiben, Tempo herausnehmen und es schauen lassen',w:['Mit der Gerte bestrafen','Umdrehen und im Galopp zurück'],x:'Pferde sind Fluchttiere. Strafe macht die Angst vor der Stelle größer, wildes Wegreiten lehrt das Pferd, dass Flucht hilft.'},
+ {c:'Gelände',q:'Ein Reiter in der Gruppe muss absteigen. Was tun die anderen?',a:'Alle halten an und warten, bis er wieder sitzt',w:['Die anderen reiten weiter, er holt auf','Die Gruppe trabt an, damit sein Pferd mitkommt'],x:'Pferde wollen bei der Herde bleiben. Reiten die anderen weiter, lässt sich das Pferd kaum noch halten oder besteigen.'},
+ {c:'Gelände',q:'Darfst du über Wiesen und Felder reiten?',a:'Nur mit Erlaubnis des Grundbesitzers, sonst auf den Wegen bleiben',w:['Ja, wenn gerade nichts wächst','Ja, am Feldrand immer'],x:'Wiesen und Felder sind fremdes Eigentum und oft Futter für Tiere. Hufe hinterlassen tiefe Spuren.'},
+ {c:'Straßenverkehr',q:'Ihr reitet zu zweit auf der Straße. Wie?',a:'Hintereinander, am rechten Fahrbahnrand',w:['Nebeneinander, damit Autos langsamer fahren','Auf dem Gehsteig'],x:'So können Autos mit Abstand überholen. Gehsteige sind für Fußgänger da.'},
+ {c:'Straßenverkehr',q:'Ein Auto kommt von hinten, dein Pferd ist nervös. Was tust du?',a:'Rechtzeitig mit Handzeichen bitten, langsam zu fahren',w:['Antraben, damit das Auto nicht überholen muss','Mitten auf der Fahrbahn absteigen'],x:'Viele Autofahrer wissen nicht, wie schreckhaft Pferde sein können. Ein klares Handzeichen und ein Danke helfen.'},
+ {c:'Straßenverkehr',q:'Was hilft, damit euch Autofahrer gut sehen?',a:'Helle Kleidung, Warnweste und Reflektoren, bei Dämmerung auch Licht',w:['Dunkle Kleidung, damit das Pferd ruhig bleibt','Nichts, Pferde sind groß genug'],x:'Ein Pferd ist im Dämmerlicht erstaunlich schlecht zu sehen. Leuchtende Farben und Reflektoren erkennt man von weitem.'}
+];
+
+/* Sehen: Infokarten. z = Zone, die hervorgehoben wird */
+const V=[
+ {n:'Fast Rundumblick',z:'',d:'Die Augen sitzen seitlich am Kopf. So sieht das Pferd fast rundherum, etwa 350°. Das hilft dem Fluchttier, Gefahren früh zu bemerken.'},
+ {n:'Mit beiden Augen',z:'b',d:'Nach vorne überschneiden sich beide Augen auf etwa 60°. Nur hier schätzt das Pferd Entfernungen gut ein. Will es etwas genau ansehen, hebt oder senkt es den Kopf.'},
+ {n:'Mit einem Auge',z:'m',d:'Zur Seite sieht jedes Auge für sich. Bewegungen bemerkt das Pferd hier sehr schnell, Entfernungen schätzt es schlechter ein. Darum erschrickt es leicht vor plötzlichen Bewegungen am Rand.'},
+ {n:'Toter Winkel hinten',z:'h',d:'Direkt hinter sich sieht das Pferd nichts, der eigene Körper ist im Weg. Wer sich von hinten nähert, kann es erschrecken. Darum ansprechen und von vorne seitlich kommen.'},
+ {n:'Toter Winkel vorne',z:'v',d:'Direkt vor der Stirn und unter dem Maul sieht das Pferd kaum etwas. Was du ihm vor die Nase hältst, ertastet es mit Lippen und Tasthaaren.'},
+ {n:'Farben',z:'',d:'Pferde sehen weniger Farben als wir, vor allem Blau- und Gelbtöne. Rot und Grün unterscheiden sie schlecht, ähnlich wie Menschen mit Rot-Grün-Schwäche.'},
+ {n:'Hell und dunkel',z:'',d:'Im Dunkeln sehen Pferde besser als wir. Beim Wechsel von hell nach dunkel brauchen ihre Augen aber länger, etwa beim Hineinführen in einen dunklen Anhänger. Gib dem Pferd Zeit.'}
+];
+
+/* Unsere Pferde: Profile. Nur mit Zustimmung der Reitschule füllen; muster:true wird als Muster gezeigt. */
+const P=[
+ {muster:true,n:'Name des Pferdes',m:'Farbe · Rasse · Größe',w:'z. B. ruhig und geduldig, gut für Anfänger',e:'z. B. gibt die Hinterhufe nicht gern, vorher ansprechen',t:'z. B. geht gern ins Gelände'}
 ];
 
 function draw(f){
@@ -634,14 +696,14 @@ function ask(){
  const others=mix(F.map((_,k)=>k).filter(k=>k!==cur)).slice(0,2);
  const box=g('thOpts');box.textContent='';
  mix([cur,...others]).forEach(k=>{const b=document.createElement('button');b.className='opt';b.textContent=F[k].n;b.onclick=()=>answer(k,b);box.appendChild(b);});
- g('thFb').textContent='';g('thGn').disabled=true;
+ g('thFb').textContent='';why('thWhy','');g('thGn').disabled=true;
 }
 function answer(k,b){
  if(done)return;done=true;max++;const right=k===cur;
  if(right){score++;streak++;b.classList.add('ok');}
  else{streak=0;b.classList.add('bad');[...g('thOpts').children].find(x=>x.textContent===F[cur].n).classList.add('ok');}
  if(score>best){best=score;store.set('best_theo_fig',best);}
- g('thFb').textContent=right?'Richtig.':'Richtig wäre: '+F[cur].n+'.';
+ g('thFb').textContent=right?'Richtig.':'Richtig wäre: '+F[cur].n+'.';why('thWhy',F[cur].d);
  g('thSc').textContent=score;g('thMx').textContent=max;g('thSr').textContent=streak;g('thBs').textContent=best;
  g('thGn').disabled=false;
 }
@@ -649,14 +711,16 @@ g('thGn').onclick=ask;
 g('thGr').onclick=()=>{score=max=streak=0;bag=[];g('thSc').textContent=0;g('thMx').textContent=0;g('thSr').textContent=0;ask();};
 g('thBs').textContent=best;
 
-/* Theoriefragen */
-['Alle Kapitel',...new Set(Q.map(x=>x.c))].forEach(c=>{const o=document.createElement('option');o.textContent=c;g('thChap').appendChild(o);});
+/* Theoriefragen und Situationen: gleiche Ansicht, anderer Datensatz */
+let QS=Q;
+function fillChap(){const s=g('thChap');s.textContent='';['Alle Kapitel',...new Set(QS.map(x=>x.c))].forEach(c=>{const o=document.createElement('option');o.textContent=c;s.appendChild(o);});}
+fillChap();
 let qbag=[],qcur=null,qdone=false,qs=0,qm=0;
-function pool(){const c=g('thChap').value;return Q.map((_,k)=>k).filter(k=>c==='Alle Kapitel'||Q[k].c===c);}
+function pool(){const c=g('thChap').value;return QS.map((_,k)=>k).filter(k=>c==='Alle Kapitel'||QS[k].c===c);}
 function qask(){
  if(!qbag.length)qbag=mix(pool());
- qcur=Q[qbag.pop()];qdone=false;
- g('thQch').textContent=qcur.c;g('thQq').textContent=qcur.q;g('thQfb').textContent='';g('thQn').disabled=true;
+ qcur=QS[qbag.pop()];qdone=false;
+ g('thQch').textContent=qcur.c;g('thQq').textContent=qcur.q;g('thQfb').textContent='';why('thQwhy','');g('thQn').disabled=true;
  const box=g('thQopts');box.textContent='';
  mix([qcur.a,...qcur.w]).forEach(t=>{const b=document.createElement('button');b.className='opt';b.textContent=t;b.onclick=()=>qanswer(t,b);box.appendChild(b);});
 }
@@ -664,21 +728,115 @@ function qanswer(t,b){
  if(qdone)return;qdone=true;qm++;
  if(t===qcur.a){qs++;b.classList.add('ok');g('thQfb').textContent='Richtig.';}
  else{b.classList.add('bad');[...g('thQopts').children].find(x=>x.textContent===qcur.a).classList.add('ok');g('thQfb').textContent='Richtig wäre: '+qcur.a+'.';}
- g('thQsc').textContent=qs;g('thQmx').textContent=qm;g('thQn').disabled=false;
+ why('thQwhy',qcur.x||'');g('thQsc').textContent=qs;g('thQmx').textContent=qm;g('thQn').disabled=false;
 }
 g('thQn').onclick=qask;
 g('thChap').onchange=()=>{qbag=[];qs=qm=0;g('thQsc').textContent=0;g('thQmx').textContent=0;qask();};
 
 /* Bereiche */
+/* ---- Warum-Zeile ---- */
+function why(id,t){const e=g(id);e.textContent='';if(!t)return;const b=document.createElement('b');b.textContent='Warum? ';e.append(b,t);}
+
+/* ---- Sehen ---- */
+const EX=160,EY=150,ER=146,ZONES=[
+ {k:'b',a0:-30,a1:30,r:ER},{k:'m',a0:30,a1:168,r:ER},{k:'h',a0:168,a1:192,r:ER},{k:'m',a0:192,a1:330,r:ER},{k:'v',a0:-30,a1:30,r:48}];
+const pt=(a,r)=>[EX+r*Math.sin(a*Math.PI/180),EY-r*Math.cos(a*Math.PI/180)];
+function sector(a0,a1,r){const[p,q]=[pt(a0,r),pt(a1,r)];return 'M'+EX+','+EY+'L'+p[0].toFixed(1)+','+p[1].toFixed(1)+'A'+r+','+r+' 0 '+(a1-a0>180?1:0)+' 1 '+q[0].toFixed(1)+','+q[1].toFixed(1)+'Z';}
+function el(tag,at,par){const e=document.createElementNS(NS,tag);for(const k in at)e.setAttribute(k,at[k]);if(par)par.appendChild(e);return e;}
+(function buildEye(){
+ const z=g('thEz');
+ ZONES.forEach(Z=>{const p=el('path',{d:sector(Z.a0,Z.a1,Z.r),class:'z z'+Z.k},z);p.dataset.k=Z.k;
+  p.onclick=()=>{if(vMode==='q')return;const n=V.findIndex(v=>v.z===Z.k);if(n>=0){vi=n;seeShow();}};});
+ /* Pferd von oben, eigene Zeichnung */
+ const h=g('thEh');
+ el('path',{class:'hz',d:'M156,272 C153,282 155,292 160,298 C165,292 167,282 164,272Z'},h);
+ el('path',{class:'hz',d:'M160.0,115.0C162.0,115.0 164.3,115.5 166.0,117.0C167.7,118.5 169.0,121.2 170.0,124.0C171.0,126.8 171.3,130.5 172.0,134.0C172.7,137.5 174.0,141.8 174.0,145.0C174.0,148.2 172.8,150.5 172.0,153.0C171.2,155.5 169.2,156.8 169.0,160.0C168.8,163.2 170.0,167.7 171.0,172.0C172.0,176.3 172.8,181.7 175.0,186.0C177.2,190.3 181.7,193.7 184.0,198.0C186.3,202.3 188.0,206.7 189.0,212.0C190.0,217.3 190.2,224.3 190.0,230.0C189.8,235.7 188.5,242.3 188.0,246.0C187.5,249.7 186.7,250.0 187.0,252.0C187.3,254.0 190.2,255.3 190.0,258.0C189.8,260.7 188.5,265.3 186.0,268.0C183.5,270.7 178.5,272.5 175.0,274.0C171.5,275.5 167.5,276.5 165.0,277.0C162.5,277.5 161.7,277.0 160.0,277.0C158.3,277.0 157.5,277.5 155.0,277.0C152.5,276.5 148.5,275.5 145.0,274.0C141.5,272.5 136.5,270.7 134.0,268.0C131.5,265.3 130.2,260.7 130.0,258.0C129.8,255.3 132.7,254.0 133.0,252.0C133.3,250.0 132.5,249.7 132.0,246.0C131.5,242.3 130.2,235.7 130.0,230.0C129.8,224.3 130.0,217.3 131.0,212.0C132.0,206.7 133.7,202.3 136.0,198.0C138.3,193.7 142.8,190.3 145.0,186.0C147.2,181.7 148.0,176.3 149.0,172.0C150.0,167.7 151.2,163.2 151.0,160.0C150.8,156.8 148.8,155.5 148.0,153.0C147.2,150.5 146.0,148.2 146.0,145.0C146.0,141.8 147.3,137.5 148.0,134.0C148.7,130.5 149.0,126.8 150.0,124.0C151.0,121.2 152.3,118.5 154.0,117.0C155.7,115.5 158.0,115.0 160.0,115.0Z'},h);
+ el('ellipse',{class:'hz',cx:150,cy:157,rx:3,ry:6,transform:'rotate(-20 150 157)'},h);el('ellipse',{class:'hz',cx:170,cy:157,rx:3,ry:6,transform:'rotate(20 170 157)'},h);
+ el('circle',{cx:146.6,cy:145,r:2.4,fill:'var(--fg)'},h);el('circle',{cx:173.4,cy:145,r:2.4,fill:'var(--fg)'},h);
+ const l=g('thEl');
+ [['beide Augen',160,82],['ein Auge',44,150],['ein Auge',276,150],['toter Winkel',160,312]].forEach(([t,x,y])=>{el('text',{class:'lbl',x,y},l).textContent=t;});
+})();
+let vi=0,vMode='l';
+function seeMark(k){g('thEye').classList.toggle('dim',!!k);[...g('thEz').children].forEach(p=>p.classList.toggle('sel',!!k&&p.dataset.k===k));}
+function seeShow(){
+ const v=V[vi];seeMark(v.z);g('thEy').textContent='';
+ g('thVnm').textContent=v.n;g('thVds').textContent=v.d;g('thVct').textContent=(vi+1)+' / '+V.length;
+ g('thVpv').disabled=vi===0;g('thVnx').textContent=vi===V.length-1?'Von vorn ↺':'Weiter →';
+}
+g('thVpv').onclick=()=>{if(vi>0){vi--;seeShow();}};
+g('thVnx').onclick=()=>{vi=(vi+1)%V.length;seeShow();};
+const VA={b:'Mit beiden Augen',m:'Nur mit einem Auge',h:'Gar nicht, toter Winkel',v:'Gar nicht, toter Winkel'};
+const VW={b:'Du bist vorne im Bereich beider Augen. Hier sieht dich das Pferd am besten.',m:'Du bist seitlich. Hier sieht dich nur ein Auge, Bewegungen bemerkt es aber schnell.',h:'Du bist direkt hinter dem Pferd. Hier sieht es dich nicht. Sprich es an, bevor du dich näherst.',v:'Du bist direkt vor der Stirn. So nah sieht dich das Pferd kaum.'};
+const VR=10;let vq=[],vn=0,vs=0,vm=0,vk='',vdone=false;
+function rnd(a,b){return a+Math.random()*(b-a);}
+function vPlace(k){
+ let a,r;
+ if(k==='b'){a=rnd(-20,20);r=rnd(100,136);}
+ else if(k==='m'){a=rnd(48,150)*(Math.random()<.5?-1:1);r=rnd(80,132);}
+ else if(k==='h'){a=rnd(174,186);r=rnd(128,140);}
+ else{a=rnd(-14,14);r=rnd(39,44);}
+ const[x,y]=pt(a,r),y0=g('thEy');y0.textContent='';
+ const gg=el('g',{class:'you'},y0);el('circle',{cx:x.toFixed(1),cy:y.toFixed(1),r:k==='v'?8:11},gg);
+ if(k!=='v')el('text',{x:x.toFixed(1),y:y.toFixed(1)},gg).textContent='Du';
+}
+function vAsk(){
+ if(vn>=VR){vEnd();return;}
+ if(!vq.length)vq=mix(['b','b','m','m','m','h','h','v','b','m','h','v']);
+ vk=vq.pop();vdone=false;vn++;seeMark('');g('thEye').classList.add('quiz');vPlace(vk);
+ g('thVn').textContent=vn+' / '+VR;g('thVfb').textContent='';why('thVwhy','');g('thVnext').disabled=true;
+ const box=g('thVopts');box.textContent='';
+ ['Mit beiden Augen','Nur mit einem Auge','Gar nicht, toter Winkel'].forEach(t=>{const b=document.createElement('button');b.className='opt';b.textContent=t;b.onclick=()=>vAnswer(t,b);box.appendChild(b);});
+}
+function vAnswer(t,b){
+ if(vdone)return;vdone=true;vm++;const ok=t===VA[vk];
+ if(ok){vs++;b.classList.add('ok');g('thVfb').textContent='Richtig.';}
+ else{b.classList.add('bad');[...g('thVopts').children].find(x=>x.textContent===VA[vk]).classList.add('ok');g('thVfb').textContent='Richtig wäre: '+VA[vk]+'.';}
+ g('thEye').classList.remove('quiz');seeMark(vk);why('thVwhy',VW[vk]);
+ g('thVsc').textContent=vs;g('thVmx').textContent=vm;g('thVnext').disabled=false;
+ g('thVnext').textContent=vn>=VR?'Ergebnis →':'Weiter →';
+}
+function vEnd(){
+ g('thEye').classList.remove('quiz');g('thEy').textContent='';seeMark('');g('thVopts').textContent='';why('thVwhy','');
+ g('thVfb').textContent='Fertig: '+vs+' von '+VR+' richtig.';
+ const b=document.createElement('button');b.className='opt';b.textContent='↺ Noch einmal';b.onclick=vStart;g('thVopts').appendChild(b);
+ g('thVnext').disabled=true;
+}
+function vStart(){vq=[];vn=vs=vm=0;g('thVsc').textContent=0;g('thVmx').textContent=0;g('thVnext').textContent='Weiter →';vAsk();}
+function seeMode(m){vMode=m;g('thEye').classList.remove('quiz');g('thVlearn').hidden=m!=='l';g('thVquiz').hidden=m!=='q';if(m==='q')vStart();else seeShow();}
+g('thVgo').onclick=()=>seeMode('q');g('thVback').onclick=()=>seeMode('l');g('thVnext').onclick=vAsk;
+
+/* ---- Unsere Pferde ---- */
+function horses(){
+ const box=g('thHlist');if(box.childElementCount)return;
+ P.forEach(p=>{
+  const c=document.createElement('div');c.className='card hp'+(p.muster?' muster':'');
+  const ph=document.createElement('div');ph.className='ph';
+  if(p.foto){const im=document.createElement('img');im.src=p.foto;im.alt=p.n;ph.appendChild(im);}else ph.textContent='Foto';
+  const tx=document.createElement('div');
+  const nm=document.createElement('p');nm.className='nm';nm.textContent=p.n;
+  const m=document.createElement('p');m.className='ds';m.textContent=p.m;
+  const dl=document.createElement('dl');
+  [['Wesen',p.w],['Eigenheiten',p.e],['Gut zu wissen',p.t]].forEach(([k,v])=>{if(!v)return;const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=k;dd.textContent=v;dl.append(dt,dd);});
+  tx.append(nm,m,dl);c.append(ph,tx);
+  if(p.muster){const s=document.createElement('span');s.className='mu';s.textContent='MUSTER';c.appendChild(s);}
+  box.appendChild(c);
+ });
+}
+
 let current='thsF';
+const SUBS=['thsF','thsG','thsQ','thsS','thsV','thsP'];
 function sub(which){
  current=which;
- ['thsF','thsG','thsQ'].forEach(id=>g(id).setAttribute('aria-pressed',id===which));
- const wip=which==='thsQ'&&!TESTS_WITH.includes(curId);g('thLearn').hidden=which!=='thsF';g('thGame').hidden=which!=='thsG';g('thQuest').hidden=which!=='thsQ'||wip;g('thWip').hidden=!wip;
- g('thStage').hidden=which==='thsQ';
- if(which==='thsF')showLearn();else if(which==='thsG')ask();else if(!wip)qask();
+ SUBS.forEach(id=>g(id).setAttribute('aria-pressed',id===which));
+ const quest=which==='thsQ'||which==='thsS',wip=which==='thsQ'&&!TESTS_WITH.includes(curId);
+ g('thLearn').hidden=which!=='thsF';g('thGame').hidden=which!=='thsG';g('thQuest').hidden=!quest||wip;g('thWip').hidden=!wip;
+ g('thSee').hidden=which!=='thsV';g('thHorse').hidden=which!=='thsP';
+ g('thStage').hidden=quest||which==='thsP';
+ g('thArena').style.display=which==='thsV'?'none':'';g('thEye').style.display=which==='thsV'?'':'none';
+ if(quest&&!wip){const set=which==='thsS'?S:Q;if(QS!==set){QS=set;fillChap();qbag=[];qs=qm=0;g('thQsc').textContent=0;g('thQmx').textContent=0;}}
+ if(which==='thsF')showLearn();else if(which==='thsG')ask();else if(which==='thsV')seeMode(vMode);else if(which==='thsP')horses();else if(!wip)qask();
 }
-['thsF','thsG','thsQ'].forEach(id=>g(id).onclick=()=>sub(id));
+SUBS.forEach(id=>g(id).onclick=()=>sub(id));
 
 const MAIN=['lg','stage','panels'];
 let isOn=false;
