@@ -1,5 +1,5 @@
 <!doctype html><html lang="de"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Deutsch"></head><body>
-<meta name="app-version" content="2026-10-30g">
+<meta name="app-version" content="2026-10-30h">
 <title>Deutsch Grammatik</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#ffffff">
@@ -110,7 +110,7 @@ mark.d{color:var(--dat)} mark.a{color:var(--akk)}
 .answer{display:flex;gap:6px}
 .answer.typ{margin-top:6px}.answer.typ button{min-width:84px}
 .answer input.ok{background:var(--limepale);box-shadow:inset 0 -2px 0 var(--ink)}.answer input.near{background:#fff6b0;box-shadow:inset 0 -2px 0 var(--ink)}.answer input.bad{background:#fbe3e1;box-shadow:inset 0 -2px 0 var(--red);color:var(--red);text-decoration:line-through}
-.uml{display:flex;gap:4px;margin-top:6px}.uml button{flex:1;min-height:34px;padding:0;font-size:1.05rem;background:var(--pale)}
+.answer input:focus,.answer input:focus-visible{outline:none}.uml{display:flex;gap:4px;margin-top:6px}.uml button{flex:1;min-height:34px;padding:0;font-size:1.05rem;background:var(--pale)}
 .nr{margin:6px 0 0;font-size:1rem}.nr u{text-decoration:none;background:#fbe3e1;color:var(--red);font-weight:700;padding:0 1px}.nr.bad{color:var(--fg)}
 .btns button.on{background:var(--limepale);font-weight:700}
 .errc{display:flex;justify-content:space-between;align-items:center;gap:10px;text-align:left;background:#fbe3e1;padding:9px 12px;flex:none}
@@ -2414,7 +2414,7 @@ function mcCount(){const q=MC.list[MC.i];$("ct").innerHTML=(q&&q.lv?'<span class
 function mcRender(){if(!MC||MC.t!==T)mcStart(T);clearTimeout(MC.tm);const q=MC.list[MC.i];MC.done=false;const typed=canType(q);document.querySelector(".app").classList.toggle("typ",typed);
   if(q.t==="prep")prLegend(false);else $("lg").innerHTML=LG[q.t]||(GT[q.t]&&GT[q.t].lg)||"";
   (STAGE[q.t]||gStage)(q,false);$("bd").textContent=(BADGE[q.t]||(q=>GT[q.t].badge))(q);mcCount();
-  $("cardbody").innerHTML='<p id="tx">'+esc(q.s).replace("___",'<span class="gap" id="gap">&nbsp;</span>').replace(/\[(.+?)\]/,'<mark class="fm">$1</mark>')+'</p>'+(typed?'<div class="answer typ"><input id="ans" type="text" lang="de" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" placeholder="Lücke schreiben …" aria-label="Deine Antwort"><button class="primary" id="chk">Prüfen</button></div><div class="uml">'+["ä","ö","ü","ß","Ä","Ö","Ü"].map(c=>'<button data-c="'+c+'">'+c+'</button>').join("")+'</div><div id="res"></div>':'<div class="opts'+(q.o.some(w=>w.length>12)?" long":q.o.length===3?" three":"")+'">'+q.o.map((w,i)=>'<button class="opt" id="o'+i+'" data-i="'+i+'">'+esc(w)+'</button>').join("")+'</div>')+(store.timer&&!typed?'<div class="tbar"><i id="tbi"></i></div>':'')+'<p id="gt"></p><p class="nf" id="nf">'+(store.arthelp&&baseOf(q)&&q.t!=="art"?'Grundform: <b>'+esc(baseOf(q))+'</b>':'')+'</p>';
+  $("cardbody").innerHTML='<p id="tx">'+esc(q.s).replace("___",'<span class="gap" id="gap">&nbsp;</span>').replace(/\[(.+?)\]/,'<mark class="fm">$1</mark>')+'</p>'+(typed?'<div class="answer typ"><input id="ans" type="text" lang="de" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" placeholder="Lücke schreiben …" aria-label="Deine Antwort"><button class="primary" id="chk">Prüfen</button></div><div id="res"></div>':'<div class="opts'+(q.o.some(w=>w.length>12)?" long":q.o.length===3?" three":"")+'">'+q.o.map((w,i)=>'<button class="opt" id="o'+i+'" data-i="'+i+'">'+esc(w)+'</button>').join("")+'</div>')+(store.timer&&!typed?'<div class="tbar"><i id="tbi"></i></div>':'')+'<p id="gt"></p><p class="nf" id="nf">'+(store.arthelp&&baseOf(q)&&q.t!=="art"?'Grundform: <b>'+esc(baseOf(q))+'</b>':'')+'</p>';
   document.querySelectorAll(".opt").forEach(b=>b.onclick=()=>mcAnswer(+b.dataset.i));
   if(typed){const a=$("ans");$("chk").onclick=mcTyped;a.onkeydown=e=>{if(e.key==="Enter"){e.preventDefault();MC.done?mcNext():mcTyped();}};
     document.querySelectorAll(".uml button").forEach(b=>b.onclick=()=>{if(a.disabled)return;const p=a.selectionStart??a.value.length;a.value=a.value.slice(0,p)+b.dataset.c+a.value.slice(a.selectionEnd??p);a.focus();a.setSelectionRange(p+1,p+1);});
