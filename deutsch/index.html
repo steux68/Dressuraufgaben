@@ -1,5 +1,5 @@
 <!doctype html><html lang="de"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Deutsch"></head><body>
-<meta name="app-version" content="2026-10-27g">
+<meta name="app-version" content="2026-10-30a">
 <title>Deutsch Grammatik</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#ffffff">
@@ -432,6 +432,53 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .hist>*{padding:7px 0;background:var(--df) left bottom/100% 1px no-repeat}.hist b{font-weight:700}.hist span{padding-left:8px;background:var(--df) left bottom/100% 1px no-repeat,var(--dfv) left top/1px 100% no-repeat}
 .hbar{flex:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding-top:6px;background:var(--df) left top/100% 1px no-repeat}
 .hbar button{min-height:44px}.hbar .t{background:var(--yellow);font-weight:700}
+
+/* ---- bars: a dotted divider in the middle between the two halves of a row, wherever the bars are (waiting, stuck or moving) ---- */
+.hb{--hv:repeating-linear-gradient(to bottom,#b8b8b8 0 1px,transparent 1px 3px)}
+.hb.hl{background:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left top/100% 1px no-repeat,repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left bottom/100% 1px no-repeat,var(--hv) right top/1px 100% no-repeat,#fff}
+.hb.hr{background:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left top/100% 1px no-repeat,repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left bottom/100% 1px no-repeat,var(--hv) left top/1px 100% no-repeat,#fff}
+/* ---- Geschichte: rows striped grey / white like the downloads & links of dasein-design, with a small blue link button ---- */
+.hlist{display:flex;flex-direction:column}
+.hi{display:grid;grid-template-columns:5.4em minmax(0,1fr);gap:8px;align-items:baseline;padding:9px 10px 10px;background:#fff;font-size:1.02rem;line-height:1.3}
+.hi:nth-child(odd){background:#f4f4f2}
+.hi>b{font-weight:700;overflow-wrap:anywhere}
+.hi>span{min-width:0;overflow-wrap:anywhere;hyphens:auto}
+.hi a.wk{display:inline-block;margin:6px 0 0 8px;padding:1px 8px 2px;font-size:11px;font-weight:700;letter-spacing:.04em;color:#1a5fd0;background:#dfe9fa;text-decoration:none;vertical-align:1px}
+.hi a.wk:active{background:#bcd0f3}
+/* ---- tests: length ---- */
+.tlen{display:flex;align-items:center;gap:6px;margin-top:8px;font-size:.95rem;color:var(--muted)}
+.tlen button{padding:4px 12px;font-size:.95rem;background:var(--pale)}
+.tlen button[aria-pressed="true"]{background:var(--lime);font-weight:700;color:var(--fg);box-shadow:none}
+.tst.wide{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between;min-height:48px}
+/* ---- TEKAMOLO ---- */
+.tkm{display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:0;font-size:1.05rem;line-height:1.2;max-width:100%}
+.tkm>div{padding:5px 7px 7px;display:flex;flex-direction:column;justify-content:flex-end;gap:1px;min-width:0}
+.tkm small{font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:#555}
+.tkm span{font-weight:400}
+.tkm .te,.tkm .ka,.tkm .mo,.tkm .lo{font-weight:700}.tkm .te span,.tkm .ka span,.tkm .mo span,.tkm .lo span{font-weight:700}
+.tkm .v span{font-weight:700}.tkm .v{background:var(--mkey)}
+.tkm .o{background:var(--mnom)}
+.te,.lg .sw.te{background:#e6e6e3}.ka,.lg .sw.ka{background:#f5efcf}.mo,.lg .sw.mo{background:#e3efb4}.lo,.lg .sw.lo{background:#d3def0}
+.tkm .te,.tkm .ka,.tkm .mo,.tkm .lo{}
+/* ---- Text prüfen ---- */
+.wchips{display:flex;flex-wrap:wrap;gap:4px}
+.wchips button{padding:4px 12px;font-size:.95rem;background:var(--pale)}
+.wchips button[aria-pressed="true"]{background:var(--lime);font-weight:700;box-shadow:none}
+.wprompt{margin:6px 0 0;font-size:1.05rem;line-height:1.35}
+#wtask,#wlang{font:inherit;font-size:1rem;padding:8px;border:0;border-radius:0;background:var(--pale);color:var(--fg);min-width:0;max-width:100%;box-shadow:inset 0 -2px 0 var(--ink)}
+#wtx{display:block;width:100%;min-height:210px;font:inherit;font-size:1.08rem;line-height:1.4;padding:10px 12px;border:0;border-radius:0;background:var(--pale);color:var(--fg);box-shadow:inset 0 -2px 0 var(--ink);resize:vertical}
+.wrow{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.wfile{font-size:.95rem;color:#1a5fd0;font-weight:700;cursor:pointer;padding:4px 0}
+.wscore{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.wscore b{font-size:2.6rem;line-height:1}.wscore span{font-size:1.15rem;font-weight:700}
+.wtxt{white-space:pre-wrap;overflow-wrap:anywhere;font-size:1.05rem;line-height:1.5;margin:0;padding:0}
+.wtxt mark.er{background:#fbe3e1;color:var(--fg);border-bottom:2px solid var(--red);font-weight:400;padding:0}
+.wtxt mark.st{background:none;border-bottom:2px dotted var(--muted);font-weight:400;padding:0}
+.wf{padding:8px 10px 9px;display:flex;flex-direction:column;gap:3px;font-size:.98rem;line-height:1.3}
+.wf:nth-child(odd){background:#f4f4f2}
+.wf .cx{overflow-wrap:anywhere}.wf .cx mark.er{background:#fbe3e1;border-bottom:2px solid var(--red);font-weight:700;padding:0}
+.wf .sg{display:flex;flex-wrap:wrap;gap:4px}.wf .sg i{font-style:normal;font-weight:700;padding:1px 7px;background:var(--mkey)}
+.wf small{color:#555;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
 /* ---- Theorie as a list ---- */
 .tlist{display:flex;flex-direction:column}
 .tli{display:grid;grid-template-columns:2em minmax(0,1fr) auto;gap:8px;align-items:center;padding:10px 0;background:var(--df) left bottom/100% 1px no-repeat;text-align:left;width:100%}
@@ -1818,9 +1865,64 @@ GT.neg={name:"Verneinung",badge:"nicht · kein",tip:"First ask: is it a noun wit
 <div><span class="k">weder … noch</span><span>Er kommt <b>weder</b> heute <b>noch</b> morgen.</span></div>
 <div><span class="k">gar nicht · gar kein</span><span>Das stimmt <b>gar nicht</b>. Ich habe <b>gar keine</b> Ahnung.</span></div></div>
 <p class="tline">sondern corrects after a negation; aber only adds a contrast.</p></div>`};
+
+const TK=a=>'<div class="tkm">'+a.map(([c,l,w])=>'<div class="'+c+'">'+(l?'<small>'+l+'</small>':'')+'<span>'+w+'</span></div>').join("")+'</div>';
+GT.tekamolo={name:"TEKAMOLO",badge:"Te · Ka · Mo · Lo",tip:"Ask four questions in this order: wann? warum? wie? wo? It is the neutral order, your safe default. New or important information moves towards the end.",src:["grammis","lingolia","dw"],
+ lg:'<span><i class="sw te"></i> Te wann?</span><span><i class="sw ka"></i> Ka warum?</span><span><i class="sw mo"></i> Mo wie?</span><span><i class="sw lo"></i> Lo wo?</span>',
+ cards:[
+ {b:"Die Reihenfolge",st:TK([["x","","Ich"],["v","","fahre"],["te","Te · wann?","heute"],["ka","Ka · warum?","wegen der Arbeit"],["mo","Mo · wie?","mit dem Zug"],["lo","Lo · wo?","nach Wien"]]),tx:"Temporal · Kausal · Modal · Lokal",gt:"The usual order of the extra information in the middle of the sentence: <b>when – why – how – where</b>. Each part answers one question.",say:"Ich fahre heute wegen der Arbeit mit dem Zug nach Wien."},
+ {b:"Mittelfeld",st:TK([["x","","Wir"],["v","","haben"],["te","Te","gestern"],["mo","Mo","konzentriert"],["lo","Lo","im Büro"],["v","","gearbeitet"]]),tx:"TEKAMOLO fills the Mittelfeld",gt:"It stands between the two parts of the verb bracket: <b>haben … gearbeitet</b>. Not every sentence uses all four, but the ones you use keep this order.",say:"Wir haben gestern konzentriert im Büro gearbeitet."},
+ {b:"Te · wann?",st:TK([["x","","Ich"],["v","","arbeite"],["te","Te","jeden Tag"],["lo","Lo","im Büro"]]),tx:"Temporal: wann? wie oft? wie lange? seit wann?",gt:"gestern, heute, jeden Tag, drei Stunden, seit Montag. The time usually comes first.",say:"Ich arbeite jeden Tag im Büro."},
+ {b:"Ka · warum?",st:TK([["x","","Wir"],["v","","bleiben"],["ka","Ka","wegen des Wetters"],["lo","Lo","zu Hause"]]),tx:"Kausal: warum? weshalb?",gt:"wegen des Wetters (Genitiv), aus Angst, deshalb, daher. A reason follows the time.",say:"Wir bleiben wegen des Wetters zu Hause."},
+ {b:"Mo · wie?",st:TK([["x","","Sie"],["v","","fährt"],["mo","Mo","mit dem Zug"],["lo","Lo","nach Graz"]]),tx:"Modal: wie? womit? auf welche Art?",gt:"schnell, gern, mit dem Zug, ohne Hilfe, leider. Manner comes after the reason and before the place.",say:"Sie fährt mit dem Zug nach Graz."},
+ {b:"Lo · wo?",st:TK([["x","","Er"],["v","","wohnt"],["te","Te","seit 2020"],["lo","Lo","in Wien"]]),tx:"Lokal: wo? wohin? woher?",gt:"in Wien, nach Hause, aus dem Büro. Place comes last in the middle field.",say:"Er wohnt seit 2020 in Wien."},
+ {b:"Pronomen",st:TK([["x","","Ich"],["v","","gebe"],["o","Akk","es"],["o","Dat","dir"],["te","Te","morgen"]]),tx:"Pronouns come first",gt:"Short pronouns stand right after the verb, before TEKAMOLO. Two pronouns: <b>Akk before Dat</b> – es dir, not dir es.",say:"Ich gebe es dir morgen."},
+ {b:"Objekte",st:TK([["x","","Ich"],["v","","schenke"],["o","Dat","meiner Mutter"],["o","Akk","einen Ring"]]),tx:"Two nouns: Dativ before Akkusativ",gt:"A pronoun comes before a noun: Ich schenke <b>ihr</b> einen Ring. Ich schenke <b>ihn</b> meiner Mutter.",say:"Ich schenke meiner Mutter einen Ring."},
+ {b:"Vorfeld",st:TK([["te","Te","Morgen"],["v","","fahre"],["x","","ich"],["mo","Mo","mit dem Zug"],["lo","Lo","nach Wien"]]),tx:"Any part can go first",gt:"For emphasis, put one part in position 1. The verb stays second, and the others keep their order: <b>Morgen fahre ich mit dem Zug nach Wien.</b>",say:"Morgen fahre ich mit dem Zug nach Wien."},
+ {b:"Kein Gesetz",st:TK([["x","","Ich"],["v","","fahre"],["te","Te","morgen"],["lo","Lo","nach Wien"],["mo","Mo","mit dem Zug"]]),tx:"The new information goes last",gt:"TEKAMOLO is the neutral order. If the means of transport is the point, it can move back: nach Wien <b>mit dem Zug</b>. Learn the default first, then notice how real texts bend it.",say:"Ich fahre morgen nach Wien mit dem Zug."}],
+ q:[
+ {s:"„mit dem Zug“ beantwortet die Frage …",o:["Wie?","Wann?","Wohin?"],why:"How you travel is Modal (wie?).",lv:"A2"},
+ {s:"„nach Wien“ beantwortet die Frage …",o:["Wohin?","Wann?","Warum?"],why:"A direction is Lokal (wohin?).",lv:"A2"},
+ {s:"„seit Montag“ beantwortet die Frage …",o:["Seit wann?","Wohin?","Warum?"],why:"A point in time is Temporal (seit wann?).",lv:"A2"},
+ {s:"„wegen des Wetters“ beantwortet die Frage …",o:["Warum?","Wann?","Wie?"],why:"wegen + Genitiv gives a reason: Kausal (warum?).",lv:"B1"},
+ {s:"Welche Gruppe gehört NICHT zu TEKAMOLO?",o:["Konditional","Kausal","Modal"],why:"TEKAMOLO = Temporal, Kausal, Modal, Lokal.",lv:"B1"},
+ {s:"Neutrale Reihenfolge: Ich fahre ___.",o:["morgen mit dem Zug nach Wien","nach Wien mit dem Zug morgen","nach Wien morgen mit dem Zug"],why:"Te – Mo – Lo: morgen, mit dem Zug, nach Wien.",lv:"A2"},
+ {s:"Neutrale Reihenfolge: Er ist ___ gefahren.",o:["heute mit dem Auto nach Graz","nach Graz heute mit dem Auto","mit dem Auto nach Graz heute"],why:"Te – Mo – Lo, between ist and gefahren.",lv:"A2"},
+ {s:"Neutrale Reihenfolge: Wir bleiben ___.",o:["wegen des Wetters zu Hause","zu Hause wegen des Wetters"],why:"Ka before Lo: wegen des Wetters (warum?), zu Hause (wo?).",lv:"B1"},
+ {s:"Neutrale Reihenfolge: Sie hat ___ gearbeitet.",o:["gestern gern im Garten","im Garten gestern gern","gern im Garten gestern"],why:"Te – Mo – Lo: gestern, gern, im Garten.",lv:"B1"},
+ {s:"Neutrale Reihenfolge: Er arbeitet ___.",o:["jeden Tag sehr konzentriert im Büro","sehr konzentriert jeden Tag im Büro","im Büro jeden Tag sehr konzentriert"],why:"Te – Mo – Lo: jeden Tag, sehr konzentriert, im Büro.",lv:"B1"},
+ {s:"Ich gebe ___ morgen.",o:["es dir","dir es","dem Kind es"],why:"Pronouns first, Akk before Dat: es dir.",lv:"B1"},
+ {s:"Ich schenke ___.",o:["meiner Mutter einen Ring","einen Ring meiner Mutter"],why:"Two nouns: Dativ before Akkusativ.",lv:"B1"},
+ {s:"Morgen ___ nach Wien.",o:["fahre ich","ich fahre","ich fahren"],why:"Something in position 1: the verb is still second, so the subject follows it.",lv:"A2"},
+ {s:"Seit 2020 ___ ich in Graz.",o:["wohne","wohnen","gewohnt"],why:"Position 1 is seit 2020; the verb stays in position 2.",lv:"A2"},
+ {s:"Neutrale Reihenfolge: Der Vortrag findet ___ statt.",o:["nächste Woche wegen des großen Interesses im Saal","wegen des großen Interesses nächste Woche im Saal","im Saal nächste Woche wegen des großen Interesses"],why:"Te – Ka – Lo: nächste Woche, wegen des großen Interesses, im Saal.",lv:"B2"}],
+ th:`<div class="tc df"><h3>TEKAMOLO <small>A2</small></h3><p class="tline">The usual order of the extra information (Angaben) in the middle of the sentence.</p>
+<div class="nt" style="--nc:5.4em 6.6em minmax(0,1fr)"><div class="hd"><span>Teil</span><span>Frage</span><span>Beispiele</span></div>
+<div><span class="g">Te</span><span>wann?<br>wie oft?</span><span>gestern, heute, jeden Tag, seit Montag, drei Stunden</span></div>
+<div><span class="g">Ka</span><span>warum?</span><span>wegen des Regens, aus Angst, deshalb</span></div>
+<div><span class="g">Mo</span><span>wie?<br>womit?</span><span>schnell, gern, mit dem Zug, ohne Hilfe</span></div>
+<div><span class="g">Lo</span><span>wo?<br>wohin?</span><span>in Wien, nach Hause, aus dem Büro</span></div></div></div>
+<div class="tc df"><h3>Der ganze Satz <small>A2</small></h3>${TK([["x","","Ich"],["v","","gebe"],["o","","es"],["te","Te","morgen"],["mo","Mo","gern"],["lo","Lo","im Büro"],["v","","ab"]])}
+<div class="nt" style="--nc:6.4em minmax(0,1fr)"><div class="hd"><span>Platz</span><span>Was steht dort</span></div>
+<div><span class="g">1</span><span>Subjekt oder ein anderer Teil (Vorfeld)</span></div>
+<div><span class="g">2</span><span>das konjugierte Verb</span></div>
+<div><span class="g">Mitte</span><span>Pronomen, dann Te – Ka – Mo – Lo</span></div>
+<div><span class="g">Ende</span><span>zweiter Verbteil: ab, gegeben, gearbeitet</span></div></div></div>
+<div class="tc df"><h3>Objekte und Pronomen <small>B1</small></h3>
+<div class="nt" style="--nc:8.4em minmax(0,1fr)"><div class="hd"><span>Regel</span><span>Beispiel</span></div>
+<div><span class="k">Pronomen zuerst</span><span>Ich schenke <b>ihr</b> einen Ring.<br>Ich schenke <b>ihn</b> meiner Mutter.</span></div>
+<div><span class="k">zwei Pronomen: Akk – Dat</span><span>Ich gebe <b>es dir</b>.</span></div>
+<div><span class="k">zwei Nomen: Dat – Akk</span><span>Ich schenke <b>meiner Mutter einen Ring</b>.</span></div></div></div>
+<div class="tc df"><h3>Wann gilt es nicht? <small>B1</small></h3>
+<div class="nt" style="--nc:8.4em minmax(0,1fr)"><div class="hd"><span>Fall</span><span>Beispiel</span></div>
+<div><span class="g">Betonung</span><span>Nach Wien fahre ich <b>mit dem Zug</b>. The part you stress moves back or to the front.</span></div>
+<div><span class="g">Vorfeld</span><span><b>Morgen</b> fahre ich mit dem Zug nach Wien.</span></div>
+<div><span class="g">nicht</span><span>Ich fahre heute <b>nicht</b> nach Wien. See Verneinung.</span></div></div>
+<p class="tline">TEKAMOLO is a memory aid from German lessons for foreigners, not a law of the language. It is your safe default.</p></div>`};
 const TOPICS=[
  {t:"neg",n:"Verneinung",tag:"nicht · kein",ds:"nicht oder kein, und wo nicht steht · A1–B1"},
  {t:"satz",n:"Satzbau",tag:"Satz",ds:"Verb an Position 2 und die Satzklammer · A1–B1"},
+ {t:"tekamolo",n:"TEKAMOLO",tag:"wann · warum · wie · wo",ds:"Reihenfolge der Angaben im Mittelfeld · A2–B2"},
  {t:"art",n:"Artikel",tag:"der · die · das",ds:"Regeln nach Endung und ein schnelles Spiel · A1–B2"},
  {t:"fall",n:"Fälle & Pronomen",tag:"der · den · dem · des",ds:"Nominativ, Akkusativ, Dativ, Genitiv, mir · mich · A1–B1"},
  {t:"pron",n:"Pronomen",tag:"mir · mich",ds:"Personalpronomen im Akkusativ und Dativ · A1–B1"},
@@ -1837,13 +1939,14 @@ const TOPICS=[
  {t:"k1",n:"Konjunktiv I",tag:"er sei · er habe",ds:"Indirekte Rede, Berichte · B2–C1"},
  {t:"nvv",n:"Nomen-Verb-Verbindungen",tag:"in Frage stellen",ds:"formelles Deutsch für Briefe und Vorträge · B1–C1"},
  {t:"nom",n:"Nominalstil & Partizipien",tag:"die geplante Brücke",ds:"Partizipialattribute, Nominalisierung · B2–C1"},
- {t:"test",n:"Test",tag:"gemischt",ds:"15 Fragen aus allen Themen, wie in der Prüfung"},
+ {t:"write",n:"Text prüfen",tag:"Schreiben",ds:"Schreibaufgabe B1–C1, Prüfung mit LanguageTool"},
+ {t:"test",n:"Test",tag:"gemischt",ds:"15, 30 oder 45 Fragen aus allen Themen, wie in der Prüfung"},
  {t:"links",n:"Links & Hilfsmittel",tag:"Quellen",ds:"Wörterbücher, Grammatik, Verben, Aussprache, Nachrichten"},
 ];
 const TNAME={prep:"Präpositionen",art:"Artikel",pron:"Pronomen",gen:"Genitiv",fall:"Fälle",adj:"Adjektive"};
-function score(t){if(t==="links")return null;if(t==="satz"){const n=SB.filter(x=>store["sb"+x.id]==="ok").length;return n?n/SB.length:null;}const b=(store.best||{})[t];return b==null?null:b;}
+function score(t){if(t==="links"||t==="write")return null;if(t==="satz"){const n=SB.filter(x=>store["sb"+x.id]==="ok").length;return n?n/SB.length:null;}const b=(store.best||{})[t];return b==null?null:b;}
 const GROUPS=[
- {n:"Satz",t:["satz","neg","konn","rel"],soon:"zu + Infinitiv"},
+ {n:"Satz",t:["satz","tekamolo","neg","konn","rel"],soon:"zu + Infinitiv"},
  {n:"Nomen & Fälle",t:["art","fall","gen"],soon:"Plural · n-Deklination"},
  {n:"Adjektiv",t:["adj"],soon:"Vergleichen"},
  {n:"Präpositionen",t:["prep","vprep"],soon:"Zeitangaben"},
@@ -1873,7 +1976,7 @@ function renderHome(){renderBars();
 /* ---------- navigation ---------- */
 let T=null,mode="learn",idx=0,self=false,caseMode="wo",gi=0,MC=null;
 function openTopic(t){navPush("topic");T=t;idx=0;gi=0;MC=null;$("home").hidden=true;$("topic").hidden=false;
-  $("ttl").textContent=TOPICS.find(x=>x.t===t).n;$("seg").hidden=t==="test"||t==="links";setMode(t==="test"?"game":t==="links"?"theo":"learn");}
+  $("ttl").textContent=TOPICS.find(x=>x.t===t).n;$("seg").hidden=t==="test"||t==="links"||t==="write";setMode(t==="test"?"game":(t==="links"||t==="write")?"theo":"learn");}
 function goHome(){TESTLV=null;ERRMODE=false;document.querySelector(".app").classList.remove("typ");closePop();delete document.querySelector(".app").dataset.mode;$("topic").hidden=true;$("home").hidden=false;renderHome();}
 /* the Start button (house) goes back to the title page; the phone's back button returns to where you were */
 $("back").onclick=()=>{if(navState()==="topic")history.back();else goHome();setTimeout(()=>{$("hscroll").scrollTop=0;typeof enterMap==="function"&&enterMap();},90);};
@@ -1881,7 +1984,7 @@ $("tmr").onclick=()=>{store.timer=!store.timer;save();renderHome();};
 $("ahp").onclick=()=>{store.arthelp=!store.arthelp;save();renderHome();};
 function setMode(m){closePop();mode=m;if(m!=="game")document.querySelector(".app").classList.remove("typ");document.querySelector(".app").dataset.mode=m;$("mLearn").setAttribute("aria-pressed",m==="learn");$("mGame").setAttribute("aria-pressed",m==="game");$("mTheo").setAttribute("aria-pressed",m==="theo");
   const th=m==="theo";$("theo").hidden=!th;$("lg").hidden=th;$("stage").hidden=th;$("panel").hidden=th;
-  if(m==="game"){gi=0;MC=null;}if(T&&T!=="test"&&T!=="links"){store.last={t:T,m};save();}tabarUpd();render();}
+  if(m==="game"){gi=0;MC=null;}if(T&&T!=="test"&&T!=="links"&&T!=="write"){store.last={t:T,m};save();}tabarUpd();render();}
 /* arrow bar at the foot of a topic page: on to the next mode; after the last one (or where there is only one) back to the title page */
 function tabarUpd(){const b=$("tNext");if(!b)return;const nx=$("seg").hidden?null:mode==="learn"?"Spiel":mode==="game"?"Theorie":null;
   $("tnw").textContent=nx||"Start";b.setAttribute("aria-label",nx?"weiter zu "+nx:"zur Titelseite");}
@@ -1890,13 +1993,13 @@ $("mLearn").onclick=()=>setMode("learn");$("mTheo").onclick=()=>setMode("theo");
 const TH={satz:()=>TH_SATZ+srcCard("satz"),prep:()=>TH_PREP+srcCard("prep"),art:()=>TH_ART+ownHTML()+srcCard("art"),pron:()=>TH_PRON+srcCard("pron"),gen:()=>TH_GEN+srcCard("gen"),fall:()=>TH_FALL+srcCard("fall"),adj:()=>TH_ADJ+srcCard("adj"),links:()=>TH_LINKS};
 
 /* ---------- "Warum?": the story behind each rule, the first Lernen card of every topic ---------- */
-const WHY={"neg": ["nicht = ni + wiht", "Althochdeutsch, um 800", "Why does nicht end in -t?", "Old High German niwiht meant 'not a thing' – the same word as English 'not a whit'. It once came with a second ni, like French ne … pas; the little ni fell away and nicht did the whole job. kein is the same idea: ni + ein, 'not one'."], "art": ["das Mädchen", "Mark Twain, 1880", "Why is a girl neuter?", "Because of -chen, not because of the girl: every -chen and -lein word is neuter, whatever it means. Twain complained that in German a young lady has no sex, while a turnip has. Gender belongs to the word, not to the thing: der Löffel, die Gabel, das Messer."], "fall": ["se · þone · þæm", "Altenglisch: der · den · dem", "Why does German keep four cases?", "English once had them too: Old English said se, þone, þæm for 'the'. English dropped the endings and relies on word order; only he/him and who/whom are left. German kept them in the article – so Den Plan zeichnet der Architekt is perfectly clear."], "gen": ["Der Dativ ist dem Genitiv sein Tod", "Bastian Sick, 2004", "Is the Genitiv dying?", "In speech it is retreating: wegen dem Regen, das Auto von meinem Bruder. Bastian Sick's best-selling book even makes the joke in the 'wrong' grammar. In writing it is very much alive, and it survives in fixed phrases: eines Tages, meines Wissens, guten Mutes."], "adj": ["stark · schwach", "Jacob Grimm, Deutsche Grammatik, 1819", "Why do the endings change?", "Jacob Grimm named the two sets of endings strong and weak. The rule behind them is thrift: one word has to show the case. If der or dem already shows it, the adjective takes the weak -e or -en. If nothing shows it, the adjective does the job itself: frischer Kaffee."], "konn": ["weil ich hab keine Zeit", "gesprochenes Deutsch", "Why do people say weil with the verb second?", "In speech, weil is drifting towards denn: 'weil ich hab keine Zeit', with a little pause after weil, is now common. It is still wrong in writing and in the exam. The rule to keep: weil, dass, ob, wenn send the verb to the end; und, aber, oder, denn do not."], "rel": ["der Mann, der dort steht", "aus dem alten Zeigewort der", "Why do relative pronouns look like articles?", "They grew out of the old pointing word der, 'that one'. Der Mann, der dort steht, is literally 'the man – that one stands there'. Only dessen, deren and denen show they are something extra: the Genitiv and the Dativ plural grew longer forms."], "perf": ["ich bin gegangen", "Präteritumschwund", "Why does Austria hardly use the Präteritum?", "In southern German – Bavaria, Austria, Switzerland – the simple past has almost vanished from speech over the last centuries; Swiss German has practically none. People say ich bin gegangen, not ich ging. Only war, hatte and the modal verbs stay. In the north and in writing the Präteritum is alive."], "vprep": ["warten auf · Angst vor", "feste Paare", "Why auf and not für?", "These prepositions are fixed by history, not logic – English is no better: wait for, think of, afraid of. German often thinks in space: warten auf (looking towards it), Angst vor (it stands in front of you), denken an (touching it in thought). Learn verb and preposition as one word."], "pass": ["Hier wird getanzt.", "ein Passiv ohne Subjekt", "What can the German Passiv do that English can't?", "German can build a passive with no subject at all: Hier wird nicht geraucht. Sonntags wird gearbeitet. English needs 'there is no smoking here'. It names an activity without saying who does it – very useful for rules, reports and building specifications."], "k2": ["ich hülfe · ich stürbe", "die alten Formen", "Why does everyone say würde?", "The old Konjunktiv II of many verbs looks like the past or sounds bookish: ich hülfe, ich stürbe, ich würfe. So speakers moved to würde + Infinitiv. A handful of short forms stayed alive and are used every day: wäre, hätte, könnte, müsste, sollte, wüsste, käme, ginge."], "k1": ["Er sagte, er sei krank.", "die Sprache der Nachrichten", "Why do the news say er sei?", "Konjunktiv I marks reported speech: the speaker passes on what someone said without vouching for it. Journalists use it to keep their distance – er sei krank means 'he says he is ill'. In everyday speech people use the indicative or würde instead."], "nvv": ["zur Anwendung kommen", "Kanzleisprache", "Why do officials say zur Anwendung kommen?", "Since the chancelleries of the late Middle Ages, official German has loved nouns: a noun plus an almost empty verb such as kommen, stellen, nehmen. zur Anwendung kommen simply means angewendet werden. It sounds formal and precise – good in letters and reports, tiring when overdone."], "nom": ["Donaudampfschifffahrt", "Mark Twain, 1880", "Why is German so fond of long nouns?", "German glues words together where English uses 'of': one word for a whole phrase. Twain joked that some German words are so long they have a perspective. Nominalstil packs a clause into a noun: die Planung des Neubaus instead of dass man den Neubau plant."], "praes": ["er reiste … ab", "Mark Twain, 1880", "Why does the prefix run to the end?", "A separable verb is a verb plus a small adverb, and in a main clause the adverb waits at the end of the verb bracket. Twain mocked a novel in which the hero packs, kisses his mother and sisters and, many words later, finally 'reiste … ab'. The good side: the end of a German sentence always holds a surprise."]};
+const WHY={"neg": ["nicht = ni + wiht", "Althochdeutsch, um 800", "Why does nicht end in -t?", "Old High German niwiht meant 'not a thing' – the same word as English 'not a whit'. It once came with a second ni, like French ne … pas; the little ni fell away and nicht did the whole job. kein is the same idea: ni + ein, 'not one'."], "art": ["das Mädchen", "Mark Twain, 1880", "Why is a girl neuter?", "Because of -chen, not because of the girl: every -chen and -lein word is neuter, whatever it means. Twain complained that in German a young lady has no sex, while a turnip has. Gender belongs to the word, not to the thing: der Löffel, die Gabel, das Messer."], "fall": ["se · þone · þæm", "Altenglisch: der · den · dem", "Why does German keep four cases?", "English once had them too: Old English said se, þone, þæm for 'the'. English dropped the endings and relies on word order; only he/him and who/whom are left. German kept them in the article – so Den Plan zeichnet der Architekt is perfectly clear."], "gen": ["Der Dativ ist dem Genitiv sein Tod", "Bastian Sick, 2004", "Is the Genitiv dying?", "In speech it is retreating: wegen dem Regen, das Auto von meinem Bruder. Bastian Sick's best-selling book even makes the joke in the 'wrong' grammar. In writing it is very much alive, and it survives in fixed phrases: eines Tages, meines Wissens, guten Mutes."], "adj": ["stark · schwach", "Jacob Grimm, Deutsche Grammatik, 1819", "Why do the endings change?", "Jacob Grimm named the two sets of endings strong and weak. The rule behind them is thrift: one word has to show the case. If der or dem already shows it, the adjective takes the weak -e or -en. If nothing shows it, the adjective does the job itself: frischer Kaffee."], "konn": ["weil ich hab keine Zeit", "gesprochenes Deutsch", "Why do people say weil with the verb second?", "In speech, weil is drifting towards denn: 'weil ich hab keine Zeit', with a little pause after weil, is now common. It is still wrong in writing and in the exam. The rule to keep: weil, dass, ob, wenn send the verb to the end; und, aber, oder, denn do not."], "rel": ["der Mann, der dort steht", "aus dem alten Zeigewort der", "Why do relative pronouns look like articles?", "They grew out of the old pointing word der, 'that one'. Der Mann, der dort steht, is literally 'the man – that one stands there'. Only dessen, deren and denen show they are something extra: the Genitiv and the Dativ plural grew longer forms."], "perf": ["ich bin gegangen", "Präteritumschwund", "Why does Austria hardly use the Präteritum?", "In southern German – Bavaria, Austria, Switzerland – the simple past has almost vanished from speech over the last centuries; Swiss German has practically none. People say ich bin gegangen, not ich ging. Only war, hatte and the modal verbs stay. In the north and in writing the Präteritum is alive."], "vprep": ["warten auf · Angst vor", "feste Paare", "Why auf and not für?", "These prepositions are fixed by history, not logic – English is no better: wait for, think of, afraid of. German often thinks in space: warten auf (looking towards it), Angst vor (it stands in front of you), denken an (touching it in thought). Learn verb and preposition as one word."], "pass": ["Hier wird getanzt.", "ein Passiv ohne Subjekt", "What can the German Passiv do that English can't?", "German can build a passive with no subject at all: Hier wird nicht geraucht. Sonntags wird gearbeitet. English needs 'there is no smoking here'. It names an activity without saying who does it – very useful for rules, reports and building specifications."], "k2": ["ich hülfe · ich stürbe", "die alten Formen", "Why does everyone say würde?", "The old Konjunktiv II of many verbs looks like the past or sounds bookish: ich hülfe, ich stürbe, ich würfe. So speakers moved to würde + Infinitiv. A handful of short forms stayed alive and are used every day: wäre, hätte, könnte, müsste, sollte, wüsste, käme, ginge."], "k1": ["Er sagte, er sei krank.", "die Sprache der Nachrichten", "Why do the news say er sei?", "Konjunktiv I marks reported speech: the speaker passes on what someone said without vouching for it. Journalists use it to keep their distance – er sei krank means 'he says he is ill'. In everyday speech people use the indicative or würde instead."], "nvv": ["zur Anwendung kommen", "Kanzleisprache", "Why do officials say zur Anwendung kommen?", "Since the chancelleries of the late Middle Ages, official German has loved nouns: a noun plus an almost empty verb such as kommen, stellen, nehmen. zur Anwendung kommen simply means angewendet werden. It sounds formal and precise – good in letters and reports, tiring when overdone."], "tekamolo": ["TE · KA · MO · LO", "eine Eselsbrücke aus dem DaF-Unterricht", "Is TEKAMOLO a rule?", "It is a memory aid, not a law. It describes the neutral order, the one you can always use. Native speakers shift things for emphasis: the newer or more important the information, the further back it goes. Learn TEKAMOLO as your safe default, then watch how real texts bend it."], "nom": ["Donaudampfschifffahrt", "Mark Twain, 1880", "Why is German so fond of long nouns?", "German glues words together where English uses 'of': one word for a whole phrase. Twain joked that some German words are so long they have a perspective. Nominalstil packs a clause into a noun: die Planung des Neubaus instead of dass man den Neubau plant."], "praes": ["er reiste … ab", "Mark Twain, 1880", "Why does the prefix run to the end?", "A separable verb is a verb plus a small adverb, and in a main clause the adverb waits at the end of the verb bracket. Twain mocked a novel in which the hero packs, kisses his mother and sisters and, many words later, finally 'reiste … ab'. The good side: the end of a German sentence always holds a surprise."]};
 const whyCard=([sq,sx,tx,gt])=>({b:"Warum?",st:'<div class="story"><span class="sk">Warum?</span><p class="sq">'+sq+'</p><p class="sx">'+sx+'</p><p class="sb">'+gt+'</p></div>',tx,gt:"Weiter → zu den Regeln.",say:sq+". "+gt});
 Object.keys(WHY).forEach(k=>{const c=whyCard(WHY[k]);if(GT[k])GT[k].cards.unshift(c);else({art:ART_CARDS,fall:FALL_CARDS,gen:GEN_CARDS,adj:ADJ_CARDS})[k].unshift(c);});
 Object.keys(GT).forEach(k=>{SRC[k]=GT[k].src;TH[k]=()=>GT[k].th+srcCard(k);});
 const LG={fall:'<span class="lgc nom">Nom</span><span class="lgc akk">Akk</span><span class="lgc dat">Dat</span><span class="lgc gen">Gen</span>',adj:'<span><b class="lgx">-e/-er/-es</b> Merkzellen</span><span><b class="lgx en">-en</b> überall sonst</span>',art:'<span><b>der</b> · <b>die</b> · <b>das</b></span>',pron:'<span><i class="sw" style="background:var(--grey)"></i>Nominativ</span><span style="color:var(--akk)"><i class="sw" style="box-shadow:inset 0 0 0 2px var(--akk)"></i>Akkusativ</span><span style="color:var(--dat)"><i class="sw" style="box-shadow:inset 0 0 0 2px var(--dat)"></i>Dativ</span>',gen:'<span><i class="sw" style="background:var(--cream);box-shadow:inset 0 0 0 1px var(--line)"></i>Genitiv: des · der</span>'};
 function render(){clearTimeout(MC&&MC.tm);
-  if(mode==="theo"){theoGallery();$("theo").scrollTop=0;return;}
+  if(mode==="theo"){if(T==="write"){renderWrite();$("theo").scrollTop=0;return;}theoGallery();$("theo").scrollTop=0;return;}
   if(mode==="game"&&T!=="satz"){mcRender();return;}
   if(GT[T]){cardsLearn(GT[T].cards,GT[T].lg);return;}
   ({satz:mode==="learn"?sbLearn:sbGame,prep:prLearn,art:()=>cardsLearn(ART_CARDS,LG.art),pron:()=>cardsLearn(PRON_CARDS,LG.pron),gen:()=>cardsLearn(GEN_CARDS,LG.gen),fall:()=>cardsLearn(FALL_CARDS.concat(PRON_CARDS),LG.fall),adj:()=>cardsLearn(ADJ_CARDS,LG.adj)})[T]();}
@@ -1916,6 +2019,60 @@ const starred=n=>(store.stars||[]).includes(n);
 function toggleStar(n){const s=store.stars||[];store.stars=s.includes(n)?s.filter(x=>x!==n):s.concat([n]);save();const b=$("star");if(b){b.classList.toggle("on",starred(n));b.textContent=starred(n)?"★":"☆";}}
 
 
+
+/* ---------- Text prüfen: a writing task, checked with LanguageTool (public service), with a rough language mark ---------- */
+const WTASKS=[
+ {id:"b1a",lv:"B1",min:80,t:"E-Mail an die Nachbarin",p:"Sie ziehen bald um. Schreiben Sie Ihrer Nachbarin eine E-Mail: Sie verabschieden sich, laden sie zu einem kleinen Fest ein und fragen, ob sie Möbel brauchen kann."},
+ {id:"b1b",lv:"B1",min:80,t:"Brief an die Kursleiterin",p:"Ihr Deutschkurs findet nächste Woche für Sie nicht statt. Schreiben Sie der Kursleiterin: warum Sie nicht kommen können, was Sie nachholen möchten und eine Frage zum nächsten Termin."},
+ {id:"b2a",lv:"B2",min:150,t:"Leserbrief",p:"In Ihrer Stadt soll ein Parkplatz zu einem kleinen Park werden. Schreiben Sie einen Leserbrief: Ihre Meinung, zwei Argumente und ein Vorschlag."},
+ {id:"b2b",lv:"B2",min:150,t:"Beschwerde",p:"Sie haben online einen Tisch bestellt. Er kam beschädigt an, und der Kundendienst antwortet nicht. Schreiben Sie eine Beschwerde: Was ist passiert, was haben Sie versucht, was verlangen Sie?"},
+ {id:"c1a",lv:"C1",min:250,t:"Stellungnahme",p:"Sollte es ein gesetzliches Recht auf Homeoffice geben? Schreiben Sie eine Stellungnahme: Position, Argumente, ein Gegenargument und Ihr Fazit."},
+ {id:"c1b",lv:"C1",min:250,t:"Bericht",p:"Beschreiben Sie ein Bauprojekt in Ihrer Stadt (gebaut oder geplant): Ausgangslage, Entwurf, Probleme und Ihre Bewertung."},
+ {id:"free",lv:"Frei",min:0,t:"Eigener Text",p:"Schreiben Sie über ein Thema Ihrer Wahl oder fügen Sie einen Text ein, den Sie schon geschrieben haben."}];
+const WS={lv:"B1",id:"b1a"};
+const wWords=t=>t.split(/\s+/).filter(w=>/[A-Za-zÄÖÜäöüß]/.test(w)).length;
+function renderWrite(){const T0=WTASKS.find(x=>x.id===WS.id)||WTASKS[0];
+  $("theo").innerHTML='<div class="tc"><h3>Aufgabe</h3><div class="wchips" id="wlv">'+["B1","B2","C1","Frei"].map(l=>'<button data-l="'+l+'" aria-pressed="'+(WS.lv===l)+'">'+l+'</button>').join("")+'</div>'+
+   '<select id="wtask" aria-label="Aufgabe">'+WTASKS.filter(x=>x.lv===WS.lv).map(x=>'<option value="'+x.id+'"'+(x.id===T0.id?' selected':'')+'>'+esc(x.t)+'</option>').join("")+'</select>'+
+   '<p class="wprompt" id="wprompt">'+esc(T0.p)+'</p><p class="tline" id="wmin">'+(T0.min?'Richtwert: mindestens '+T0.min+' Wörter. Die Aufgaben sind ähnlich wie in ÖSD-Prüfungen, aber selbst geschrieben.':'')+'</p></div>'+
+   '<div class="tc"><h3>Dein Text</h3><textarea id="wtx" lang="de" rows="10" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Schreibe hier, ohne Hilfe …" aria-label="Dein Text"></textarea>'+
+   '<div class="wrow"><span class="tline" id="wcnt">0 Wörter</span><label class="wfile">Textdatei laden (.txt)<input type="file" id="wfile" accept=".txt,text/plain" hidden></label></div>'+
+   '<div class="wrow"><select id="wlang" aria-label="Sprachvariante"><option value="de-AT">Deutsch (Österreich)</option><option value="de-DE">Deutsch (Deutschland)</option><option value="de-CH">Deutsch (Schweiz)</option></select><button id="wgo" class="primary">Prüfen</button></div>'+
+   '<p class="tline">Der Text wird zum Prüfen an den öffentlichen Dienst languagetool.org gesendet. Schreibe erst selbst, prüfe danach.</p></div><div id="wres"></div>';
+  const tx=$("wtx"),cnt=()=>{const n=wWords(tx.value);$("wcnt").textContent=n+(n===1?" Wort":" Wörter")+(T0.min?" · Ziel "+T0.min:"");};
+  try{tx.value=store.wtext||"";$("wlang").value=store.wlang||"de-AT";}catch(e){}cnt();
+  let tm=null;tx.oninput=()=>{cnt();clearTimeout(tm);tm=setTimeout(()=>{store.wtext=tx.value;save();},700);};
+  $("wlang").onchange=()=>{store.wlang=$("wlang").value;save();};
+  document.querySelectorAll("#wlv button").forEach(b=>b.onclick=()=>{store.wtext=tx.value;WS.lv=b.dataset.l;WS.id=WTASKS.find(x=>x.lv===WS.lv).id;renderWrite();});
+  $("wtask").onchange=()=>{store.wtext=tx.value;WS.id=$("wtask").value;renderWrite();};
+  $("wfile").onchange=e=>{const f=e.target.files&&e.target.files[0];if(!f)return;if(f.size>200000){$("wres").innerHTML='<div class="tc"><p class="tline">Die Datei ist zu groß (höchstens ein einfacher Text).</p></div>';return;}
+    const r=new FileReader();r.onload=()=>{tx.value=String(r.result||"");store.wtext=tx.value;save();cnt();};r.readAsText(f,"utf-8");};
+  $("wgo").onclick=wCheck;}
+const W_IGN=["style","typographical","whitespace","locale-violation"];
+const W_BANDS=[[90,"sehr gut"],[75,"gut"],[60,"befriedigend"],[50,"genügend"],[0,"noch nicht genügend"]];
+async function wCheck(){const txt=$("wtx").value;store.wtext=txt;save();const T0=WTASKS.find(x=>x.id===WS.id)||WTASKS[0],res=$("wres");
+  if(wWords(txt)<15){res.innerHTML='<div class="tc"><p class="tline">Schreibe zuerst mindestens 15 Wörter.</p></div>';return;}
+  if(txt.length>19000){res.innerHTML='<div class="tc"><p class="tline">Der Text ist zu lang für den kostenlosen Dienst (höchstens etwa 19 000 Zeichen).</p></div>';return;}
+  $("wgo").disabled=true;res.innerHTML='<div class="tc"><p class="tline">Prüfe …</p></div>';
+  try{const r=await fetch("https://api.languagetool.org/v2/check",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded",Accept:"application/json"},body:new URLSearchParams({text:txt,language:$("wlang").value,level:"default"})});
+    if(!r.ok)throw new Error("HTTP "+r.status);const d=await r.json();showWrite(txt,d.matches||[],T0);}
+  catch(e){res.innerHTML='<div class="tc"><h3>Keine Verbindung</h3><p class="tline">LanguageTool ist gerade nicht erreichbar'+(e&&e.message?' ('+esc(e.message)+')':'')+'. Du kannst deinen Text dort selbst prüfen:</p><div class="wrow"><button id="wopen" class="primary">Text kopieren und LanguageTool öffnen</button></div></div>';
+    $("wopen").onclick=()=>{try{navigator.clipboard&&navigator.clipboard.writeText(txt);}catch(e){}window.open("https://languagetool.org/","_blank","noopener");};}
+  finally{$("wgo").disabled=false;}}
+function showWrite(txt,all,T0){const words=wWords(txt);
+  const err=all.filter(m=>!W_IGN.includes((m.rule||{}).issueType)&&!/^(STYLE|TYPOGRAPHY|REDUNDANCY|COLLOQUIALISMS|WIKIPEDIA)$/.test(((m.rule||{}).category||{}).id||"")),sty=all.filter(m=>!err.includes(m));
+  const e100=words?err.length/words*100:0,pct=Math.max(0,Math.min(100,Math.round(100-7*e100))),band=W_BANDS.find(b=>pct>=b[0])[1];
+  const marks=all.slice().sort((a,b)=>a.offset-b.offset);let out="",pos=0;
+  marks.forEach(m=>{if(m.offset<pos)return;out+=esc(txt.slice(pos,m.offset))+'<mark class="'+(err.includes(m)?"er":"st")+'">'+esc(txt.substr(m.offset,m.length))+'</mark>';pos=m.offset+m.length;});out+=esc(txt.slice(pos));
+  const item=m=>{const c=m.context||{},a=c.text||"",o=c.offset||0,l=c.length||0,rp=(m.replacements||[]).slice(0,3).map(x=>'<i>'+esc(x.value)+'</i>').join("");
+    return '<div class="wf"><small>'+esc(((m.rule||{}).category||{}).name||"")+'</small><span class="cx">'+esc(a.slice(0,o))+'<mark class="er">'+esc(a.substr(o,l))+'</mark>'+esc(a.slice(o+l))+'</span><span>'+esc(m.message||"")+'</span>'+(rp?'<span class="sg">'+rp+'</span>':'')+'</div>';};
+  const lenTxt=T0.min?(words>=T0.min?'Länge: '+words+' Wörter – Richtwert erreicht.':'Länge: '+words+' von mindestens '+T0.min+' Wörtern – noch zu kurz.'):'Länge: '+words+' Wörter.';
+  $("wres").innerHTML='<div class="tc"><h3>Ergebnis · Sprachrichtigkeit</h3><div class="wscore"><b>'+pct+' %</b><span>'+band+'</span></div>'+
+   '<p class="tline">'+err.length+(err.length===1?' Fehler':' Fehler')+' in '+words+' Wörtern ('+e100.toFixed(1).replace(".",",")+' pro 100 Wörter)'+(sty.length?' · '+sty.length+' Stil- oder Schreibhinweise (zählen nicht)':'')+'. '+lenTxt+'</p>'+
+   '<p class="tline">Das ist eine grobe Schätzung nur der Sprache (Rechtschreibung und Grammatik). Aufgabenerfüllung, Aufbau und Wortschatz prüft LanguageTool nicht, und es meldet auch Fehlalarme, vor allem bei Namen und Fachwörtern. Das ist kein ÖSD-Ergebnis.</p></div>'+
+   '<div class="tc"><h3>Dein Text mit Markierungen</h3><p class="wtxt">'+out+'</p></div>'+
+   (all.length?'<div class="tc"><h3>Hinweise <small>'+all.length+'</small></h3><div>'+all.slice(0,40).map(item).join("")+(all.length>40?'<p class="tline">… und '+(all.length-40)+' weitere.</p>':'')+'</div></div>':'<div class="tc"><p class="tline">Keine Hinweise gefunden.</p></div>');
+  $("wres").scrollIntoView&&$("wres").scrollIntoView({behavior:"smooth",block:"start"});}
 /* ---------- Theorie as a gallery with pop-up (like the dasein-design projects) ---------- */
 const GP={items:[],i:0,open:false};
 function theoGallery(){const tmp=document.createElement("div");tmp.innerHTML=TH[T]();GP.items=[...tmp.querySelectorAll(".tc")];
@@ -1973,23 +2130,34 @@ function loadPics(root){const cache=store.pics2||(store.pics2={});root.querySele
 function quotesHTML(){return QUOTES.map(x=>x.sec?'<h4 class="qsec">'+esc(x.sec)+'</h4>':'<a class="qt" href="'+x.u+'" target="_blank" rel="noopener"><span class="pic" aria-hidden="true"><i>'+x.pic+'</i>'+(x.w?'<img alt="" loading="lazy" data-w="'+x.w.join("|")+'">':'')+'</span><span class="qb"><b class="who">'+esc(x.who)+'</b><small>'+esc(x.when)+'</small><q>'+esc(x.q)+'</q><span class="qen">'+esc(x.en)+'</span>'+'</span></a>').join("")+'<p class="tline">Antippen öffnet die Quelle. Bilder: Wikipedia / Wikimedia Commons.</p>';}
 $("markb").onclick=toTitle;$("markL").onclick=toTitle;$("markb").setAttribute("aria-label","Zur Titelseite");document.querySelector("#home h1.logo").addEventListener("click",toTitle);document.querySelector("#home h1.logo").style.cursor="pointer";
 /* ---------- bottom bars and the drawer that rises (like dasein-design) ---------- */
-const HIST=`<div class="tc df"><h3>Kleine Geschichte</h3><div class="hist">
-<b>um 770</b><span><b>Abrogans</b>, das älteste Buch auf Deutsch: ein Wörterbuch Latein – Althochdeutsch.</span>
-<b>um 1200</b><span><b>Nibelungenlied</b>, Mittelhochdeutsch.</span>
-<b>1522</b><span><b>Luther</b> übersetzt das Neue Testament, 1534 die ganze Bibel. Sein Deutsch wird zum Vorbild.</span>
-<b>1854</b><span><b>Brüder Grimm</b>: erster Band des Deutschen Wörterbuchs. Fertig erst 1961.</span>
-<b>1880</b><span><b>Konrad Duden</b>: Vollständiges Orthographisches Wörterbuch.</span>
-<b>1901</b><span>Eine Rechtschreibung für alle deutschsprachigen Länder (in Kraft 1902).</span>
-<b>1951</b><span>Erstes <b>Österreichisches Wörterbuch</b>.</span>
-<b>1996</b><span><b>Rechtschreibreform</b>: daß → dass. Überarbeitet 2006.</span>
-<b>2017</b><span>Das große <b>ẞ</b> ist offiziell erlaubt.</span></div></div>
-<div class="tc df"><h3>Wussten Sie …?</h3><div class="rows">
-<div><span>6 Länder</span><span>Amtssprache in Deutschland, Österreich, der Schweiz, Liechtenstein, Luxemburg und Belgien.</span></div>
-<div><span>Groß</span><span>Alle Nomen schreibt man groß – als einzige große Sprache.</span></div>
-<div><span>kein ß</span><span>Die Schweiz schreibt ss statt ß: Strasse, gross.</span></div>
-<div><span>23 Wörter</span><span>Seit dem EU-Beitritt 1995 sind 23 österreichische Wörter geschützt: Paradeiser, Erdäpfel, Marillen …</span></div>
-<div><span>63 Buchstaben</span><span>Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz – ein Gesetz aus Mecklenburg-Vorpommern, 2013 abgeschafft.</span></div>
-<div><span>Handy</span><span>Klingt englisch, ist aber deutsch. Englisch sagt mobile phone.</span></div></div></div>`;
+const WK=t=>"https://de.wikipedia.org/wiki/"+encodeURIComponent(t.replace(/ /g,"_"));
+const hi=(a,b,w)=>'<div class="hi"><b>'+a+'</b><span>'+b+(w?'<a class="wk" href="'+WK(w)+'" target="_blank" rel="noopener" aria-label="Wikipedia: '+w+'">mehr bei Wikipedia ↗</a>':'')+'</span></div>';
+const HIST='<div class="tc"><h3>Kleine Geschichte</h3><div class="hlist">'+[
+ ["um 770","<b>Abrogans</b>, das älteste Buch auf Deutsch: ein Wörterbuch Latein – Althochdeutsch.","Abrogans"],
+ ["um 830","Das <b>Hildebrandslied</b> wird aufgeschrieben, das einzige erhaltene Heldenlied auf Althochdeutsch.","Hildebrandslied"],
+ ["um 1200","<b>Nibelungenlied</b>, Mittelhochdeutsch.","Nibelungenlied"],
+ ["um 1450","<b>Gutenberg</b> druckt in Mainz mit beweglichen Buchstaben. Bücher werden billiger, die Schreibweisen gleichen sich langsam an.","Johannes Gutenberg"],
+ ["1522","<b>Luther</b> übersetzt das Neue Testament, 1534 die ganze Bibel. Sein Deutsch wird zum Vorbild.","Lutherbibel"],
+ ["1617","Die <b>Fruchtbringende Gesellschaft</b> entsteht, die erste große Sprachgesellschaft: Sie will Deutsch pflegen und Fremdwörter ersetzen.","Fruchtbringende Gesellschaft"],
+ ["1748","<b>Gottsched</b> veröffentlicht eine deutsche Sprachkunst, eine Grammatik für das Hochdeutsche.","Johann Christoph Gottsched"],
+ ["1774","<b>Adelung</b> beginnt sein großes Wörterbuch der hochdeutschen Mundart (bis 1786).","Johann Christoph Adelung"],
+ ["1854","<b>Brüder Grimm</b>: erster Band des Deutschen Wörterbuchs. Fertig erst 1961.","Deutsches Wörterbuch"],
+ ["1880","<b>Konrad Duden</b>: Vollständiges Orthographisches Wörterbuch.","Konrad Duden"],
+ ["1901","Eine Rechtschreibung für alle deutschsprachigen Länder (in Kraft 1902).","Zweite Orthographische Konferenz"],
+ ["1941","Die Antiqua ersetzt die Fraktur als Normalschrift.","Normalschrifterlass"],
+ ["1951","Erstes <b>Österreichisches Wörterbuch</b>.","Österreichisches Wörterbuch"],
+ ["1996","<b>Rechtschreibreform</b>: daß → dass. Überarbeitet 2006.","Rechtschreibreform von 1996"],
+ ["2017","Das große <b>ẞ</b> ist offiziell erlaubt.","Großes ß"],
+ ["mehr","Der ganze Bogen, von den Anfängen bis heute.","Geschichte der deutschen Sprache"]
+].map(r=>hi(r[0],r[1],r[2])).join("")+'</div></div>'+
+'<div class="tc"><h3>Wussten Sie …?</h3><div class="hlist">'+[
+ ["6 Länder","Amtssprache in Deutschland, Österreich, der Schweiz, Liechtenstein, Luxemburg und Belgien.","Deutsche Sprache"],
+ ["Groß","Alle Nomen schreibt man groß – als einzige große Sprache.","Substantivgroßschreibung"],
+ ["kein ß","Die Schweiz schreibt ss statt ß: Strasse, gross.","Eszett"],
+ ["23 Wörter","Seit dem EU-Beitritt 1995 sind 23 österreichische Wörter geschützt: Paradeiser, Erdäpfel, Marillen …","Österreichisches Deutsch"],
+ ["63 Buchstaben","Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz – ein Gesetz aus Mecklenburg-Vorpommern, 2013 abgeschafft.","Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz"],
+ ["Handy","Klingt englisch, ist aber deutsch. Englisch sagt mobile phone.","Handy"]
+].map(r=>hi(r[0],r[1],r[2])).join("")+'</div></div>';
 const SECS=[["home","Grammatik"],["test","Tests"],["links","Hilfsmittel"],["quotes","Zitate"],["hist","Geschichte"],["sets","Einstellungen"]];
 const DR={open:false,k:null};   /* the old rising panel is gone; kept so older checks stay false */
 const HB=22,ROWS=Math.ceil(SECS.length/2),SC=$("hscroll"),HBODY=$("hbody");
@@ -2003,9 +2171,13 @@ const secTop=i=>Math.max(0,PAGES[i].offsetTop-((i>>1)*HB+22));
 const reduceM=matchMedia("(prefers-reduced-motion: reduce)").matches;
 function tapGo(el,i){el.classList.add("hit");setTimeout(()=>{SC.scrollTo({top:secTop(i),behavior:reduceM?"auto":"smooth"});setTimeout(()=>el.classList.remove("hit"),500);},reduceM?60:280);}
 /* sections other than Grammatik, filled once (Test again when the level changes) */
+const TLEN=()=>[15,30,45].includes(store.tlen)?store.tlen:15;
 function renderTest(){const n={};const all=[].concat(PQ,PRON_Q,GEN_Q,FALL_Q,ADJ_Q,...Object.keys(GT).map(k=>GT[k].q));all.forEach(q=>{n[q.lv]=(n[q.lv]||0)+1;});
-  $("p-test").innerHTML='<div class="tc"><h3>Tests</h3><p class="tline">15 Fragen aus allen Themen, wie in der Prüfung. Ein Stufentest nimmt zehn Fragen der Stufe und fünf von darunter.</p>'+
-   '<div class="tests">'+[["mix","Gemischt","alle Stufen"]].concat(LVLS.slice(0,5).map(l=>[l,l,(n[l]||0)+" Fragen"])).map(([k,a,b])=>'<button class="tst" data-l="'+k+'"><b>'+a+'</b><small>'+b+'</small></button>').join("")+'</div></div>';
+  $("p-test").innerHTML='<div class="tc"><h3>Tests</h3><p class="tline">Fragen aus allen Themen, wie in der Prüfung. Ein Stufentest nimmt zwei Drittel Fragen der Stufe und ein Drittel von darunter.</p>'+
+   '<div class="tlen"><span>Länge</span>'+[15,30,45].map(k=>'<button data-n="'+k+'" aria-pressed="'+(TLEN()===k)+'">'+k+'</button>').join("")+'<span>Fragen</span></div>'+
+   '<div class="tests">'+[["mix","Gemischt","alle Stufen"]].concat(LVLS.slice(0,5).map(l=>[l,l,(n[l]||0)+" Fragen"])).map(([k,a,b])=>'<button class="tst" data-l="'+k+'"><b>'+a+'</b><small>'+b+'</small></button>').join("")+'<button class="tst wide" id="goWrite"><b>Text prüfen</b><small>Schreiben B1–C1 · mit LanguageTool</small></button></div></div>';
+  $("p-test").querySelectorAll(".tlen button").forEach(x=>x.onclick=()=>{store.tlen=+x.dataset.n;save();renderTest();});
+  $("goWrite").onclick=()=>openTopic("write");
   $("p-test").querySelectorAll(".tst").forEach(x=>x.onclick=()=>{TESTLV=x.dataset.l==="mix"?"all":x.dataset.l;openTopic("test");});}
 $("p-links").innerHTML=TH_LINKS;
 $("p-quotes").innerHTML='<div class="tc df"><h3>Über die deutsche Sprache</h3>'+quotesHTML()+'</div>';loadPics($("p-quotes"));
@@ -2076,8 +2248,8 @@ function bank(t){
   if(t==="adj")return shuffle(byLevel(ADJ_Q)).slice(0,15).map(q=>Object.assign({t:"adj"},q));
   if(t==="gen")return shuffle(byLevel(GEN_Q)).map(q=>Object.assign({t:"gen",c:0},q));
   const L=TESTLV||store.level;if(L&&L!=="all"){const all=[].concat(PQ.map(q=>Object.assign({t:"prep"},q)),ART.concat(ownList()).map(artQ),PRON_Q.map(q=>Object.assign({t:"pron",c:0},q)),GEN_Q.map(q=>Object.assign({t:"gen",c:0},q)),FALL_Q.map(q=>Object.assign({t:"fall"},q)),ADJ_Q.map(q=>Object.assign({t:"adj"},q)),...Object.keys(GT).map(k=>GT[k].q.map(q=>Object.assign({t:k,c:0},q))));
-    const k=LVLS.indexOf(L),at=shuffle(all.filter(q=>q.lv===L)),below=shuffle(all.filter(q=>LVLS.indexOf(q.lv)<k));return shuffle(at.slice(0,10).concat(below).slice(0,15));}
-  const pick=(a,n)=>shuffle(a).slice(0,n);const keys=shuffle(["prep","art","fall","pron","gen","adj"].concat(Object.keys(GT)));return shuffle([].concat(...keys.map(k=>pick(bank(k),1)))).slice(0,15);}
+    const k=LVLS.indexOf(L),at=shuffle(all.filter(q=>q.lv===L)),below=shuffle(all.filter(q=>LVLS.indexOf(q.lv)<k)),N=TLEN();return shuffle(at.slice(0,Math.round(N*2/3)).concat(below).slice(0,N));}
+  const pick=(a,n)=>shuffle(a).slice(0,n);const keys=shuffle(["prep","art","fall","pron","gen","adj"].concat(Object.keys(GT)));const N=TLEN(),per=Math.ceil(N/keys.length);return shuffle([].concat(...keys.map(k=>pick(bank(k),per)))).slice(0,N);}
 function baseOf(q){return q.n||q.h||(q.t==="art"?q.noun:"");}
 function mix(q){if(q.t==="art"||q.k==="c")return q;const ord=shuffle(q.o.map((w,i)=>i));return Object.assign({},q,{o:ord.map(i=>q.o[i]),c:ord.indexOf(q.c)});}
 const STAGE={
