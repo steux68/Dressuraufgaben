@@ -1,0 +1,5 @@
+/* Figuren-Schau: Namensfeld */
+.tlab{position:absolute;transform:translate(-50%,-50%);max-width:112px;padding:3px 7px;background:#fff;border:1px solid #111;font:700 11.5px/1.2 'Source Sans 3',system-ui,sans-serif;color:#111;text-align:center;pointer-events:none;z-index:2;box-shadow:2px 2px 0 #e30613}
+.tlab[hidden]{display:none}
+.tlab.pop{animation:tlpop .32s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes tlpop{0%{transform:translate(-50%,-50%) scale(.5);opacity:0}100%{transform:translate(-50%,-50%) scale(1);opacity:1}}
