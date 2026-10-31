@@ -32,13 +32,13 @@
  function part(f,s0,s1,alpha,w){s0=Math.max(0,s0);s1=Math.min(f.L,s1);if(s1<=s0)return;
   const n=Math.max(2,Math.ceil((s1-s0)/3));ctx.globalAlpha=alpha;ctx.lineWidth=w;ctx.beginPath();
   for(let i=0;i<=n;i++){const q=pt(f,s0+(s1-s0)*i/n);i?ctx.lineTo(q[0],q[1]):ctx.moveTo(q[0],q[1]);}ctx.stroke();}
- const SPEED=125,HEAD=11,TAIL=80,LEAD=.5,HOLD=.9,FADE=.45;
+ const SPEED=62,HEAD=16,TAIL=150,LEAD=.8,HOLD=1.4,FADE=.7;
  let run=0,last=0,t0=0,order=[],cur=null,phase=0,tm=0,pos=0,laps=1;
  function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
  function nextFig(first){
   if(!order.length){order=shuffle(F);if(first){order=order.filter(f=>f.k!=='ganze');order.unshift(F[0]);}
    if(cur&&order[0].k===cur.k)order.push(order.shift());}
-  cur=order.shift();laps=Math.max(1,Math.min(3,Math.round(3.6*SPEED/cur.L)));pos=0;tm=0;phase=0;
+  cur=order.shift();laps=Math.max(1,Math.min(3,Math.round(8*SPEED/cur.L)));pos=0;tm=0;phase=0;
   tag.textContent=cur.n;tag.style.left=X(cur.lab[0])+'px';tag.style.top=Y(cur.lab[1])+'px';
   tag.hidden=false;tag.classList.remove('pop');void tag.offsetWidth;tag.classList.add('pop');}
  function frame(now){
@@ -48,7 +48,7 @@
   ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
   if((now-t0)/1000<3.9){tag.hidden=true;return;}
   if(!cur)nextFig(true);
-  tm+=dt;const w=Math.max(1.1,M.a*.95);ctx.lineCap='round';ctx.lineJoin='round';
+  tm+=dt;const w=Math.max(1.2,M.a*.9);ctx.lineCap='round';ctx.lineJoin='round';
   /* Phasen: 0 graue Linie blendet ein, 1 rote Spur läuft, 2 Halten, 3 alles blendet aus */
   const total=cur.L*laps;
   let grey=1;
@@ -70,10 +70,10 @@
     const A=a%cur.L,B=A+(b-a);
     if(B<=cur.L)part(cur,A,B,al,ww);else{part(cur,A,cur.L,al,ww);part(cur,0,B-cur.L,al,ww);}};
    const head=Math.min(pos,total);
-   seg(head-HEAD,head,1,w*1.15);
+   seg(head-HEAD,head,1,w*2.3);
    const base=head-HEAD;let u=0;
-   while(u<TAIL){const f=u/TAIL,d=Math.max(1.6,6*(1-f)),g=2.5+13*f,a=Math.pow(1-f,1.4)*.85;
-    seg(base-u-d,base-u,a,w*(1-.35*f));u+=d+g;}
+   while(u<TAIL){const f=u/TAIL,d=Math.max(.3,7*Math.pow(1-f,1.3)),g=3+11*f,a=Math.pow(1-f,1.2)*.95;
+    seg(base-u-d,base-u,a,w*(2.1-1.0*f));u+=d+g;}
   }
   ctx.globalAlpha=1;
  }
