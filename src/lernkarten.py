@@ -155,9 +155,9 @@ def page_frame(c, right_text=None):
     c.setFillColor(HexColor(RED)); c.rect(mx, my, mw, mh, stroke=0, fill=1)
     c.setFillColor(HexColor('#ffffff')); c.setFont('SS-Bold', mh*23/30); c.drawString(mx+mw*5/44, my+mh*6.5/30, 'P')
     c.setFont('SS-Bold', mh*11.5/30); c.drawString(mx+mw*19.5/44, my+mh*6.5/30, 'a–x')
-    c.setFillColor(HexColor(RED)); c.setFont('SS-Bold', 31); c.drawString(mx+mw+10, my+mh*0.14, 'passage')
-    wp = c.stringWidth('passage', 'SS-Bold', 31)
-    c.setFillColor(HexColor('#f08a00')); c.setFont('SS-Bold', 15); c.drawString(mx+mw+10+wp+5, my+mh*0.14, 'a–x')
+    c.setFillColor(HexColor(RED)); c.setFont('SS-Bold', 31); c.drawString(mx+mw+10, my+mh*0.14, 'PASSAGE')
+    wp = c.stringWidth('PASSAGE', 'SS-Bold', 31)
+    c.setFillColor(HexColor('#0057d8')); c.setFont('SS-Bold', 15); c.drawString(mx+mw+10+wp+5, my+mh*0.14, 'a–x')
     if right_text:
         c.setFillColor(MUTED); c.setFont('SS', 9); c.drawRightString(W-M, my+mh*0.45, right_text)
     c.setStrokeColor(LINE); c.setLineWidth(0.8); c.setDash([4.2, 3.2]); c.line(gx, H-66, W-gx, H-66); c.setDash()
