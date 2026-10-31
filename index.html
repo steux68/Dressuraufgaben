@@ -1,5 +1,5 @@
 <!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<meta name="app-version" content="2026-10-31u">
+<meta name="app-version" content="2026-10-31v">
 <title>PASSAGE a–x</title>
 <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png?v=2"><link rel="icon" type="image/png" href="icon-192.png?v=2"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PASSAGE"><meta name="theme-color" content="#f5f6f2">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
@@ -1286,7 +1286,7 @@ const GAL=[
   sbt.style.top='0px';sbt.style.height=Math.max(0,tb-R.top)+'px';sbb.style.top=(bt-R.top)+'px';sbb.style.height=Math.max(0,R.bottom-bt)+'px';}
  function lastFit(){const H=SC.clientHeight,n=PAGES.length;if(!H)return;
   TP.style.minHeight=Math.max(260,H-ROWS*HB-15)+'px';
-  PAGES.forEach((p,i)=>{const r=i>>1,next=i+1<n?((i+1)>>1):null;p.style.minHeight=Math.max(0,next===null?H-ROWS*HB+1:H-(ROWS-next)*HB-40-(r+1)*HB)+'px';});}
+  PAGES.forEach((p,i)=>{const r=i>>1,next=i+1<n?((i+1)>>1):null;p.style.minHeight=(next===null?Math.max(0,H-ROWS*HB+1):0)+'px';});}
  function seams(){const rs=BARS.map(b=>b.getBoundingClientRect());BARS.forEach((b,k)=>{const a=rs[k];b.classList.toggle('nb',rs.some((o,m)=>m!==k&&o.left<a.right-2&&o.right>a.left+2&&o.top>a.bottom-6&&o.top<a.bottom+8));});}
  function upd(){curBar();backs();seams();}
  SC.addEventListener('scroll',upd,{passive:true});addEventListener('resize',()=>{lastFit();upd();});
@@ -1516,6 +1516,10 @@ body.introOn .hb[data-pc="4"]{--pc:#ece2f8;animation-delay:-2.8s}
 /* passage fett, a–x klein in Orange daneben */
 #brand .bw{font-weight:700!important;letter-spacing:-.015em}
 #brand .bw small{font-size:.52em;font-weight:700;color:#f08a00;margin-left:.22em;letter-spacing:0}
+
+/* PASSAGE groß, Versalien; a–x klein in Blau */
+#brand .bw{text-transform:uppercase;font-size:calc(7.9vw - 2.2px)!important;letter-spacing:.01em!important}
+#brand .bw small{color:#0057d8!important;text-transform:lowercase;font-size:.5em}
 </style>
 <script>
 /* Zurück auf der langen Startseite: erst nach oben zur Titelseite, dann aus der App */
