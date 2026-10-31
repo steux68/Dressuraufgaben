@@ -1,7 +1,7 @@
 <!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<meta name="app-version" content="2026-10-31g">
+<meta name="app-version" content="2026-10-31h">
 <title>PASSAGE a–x</title>
-<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png?v=2"><link rel="icon" type="image/png" href="icon-192.png?v=2"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PASSAGE"><meta name="theme-color" content="#f5f6f2">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PASSAGE"><meta name="theme-color" content="#f5f6f2">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -1354,21 +1354,6 @@ body.bv #title,body.bv #backBtn{display:none!important}
 body.bv #infoBtn{font-size:0;padding:2px;gap:0}
 body.bv #infoBtn .i{font-size:.85rem}
 @media (prefers-reduced-motion:reduce){#msw i{transition:none}}
-
-/* ---- Kopfzeile ohne Logos; Logos stehen auf der Links-Seite ---- */
-#lockup,#toprow{display:none!important}
-.lkw.logo{padding:0 8px}
-.lkw.logo svg{height:44px;width:auto;max-width:100%;display:block}
-/* ---- Links kompakter ---- */
-.lkhead{padding:8px 10px 9px;margin-top:4px}
-.lkhead h3{margin:0 0 3px;font-size:.74rem}
-.lkhead p{font-size:.88rem;line-height:1.3}
-.lk{padding:8px 10px 10px;gap:1px}
-.lkw{height:56px;margin-bottom:5px}
-.lkw b{font-size:1.08rem}
-.lkw small{font-size:.62rem;margin-top:2px}
-.lkn{font-size:.98rem;line-height:1.15}
-.lkd{font-size:.8rem;line-height:1.25}
 </style>
 <script>
 /* Zurück auf der langen Startseite: erst nach oben zur Titelseite, dann aus der App */
@@ -1399,16 +1384,6 @@ body.bv #infoBtn .i{font-size:.85rem}
  const brand=()=>{if($('title').onclick)$('title').onclick();};
  $('brand').onclick=brand;$('brand').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();brand();}};
  bv();
-})();
-</script>
-
-<script id="logos-js">
-(function(){
- const L=document.getElementById('lockup');if(!L)return;
- const sv=L.querySelectorAll('.cell svg');
- const put=(sel,svg)=>{const el=document.querySelector(sel);if(el&&svg){el.textContent='';el.appendChild(svg);el.classList.add('logo');}};
- put('#xyz a[href*="oeps.at"] .lkw',sv[0]);
- put('#xyz a[href*="reitstall-steinbach"] .lkw',sv[1]);
 })();
 </script>
 </body></html>
