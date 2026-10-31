@@ -1,5 +1,5 @@
 <!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>PASSAGE a–x</title><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.ico?v=4" sizes="any"><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png?v=4"><link rel="icon" type="image/png" sizes="512x512" href="icon-512.png?v=4"><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PASSAGE"><meta name="theme-color" content="#f5f6f2"></head><body>
-<meta name="app-version" content="2026-10-31zk">
+<meta name="app-version" content="2026-10-31zl">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -1584,8 +1584,16 @@ html.anaFull,html.anaFull body{overflow:hidden}
 @keyframes tlpop{0%{transform:translate(-50%,-50%) scale(.5);opacity:0}100%{transform:translate(-50%,-50%) scale(1);opacity:1}}
 .lkw{position:relative}.lkw .lkic{position:absolute;left:7px;top:50%;transform:translateY(-50%);width:28px;height:28px;object-fit:contain;image-rendering:auto}
 .lkw.hasic{padding-left:42px;padding-right:6px}
-.zmore{display:block;width:100%;margin:10px 0 4px;padding:9px 12px;background:#fff;border:1.5px dotted #777;border-radius:0;font:700 .95rem inherit;font-family:inherit;color:#111;cursor:pointer;min-height:0}
-.zmore:active{background:var(--lime)}
+/* "Mehr"-Leiste: Code 1:1 aus dasein-design (.cvb/.more): zwei gepunktete Linien, rotes Kreuz im Kreis mit pulsierenden Limetten-Ringen */
+.zmore{display:flex;align-items:center;gap:7px;width:100%;height:30px;margin:8px 0 0;padding:0 2px;border:0;border-radius:0;min-height:0;font-family:inherit;color:inherit;font-size:14px;letter-spacing:.04em;cursor:pointer;-webkit-tap-highlight-color:transparent;
+ background:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left top/100% 1px no-repeat,repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left bottom/100% 1px no-repeat,#fff}
+.zmore b{color:#e30613;font-weight:700;font-size:15px;margin-left:-3px}.zmore .cvt{color:#000;font-weight:300;font-size:13px}
+.zcx{width:20px;height:20px;overflow:visible}.zcx .c{fill:#fff;stroke:#e30613;stroke-width:1.5}.zcx path{fill:none;stroke:#e30613;stroke-width:1.6;stroke-linecap:round}
+.zcx .r1,.zcx .r2{fill:none;stroke:#cdff3e;stroke-width:2.2;transform-box:fill-box;transform-origin:center;animation:zcp 1.8s ease-out infinite}.zcx .r2{animation-delay:.9s}
+@keyframes zcp{0%{transform:scale(1);opacity:.95}100%{transform:scale(1.9);opacity:0}}
+.zmore .cl{display:none}.zmore[aria-expanded=true] .cl{display:inline}.zmore[aria-expanded=true] .op{display:none}
+.zmore[aria-expanded=true] .zcx .v,.zmore[aria-expanded=true] .zcx .r1,.zmore[aria-expanded=true] .zcx .r2{display:none}
+@media (prefers-reduced-motion:reduce){.zcx .r1,.zcx .r2{animation:none}}
 </style>
 <script>
 /* Zurück auf der langen Startseite: erst nach oben zur Titelseite, dann aus der App */
@@ -1862,7 +1870,7 @@ const ZL_B=[
    items.forEach(x=>{if(F!=='Alle'&&x.sec!==F)return;total++;cnt[x.sec]=(cnt[x.sec]||0)+1;if(!MORE&&(F==='Alle'?cnt[x.sec]>PERSEC:cnt[x.sec]>CAP))return;shown++;if(qi===0||x.sec!==sec){if(F==='Alle')rows.push('<h4 class="zqh">'+esc(x.sec)+'</h4>');if(x.sec!==sec){sec=x.sec;qi=0;}}
     const w=WIKI[x.who];
     rows.push('<a class="zqt'+(qi++%2?' alt':'')+'" href="'+esc(x.u)+'" target="_blank" rel="noopener"><span class="zpic" aria-hidden="true"><i>'+esc(x.ini)+'</i>'+(w?'<img alt="" loading="lazy" data-w="'+w.join('|')+'">':'')+'</span><span class="zqb"><b class="who">'+esc(x.who)+'</b><small>'+esc(x.when)+'</small><q>'+esc(x.q)+'</q>'+(x.o?'<span class="zen o">'+esc(x.o)+'</span>':'')+(x.n?'<span class="zen">'+esc(x.n)+'</span>':'')+'</span></a>');});
-   c.innerHTML='<div class="wchips zch">'+['Alle'].concat(secs).map(f=>'<button type="button" data-f="'+esc(f)+'" aria-pressed="'+(F===f)+'">'+esc(f==='Wer hat das wirklich gesagt?'?'Wer sagte das?':f)+'</button>').join('')+'</div><div class="zql">'+rows.join('')+'</div>'+(total>shown||(MORE&&total>(F==='Alle'?PERSEC*secs.length:CAP))?'<button type="button" class="zmore">'+(MORE?'Weniger Zitate':'Mehr Zitate (+'+(total-shown)+')')+'</button>':'')+'<p class="tline">Antippen öffnet die Quelle. Bilder: Wikipedia / Wikimedia Commons.</p>';
+   c.innerHTML='<div class="wchips zch">'+['Alle'].concat(secs).map(f=>'<button type="button" data-f="'+esc(f)+'" aria-pressed="'+(F===f)+'">'+esc(f==='Wer hat das wirklich gesagt?'?'Wer sagte das?':f)+'</button>').join('')+'</div><div class="zql">'+rows.join('')+'</div>'+(total>shown||(MORE&&total>(F==='Alle'?PERSEC*secs.length:CAP))?'<button type="button" class="zmore" aria-expanded="'+MORE+'" aria-label="'+(MORE?'Weniger Zitate':'Mehr Zitate')+'"><svg class="zcx" viewBox="-12 -12 24 24" aria-hidden="true"><circle class="r1" r="8"/><circle class="r2" r="8"/><circle class="c" r="8"/><path class="v" d="M0 -4.2V4.2"/><path d="M-4.2 0H4.2"/></svg><span class="cvt"><span class="op">mehr</span><span class="cl">weniger</span></span><b>Zitate</b></button>':'')+'<p class="tline">Antippen öffnet die Quelle. Bilder: Wikipedia / Wikimedia Commons.</p>';
    c.querySelectorAll('.zch button').forEach(b=>b.onclick=()=>{F=b.dataset.f;MORE=false;render();});
    const zm=c.querySelector('.zmore');if(zm)zm.onclick=()=>{MORE=!MORE;render();if(!MORE)c.scrollIntoView({block:'nearest'});};loadPics(c);}
   render();src.style.display='none';zh.after(c);return true;}

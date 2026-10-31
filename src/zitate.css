@@ -17,5 +17,13 @@
 .zqt small{display:block;font-size:.74rem;color:#555;margin-bottom:3px}
 .zqt q{display:block;font-size:.9rem;line-height:1.3;quotes:"„" "“"}
 .zqt .zen{display:block;font-size:.8rem;color:#555;margin-top:2px;line-height:1.3}.zqt .zen.o{font-style:italic}
-.zmore{display:block;width:100%;margin:10px 0 4px;padding:9px 12px;background:#fff;border:1.5px dotted #777;border-radius:0;font:700 .95rem inherit;font-family:inherit;color:#111;cursor:pointer;min-height:0}
-.zmore:active{background:var(--lime)}
+/* "Mehr"-Leiste: Code 1:1 aus dasein-design (.cvb/.more): zwei gepunktete Linien, rotes Kreuz im Kreis mit pulsierenden Limetten-Ringen */
+.zmore{display:flex;align-items:center;gap:7px;width:100%;height:30px;margin:8px 0 0;padding:0 2px;border:0;border-radius:0;min-height:0;font-family:inherit;color:inherit;font-size:14px;letter-spacing:.04em;cursor:pointer;-webkit-tap-highlight-color:transparent;
+ background:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left top/100% 1px no-repeat,repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left bottom/100% 1px no-repeat,#fff}
+.zmore b{color:#e30613;font-weight:700;font-size:15px;margin-left:-3px}.zmore .cvt{color:#000;font-weight:300;font-size:13px}
+.zcx{width:20px;height:20px;overflow:visible}.zcx .c{fill:#fff;stroke:#e30613;stroke-width:1.5}.zcx path{fill:none;stroke:#e30613;stroke-width:1.6;stroke-linecap:round}
+.zcx .r1,.zcx .r2{fill:none;stroke:#cdff3e;stroke-width:2.2;transform-box:fill-box;transform-origin:center;animation:zcp 1.8s ease-out infinite}.zcx .r2{animation-delay:.9s}
+@keyframes zcp{0%{transform:scale(1);opacity:.95}100%{transform:scale(1.9);opacity:0}}
+.zmore .cl{display:none}.zmore[aria-expanded=true] .cl{display:inline}.zmore[aria-expanded=true] .op{display:none}
+.zmore[aria-expanded=true] .zcx .v,.zmore[aria-expanded=true] .zcx .r1,.zmore[aria-expanded=true] .zcx .r2{display:none}
+@media (prefers-reduced-motion:reduce){.zcx .r1,.zcx .r2{animation:none}}
