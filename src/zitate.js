@@ -15,14 +15,15 @@
   const items=[];let sec='';[...src.children].forEach(el=>{if(el.classList.contains('wsec')){sec=el.textContent;return;}
    const q=el.querySelector('q'),b=el.querySelector('b');if(!q||!b)return;
    items.push({sec,ini:(el.querySelector('.pic')||{}).textContent||'',who:b.textContent,when:(el.querySelector('small')||{}).textContent||'',q:q.textContent,o:(el.querySelector('.o')||{}).textContent||'',n:(el.querySelector('.n')||{}).textContent||'',u:el.getAttribute('href')});});
-  const secs=[...new Set(items.map(x=>x.sec))];let F='Alle';
+  const secs=[...new Set(items.map(x=>x.sec))];let F='Alle',MORE=false;const CAP=6,PERSEC=2;
   const c=document.createElement('div');c.className='tc zqs';c.id='zqsec';
-  function render(){let sec='',qi=0;const rows=[];
-   items.forEach(x=>{if(F!=='Alle'&&x.sec!==F)return;if(qi===0||x.sec!==sec){if(F==='Alle')rows.push('<h4 class="zqh">'+esc(x.sec)+'</h4>');if(x.sec!==sec){sec=x.sec;qi=0;}}
+  function render(){let sec='',qi=0;const rows=[],cnt={};let total=0,shown=0;
+   items.forEach(x=>{if(F!=='Alle'&&x.sec!==F)return;total++;cnt[x.sec]=(cnt[x.sec]||0)+1;if(!MORE&&(F==='Alle'?cnt[x.sec]>PERSEC:cnt[x.sec]>CAP))return;shown++;if(qi===0||x.sec!==sec){if(F==='Alle')rows.push('<h4 class="zqh">'+esc(x.sec)+'</h4>');if(x.sec!==sec){sec=x.sec;qi=0;}}
     const w=WIKI[x.who];
     rows.push('<a class="zqt'+(qi++%2?' alt':'')+'" href="'+esc(x.u)+'" target="_blank" rel="noopener"><span class="zpic" aria-hidden="true"><i>'+esc(x.ini)+'</i>'+(w?'<img alt="" loading="lazy" data-w="'+w.join('|')+'">':'')+'</span><span class="zqb"><b class="who">'+esc(x.who)+'</b><small>'+esc(x.when)+'</small><q>'+esc(x.q)+'</q>'+(x.o?'<span class="zen o">'+esc(x.o)+'</span>':'')+(x.n?'<span class="zen">'+esc(x.n)+'</span>':'')+'</span></a>');});
-   c.innerHTML='<div class="wchips zch">'+['Alle'].concat(secs).map(f=>'<button type="button" data-f="'+esc(f)+'" aria-pressed="'+(F===f)+'">'+esc(f==='Wer hat das wirklich gesagt?'?'Wer sagte das?':f)+'</button>').join('')+'</div><div class="zql">'+rows.join('')+'</div><p class="tline">Antippen öffnet die Quelle. Bilder: Wikipedia / Wikimedia Commons.</p>';
-   c.querySelectorAll('.zch button').forEach(b=>b.onclick=()=>{F=b.dataset.f;render();});loadPics(c);}
+   c.innerHTML='<div class="wchips zch">'+['Alle'].concat(secs).map(f=>'<button type="button" data-f="'+esc(f)+'" aria-pressed="'+(F===f)+'">'+esc(f==='Wer hat das wirklich gesagt?'?'Wer sagte das?':f)+'</button>').join('')+'</div><div class="zql">'+rows.join('')+'</div>'+(total>shown||(MORE&&total>(F==='Alle'?PERSEC*secs.length:CAP))?'<button type="button" class="zmore">'+(MORE?'Weniger Zitate':'Mehr Zitate (+'+(total-shown)+')')+'</button>':'')+'<p class="tline">Antippen öffnet die Quelle. Bilder: Wikipedia / Wikimedia Commons.</p>';
+   c.querySelectorAll('.zch button').forEach(b=>b.onclick=()=>{F=b.dataset.f;MORE=false;render();});
+   const zm=c.querySelector('.zmore');if(zm)zm.onclick=()=>{MORE=!MORE;render();if(!MORE)c.scrollIntoView({block:'nearest'});};loadPics(c);}
   render();src.style.display='none';zh.after(c);return true;}
  if(!build()){let n=0;const iv=setInterval(()=>{if(build()||++n>40)clearInterval(iv);},250);}
 })();
