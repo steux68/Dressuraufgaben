@@ -1,5 +1,5 @@
 <!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<meta name="app-version" content="2026-10-31h">
+<meta name="app-version" content="2026-10-31i">
 <title>PASSAGE a–x</title>
 <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PASSAGE"><meta name="theme-color" content="#f5f6f2">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
@@ -1383,6 +1383,10 @@ body.bv #infoBtn .i{font-size:.85rem}
  $('mlR').onclick=()=>{if(view!=='gal')window.openGal();};
  const brand=()=>{if($('title').onclick)$('title').onclick();};
  $('brand').onclick=brand;$('brand').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();brand();}};
+ /* Nach dem ersten Layout (Kopfzeile aendert die Hoehe) erneut an den Abschnitt andocken, wenn per Adresse angesprungen wurde */
+ const ANCH={'#material':3,'#geschichte':2,'#xyz':4,'#links':4},ST=(window.START_H||'');
+ if(ST in ANCH){const snap=()=>{if(view!=='home')return;const S=$('hscroll'),P=S&&S.querySelectorAll('section.hsec')[ANCH[ST]];if(P)S.scrollTop=P.offsetTop-parseFloat(P.style.scrollMarginTop||0);};
+  setTimeout(snap,120);setTimeout(snap,500);}
  bv();
 })();
 </script>

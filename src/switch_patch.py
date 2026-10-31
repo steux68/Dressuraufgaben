@@ -83,6 +83,10 @@ JS = '''
  $('mlR').onclick=()=>{if(view!=='gal')window.openGal();};
  const brand=()=>{if($('title').onclick)$('title').onclick();};
  $('brand').onclick=brand;$('brand').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();brand();}};
+ /* Nach dem ersten Layout (Kopfzeile aendert die Hoehe) erneut an den Abschnitt andocken, wenn per Adresse angesprungen wurde */
+ const ANCH={'#material':3,'#geschichte':2,'#xyz':4,'#links':4},ST=(window.START_H||'');
+ if(ST in ANCH){const snap=()=>{if(view!=='home')return;const S=$('hscroll'),P=S&&S.querySelectorAll('section.hsec')[ANCH[ST]];if(P)S.scrollTop=P.offsetTop-parseFloat(P.style.scrollMarginTop||0);};
+  setTimeout(snap,120);setTimeout(snap,500);}
  bv();
 })();
 </script>
