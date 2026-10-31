@@ -1,0 +1,5 @@
+
+.lhi{opacity:0;transform-box:fill-box;transform-origin:center;pointer-events:none;transition:fill .25s}
+.lhi.lhp{animation:lhp 1s ease-in-out}
+@keyframes lhp{0%{transform:scale(.6);opacity:.2}35%{transform:scale(1.18);opacity:1}100%{transform:scale(.95);opacity:.85}}
+@media (prefers-reduced-motion:reduce){.lhi.lhp{animation:none}}
