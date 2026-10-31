@@ -1,5 +1,5 @@
 <!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>PASSAGE a–x</title><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.ico?v=4" sizes="any"><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png?v=4"><link rel="icon" type="image/png" sizes="512x512" href="icon-512.png?v=4"><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PASSAGE"><meta name="theme-color" content="#f5f6f2"></head><body>
-<meta name="app-version" content="2026-10-31zl">
+<meta name="app-version" content="2026-10-31zm">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -1282,7 +1282,7 @@ const GAL=[
  const secTop=i=>Math.max(0,PAGES[i].offsetTop-((i>>1)*HB+22));
  function tapGo(el,i){el.classList.add('hit');setTimeout(()=>{SC.scrollTo({top:secTop(i),behavior:reduceM?'auto':'smooth'});setTimeout(()=>el.classList.remove('hit'),500);},reduceM?60:280);}
  const isUp=b=>{const r=b.getBoundingClientRect(),R=SC.getBoundingClientRect();return r.bottom<R.bottom-parseFloat(b.style.bottom)-3;};
- function curBar(){let c=-1;BARS.forEach((b,k)=>{if(isUp(b))c=k;});BARS.forEach((b,k)=>b.classList.toggle('on',k===c));HBODY.classList.toggle('inpg',c>=0);}
+ function curBar(){let c=-1;const R0=SC.getBoundingClientRect();BARS.forEach((b,k)=>{if(b.getBoundingClientRect().top<=R0.top+parseFloat(b.style.top)+1)c=k;});BARS.forEach((b,k)=>b.classList.toggle('on',k===c));HBODY.classList.toggle('inpg',c>=0);}
  function backs(){const R=SC.getBoundingClientRect();let tb=R.top,bt=R.bottom;
   BARS.forEach(b=>{const r=b.getBoundingClientRect(),t=parseFloat(b.style.top),bo=parseFloat(b.style.bottom);if(r.top<=R.top+t+.5)tb=Math.max(tb,r.bottom);if(r.bottom>=R.bottom-bo-.5)bt=Math.min(bt,r.top);});
   sbt.style.top='0px';sbt.style.height=Math.max(0,tb-R.top)+'px';sbb.style.top=(bt-R.top)+'px';sbb.style.height=Math.max(0,R.bottom-bt)+'px';}
