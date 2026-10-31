@@ -1,5 +1,5 @@
 <!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<meta name="app-version" content="2026-10-31s">
+<meta name="app-version" content="2026-10-31t">
 <title>PASSAGE a–x</title>
 <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png?v=2"><link rel="icon" type="image/png" href="icon-192.png?v=2"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PASSAGE"><meta name="theme-color" content="#f5f6f2">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
@@ -242,7 +242,7 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 
 </section>
 <section class="home" id="mat" hidden>
-<p class="intro">Lernkarten im A4-Format zum Ausdrucken: Übersicht mit allen Lektionen, danach jede Lektion einzeln im Viereck.</p>
+<p class="intro">Aushang für die Stalltafel und die offiziellen Aufgabenblätter. Die Lernkarten (A4 zum Ausdrucken) findest du direkt unter jeder Dressuraufgabe.</p>
 <div id="matlist" style="display:flex;flex-direction:column;gap:8px"></div>
 <p class="note" id="matnote" aria-live="polite" hidden></p>
 <a class="tile oeps" href="https://www.oeps.at/dressur-aufgaben" target="_blank" rel="noopener"><span class="code">OEPS</span><span><div class="nm">Offizielle Aufgabenblätter</div><div class="ds">Aktuelle Fassungen auf oeps.at (Dressur → Aufgaben)</div></span><span class="st soon">↗</span></a>
@@ -377,7 +377,7 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 <p><b>Android (Chrome):</b> Menü ⋮ → „Zum Startbildschirm hinzufügen“</p></div>
 <div><h3>So lernst du</h3>
 <p><b>Aufgabe wählen:</b> Auf der Startseite die Aufgabe antippen, mit „‹ Aufgaben“ geht es zurück.</p>
-<p><b>Materialien:</b> Lernkarten R1–R6 zum Ausdrucken gibt es auf der Startseite unter „Materialien zum Ausdrucken“.</p>
+<p><b>Materialien:</b> Lernkarten R1–R6 zum Ausdrucken (A4, PDF) gibt es auf der Startseite direkt unter jeder Dressuraufgabe.</p>
 <p><b>Lernen:</b> Mit „Weiter“ Lektion für Lektion durchgehen. „Ganze Aufgabe“ zeigt den kompletten Weg.</p>
 <p><b>Selbsttest:</b> Der Text wird verborgen. Erst laut sagen, was kommt, dann auf die Karte tippen.</p>
 <p><b>Spiel:</b> „Was kommt als Nächstes?“ – drei Antworten, Punkte und Serie. Die beste Punktzahl bleibt auf deinem Handy gespeichert.</p></div>
@@ -501,7 +501,12 @@ b.innerHTML='<span class="code"></span><span><div class="nm"></div><div class="d
 b.querySelector('.code').textContent=t.id;b.querySelector('.nm').textContent=t.name;
 b.querySelector('.ds').textContent=ready?(t.ds+' · '+t.steps.length+' Lektionen'+(bs?' · Beste: '+bs:'')):t.ds;
 const st=b.querySelector('.st');st.textContent=ready?'Üben':'folgt';st.classList.add(ready?'ready':'soon');
-b.onclick=()=>openTest(t.id);box.appendChild(b)});
+b.onclick=()=>openTest(t.id);box.appendChild(b);
+const m=MATS.find(x=>x.code===t.id);if(m){b.classList.add('hasl');const r=document.createElement('button');r.className='tile lkrow';
+r.innerHTML='<span class="code">A4</span><span><div class="nm"></div><div class="ds"></div></span><span class="st ready">PDF</span>';
+r.querySelector('.nm').textContent='Lernkarten '+t.id+' zum Ausdrucken';r.querySelector('.ds').textContent=m.ds.replace(/^A4 · /,'');
+r.setAttribute('aria-label','Lernkarten '+t.id+' als PDF laden');
+r.onclick=async()=>{const st=r.querySelector('.st');st.textContent='…';await getPdf(m);st.textContent='PDF';};box.appendChild(r);}});
 }
 const MATS=[...TESTS.map(t=>({file:t.id+'_Lernkarten.pdf',code:t.id,nm:'Lernkarten '+t.id+' · '+(t.short||t.name),ds:'A4 · '+(1+Math.ceil(t.steps.length/4))+' Seiten · '+t.steps.length+' Lektionen'})),
 {file:'Aushang_Dressuraufgaben.pdf',code:'QR',nm:'Aushang mit QR-Code',ds:'A4 für die Stalltafel · 1 Seite'}];
@@ -512,7 +517,7 @@ try{const r=await fetch('pdf/'+m.file);if(!r.ok)throw 0;const blob=await r.blob(
 if(DL){const fname=m.nm.replace(/ · /g,' – ')+'.pdf';try{await DL.save({filename:fname,data:blob});matNote('Gespeichert: '+fname)}catch(e){matNote(e&&e.code==='declined'?'Abgebrochen.':'Speichern ist hier nicht möglich.')}}
 else{const a=document.createElement('a');a.href='pdf/'+m.file;a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove();matNote('PDF geöffnet – über Teilen/Drucken speichern.')}}
 catch(e){matNote('Die Datei konnte nicht geladen werden.')}}
-function renderMat(){const box=$('matlist');box.innerHTML='';MATS.forEach(m=>{const b=document.createElement('button');b.className='tile pdf';
+function renderMat(){const box=$('matlist');box.innerHTML='';MATS.filter(m=>m.code==='QR').forEach(m=>{const b=document.createElement('button');b.className='tile pdf';
 b.innerHTML='<span class="code"></span><span><div class="nm"></div><div class="ds"></div></span><span class="st ready">PDF</span>';
 b.querySelector('.code').textContent=m.code;b.querySelector('.nm').textContent=m.nm;b.querySelector('.ds').textContent=m.ds;b.onclick=()=>getPdf(m);box.appendChild(b)})}
 function openMat(){show('mat');matNote('');renderMat()}
@@ -1499,6 +1504,14 @@ body.introOn .hb[data-pc="4"]{--pc:#ece2f8;animation-delay:-2.8s}
 .zqt small{display:block;font-size:.74rem;color:#555;margin-bottom:3px}
 .zqt q{display:block;font-size:.9rem;line-height:1.3;quotes:"„" "“"}
 .zqt .zen{display:block;font-size:.8rem;color:#555;margin-top:2px;line-height:1.3}.zqt .zen.o{font-style:italic}
+
+/* ---- Lernkarten-Zeile direkt unter jeder Dressuraufgabe ---- */
+#tiles .tile.hasl{background-image:none!important;padding-bottom:6px!important}
+#tiles .tile.lkrow{margin:0 0 4px 26px!important;padding:6px 10px!important;background-color:#f4f4f2!important;background-image:var(--df)!important;background-position:left bottom!important;background-size:100% 1px!important;background-repeat:no-repeat!important;position:relative;width:calc(100% - 26px)}
+#tiles .tile.lkrow::before{content:"";position:absolute;left:-14px;top:-8px;height:calc(50% + 8px);width:10px;border-left:1px dotted #8c918a;border-bottom:1px dotted #8c918a}
+#tiles .tile.lkrow .code{font-size:.78rem;color:#555;width:30px!important;height:30px!important;min-width:30px}
+#tiles .tile.lkrow .nm{font-size:.92rem;font-weight:600}
+#tiles .tile.lkrow .ds{font-size:.76rem}
 </style>
 <script>
 /* Zurück auf der langen Startseite: erst nach oben zur Titelseite, dann aus der App */
