@@ -1,5 +1,5 @@
 <!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<meta name="app-version" content="2026-10-31n">
+<meta name="app-version" content="2026-10-31o">
 <title>PASSAGE a–x</title>
 <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png?v=2"><link rel="icon" type="image/png" href="icon-192.png?v=2"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PASSAGE"><meta name="theme-color" content="#f5f6f2">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
@@ -1385,6 +1385,66 @@ body.introOn .hb:nth-of-type(5n)::after{animation-delay:-1.95s}
 @media (prefers-reduced-motion:reduce){#msw i{animation:none}}
 #hscroll #intro{justify-content:center;gap:14px}
 #intro .ipic{height:clamp(190px,min(56vh,calc(100vh - 430px)),520px)!important}
+
+/* ---- Zeitleiste (aus der Deutsch-App) ---- */
+.tlw{position:relative}
+.tlw::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:3;background:var(--df) left top/100% 1px no-repeat,var(--df) left bottom/100% 1px no-repeat,var(--dfv) left top/1px 100% no-repeat,var(--dfv) right top/1px 100% no-repeat}
+.tl{overflow-x:auto;overflow-y:hidden;touch-action:pan-x pan-y;scrollbar-width:none;overscroll-behavior-x:contain;background:#fff}.tl::-webkit-scrollbar{display:none}
+.tlc{position:relative;height:100%}
+.tlc>i{position:absolute;display:block;font-style:normal}
+.tlera{top:calc(50% - 18px);height:12px;font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:12px;padding-left:5px;white-space:nowrap;overflow:hidden;box-sizing:border-box}
+.tlyr{display:none}
+.tlc .tltk{position:absolute;top:calc(50% - 6px);height:23px;min-width:44px;padding:0 6px;box-sizing:border-box;transform:translateX(-50%);text-align:center;font-size:11px;font-weight:700;line-height:20px;color:#3a3c37;white-space:nowrap;z-index:1;background:#f2f2f2;box-shadow:inset 0 -3px 0 var(--ec)}
+.tlc .tltk.h{background:#e2e2df}.tlc .tltk.on{background:#cdff3e}
+.tlw>.tlar{z-index:4}.tlw>.tlar[data-off]{opacity:.3}
+.tlsp{height:4px;opacity:.75}.tlsp.a{top:calc(50% - 25px - var(--k)*6px)}.tlsp.b{top:calc(50% + 19px + var(--k)*6px)}
+.tlln{width:1px}
+.tlln.a1{top:calc(50% - 24px - var(--g));height:calc(6px + var(--g))}.tlln.a2{top:calc(50% - 24px - var(--g) - var(--x));height:calc(6px + var(--g) + var(--x))}
+.tlln.b1{top:calc(50% + 16px);height:calc(8px + var(--g))}.tlln.b2{top:calc(50% + 16px);height:calc(8px + var(--g) + var(--x))}
+.tlwash{top:0;bottom:0;opacity:.45}
+/* a card: the picture (as big as the height allows) with date and title beside it, like the poster */
+.tlcd{position:absolute;height:var(--th);width:var(--cw);display:flex;flex-direction:row;gap:6px;padding:0;border:0;border-radius:0;background:none;text-align:left;font:inherit;color:#222;cursor:pointer;-webkit-tap-highlight-color:transparent;min-height:0}
+.tlcd.a1{bottom:calc(50% + 24px + var(--g))}.tlcd.a2{bottom:calc(50% + 24px + var(--g) + var(--x))}.tlcd.b1{top:calc(50% + 24px + var(--g))}.tlcd.b2{top:calc(50% + 24px + var(--g) + var(--x))}
+.tltx{width:var(--tw);display:flex;flex-direction:column;justify-content:center;gap:1px;overflow:hidden}
+
+.tltx small{font-size:9px;font-weight:700;letter-spacing:.05em;color:var(--dred);line-height:1.2}
+.tltx b{font-size:10.5px;line-height:1.15;font-weight:700;overflow-wrap:anywhere;hyphens:auto;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.tltx em{font-style:normal;font-size:7px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6b6b66}
+.tlth{position:relative;width:var(--th);height:var(--th);flex:none;background:#f4f4f2;overflow:hidden;display:grid;place-items:center}
+.tlth::after{content:"";position:absolute;inset:0;pointer-events:none;background:var(--df) left top/100% 1px no-repeat,var(--df) left bottom/100% 1px no-repeat,var(--dfv) left top/1px 100% no-repeat,var(--dfv) right top/1px 100% no-repeat}
+.tlth>i{font-style:normal;font-weight:700;font-size:calc(var(--th)*.2);color:#9a9a96;white-space:nowrap}.tlth.has>i{visibility:hidden}
+.tlth img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s}.tlth.has img{opacity:1}
+.tlth .ty{font-size:calc(var(--th)*.55);line-height:1;color:#222}
+.tlcd.h .tltx small{color:#555}.tlcd.h .tlth{background:#3a3c37}.tlcd.h .tlth>i{color:#fff}
+.tlcd:active .tlth{outline:1px solid var(--dred);outline-offset:-1px}
+.gfig.h{background:#3a3c37}.gfig.h .ty{color:#fff}
+/* pop-up: a floating card over the page, like the Wonder pop-up of dasein-design; the date strip at its foot */
+.tlpop{position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;padding:calc(env(safe-area-inset-top,0px) + 14px) 12px calc(env(safe-area-inset-bottom,0px) + 14px);background:rgba(255,255,255,.62);-webkit-backdrop-filter:blur(1.5px);backdrop-filter:blur(1.5px)}
+.tlpop[hidden]{display:none}
+.tlcard{position:relative;width:100%;max-width:520px;max-height:100%;display:flex;flex-direction:column;background:#fff;box-shadow:0 2px 18px rgba(0,0,0,.18)}
+.tlcard::after{content:"";position:absolute;inset:0;pointer-events:none;background:var(--df) left top/100% 1px no-repeat,var(--df) left bottom/100% 1px no-repeat,var(--dfv) left top/1px 100% no-repeat,var(--dfv) right top/1px 100% no-repeat}
+.tltop{flex:none;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:9px 10px 6px}
+.tlk{grid-column:2;font-size:12.5px;letter-spacing:.06em;color:#666}.tlk b{color:var(--dred);font-weight:400}
+.tlx{grid-column:3;justify-self:end;border:0;background:none;padding:6px;margin:-6px;display:flex;min-height:0;-webkit-tap-highlight-color:transparent}
+.tlx svg{width:24px;height:24px}.tlx .rg{fill:none;stroke:#3a3c37;stroke-width:1px}.tlx .xx{fill:none;stroke:#1a1a1a;stroke-width:1.15;stroke-linecap:round}
+.tlbody{flex:1 1 auto;min-height:0;overflow-y:auto;padding:0 12px 10px;display:flex;flex-direction:column;gap:6px;touch-action:pan-y}
+.tlbody h4{margin:0;font-size:1.15rem;line-height:1.2}.tlbody p{margin:0;font-size:1rem;line-height:1.42}.tlbody .gs{margin-top:4px}
+.tlfig{flex:none}
+.tlar{position:absolute;top:50%;margin-top:-21px;width:42px;height:42px;border:0;padding:0;border-radius:50%;background:rgba(255,255,255,.82);display:flex;align-items:center;justify-content:center;min-height:0;z-index:1;-webkit-tap-highlight-color:transparent}
+.tlar.pw{left:6px}.tlar.pe{right:6px}
+.tls{flex:none;display:flex;gap:1px;overflow-x:auto;scrollbar-width:none;padding:8px 10px 10px;border-top:1px dashed var(--line)}.tls::-webkit-scrollbar{display:none}
+.tls button{flex:none;min-width:44px;min-height:0;padding:6px 6px 7px;border:0;border-radius:0;background:#f2f2f2;font:inherit;font-size:11px;font-weight:700;color:#3a3c37;box-shadow:inset 0 -3px 0 var(--ec);-webkit-tap-highlight-color:transparent}
+.tls button.h{background:#e2e2df}.tlsm{border-top:0;padding:6px 0 0}.tls button.on{background:#cdff3e}
+.hp .tline a.wk,.tlbody a.wk{display:inline-block;padding:1px 8px 2px;font-size:11px;font-weight:700;letter-spacing:.04em;color:#1a5fd0;background:#dfe9fa;text-decoration:none;vertical-align:1px}
+.ar{overflow:visible}.ar .rg{fill:none;stroke:#3a3c37;stroke-width:1px}.ar .dt{fill:#4d4f4a;stroke:#1a1a1a;stroke-width:1px;stroke-linejoin:round}
+.ar text{fill:#3a3c37;font:700 6.4px Calibri,Carlito,sans-serif;text-anchor:middle;dominant-baseline:central}.ar .tr{display:none}
+.gfig{position:relative;margin:0;aspect-ratio:1/1;background:#f6f6f6;outline:1px dotted #b8b8b8;outline-offset:-1px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;overflow:hidden;text-align:center}
+.gfig img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0}.gfig.has img{opacity:1}.gfig>i{font-style:normal;color:#9a9a96;font-weight:700;font-size:2rem}.gfig.has>i{visibility:hidden}
+.gfig .ty{font-size:56px;line-height:1.05;padding:0 10px}.gfig .abc{font-size:21px;line-height:1.35;padding:0 12px;color:#444}
+.gs{font-size:.8rem;color:var(--muted);letter-spacing:.04em}
+
+#zlsec{padding-top:0;margin-top:0}
+.tlw{margin-top:6px}
 </style>
 <script>
 /* Zurück auf der langen Startseite: erst nach oben zur Titelseite, dann aus der App */
@@ -1469,5 +1529,93 @@ body.introOn .hb:nth-of-type(5n)::after{animation-delay:-1.95s}
  if(!I.hidden){was=true;upd();play();}
  I.addEventListener('click',()=>{run++;clear();},true);
 })();
+</script>
+<script id="zeit-js">
+/* Zeitleiste "Pferd und Reitkunst": Einträge. y = Jahr (negativ = v. Chr.), e = Ende (Balken), d = Datumstext, lab = Kurzdatum auf der Leiste,
+   t = Titel, ini = Kürzel, w = Wikipedia-Artikel für das Bild (Sprache:Titel, erster Treffer mit Bild gilt), x = Text, l = Wikipedia-Artikel für "mehr", h = Zeitgeschehen (dunkles Feld). */
+const ZL=[
+ {y:-3500,d:"um 3500 v. Chr.",lab:"3500 v.",t:"Pferde bei den Botai",ini:"Bo",w:["de:Botai-Kultur","en:Botai_culture"],x:"In den Steppen Kasachstans halten Menschen der Botai-Kultur Pferde, zuerst wohl für Fleisch und Milch, vielleicht schon zum Reiten. Gene zeigen aber: Diese Pferde sind nicht die Vorfahren unserer Hauspferde, sondern die der Przewalski-Pferde.",l:"Botai-Kultur"},
+ {y:-2200,d:"um 2200 v. Chr.",lab:"2200 v.",t:"Das Hauspferd breitet sich aus",ini:"Eq",w:["de:Hauspferd","en:Domestication_of_the_horse"],x:"Die Linie unserer heutigen Hauspferde stammt aus der Steppe zwischen Don und Wolga und verbreitet sich ab etwa 2200 v. Chr. rasch über Eurasien. Bald darauf tauchen die ersten Streitwagen auf.",l:"Domestikation des Pferdes"},
+ {y:-1350,d:"um 1350 v. Chr.",lab:"1350 v.",t:"Kikkulis Tontafeln",ini:"Ki",w:["de:Kikkuli","en:Kikkuli"],x:"Der Pferdetrainer Kikkuli schreibt für den hethitischen König auf Tontafeln, wie man Streitwagenpferde in 184 Tagen trainiert. Es ist der älteste bekannte Text über Pferdetraining.",l:"Kikkuli"},
+ {y:-365,d:"um 365 v. Chr.",lab:"365 v.",t:"Xenophon: Über die Reitkunst",ini:"Xe",w:["de:Xenophon","en:Xenophon"],x:"Der Athener Xenophon schreibt das älteste erhaltene Buch über Reitkunst. Er fordert, Pferde ohne Härte und Zorn auszubilden: Wer ein Pferd im Zorn behandelt, erreicht wenig.",l:"Xenophon"},
+ {y:300,d:"ab 4. Jh.",lab:"4. Jh.",t:"Der Steigbügel",ini:"St",w:["de:Steigbügel","en:Stirrup"],x:"Der Steigbügel kommt aus Ostasien (frühe Belege aus China im 4. Jahrhundert) und erreicht Europa erst im frühen Mittelalter. Er gibt dem Reiter einen sichereren Sitz.",l:"Steigbügel"},
+ {y:1100,d:"Hochmittelalter",lab:"12. Jh.",t:"Ritter und Schlachtross",ini:"Ri",w:["de:Schlachtross","en:Destrier"],x:"Ritter reiten schwere, kräftige Pferde, die Schlachtrösser (Destrier). Reitkunst bedeutet vor allem Kampf: Wendigkeit und Gehorsam entscheiden über Leben und Tod.",l:"Schlachtross"},
+ {y:1550,d:"1550",lab:"1550",t:"Grisone: Reitlehrbuch aus Neapel",ini:"Gr",w:["de:Federico_Grisone","en:Federico_Grisone"],x:"Federico Grisone leitet in Neapel eine Reitschule und veröffentlicht 1550 das erste Reitlehrbuch der Neuzeit. Seine Methoden sind hart, mit scharfen Gebissen. Später wenden sich Reitmeister davon ab.",l:"Federico Grisone"},
+ {y:1572,d:"1572",lab:"1572",t:"Spanische Hofreitschule Wien",ini:"SH",w:["de:Spanische_Hofreitschule","en:Spanish_Riding_School"],x:"1572 wird in Wien erstmals eine Reitschule mit spanischen Pferden erwähnt. 1735 weiht Kaiser Karl VI. die Winterreitschule ein. Die klassische Reitkunst der Schule ist seit 2015 immaterielles Kulturerbe der UNESCO.",l:"Spanische Hofreitschule"},
+ {y:1580,d:"1580",lab:"1580",t:"Gestüt Lipica",ini:"Li",w:["de:Lipizzaner","en:Lipizzan"],x:"Erzherzog Karl II. gründet im Karst bei Triest das Gestüt Lipica. Aus ihm entsteht die Rasse der Lipizzaner, die bis heute in Wien zu sehen ist.",l:"Lipizzaner"},
+ {y:1620,d:"um 1620",lab:"1620",t:"Pluvinel: Geduld",ini:"Pl",w:["de:Antoine_de_Pluvinel","en:Antoine_de_Pluvinel"],x:"Antoine de Pluvinel, Reitlehrer des französischen Königs Ludwig XIII., bildet Pferde mit Geduld und Lob aus und arbeitet mit den Pilaren. Seine Bücher erscheinen kurz nach seinem Tod 1620.",l:"Antoine de Pluvinel"},
+ {y:1700,d:"um 1700",lab:"1700",t:"Das Englische Vollblut entsteht",ini:"Vb",w:["de:Englisches_Vollblut","en:Thoroughbred"],x:"Um 1700 kommen drei orientalische Hengste nach England: Byerley Turk, Darley Arabian und Godolphin Arabian. Alle heutigen Vollblüter gehen in männlicher Linie auf sie zurück.",l:"Englisches Vollblut"},
+ {y:1733,d:"1733",lab:"1733",t:"La Guérinière: Schulen",ini:"LG",w:["de:François_Robichon_de_La_Guérinière","en:François_Robichon_de_La_Guérinière"],x:"François Robichon de La Guérinière beschreibt 1733 die Schule der Reitkunst, die bis heute die Grundlage der klassischen Dressur ist. Ihm wird die Erfindung des Schulterherein zugeschrieben. Seine Lehre prägt auch die Spanische Hofreitschule.",l:"François Robichon de La Guérinière"},
+ {y:1766,d:"1766",lab:"1766",t:"Stubbs: Anatomie",ini:"Sb",w:["de:George_Stubbs","en:George_Stubbs"],x:"Der Maler George Stubbs seziert über ein Jahr lang Pferde und veröffentlicht 1766 „The Anatomy of the Horse“ mit 18 Kupferstichen. Das Buch gilt bis heute als Meisterwerk der Tieranatomie.",l:"George Stubbs"},
+ {y:1878,d:"1878",lab:"1878",t:"Muybridge: Pferd in Bewegung",ini:"Mu",w:["de:Eadweard_Muybridge","en:Eadweard_Muybridge"],x:"Eadweard Muybridge fotografiert 1878 ein galoppierendes Pferd mit einer Reihe von Kameras. Die Bilder zeigen: Im Galopp sind kurz alle vier Hufe in der Luft, die Beine dabei unter dem Körper gesammelt.",l:"Eadweard Muybridge"},
+ {y:1912,d:"1912",lab:"1912",t:"Dressur wird olympisch",ini:"Ol",w:["de:Olympische_Sommerspiele_1912","en:Equestrian_at_the_1912_Summer_Olympics"],x:"Bei den Olympischen Spielen in Stockholm gibt es erstmals Dressurreiten. Starten dürfen nur Offiziere, Frauen erst ab 1952.",l:"Olympische Sommerspiele 1912"},
+ {y:1914,e:1918,d:"1914–1918",lab:"1914",t:"Erster Weltkrieg",h:1,ini:"WK",w:["de:Erster_Weltkrieg","en:World_War_I"],x:"Millionen Pferde dienen im Krieg, viele sterben. Danach ersetzen Traktoren und Lastwagen das Arbeitspferd, die Kavallerie verschwindet. Das Reiten wird Sport und Freizeit.",l:"Erster Weltkrieg"},
+ {y:1921,d:"1921",lab:"1921",t:"Die FEI wird gegründet",ini:"FEI",w:["de:Fédération_Equestre_Internationale","en:Fédération_Equestre_Internationale"],x:"Die Fédération Équestre Internationale (FEI) wird 1921 gegründet. Sie legt bis heute die internationalen Regeln für Dressur, Springen und Vielseitigkeit fest.",l:"Fédération Equestre Internationale"},
+ {y:1952,d:"1952",lab:"1952",t:"Lis Hartel: Olympia-Silber",ini:"LH",w:["de:Lis_Hartel","en:Lis_Hartel"],x:"Die Dänin Lis Hartel, nach einer Kinderlähmung unterhalb der Knie gelähmt, gewinnt in Helsinki Silber im Dressurreiten. Sie wird zum Vorbild für den Reitsport von Menschen mit Behinderung.",l:"Lis Hartel"}
+];
+
+(function(){
+ const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+ const reduceM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const ERAS=[[-4000,-500,"Vorzeit","#ececea","#6b6b66"],[-500,500,"Antike","#e3efb4","#6f8a1a"],[500,1500,"Mittelalter","#f5efcf","#9a7d0a"],[1500,1800,"Barock","#f4dcd8","#a3241c"],[1800,2100,"Neuzeit","#d3def0","#1d4f9e"]];
+ const eraOf=y=>ERAS.find(e=>y>=e[0]&&y<e[1])||ERAS[4],tlCol=e=>e.h?"#3a3c37":eraOf(e.y)[4];
+ const WK=t=>"https://de.wikipedia.org/wiki/"+encodeURIComponent(t.replace(/ /g,"_"));
+ const TXW=62,th=64,cw=th+6+TXW,xo=th+6,H=2*(24+2*th+6+7),S=Math.max(46,Math.ceil((th/2+6+TXW+4)/2)),X0=Math.ceil(th/2)+10;
+ const G={H,th,cw,x:xo,S,X0,W:Math.ceil(X0+(ZL.length-1)*S+cw-th/2+14)};
+ const tlX=y=>{const P=ZL.map((e,i)=>[e.y,X0+i*S]);if(y<=P[0][0])return Math.max(2,P[0][1]-(P[0][0]-y)*.2);for(let i=1;i<P.length;i++)if(y<=P[i][0]){const a=P[i-1],b=P[i];return a[1]+(b[1]-a[1])*(y-a[0])/(b[0]-a[0]);}const L=P[P.length-1];return Math.min(G.W-2,L[1]+(y-L[0])*3);};
+ /* Bilder: Wikipedia-Zusammenfassung (erster Treffer mit Bild), Ergebnis wird gemerkt */
+ let cache={};try{cache=JSON.parse(localStorage.getItem('zl_pics')||'{}')}catch(e){}
+ const saveC=()=>{try{localStorage.setItem('zl_pics',JSON.stringify(cache))}catch(e){}};
+ function loadPics(root){root.querySelectorAll('img[data-w]').forEach(im=>{const list=im.dataset.w.split('|'),key=list.join('|'),show=u=>{im.onload=()=>im.parentNode.classList.add('has');im.src=u;};
+  if(cache[key]){show(cache[key]);return;}if(cache[key]===0)return;
+  const next=i=>{if(i>=list.length){cache[key]=0;saveC();return;}const p=list[i].indexOf(':'),lg=list[i].slice(0,p),t=list[i].slice(p+1);
+   fetch('https://'+lg+'.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(t)).then(r=>r.ok?r.json():null).then(j=>{const u=j&&(j.thumbnail&&j.thumbnail.source||j.originalimage&&j.originalimage.source);if(u){cache[key]=u;saveC();show(u);}else next(i+1);}).catch(()=>next(i+1));};
+  next(0);});}
+ const ARW=k=>'<svg class="ar" width="34" height="34" viewBox="-12 -12 24 24" aria-hidden="true"><path class="rg" d="'+(k<0?'M-7.88 -5.31A9.5 9.5 0 1 1 -7.88 5.31':'M7.88 5.31A9.5 9.5 0 1 1 7.88 -5.31')+'"/><path class="dt" transform="rotate('+(k<0?180:0)+')" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="'+(k<0?-9.5:9.5)+'" y="0">'+(k<0?'W':'E')+'</text></svg>';
+ const lab=e=>e.lab||String(e.y);
+ const thumb=e=>'<i>'+esc(e.ini)+'</i>'+(e.w?'<img alt="" loading="lazy" data-w="'+e.w.join('|')+'">':'');
+ function html(){let sp='';const lanes={a:[],b:[]};
+  ZL.forEach((e,i)=>{if(!e.e)return;const s=i%2?'b':'a',x1=tlX(e.y),x2=tlX(e.e),L=lanes[s];let k=0;while(L[k]!=null&&L[k]>x1-2&&k<2)k++;L[k]=x2;sp+='<i class="tlsp '+s+'" style="left:'+x1+'px;width:'+Math.max(6,x2-x1)+'px;--k:'+k+';background:'+tlCol(e)+'" title="'+esc(e.d)+'"></i>';});
+  return '<div class="tlw"><div class="tl" id="zl" style="height:'+G.H+'px;--th:'+th+'px;--cw:'+cw+'px;--tw:'+TXW+'px;--x:'+xo+'px;--d:0px;--g:0px"><div class="tlc" style="width:'+G.W+'px">'+
+   ERAS.map(r=>{const a=Math.max(0,tlX(r[0])),b=tlX(r[1]);return '<i class="tlwash" style="left:'+a+'px;width:'+(b-a)+'px;background:'+r[3]+'"></i><i class="tlera" style="left:'+a+'px;width:'+(b-a)+'px;background:'+r[3]+';color:'+r[4]+'">'+r[2]+'</i>';}).join('')+sp+
+   ZL.map((e,i)=>{const ln=['a1','b1','a2','b2'][i%4],x=X0+i*S;return '<span class="tltk'+(e.h?' h':'')+'" data-i="'+i+'" style="left:'+x+'px;--ec:'+tlCol(e)+'">'+esc(lab(e))+'</span><i class="tlln '+ln+'" style="left:'+x+'px;background:'+tlCol(e)+'"></i>'+
+    '<button type="button" class="tlcd '+ln+(e.h?' h':'')+'" data-i="'+i+'" style="left:'+(x-th/2)+'px" aria-label="'+esc(e.d)+': '+esc(e.t)+(e.h?' (Zeitgeschehen)':'')+'"><span class="tlth">'+thumb(e)+'</span><span class="tltx"><small>'+esc(e.d)+'</small><b>'+esc(e.t)+'</b>'+(e.h?'<em>Zeitgeschehen</em>':'')+'</span></button>';}).join('')+
+   '</div></div><button type="button" class="tlar pw" aria-label="zurück">'+ARW(-1)+'</button><button type="button" class="tlar pe" aria-label="weiter">'+ARW(1)+'</button></div>'+
+   '<div class="tls tlsm" id="zlsm" aria-label="Zeitleiste – Jahre">'+ZL.map((e,i)=>'<button type="button" data-i="'+i+'" class="'+(e.h?'h':'')+'" style="--ec:'+tlCol(e)+'" aria-label="'+esc(e.d)+': '+esc(e.t)+'">'+esc(lab(e))+'</button>').join('')+'</div>';}
+ const TLO={i:0,open:false};
+ function open(i){const n=ZL.length;i=(i+n)%n;TLO.i=i;const e=ZL[i],r=eraOf(e.y);TLO.open=true;$('zlpop').hidden=false;
+  $('zlk').innerHTML='Geschichte <b>'+String(i+1).padStart(2,'0')+'</b> / '+n;
+  $('zlb').innerHTML='<div class="gfig tlfig'+(e.h?' h':'')+'"><i>'+esc(e.ini)+'</i><img alt="'+esc(e.t)+'" data-w="'+e.w.join('|')+'"><button type="button" class="tlar pw" aria-label="früher">'+ARW(-1)+'</button><button type="button" class="tlar pe" aria-label="später">'+ARW(1)+'</button></div>'+
+   '<p class="gs">'+esc(e.d)+' · '+(e.h?'Zeitgeschehen':r[2])+'</p><h4>'+esc(e.t)+'</h4><p>'+esc(e.x)+'</p><p class="tline">Bild: Wikipedia / Wikimedia Commons · <a class="wk" href="'+WK(e.l)+'" target="_blank" rel="noopener" aria-label="Mehr bei Wikipedia">mehr ↗</a></p>';
+  $('zlb').scrollTop=0;$('zlb').querySelector('.pw').onclick=()=>open(TLO.i-1);$('zlb').querySelector('.pe').onclick=()=>open(TLO.i+1);
+  loadPics($('zlb'));$('zlb').querySelectorAll('.gfig img[data-w]').forEach(im=>{const u=cache[im.dataset.w];if(u&&/\/\d+px-/.test(u)){im.onerror=()=>{im.onerror=null;im.src=u;};im.src=u.replace(/\/\d+px-/,'/800px-');}});
+  $('zls').querySelectorAll('button').forEach((b,k)=>{b.classList.toggle('on',k===i);b.setAttribute('aria-current',k===i?'true':'false');});
+  const on=$('zls').children[i];if(on){const Z=$('zls');Z.scrollTo({left:on.offsetLeft-Z.clientWidth/2+on.offsetWidth/2,behavior:reduceM?'auto':'smooth'});}
+  const T=$('zl');if(T)T.scrollLeft=X0+i*S-T.clientWidth/2;}
+ const close=()=>{TLO.open=false;$('zlpop').hidden=true;};
+ function mkPop(){const p=document.createElement('div');p.className='tlpop';p.id='zlpop';p.hidden=true;p.setAttribute('role','dialog');p.setAttribute('aria-modal','true');p.setAttribute('aria-labelledby','zlk');
+  p.innerHTML='<div class="tlcard"><div class="tltop"><span class="tlk" id="zlk"></span><button type="button" class="tlx" id="zlx" aria-label="Schließen"><svg viewBox="-12 -12 24 24" aria-hidden="true"><circle class="rg" r="9.5"/><path class="xx" d="M-3.6 -3.6L3.6 3.6M3.6 -3.6L-3.6 3.6"/></svg></button></div><div class="tlbody" id="zlb"></div><div class="tls" id="zls" aria-label="Zeitleiste">'+ZL.map((e,i)=>'<button type="button" data-i="'+i+'" class="'+(e.h?'h':'')+'" style="--ec:'+tlCol(e)+'" aria-label="'+esc(e.d)+': '+esc(e.t)+'">'+esc(lab(e))+'</button>').join('')+'</div></div>';
+  document.body.appendChild(p);p.addEventListener('click',e=>{if(e.target===p)close();});$('zlx').onclick=close;
+  $('zls').querySelectorAll('button').forEach(b=>b.onclick=()=>open(+b.dataset.i));
+  document.addEventListener('keydown',e=>{if(!TLO.open)return;if(e.key==='Escape')close();if(e.key==='ArrowRight')open(TLO.i+1);if(e.key==='ArrowLeft')open(TLO.i-1);});
+  let x0=null,y0=0;const tb=$('zlb');tb.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;y0=e.touches[0].clientY;},{passive:true});
+  tb.addEventListener('touchend',e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;x0=null;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5)open(TLO.i+(dx<0?1:-1));},{passive:true});}
+ function bind(P){P.querySelectorAll('.tlcd').forEach(b=>b.onclick=()=>open(+b.dataset.i));loadPics(P);
+  const T=$('zl'),M=$('zlsm');let who=null,t0=0;const now=()=>performance.now(),frac=e=>e.scrollLeft/Math.max(1,e.scrollWidth-e.clientWidth);
+  const cur=()=>Math.max(0,Math.min(ZL.length-1,Math.round((T.scrollLeft+T.clientWidth/2-X0)/S)));let last=-1;
+  const mark=()=>{const i=cur();if(i===last)return;last=i;M.querySelectorAll('button').forEach((b,k)=>b.classList.toggle('on',k===i));T.querySelectorAll('.tltk').forEach((b,k)=>b.classList.toggle('on',k===i));};
+  const pw=P.querySelector('.tlw>.pw'),pe=P.querySelector('.tlw>.pe'),ends=()=>{pw.toggleAttribute('data-off',T.scrollLeft<4);pe.toggleAttribute('data-off',T.scrollLeft>T.scrollWidth-T.clientWidth-4);};
+  pw.onclick=()=>T.scrollBy({left:-T.clientWidth*.6,behavior:reduceM?'auto':'smooth'});pe.onclick=()=>T.scrollBy({left:T.clientWidth*.6,behavior:reduceM?'auto':'smooth'});T.addEventListener('scroll',ends,{passive:true});ends();
+  T.addEventListener('scroll',()=>{mark();if(who==='M'&&now()-t0<150)return;who='T';t0=now();M.scrollLeft=frac(T)*(M.scrollWidth-M.clientWidth);},{passive:true});
+  M.addEventListener('scroll',()=>{if(who==='T'&&now()-t0<150)return;who='M';t0=now();T.scrollLeft=frac(M)*(T.scrollWidth-T.clientWidth);},{passive:true});
+  M.querySelectorAll('button').forEach(b=>b.onclick=()=>{who='T';t0=now()+400;const i=+b.dataset.i;T.scrollTo({left:X0+i*S-T.clientWidth/2,behavior:reduceM?'auto':'smooth'});setTimeout(()=>{M.scrollTo({left:b.offsetLeft-M.clientWidth/2+b.offsetWidth/2,behavior:reduceM?'auto':'smooth'});},50);});
+  mark();}
+ function insert(){const box=$('theo2');if(!box||$('zlsec'))return false;
+  const h=document.createElement('p');h.className='wsec';h.textContent='Zeitleiste: Pferd und Reitkunst';
+  const c=document.createElement('div');c.className='tc tlsec';c.id='zlsec';c.innerHTML=html()+'<p class="tline">Seitlich wischen · antippen für Bild und Text. Dunkle Felder: Zeitgeschehen. Bilder: Wikipedia / Wikimedia Commons.</p>';
+  box.prepend(h,c);mkPop();bind(c);return true;}
+ if(!insert()){let n=0;const iv=setInterval(()=>{if(insert()||++n>40)clearInterval(iv);},250);}
+})();
+
 </script>
 </body></html>
