@@ -1,0 +1,45 @@
+/* Anatomie */
+#thAna{display:flex;flex-direction:column;gap:8px;flex:1 1 auto;min-height:0;overflow-y:auto}
+#thAna[hidden]{display:none}
+.anaBar{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.anaSeg{display:flex}
+.anaSeg button,.abt{min-height:0;padding:5px 11px;font-size:.82rem;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);border-radius:0;margin-left:-1.5px}
+.anaSeg button:first-child{margin-left:0}
+.anaSeg button[aria-pressed="true"],.abt[aria-pressed="true"]{background:#ffec99;border-color:#22281f;color:#111;font-weight:700;position:relative;z-index:1}
+.abt{margin-left:0}.abt:last-child{margin-left:auto}
+.anaScroll{position:relative;overflow:hidden;border:1.5px dotted color-mix(in srgb,var(--muted) 55%,transparent);background:#fff;flex:none}
+.anaFig{position:relative;width:100%;aspect-ratio:1420/1108;margin:0 auto}
+.anaFig img{display:block;width:100%;height:100%;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.ad{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;padding:0;border:0;background:none;border-radius:50%;cursor:pointer;min-height:0;z-index:2;-webkit-tap-highlight-color:transparent}
+.ad::before{content:"";position:absolute;inset:9px;border-radius:50%;background:#e30613;border:1.5px solid #fff;box-shadow:0 0 0 .5px #0006}
+.ad::after{content:"";position:absolute;inset:9px;border-radius:50%;border:2px solid #e30613;animation:adp 1.9s ease-out infinite;animation-delay:var(--d,0s)}
+@keyframes adp{0%{transform:scale(1);opacity:.95}100%{transform:scale(3);opacity:0}}
+.ad.on::before{background:#ffbf00;inset:7px}.ad.on::after{border-color:#ffbf00;inset:7px}
+.ad.ok::before{background:#2f9e5f}.ad.ok::after{border-color:#2f9e5f}
+.ad.bad::before{background:#777}.ad.bad::after{display:none}
+.ad.calm::before{background:#8a8f86}.ad.calm::after{border-color:#8a8f86;animation-duration:3.2s}
+.ad.hid{visibility:hidden;pointer-events:none}
+.alab{position:absolute;left:24px;top:50%;transform:translateY(-50%);white-space:nowrap;background:#fff;border:1px solid #22281f;padding:1px 6px;font-size:12px;font-weight:700;color:#111;pointer-events:none;z-index:3}
+.ad.lft .alab{left:auto;right:24px}
+.alab[hidden]{display:none}
+.anaPanel{min-height:7.5em}
+.anaPanel .nm{margin:0 0 2px;font-size:1.1rem;font-weight:700}
+.anaPanel .alt{margin:0 0 4px;font-size:.82rem;color:var(--muted);font-style:italic}
+.anaPanel .ds{margin:0 0 8px;font-size:.9rem;line-height:1.35}
+.anaNav{display:flex;gap:6px}.anaNav button{flex:1}
+.anaOpts{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:6px 0}
+.anaOpts .opt{height:auto!important;min-height:40px!important;padding:6px 8px;text-align:center;justify-content:center;font-size:.86rem}
+.anaOpts .opt.ok{background:#d6f2dd;border-color:#2f9e5f}.anaOpts .opt.bad{background:#eee;border-color:#999;text-decoration:line-through}
+.anaScore{font-size:.74rem;color:var(--muted);margin-bottom:2px}
+.anaPanel .fb{margin:4px 0;font-weight:700}.okt{color:#1f7a45}.badt{color:#b00020}
+.anaZoom{display:none}
+#thAna.full{position:fixed;inset:0;z-index:5000;background:#fff;padding:8px 10px 10px;gap:6px;overflow:hidden;flex-direction:column}
+#thAna.full .anaScroll{flex:1 1 auto;min-height:0;overflow:auto;touch-action:pan-x pan-y;border:0}
+#thAna.full .anaFig{margin:0}
+#thAna.full .anaPanel{flex:none;max-height:34vh;overflow-y:auto;min-height:0}
+#thAna.full #aCap{display:none}
+#thAna.full .anaZoom{display:flex;position:absolute;right:14px;top:56px;flex-direction:column;gap:6px;z-index:6}
+#thAna.full .anaZoom[hidden]{display:none}
+.anaZoom button{width:40px;height:40px;min-height:0;padding:0;font-size:1.4rem;border-radius:50%;background:#fff;border:1.5px solid #22281f}
+html.anaFull,html.anaFull body{overflow:hidden}
+@media (prefers-reduced-motion:reduce){.ad::after{animation:none}}
