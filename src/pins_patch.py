@@ -23,13 +23,16 @@ assert s.count(a)==1; s=s.replace(a,xr+a)
 s=re.sub(r'\n<script id="lhi-js">.*?</script>','',s,flags=re.S)
 s=re.sub(r'\n\.lhi\{.*?@media \(prefers-reduced-motion:reduce\)\{\.lhi\.lhp\{animation:none\}\}\n','\n',s,flags=re.S)
 css='''
-/* Titelseite: Buchstaben als Pins (Animation 1:1 nach dasein-design; 9 Schritte à 1,4 s, erst nach der Einflug-Animation) */
-.vier .pin .pb{fill:#bfbfbf;stroke:#000;stroke-width:.8;animation:pinon9 12.6s ease-in-out infinite;animation-delay:calc(3.7s + var(--k) * 1.4s)}
-.vier .pin .r1,.vier .pin .r2,.vier .xr{fill:none;stroke:var(--c1);stroke-width:1.2;opacity:0;pointer-events:none;transform-box:fill-box;transform-origin:center;animation:pinring9 12.6s ease-out infinite;animation-delay:calc(3.7s + var(--k) * 1.4s + .3s)}
-.vier .pin .r2,.vier .xr.r2{stroke:var(--c2);animation-delay:calc(3.7s + var(--k) * 1.4s + .6s)}
-@keyframes pinon9{0%{fill:#bfbfbf}1.8%{fill:#cdff3e}10%{fill:#cdff3e}11.9%{fill:#bfbfbf}100%{fill:#bfbfbf}}
-@keyframes pinring9{0%{transform:scale(1);opacity:.9}8.9%{transform:scale(2.3);opacity:0}100%{transform:scale(2.3);opacity:0}}
-@media (prefers-reduced-motion:reduce){.vier .pin .pb,.vier .pin .r1,.vier .pin .r2,.vier .xr{animation:none}}
+/* Titelseite: Buchstaben als Pins (Animation nach dasein-design). Sie leuchten nur, wenn die rote Spur an ihnen vorbeiläuft (trails.js setzt .lit) */
+.vier .pin .pb{fill:#bfbfbf;stroke:#000;stroke-width:.8}
+.vier .pin .r1,.vier .pin .r2,.vier .xr{fill:none;stroke:var(--c1);stroke-width:1.2;opacity:0;pointer-events:none;transform-box:fill-box;transform-origin:center}
+.vier .pin .r2,.vier .xr.r2{stroke:var(--c2)}
+.vier .pin.lit .pb{animation:pinlit 1.8s ease-in-out}
+.vier .pin.lit .r1,.vier .xr.lit.r1{animation:pinringh 1.5s ease-out}
+.vier .pin.lit .r2,.vier .xr.lit.r2{animation:pinringh 1.5s ease-out .25s}
+@keyframes pinlit{0%{fill:#bfbfbf}8%{fill:#cdff3e}70%{fill:#cdff3e}100%{fill:#bfbfbf}}
+@keyframes pinringh{0%{transform:scale(1);opacity:.9}100%{transform:scale(2.3);opacity:0}}
+@media (prefers-reduced-motion:reduce){.vier .pin.lit .pb,.vier .pin.lit .r1,.vier .pin.lit .r2,.vier .xr.lit{animation:none}}
 '''
 i=s.rfind('</style>'); s=s[:i]+css+s[i:]
 s=re.sub(r'(<meta name="app-version" content=")[^"]*"',r'\g<1>2026-10-31zd"',s,count=1)

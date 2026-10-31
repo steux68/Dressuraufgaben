@@ -32,13 +32,22 @@
  function part(f,s0,s1,alpha,w){s0=Math.max(0,s0);s1=Math.min(f.L,s1);if(s1<=s0)return;
   const n=Math.max(2,Math.ceil((s1-s0)/3));ctx.globalAlpha=alpha;ctx.lineWidth=w;ctx.beginPath();
   for(let i=0;i<=n;i++){const q=pt(f,s0+(s1-s0)*i/n);i?ctx.lineTo(q[0],q[1]):ctx.moveTo(q[0],q[1]);}ctx.stroke();}
+
+ /* Buchstaben, an denen die Spur vorbeiläuft, leuchten auf (Ankerpunkte auf der Bahngrenze, Einheiten wie im Viereck) */
+ const ANCH={A:[100,270],K:[40,234],E:[40,150],H:[40,66],C:[100,30],M:[160,66],B:[160,150],F:[160,234],X:[100,150]};
+ const PIN={};svg.querySelectorAll('.pin').forEach(g=>{const t=g.querySelector('text');if(t)PIN[t.textContent]=[g];});
+ PIN.X=[...svg.querySelectorAll('.xr')];const near={};
+ function lit(l){(PIN[l]||[]).forEach(e=>{e.classList.remove('lit');void e.getBoundingClientRect();e.classList.add('lit');});}
+ function hits(u){const q=cur.p.getPointAtLength(Math.max(0,Math.min(cur.L,u)));
+  for(const l in ANCH){const a=ANCH[l],d=Math.hypot(q.x-a[0],q.y-a[1]);
+   if(d<14&&!near[l]){near[l]=1;lit(l);}else if(d>22)near[l]=0;}}
  const SPEED=62,HEAD=16,TAIL=150,LEAD=.8,HOLD=1.4,FADE=.7;
  let run=0,last=0,t0=0,order=[],cur=null,phase=0,tm=0,pos=0,laps=1;
  function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
  function nextFig(first){
   if(!order.length){order=shuffle(F);if(first){order=order.filter(f=>f.k!=='ganze');order.unshift(F[0]);}
    if(cur&&order[0].k===cur.k)order.push(order.shift());}
-  cur=order.shift();laps=Math.max(1,Math.min(3,Math.round(8*SPEED/cur.L)));pos=0;tm=0;phase=0;
+  cur=order.shift();for(const l in near)near[l]=0;laps=Math.max(1,Math.min(3,Math.round(8*SPEED/cur.L)));pos=0;tm=0;phase=0;
   tag.textContent=cur.n;tag.style.left=X(cur.lab[0])+'px';tag.style.top=Y(cur.lab[1])+'px';
   tag.hidden=false;tag.classList.remove('pop');void tag.offsetWidth;tag.classList.add('pop');}
  function frame(now){
@@ -70,6 +79,7 @@
     const A=a%cur.L,B=A+(b-a);
     if(B<=cur.L)part(cur,A,B,al,ww);else{part(cur,A,cur.L,al,ww);part(cur,0,B-cur.L,al,ww);}};
    const head=Math.min(pos,total);
+   if(phase===1)hits(head%cur.L);
    seg(head-HEAD,head,1,w*2.3);
    const base=head-HEAD;let u=0;
    while(u<TAIL){const f=u/TAIL,d=Math.max(.3,7*Math.pow(1-f,1.3)),g=3+11*f,a=Math.pow(1-f,1.2)*.95;
