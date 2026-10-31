@@ -1,5 +1,5 @@
 <!doctype html><html lang="de"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Deutsch"></head><body>
-<meta name="app-version" content="2026-10-31f">
+<meta name="app-version" content="2026-10-31g">
 <title>Deutsch Grammatik</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#ffffff">
@@ -577,17 +577,17 @@ b.lgk{font-size:.8rem;padding:0 5px;margin:0}
 .tlw>.tlar{z-index:4}.tlw>.tlar[data-off]{opacity:.3}
 .tlsp{height:4px;opacity:.75}.tlsp.a{top:calc(50% - 25px - var(--k)*6px)}.tlsp.b{top:calc(50% + 19px + var(--k)*6px)}
 .tlln{width:1px}
-.tlln.a1{top:calc(50% - 30px - var(--g));height:calc(12px + var(--g))}.tlln.a2{top:calc(50% - 30px - var(--g) - var(--x));height:calc(12px + var(--g) + var(--x))}
-.tlln.b1{top:calc(50% + 16px);height:calc(14px + var(--g))}.tlln.b2{top:calc(50% + 16px);height:calc(14px + var(--g) + var(--x))}
+.tlln.a1{top:calc(50% - 24px - var(--g));height:calc(6px + var(--g))}.tlln.a2{top:calc(50% - 24px - var(--g) - var(--x));height:calc(6px + var(--g) + var(--x))}
+.tlln.b1{top:calc(50% + 16px);height:calc(8px + var(--g))}.tlln.b2{top:calc(50% + 16px);height:calc(8px + var(--g) + var(--x))}
 .tlwash{top:0;bottom:0;opacity:.45}
 /* a card: the picture (as big as the height allows) with date and title beside it, like the poster */
 .tlcd{position:absolute;height:var(--th);width:var(--cw);display:flex;flex-direction:row;gap:6px;padding:0;border:0;border-radius:0;background:none;text-align:left;font:inherit;color:#222;cursor:pointer;-webkit-tap-highlight-color:transparent;min-height:0}
-.tlcd.a1{bottom:calc(50% + 30px + var(--g))}.tlcd.a2{bottom:calc(50% + 30px + var(--g) + var(--x))}.tlcd.b1{top:calc(50% + 30px + var(--g))}.tlcd.b2{top:calc(50% + 30px + var(--g) + var(--x))}
+.tlcd.a1{bottom:calc(50% + 24px + var(--g))}.tlcd.a2{bottom:calc(50% + 24px + var(--g) + var(--x))}.tlcd.b1{top:calc(50% + 24px + var(--g))}.tlcd.b2{top:calc(50% + 24px + var(--g) + var(--x))}
 .tltx{width:var(--tw);display:flex;flex-direction:column;justify-content:center;gap:1px;overflow:hidden}
 
 .tltx small{font-size:9px;font-weight:700;letter-spacing:.05em;color:var(--red);line-height:1.2}
 .tltx b{font-size:10.5px;line-height:1.15;font-weight:700;overflow-wrap:anywhere;hyphens:auto;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.tltx em{font-style:normal;font-size:7.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#6b6b66}
+.tltx em{font-style:normal;font-size:7px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6b6b66}
 .tlth{position:relative;width:var(--th);height:var(--th);flex:none;background:#f4f4f2;overflow:hidden;display:grid;place-items:center}
 .tlth::after{content:"";position:absolute;inset:0;pointer-events:none;background:var(--df) left top/100% 1px no-repeat,var(--df) left bottom/100% 1px no-repeat,var(--dfv) left top/1px 100% no-repeat,var(--dfv) right top/1px 100% no-repeat}
 .tlth>i{font-style:normal;font-weight:700;font-size:calc(var(--th)*.2);color:#9a9a96;white-space:nowrap}.tlth.has>i{visibility:hidden}
@@ -2687,9 +2687,9 @@ const ERAS=[[-200,700,"Germanisch","#ececea","#6b6b66"],[700,1050,"Althochdeutsc
 const eraOf=y=>ERAS.find(e=>y>=e[0]&&y<e[1])||ERAS[4];
 const tlCol=e=>e.h?"#3a3c37":eraOf(e.y)[4];
 /* geometry (Steuart, 30 Oct): as tall as the phone allows, two rows above and two below; the pictures as big as fit; entries spaced so no line crosses a card */
-const TXW=64;let TLG=null;
+const TXW=62;let TLG=null;
 /* four clean rows, two above and two below the axis (Steuart, 31 Oct): small square picture, date and title beside it */
-function tlGeo(){const sc=document.getElementById("hscroll"),vh=sc&&sc.clientHeight>200?sc.clientHeight:(window.innerHeight||700)-82,Hf=Math.round(Math.min(760,Math.max(300,vh-66-23-46-44))),th=Math.min(64,Math.max(52,Math.floor((Hf/2-30-8-10)/2))),cw=th+6+TXW,x=th+8,H=2*(30+2*th+8+10),d=0,g=0,S=Math.max(46,Math.ceil((th/2+6+TXW+6)/2)),X0=Math.ceil(th/2)+10;
+function tlGeo(){const sc=document.getElementById("hscroll"),vh=sc&&sc.clientHeight>200?sc.clientHeight:(window.innerHeight||700)-82,Hf=Math.round(Math.min(760,Math.max(300,vh-66-23-46-44))),th=Math.min(64,Math.max(52,Math.floor((Hf/2-24-6-7)/2))),cw=th+6+TXW,x=th+6,H=2*(24+2*th+6+7),d=0,g=0,S=Math.max(46,Math.ceil((th/2+6+TXW+4)/2)),X0=Math.ceil(th/2)+10;
   return {H,th,cw,x,d,g,S,X0,W:Math.ceil(X0+(TL.length-1)*S+cw-th/2+14)};}
 const tlX=(y,G)=>{const P=TL.map((e,i)=>[e.y,G.X0+i*G.S]);if(y<=P[0][0])return Math.max(2,P[0][1]-(P[0][0]-y)*.2);for(let i=1;i<P.length;i++)if(y<=P[i][0]){const a=P[i-1],b=P[i];return a[1]+(b[1]-a[1])*(y-a[0])/(b[0]-a[0]);}const L=P[P.length-1];return Math.min(G.W-2,L[1]+(y-L[0])*3);};
 const tlLab=e=>e.lab||String(Math.floor(e.y));
