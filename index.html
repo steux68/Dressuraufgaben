@@ -1,5 +1,5 @@
 <!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<meta name="app-version" content="2026-10-31r">
+<meta name="app-version" content="2026-10-31s">
 <title>PASSAGE a–x</title>
 <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png?v=2"><link rel="icon" type="image/png" href="icon-192.png?v=2"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PASSAGE"><meta name="theme-color" content="#f5f6f2">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
@@ -1479,6 +1479,26 @@ body.introOn .hb[data-pc="0"]{--pc:#fbe0e3} body.introOn .hb[data-pc="1"]{--pc:#
 body.introOn .hb[data-pc="2"]{--pc:#dfe9fb;animation-delay:-1.4s} body.introOn .hb[data-pc="3"]{--pc:#fdf0c2;animation-delay:-2.1s}
 body.introOn .hb[data-pc="4"]{--pc:#ece2f8;animation-delay:-2.8s}
 @media (prefers-reduced-motion:reduce){body.introOn .hb{animation:none}.wsw .tg b::after{animation:none}}
+
+/* ---- Zitate wie in der Deutsch-App: Filter-Knöpfe, gepunktete Linien, Bild, grau/weiß im Wechsel ---- */
+.zqs{padding-top:0}
+.zch{display:flex;flex-wrap:wrap;gap:4px;padding:2px 0 8px}
+.zch button{padding:4px 12px;font-size:.95rem;background:var(--pale);border:0;border-radius:0;min-height:0;font-family:inherit;color:var(--fg)}
+.zch button[aria-pressed="true"]{background:var(--lime);font-weight:700;box-shadow:none}
+.zqh{margin:14px 0 4px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:#555;font-weight:700}
+.zql{display:flex;flex-direction:column}
+.zqt{position:relative;display:grid;grid-template-columns:46px minmax(0,1fr);gap:10px;margin:0;padding:10px;text-align:left;color:inherit;text-decoration:none;background:var(--df) left bottom/100% 1px no-repeat,#fff}
+.zqt.alt{background:var(--df) left bottom/100% 1px no-repeat,#f4f4f2}
+.zqt:active{background:var(--df) left bottom/100% 1px no-repeat,var(--pale)}
+.zqt .zpic{position:relative;width:46px;height:58px;display:grid;place-items:center;font-size:.95rem;font-weight:700;color:var(--ink);background:#e6e6e3;overflow:hidden}
+.zqt .zpic i{font-style:normal}
+.zqt .zpic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;opacity:0;filter:grayscale(1)}
+.zqt .zpic.has img{opacity:1}.zqt .zpic.has i{visibility:hidden}
+.zqb{min-width:0;overflow-wrap:anywhere;hyphens:auto}
+.zqt b.who{display:inline;font-size:.95rem}
+.zqt small{display:block;font-size:.74rem;color:#555;margin-bottom:3px}
+.zqt q{display:block;font-size:.9rem;line-height:1.3;quotes:"„" "“"}
+.zqt .zen{display:block;font-size:.8rem;color:#555;margin-top:2px;line-height:1.3}.zqt .zen.o{font-style:italic}
 </style>
 <script>
 /* Zurück auf der langen Startseite: erst nach oben zur Titelseite, dann aus der App */
@@ -1730,5 +1750,36 @@ const ZL_B=[
   mkPop();bind(c);return true;}
  if(!insert()){let n=0;const iv=setInterval(()=>{if(insert()||++n>40)clearInterval(iv);},250);}
 })(ZL_B,[[-1000000000, -9500, "Urzeit", "#ececea", "#6b6b66"], [-9500, -500, "Vorzeit", "#e3efb4", "#6f8a1a"], [-500, 500, "Antike", "#f5efcf", "#9a7d0a"], [500, 1800, "Neuzeit", "#f4dcd8", "#a3241c"], [1800, 2100, "Heute", "#d3def0", "#1d4f9e"]],"Zeitleiste: Das Pferd","B","zb");
+</script>
+<script id="zitate-js">
+(function(){
+ const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+ const WIKI={'Xenophon':['de:Xenophon','en:Xenophon'],'Gustav Steinbrecht':['de:Gustav_Steinbrecht','en:Gustav_Steinbrecht'],'Seneca':['de:Lucius_Annaeus_Seneca','de:Seneca','en:Seneca_the_Younger'],'William Shakespeare':['de:William_Shakespeare','en:William_Shakespeare'],
+  'Friedrich von Bodenstedt':['de:Friedrich_von_Bodenstedt','en:Friedrich_von_Bodenstedt'],'Karl V. (zugeschrieben)':['de:Karl_V._(HRR)','en:Charles_V,_Holy_Roman_Emperor'],'Winston Churchill':['de:Winston_Churchill','en:Winston_Churchill']};
+ let cache={};try{cache=JSON.parse(localStorage.getItem('zl_pics')||'{}')}catch(e){}
+ const saveC=()=>{try{localStorage.setItem('zl_pics',JSON.stringify(cache))}catch(e){}};
+ function loadPics(root){root.querySelectorAll('img[data-w]').forEach(im=>{const list=im.dataset.w.split('|'),key=list.join('|'),show=u=>{im.onload=()=>im.parentNode.classList.add('has');im.src=u;};
+  if(cache[key]){show(cache[key]);return;}if(cache[key]===0)return;
+  const next=i=>{if(i>=list.length){cache[key]=0;saveC();return;}const p=list[i].indexOf(':'),lg=list[i].slice(0,p),t=list[i].slice(p+1);
+   fetch('https://'+lg+'.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(t)).then(r=>r.ok?r.json():null).then(j=>{const u=j&&(j.thumbnail&&j.thumbnail.source||j.originalimage&&j.originalimage.source);if(u){cache[key]=u;saveC();show(u);}else next(i+1);}).catch(()=>next(i+1));};
+  next(0);});}
+ const PLUS='<svg class="pl" viewBox="-12 -12 24 24" aria-hidden="true"><circle r="10.5"/><path d="M-5.5 0H5.5M0 -5.5V5.5"/></svg>';
+ function build(){const src=$('thZl');if(!src||!src.children.length||$('zqsec'))return false;
+  const heads=[...document.querySelectorAll('#theo2 .wsec')],zh=heads.find(h=>h.textContent.trim()==='Zitate');if(!zh)return false;
+  const items=[];let sec='';[...src.children].forEach(el=>{if(el.classList.contains('wsec')){sec=el.textContent;return;}
+   const q=el.querySelector('q'),b=el.querySelector('b');if(!q||!b)return;
+   items.push({sec,ini:(el.querySelector('.pic')||{}).textContent||'',who:b.textContent,when:(el.querySelector('small')||{}).textContent||'',q:q.textContent,o:(el.querySelector('.o')||{}).textContent||'',n:(el.querySelector('.n')||{}).textContent||'',u:el.getAttribute('href')});});
+  const secs=[...new Set(items.map(x=>x.sec))];let F='Alle';
+  const c=document.createElement('div');c.className='tc zqs';c.id='zqsec';
+  function render(){let sec='',qi=0;const rows=[];
+   items.forEach(x=>{if(F!=='Alle'&&x.sec!==F)return;if(qi===0||x.sec!==sec){if(F==='Alle')rows.push('<h4 class="zqh">'+esc(x.sec)+'</h4>');if(x.sec!==sec){sec=x.sec;qi=0;}}
+    const w=WIKI[x.who];
+    rows.push('<a class="zqt'+(qi++%2?' alt':'')+'" href="'+esc(x.u)+'" target="_blank" rel="noopener"><span class="zpic" aria-hidden="true"><i>'+esc(x.ini)+'</i>'+(w?'<img alt="" loading="lazy" data-w="'+w.join('|')+'">':'')+'</span><span class="zqb"><b class="who">'+esc(x.who)+'</b><small>'+esc(x.when)+'</small><q>'+esc(x.q)+'</q>'+(x.o?'<span class="zen o">'+esc(x.o)+'</span>':'')+(x.n?'<span class="zen">'+esc(x.n)+'</span>':'')+'</span></a>');});
+   c.innerHTML='<div class="wchips zch">'+['Alle'].concat(secs).map(f=>'<button type="button" data-f="'+esc(f)+'" aria-pressed="'+(F===f)+'">'+esc(f==='Wer hat das wirklich gesagt?'?'Wer sagte das?':f)+'</button>').join('')+'</div><div class="zql">'+rows.join('')+'</div><p class="tline">Antippen öffnet die Quelle. Bilder: Wikipedia / Wikimedia Commons.</p>';
+   c.querySelectorAll('.zch button').forEach(b=>b.onclick=()=>{F=b.dataset.f;render();});loadPics(c);}
+  render();src.style.display='none';zh.after(c);return true;}
+ if(!build()){let n=0;const iv=setInterval(()=>{if(build()||++n>40)clearInterval(iv);},250);}
+})();
+
 </script>
 </body></html>

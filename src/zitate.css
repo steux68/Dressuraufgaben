@@ -1,0 +1,19 @@
+/* ---- Zitate wie in der Deutsch-App: Filter-Knöpfe, gepunktete Linien, Bild, grau/weiß im Wechsel ---- */
+.zqs{padding-top:0}
+.zch{display:flex;flex-wrap:wrap;gap:4px;padding:2px 0 8px}
+.zch button{padding:4px 12px;font-size:.95rem;background:var(--pale);border:0;border-radius:0;min-height:0;font-family:inherit;color:var(--fg)}
+.zch button[aria-pressed="true"]{background:var(--lime);font-weight:700;box-shadow:none}
+.zqh{margin:14px 0 4px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:#555;font-weight:700}
+.zql{display:flex;flex-direction:column}
+.zqt{position:relative;display:grid;grid-template-columns:46px minmax(0,1fr);gap:10px;margin:0;padding:10px;text-align:left;color:inherit;text-decoration:none;background:var(--df) left bottom/100% 1px no-repeat,#fff}
+.zqt.alt{background:var(--df) left bottom/100% 1px no-repeat,#f4f4f2}
+.zqt:active{background:var(--df) left bottom/100% 1px no-repeat,var(--pale)}
+.zqt .zpic{position:relative;width:46px;height:58px;display:grid;place-items:center;font-size:.95rem;font-weight:700;color:var(--ink);background:#e6e6e3;overflow:hidden}
+.zqt .zpic i{font-style:normal}
+.zqt .zpic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;opacity:0;filter:grayscale(1)}
+.zqt .zpic.has img{opacity:1}.zqt .zpic.has i{visibility:hidden}
+.zqb{min-width:0;overflow-wrap:anywhere;hyphens:auto}
+.zqt b.who{display:inline;font-size:.95rem}
+.zqt small{display:block;font-size:.74rem;color:#555;margin-bottom:3px}
+.zqt q{display:block;font-size:.9rem;line-height:1.3;quotes:"„" "“"}
+.zqt .zen{display:block;font-size:.8rem;color:#555;margin-top:2px;line-height:1.3}.zqt .zen.o{font-style:italic}
