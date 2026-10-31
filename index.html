@@ -1,7 +1,7 @@
 <!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<meta name="app-version" content="2026-10-31j">
-<title>Dressuraufgaben</title>
-<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Dressur"><meta name="theme-color" content="#f5f6f2">
+<meta name="app-version" content="2026-10-31k">
+<title>PASSAGE a–x</title>
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PASSAGE"><meta name="theme-color" content="#f5f6f2">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -226,11 +226,12 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 <div class="titlebar">
 <button class="back" id="backBtn" hidden aria-label="Zur Startseite"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 9.6V19.5h4.4v-5.2h3.2v5.2H18V9.6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg><span>Start</span></button>
 <h1 id="title">Dressuraufgaben</h1>
-<button class="help" id="infoBtn" aria-expanded="false"><span class="i" aria-hidden="true">i</span>INFO</button>
+<a class="brand" id="brand" role="link" tabindex="0" aria-label="passage a–x, zur Titelseite"><svg class="bmark" viewBox="0 0 44 30" aria-hidden="true"><rect width="44" height="30" fill="#e30613"/><text x="5" y="23.5" font-size="23" font-weight="700" fill="#fff">P</text><text x="19.5" y="23.5" font-size="11.5" font-weight="700" fill="#fff">a–x</text></svg><span class="bw">passage</span></a><div class="mode" id="mode"><span class="ml on" id="mlL">lernen</span><button id="msw" role="switch" aria-checked="false" aria-label="Zwischen Lernen und Staunen (Galerie) wechseln"><i></i></button><span class="ml" id="mlR">staunen</span></div>
+<button class="help" id="infoBtn" aria-expanded="false" aria-label="Info"><span class="i" aria-hidden="true">i</span>INFO</button>
 </div>
 </header>
 <div class="tipbar" id="tip"><span>Tipp: Als App aufs Handy legen – siehe <b>INFO</b></span><button id="tipx">OK</button></div>
-<section id="intro" class="intro" hidden aria-label="Titelseite"><button class="ipic" id="introGo" aria-label="Weiter zu den Dressuraufgaben"><img id="introImg" src="img/intro.jpg" alt="Kupferstich von Johann Daniel Meyer, 1748: Skelett eines Menschen auf dem Skelett eines Pferdes"><span class="iph">Titelbild folgt<br><small>sobald die Bildquelle geklärt ist</small></span></button><h2 class="ilogo"><b>DRESSUR</b>aufgaben</h2><p class="isub">R1–R6 · Lernen, Spiel, Theorie · Pferdewissen</p><p class="icred" id="introCred"></p></section>
+<section id="intro" class="intro" hidden aria-label="Titelseite"><button class="ipic" id="introGo" aria-label="Weiter zu den Dressuraufgaben"><svg class="vier" viewBox="0 0 200 300" role="img" aria-label="Viereck 20 mal 40 Meter von oben, mit den Buchstaben A K E H C M B F am Hufschlag und X in der Mitte"><rect x="40" y="30" width="120" height="240" fill="#fff" stroke="#8c918a" stroke-width="1.4"/><line x1="100" y1="30" x2="100" y2="270" stroke="#b8b8b8" stroke-width="1" stroke-dasharray="1 3"/><line x1="40" y1="150" x2="160" y2="150" stroke="#b8b8b8" stroke-width="1" stroke-dasharray="1 3"/><line x1="100" y1="270" x2="100" y2="276" stroke="#8c918a" stroke-width="1.4"/><line x1="100" y1="30" x2="100" y2="24" stroke="#8c918a" stroke-width="1.4"/><line x1="40" y1="234" x2="34" y2="234" stroke="#8c918a" stroke-width="1.4"/><line x1="40" y1="150" x2="34" y2="150" stroke="#8c918a" stroke-width="1.4"/><line x1="40" y1="66" x2="34" y2="66" stroke="#8c918a" stroke-width="1.4"/><line x1="160" y1="66" x2="166" y2="66" stroke="#8c918a" stroke-width="1.4"/><line x1="160" y1="150" x2="166" y2="150" stroke="#8c918a" stroke-width="1.4"/><line x1="160" y1="234" x2="166" y2="234" stroke="#8c918a" stroke-width="1.4"/><text x="100" y="286" text-anchor="middle" dominant-baseline="central" font-size="15" font-weight="700" fill="#111">A</text><text x="27" y="238" text-anchor="middle" dominant-baseline="central" font-size="15" font-weight="700" fill="#111">K</text><text x="27" y="154" text-anchor="middle" dominant-baseline="central" font-size="15" font-weight="700" fill="#111">E</text><text x="27" y="70" text-anchor="middle" dominant-baseline="central" font-size="15" font-weight="700" fill="#111">H</text><text x="100" y="20" text-anchor="middle" dominant-baseline="central" font-size="15" font-weight="700" fill="#111">C</text><text x="173" y="70" text-anchor="middle" dominant-baseline="central" font-size="15" font-weight="700" fill="#111">M</text><text x="173" y="154" text-anchor="middle" dominant-baseline="central" font-size="15" font-weight="700" fill="#111">B</text><text x="173" y="238" text-anchor="middle" dominant-baseline="central" font-size="15" font-weight="700" fill="#111">F</text><circle cx="100" cy="150" r="11" fill="#ffd400" stroke="#111" stroke-width="1.2"/><text x="100" y="150" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#111">X</text></svg></button><p class="iabc">A K E H C M B F – <span>X</span></p><p class="isub">Dressuraufgaben R1–R6 · Lernen, Spiel, Theorie · Pferdewissen</p><p class="icred" id="introCred"></p></section>
 <section class="home" id="gal" hidden aria-label="Galerie"><div class="wchips" id="wchips"></div><div class="wmos"><div class="wh" id="whl"></div><div class="wh" id="whr"></div></div><p class="gmore" id="wnone" hidden>Zu diesem Thema kommen bald Bilder.</p><p class="gmore">Antippen zeigt das Bild groß, mit Herkunft und Quelle. Weitere Bilder folgen.</p></section>
 <section class="home" id="xyz" hidden aria-label="Links"><div class="lkhead"><h3>Reiten und Prüfungen</h3><p>Wo die Aufgaben und Prüfungen herkommen, wer die Regeln macht und wo du reitest.</p></div><div class="lkgrid"><a class="lk g" href="https://www.oeps.at" target="_blank" rel="noopener"><span class="lkw"><b>OEPS</b><small>Österreichischer Pferdesportverband</small></span><span class="lkn">OEPS</span><span class="lkd">Aufgaben, Reiterpass, Prüfungen [Ö]</span></a><a class="lk" href="https://www.reitstall-steinbach.at/" target="_blank" rel="noopener"><span class="lkw"><b>Reitschule Steinbach</b><small>Reitschule · Est. 1998</small></span><span class="lkn">Reitschule Steinbach</span><span class="lkd">Unsere Reitschule [Ö]</span></a><a class="lk" href="https://www.pferd-aktuell.de" target="_blank" rel="noopener"><span class="lkw"><b>FN</b><small>Deutsche Reiterliche Vereinigung</small></span><span class="lkn">FN</span><span class="lkd">Herausgeber der „Richtlinien für Reiten und Fahren“ [D]</span></a><a class="lk g" href="https://www.fei.org" target="_blank" rel="noopener"><span class="lkw"><b>FEI</b><small>Fédération Equestre Internationale</small></span><span class="lkn">FEI</span><span class="lkd">Weltverband des Pferdesports [INT]</span></a></div><div class="lkhead"><h3>Pferde in Österreich</h3><p>Klassische Reitkunst, Zucht und Haltung.</p></div><div class="lkgrid"><a class="lk g" href="https://www.srs.at" target="_blank" rel="noopener"><span class="lkw"><b>Spanische Hofreitschule</b><small>Wien · seit 1565</small></span><span class="lkn">Spanische Hofreitschule</span><span class="lkd">Klassische Reitkunst, UNESCO-Kulturerbe [W]</span></a><a class="lk" href="https://www.lipica.org" target="_blank" rel="noopener"><span class="lkw"><b>Lipica</b><small>Gestüt · seit 1580</small></span><span class="lkn">Gestüt Lipica</span><span class="lkd">Heimat der Lipizzaner [SLO]</span></a><a class="lk" href="https://www.bmluk.gv.at/themen/landwirtschaft/landwirtschaft-in-oesterreich/tierische-produktion/pferde/tier_prod_pferde.html" target="_blank" rel="noopener"><span class="lkw"><b>BMLUK</b><small>Landwirtschaftsministerium</small></span><span class="lkn">Pferdehaltung in Österreich</span><span class="lkd">Zahlen und Fakten, Landwirtschaftsministerium [Ö]</span></a><a class="lk g" href="https://www.pferdezucht-austria.at" target="_blank" rel="noopener"><span class="lkw"><b>Pferdezucht Austria</b><small>Zuchtverbände</small></span><span class="lkn">Pferdezucht Austria</span><span class="lkd">Pferdezucht in Österreich, Zuchtbücher [Ö]</span></a></div><div class="lkhead"><h3>Bilder und Quellen</h3><p>Woher die Bilder und Texte dieser App stammen.</p></div><div class="lkgrid"><a class="lk g" href="https://commons.wikimedia.org/wiki/Category:Horses" target="_blank" rel="noopener"><span class="lkw"><b>Wikimedia Commons</b><small>freie Bilder</small></span><span class="lkn">Wikimedia Commons</span><span class="lkd">Gemeinfreie Bilder, auch die Galerie [INT]</span></a><a class="lk" href="https://wellcomecollection.org/works/n8v85z38" target="_blank" rel="noopener"><span class="lkw"><b>Wellcome</b><small>Collection · London</small></span><span class="lkn">Wellcome Collection</span><span class="lkd">Stubbs „Anatomy of the Horse“, 1766, gemeinfrei [UK]</span></a></div><p class="lknote">Alle Links öffnen in einem neuen Fenster. Namen statt Logos, weil fremde Logos nur mit Erlaubnis verwendet werden.</p></section>
 <div class="gpop" id="gpop" hidden role="dialog" aria-modal="true" aria-label="Bild"><div class="gpbar"><span id="gpn"></span><button id="gpx" aria-label="Schließen">✕</button></div><div class="gpimg"><img id="gpi" alt=""></div><div class="gpcap"><b id="gpt"></b><span id="gpa"></span><span id="gpw"></span><span id="gpl"></span><a id="gpu" target="_blank" rel="noopener">Quelle ↗</a></div><div class="gpnav"><button id="gpp">← Zurück</button><button id="gpf">Weiter →</button></div></div>
@@ -563,7 +564,7 @@ $('backBtn').onclick=()=>{const b=$('backBtn');
 /* Neue Version vorhanden? Dann einmal neu laden (Handys halten sonst alte Kopien) */
 (function(){try{const me=document.querySelector('meta[name="app-version"]');if(!me||!window.fetch)return;
  fetch(location.pathname+'?v='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(t=>{
-  const m=t.match(/name="app-version" content="([^"]+)"/);if(!m||m[1]===me.content)return;
+  const m=t.match(/name="app-version" content="2026-10-31k"]+)"/);if(!m||m[1]===me.content)return;
   let k='reloaded_'+m[1];try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}
   location.reload()}).catch(()=>{})}catch(e){}})();
 
@@ -1138,7 +1139,10 @@ const GAL=[
  {f:'img/galerie/warren_skelett.jpg',k:'img/galerie/warren_skelett_k.jpg',n:'Das Skelett des Pferdes in drei Ansichten',a:'C. Warren (Stecher)',w:'System of Farriery, Plate I (Verlag C. Cooke)',j:'London 1790',l:'Public Domain Mark · Wellcome Collection',x:'Seitenansicht, Ansicht von vorn und von hinten.',u:'https://wellcomecollection.org/works/s6ymkm9v',c:['Anatomie', 'Geschichte'],s:[3, 5]},
  {f:'img/galerie/barlow_farriery.jpg',k:'img/galerie/barlow_farriery_k.jpg',n:'Muskeln und Blutgefäße des Pferdes',a:'J. Barlow (Stecher)',w:'Farriery, Pl. 20, Bd. III',j:'um 1802',l:'Public Domain Mark · Wellcome Collection',x:'Oben die Umrisszeichnung mit den Gefäßen, unten dieselbe Ansicht ausgearbeitet.',u:'https://wellcomecollection.org/works/cyq8yjcw',c:['Anatomie', 'Geschichte'],s:[3, 4]},
  {f:'img/galerie/bell_farriery.jpg',k:'img/galerie/bell_farriery_k.jpg',n:'Zwei Pferde mit freigelegten Muskeln, links und rechts',a:'A. Bell (Stecher)',w:'Farriery, Fig. 9 und 10',j:'um 1770–1800',l:'Public Domain Mark · Wellcome Collection',x:'Die Stecherzeile unten rechts nennt „A. Bell“.',u:'https://wellcomecollection.org/works/ea3vnsee',c:['Anatomie', 'Geschichte'],s:[3, 4]},
- {f:'img/galerie/bonheur_ecorche.jpg',k:'img/galerie/bonheur_ecorche_k.jpg',n:'Pferd mit freigelegten Muskeln in Bewegung',a:'J. Laurens (Lithograf) nach einer Bronze von Isidore Bonheur (1827–1901)',w:'Écorché-Modell, Pl. 46 (Verlag H. Peyrol, Paris)',j:'um 1860/70',l:'Public Domain Mark · Wellcome Collection',x:'Ein Vorbild für Künstler: das Pferd hebt ein Vorderbein.',u:'https://wellcomecollection.org/works/cq6g5xjt',c:['Anatomie', 'Bewegung', 'Kunst'],s:[3, 2]}
+ {f:'img/galerie/bonheur_ecorche.jpg',k:'img/galerie/bonheur_ecorche_k.jpg',n:'Pferd mit freigelegten Muskeln in Bewegung',a:'J. Laurens (Lithograf) nach einer Bronze von Isidore Bonheur (1827–1901)',w:'Écorché-Modell, Pl. 46 (Verlag H. Peyrol, Paris)',j:'um 1860/70',l:'Public Domain Mark · Wellcome Collection',x:'Ein Vorbild für Künstler: das Pferd hebt ein Vorderbein.',u:'https://wellcomecollection.org/works/cq6g5xjt',c:['Anatomie', 'Bewegung', 'Kunst'],s:[3, 2]},
+ {f:'img/galerie/fussfolge.png',k:'img/galerie/fussfolge_k.png',n:'Die Fußfolge der Grundgangarten',a:'Steuart JM HARRISON (steux)',w:'Schritt, Trab und Galopp im Vergleich',j:'2026',l:'Eigene Zeichnung · © Steuart JM HARRISON (steux)',x:'Schematisch. Beim Schritt setzt jeder Huf einzeln auf, beim Trab zwei diagonale Hufe zugleich. Trab und Galopp haben eine Schwebephase, der Schritt nicht.',c:['Bewegung','Reitkunst'],s:[3,4]},
+ {f:'img/galerie/viereck.png',k:'img/galerie/viereck_k.png',n:'Das Viereck und seine Buchstaben',a:'Steuart JM HARRISON (steux)',w:'Kleines (20 × 40 m) und großes Viereck (20 × 60 m) im Vergleich',j:'2026',l:'Eigene Zeichnung · © Steuart JM HARRISON (steux)',x:'A ist der Eingang, C liegt gegenüber, X genau in der Mitte.',c:['Reitkunst'],s:[3,4]},
+ {f:'img/galerie/fellfarben.png',k:'img/galerie/fellfarben_k.png',n:'Fellfarben beim Pferd',a:'Steuart JM HARRISON (steux)',w:'Die Grundfarben im Überblick',j:'2026',l:'Eigene Zeichnung · © Steuart JM HARRISON (steux)',x:'Oben Mähne und Schweif, in der Mitte das Fell, unten die Beine. Farben sind Näherungen.',c:['Rassen','Stall'],s:[3,4]},
 ];
 (function(){
  const $=id=>document.getElementById(id);let gi=0;
@@ -1159,7 +1163,7 @@ const GAL=[
   $('wnone').hidden=shown>0;}
  draw();}
  function gShow(){const x=GAL[gi];$('gpi').style.maxWidth='';$('gpi').onload=function(){this.style.maxWidth='min(100%,'+Math.round(this.naturalWidth*1.6)+'px)'};$('gpi').src=x.f;$('gpi').alt=x.n;$('gpn').textContent='Galerie · '+(gi+1)+' / '+GAL.length;
-  $('gpt').textContent=x.n;$('gpa').textContent=x.a;$('gpw').textContent=x.w+(x.j?', '+x.j:'');$('gpl').textContent=x.l+(x.x?' · '+x.x:'');$('gpu').href=x.u;
+  $('gpt').textContent=x.n;$('gpa').textContent=x.a;$('gpw').textContent=x.w+(x.j?', '+x.j:'');$('gpl').textContent=x.l+(x.x?' · '+x.x:'');$('gpu').hidden=!x.u;if(x.u)$('gpu').href=x.u;
   $('gpp').disabled=gi===0;$('gpf').disabled=gi===GAL.length-1;document.querySelector('.gpnav').hidden=GAL.length<2;}
  function gOpen(k){gi=k;gShow();if($('gpop').hidden){try{history.pushState({app:1,pop:1},'')}catch(e){}}$('gpop').hidden=false;$('gpx').focus();}
  function gClose(){$('gpop').hidden=true;}
@@ -1230,7 +1234,7 @@ const GAL=[
 <script>
 (function(){
  const $=id=>document.getElementById(id),reduceM=matchMedia('(prefers-reduced-motion: reduce)').matches;
- const SECS=[['a','Dressuraufgaben'],['w','Pferdewissen'],['g','Geschichte und Zitate'],['b','Galerie'],['m','Materialien'],['x','Links']];
+ const SECS=[['a','Dressuraufgaben'],['w','Pferdewissen'],['g','Geschichte und Zitate'],['m','Materialien'],['x','Links']];
  const HB=22,ROWS=Math.ceil(SECS.length/2),HOME=$('home');
  const HBODY=document.createElement('div');HBODY.className='hbody';HBODY.id='hbody';
  const SC=document.createElement('div');SC.className='hscroll';SC.id='hscroll';HBODY.appendChild(SC);
@@ -1257,10 +1261,10 @@ const GAL=[
  const h2=document.createElement('p');h2.className='wsec';h2.textContent='Zitate';
  const pg=document.createElement('div');pg.id='theo2';pg.append(h1,$('thHl'),h2,$('thZl'));PG.appendChild(pg);
  /* 04 Galerie, 05 Materialien, 06 XYZ: ganze Abschnitte */
- const PB=mk('p-b','hsec');PB.appendChild($('gal'));
+ 
  const PM=mk('p-m','hsec');PM.appendChild($('mat'));
  const PX=mk('p-x','hsec');PX.appendChild($('xyz'));
- const PAGES=[PA,PW,PG,PB,PM,PX];
+ const PAGES=[PA,PW,PG,PM,PX];
  SC.appendChild(TP);
  const BARS=SECS.map(([k,n],i)=>{const r=i>>1,b=document.createElement('div');b.className='hb '+(i&1?'hr':'hl')+(i===0?' first':'');
   b.innerHTML='<b></b><small>['+String(i+1).padStart(2,'0')+']</small>';b.firstChild.textContent=n;
@@ -1283,22 +1287,22 @@ const GAL=[
  SC.addEventListener('scroll',upd,{passive:true});addEventListener('resize',()=>{lastFit();upd();});
  new ResizeObserver(()=>{lastFit();upd();}).observe(SC);
  /* Ansichten umleiten: alles, was jetzt auf der langen Seite liegt, scrollt dorthin */
- function sync(){HBODY.hidden=!(view==='home'&&$('info').hidden);['home','mat','gal','xyz','intro'].forEach(id=>{const e=$(id);if(e)e.hidden=false;});if(!HBODY.hidden){lastFit();upd();}}
+ function sync(){HBODY.hidden=!(view==='home'&&$('info').hidden);['home','mat','xyz','intro'].forEach(id=>{const e=$(id);if(e)e.hidden=false;});if(!HBODY.hidden){lastFit();upd();}}
  const _info=info;window.info=function(o){_info(o);sync();};$('infoBtn').onclick=()=>info($('info').hidden);$('infoClose').onclick=()=>info(false);
  addEventListener('popstate',()=>setTimeout(sync,0));
- const IDX={mat:4,gal:3,gesch:2,xyz:5};let saved=0;const _show=show;
+ const IDX={mat:3,gesch:2,xyz:4};let saved=0;const _show=show;
  const goSec=(i,smooth)=>{sync();requestAnimationFrame(()=>{lastFit();SC.scrollTo({top:i<0?0:secTop(i),behavior:smooth&&!reduceM?'smooth':'auto'});upd();});};
  window.show=function(v){if(view==='home'&&v!=='home')saved=SC.scrollTop;
   if(v==='intro'){_show('home');goSec(-1);return;}
   if(v in IDX){_show('home');goSec(IDX[v]);return;}
   _show(v);sync();if(v==='home')requestAnimationFrame(()=>{lastFit();SC.scrollTop=saved;upd();});};
  const toHome=i=>{if(view!=='home'){try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}home();}goSec(i,true);};
- window.openMat=()=>toHome(4);window.openGal=()=>toHome(3);window.openGesch=()=>toHome(2);window.openXyz=()=>toHome(5);window.openIntro=()=>toHome(-1);
- window.galRaw=()=>{_show('home');goSec(3);};window.geschRaw=()=>{_show('home');goSec(2);};window.xyzRaw=()=>{_show('home');goSec(5);};window.introRaw=()=>{_show('home');goSec(-1);};
+ window.openMat=()=>toHome(3);window.openGesch=()=>toHome(2);window.openXyz=()=>toHome(4);window.openIntro=()=>toHome(-1);
+ window.geschRaw=()=>{_show('home');goSec(2);};window.xyzRaw=()=>{_show('home');goSec(4);};window.introRaw=()=>{_show('home');goSec(-1);};
  $('introGo').onclick=()=>goSec(0,true);
  $('title').onclick=()=>{if(view==='home')goSec(-1,true);else home();};
  /* Start: Adresszusatz auswerten */
- const S=window.START_H||'';const m={'#material':4,'#galerie':3,'#geschichte':2,'#xyz':5,'#links':5};
+ const S=window.START_H||'';const m={'#material':3,'#geschichte':2,'#xyz':4,'#links':4};
  if(S in m){try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}_show('home');goSec(m[S]);}
  else if(!S||S==='#start'){_show('home');goSec(-1);}
  sync();requestAnimationFrame(()=>{lastFit();upd();});
@@ -1332,6 +1336,24 @@ const GAL=[
 .lkd{color:#555;font-size:.86rem;line-height:1.3}
 .lk:active{background:#eaffae}
 .lknote{font-size:.76rem;color:var(--muted);margin:10px 0 4px}
+#intro .ipic{flex:0 0 auto!important;height:clamp(200px,46vh,420px)}#intro .vier{width:100%;height:100%;display:block}#intro .iabc{margin:0;text-align:center;font-size:1.05rem;font-weight:700;letter-spacing:.32em;color:#111}#intro .iabc span{background:#ffd400;padding:0 .25em;margin-left:.1em;letter-spacing:0}#intro .ilogo{letter-spacing:.01em}
+/* ---- Kopfzeile wie dasein-design: Marke + Schriftzug links, Schalter rechts ---- */
+.titlebar #brand,.titlebar #mode{display:none}
+body.bv .titlebar #brand,body.bv .titlebar #mode{display:flex}
+body.bv #title,body.bv #backBtn{display:none!important}
+#brand{align-items:center;gap:8px;min-width:0;color:#e30613;cursor:pointer;text-decoration:none;-webkit-tap-highlight-color:transparent}
+#brand .bmark{width:44px;height:30px;flex:none;display:block}
+#brand .bw{font-size:clamp(1.3rem,6vw,1.6rem);font-weight:400;letter-spacing:-.01em;line-height:1;white-space:nowrap}
+#mode{align-items:center;gap:7px;flex:none;font-size:.92rem;margin-left:auto}
+#mode .ml{color:#9a9a9a;font-weight:400;white-space:nowrap}
+#mode .ml.on{color:#000;font-weight:700}
+#msw{width:36px;height:20px;border:1.5px solid #111;border-radius:999px;background:#fff;position:relative;padding:0;flex:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+#msw i{position:absolute;top:2px;left:2px;width:13px;height:13px;border-radius:50%;background:#cdff3e;border:1.5px solid #111;box-sizing:border-box;transition:left .2s}
+#msw[aria-checked="true"] i{left:19px}
+#msw:focus-visible{outline:2px solid #e30613;outline-offset:2px}
+body.bv #infoBtn{font-size:0;padding:2px;gap:0}
+body.bv #infoBtn .i{font-size:.85rem}
+@media (prefers-reduced-motion:reduce){#msw i{transition:none}}
 </style>
 <script>
 /* Zurück auf der langen Startseite: erst nach oben zur Titelseite, dann aus der App */
@@ -1345,6 +1367,27 @@ const GAL=[
   if(!free())return;
   if(SC.scrollTop<60){history.back();return}
   back=true;SC.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});
+})();
+</script>
+
+<script>
+/* Schalter lernen / staunen: Galerie ist eine eigene Ansicht, nicht mehr Teil der langen Seite */
+(function(){
+ const $=id=>document.getElementById(id);
+ function bv(){const v=view;document.body.classList.toggle('bv',v==='home'||v==='gal'||v==='intro');
+  const on=v==='gal';$('msw').setAttribute('aria-checked',on?'true':'false');$('mlL').classList.toggle('on',!on);$('mlR').classList.toggle('on',on);}
+ const _s=window.show;window.show=function(v){_s(v);bv();};
+ const _i=window.info;window.info=function(o){_i(o);bv();};
+ $('msw').onclick=()=>{if(view==='gal')$('backBtn').click();else window.openGal();};
+ $('mlL').onclick=()=>{if(view==='gal')$('backBtn').click();};
+ $('mlR').onclick=()=>{if(view!=='gal')window.openGal();};
+ const brand=()=>{if($('title').onclick)$('title').onclick();};
+ $('brand').onclick=brand;$('brand').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();brand();}};
+ /* Nach dem ersten Layout (Kopfzeile aendert die Hoehe) erneut an den Abschnitt andocken, wenn per Adresse angesprungen wurde */
+ const ANCH={'#material':3,'#geschichte':2,'#xyz':4,'#links':4},ST=(window.START_H||'');
+ if(ST in ANCH){const snap=()=>{if(view!=='home')return;const S=$('hscroll'),P=S&&S.querySelectorAll('section.hsec')[ANCH[ST]];if(P)S.scrollTop=P.offsetTop-parseFloat(P.style.scrollMarginTop||0);};
+  setTimeout(snap,120);setTimeout(snap,500);}
+ bv();
 })();
 </script>
 </body></html>
