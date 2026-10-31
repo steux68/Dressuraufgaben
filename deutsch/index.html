@@ -1,5 +1,5 @@
 <!doctype html><html lang="de"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Deutsch"></head><body>
-<meta name="app-version" content="2026-10-31h">
+<meta name="app-version" content="2026-10-31i"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-hidden",LIM=30000,base=location.pathname+location.search;addEventListener("pageshow",function(e){if(e.persisted)location.reload();});document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden"){try{sessionStorage.setItem(K,String(Date.now()));}catch(e){}}else{var t=0;try{t=+sessionStorage.getItem(K)||0;sessionStorage.removeItem(K);}catch(e){}if(t&&Date.now()-t>LIM)location.replace(base);}});}catch(e){}})();</script>
 <title>Deutsch Grammatik</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#ffffff">
@@ -881,7 +881,7 @@ const normS=s=>s.trim().split(/\s+/).map(norm1).filter(Boolean);
 const eq=(a,b)=>a.length===b.length&&a.every((x,i)=>x===b[i]);
 function lev(a,b){const m=a.length,n=b.length,d=Array.from({length:m+1},(_,i)=>[i]);for(let j=1;j<=n;j++)d[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[m][n];}
 function speak(t){try{const s=speechSynthesis;s.cancel();const u=new SpeechSynthesisUtterance(t);const vs=s.getVoices();const v=vs.find(v=>/^de-AT/i.test(v.lang))||vs.find(v=>/^de/i.test(v.lang));if(v)u.voice=v;u.lang=v?v.lang:"de-DE";u.rate=.9;s.speak(u);}catch(e){}}
-let store={};try{store=JSON.parse(localStorage.getItem("deutsch.v1")||"{}")}catch(e){}
+let store={};try{store=JSON.parse(localStorage.getItem("deutsch.v1")||"{}")}catch(e){}store.grp=0;
 const save=()=>{try{localStorage.setItem("deutsch.v1",JSON.stringify(store))}catch(e){}};
 function btn(id,label,cls,fn){const b=document.createElement("button");b.id=id;b.textContent=label;if(cls)b.className=cls;b.onclick=fn;return b;}
 function setBtns(row,list){const r=$(row);r.innerHTML="";list.forEach(b=>r.appendChild(b));r.hidden=!list.length;}
