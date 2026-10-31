@@ -47,9 +47,9 @@ body.bv .titlebar .wsw{display:flex}
 /* Dock-Balken pulsieren auf der Titelseite als ganze Fläche, jeder in einer anderen, extrem blassen Farbe */
 @keyframes hbp{0%,100%{background-color:#fff}50%{background-color:var(--pc)}}
 body.introOn .hb{animation:hbp 3.4s ease-in-out infinite}
-body.introOn .hb[data-i="0"]{--pc:#fbe0e3} body.introOn .hb[data-i="1"]{--pc:#e6f4c8;animation-delay:-.7s}
-body.introOn .hb[data-i="2"]{--pc:#dfe9fb;animation-delay:-1.4s} body.introOn .hb[data-i="3"]{--pc:#fdf0c2;animation-delay:-2.1s}
-body.introOn .hb[data-i="4"]{--pc:#ece2f8;animation-delay:-2.8s}
+body.introOn .hb[data-pc="0"]{--pc:#fbe0e3} body.introOn .hb[data-pc="1"]{--pc:#e6f4c8;animation-delay:-.7s}
+body.introOn .hb[data-pc="2"]{--pc:#dfe9fb;animation-delay:-1.4s} body.introOn .hb[data-pc="3"]{--pc:#fdf0c2;animation-delay:-2.1s}
+body.introOn .hb[data-pc="4"]{--pc:#ece2f8;animation-delay:-2.8s}
 @media (prefers-reduced-motion:reduce){body.introOn .hb{animation:none}.wsw .tg b::after{animation:none}}
 '''
 i = s.rfind('</style>'); s = s[:i] + CSS + s[i:]
@@ -57,7 +57,7 @@ JS = '''
 <i class="rule l" aria-hidden="true"></i><i class="rule m" aria-hidden="true"></i><i class="rule r" aria-hidden="true"></i><i class="tk t" aria-hidden="true"></i><i class="tk m" aria-hidden="true"></i><i class="tk b" aria-hidden="true"></i>
 <script id="dd-js">
 (function(){const T=document.querySelector('.titlebar');if(!T)return;const set=()=>document.documentElement.style.setProperty('--head',Math.round(T.getBoundingClientRect().bottom)+'px');
- set();addEventListener('resize',set);addEventListener('load',set);setTimeout(set,400);if(window.ResizeObserver)new ResizeObserver(set).observe(T);})();
+ document.querySelectorAll('.hb').forEach((b,i)=>b.setAttribute('data-pc',i%5));set();addEventListener('resize',set);addEventListener('load',set);setTimeout(set,400);if(window.ResizeObserver)new ResizeObserver(set).observe(T);})();
 </script>
 '''
 rep('</body></html>', JS + '</body></html>')
