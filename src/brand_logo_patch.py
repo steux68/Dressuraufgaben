@@ -1,11 +1,11 @@
 # P a–x: Mittellinie (.rule.m) aus, Kopf-Logo als dichtes Wortzeichen: PASSAGE dick rot, "a–x" blau darunter rechtsbündig. Idempotent.
 import re
 P="index.html";s=open(P,encoding="utf-8").read()
-svg=('<svg class="bmark" viewBox="0 0 207 52" aria-hidden="true">'
-'<rect class="bx" x="0" y="2" width="49" height="38" fill="#e30613"/>'
-'<text class="bp" x="4" y="35" font-size="34">P</text><text class="ba" x="26" y="35" font-size="12.5">a–x</text>'
-'<text class="pw" x="56" y="35" font-size="39">PASSAGE</text>'
-'<text class="pax" x="202.8" y="50" font-size="15.5" text-anchor="end">a–x</text></svg>')
+svg=('<svg class="bmark" viewBox="0 0 198 52" aria-hidden="true">'
+'<rect class="bx" x="0" y="1" width="40" height="42" fill="#e30613"/>'
+'<text class="bp" x="4.5" y="33" font-size="34">P</text><text class="ba" x="14.5" y="39.5" font-size="12.5">a–x</text>'
+'<text class="pw" x="47" y="35" font-size="39">PASSAGE</text>'
+'<text class="pax" x="193.8" y="50" font-size="15.5" text-anchor="end">a–x</text></svg>')
 s=re.sub(r'(<a class="brand" id="brand"[^>]*>).*?(</a>)',lambda m:m.group(1)+svg+m.group(2),s,count=1,flags=re.S)
 css=('<style id="brand-logo">'
 '.rule.m{display:none!important}'
@@ -17,5 +17,5 @@ css=('<style id="brand-logo">'
 '</style>')
 s=re.sub(r'<style id="brand-logo">.*?</style>','',s,flags=re.S)
 s=s.replace('</head>',css+'</head>',1)
-s=re.sub(r'(<meta name="app-version" content=")[^"]*(")',lambda m:m.group(1)+'2026-11-01zu'+m.group(2),s,count=1)
+s=re.sub(r'(<meta name="app-version" content=")[^"]*(")',lambda m:m.group(1)+'2026-11-01zv'+m.group(2),s,count=1)
 open(P,"w",encoding="utf-8").write(s)
