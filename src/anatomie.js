@@ -92,13 +92,13 @@ const PA=[
 ['li','Hornhautrand','Limbus',990,600,'Hier geht die klare Hornhaut in die weiße Lederhaut über.','Where the clear cornea meets the white of the eye (sclera).']
 ];
 const SETS=[
- {k:'sk',de:'Skelett',en:'Skeleton',img:'img/skelett.jpg',W:1420,H:1108,P:PS,pos:'center 40%',
+ {k:'sk',g:'Das Skelett trägt das ganze Pferd: Wirbelsäule, Rippenkorb, Schulter, Becken und vier lange Beine. Wer die Knochen kennt, versteht, warum ein Pferd sich so bewegt, wie es sich bewegt.',gE:'The skeleton carries the whole horse: spine, rib cage, shoulder, pelvis and four long legs. Knowing the bones explains how a horse moves.',src:'noch zu klären',srcE:'to be confirmed',de:'Skelett',en:'Skeleton',img:'img/skelett.jpg',W:1420,H:1108,P:PS,pos:'center 40%',
   alt:'Skelett des Pferdes, Seitenansicht',altE:'Horse skeleton, side view',cap:'Skelett des Pferdes, Seitenansicht.',capE:'Horse skeleton, side view.'},
- {k:'ex',de:'Äußeres',en:'Exterior',img:'img/exterieur.jpg',W:1420,H:1108,P:PE,pos:'center 45%',br:true,
+ {k:'ex',g:'Die Außenansicht zeigt die Körperteile, die im Reitunterricht und in der Richtersprache benannt werden: Widerrist, Rücken, Lende, Kruppe und die Gliedmaßen.',gE:'The outside view shows the body parts named in lessons and by judges: withers, back, loin, croup and the limbs.',src:'noch zu klären',srcE:'to be confirmed',de:'Äußeres',en:'Exterior',img:'img/exterieur.jpg',W:1420,H:1108,P:PE,pos:'center 45%',br:true,
   alt:'Pferd von außen, Seitenansicht',altE:'Horse exterior, side view',cap:'Das Pferd von außen mit seinen Körperteilen.',capE:'The horse from the outside with its parts.'},
- {k:'ko',de:'Kopf von vorn',en:'Head, front',img:'img/kopf.jpg',W:1080,H:1648,P:PK,pos:'center 22%',
+ {k:'ko',g:'Von vorn sieht man, wie weit die Augen seitlich sitzen. Darum sieht das Pferd fast rundherum, hat aber direkt vor der Nase einen toten Winkel.',gE:'From the front you see how far to the sides the eyes sit. A horse sees almost all round, but has a blind spot right in front of its nose.',src:'noch zu klären',srcE:'to be confirmed',de:'Kopf von vorn',en:'Head, front',img:'img/kopf.jpg',W:1080,H:1648,P:PK,pos:'center 22%',
   alt:'Pferdekopf von vorn',altE:'Horse head, front view',cap:'Der Kopf von vorn. Zeichnung aus einem alten Anatomiebuch (Quelle noch zu klären).',capE:'The head from the front. Drawing from an old anatomy book (source to be confirmed).'},
- {k:'au',de:'Das Auge',en:'The eye',img:'img/auge.jpg',W:1300,H:1200,P:PA,pos:'center 52%',
+ {k:'au',g:'Das Pferdeauge ist eines der größten unter den Landtieren. Die Pupille ist ein liegendes Rechteck, und die Traubenkörner beschatten das Auge.',gE:'The horse eye is among the largest of any land animal. The pupil is a horizontal oval, and the corpora nigra shade the eye.',src:'Foto: Steuart Harrison; Begriffe nach Thal Enterprises',srcE:'Photo: Steuart Harrison; terms after Thal Enterprises',de:'Das Auge',en:'The eye',img:'img/auge.jpg',W:1300,H:1200,P:PA,pos:'center 52%',
   alt:'Pferdeauge, nah',altE:'Horse eye, close-up',cap:'Das Auge von außen (Foto: Steuart Harrison). Begriffe nach Thal Enterprises, übersetzt.',capE:'The eye from the outside (photo: Steuart Harrison). Terms after Thal Enterprises, translated.'}
 ];
 const UI={
@@ -181,7 +181,7 @@ function layoutLabels(){const f=$('aFig');if(!f||!open)return;const FW=f.offsetW
   if(dd>13){const ld=document.createElement('i');ld.className='ald';ld.style.width=(dd-8)+'px';ld.style.transform='rotate('+Math.atan2(ny-cy,nx-cx)+'rad)';ds[e.i].appendChild(ld);}
   l.style.left=(e.r[0]-C[e.i][0]+14)+'px';l.style.top=(e.r[1]-C[e.i][1]+14)+'px';l.style.right='auto';l.style.transform='none';});}
 function fit(){const f=$('aFig');if(!f)return;
- if(!full){const st=$('aStage');st.style.height='';const bw=st.clientWidth-4,bh=st.clientHeight-4;f.style.maxWidth='none';const fw=Math.max(60,Math.round(Math.min(bw,bh*W/H)));f.style.width=fw+'px';st.style.height=(Math.round(fw*H/W)+6)+'px';layoutLabels();return;}
+ if(!full){const st=$('aStage'),bw=st.clientWidth-8,bh=st.clientHeight-8;f.style.maxWidth='none';f.style.width=Math.max(60,Math.round(Math.min(bw,bh*W/H)))+'px';layoutLabels();return;}
  f.style.maxWidth='none';const base=Math.min(innerWidth-20,(innerHeight-170)*W/H);f.style.width=Math.round(base*zoom)+'px';
  if(sel>=0&&mode==='lern')centre(sel);layoutLabels();}
 function centre(i){const s=$('aScroll'),f=$('aFig');if(!full)return;requestAnimationFrame(()=>{const w=f.offsetWidth,h=f.offsetHeight;
@@ -212,8 +212,11 @@ function paint(){if(!built||!open)return;
  panel();layoutLabels();}
 function panel(){const B=$('aPanel'),u=t();B.textContent='';
  if(mode==='lern'){
-  if(sel<0){B.appendChild(el('p','ds',u.tip));return;}
+  if(sel<0){const s=SET(),en=lang==='en';B.appendChild(el('p','nm',sn(s)));
+   B.appendChild(el('p','ds',en?s.capE:s.cap));B.appendChild(el('p','ds',en?s.gE:s.g));B.appendChild(el('p','ds tip',u.tip));
+   const d=el('dl','anaDl');[[en?'Points':'Punkte',P.length],[en?'Picture':'Bild',en?s.altE:s.alt],[en?'Source':'Quelle',en?s.srcE:s.src],[en?'Set':'Satz',(si+1)+' / '+SETS.length]].forEach(r=>{d.appendChild(el('dt','',r[0]));d.appendChild(el('dd','',String(r[1])));});B.appendChild(d);return;}
   const p=P[sel];B.appendChild(el('p','nm',nm(p)));B.appendChild(el('p','alt',lang==='en'?p[1]:p[2]));B.appendChild(el('p','ds',nt(p)));
+  {const d=el('dl','anaDl'),en=lang==='en';[[en?'Part':'Teil',(sel+1)+' / '+P.length],[en?'In':'In',sn(SET())]].forEach(r=>{d.appendChild(el('dt','',r[0]));d.appendChild(el('dd','',r[1]));});B.appendChild(d);}
   const r=el('div','anaNav'),a=el('button','aSw w'),b=el('button','aSw e');a.type=b.type='button';
   a.innerHTML=WSVG+'<span></span>';b.innerHTML='<span></span>'+ESVG;a.lastElementChild.textContent=u.prevT;b.firstElementChild.textContent=u.nextT;
   a.setAttribute('aria-label',u.prevT);b.setAttribute('aria-label',u.nextT);

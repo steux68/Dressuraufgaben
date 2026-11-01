@@ -80,7 +80,7 @@ let pop=null;
 function popup(){
  if(!pop){
   pop=el('div','tlpop anapop viPop');pop.hidden=true;pop.setAttribute('role','dialog');pop.setAttribute('aria-modal','true');
-  pop.innerHTML='<div class="tlcard"><div class="tltop"><span class="tlk" id="viTk"></span><button type="button" class="tlx" id="viX" aria-label="Schließen">'+XSVG+'</button></div><div class="tlbody"><figure class="gfig has vifig" id="viFig"><button type="button" class="tlar pw" id="viPv" aria-label="Zurück">'+WSVG+'</button><button type="button" class="tlar pe" id="viNx" aria-label="Weiter">'+ESVG+'</button></figure><p class="viT" id="viPT"></p><p class="viD" id="viPD"></p></div></div>';
+  pop.innerHTML='<div class="tlcard"><div class="tltop"><span class="tlk" id="viTk"></span><button type="button" class="tlx" id="viX" aria-label="Schließen">'+XSVG+'</button></div><div class="tlbody"><figure class="gfig has vifig" id="viFig"><button type="button" class="tlar pw" id="viPv" aria-label="Zurück">'+WSVG+'</button><button type="button" class="tlar pe" id="viNx" aria-label="Weiter">'+ESVG+'</button></figure><p class="viT" id="viPT"></p><p class="viD" id="viPD"></p><dl class="anaDl" id="viDl"></dl></div></div>';
   document.body.appendChild(pop);
   const close=()=>{popOn=false;pop.hidden=true};
   pop.querySelector('#viX').onclick=close;
@@ -92,7 +92,13 @@ function popup(){
  }
  const show=popOn&&tab==='l'&&sel&&!R.hidden;
  pop.hidden=!show;
- if(show){const fg=pop.querySelector('#viFig');const o=fg.querySelector('.viSvg');if(o)o.remove();const sv=arena(()=>{},true);sv.classList.add('viMini');mark(sv,[[sel,'on']]);fg.insertBefore(sv,fg.firstChild);const l=L.find(x=>x[0]===sel);pop.querySelector('#viTk').textContent='Punkt '+sel;pop.querySelector('#viPT').textContent=sel==='X'?'X, die Mitte':'Buchstabe '+sel;pop.querySelector('#viPD').textContent=l[4];}
+ if(show){const fg=pop.querySelector('#viFig');const o=fg.querySelector('.viSvg');if(o)o.remove();const sv=arena(()=>{},true);sv.classList.add('viMini');mark(sv,[[sel,'on']]);fg.insertBefore(sv,fg.firstChild);const l=L.find(x=>x[0]===sel);pop.querySelector('#viTk').textContent='Punkt '+sel;pop.querySelector('#viPT').textContent=sel==='X'?'X, die Mitte':'Buchstabe '+sel;pop.querySelector('#viPD').textContent=l[4];
+  const dl=pop.querySelector('#viDl');dl.textContent='';const R8='AKEHCMBF',i8=R8.indexOf(sel);
+  const side=sel==='A'?'kurze Seite, Eingang':sel==='C'?'kurze Seite, gegenüber von A':sel==='X'?'Mitte der Bahn':l[1]<CX?'linke lange Seite':'rechte lange Seite';
+  const m=sel==='A'?0:sel==='C'?40:sel==='X'?20:Math.round((Y1-l[2])/6);
+  const rows=[['Lage',side],['Von A',m+' m'+(sel==='X'?' (auch 20 m von C)':'')]];
+  if(i8>=0)rows.push(['Nachbarn',R8[(i8+7)%8]+' und '+R8[(i8+1)%8]],['Reihenfolge',(i8+1)+' von 8 im Uhrzeigersinn']);
+  rows.forEach(r=>{dl.appendChild(el('dt','',r[0]));dl.appendChild(el('dd','',r[1]));});}
 }
 function next(){
  const ids=L.map(l=>l[0]);let n;do{n=ids[Math.floor(Math.random()*ids.length)]}while(q&&n===q.id);
