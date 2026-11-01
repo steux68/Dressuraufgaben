@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """App-Icon "P a-x" als roter Kreis (wie Kopf-Logo). Rendert ueber die echte App-Seite (eingebettete Schrift).
-Schreibt icon-512/192.png (any, weisser Grund), icon-maskable-512.png (rot, Vollflaeche), apple-touch-icon.png,
+Schreibt icon-512/192.png (any, weisser Grund), icon-maskable-512.png (Kreis auf Weiss, Sicherheitszone), apple-touch-icon.png,
 favicon.ico, img/quellen/icon_pax.svg. Aufruf im Repo-Ordner: python3 -I src/mk_icon.py"""
 import os, http.server, threading, functools
 from playwright.sync_api import sync_playwright
@@ -12,11 +12,9 @@ def mark(inner_tf=''):
             '<text x="10.5" y="35.5" font-size="33">P</text>'
             '<text x="18" y="40.4" font-size="13.4" stroke="#fff" stroke-width=".5" letter-spacing=".5px">a–x</text></g>')
 ANY = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-2.2 -0.7 52.4 52.4" width="512" height="512"><rect x="-2.2" y="-0.7" width="52.4" height="52.4" fill="#fff"/>%s</svg>' % mark()
-# maskable: rote Vollflaeche, Schrift in der Sicherheitszone (Mitte der Schrift ~ (24,27))
-MASK = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512"><rect width="512" height="512" fill="#e30613"/>'
-        '<g transform="translate(256 256) scale(7.4) translate(-24 -27)" fill="#fff" font-family="inherit" font-weight="700">'
-        '<text x="10.5" y="35.5" font-size="33">P</text>'
-        '<text x="18" y="40.4" font-size="13.4" stroke="#fff" stroke-width=".5" letter-spacing=".5px">a–x</text></g></svg>')
+# maskable: weisse Vollflaeche, roter Kreis in der Sicherheitszone (Radius 200 von 512 < 204.8), wie "any"
+MASK = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512"><rect width="512" height="512" fill="#fff"/>'
+        '<g transform="translate(256 256) scale(8.33) translate(-24 -25.5)">%s</g></svg>' % mark())
 FAV = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1.5 48 48" width="512" height="512">%s</svg>' % mark()
 
 os.makedirs('img/quellen', exist_ok=True)
