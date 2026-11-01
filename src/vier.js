@@ -15,25 +15,30 @@ const L=[
  ['B',X1+20,(Y0+Y1)/2,'B','Mitte der rechten langen Seite, gegenüber von E.'],
  ['M',X1+20,Y0+36,'M','Rechte lange Seite, 6 m vor der Ecke bei C. Gegenüber von H.']
 ];
-const ORDER='AKEHCMBF';
-let tab='l',sel=null,masse=false,sc=0,tot=0,q=null,done=false;
+const ORDER='AKEHCMBFX';
+let tab='l',sel=null,popOn=false,masse=false,sc=0,tot=0,q=null,done=false;
+const XSVG='<svg viewBox="-12 -12 24 24" aria-hidden="true"><circle class="rg" r="9.5"/><path class="xx" d="M-3.6 -3.6L3.6 3.6M3.6 -3.6L-3.6 3.6"/></svg>';
 const NS='http://www.w3.org/2000/svg';
 function el(t,c,x){const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
 function arena(onTap,noM){
- const s=document.createElementNS(NS,'svg');s.setAttribute('viewBox','0 0 240 330');s.setAttribute('class','viSvg');s.setAttribute('role','img');s.setAttribute('aria-label','Dressurviereck 20 mal 40 Meter von oben');
- let h='<g class="viGit">';for(let x=X0+30;x<X1;x+=30)h+='<line x1="'+x+'" y1="'+Y0+'" x2="'+x+'" y2="'+Y1+'" stroke="#dcdcdc"/>';for(let y=Y0+30;y<Y1;y+=30)if(y!==(Y0+Y1)/2)h+='<line x1="'+X0+'" y1="'+y+'" x2="'+X1+'" y2="'+y+'" stroke="#dcdcdc"/>';h+='</g><rect x="'+X0+'" y="'+Y0+'" width="'+(X1-X0)+'" height="'+(Y1-Y0)+'" fill="none" stroke="#6f746d" stroke-width="2.6"/>'+
+ const s=document.createElementNS(NS,'svg');s.setAttribute('viewBox','0 -6 240 342');s.setAttribute('class','viSvg');s.setAttribute('role','img');s.setAttribute('aria-label','Dressurviereck 20 mal 40 Meter von oben');
+ const MY=(Y0+Y1)/2;
+ let h='<g class="viGit">';for(let x=X0+30;x<X1;x+=30)h+='<line x1="'+x+'" y1="'+Y0+'" x2="'+x+'" y2="'+Y1+'"/>';for(let y=Y0+30;y<Y1;y+=30)if(y!==MY)h+='<line x1="'+X0+'" y1="'+y+'" x2="'+X1+'" y2="'+y+'"/>';h+='</g>'+
+ '<rect x="'+X0+'" y="'+Y0+'" width="'+(X1-X0)+'" height="'+(Y1-Y0)+'" fill="none" stroke="#6f746d" stroke-width="2.6"/>'+
  '<line x1="'+CX+'" y1="'+Y0+'" x2="'+CX+'" y2="'+Y1+'" stroke="#a5a5a5" stroke-width="1.6" stroke-dasharray="1.5 4" stroke-linecap="round"/>'+
- '<line x1="'+X0+'" y1="'+(Y0+Y1)/2+'" x2="'+X1+'" y2="'+(Y0+Y1)/2+'" stroke="#a5a5a5" stroke-width="1.6" stroke-dasharray="1.5 4" stroke-linecap="round"/>';
+ '<line x1="'+X0+'" y1="'+MY+'" x2="'+X1+'" y2="'+MY+'" stroke="#a5a5a5" stroke-width="1.6" stroke-dasharray="1.5 4" stroke-linecap="round"/>';
+ L.forEach(l=>{if(l[0]==='X')return;const x=l[1],y=l[2];let t;
+  if(x<X0)t=[X0-9,y,X0,y];else if(x>X1)t=[X1,y,X1+9,y];else if(y>Y1)t=[x,Y1,x,Y1+9];else t=[x,Y0-9,x,Y0];
+  h+='<line x1="'+t[0]+'" y1="'+t[1]+'" x2="'+t[2]+'" y2="'+t[3]+'" stroke="#6f746d" stroke-width="2.6"/>'});
+ [Y0+60,Y1-60].forEach(y=>[X0,X1].forEach(x=>{h+='<circle cx="'+x+'" cy="'+y+'" r="3.3" fill="#111"/>'}));
  if(masse&&!noM){
   [[Y1-18,'6 m'],[Y1-93,'14 m'],[Y0+93,'14 m'],[Y0+18,'6 m']].forEach(a=>{h+='<text class="vm" x="'+(X0+6)+'" y="'+a[0]+'">'+a[1]+'</text>'});
-  [[Y1-36],[Y0+36]].forEach(a=>{h+='<line x1="'+(X0-6)+'" y1="'+a[0]+'" x2="'+(X0+2)+'" y2="'+a[0]+'" stroke="#6f746d" stroke-width="1.6"/>'});
   h+='<text class="vm" x="'+(CX+6)+'" y="'+(Y1-10)+'">20 m</text><text class="vm" x="'+(CX+6)+'" y="'+(Y0+18)+'">20 m</text>';
  }
- [Y0+60,Y1-60].forEach(y=>[X0,X1].forEach(x=>{h+='<circle cx="'+x+'" cy="'+y+'" r="4" fill="#111"/>'}));
  s.innerHTML=h;
  L.forEach(l=>{
-  const g=document.createElementNS(NS,'g');g.setAttribute('class','vl');g.setAttribute('data-l',l[0]);g.setAttribute('tabindex','0');g.setAttribute('role','button');g.setAttribute('aria-label','Buchstabe '+l[0]);
-  g.innerHTML='<circle cx="'+l[1]+'" cy="'+l[2]+'" r="14"/><text x="'+l[1]+'" y="'+l[2]+'">'+l[0]+'</text>';
+  const g=document.createElementNS(NS,'g');g.setAttribute('class','vl'+(l[0]==='X'?' vx':''));g.setAttribute('data-l',l[0]);g.setAttribute('tabindex','0');g.setAttribute('role','button');g.setAttribute('aria-label','Buchstabe '+l[0]);
+  g.innerHTML='<circle cx="'+l[1]+'" cy="'+l[2]+'" r="'+(l[0]==='X'?9:7.4)+'"/><text x="'+l[1]+'" y="'+l[2]+'">'+l[0]+'</text>';
   g.addEventListener('click',()=>onTap(l[0]));
   g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();onTap(l[0])}});
   s.appendChild(g);
@@ -49,22 +54,33 @@ function mark(s,ids,cls){s.querySelectorAll('.vl').forEach(g=>{g.classList.remov
 function lernen(){
  const w=el('div','viBody');
  const bar=el('div','viBar');const cm=el('button','viChip','Maße');cm.type='button';cm.setAttribute('aria-pressed',masse);cm.onclick=()=>{masse=!masse;render()};bar.appendChild(cm);
- const lab=el('span','viHint','Tippe auf einen Buchstaben');bar.appendChild(lab);w.appendChild(bar);
- const s=arena(id=>{sel=id;render()});w.appendChild(s);
+ bar.appendChild(el('span','viHint','Tippe auf einen Buchstaben'));w.appendChild(bar);
+ const s=arena(id=>{sel=id;popOn=true;render()});w.appendChild(s);
  if(sel)mark(s,[[sel,'on']]);
  const c=el('div','viCard');
- if(sel){const l=L.find(x=>x[0]===sel);c.appendChild(el('p','viT','Punkt '+sel));c.appendChild(el('p','viD',l[4]))}
- else{c.appendChild(el('p','viT','Das Dressurviereck'));c.appendChild(el('p','viD','20 × 40 m. Du reitest bei A hinein und siehst auf C. Links liegen K, E, H, rechts F, B, M. Die Reihenfolge A K E H C M B F geht im Uhrzeigersinn um die Bahn.'));
-  c.appendChild(el('p','viD','Merkspruch (englisch): „All King Edward’s Horses Carry Many Big Fleas“. Erfinde dir einen deutschen dazu.'))}
+ c.appendChild(el('p','viT','Das Dressurviereck'));
+ c.appendChild(el('p','viD','20 × 40 m. Du reitest bei A hinein und siehst auf C. Links liegen K, E, H, rechts F, B, M. Die Reihenfolge A K E H C M B F geht im Uhrzeigersinn um die Bahn.'));
+ c.appendChild(el('p','viD','Merkspruch (englisch): „All King Edward’s Horses Carry Many Big Fleas“. Erfinde dir einen deutschen dazu.'));
  w.appendChild(c);
- const nav=el('div','aSwRow');
- const a=el('button','aSw w');a.type='button';a.innerHTML=WSVG+'<span>Zurück</span>';
- const b=el('button','aSw e');b.type='button';b.innerHTML='<span>Weiter</span>'+ESVG;
- const cur=()=>sel?ORDER.indexOf(sel):-1;
- a.onclick=()=>{let i=cur();sel=ORDER[(i<=0?ORDER.length:i)-1];render()};
- b.onclick=()=>{let i=cur();sel=ORDER[(i+1)%ORDER.length];render()};
- nav.append(a,b);w.appendChild(nav);
  return w;
+}
+let pop=null;
+function popup(){
+ if(!pop){
+  pop=el('div','tlpop anapop viPop');pop.hidden=true;pop.setAttribute('role','dialog');pop.setAttribute('aria-modal','true');
+  pop.innerHTML='<div class="tlcard"><div class="tltop"><span class="tlk" id="viTk"></span><button type="button" class="tlx" id="viX" aria-label="Schließen">'+XSVG+'</button></div><div class="tlbody"><p class="viT" id="viPT"></p><p class="viD" id="viPD"></p></div><div class="aSwRow"><button type="button" class="aSw w" id="viPv">'+WSVG+'<span>Zurück</span></button><button type="button" class="aSw e" id="viNx"><span>Weiter</span>'+ESVG+'</button></div></div>';
+  document.body.appendChild(pop);
+  const close=()=>{popOn=false;pop.hidden=true};
+  pop.querySelector('#viX').onclick=close;
+  pop.addEventListener('click',e=>{if(e.target===pop)close()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!pop.hidden)close()});
+  const go=d=>{let i=ORDER.indexOf(sel);if(i<0)i=d>0?-1:0;sel=ORDER[(i+d+ORDER.length)%ORDER.length];popOn=true;render()};
+  setInterval(()=>{if(!pop.hidden&&R.offsetParent===null){popOn=false;pop.hidden=true}},400);
+  pop.querySelector('#viPv').onclick=()=>go(-1);pop.querySelector('#viNx').onclick=()=>go(1);
+ }
+ const show=popOn&&tab==='l'&&sel&&!R.hidden;
+ pop.hidden=!show;
+ if(show){const l=L.find(x=>x[0]===sel);pop.querySelector('#viTk').textContent='Punkt '+sel;pop.querySelector('#viPT').textContent=sel==='X'?'X, die Mitte':'Buchstabe '+sel;pop.querySelector('#viPD').textContent=l[4];}
 }
 function next(){
  const ids=L.map(l=>l[0]);let n;do{n=ids[Math.floor(Math.random()*ids.length)]}while(q&&n===q.id);
@@ -113,6 +129,8 @@ function geschichte(){
 function render(){
  R.textContent='';R.appendChild(tabs());
  R.appendChild(tab==='l'?lernen():tab==='s'?spiel():geschichte());
+ popup();
 }
-window.vierOpen=function(){if(tab==='s'&&!q)next();render()};
+window.vierOpen=function(){popOn=false;if(tab==='s'&&!q)next();render()};
+window.vierClose=function(){popOn=false;if(pop)pop.hidden=true};
 })();

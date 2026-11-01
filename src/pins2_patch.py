@@ -5,8 +5,10 @@ s=s.replace("@keyframes pinlit{0%{fill:#bfbfbf}8%{fill:#cdff3e}70%{fill:#cdff3e}
 s=re.sub(r'/\* pins2 \*/.*?/\* /pins2 \*/\n','',s,flags=re.S)
 css='''/* pins2 */
 .vier .pin .pb{fill:#fff;stroke:#e30613;stroke-width:.55}
-.vier .pin circle{r:8.4px}
-.vier .pin text{font-size:12px}
+.vier .pin circle{r:7.1px}
+.vier .pin text{font-size:10.2px}
+.vier .xr,.vier circle.an[fill="#ffd400"]{r:9.4px}
+.vier text.an{font-size:12px}
 #vgrid line{stroke-width:.55}
 @keyframes pinlit{0%{fill:#fff;transform:scale(1)}8%{fill:#ffd400}35%{transform:scale(1.18)}70%{fill:#ffd400;transform:scale(1)}100%{fill:#fff}}
 .vier .pin .pb{transform-box:fill-box;transform-origin:center}

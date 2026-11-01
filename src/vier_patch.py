@@ -13,6 +13,7 @@ rep("['thsP','thsH','thsZ','thsA'].includes(which)","['thsP','thsH','thsZ','thsA
 rep("else if(which==='thsA')anaOpen();","else if(which==='thsA')anaOpen();else if(which==='thsB'&&window.vierOpen)vierOpen();","vierOpen();")
 rep("  ['thsP','Pf','Unsere Pferde',","  ['thsB','Vi','Das Viereck','Buchstaben, Maße, Spiel und Geschichte der Bahn'],\n  ['thsP','Pf','Unsere Pferde',","'thsB','Vi'")
 rep("thsA:'img/kreis_anatomie.jpg',","thsA:'img/kreis_anatomie.jpg',thsB:'img/kreis_viereck.svg',","thsB:'img/kreis_viereck")
+rep("g('thVi').hidden=which!=='thsB';","g('thVi').hidden=which!=='thsB';if(which!=='thsB'&&window.vierClose)vierClose();",'vierClose()')
 js=open('src/vier.js',encoding='utf8').read()
 s=re.sub(r'<script id="vier-js">.*?</script>\n','',s,flags=re.S)
 a=s.index('<script id="ana-js">'); s=s[:a]+'<script id="vier-js">\n'+js+'\n</script>\n'+s[a:]
