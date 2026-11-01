@@ -16,12 +16,12 @@ const L=[
  ['M',X1+20,Y0+36,'M','Rechte lange Seite, 6 m vor der Ecke bei C. Gegenüber von H.']
 ];
 const ORDER='AKEHCMBFX';
-let tab='l',sel=null,popOn=false,masse=false,sc=0,tot=0,q=null,done=false;
+let tab='l',sel=null,popOn=false,masse=true,sc=0,tot=0,q=null,done=false;
 const XSVG='<svg viewBox="-12 -12 24 24" aria-hidden="true"><circle class="rg" r="9.5"/><path class="xx" d="M-3.6 -3.6L3.6 3.6M3.6 -3.6L-3.6 3.6"/></svg>';
 const NS='http://www.w3.org/2000/svg';
 function el(t,c,x){const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
 function arena(onTap,noM){
- const s=document.createElementNS(NS,'svg');s.setAttribute('viewBox','0 -6 240 342');s.setAttribute('class','viSvg');s.setAttribute('role','img');s.setAttribute('aria-label','Dressurviereck 20 mal 40 Meter von oben');
+ const s=document.createElementNS(NS,'svg');s.setAttribute('viewBox','0 -6 250 358');s.setAttribute('class','viSvg');s.setAttribute('role','img');s.setAttribute('aria-label','Dressurviereck 20 mal 40 Meter von oben');
  const MY=(Y0+Y1)/2;
  let h='<g class="viGit">';for(let x=X0+30;x<X1;x+=30)h+='<line x1="'+x+'" y1="'+Y0+'" x2="'+x+'" y2="'+Y1+'"/>';for(let y=Y0+30;y<Y1;y+=30)if(y!==MY)h+='<line x1="'+X0+'" y1="'+y+'" x2="'+X1+'" y2="'+y+'"/>';h+='</g>'+
  '<rect x="'+X0+'" y="'+Y0+'" width="'+(X1-X0)+'" height="'+(Y1-Y0)+'" fill="none" stroke="#6f746d" stroke-width="2.6"/>'+
@@ -34,11 +34,17 @@ function arena(onTap,noM){
  if(masse&&!noM){
   [[Y1-18,'6 m'],[Y1-93,'14 m'],[Y0+93,'14 m'],[Y0+18,'6 m']].forEach(a=>{h+='<text class="vm" x="'+(X0+6)+'" y="'+a[0]+'">'+a[1]+'</text>'});
   h+='<text class="vm" x="'+(CX+6)+'" y="'+(Y1-10)+'">20 m</text><text class="vm" x="'+(CX+6)+'" y="'+(Y0+18)+'">20 m</text>';
+  const dx=X1+34,dy=Y1+36;
+  h+='<g class="vd"><line x1="'+dx+'" y1="'+Y0+'" x2="'+dx+'" y2="'+Y1+'"/><line x1="'+(dx-4)+'" y1="'+Y0+'" x2="'+(dx+4)+'" y2="'+Y0+'"/><line x1="'+(dx-4)+'" y1="'+Y1+'" x2="'+(dx+4)+'" y2="'+Y1+'"/>'+
+     '<line x1="'+X0+'" y1="'+dy+'" x2="'+X1+'" y2="'+dy+'"/><line x1="'+X0+'" y1="'+(dy-4)+'" x2="'+X0+'" y2="'+(dy+4)+'"/><line x1="'+X1+'" y1="'+(dy-4)+'" x2="'+X1+'" y2="'+(dy+4)+'"/></g>'+
+     '<text class="vm vb" x="'+(dx+10)+'" y="'+MY+'" transform="rotate(90 '+(dx+10)+' '+MY+')" text-anchor="middle">40 m</text>'+
+     '<text class="vm vb" x="'+CX+'" y="'+(dy+13)+'" text-anchor="middle">20 m</text>'+
+     '<text class="vm" text-anchor="end" x="'+(X1-6)+'" y="'+(Y0+60-6)+'">30 m</text><text class="vm" text-anchor="end" x="'+(X1-6)+'" y="'+(Y1-60-6)+'">10 m</text>';
  }
  s.innerHTML=h;
  L.forEach(l=>{
   const g=document.createElementNS(NS,'g');g.setAttribute('class','vl'+(l[0]==='X'?' vx':''));g.setAttribute('data-l',l[0]);g.setAttribute('tabindex','0');g.setAttribute('role','button');g.setAttribute('aria-label','Buchstabe '+l[0]);
-  g.innerHTML='<circle cx="'+l[1]+'" cy="'+l[2]+'" r="'+(l[0]==='X'?9:7.4)+'"/><text x="'+l[1]+'" y="'+l[2]+'">'+l[0]+'</text>';
+  g.innerHTML='<circle cx="'+l[1]+'" cy="'+l[2]+'" r="'+(l[0]==='X'?7.6:5.8)+'"/><text x="'+l[1]+'" y="'+l[2]+'">'+l[0]+'</text>';
   g.addEventListener('click',()=>onTap(l[0]));
   g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();onTap(l[0])}});
   s.appendChild(g);
@@ -60,6 +66,7 @@ function lernen(){
  const c=el('div','viCard');
  c.appendChild(el('p','viT','Das Dressurviereck'));
  c.appendChild(el('p','viD','20 × 40 m. Du reitest bei A hinein und siehst auf C. Links liegen K, E, H, rechts F, B, M. Die Reihenfolge A K E H C M B F geht im Uhrzeigersinn um die Bahn.'));
+ c.appendChild(el('p','viD','Maße: 20 m breit, 40 m lang. Die schwarzen Punkte am Zaun liegen 10 m und 30 m von A entfernt. Das Gitter zeigt 5 × 5 m.'));
  c.appendChild(el('p','viD','Merkspruch (englisch): „All King Edward’s Horses Carry Many Big Fleas“. Erfinde dir einen deutschen dazu.'));
  w.appendChild(c);
  return w;
@@ -111,19 +118,26 @@ function answer(id){if(done)return;q.last=id;done=true;tot++;if(id===q.id)sc++;r
 function geschichte(){
  const w=el('div','viBody viHist');
  const P=(t,c)=>{w.appendChild(el('p',c||'viD',t))};
+ const H=t=>w.appendChild(el('p','viH',t));
  w.appendChild(el('p','viT','Warum diese Buchstaben?'));
- P('Niemand weiß es sicher. Das ist belegt und das ist Vermutung:');
- w.appendChild(el('p','viH','Belegt'));
- P('Bei den Olympischen Spielen 1932 in Los Angeles wurden die Buchstaben erstmals offiziell in einem Dressurviereck verwendet (damals 20 × 60 m).');
- w.appendChild(el('p','viH','Vermutung: der preußische Hof'));
- P('Am häufigsten wird erzählt: Im 18. Jahrhundert warteten die Reitknechte am Hof mit den Pferden ihrer Herren neben dem Buchstaben, der zu deren Rang passte, etwa K für Kaiser oder König und F für Fürst. Das passt zu K, E, H, M, B und F, aber nicht zu A, X und C. Einen Beleg dafür gibt es nicht.');
- w.appendChild(el('p','viH','Vermutung: Pferde im Stall'));
- P('Eine andere Erklärung: Die Buchstaben waren die Anfangsbuchstaben von Pferden im Stall des Herzogs von Newcastle im 17. Jahrhundert. Auch das ist nicht gesichert.');
- w.appendChild(el('p','viH','Die große Bahn'));
- P('Das große Viereck (20 × 60 m) hat zusätzliche Buchstaben: V, S, R, P an den langen Seiten und D, L, I, G auf der Mittellinie. Man sagt, deutsche Kavalleristen hätten sie im 20. Jahrhundert eingeführt. In den Aufgaben R1–R6 brauchst du sie nicht.');
+ P('Niemand weiß es sicher. Hier steht, was belegt ist und was nur erzählt wird.');
+ H('Belegt');
+ P('Bei den Olympischen Spielen 1932 in Los Angeles wurden die Buchstaben erstmals offiziell in einem Dressurviereck verwendet (damals 20 × 60 m). Bis 1948 durften nur Offiziere mitreiten. Ab 1952 starteten bei Olympia auch Frauen und Zivilisten.');
+ H('Erzählt: die Rangordnung am Hof');
+ P('Die bekannteste Geschichte: Am preußischen Hof sollen die Reitknechte mit den Pferden ihrer Herren neben dem Buchstaben gewartet haben, der zu deren Rang passte.');
+ P('K = Kaiser (oder König), F = Fürst, E = Edeling (Ehrengast), B = Bannerträger, M = Meier (Verwalter), H = Hofmarschall. Bei der großen Bahn: S = Schatzmeister, R = Ritter.');
+ P('Das wird oft weitererzählt, aber es gibt keinen Beleg. Außerdem passen A, X und C nicht dazu.');
+ H('Erzählt: Kommandos in der Reitbahn');
+ P('Eine andere Erklärung: Die Buchstaben standen für Stellen auf dem Kasernenhof. Kommandanten konnten so Befehle geben („bei B abwenden“), ohne dass die Pferde in der Menge zusammenstießen. Auch das ist nicht belegt.');
+ H('Erzählt: Pferde im Stall');
+ P('Wieder eine andere Geschichte: Die Buchstaben waren die Anfangsbuchstaben von Pferden im Stall des Herzogs von Newcastle (17. Jahrhundert). Nicht gesichert.');
+ H('Die Maße');
+ P('Das große Viereck ist 20 × 60 m, das kleine 20 × 40 m. Warum genau diese Maße, ist nicht geklärt. Oft heißt es, sie kommen von Kasernenhöfen der Kavallerie.');
+ H('Die große Bahn');
+ P('Das große Viereck hat zusätzliche Buchstaben: V, S, R, P an den langen Seiten und D, L, I, G auf der Mittellinie. Man sagt, deutsche Kavalleristen hätten sie im 20. Jahrhundert eingeführt. In den Aufgaben R1–R6 brauchst du sie nicht.');
  const im=el('div','viImgs');w.appendChild(im);
  (window.VIER_BILDER||[]).forEach(b=>{const f=el('figure');const i=new Image();i.src=b[0];i.alt=b[1];i.loading='lazy';f.appendChild(i);f.appendChild(el('figcaption',null,b[2]));im.appendChild(f)});
- P('Quellen: Horse and Hound („Ask H&H: dressage letter markers“), The Saddlery Shop („The history of dressage markers“).','viSrc');
+ P('Quellen: Horse and Hound („Ask H&H: dressage letter markers“), The Saddlery Shop („The history of dressage markers“). Weitere Hinweise aus Texten von tempusrenatus.org, eurodressage.com und howtodressage.com, von mir noch nicht im Original geprüft.','viSrc');
  return w;
 }
 function render(){

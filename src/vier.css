@@ -47,3 +47,5 @@
 .viPop .tlbody{padding:6px 14px 4px}
 #thVi .viSvg{margin:0 auto;width:min(100%,calc(52vh*.7))}
 #theo #thVi{flex:1 1 auto!important;min-height:0;overflow-y:auto;padding-bottom:14px;overscroll-behavior:contain}
+#thVi .vm{font-size:9px}#thVi .vb{font-weight:700;fill:#333}#thVi .vd line{stroke:#555;stroke-width:1}
+#thVi .vl text{font-size:8.4px}#thVi .vl.vx text{font-size:9.4px}
