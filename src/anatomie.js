@@ -85,10 +85,11 @@ function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=
 function build(){
  if(built)return;built=true;R=$('thAna');
  R.innerHTML='<div class="anaBar"><div class="anaSeg" id="aSet"><button data-s="sk" type="button"></button><button data-s="ex" type="button"></button></div></div><div class="anaBar"><div class="anaSeg" id="aMode"><button id="aLern" type="button"></button><button id="aQuiz" type="button"></button></div><div class="anaSeg" id="aLang"><button data-l="de" type="button">DE</button><button data-l="en" type="button">EN</button></div><button id="aNames" type="button" class="abt"></button><button id="aFull" type="button" class="abt"></button></div>'+
- '<div class="anaScroll" id="aScroll"><button type="button" class="aSw" id="aSw"></button><div class="anaFig" id="aFig"><img id="aImg" src="'+IMGS.sk+'" draggable="false"><svg id="aBr" viewBox="0 0 1420 1108" preserveAspectRatio="none" hidden></svg><div id="aBl" hidden></div><div id="aDots"></div></div></div>'+
+ '<div class="anaScroll" id="aScroll"><div class="anaFig" id="aFig"><img id="aImg" src="'+IMGS.sk+'" draggable="false"><svg id="aBr" viewBox="0 0 1420 1108" preserveAspectRatio="none" hidden></svg><div id="aBl" hidden></div><div id="aDots"></div></div></div>'+
+ '<div class="aSwRow" id="aSwRow"><button type="button" class="aSw w" data-s="sk"><svg class="ar" width="36" height="36" viewBox="-12 -12 24 24" aria-hidden="true"><circle class="tr" r="9.5"/><g transform="rotate(-90)"><path class="rg" d="M5.31 -7.88A9.5 9.5 0 1 1 -5.31 -7.88"/></g><path class="dt" transform="rotate(180)" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="-9.5" y="0">W</text></svg><span></span></button><button type="button" class="aSw e" data-s="ex"><span></span><svg class="ar" width="36" height="36" viewBox="-12 -12 24 24" aria-hidden="true"><circle class="tr" r="9.5"/><g transform="rotate(90)"><path class="rg" d="M5.31 -7.88A9.5 9.5 0 1 1 -5.31 -7.88"/></g><path class="dt" transform="rotate(0)" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="9.5" y="0">O</text></svg></button></div>'+
  '<div class="anaZoom" id="aZoom"><button id="aZm" type="button" aria-label="−">−</button><button id="aZp" type="button" aria-label="+">+</button></div>'+
  '<div class="anaPanel" id="aPanel" aria-live="polite"></div><p class="tline" id="aCap"></p>';
- buildDots();buildBr();$('aSw').onclick=()=>setSet(set==='sk'?'ex':'sk');
+ buildDots();buildBr();$('aSwRow').querySelectorAll('button').forEach(b=>b.onclick=()=>setSet(b.dataset.s));
  $('aSet').querySelectorAll('button').forEach(b=>b.onclick=()=>setSet(b.dataset.s));
  var sc=$('aScroll'),tx=0,ty=0;
  sc.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:true});
@@ -133,9 +134,7 @@ function paint(){if(!built)return;
  $('aLang').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===lang));
  $('aNames').setAttribute('aria-pressed',all);$('aNames').hidden=mode!=='lern';$('aZoom').hidden=!full;
  $('aImg').alt=set==='ex'?u.alt2:u.alt;$('aCap').textContent=set==='ex'?u.cap2:u.cap;
- {const sw=$('aSw'),east=set==='sk',ring='<circle class="tr" r="9.5"/><path class="rg" d="M5.31 -7.88A9.5 9.5 0 1 1 -5.31 -7.88"/>';
-  sw.className='aSw '+(east?'e':'w');sw.setAttribute('aria-label',east?u.ex:u.sk);
-  sw.innerHTML='<svg class="ar" width="40" height="40" viewBox="-12 -12 24 24" aria-hidden="true">'+ring+'<path class="dt" transform="rotate('+(east?0:180)+')" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="0" y="-9.5">N</text></svg><span>'+(east?u.ex:u.sk)+'</span>';}
+ $('aSwRow').querySelectorAll('button').forEach(b=>{const sp=b.querySelector('span');sp.textContent=u[b.dataset.s];b.setAttribute('aria-pressed',b.dataset.s===set);});
  $('aSet').querySelectorAll('button').forEach(b=>{b.textContent=u[b.dataset.s];b.setAttribute('aria-pressed',b.dataset.s===set);});
  const dots=$('aDots').children;
  for(let i=0;i<dots.length;i++){const b=dots[i],p=P[i],l=b.firstChild;b.className='ad'+(p[3]>780?' lft':'');b.setAttribute('aria-label',mode==='lern'||answered?nm(p):'?');
