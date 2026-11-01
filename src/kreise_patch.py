@@ -1,6 +1,6 @@
 import re
 f='index.html'; s=open(f,encoding='utf8').read()
-blk="b.querySelector('.code').textContent=c;{const KB={thsV:'img/kreis_auge.svg',thsA:'img/kreis_anatomie.jpg',thsP:'img/kreis_pferde.jpg'}[id];if(KB){const cd=b.querySelector('.code');cd.textContent='';cd.setAttribute('role','img');cd.setAttribute('aria-label',n);cd.style.setProperty('background','#fff url('+KB+') center/'+(KB.slice(-4)==='.svg'?'118%':'cover')+' no-repeat','important');}}/* kreisbild */"
+blk="b.querySelector('.code').textContent=c;{const KB={thsV:'img/kreis_auge.svg',thsA:'img/kreis_anatomie.jpg',thsB:'img/kreis_viereck.svg',thsP:'img/kreis_pferde.jpg'}[id];if(KB){const cd=b.querySelector('.code');cd.textContent='';cd.setAttribute('role','img');cd.setAttribute('aria-label',n);cd.style.setProperty('background','#fff url('+KB+') center/'+(KB.slice(-4)==='.svg'?'118%':'cover')+' no-repeat','important');}}/* kreisbild */"
 if '/* kreisbild */' in s:
     s=re.sub(r"b\.querySelector\('\.code'\)\.textContent=c;\{const KB=.*?/\* kreisbild \*/",lambda m:blk,s,count=1,flags=re.S)
 else:
