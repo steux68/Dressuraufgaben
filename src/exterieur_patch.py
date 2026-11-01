@@ -13,7 +13,7 @@ css='''
 .aSw{display:flex;align-items:center;gap:6px;min-height:0;padding:2px 12px 2px 4px;border:1.5px solid #22281f;border-radius:30px;background:var(--surface);color:#111;font-size:.9rem;font-weight:700;-webkit-tap-highlight-color:transparent}
 .aSw.e{padding:2px 4px 2px 12px}
 .aSw[aria-pressed="false"]{border:1.5px dotted var(--muted);font-weight:500;color:var(--muted)}
-.aSw[aria-pressed="true"]{box-shadow:0 1px 0 #22281f}
+.aSw[aria-pressed="true"]{border-color:transparent}
 .aSw .ar{overflow:visible;flex:none}.aSw .rg{fill:none;stroke:#3a3c37;stroke-width:1px}.aSw .dt{fill:#4d4f4a;stroke:#1a1a1a;stroke-width:1px;stroke-linejoin:round}
 .aSw text{fill:#3a3c37;font:700 6.4px Calibri,Carlito,sans-serif;text-anchor:middle;dominant-baseline:central}
 .aSw .tr{display:none}.aSw[aria-pressed="false"] .tr{display:block;fill:none;stroke:#3a3c37;stroke-width:.7;transform-box:fill-box;transform-origin:center;animation:aring 2.2s ease-out infinite}
@@ -23,5 +23,5 @@ css='''
 '''
 s=re.sub(r'/\* ext-css \*/.*?/\* /ext-css \*/\n','',s,flags=re.S)
 i=s.rfind('</style>'); s=s[:i]+'/* ext-css */\n'+css+'/* /ext-css */\n'+s[i:]
-s=re.sub(r'(<meta name="app-version" content=")[^"]*"',r'\g<1>2026-11-01zzt"',s,count=1)
+s=re.sub(r'(<meta name="app-version" content=")[^"]*"',r'\g<1>2026-11-01zzu"',s,count=1)
 open(f,'w',encoding='utf8').write(s)
