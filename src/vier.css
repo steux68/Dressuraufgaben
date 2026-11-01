@@ -70,3 +70,5 @@
 .viPop .vl.dim circle{fill:#f4f4f4;stroke:#c9c9c9}
 .viPop .vm{font-size:9px}.viPop .vb{font-weight:700;fill:#333}.viPop .vd line{stroke:#555;stroke-width:1}
 .viPop .vl text{font-size:8.4px}.viPop .vl.vx text{font-size:9.4px}
+#thVi .vx2 line{stroke:#b8b8b8;stroke-width:.6;stroke-dasharray:1 2.2}
+#thVi .viLeg{margin:6px 0 4px;font-size:.78rem;line-height:1.35;color:var(--muted)}

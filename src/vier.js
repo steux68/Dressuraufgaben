@@ -32,14 +32,19 @@ function arena(onTap,noM){
   h+='<line x1="'+t[0]+'" y1="'+t[1]+'" x2="'+t[2]+'" y2="'+t[3]+'" stroke="#6f746d" stroke-width="2.6"/>'});
  [Y0+60,Y1-60].forEach(y=>[X0,X1].forEach(x=>{h+='<circle cx="'+x+'" cy="'+y+'" r="3.3" fill="#111"/>'}));
  if(masse&&!noM){
-  [[Y1-18,'6 m'],[Y1-93,'14 m'],[Y0+93,'14 m'],[Y0+18,'6 m']].forEach(a=>{h+='<text class="vm" x="'+(X0+6)+'" y="'+a[0]+'">'+a[1]+'</text>'});
-  h+='<text class="vm" x="'+(CX+6)+'" y="'+(Y1-10)+'">20 m</text><text class="vm" x="'+(CX+6)+'" y="'+(Y0+18)+'">20 m</text>';
-  const dx=X1+34,dy=Y1+36;
-  h+='<g class="vd"><line x1="'+dx+'" y1="'+Y0+'" x2="'+dx+'" y2="'+Y1+'"/><line x1="'+(dx-4)+'" y1="'+Y0+'" x2="'+(dx+4)+'" y2="'+Y0+'"/><line x1="'+(dx-4)+'" y1="'+Y1+'" x2="'+(dx+4)+'" y2="'+Y1+'"/>'+
+  const dl=22,dr=X1+30,dt=X1+54,dy=Y1+36;
+  const tk=(x,y)=>'<line x1="'+(x-4)+'" y1="'+y+'" x2="'+(x+4)+'" y2="'+y+'"/>';
+  const lt=(x,y,t,rot)=>'<text class="vm" x="'+x+'" y="'+y+'" text-anchor="middle" transform="rotate('+rot+' '+x+' '+y+')">'+t+'</text>';
+  const LY=[Y1,Y1-36,MY,Y0+36,Y0],RY=[Y1,Y1-60,MY,Y0+60,Y0];
+  h+='<g class="vd"><line x1="'+dl+'" y1="'+Y0+'" x2="'+dl+'" y2="'+Y1+'"/>'+LY.map(y=>tk(dl,y)).join('')+
+     '<line x1="'+dr+'" y1="'+Y0+'" x2="'+dr+'" y2="'+Y1+'"/>'+RY.map(y=>tk(dr,y)).join('')+
+     '<line x1="'+dt+'" y1="'+Y0+'" x2="'+dt+'" y2="'+Y1+'"/>'+tk(dt,Y0)+tk(dt,Y1)+
      '<line x1="'+X0+'" y1="'+dy+'" x2="'+X1+'" y2="'+dy+'"/><line x1="'+X0+'" y1="'+(dy-4)+'" x2="'+X0+'" y2="'+(dy+4)+'"/><line x1="'+X1+'" y1="'+(dy-4)+'" x2="'+X1+'" y2="'+(dy+4)+'"/></g>'+
-     '<text class="vm vb" x="'+(dx+10)+'" y="'+MY+'" transform="rotate(90 '+(dx+10)+' '+MY+')" text-anchor="middle">40 m</text>'+
-     '<text class="vm vb" x="'+CX+'" y="'+(dy+13)+'" text-anchor="middle">20 m</text>'+
-     '<text class="vm" text-anchor="end" x="'+(X1-6)+'" y="'+(Y0+60-6)+'">30 m</text><text class="vm" text-anchor="end" x="'+(X1-6)+'" y="'+(Y1-60-6)+'">10 m</text>';
+     '<g class="vx2">'+[Y1,Y1-60,Y0+60,Y0].map(y=>'<line x1="'+(X1+3)+'" y1="'+y+'" x2="'+(dr-4)+'" y2="'+y+'"/>').join('')+[Y1,Y0].map(y=>'<line x1="'+(dl+4)+'" y1="'+y+'" x2="'+(X0-3)+'" y2="'+y+'"/>').join('')+'</g>';
+  [[(Y1+LY[1])/2,'6 m'],[(LY[1]+MY)/2,'14 m'],[(MY+LY[3])/2,'14 m'],[(LY[3]+Y0)/2,'6 m']].forEach(a=>{h+=lt(dl-7,a[0],a[1],-90)});
+  [[(RY[0]+RY[1])/2,'10 m'],[(RY[1]+MY)/2,'10 m'],[(MY+RY[3])/2,'10 m'],[(RY[3]+RY[4])/2,'10 m']].forEach(a=>{h+=lt(dr+8,a[0],a[1],90)});
+  h+=lt(dt+8,MY,'40 m gesamt',90).replace('class="vm"','class="vm vb"');
+  h+='<text class="vm vb" x="'+CX+'" y="'+(dy+13)+'" text-anchor="middle">20 m breit</text>';
  }
  s.innerHTML=h;
  L.forEach(l=>{
@@ -63,6 +68,7 @@ function lernen(){
  bar.appendChild(el('span','viHint','Tippe auf einen Buchstaben'));w.appendChild(bar);
  const s=arena(id=>{sel=id;popOn=true;render()});w.appendChild(s);
  if(sel)mark(s,[[sel,'on']]);
+ if(masse){const g=el('p','viLeg','So liest du die Maße: Links stehen die Abstände zwischen den Buchstaben (A–K 6 m, K–E 14 m, E–H 14 m, H–C 6 m). Rechts steht die Strecke ab A in Schritten von 10 m; die schwarzen Punkte liegen bei 10 m und 30 m. Die Breite beträgt 20 m.');w.appendChild(g);}
  const c=el('div','viCard');
  c.appendChild(el('p','viT','Das Dressurviereck'));
  c.appendChild(el('p','viD','20 × 40 m. Du reitest bei A hinein und siehst auf C. Links liegen K, E, H, rechts F, B, M. Die Reihenfolge A K E H C M B F geht im Uhrzeigersinn um die Bahn.'));
