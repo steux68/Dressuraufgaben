@@ -142,8 +142,10 @@ function geschichte(){
  P('Bei den Olympischen Spielen 1932 in Los Angeles wurden die Buchstaben erstmals offiziell in einem Dressurviereck verwendet (damals 20 × 60 m). Bis 1948 durften nur Offiziere mitreiten. Ab 1952 starteten bei Olympia auch Frauen und Zivilisten.');
  H('Erzählt: die Rangordnung am Hof');
  P('Die bekannteste Geschichte: Am preußischen Hof sollen die Reitknechte mit den Pferden ihrer Herren neben dem Buchstaben gewartet haben, der zu deren Rang passte.');
- P('K = Kaiser (oder König), F = Fürst, E = Edeling (Ehrengast), B = Bannerträger, M = Meier (Verwalter), H = Hofmarschall. Bei der großen Bahn: S = Schatzmeister, R = Ritter.');
+ P('K = Kaiser (oder König), F = Fürst, E = Edeling (Ehrengast), B = Bannerträger, M = Meier (Verwalter), H = Hofmarschall. Bei der großen Bahn: S = Schatzmeister, R = Ritter, P = Pferdeknecht, V = Vasall.');
  P('Das wird oft weitererzählt, aber es gibt keinen Beleg. Außerdem passen A, X und C nicht dazu.');
+ H('Erzählt: Türen und Gebäude');
+ P('Nach einer weiteren Erklärung standen die Buchstaben für Türen, Lagerräume und Verwaltungsgebäude rund um den Exerzierplatz. Manchmal wird auch erzählt, A stehe für „Ausgang“. Das passt nicht: Bei A reitest du hinein. Auch das ist nicht belegt.');
  H('Erzählt: Kommandos in der Reitbahn');
  P('Eine andere Erklärung: Die Buchstaben standen für Stellen auf dem Kasernenhof. Kommandanten konnten so Befehle geben („bei B abwenden“), ohne dass die Pferde in der Menge zusammenstießen. Auch das ist nicht belegt.');
  H('Erzählt: Pferde im Stall');
