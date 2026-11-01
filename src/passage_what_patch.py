@@ -3,9 +3,14 @@
 und Beispiel-Link (idempotent). Aufruf im Repo-Ordner: python3 -I src/passage_what_patch.py"""
 import re
 s=open('index.html',encoding='utf8').read()
+# alte Fassung zuerst entfernen, damit der Patch wiederholbar ist
+s=re.sub(r'<style id="pwhat-css">.*?</style>','',s,flags=re.S)
+s=re.sub(r'<p class="iwhat">.*?</p>','',s,flags=re.S)
+s=re.sub(r'<div id="pwhat".*?</div></div></div>','',s,flags=re.S)
+s=re.sub(r'<script id="pwhat-js">.*?</script>','',s,flags=re.S)
 if 'id="pwhat-css"' not in s:
     css=('<style id="pwhat-css">#intro .iwhat{margin:10px 0 0;text-align:center}'
-         '#pwhatBtn{font:inherit;font-size:.95rem;color:#e30613;background:none;border:0;padding:8px 10px;text-decoration:underline;cursor:pointer}'
+         '#pwhatBtn{font:inherit;font-size:.9rem;color:#e30613;background:none;border:0;padding:8px 10px;text-decoration:underline;cursor:pointer;display:inline-flex;align-items:center;gap:7px}#pwhatBtn .pwi{flex:none;width:18px;height:18px;border:1.4px solid #e30613;border-radius:50%;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;font-style:italic;line-height:1;text-decoration:none}'
          '#pwhat{position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(0,0,0,.45)}'
          '#pwhat[hidden]{display:none}'
          '#pwhat .pwcard{background:#fff!important;box-shadow:none!important;opacity:1!important;color:#111;border-radius:14px;max-width:420px;width:100%;max-height:86vh;overflow:auto;padding:18px 18px 14px;box-sizing:border-box;border:1px solid #bbb}'
@@ -24,7 +29,7 @@ if 'id="pwhat-css"' not in s:
         'document.getElementById("pwhatX").addEventListener("click",c);d.addEventListener("click",function(e){if(e.target===d)c();});'
         'document.addEventListener("keydown",function(e){if(e.key==="Escape")c();});})();</script>')
     s=s.replace('</head>',css+'</head>',1)
-    s=s.replace('Lernen, Spiel, Theorie · Pferdewissen</p>','Lernen, Spiel, Theorie · Pferdewissen</p><p class="iwhat"><button type="button" id="pwhatBtn">Was heißt „Passage“? ›</button></p>',1)
+    s=s.replace('Lernen, Spiel, Theorie · Pferdewissen</p>','Lernen, Spiel, Theorie · Pferdewissen</p><p class="iwhat"><button type="button" id="pwhatBtn"><span class="pwi" aria-hidden="true">i</span>Was heißt „Passage“?</button></p>',1)
     s=s.replace('</body>',html+js+'</body>',1)
-s=re.sub(r'(<meta name="app-version" content=")[^"]*',r'\g<1>2026-11-01zzj',s,count=1)
+s=re.sub(r'(<meta name="app-version" content=")[^"]*',r'\g<1>2026-11-01zzk',s,count=1)
 open('index.html','w',encoding='utf8').write(s)
