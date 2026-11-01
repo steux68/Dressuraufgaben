@@ -163,8 +163,8 @@ def page_frame(c, right_text=None):
     c.setFillColor(HexColor('#ffffff')); c.setStrokeColor(HexColor('#ffffff')); c.setLineJoin(1)
     c.setLineWidth(0.01); word(10.5, 35.5, 'P', 33, '#fff', 0)
     c.setLineWidth(.5*k); word(18, 40.4, 'a–x', 13.4, '#fff', .5, sp=.5)
-    c.setFillColor(HexColor(RED)); c.setStrokeColor(HexColor(RED)); c.setLineWidth(1.6*k); word(54, 35, 'PASSAGE', 39, RED, 1.6, sp=.2)
-    c.setFillColor(HexColor('#0057d8')); c.setStrokeColor(HexColor('#0057d8')); c.setLineWidth(.5*k); word(200.8, 50, 'a–x', 15.5, '#0057d8', .5, 'end', .7)
+    c.setFillColor(HexColor('#ffffff')); c.setStrokeColor(HexColor(RED)); c.setLineWidth(.6*k); word(54, 35, 'PASSAGE', 39, RED, .6, sp=.2)
+    c.setFillColor(HexColor(RED)); c.setStrokeColor(HexColor(RED)); c.setLineWidth(.5*k); word(200.8, 50, 'a–x', 15.5, RED, .5, 'end', .7)
     c.setLineWidth(0.8)
     if right_text:
         c.setFillColor(MUTED); c.setFont('SS', 9); c.drawRightString(W-M, my+mh*0.45, right_text)
