@@ -65,3 +65,5 @@ html.anaOpen{overflow:hidden}
 .anapop.full .anaZoom{display:flex;position:absolute;right:14px;top:96px;flex-direction:column;gap:6px;z-index:6}
 .anapop.full .anaZoom[hidden]{display:none}
 .anaBody{position:relative}
+.ald{position:absolute;left:14px;top:14px;height:0;border-top:1px solid #e30613;transform-origin:0 0;pointer-events:none;z-index:1}
+.ad .alab{z-index:2}
