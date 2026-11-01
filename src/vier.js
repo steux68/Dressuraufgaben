@@ -80,7 +80,7 @@ let pop=null;
 function popup(){
  if(!pop){
   pop=el('div','tlpop anapop viPop');pop.hidden=true;pop.setAttribute('role','dialog');pop.setAttribute('aria-modal','true');
-  pop.innerHTML='<div class="tlcard"><div class="tltop"><span class="tlk" id="viTk"></span><button type="button" class="tlx" id="viX" aria-label="Schließen">'+XSVG+'</button></div><div class="tlbody"><p class="viT" id="viPT"></p><p class="viD" id="viPD"></p></div><div class="aSwRow"><button type="button" class="aSw w" id="viPv">'+WSVG+'<span>Zurück</span></button><button type="button" class="aSw e" id="viNx"><span>Weiter</span>'+ESVG+'</button></div></div>';
+  pop.innerHTML='<div class="tlcard"><div class="tltop"><span class="tlk" id="viTk"></span><button type="button" class="tlx" id="viX" aria-label="Schließen">'+XSVG+'</button></div><div class="tlbody"><figure class="gfig has vifig" id="viFig"><button type="button" class="tlar pw" id="viPv" aria-label="Zurück">'+WSVG+'</button><button type="button" class="tlar pe" id="viNx" aria-label="Weiter">'+ESVG+'</button></figure><p class="viT" id="viPT"></p><p class="viD" id="viPD"></p></div></div>';
   document.body.appendChild(pop);
   const close=()=>{popOn=false;pop.hidden=true};
   pop.querySelector('#viX').onclick=close;
@@ -92,7 +92,7 @@ function popup(){
  }
  const show=popOn&&tab==='l'&&sel&&!R.hidden;
  pop.hidden=!show;
- if(show){const l=L.find(x=>x[0]===sel);pop.querySelector('#viTk').textContent='Punkt '+sel;pop.querySelector('#viPT').textContent=sel==='X'?'X, die Mitte':'Buchstabe '+sel;pop.querySelector('#viPD').textContent=l[4];}
+ if(show){const fg=pop.querySelector('#viFig');const o=fg.querySelector('.viSvg');if(o)o.remove();const sv=arena(()=>{},true);sv.classList.add('viMini');mark(sv,[[sel,'on']]);fg.insertBefore(sv,fg.firstChild);const l=L.find(x=>x[0]===sel);pop.querySelector('#viTk').textContent='Punkt '+sel;pop.querySelector('#viPT').textContent=sel==='X'?'X, die Mitte':'Buchstabe '+sel;pop.querySelector('#viPD').textContent=l[4];}
 }
 function next(){
  const ids=L.map(l=>l[0]);let n;do{n=ids[Math.floor(Math.random()*ids.length)]}while(q&&n===q.id);

@@ -128,10 +128,10 @@ function buildPop(){if(built)return;built=true;
  pop=el('div','tlpop anapop');pop.id='aPop';pop.hidden=true;pop.setAttribute('role','dialog');pop.setAttribute('aria-modal','true');
  pop.innerHTML='<div class="tlcard"><div class="tltop"><span class="tlk" id="aTk"></span><button type="button" class="tlx" id="aX" aria-label="Schließen">'+XSVG+'</button></div>'+
  '<div class="tlbody anaBody" id="aBody"><div class="anaBar"><div class="anaSeg" id="aMode"><button id="aLern" type="button"></button><button id="aQuiz" type="button"></button></div><div class="anaSeg" id="aLang"><button data-l="de" type="button">DE</button><button data-l="en" type="button">EN</button></div><button id="aNames" type="button" class="abt"></button><button id="aFull" type="button" class="abt"></button></div>'+
- '<div class="anaScroll" id="aScroll"><div class="anaFig" id="aFig"><img id="aImg" alt="" draggable="false"><svg id="aBr" viewBox="0 0 1420 1108" preserveAspectRatio="none" hidden></svg><div id="aBl" hidden></div><div id="aDots"></div></div></div>'+
+ '<div class="anaStage" id="aStage"><button type="button" class="tlar pw" id="aPrev" aria-label="Zurück">'+WSVG+'</button><button type="button" class="tlar pe" id="aNext" aria-label="Weiter">'+ESVG+'</button><div class="anaScroll" id="aScroll"><div class="anaFig" id="aFig"><img id="aImg" alt="" draggable="false"><svg id="aBr" viewBox="0 0 1420 1108" preserveAspectRatio="none" hidden></svg><div id="aBl" hidden></div><div id="aDots"></div></div></div></div>'+
  '<div class="anaZoom" id="aZoom"><button id="aZm" type="button" aria-label="−">−</button><button id="aZp" type="button" aria-label="+">+</button></div>'+
  '<div class="anaPanel" id="aPanel" aria-live="polite"></div><p class="tline" id="aCap"></p></div>'+
- '<div class="aSwRow" id="aSwRow"><button type="button" class="aSw w" id="aPrev">'+WSVG+'<span></span></button><button type="button" class="aSw e" id="aNext"><span></span>'+ESVG+'</button></div></div>';
+ '</div>';
  document.body.appendChild(pop);
  $('aX').onclick=closeSet;
  pop.addEventListener('click',e=>{if(e.target===pop&&!full)closeSet();});
@@ -181,7 +181,7 @@ function layoutLabels(){const f=$('aFig');if(!f||!open)return;const FW=f.offsetW
   if(dd>13){const ld=document.createElement('i');ld.className='ald';ld.style.width=(dd-8)+'px';ld.style.transform='rotate('+Math.atan2(ny-cy,nx-cx)+'rad)';ds[e.i].appendChild(ld);}
   l.style.left=(e.r[0]-C[e.i][0]+14)+'px';l.style.top=(e.r[1]-C[e.i][1]+14)+'px';l.style.right='auto';l.style.transform='none';});}
 function fit(){const f=$('aFig');if(!f)return;
- if(!full){f.style.width='';f.style.maxWidth='';f.style.maxWidth=Math.round(innerHeight*.56*W/H)+'px';return;}
+ if(!full){const st=$('aStage'),bw=st.clientWidth-76,bh=st.clientHeight-4;f.style.maxWidth='none';f.style.width=Math.max(60,Math.round(Math.min(bw,bh*W/H)))+'px';layoutLabels();return;}
  f.style.maxWidth='none';const base=Math.min(innerWidth-20,(innerHeight-170)*W/H);f.style.width=Math.round(base*zoom)+'px';
  if(sel>=0&&mode==='lern')centre(sel);layoutLabels();}
 function centre(i){const s=$('aScroll'),f=$('aFig');if(!full)return;requestAnimationFrame(()=>{const w=f.offsetWidth,h=f.offsetHeight;
@@ -200,7 +200,7 @@ function paint(){if(!built||!open)return;
  $('aLang').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===lang));
  $('aNames').setAttribute('aria-pressed',all);$('aNames').hidden=mode!=='lern';$('aZoom').hidden=!full;
  $('aImg').alt=lang==='en'?s.altE:s.alt;$('aCap').textContent=lang==='en'?s.capE:s.cap;
- $('aPrev').lastElementChild.textContent=sn(pv);$('aNext').firstElementChild.textContent=sn(nx);
+ $('aPrev').setAttribute('aria-label',sn(pv));$('aNext').setAttribute('aria-label',sn(nx));
  const dots=$('aDots').children;
  for(let i=0;i<dots.length;i++){const b=dots[i],p=P[i],l=b.firstChild;b.className='ad'+(p[3]>W*.55?' lft':'');b.setAttribute('aria-label',mode==='lern'||answered?nm(p):'?');
   l.hidden=true;

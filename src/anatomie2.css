@@ -40,7 +40,6 @@ html.anaFull,html.anaFull body{overflow:hidden}
 .anaPanel{min-height:6em}
 html.anaOpen{overflow:hidden}
 .anapop{z-index:5000}
-.anapop .tlcard{max-width:560px}
 .anaBody{gap:8px}
 .anapop .tlcard::after{z-index:0}
 .aSwRow{flex:none;display:flex;justify-content:space-between;gap:8px;padding:8px 12px 10px;border-top:1px dotted color-mix(in srgb,var(--muted) 55%,transparent)}
@@ -70,3 +69,8 @@ html.anaOpen{overflow:hidden}
 .anaBody>*{flex:none}
 .anaNav{display:flex;justify-content:space-between;gap:8px}
 .anaNav .aSw{flex:none;color:#111;font-weight:700}
+.anaStage{position:relative;height:calc(var(--ph) * .46);display:flex;align-items:center;justify-content:center}
+.anaStage>.anaScroll{margin:0}
+.anapop.full .anaStage{flex:1 1 auto;height:auto;min-height:0;display:block}
+.anapop.full .anaStage .tlar{display:none}
+.anapop.full .anaStage>.anaScroll{height:100%}
