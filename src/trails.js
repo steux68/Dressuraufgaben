@@ -57,7 +57,7 @@
   ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
   if((now-t0)/1000<3.9){tag.hidden=true;return;}
   if(!cur)nextFig(true);
-  tm+=dt;const w=Math.max(1.2,M.a*.9);ctx.lineCap='round';ctx.lineJoin='round';
+  tm+=dt;const w=Math.max(.9,M.a*.62);ctx.lineCap='round';ctx.lineJoin='round';
   /* Phasen: 0 graue Linie blendet ein, 1 rote Spur läuft, 2 Halten, 3 alles blendet aus */
   const total=cur.L*laps;
   let grey=1;
