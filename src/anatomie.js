@@ -1,7 +1,5 @@
-/* Anatomie: Skelett mit pulsierenden Punkten, Lernen + Quiz, Deutsch/Englisch, Vollbild */
+/* Anatomie-Galerie: Bilder mit pulsierenden Punkten, Lernen + Quiz, Deutsch/Englisch, Popup mit W/E-Tasten */
 (function(){
-const AR=1420/1108,IMGS={sk:'img/skelett.jpg',ex:'img/exterieur.jpg'};
-/* [id, deutsch, englisch, x, y (Pixel im 1420×1108-Bild), Hinweis de, Hinweis en] */
 const PS=[
 ['sk','Schädel','Skull',120,170,'Schützt das Gehirn. Die Augen sitzen seitlich – darum sieht das Pferd fast rundum.','Protects the brain. The eyes sit at the sides, so the horse sees almost all around.'],
 ['uk','Unterkiefer','Lower jaw (mandible)',190,215,'Zwischen Schneide- und Backenzähnen liegt die zahnlose Lade – dort liegt das Gebiss (die Trense).','The gap between front and cheek teeth (the bars) is where the bit rests.'],
@@ -69,75 +67,125 @@ const PE=[
 /* Rückenlinie (x, y im 1420×1108-Bild) für die Klammern */
 const TOP=[[480,212],[500,225],[520,235],[540,245],[560,249],[600,256],[640,269],[680,288],[720,299],[760,303],[800,301],[840,296],[880,288],[920,280],[960,275],[1000,273],[1040,277],[1080,288],[1120,299],[1160,306],[1180,311]];
 const ZONES=[['Widerrist',520,640],['Rücken',640,880],['Lende',880,1020],['Kruppe',1020,1170]];
+/* Kopf von vorn (Bild 1080×1648) und Auge (Bild 1300×1200): [id, de, en, x, y, Hinweis de, Hinweis en] */
+const PK=[
+['oh','Ohr','Ear',400,140,'Die Ohren drehen sich einzeln und zeigen, worauf das Pferd achtet. Nach hinten gelegt heißt: Vorsicht!','The ears turn independently and show what the horse is attending to. Ears pinned back mean: careful!'],
+['sc','Stirnschopf','Forelock',530,350,'Die Haare zwischen den Ohren. Der Stirnriemen der Trense liegt davor.','The hair between the ears. The browband of the bridle sits in front of it.'],
+['st','Stirn','Forehead',530,610,'Die breite Fläche zwischen den Augen. Sie zeigt die Mitte des Kopfes.','The broad area between the eyes. It marks the middle of the head.'],
+['ab','Augenbogen','Brow ridge',300,520,'Der Knochenrand über dem Auge schützt es von oben.','The bony rim above the eye protects it from above.'],
+['au','Auge','Eye',250,630,'Seitlich am Kopf: Das Pferd sieht fast rundum, direkt vor der Nase aber nicht.','On the side of the head: the horse sees almost all around, but not right in front of its nose.'],
+['wa','Backe (Kaumuskel)','Cheek (masseter)',720,1130,'Der kräftige Kaumuskel. Beim Reiten sollte das Pferd im Genick nachgeben und kauen, ohne die Backen zu verspannen.','The strong chewing muscle. Ridden well, the horse yields at the poll and chews without tensing the cheeks.'],
+['nr','Nasenrücken','Bridge of the nose',524,950,'Der Verlauf von der Stirn zu den Nüstern. Hier liegt der Nasenriemen.','The line from forehead to nostrils. The noseband lies here.'],
+['nu','Nüstern','Nostrils',450,1430,'Das Pferd atmet nur durch die Nase. Weite, weiche Nüstern zeigen Ruhe.','The horse breathes only through the nose. Wide, soft nostrils show calm.'],
+['mu','Maul','Muzzle',550,1560,'Lippen und Kinn. Sehr fein und empfindlich, das Pferd tastet damit.','Lips and chin. Very fine and sensitive: the horse feels with them.']
+];
+const PA=[
+['ol','Oberlid','Upper lid',700,240,'Das obere Augenlid schützt das Auge. Es hat Wimpern.','The upper eyelid protects the eye. It carries lashes.'],
+['wi','Wimpern','Eyelashes',1100,335,'Nur das Oberlid hat lange Wimpern. Sie schützen vor Staub und Stroh.','Only the upper lid has long lashes. They protect from dust and straw.'],
+['ul','Unterlid','Lower lid',600,900,'Das untere Augenlid, fast ohne Wimpern.','The lower eyelid, almost without lashes.'],
+['aw','Äußerer Augenwinkel','Outer corner (lateral canthus)',1030,470,'Der Winkel zur Schläfe hin, bei diesem Auge rechts im Bild.','The corner towards the temple, on the right in this picture.'],
+['iw','Innerer Augenwinkel','Inner corner (medial canthus)',205,815,'Der Winkel zur Nase hin. Dort sitzen Tränenkanal und drittes Augenlid.','The corner towards the nose. Tear duct and third eyelid sit here.'],
+['dl','Drittes Augenlid','Third eyelid (nictitating membrane)',285,765,'Die Nickhaut im inneren Augenwinkel. Sie wischt das Auge sauber und schützt es.','The membrane in the inner corner. It wipes and protects the eye.'],
+['ir','Iris','Iris',720,790,'Die farbige Regenbogenhaut. Sie öffnet und schließt die Pupille wie eine Blende.','The coloured part. It opens and closes the pupil like an aperture.'],
+['pu','Pupille','Pupil',720,610,'Beim Pferd ein liegendes Rechteck mit runden Ecken. So sieht es besonders gut zur Seite und nach hinten.','In horses a horizontal oval. It gives a wide view to the sides and behind.'],
+['tk','Traubenkörner','Corpora nigra',740,470,'Die dunklen Knötchen am oberen Pupillenrand. Sie beschatten das Auge wie ein kleiner Sonnenschirm.','The dark knobs on the upper pupil edge. They shade the eye like a small parasol.'],
+['li','Hornhautrand','Limbus',990,600,'Hier geht die klare Hornhaut in die weiße Lederhaut über.','Where the clear cornea meets the white of the eye (sclera).']
+];
+const SETS=[
+ {k:'sk',de:'Skelett',en:'Skeleton',img:'img/skelett.jpg',W:1420,H:1108,P:PS,pos:'center 40%',
+  alt:'Skelett des Pferdes, Seitenansicht',altE:'Horse skeleton, side view',cap:'Skelett des Pferdes, Seitenansicht.',capE:'Horse skeleton, side view.'},
+ {k:'ex',de:'Äußeres',en:'Exterior',img:'img/exterieur.jpg',W:1420,H:1108,P:PE,pos:'center 45%',br:true,
+  alt:'Pferd von außen, Seitenansicht',altE:'Horse exterior, side view',cap:'Das Pferd von außen mit seinen Körperteilen.',capE:'The horse from the outside with its parts.'},
+ {k:'ko',de:'Kopf von vorn',en:'Head, front',img:'img/kopf.jpg',W:1080,H:1648,P:PK,pos:'center 22%',
+  alt:'Pferdekopf von vorn',altE:'Horse head, front view',cap:'Der Kopf von vorn. Zeichnung aus einem alten Anatomiebuch (Quelle noch zu klären).',capE:'The head from the front. Drawing from an old anatomy book (source to be confirmed).'},
+ {k:'au',de:'Das Auge',en:'The eye',img:'img/auge.jpg',W:1300,H:1200,P:PA,pos:'center 52%',
+  alt:'Pferdeauge, nah',altE:'Horse eye, close-up',cap:'Das Auge von außen (Foto: Steuart Harrison). Begriffe nach Thal Enterprises, übersetzt.',capE:'The eye from the outside (photo: Steuart Harrison). Terms after Thal Enterprises, translated.'}
+];
 const UI={
  de:{lern:'Lernen',quiz:'Quiz',full:'⤢ Vollbild',close:'✕ Schließen',names:'Namen',tip:'Tippe auf einen pulsierenden Punkt.',prev:'← Zurück',next:'Weiter →',
   qn:'Wie heißt dieser Teil?',qw:n=>'Wo liegt: '+n+'?',qwt:'Tippe den Punkt an.',ok:'Richtig!',bad:'Leider nein.',nq:'Nächste Frage →',fin:'Fertig!',again:'Noch einmal',pts:'Punkte',of:'von',
-  alt:'Skelett des Pferdes, Seitenansicht',cap:'Skelett des Pferdes, Seitenansicht.',sk:'Skelett',ex:'Äußeres',alt2:'Pferd von außen, Seitenansicht',cap2:'Das Pferd von außen mit seinen Körperteilen. Wische nach links oder rechts, um zum Skelett zu wechseln.'},
+  gal:'Tippe auf ein Bild, um die Punkte zu lernen.',more:'Weitere Bilder folgen.',xs:'Schließen'},
  en:{lern:'Learn',quiz:'Quiz',full:'⤢ Full screen',close:'✕ Close',names:'Names',tip:'Tap a pulsing dot.',prev:'← Back',next:'Next →',
   qn:'What is this part called?',qw:n=>'Where is the '+n+'?',qwt:'Tap the dot.',ok:'Correct!',bad:'Not quite.',nq:'Next question →',fin:'Done!',again:'Again',pts:'Points',of:'of',
-  alt:'Horse skeleton, side view',cap:'Horse skeleton, side view.',sk:'Skeleton',ex:'Exterior',alt2:'Horse exterior, side view',cap2:'The horse from the outside with its parts. Swipe left or right to switch to the skeleton.'}};
-let P=PS,set='sk',lang='de',mode='lern',sel=-1,full=false,zoom=1,all=false,built=false;
+  gal:'Tap a picture to learn its points.',more:'More pictures to come.',xs:'Close'}};
+const WSVG='<svg class="ar" width="28" height="28" viewBox="-12 -12 24 24" aria-hidden="true"><circle class="tr" r="9.5"/><path class="rg" d="M-7.88 -5.31A9.5 9.5 0 1 1 -7.88 5.31"/><path class="dt" transform="rotate(180)" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="-9.50" y="0">W</text></svg>';
+const ESVG='<svg class="ar" width="28" height="28" viewBox="-12 -12 24 24" aria-hidden="true"><circle class="tr" r="9.5"/><path class="rg" d="M7.88 5.31A9.5 9.5 0 1 1 7.88 -5.31"/><path class="dt" transform="rotate(0)" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="9.50" y="0">E</text></svg>';
+const XSVG='<svg viewBox="-12 -12 24 24" aria-hidden="true"><circle class="rg" r="9.5"/><path class="xx" d="M-3.6 -3.6L3.6 3.6M3.6 -3.6L-3.6 3.6"/></svg>';
+let si=0,P=PS,W=1420,H=1108,lang='de',mode='lern',sel=-1,full=false,zoom=1,all=false,built=false,open=false;
 try{lang=localStorage.getItem('ana_lang')==='en'?'en':'de';}catch(e){}
-let Q=[],qi=0,score=0,answered=false,qtype='name',R;
+let Q=[],qi=0,score=0,answered=false,qtype='name',pop,galBuilt=false;
 const $=id=>document.getElementById(id);
-const nm=p=>lang==='en'?p[2]:p[1],nt=p=>lang==='en'?p[6]:p[5],t=()=>UI[lang];
+const SET=()=>SETS[si],nm=p=>lang==='en'?p[2]:p[1],nt=p=>lang==='en'?(p[6]||p[5]):p[5],t=()=>UI[lang],sn=s=>lang==='en'?s.en:s.de;
 function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
-function build(){
- if(built)return;built=true;R=$('thAna');
- R.innerHTML='<div class="anaBar"><div class="anaSeg" id="aSet"><button data-s="sk" type="button"></button><button data-s="ex" type="button"></button></div></div><div class="anaBar"><div class="anaSeg" id="aMode"><button id="aLern" type="button"></button><button id="aQuiz" type="button"></button></div><div class="anaSeg" id="aLang"><button data-l="de" type="button">DE</button><button data-l="en" type="button">EN</button></div><button id="aNames" type="button" class="abt"></button><button id="aFull" type="button" class="abt"></button></div>'+
- '<div class="anaScroll" id="aScroll"><div class="anaFig" id="aFig"><img id="aImg" src="'+IMGS.sk+'" draggable="false"><svg id="aBr" viewBox="0 0 1420 1108" preserveAspectRatio="none" hidden></svg><div id="aBl" hidden></div><div id="aDots"></div></div></div>'+
- '<div class="aSwRow" id="aSwRow"><button type="button" class="aSw w" data-s="sk"><svg class="ar" width="30" height="30" viewBox="-12 -12 24 24" aria-hidden="true"><circle class="tr" r="9.5"/><path class="rg" d="M-7.88 -5.31A9.5 9.5 0 1 1 -7.88 5.31"/><path class="dt" transform="rotate(180)" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="-9.50" y="0">W</text></svg><span></span></button><button type="button" class="aSw e" data-s="ex"><span></span><svg class="ar" width="30" height="30" viewBox="-12 -12 24 24" aria-hidden="true"><circle class="tr" r="9.5"/><path class="rg" d="M7.88 5.31A9.5 9.5 0 1 1 7.88 -5.31"/><path class="dt" transform="rotate(0)" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="9.50" y="0">E</text></svg></button></div>'+
+function gallery(){const R=$('thAna');R.textContent='';
+ const g=el('div','agal');
+ SETS.forEach((s,i)=>{const b=el('button','agc');b.type='button';
+  const im=el('span','agi');im.style.backgroundImage='url('+s.img+')';im.style.backgroundPosition=s.pos;
+  const n=el('span','agn',sn(s));const c=el('span','agk',s.P.length+' '+(lang==='en'?'points':'Punkte'));
+  b.append(im,n,c);b.onclick=()=>openSet(i);g.appendChild(b);});
+ R.append(g,el('p','tline',t().more));}
+function buildPop(){if(built)return;built=true;
+ pop=el('div','tlpop anapop');pop.id='aPop';pop.hidden=true;pop.setAttribute('role','dialog');pop.setAttribute('aria-modal','true');
+ pop.innerHTML='<div class="tlcard"><div class="tltop"><span class="tlk" id="aTk"></span><button type="button" class="tlx" id="aX" aria-label="Schließen">'+XSVG+'</button></div>'+
+ '<div class="tlbody anaBody" id="aBody"><div class="anaBar"><div class="anaSeg" id="aMode"><button id="aLern" type="button"></button><button id="aQuiz" type="button"></button></div><div class="anaSeg" id="aLang"><button data-l="de" type="button">DE</button><button data-l="en" type="button">EN</button></div><button id="aNames" type="button" class="abt"></button><button id="aFull" type="button" class="abt"></button></div>'+
+ '<div class="anaScroll" id="aScroll"><div class="anaFig" id="aFig"><img id="aImg" alt="" draggable="false"><svg id="aBr" viewBox="0 0 1420 1108" preserveAspectRatio="none" hidden></svg><div id="aBl" hidden></div><div id="aDots"></div></div></div>'+
  '<div class="anaZoom" id="aZoom"><button id="aZm" type="button" aria-label="−">−</button><button id="aZp" type="button" aria-label="+">+</button></div>'+
- '<div class="anaPanel" id="aPanel" aria-live="polite"></div><p class="tline" id="aCap"></p>';
- buildDots();buildBr();$('aSwRow').querySelectorAll('button').forEach(b=>b.onclick=()=>setSet(b.dataset.s));
- $('aSet').querySelectorAll('button').forEach(b=>b.onclick=()=>setSet(b.dataset.s));
- var sc=$('aScroll'),tx=0,ty=0;
- sc.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:true});
- sc.addEventListener('touchend',e=>{if(full)return;const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.6)setSet(set==='sk'?'ex':'sk');},{passive:true});
+ '<div class="anaPanel" id="aPanel" aria-live="polite"></div><p class="tline" id="aCap"></p></div>'+
+ '<div class="aSwRow" id="aSwRow"><button type="button" class="aSw w" id="aPrev">'+WSVG+'<span></span></button><button type="button" class="aSw e" id="aNext"><span></span>'+ESVG+'</button></div></div>';
+ document.body.appendChild(pop);
+ $('aX').onclick=closeSet;
+ pop.addEventListener('click',e=>{if(e.target===pop&&!full)closeSet();});
+ $('aPrev').onclick=()=>goSet(-1);$('aNext').onclick=()=>goSet(1);
  $('aLern').onclick=()=>setMode('lern');$('aQuiz').onclick=()=>setMode('quiz');
  $('aLang').querySelectorAll('button').forEach(b=>b.onclick=()=>{lang=b.dataset.l;try{localStorage.setItem('ana_lang',lang)}catch(e){}paint();});
  $('aNames').onclick=()=>{all=!all;paint();};
  $('aFull').onclick=()=>setFull(!full);
  $('aZm').onclick=()=>{zoom=Math.max(1,zoom/1.4);fit();};$('aZp').onclick=()=>{zoom=Math.min(5,zoom*1.4);fit();};
- addEventListener('keydown',e=>{if(e.key==='Escape'&&full)setFull(false);});
- addEventListener('resize',()=>{if(full)fit();});
-}
+ let tx=0,ty=0;const sc=$('aScroll');
+ sc.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:true});
+ sc.addEventListener('touchend',e=>{if(full)return;const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.6)goSet(dx<0?1:-1);},{passive:true});
+ addEventListener('keydown',e=>{if(!open)return;if(e.key==='Escape'){full?setFull(false):closeSet();}else if(e.key==='ArrowLeft')goSet(-1);else if(e.key==='ArrowRight')goSet(1);});
+ addEventListener('resize',()=>{if(open)fit();});}
 function buildDots(){const D=$('aDots');D.textContent='';
- P.forEach((p,i)=>{const b=el('button','ad');b.type='button';b.style.left=(p[3]/1420*100)+'%';b.style.top=(p[4]/1108*100)+'%';b.style.setProperty('--d',(i%8)*.22+'s');
-  b.dataset.i=i;b.onclick=()=>dot(i);const l=el('span','alab');l.hidden=true;b.appendChild(l);if(p[3]>780)b.classList.add('lft');D.appendChild(b);});}
+ P.forEach((p,i)=>{const b=el('button','ad');b.type='button';b.style.left=(p[3]/W*100)+'%';b.style.top=(p[4]/H*100)+'%';b.style.setProperty('--d',(i%8)*.22+'s');
+  b.dataset.i=i;b.onclick=()=>dot(i);const l=el('span','alab');l.hidden=true;b.appendChild(l);if(p[3]>W*.55)b.classList.add('lft');D.appendChild(b);});}
 function topY(x){for(let i=1;i<TOP.length;i++)if(x<=TOP[i][0]){const a=TOP[i-1],b=TOP[i];return a[1]+(b[1]-a[1])*(x-a[0])/(b[0]-a[0]);}return TOP[TOP.length-1][1];}
 function buildBr(){const sv=$('aBr'),L=$('aBl');let d='',h='';
+ if(!SET().br){sv.toggleAttribute('hidden',true);L.hidden=true;return;}
  ZONES.forEach(z=>{const o=22,pts=[];for(let x=z[1];x<=z[2];x+=10)pts.push([x,topY(x)-o]);pts.push([z[2],topY(z[2])-o]);
   const a=pts[0],b=pts[pts.length-1];
   d+='<path d="M'+a[0]+','+(a[1]+16)+' L'+a[0]+','+a[1]+' '+pts.map(q=>'L'+q[0]+','+q[1]).join(' ')+' L'+b[0]+','+(b[1]+16)+'" />';
   const mx=(z[1]+z[2])/2;h+='<span class="abl" style="left:'+(mx/1420*100)+'%;top:'+((topY(mx)-o)/1108*100)+'%">'+z[0]+'</span>';});
- sv.innerHTML=d;L.innerHTML=h;}
-function setSet(s){if(s===set)return;set=s;P=s==='ex'?PE:PS;sel=-1;Q=[];
- $('aImg').src=IMGS[s];$('aBr').toggleAttribute('hidden',s!=='ex');$('aBl').hidden=s!=='ex';buildDots();if(mode==='quiz')startQuiz();paint();}
-function fit(){const f=$('aFig');if(!full){f.style.width='';return;}
- const base=Math.min(innerWidth,(innerHeight-170)*AR);f.style.width=Math.round(base*zoom)+'px';
+ sv.innerHTML=d;L.innerHTML=h;sv.toggleAttribute('hidden',false);L.hidden=false;}
+function showSet(){const s=SET();P=s.P;W=s.W;H=s.H;sel=-1;Q=[];
+ const f=$('aFig');f.style.setProperty('--ar',W+'/'+H);f.style.setProperty('--arn',(W/H).toFixed(4));
+ $('aImg').src=s.img;buildDots();buildBr();if(mode==='quiz')startQuiz();fit();paint();}
+function openSet(i){buildPop();si=i;open=true;pop.hidden=false;document.documentElement.classList.add('anaOpen');showSet();$('aBody').scrollTop=0;}
+function closeSet(){if(!open)return;if(full)setFull(false);open=false;pop.hidden=true;document.documentElement.classList.remove('anaOpen');}
+function goSet(d){si=(si+SETS.length+d)%SETS.length;showSet();}
+function fit(){const f=$('aFig');if(!f)return;
+ if(!full){f.style.width='';f.style.maxWidth='';f.style.maxWidth=Math.round(innerHeight*.56*W/H)+'px';return;}
+ f.style.maxWidth='none';const base=Math.min(innerWidth-20,(innerHeight-170)*W/H);f.style.width=Math.round(base*zoom)+'px';
  if(sel>=0&&mode==='lern')centre(sel);}
-function centre(i){const s=$('aScroll'),f=$('aFig');if(!full)return;requestAnimationFrame(()=>{const W=f.offsetWidth,H=f.offsetHeight;
- s.scrollTo({left:Math.max(0,P[i][3]/1420*W-s.clientWidth/2),top:Math.max(0,P[i][4]/1108*H-s.clientHeight/2),behavior:'smooth'});});}
-function setFull(v){full=v;R.classList.toggle('full',v);document.documentElement.classList.toggle('anaFull',v);
- zoom=v&&innerWidth<innerHeight?2.4:1;fit();paint();if(v)$('aScroll').scrollTo(0,0);}
+function centre(i){const s=$('aScroll'),f=$('aFig');if(!full)return;requestAnimationFrame(()=>{const w=f.offsetWidth,h=f.offsetHeight;
+ s.scrollTo({left:Math.max(0,P[i][3]/W*w-s.clientWidth/2),top:Math.max(0,P[i][4]/H*h-s.clientHeight/2),behavior:'smooth'});});}
+function setFull(v){full=v;pop.classList.toggle('full',v);zoom=v&&innerWidth<innerHeight?(W/H>1.2?2.2:1.2):1;fit();paint();if(v)$('aScroll').scrollTo(0,0);}
 function setMode(m){mode=m;sel=-1;if(m==='quiz')startQuiz();paint();}
 function dot(i){
  if(mode==='lern'){sel=i;paint();centre(i);return;}
- if(qtype==='where'&&!answered){answered=true;const ok=i===Q[qi];if(ok)score++;
-  result(ok,Q[qi],i);}
+ if(qtype==='where'&&!answered){answered=true;const ok=i===Q[qi];if(ok)score++;result(ok,Q[qi],i);}
 }
-function paint(){if(!built)return;
- const u=t();
+function paint(){if(!built||!open)return;
+ const u=t(),s=SET(),pv=SETS[(si+SETS.length-1)%SETS.length],nx=SETS[(si+1)%SETS.length];
+ $('aTk').innerHTML='<b></b> · '+(si+1)+' / '+SETS.length;$('aTk').firstChild.textContent=sn(s);
  $('aLern').textContent=u.lern;$('aQuiz').textContent=u.quiz;$('aFull').textContent=full?u.close:u.full;$('aNames').textContent=u.names;
  $('aLern').setAttribute('aria-pressed',mode==='lern');$('aQuiz').setAttribute('aria-pressed',mode==='quiz');
  $('aLang').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===lang));
  $('aNames').setAttribute('aria-pressed',all);$('aNames').hidden=mode!=='lern';$('aZoom').hidden=!full;
- $('aImg').alt=set==='ex'?u.alt2:u.alt;$('aCap').textContent=set==='ex'?u.cap2:u.cap;
- $('aSwRow').querySelectorAll('button').forEach(b=>{const sp=b.querySelector('span');sp.textContent=u[b.dataset.s];b.setAttribute('aria-pressed',b.dataset.s===set);});
- $('aSet').querySelectorAll('button').forEach(b=>{b.textContent=u[b.dataset.s];b.setAttribute('aria-pressed',b.dataset.s===set);});
+ $('aImg').alt=lang==='en'?s.altE:s.alt;$('aCap').textContent=lang==='en'?s.capE:s.cap;
+ $('aPrev').lastElementChild.textContent=sn(pv);$('aNext').firstElementChild.textContent=sn(nx);
  const dots=$('aDots').children;
- for(let i=0;i<dots.length;i++){const b=dots[i],p=P[i],l=b.firstChild;b.className='ad'+(p[3]>780?' lft':'');b.setAttribute('aria-label',mode==='lern'||answered?nm(p):'?');
+ for(let i=0;i<dots.length;i++){const b=dots[i],p=P[i],l=b.firstChild;b.className='ad'+(p[3]>W*.55?' lft':'');b.setAttribute('aria-label',mode==='lern'||answered?nm(p):'?');
   l.hidden=true;
   if(mode==='lern'){if(i===sel)b.classList.add('on');if(all||i===sel){l.hidden=false;l.textContent=nm(p);}}
   else if(qi<Q.length&&Q.length){const tg=Q[qi];
@@ -167,6 +215,6 @@ function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor
 function startQuiz(){Q=shuffle(P.map((_,i)=>i)).slice(0,10);qi=0;score=0;next();}
 function next(){answered=false;pick=-1;lastOk=false;if(qi>=Q.length)return;qtype=Math.random()<.6?'name':'where';
  const tg=Q[qi];opts=shuffle([tg].concat(shuffle(P.map((_,i)=>i).filter(i=>i!==tg)).slice(0,3)));}
-window.anaOpen=function(){build();if(mode==='quiz'&&!Q.length)startQuiz();paint();};
-window.anaClose=function(){if(full)setFull(false);};
+window.anaOpen=function(){gallery();};
+window.anaClose=function(){closeSet();};
 })();
