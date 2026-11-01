@@ -21,7 +21,7 @@ const NS='http://www.w3.org/2000/svg';
 function el(t,c,x){const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
 function arena(onTap,noM){
  const s=document.createElementNS(NS,'svg');s.setAttribute('viewBox','0 0 240 330');s.setAttribute('class','viSvg');s.setAttribute('role','img');s.setAttribute('aria-label','Dressurviereck 20 mal 40 Meter von oben');
- let h='<rect x="'+X0+'" y="'+Y0+'" width="'+(X1-X0)+'" height="'+(Y1-Y0)+'" fill="none" stroke="#6f746d" stroke-width="2.6"/>'+
+ let h='<g class="viGit">';for(let x=X0+30;x<X1;x+=30)h+='<line x1="'+x+'" y1="'+Y0+'" x2="'+x+'" y2="'+Y1+'" stroke="#dcdcdc"/>';for(let y=Y0+30;y<Y1;y+=30)if(y!==(Y0+Y1)/2)h+='<line x1="'+X0+'" y1="'+y+'" x2="'+X1+'" y2="'+y+'" stroke="#dcdcdc"/>';h+='</g><rect x="'+X0+'" y="'+Y0+'" width="'+(X1-X0)+'" height="'+(Y1-Y0)+'" fill="none" stroke="#6f746d" stroke-width="2.6"/>'+
  '<line x1="'+CX+'" y1="'+Y0+'" x2="'+CX+'" y2="'+Y1+'" stroke="#a5a5a5" stroke-width="1.6" stroke-dasharray="1.5 4" stroke-linecap="round"/>'+
  '<line x1="'+X0+'" y1="'+(Y0+Y1)/2+'" x2="'+X1+'" y2="'+(Y0+Y1)/2+'" stroke="#a5a5a5" stroke-width="1.6" stroke-dasharray="1.5 4" stroke-linecap="round"/>';
  if(masse&&!noM){
@@ -29,6 +29,7 @@ function arena(onTap,noM){
   [[Y1-36],[Y0+36]].forEach(a=>{h+='<line x1="'+(X0-6)+'" y1="'+a[0]+'" x2="'+(X0+2)+'" y2="'+a[0]+'" stroke="#6f746d" stroke-width="1.6"/>'});
   h+='<text class="vm" x="'+(CX+6)+'" y="'+(Y1-10)+'">20 m</text><text class="vm" x="'+(CX+6)+'" y="'+(Y0+18)+'">20 m</text>';
  }
+ [Y0+60,Y1-60].forEach(y=>[X0,X1].forEach(x=>{h+='<circle cx="'+x+'" cy="'+y+'" r="4" fill="#111"/>'}));
  s.innerHTML=h;
  L.forEach(l=>{
   const g=document.createElementNS(NS,'g');g.setAttribute('class','vl');g.setAttribute('data-l',l[0]);g.setAttribute('tabindex','0');g.setAttribute('role','button');g.setAttribute('aria-label','Buchstabe '+l[0]);
