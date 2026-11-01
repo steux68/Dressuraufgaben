@@ -102,10 +102,10 @@ const SETS=[
   alt:'Pferdeauge, nah',altE:'Horse eye, close-up',cap:'Das Auge von außen (Foto: Steuart Harrison). Begriffe nach Thal Enterprises, übersetzt.',capE:'The eye from the outside (photo: Steuart Harrison). Terms after Thal Enterprises, translated.'}
 ];
 const UI={
- de:{lern:'Lernen',quiz:'Quiz',full:'⤢ Vollbild',close:'✕ Schließen',names:'Namen',tip:'Tippe auf einen pulsierenden Punkt.',prev:'← Zurück',next:'Weiter →',
+ de:{lern:'Lernen',quiz:'Quiz',full:'⤢ Vollbild',close:'✕ Schließen',names:'Namen',tip:'Tippe auf einen pulsierenden Punkt.',prev:'← Zurück',next:'Weiter →',prevT:'Zurück',nextT:'Weiter',
   qn:'Wie heißt dieser Teil?',qw:n=>'Wo liegt: '+n+'?',qwt:'Tippe den Punkt an.',ok:'Richtig!',bad:'Leider nein.',nq:'Nächste Frage →',fin:'Fertig!',again:'Noch einmal',pts:'Punkte',of:'von',
   gal:'Tippe auf ein Bild, um die Punkte zu lernen.',more:'Weitere Bilder folgen.',xs:'Schließen'},
- en:{lern:'Learn',quiz:'Quiz',full:'⤢ Full screen',close:'✕ Close',names:'Names',tip:'Tap a pulsing dot.',prev:'← Back',next:'Next →',
+ en:{lern:'Learn',quiz:'Quiz',full:'⤢ Full screen',close:'✕ Close',names:'Names',tip:'Tap a pulsing dot.',prev:'← Back',next:'Next →',prevT:'Back',nextT:'Next',
   qn:'What is this part called?',qw:n=>'Where is the '+n+'?',qwt:'Tap the dot.',ok:'Correct!',bad:'Not quite.',nq:'Next question →',fin:'Done!',again:'Again',pts:'Points',of:'of',
   gal:'Tap a picture to learn its points.',more:'More pictures to come.',xs:'Close'}};
 const WSVG='<svg class="ar" width="28" height="28" viewBox="-12 -12 24 24" aria-hidden="true"><circle class="tr" r="9.5"/><path class="rg" d="M-7.88 -5.31A9.5 9.5 0 1 1 -7.88 5.31"/><path class="dt" transform="rotate(180)" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="-9.50" y="0">W</text></svg>';
@@ -214,7 +214,9 @@ function panel(){const B=$('aPanel'),u=t();B.textContent='';
  if(mode==='lern'){
   if(sel<0){B.appendChild(el('p','ds',u.tip));return;}
   const p=P[sel];B.appendChild(el('p','nm',nm(p)));B.appendChild(el('p','alt',lang==='en'?p[1]:p[2]));B.appendChild(el('p','ds',nt(p)));
-  const r=el('div','anaNav'),a=el('button',null,u.prev),b=el('button','primary',u.next);a.type=b.type='button';
+  const r=el('div','anaNav'),a=el('button','aSw w'),b=el('button','aSw e');a.type=b.type='button';
+  a.innerHTML=WSVG+'<span></span>';b.innerHTML='<span></span>'+ESVG;a.lastElementChild.textContent=u.prevT;b.firstElementChild.textContent=u.nextT;
+  a.setAttribute('aria-label',u.prevT);b.setAttribute('aria-label',u.nextT);
   a.onclick=()=>{sel=(sel+P.length-1)%P.length;paint();centre(sel);};b.onclick=()=>{sel=(sel+1)%P.length;paint();centre(sel);};r.append(a,b);B.appendChild(r);return;}
  if(qi>=Q.length){B.appendChild(el('p','nm',u.fin+' '+score+' '+u.of+' '+Q.length));const b=el('button','primary',u.again);b.type='button';b.onclick=()=>{startQuiz();paint();};B.appendChild(b);return;}
  const tg=P[Q[qi]];
