@@ -7,7 +7,8 @@ else:
     a="b.querySelector('.code').textContent=c;"
     assert s.count(a)==1; s=s.replace(a,blk)
 s=re.sub(r'/\* kreise-css \*/.*?/\* /kreise-css \*/\n','',s,flags=re.S)
-z='.ad.on,.ad.ok,.ad.bad{z-index:8}\n.alab{z-index:9}\n'
+sq='#p-w .tile .code{border-radius:0!important;width:52px;height:52px}\n'
+z=sq+'.ad.on,.ad.ok,.ad.bad{z-index:8}\n.alab{z-index:9}\n'
 s=re.sub(r'/\* ad-z-css \*/.*?/\* /ad-z-css \*/\n','',s,flags=re.S)
 i=s.rfind('</style>'); s=s[:i]+'/* ad-z-css */\n'+z+'/* /ad-z-css */\n'+s[i:]
 s=re.sub(r'(<meta name="app-version" content=")[^"]*"',r'\g<1>2026-11-01zzw"',s,count=1)
