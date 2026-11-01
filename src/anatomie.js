@@ -181,7 +181,7 @@ function layoutLabels(){const f=$('aFig');if(!f||!open)return;const FW=f.offsetW
   if(dd>13){const ld=document.createElement('i');ld.className='ald';ld.style.width=(dd-8)+'px';ld.style.transform='rotate('+Math.atan2(ny-cy,nx-cx)+'rad)';ds[e.i].appendChild(ld);}
   l.style.left=(e.r[0]-C[e.i][0]+14)+'px';l.style.top=(e.r[1]-C[e.i][1]+14)+'px';l.style.right='auto';l.style.transform='none';});}
 function fit(){const f=$('aFig');if(!f)return;
- if(!full){const st=$('aStage'),bw=st.clientWidth-76,bh=st.clientHeight-4;f.style.maxWidth='none';f.style.width=Math.max(60,Math.round(Math.min(bw,bh*W/H)))+'px';layoutLabels();return;}
+ if(!full){const st=$('aStage');st.style.height='';const bw=st.clientWidth-4,bh=st.clientHeight-4;f.style.maxWidth='none';const fw=Math.max(60,Math.round(Math.min(bw,bh*W/H)));f.style.width=fw+'px';st.style.height=(Math.round(fw*H/W)+6)+'px';layoutLabels();return;}
  f.style.maxWidth='none';const base=Math.min(innerWidth-20,(innerHeight-170)*W/H);f.style.width=Math.round(base*zoom)+'px';
  if(sel>=0&&mode==='lern')centre(sel);layoutLabels();}
 function centre(i){const s=$('aScroll'),f=$('aFig');if(!full)return;requestAnimationFrame(()=>{const w=f.offsetWidth,h=f.offsetHeight;
