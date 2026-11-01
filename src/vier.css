@@ -49,3 +49,4 @@
 #theo #thVi{flex:1 1 auto!important;min-height:0;overflow-y:auto;padding-bottom:14px;overscroll-behavior:contain}
 #thVi .vm{font-size:9px}#thVi .vb{font-weight:700;fill:#333}#thVi .vd line{stroke:#555;stroke-width:1}
 #thVi .vl text{font-size:8.4px}#thVi .vl.vx text{font-size:9.4px}
+#thVi .viIn{width:100%;box-sizing:border-box;font:inherit;font-size:.95rem;padding:8px 10px;border:1px solid #3a3c37;background:#fff;color:#111;border-radius:0;margin:2px 0 8px}

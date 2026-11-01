@@ -67,7 +67,12 @@ function lernen(){
  c.appendChild(el('p','viT','Das Dressurviereck'));
  c.appendChild(el('p','viD','20 × 40 m. Du reitest bei A hinein und siehst auf C. Links liegen K, E, H, rechts F, B, M. Die Reihenfolge A K E H C M B F geht im Uhrzeigersinn um die Bahn.'));
  c.appendChild(el('p','viD','Maße: 20 m breit, 40 m lang. Die schwarzen Punkte am Zaun liegen 10 m und 30 m von A entfernt. Das Gitter zeigt 5 × 5 m.'));
- c.appendChild(el('p','viD','Merkspruch (englisch): „All King Edward’s Horses Carry Many Big Fleas“. Erfinde dir einen deutschen dazu.'));
+ c.appendChild(el('p','viH','Merksprüche für A K E H C M B F'));
+ [['Englisch: „All King Edward’s Horses Carry Many Big Fleas“.'],['Vorschlag: „Alle Katzen essen Hering, Chiara mag Brot frisch.“'],['Vorschlag: „Anna kocht Eintopf, Hans chauffiert Mama bei Frost.“']].forEach(a=>c.appendChild(el('p','viD',a[0])));
+ let mine='';try{mine=localStorage.getItem('viMerk')||''}catch(e){}
+ const inp=el('input','viIn');inp.type='text';inp.placeholder='Dein eigener Merkspruch';inp.value=mine;inp.maxLength=120;inp.setAttribute('aria-label','Dein eigener Merkspruch');
+ inp.oninput=()=>{try{localStorage.setItem('viMerk',inp.value)}catch(e){}};
+ c.appendChild(inp);
  w.appendChild(c);
  return w;
 }
