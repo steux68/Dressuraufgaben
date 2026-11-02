@@ -1,5 +1,5 @@
 <!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>PASSAGE a–x</title><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.ico?v=6" sizes="any"><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png?v=6"><link rel="icon" type="image/png" sizes="512x512" href="icon-512.png?v=6"><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=6"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PASSAGE"><meta name="theme-color" content="#f5f6f2"><style id="brand-logo">.rule.m{display:none!important}#brand{gap:0!important;height:auto!important}#brand .bmark{width:min(calc(44vw - 2px),200px)!important;height:auto!important;display:block}#brand .bp,#brand .ba{font-family:inherit;font-weight:700;fill:#fff}#brand .ba{stroke:#fff;stroke-width:.5;letter-spacing:.7px}#brand .pw{font-family:inherit;font-weight:700;fill:#e30613;stroke:#e30613;stroke-width:1.6;stroke-linejoin:round;letter-spacing:.2px}#brand .pax{font-family:inherit;font-weight:700;fill:#0057d8;stroke:#0057d8;stroke-width:.5;letter-spacing:.7px}</style><style id="info-move">#infoBtn{display:none!important}.titlebar .wsw{margin-right:-6px!important}.copy .ilink{margin-left:12px;font:inherit;font-size:inherit;color:inherit;text-decoration:underline;background:none;border:0;padding:4px 2px;cursor:pointer}#tipInfo{text-decoration:underline;cursor:pointer}</style><style id="brand-dots">#brand .pw{fill:#fff!important;stroke:#e30613!important;stroke-width:.6px!important;stroke-dasharray:none!important}#brand .pax{fill:#e30613!important;stroke:#e30613!important}</style><style id="pwhat-css">#pwhatBtn{position:fixed;left:8px;bottom:calc(50% - var(--head)/2 + env(safe-area-inset-bottom,0px)/2 + 5px);z-index:46;writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:center;gap:2px;font:inherit;font-size:.8rem;font-style:italic;color:#0057d8;background:none;border:0;padding:4px 4px;cursor:pointer;text-decoration:none;white-space:nowrap}#pwhatBtn .pwi{writing-mode:horizontal-tb;transform:rotate(180deg);flex:none;width:17px;height:17px;border-radius:50%;background:#e30613;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;font-style:italic;line-height:1;text-decoration:none;margin-top:2px}</style></head><body>
-<meta name="app-version" content="2026-11-02zzz56"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-02zzz57"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -237,6 +237,36 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 #thVquiz .score{order:4;margin-top:6px;padding-top:6px;border-top:1px dotted #b8b8b8;font-size:12px;color:#888}
 #thVquiz .score strong{color:#111;font-weight:400}
 #thVquiz .score button{display:none}
+
+/* Figuren und Fragen im Popup-Look */
+#thFa,#thFe{position:absolute;top:50%;margin-top:-21px;width:42px;height:42px;min-height:0;border:0!important;padding:0;border-radius:50%!important;background:rgba(255,255,255,.82)!important;display:flex;align-items:center;justify-content:center;z-index:20;-webkit-tap-highlight-color:transparent}
+#thFa{left:6px}#thFe{right:6px}
+#thFa[hidden],#thFe[hidden]{display:none!important}
+#thFa:disabled,#thFe:disabled{opacity:.28}
+#thLearn .btns{display:none}
+#thLearn .card,#thQuest .card{background:none;border:0;box-shadow:none;padding:2px 4px;gap:0}
+#thNm{margin:0;color:#e30613;text-transform:uppercase;font-weight:700;font-size:1.35rem;line-height:1.15;letter-spacing:.01em}
+#thDs{margin:6px 0 0;font-size:.98rem;line-height:1.45;color:#222}
+#thDe{margin:6px 0 0;font-size:.9rem;color:#555}
+#thLearn .anaDl,#thGame .score,#thQuest>.score{margin:10px 0 0;padding-top:6px;border-top:1px dotted #b8b8b8;font-size:12px;color:#888}
+#thLearn .anaDl{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;line-height:1.3}
+#thLearn .anaDl dt{color:#888}#thLearn .anaDl dd{margin:0;color:#111}
+#thGame{display:flex;flex-direction:column;gap:6px}
+#thGame .qrow{display:none}
+#thGame .opts,#thQuest .opts{display:flex;flex-direction:column;gap:4px}
+#thGame .opts{order:1}#thGame .fb{order:2}#thGame .why{order:3}#thGame .score{order:4}
+#thGame .opt,#thQuest .opt{width:100%;text-align:left;min-height:0;padding:7px 10px;font-size:.95rem}
+#thGame .fb,#thQuest .fb{display:block!important;margin:2px 0 0;color:#e30613;text-transform:uppercase;font-weight:700;font-size:1.15rem;line-height:1.15;letter-spacing:.01em}
+#thGame .why,#thQuest .why{display:block!important;margin:0;font-size:.92rem;line-height:1.35;color:#222}
+#thGame .score strong,#thQuest .score strong{color:#111;font-weight:400}
+#thQuest .q{margin:4px 0 6px;font-size:1.05rem;font-weight:700;color:#111}
+#thQuest .card{justify-content:flex-start!important}
+#theo #thQuest #thQch{background:transparent!important;border:0!important;box-shadow:none!important}
+#thQuest .badge{color:#e30613;background:none!important;padding:0;text-transform:uppercase;font-weight:700;font-size:.8rem;letter-spacing:.04em}
+#thQuest{position:relative}
+#thQn{display:none}
+#thQe{position:static;width:42px;height:42px;min-height:0;border:0!important;padding:0;border-radius:50%!important;background:rgba(255,255,255,.82)!important;display:flex;align-items:center;justify-content:center;margin:6px 0 0 auto}
+#thQe:disabled{opacity:.28}
 </style>
 <div class="app">
 <header class="head">
@@ -348,12 +378,12 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 <g id="thFig"></g>
 </svg>
 <svg id="thEye" viewBox="0 0 320 330" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Gesichtsfeld des Pferdes von oben" style="display:none"><defs><pattern id="thHatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" fill="var(--sand)"/><line x1="0" y1="0" x2="0" y2="7" stroke="var(--muted)" stroke-width="2"/></pattern><linearGradient id="thHg" x1="0" x2="1"><stop offset="0" stop-color="#8f8f8f"/><stop offset=".5" stop-color="#bdbdbd"/><stop offset="1" stop-color="#8f8f8f"/></linearGradient></defs><g id="thEz"></g><g id="thEh"></g><g id="thEf" style="display:none"><image href="img/sehen_kopf.png" x="116.5" y="74.7" width="87.9" height="134.1" preserveAspectRatio="none"/></g><g id="thEl"></g><g id="thEy"></g></svg>
+<button type="button" class="tlar pw" id="thFa" aria-label="Zurück" hidden><svg class="ar" width="28" height="28" viewBox="-12 -12 24 24" aria-hidden="true"><circle class="tr" r="9.5"/><path class="rg" d="M-7.88 -5.31A9.5 9.5 0 1 1 -7.88 5.31"/><path class="dt" transform="rotate(180)" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="-9.50" y="0">W</text></svg></button><button type="button" class="tlar pe" id="thFe" aria-label="Weiter" hidden><svg class="ar" width="28" height="28" viewBox="-12 -12 24 24" aria-hidden="true"><circle class="tr" r="9.5"/><path class="rg" d="M7.88 5.31A9.5 9.5 0 1 1 7.88 -5.31"/><path class="dt" transform="rotate(0)" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="9.50" y="0">E</text></svg></button>
 <button type="button" class="tlar pw" id="thVa" aria-label="Zurück" hidden><svg class="ar" width="28" height="28" viewBox="-12 -12 24 24" aria-hidden="true"><circle class="tr" r="9.5"/><path class="rg" d="M-7.88 -5.31A9.5 9.5 0 1 1 -7.88 5.31"/><path class="dt" transform="rotate(180)" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="-9.50" y="0">W</text></svg></button><button type="button" class="tlar pe" id="thVe" aria-label="Weiter" hidden><svg class="ar" width="28" height="28" viewBox="-12 -12 24 24" aria-hidden="true"><circle class="tr" r="9.5"/><path class="rg" d="M7.88 5.31A9.5 9.5 0 1 1 7.88 -5.31"/><path class="dt" transform="rotate(0)" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="9.50" y="0">E</text></svg></button>
 </div>
 <div class="tp" id="thLearn">
 <div class="card">
-<div class="top"><span class="tests" id="thTg"></span><span class="count" id="thCt"></span></div>
-<p class="nm" id="thNm"></p><p class="ds" id="thDs"></p><p class="de" id="thDe"></p>
+<p class="nm" id="thNm"></p><p class="ds" id="thDs"></p><p class="de" id="thDe"></p><dl class="anaDl"><dt>Karte</dt><dd id="thCt"></dd><dt>Aufgaben</dt><dd><span class="tests" id="thTg"></span></dd></dl>
 </div>
 <div class="btns"><button id="thPv">← Zurück</button><button id="thNx" class="primary">Weiter →</button></div>
 </div>
@@ -375,6 +405,7 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 <p class="why" id="thQwhy"></p>
 </div>
 <button id="thQn" class="primary" disabled>Nächste Frage →</button>
+<button type="button" class="tlar pe" id="thQe" aria-label="Nächste Frage" disabled><svg class="ar" width="28" height="28" viewBox="-12 -12 24 24" aria-hidden="true"><circle class="tr" r="9.5"/><path class="rg" d="M7.88 5.31A9.5 9.5 0 1 1 7.88 -5.31"/><path class="dt" transform="rotate(0)" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="9.50" y="0">E</text></svg></button>
 </div>
 <div class="tp" id="thSee" hidden>
 <div id="thVlearn" class="vq">
@@ -804,7 +835,7 @@ function answer(k,b){
  if(right){score++;streak++;b.classList.add('ok');}
  else{streak=0;b.classList.add('bad');[...g('thOpts').children].find(x=>x.textContent===F[cur].n).classList.add('ok');}
  if(score>best){best=score;store.set('best_theo_fig',best);}
- g('thFb').textContent=right?'Richtig.':'Richtig wäre: '+F[cur].n+'.';why('thWhy',F[cur].d);
+ g('thFb').textContent=right?'Richtig.':'Leider falsch.';why('thWhy',F[cur].d);
  g('thSc').textContent=score;g('thMx').textContent=max;g('thSr').textContent=streak;g('thBs').textContent=best;
  g('thGn').disabled=false;
 }
@@ -828,7 +859,7 @@ function qask(){
 function qanswer(t,b){
  if(qdone)return;qdone=true;qm++;
  if(t===qcur.a){qs++;b.classList.add('ok');g('thQfb').textContent='Richtig.';}
- else{b.classList.add('bad');[...g('thQopts').children].find(x=>x.textContent===qcur.a).classList.add('ok');g('thQfb').textContent='Richtig wäre: '+qcur.a+'.';}
+ else{b.classList.add('bad');[...g('thQopts').children].find(x=>x.textContent===qcur.a).classList.add('ok');g('thQfb').textContent='Leider falsch.';}
  why('thQwhy',qcur.x||'');g('thQsc').textContent=qs;g('thQmx').textContent=qm;g('thQn').disabled=false;
 }
 g('thQn').onclick=qask;
@@ -1080,7 +1111,7 @@ function sub(which){
  g('thArena').style.display=which==='thsV'?'none':'';g('thEye').style.display=which==='thsV'?'':'none';
  if(quest&&!wip){const set=which==='thsS'?S:Q;if(QS!==set){QS=set;fillChap();qbag=[];qs=qm=0;g('thQsc').textContent=0;g('thQmx').textContent=0;}}
  if(which==='thsF')showLearn();else if(which==='thsG')ask();else if(which==='thsV')seeMode(vMode);else if(which==='thsH')hist();else if(which==='thsZ')quotes();else if(which==='thsP')horses();else if(which==='thsK')bodyLang();else if(which==='thsA')anaOpen();else if(which==='thsB'&&window.vierOpen)vierOpen();else if(!wip)qask();
- lockSoon();seeUi();
+ lockSoon();seeUi();figUi();
 }
 SUBS.forEach(id=>g(id).onclick=()=>sub(id));
 
@@ -1111,6 +1142,14 @@ function lockQuiz(){const f=g('thVfb'),w=g('thVwhy');f.style.minHeight='';w.styl
  ['Richtig.','Leider falsch.','Fertig: '+VR+' von '+VR+' richtig.'].forEach(t=>{f.textContent=t;mf=Math.max(mf,f.offsetHeight);});
  Object.values(VW).forEach(t=>{why('thVwhy',t);mw=Math.max(mw,w.offsetHeight);});
  f.textContent=kf;w.innerHTML=kw;f.style.minHeight=mf+'px';w.style.minHeight=mw+'px';}
+/* Figuren/Fragen: Pfeile steuern die vorhandenen Knoepfe */
+function figUi(){const l=!g('thLearn').hidden,q=!g('thGame').hidden;
+ g('thFa').hidden=!l;g('thFe').hidden=!(l||q);g('thFa').disabled=g('thPv').disabled;g('thFe').disabled=q?g('thGn').disabled:false;
+ g('thQe').disabled=g('thQn').disabled;}
+g('thFa').onclick=()=>g('thPv').click();
+g('thFe').onclick=()=>{if(!g('thGame').hidden)g('thGn').click();else g('thNx').click();};
+g('thQe').onclick=()=>g('thQn').click();
+['thPv','thGn','thQn'].forEach(id=>new MutationObserver(figUi).observe(g(id),{attributes:true}));
 let lockT=0;function lockSoon(){clearTimeout(lockT);lockT=setTimeout(()=>requestAnimationFrame(lockAll),60);}
 addEventListener('resize',lockSoon);addEventListener('orientationchange',lockSoon);
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(lockSoon);
