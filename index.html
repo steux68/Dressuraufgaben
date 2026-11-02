@@ -1,5 +1,5 @@
 <!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>PASSAGE a–x</title><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.ico?v=6" sizes="any"><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png?v=6"><link rel="icon" type="image/png" sizes="512x512" href="icon-512.png?v=6"><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=6"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PASSAGE"><meta name="theme-color" content="#f5f6f2"><style id="brand-logo">.rule.m{display:none!important}#brand{gap:0!important;height:auto!important}#brand .bmark{width:min(calc(44vw - 2px),200px)!important;height:auto!important;display:block}#brand .bp,#brand .ba{font-family:inherit;font-weight:700;fill:#fff}#brand .ba{stroke:#fff;stroke-width:.5;letter-spacing:.7px}#brand .pw{font-family:inherit;font-weight:700;fill:#e30613;stroke:#e30613;stroke-width:1.6;stroke-linejoin:round;letter-spacing:.2px}#brand .pax{font-family:inherit;font-weight:700;fill:#0057d8;stroke:#0057d8;stroke-width:.5;letter-spacing:.7px}</style><style id="info-move">#infoBtn{display:none!important}.titlebar .wsw{margin-right:-6px!important}.copy .ilink{margin-left:12px;font:inherit;font-size:inherit;color:inherit;text-decoration:underline;background:none;border:0;padding:4px 2px;cursor:pointer}#tipInfo{text-decoration:underline;cursor:pointer}</style><style id="brand-dots">#brand .pw{fill:#fff!important;stroke:#e30613!important;stroke-width:.6px!important;stroke-dasharray:none!important}#brand .pax{fill:#e30613!important;stroke:#e30613!important}</style><style id="pwhat-css">#pwhatBtn{position:fixed;left:8px;bottom:calc(50% - var(--head)/2 + env(safe-area-inset-bottom,0px)/2 + 5px);z-index:46;writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:center;gap:2px;font:inherit;font-size:.8rem;font-style:italic;color:#0057d8;background:none;border:0;padding:4px 4px;cursor:pointer;text-decoration:none;white-space:nowrap}#pwhatBtn .pwi{writing-mode:horizontal-tb;transform:rotate(180deg);flex:none;width:17px;height:17px;border-radius:50%;background:#e30613;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;font-style:italic;line-height:1;text-decoration:none;margin-top:2px}</style></head><body>
-<meta name="app-version" content="2026-11-02zzz60"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-02zzz61"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -1020,6 +1020,7 @@ const BL=[
 let bli=0;
 function bodyLang(){
  const root=g('thBody');root.innerHTML='';
+ root.appendChild(bodyModeSeg());if(bqz){bodyQuiz(root);return;}
  const seg=document.createElement('div');seg.className='anaSeg blseg';
  BL.forEach((b,i)=>{const x=document.createElement('button');x.type='button';x.textContent=b.k;x.setAttribute('aria-pressed',i===bli);x.onclick=()=>{bli=i;[...seg.children].forEach((c,j)=>c.setAttribute('aria-pressed',j===i));fill(i);};seg.appendChild(x);});
  const card=document.createElement('div');card.className='card blcard';
@@ -1068,6 +1069,33 @@ function health(){
  root.appendChild(seg);root.appendChild(card);root.appendChild(note);
  const lock=()=>{card.style.minHeight='';let m=0;for(let i=0;i<GE.length;i++){fill(i);m=Math.max(m,card.offsetHeight);}card.style.minHeight=m+'px';fill(gei);};
  fill(gei);lock();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{if(!g('thGes').hidden)lock();});
+}
+
+let bqz=false,BQ={l:[],i:0,ok:0,done:false,pick:-1};
+function bodyModeSeg(){const seg=document.createElement('div');seg.className='anaSeg bqseg';
+ [['Lernen',false],['Quiz',true]].forEach(a=>{const x=document.createElement('button');x.type='button';x.textContent=a[0];x.setAttribute('aria-pressed',bqz===a[1]);x.onclick=()=>{bqz=a[1];if(bqz)bqStart();bodyLang();};seg.appendChild(x);});return seg;}
+function bqStart(){const all=[];BL.forEach((b,gi)=>b.rows.forEach((r,ri)=>all.push({g:gi,k:b.k,t:b.t,q:r[0],a:r[1]})));
+ const sh=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+ BQ.l=sh(all).slice(0,10).map(q=>{const same=sh(all.filter(x=>x.a!==q.a&&x.g===q.g)),oth=sh(all.filter(x=>x.a!==q.a&&x.g!==q.g));
+  const w=same.concat(oth).slice(0,2).map(x=>x.a);const o=sh([q.a].concat(w));q.o=o;q.c=o.indexOf(q.a);return q;});
+ BQ.i=0;BQ.ok=0;BQ.done=false;BQ.pick=-1;BQ.h=0;}
+function bodyQuiz(root){
+ const card=document.createElement('div');card.className='card blcard bqcard';root.appendChild(card);
+ const n=BQ.l.length,two=x=>String(x).padStart(2,'0');
+ if(BQ.i>=n){card.innerHTML='<p class="blt">Ergebnis</p><p class="bqq">'+BQ.ok+' von '+n+' richtig.</p><div class="bqbar"><span>Körpersprache</span><span><button type="button" class="bqe" id="bqr" aria-label="Neu starten" style="width:auto;padding:0 10px">Neu starten</button></span></div>';
+  card.querySelector('#bqr').onclick=()=>{bqStart();bodyLang();};return;}
+ const q=BQ.l[BQ.i];
+ if(!BQ.h){let m=0;BQ.l.forEach(z=>{card.innerHTML=bqHTML(z,true,z.c,two,n);m=Math.max(m,card.offsetHeight);});BQ.h=m;}
+ card.style.minHeight=BQ.h+'px';card.innerHTML=bqHTML(q,BQ.done,BQ.pick,two,n);
+ card.querySelectorAll('.bqb').forEach(b=>b.onclick=()=>{if(BQ.done)return;BQ.pick=+b.dataset.i;BQ.done=true;if(BQ.pick===q.c)BQ.ok++;bodyLang();});
+ const nx=card.querySelector('#bqn');if(nx)nx.onclick=()=>{BQ.i++;BQ.done=false;BQ.pick=-1;bodyLang();};
+}
+function bqHTML(q,done,pick,two,n){
+ let h='<p class="blt">'+q.t+'</p><p class="bqq">'+q.q+'</p><div class="bqo">';
+ q.o.forEach((t,i)=>{let c='bqb';if(done){if(i===q.c)c+=' ok';else if(i===pick)c+=' bad';}h+='<button type="button" class="'+c+'" data-i="'+i+'"'+(done?' disabled':'')+'>'+t+(done&&i===q.c?' ✓':'')+'</button>';});
+ h+='</div><p class="bqf">'+(done?(pick===q.c?'<b class="g">Richtig.</b>':'<b class="r">Leider falsch.</b>'):'')+'</p>';
+ h+='<div class="bqbar"><span>'+two(BQ.i+1)+' / '+two(n)+' · '+BQ.ok+' richtig</span>'+(done?'<button type="button" class="bqe" id="bqn" aria-label="Weiter"><svg class="ar" width="28" height="28" viewBox="-12 -12 24 24" aria-hidden="true"><circle class="tr" r="9.5"/><path class="rg" d="M7.88 5.31A9.5 9.5 0 1 1 7.88 -5.31"/><path class="dt" transform="rotate(0)" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="9.50" y="0">E</text></svg></button>':'<span></span>')+'</div>';
+ return h;
 }
 function hist(){
  const box=g('thHl');if(box.childElementCount)return;let k=0;
@@ -2157,6 +2185,17 @@ a.tile.oeps{padding-left:8px!important;padding-right:8px!important}
 #thVi .vl.blind text{fill:transparent}
 #thVi .viBody>.viSvg{width:min(100%,calc(40vh*.7))!important}
 #thGes .blcard{padding:12px 14px;margin:0 0 8px}#thGes .blt{margin:0 0 8px;color:#e30613;text-transform:uppercase;font-weight:700;font-size:1.35rem;line-height:1.15;letter-spacing:.01em}#thGes .bldl{margin:0;padding:6px 0 0;border-top:1px dotted #b8b8b8}#thGes .bldl dt{margin:10px 0 2px;font-weight:700;font-size:.98rem;color:#111}#thGes .bldl dd{margin:0;font-size:.98rem;line-height:1.4;color:#222}
+#thBody .bqseg{margin:8px 0 4px}
+#thBody .bqcard{display:flex;flex-direction:column}#thBody .bqcard .bqbar{margin-top:auto}#thBody .bqcard .bqf{margin-bottom:8px}
+#thBody .bqq{margin:10px 0 8px;font-weight:700;font-size:1.05rem;color:#111;line-height:1.3}
+#thBody .bqo{display:flex;flex-direction:column;gap:6px}
+#thBody .bqb{text-align:left;padding:10px 12px;font-size:.95rem;line-height:1.35;color:#222;background:#fff;border:0;outline:1px dotted #9a9a96;outline-offset:-1px;min-height:44px}
+#thBody .bqb:disabled{opacity:1;color:#222}
+#thBody .bqb.ok{background:#d4ff3a;outline:1px solid #7a9a00;font-weight:700}
+#thBody .bqb.bad{background:#fbe3e1;outline:1px dotted #e30613;color:#e30613}
+#thBody .bqf{margin:8px 0 0;min-height:1.4em;font-size:.98rem}#thBody .bqf .g{color:#1a7f37}#thBody .bqf .r{color:#e30613}
+#thBody .bqbar{display:flex;align-items:center;justify-content:space-between;margin-top:8px;padding-top:6px;border-top:1px dotted #b8b8b8;font-size:12px;color:#888;min-height:46px}
+#thBody .bqe{position:static;width:42px;height:42px;padding:0;border:0!important;border-radius:50%!important;background:rgba(255,255,255,.82)!important;display:flex;align-items:center;justify-content:center;color:#666}
 </style>
 <script>
 /* Zurück auf der langen Startseite: erst nach oben zur Titelseite, dann aus der App */
