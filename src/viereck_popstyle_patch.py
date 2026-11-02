@@ -12,5 +12,18 @@ if '/* Viereck-Spiel Popup-Look */' not in s:
     i=s.index('</style>',s.index('#thVi .viOpt{font-size:1.05rem'))
     s=s[:i]+css+s[i:]
 if '--noversion' not in sys.argv:
-    s=re.sub(r'(<meta name="app-version" content=")([^"]*)(")',lambda mm:mm.group(1)+'2026-11-02zzz58'+mm.group(3),s,count=1)
+    s=re.sub(r'(<meta name="app-version" content=")([^"]*)(")',lambda mm:mm.group(1)+'2026-11-02zzz59'+mm.group(3),s,count=1)
+open('index.html','w',encoding='utf-8').write(s)
+
+# Buchstaben bei "Wo ist X?" verdecken, bis geantwortet ist; Viereck im Spiel etwas kleiner
+s=open('index.html',encoding='utf-8').read()
+if 'vl.blind' not in s:
+    old=" else if(!done)c.appendChild(el('p','viD','Tippe die Stelle im Viereck an.'));"
+    assert old in s
+    s=s.replace(old," else if(!done){s.querySelectorAll('.vl').forEach(g=>g.classList.add('blind'));c.appendChild(el('p','viD','Tippe die Stelle im Viereck an.'));}",1)
+    i=s.index('</style>',s.index('/* Viereck-Spiel Popup-Look */'))
+    s=s[:i]+"#thVi .vl.blind text{fill:transparent}\n"+s[i:]
+if 'viBody>.viSvg' not in s:
+    i=s.index('</style>',s.index('/* Viereck-Spiel Popup-Look */'))
+    s=s[:i]+"#thVi .viBody>.viSvg{width:min(100%,calc(40vh*.7))!important}\n"+s[i:]
 open('index.html','w',encoding='utf-8').write(s)
