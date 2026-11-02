@@ -1,5 +1,5 @@
 <!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>PASSAGE a–x</title><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.ico?v=6" sizes="any"><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png?v=6"><link rel="icon" type="image/png" sizes="512x512" href="icon-512.png?v=6"><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=6"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PASSAGE"><meta name="theme-color" content="#f5f6f2"><style id="brand-logo">.rule.m{display:none!important}#brand{gap:0!important;height:auto!important}#brand .bmark{width:min(calc(44vw - 2px),200px)!important;height:auto!important;display:block}#brand .bp,#brand .ba{font-family:inherit;font-weight:700;fill:#fff}#brand .ba{stroke:#fff;stroke-width:.5;letter-spacing:.7px}#brand .pw{font-family:inherit;font-weight:700;fill:#e30613;stroke:#e30613;stroke-width:1.6;stroke-linejoin:round;letter-spacing:.2px}#brand .pax{font-family:inherit;font-weight:700;fill:#0057d8;stroke:#0057d8;stroke-width:.5;letter-spacing:.7px}</style><style id="info-move">#infoBtn{display:none!important}.titlebar .wsw{margin-right:-6px!important}.copy .ilink{margin-left:12px;font:inherit;font-size:inherit;color:inherit;text-decoration:underline;background:none;border:0;padding:4px 2px;cursor:pointer}#tipInfo{text-decoration:underline;cursor:pointer}</style><style id="brand-dots">#brand .pw{fill:#fff!important;stroke:#e30613!important;stroke-width:.6px!important;stroke-dasharray:none!important}#brand .pax{fill:#e30613!important;stroke:#e30613!important}</style><style id="pwhat-css">#pwhatBtn{position:fixed;left:8px;bottom:calc(50% - var(--head)/2 + env(safe-area-inset-bottom,0px)/2 + 5px);z-index:46;writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:center;gap:2px;font:inherit;font-size:.8rem;font-style:italic;color:#0057d8;background:none;border:0;padding:4px 4px;cursor:pointer;text-decoration:none;white-space:nowrap}#pwhatBtn .pwi{writing-mode:horizontal-tb;transform:rotate(180deg);flex:none;width:17px;height:17px;border-radius:50%;background:#e30613;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;font-style:italic;line-height:1;text-decoration:none;margin-top:2px}</style></head><body>
-<meta name="app-version" content="2026-11-02zzz51"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-02zzz52"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -324,6 +324,7 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 <button id="thsQ" aria-pressed="false">Fragen</button>
 <button id="thsS" aria-pressed="false">Situationen</button>
 <button id="thsV" aria-pressed="false">Sehen</button>
+<button id="thsK" aria-pressed="false">Körpersprache</button>
 <button id="thsA" aria-pressed="false">Anatomie</button>
 <button id="thsB" aria-pressed="false">Viereck</button>
 <button id="thsH" aria-pressed="false">Geschichte</button>
@@ -394,6 +395,7 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 <div class="tp" id="thVi" hidden aria-label="Das Viereck"></div>
 <div class="tp" id="thHist" hidden><div id="thHl"></div><p class="tline">Eigene Kurztexte, Stand Oktober 2026. „mehr ↗“ öffnet die Quelle.</p></div>
 <div class="tp" id="thQuo" hidden><div id="thZl"></div><p class="tline">Antippen öffnet die Quelle. Übersetzungen ins Deutsche: eigene, wenn nicht anders angegeben.</p></div>
+<div class="tp" id="thBody" hidden></div>
 <div class="tp" id="thHorse" hidden>
 <div class="card wip"><p class="wipt">In Vorbereitung</p><p class="ds">Hier stellen wir die Pferde der Reitschule Steinbach vor: mit Foto, Wesen und Eigenheiten, dazu ein kleines Quiz. Die Profile kommen erst mit Zustimmung der Reitschule.</p></div>
 <div id="thHlist"></div>
@@ -954,6 +956,48 @@ const Z=[
  {i:'?',who:'Unbekannt',when:'oft Winston Churchill zugeschrieben',q:'Das Äußere eines Pferdes tut dem Inneren des Menschen gut.',o:'There is something about the outside of a horse that is good for the inside of a man.',n:'Nicht von Churchill. Schon im 19. Jh. wurde der Satz anderen zugeschrieben, etwa dem Prediger Henry Ward Beecher.',u:'https://richardlangworth.com/horses'},
  {i:'WC',who:'Winston Churchill',when:'My Early Life · 1930',q:'Junge Männer wurden oft durch Pferdebesitz oder Pferdewetten ruiniert, aber nie durchs Reiten.',o:'… ruined through owning horses, or through backing horses, but never through riding them.',n:'Das ist wirklich von ihm.',u:'https://richardlangworth.com/horses'}
 ];
+
+const BL=[
+ {k:'Ohren',t:'Die Ohren',rows:[
+  ['Nach vorn gerichtet','Das Pferd ist aufmerksam und interessiert an dem, was vor ihm ist.'],
+  ['Zur Seite, locker, hängend','Es ist entspannt, zufrieden oder döst.'],
+  ['Ein Ohr nach hinten, eines vorn','Es hört in zwei Richtungen. Beim Reiten oft: „Ich höre auf dich.“'],
+  ['Eng nach hinten angelegt','Das Pferd ist wütend oder droht. Vorsicht: Tritt oder Biss sind möglich.'],
+  ['Schnelles Drehen und Zucken','Es sucht ein Geräusch und ist unsicher, woher es kommt.']]},
+ {k:'Augen',t:'Die Augen',rows:[
+  ['Weich, halb geschlossen','Das Pferd ist entspannt oder schläfrig.'],
+  ['Weit offen, das Weiße sichtbar','Es ist erschrocken oder gestresst. Ruhig bleiben und nicht bedrängen.'],
+  ['Starr, angespannter Blick','Das Pferd ist nervös und sucht einen Ausweg.']]},
+ {k:'Maul',t:'Maul und Nüstern',rows:[
+  ['Unterlippe hängt, Kiefer locker','Tiefe Entspannung, das Pferd döst.'],
+  ['Lecken und Kauen','Eine Spannung löst sich oder das Pferd verarbeitet gerade etwas Neues.'],
+  ['Weite Nüstern, feste Lippen','Anspannung, Angst, Schmerz oder große Anstrengung.'],
+  ['Oberlippe hochgekrempelt (Flehmen)','Das Pferd prüft einen neuen oder starken Geruch.']]},
+ {k:'Schweif',t:'Der Schweif',rows:[
+  ['Locker hängend','Das Pferd ist ruhig und fühlt sich wohl.'],
+  ['Hoch getragen','Es ist aufgeregt, aufmerksam und bereit loszulaufen.'],
+  ['Fest eingeklemmt','Angst, Schmerz oder starker Stress.'],
+  ['Kräftiges Schlagen','Ärger oder Ungeduld, im Sommer oft einfach Fliegen.']]},
+ {k:'Haltung',t:'Haltung und Beine',rows:[
+  ['Kopf und Hals tief','Das Pferd vertraut dir und ist entspannt.'],
+  ['Kopf hoch, Rücken steif','Es ist alarmiert und bereit zur Flucht.'],
+  ['Ein Hinterhuf locker aufgestellt','Das Pferd ruht und fühlt sich sicher.'],
+  ['Scharren und Stampfen','Ungeduld, Langeweile oder Ärger.']]}
+];
+let bli=0;
+function bodyLang(){
+ const root=g('thBody');root.innerHTML='';
+ const seg=document.createElement('div');seg.className='anaSeg blseg';
+ BL.forEach((b,i)=>{const x=document.createElement('button');x.type='button';x.textContent=b.k;x.setAttribute('aria-pressed',i===bli);x.onclick=()=>{bli=i;[...seg.children].forEach((c,j)=>c.setAttribute('aria-pressed',j===i));fill(i);};seg.appendChild(x);});
+ const card=document.createElement('div');card.className='card blcard';
+ const note=document.createElement('p');note.className='tline';
+ note.textContent='Immer mehrere Zeichen zusammen lesen und das Pferd nie von hinten ansprechen. Entwurf, mit Reitlehrer abgleichen. Nach allgemeinen Verhaltensratgebern (u. a. RSPCA, EQUUS, Horseware), in eigenen Worten.';
+ const fill=i=>{const b=BL[i];card.innerHTML='';const h=document.createElement('p');h.className='blt';h.textContent=b.t;card.appendChild(h);
+  const dl=document.createElement('dl');dl.className='bldl';b.rows.forEach(r=>{const dt=document.createElement('dt');dt.textContent=r[0];const dd=document.createElement('dd');dd.textContent=r[1];dl.appendChild(dt);dl.appendChild(dd);});card.appendChild(dl);};
+ root.appendChild(seg);root.appendChild(card);root.appendChild(note);
+ const lock=()=>{card.style.minHeight='';let m=0;for(let i=0;i<BL.length;i++){fill(i);m=Math.max(m,card.offsetHeight);}card.style.minHeight=m+'px';fill(bli);};
+ fill(bli);lock();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{if(!g('thBody').hidden)lock();});
+}
 function hist(){
  const box=g('thHl');if(box.childElementCount)return;let k=0;
  H.forEach(r=>{
@@ -1024,18 +1068,18 @@ function horses(){
 }
 
 let current='thsF';
-const SUBS=['thsF','thsG','thsQ','thsS','thsV','thsA','thsB','thsH','thsZ','thsP'],SUBT=['thsF','thsG','thsQ'],SUBG=['thsS','thsV','thsA','thsB','thsP'],SUBH=['thsH','thsZ'];let gen=false,curT='thsF',curG='thsS',curH='thsH';
+const SUBS=['thsF','thsG','thsQ','thsS','thsV','thsK','thsA','thsB','thsH','thsZ','thsP'],SUBT=['thsF','thsG','thsQ'],SUBG=['thsS','thsV','thsK','thsA','thsB','thsP'],SUBH=['thsH','thsZ'];let gen=false,curT='thsF',curG='thsS',curH='thsH';
 function group(G){gen=G;const set=G==='h'?SUBH:G?SUBG:SUBT;SUBS.forEach(id=>g(id).hidden=!set.includes(id));}
 function sub(which){
  current=which;if(gen==='h')curH=which;else if(gen)curG=which;else curT=which;
  SUBS.forEach(id=>g(id).setAttribute('aria-pressed',id===which));
  const quest=which==='thsQ'||which==='thsS',wip=which==='thsQ'&&!TESTS_WITH.includes(curId);
  g('thLearn').hidden=which!=='thsF';g('thGame').hidden=which!=='thsG';g('thQuest').hidden=!quest||wip;g('thWip').hidden=!wip;
- g('thSee').hidden=which!=='thsV';g('thHorse').hidden=which!=='thsP';g('thAna').hidden=which!=='thsA';g('thVi').hidden=which!=='thsB';if(which!=='thsB'&&window.vierClose)vierClose();if(which!=='thsA'&&window.anaClose)anaClose();if(which!=='thsP'&&window.pferdeClose)pferdeClose();g('thHist').hidden=which!=='thsH';g('thQuo').hidden=which!=='thsZ';
- g('thStage').hidden=quest||['thsP','thsH','thsZ','thsA','thsB'].includes(which);
+ g('thSee').hidden=which!=='thsV';g('thHorse').hidden=which!=='thsP';g('thBody').hidden=which!=='thsK';g('thAna').hidden=which!=='thsA';g('thVi').hidden=which!=='thsB';if(which!=='thsB'&&window.vierClose)vierClose();if(which!=='thsA'&&window.anaClose)anaClose();if(which!=='thsP'&&window.pferdeClose)pferdeClose();g('thHist').hidden=which!=='thsH';g('thQuo').hidden=which!=='thsZ';
+ g('thStage').hidden=quest||['thsP','thsH','thsZ','thsA','thsB','thsK'].includes(which);
  g('thArena').style.display=which==='thsV'?'none':'';g('thEye').style.display=which==='thsV'?'':'none';
  if(quest&&!wip){const set=which==='thsS'?S:Q;if(QS!==set){QS=set;fillChap();qbag=[];qs=qm=0;g('thQsc').textContent=0;g('thQmx').textContent=0;}}
- if(which==='thsF')showLearn();else if(which==='thsG')ask();else if(which==='thsV')seeMode(vMode);else if(which==='thsH')hist();else if(which==='thsZ')quotes();else if(which==='thsP')horses();else if(which==='thsA')anaOpen();else if(which==='thsB'&&window.vierOpen)vierOpen();else if(!wip)qask();
+ if(which==='thsF')showLearn();else if(which==='thsG')ask();else if(which==='thsV')seeMode(vMode);else if(which==='thsH')hist();else if(which==='thsZ')quotes();else if(which==='thsP')horses();else if(which==='thsK')bodyLang();else if(which==='thsA')anaOpen();else if(which==='thsB'&&window.vierOpen)vierOpen();else if(!wip)qask();
  lockSoon();seeUi();
 }
 SUBS.forEach(id=>g(id).onclick=()=>sub(id));
@@ -1437,6 +1481,7 @@ GAL.reverse();/* neueste zuerst: neue Eintraege ans Ende der Liste schreiben */
  const PW=mk('p-w','hsec');
  [['thsS','Si','Situationen','„Was tust du, wenn …?“ Reitbahn, Stall, Gelände, Straße'],
   ['thsV','Se','Sehen','Wie das Pferd sieht: Gesichtsfeld, tote Winkel, Quiz'],
+  ['thsK','Kö','Körpersprache','Ohren, Augen, Maul, Schweif und Haltung: was dir das Pferd zeigt'],
   ['thsA','An','Anatomie','Skelett des Pferdes: Knochen benennen, Quiz (Deutsch / English)'],
   ['thsB','Vi','Das Viereck','Buchstaben, Maße, Spiel und Geschichte der Bahn'],
   ['thsP','Pf','Unsere Pferde','Die Pferde der Reitschule (in Vorbereitung)']].forEach(([id,c,n,d])=>{
@@ -2004,6 +2049,13 @@ a.tile.oeps{padding-left:8px!important;padding-right:8px!important}
 #gfsx{left:10px;right:auto;top:10px;width:auto;height:44px;padding:0 18px 0 10px;border-radius:22px!important;display:flex;align-items:center;gap:4px;color:#fff;font:700 15px/1 inherit}
 #gfsx svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 #gfsx span{letter-spacing:.02em}
+
+.blseg{flex-wrap:wrap;margin:8px 0 10px}.blseg button{margin-left:0;margin-top:-1.5px}
+#thBody .blcard{padding:12px 14px;margin:0 0 8px}
+#thBody .blt{margin:0 0 8px;color:#e30613;text-transform:uppercase;font-weight:700;font-size:1.35rem;line-height:1.15;letter-spacing:.01em}
+#thBody .bldl{margin:0;padding:6px 0 0;border-top:1px dotted #b8b8b8}
+#thBody .bldl dt{margin:10px 0 2px;font-weight:700;font-size:.98rem;color:#111}
+#thBody .bldl dd{margin:0;font-size:.98rem;line-height:1.4;color:#222}
 </style>
 <script>
 /* Zurück auf der langen Startseite: erst nach oben zur Titelseite, dann aus der App */
