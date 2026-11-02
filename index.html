@@ -1,5 +1,5 @@
 <!doctype html><html data-theme="light"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>PASSAGE a–x</title><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.ico?v=6" sizes="any"><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png?v=6"><link rel="icon" type="image/png" sizes="512x512" href="icon-512.png?v=6"><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=6"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PASSAGE"><meta name="theme-color" content="#f5f6f2"><style id="brand-logo">.rule.m{display:none!important}#brand{gap:0!important;height:auto!important}#brand .bmark{width:min(calc(44vw - 2px),200px)!important;height:auto!important;display:block}#brand .bp,#brand .ba{font-family:inherit;font-weight:700;fill:#fff}#brand .ba{stroke:#fff;stroke-width:.5;letter-spacing:.7px}#brand .pw{font-family:inherit;font-weight:700;fill:#e30613;stroke:#e30613;stroke-width:1.6;stroke-linejoin:round;letter-spacing:.2px}#brand .pax{font-family:inherit;font-weight:700;fill:#0057d8;stroke:#0057d8;stroke-width:.5;letter-spacing:.7px}</style><style id="info-move">#infoBtn{display:none!important}.titlebar .wsw{margin-right:-6px!important}.copy .ilink{margin-left:12px;font:inherit;font-size:inherit;color:inherit;text-decoration:underline;background:none;border:0;padding:4px 2px;cursor:pointer}#tipInfo{text-decoration:underline;cursor:pointer}</style><style id="brand-dots">#brand .pw{fill:#fff!important;stroke:#e30613!important;stroke-width:.6px!important;stroke-dasharray:none!important}#brand .pax{fill:#e30613!important;stroke:#e30613!important}</style><style id="pwhat-css">#pwhatBtn{position:fixed;left:8px;bottom:calc(50% - var(--head)/2 + env(safe-area-inset-bottom,0px)/2 + 5px);z-index:46;writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:center;gap:2px;font:inherit;font-size:.8rem;font-style:italic;color:#0057d8;background:none;border:0;padding:4px 4px;cursor:pointer;text-decoration:none;white-space:nowrap}#pwhatBtn .pwi{writing-mode:horizontal-tb;transform:rotate(180deg);flex:none;width:17px;height:17px;border-radius:50%;background:#e30613;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;font-style:italic;line-height:1;text-decoration:none;margin-top:2px}</style></head><body>
-<meta name="app-version" content="2026-11-02zzz42"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-02zzz43"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -212,6 +212,31 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 /* Spiel-Fortschritt (25.10.) */
 #gq .gc{display:inline-block;margin-right:8px;padding:1px 8px;border-radius:7px;background:var(--sand);color:var(--fg);font-size:.8rem;font-weight:700;font-variant-numeric:tabular-nums;vertical-align:1px}
 @media (max-height:720px){.app{gap:6px;padding-block:6px 8px;min-height:540px}.logo svg{height:66px}.card{padding:5px 10px}button{padding:6px 8px}.opt{padding:3px 10px}.stage{min-height:140px}.panels{height:196px}.opt{height:38px}}
+
+/* Sehen im Popup-Look */
+#thStage{position:relative}
+#thVa,#thVe{position:absolute;top:50%;margin-top:-21px;width:42px;height:42px;min-height:0;border:0!important;padding:0;border-radius:50%!important;background:rgba(255,255,255,.82)!important;display:flex;align-items:center;justify-content:center;z-index:20;-webkit-tap-highlight-color:transparent}
+#thVa{left:6px}#thVe{right:6px}
+#thVa[hidden],#thVe[hidden]{display:none!important}
+#thVa:disabled,#thVe:disabled{opacity:.28}
+#thVseg{display:flex;margin:6px 0 2px}#thVseg[hidden]{display:none}
+#thVhint{margin:2px 0;text-align:center;font-size:.95rem;color:#222}#thVhint[hidden]{display:none}
+#thSee .btns{display:none}
+#thVlearn .card{background:none;border:0;box-shadow:none;padding:2px 4px;gap:0}
+#thVnm{margin:0;color:#e30613;text-transform:uppercase;font-weight:700;font-size:1.35rem;line-height:1.15;letter-spacing:.01em}
+#thVds{margin:6px 0 0;font-size:.98rem;line-height:1.45;color:#222}
+#thSee .anaDl{margin:10px 0 0;padding-top:6px;border-top:1px dotted #b8b8b8;display:grid;grid-template-columns:auto 1fr;gap:2px 10px;font-size:12px;line-height:1.3}
+#thSee .anaDl dt{color:#888}#thSee .anaDl dd{margin:0;color:#111}
+#thVquiz{display:flex;flex-direction:column;gap:6px}
+#thVquiz .qrow{display:none}
+#thVquiz .opts{order:1;display:flex;flex-direction:column;gap:4px}
+#thVquiz .opt{width:100%;text-align:left;min-height:0;padding:7px 10px;font-size:.95rem}
+#thVquiz .fb{order:2;display:block!important;margin:2px 0 0;color:#e30613;text-transform:uppercase;font-weight:700;font-size:1.15rem;line-height:1.15;letter-spacing:.01em}
+#thVquiz .why{order:3;display:block!important;margin:0;font-size:.92rem;line-height:1.35;color:#222}
+#thVquiz .why b{color:#222;font-weight:700}
+#thVquiz .score{order:4;margin-top:6px;padding-top:6px;border-top:1px dotted #b8b8b8;font-size:12px;color:#888}
+#thVquiz .score strong{color:#111;font-weight:400}
+#thVquiz .score button{display:none}
 </style>
 <div class="app">
 <header class="head">
@@ -305,6 +330,8 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 <button id="thsZ" aria-pressed="false">Zitate</button>
 <button id="thsP" aria-pressed="false">Unsere Pferde</button>
 </div></div>
+<div class="anaSeg" id="thVseg" hidden><button type="button" id="thVsL" aria-pressed="true">Lernen</button><button type="button" id="thVsQ" aria-pressed="false">Quiz</button></div>
+<p class="vhint" id="thVhint" hidden>Wo bist du? Kann dich das Pferd sehen?</p>
 <div id="thStage">
 <svg id="thArena" viewBox="70 6 240 386" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Dressurviereck 20 × 40 m mit der Hufschlagfigur">
 <defs><marker id="thArrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1L8 5L1 9" fill="none" stroke="var(--trab)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
@@ -320,6 +347,7 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 <g id="thFig"></g>
 </svg>
 <svg id="thEye" viewBox="0 0 320 330" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Gesichtsfeld des Pferdes von oben" style="display:none"><defs><pattern id="thHatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" fill="var(--sand)"/><line x1="0" y1="0" x2="0" y2="7" stroke="var(--muted)" stroke-width="2"/></pattern><linearGradient id="thHg" x1="0" x2="1"><stop offset="0" stop-color="#8f8f8f"/><stop offset=".5" stop-color="#bdbdbd"/><stop offset="1" stop-color="#8f8f8f"/></linearGradient></defs><g id="thEz"></g><g id="thEh"></g><g id="thEf" style="display:none"><image href="img/sehen_kopf.png" x="116.5" y="74.7" width="87.9" height="134.1" preserveAspectRatio="none"/></g><g id="thEl"></g><g id="thEy"></g></svg>
+<button type="button" class="tlar pw" id="thVa" aria-label="Zurück" hidden><svg class="ar" width="28" height="28" viewBox="-12 -12 24 24" aria-hidden="true"><circle class="tr" r="9.5"/><path class="rg" d="M-7.88 -5.31A9.5 9.5 0 1 1 -7.88 5.31"/><path class="dt" transform="rotate(180)" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="-9.50" y="0">W</text></svg></button><button type="button" class="tlar pe" id="thVe" aria-label="Weiter" hidden><svg class="ar" width="28" height="28" viewBox="-12 -12 24 24" aria-hidden="true"><circle class="tr" r="9.5"/><path class="rg" d="M7.88 5.31A9.5 9.5 0 1 1 7.88 -5.31"/><path class="dt" transform="rotate(0)" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="9.50" y="0">E</text></svg></button>
 </div>
 <div class="tp" id="thLearn">
 <div class="card">
@@ -350,8 +378,7 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 <div class="tp" id="thSee" hidden>
 <div id="thVlearn" class="vq">
 <div class="card">
-<div class="top"><span class="badge">Sehen</span><span class="count" id="thVct"></span></div>
-<p class="nm" id="thVnm"></p><p class="ds" id="thVds"></p>
+<p class="nm" id="thVnm"></p><p class="ds" id="thVds"></p><dl class="anaDl"><dt>Karte</dt><dd id="thVct"></dd><dt>Thema</dt><dd>Sehen</dd></dl>
 </div>
 <div class="btns"><button id="thVpv">← Zurück</button><button id="thVnx" class="primary">Weiter →</button><button id="thVgo" class="mini">Quiz</button></div>
 </div>
@@ -823,7 +850,7 @@ function el(tag,at,par){const e=document.createElementNS(NS,tag);for(const k in 
  const h=g('thEh');
  el('image',{href:'img/sehen_oben.png',x:134.46,y:129.75,width:49.95,height:161.10,preserveAspectRatio:'none'},h);
  const l=g('thEl');
- [['beide Augen',160,82],['ein Auge',44,150],['ein Auge',276,150],['toter Winkel',160,324]].forEach(([t,x,y])=>{el('text',{class:'lbl',x,y},l).textContent=t;});
+ [['beide Augen',160,82],['ein Auge',72,150],['ein Auge',248,150],['toter Winkel',160,324]].forEach(([t,x,y])=>{el('text',{class:'lbl',x,y},l).textContent=t;});
 })();
 let vi=0,vMode='l';
 function seeMark(k){g('thEye').classList.toggle('dim',!!k);[...g('thEz').children].forEach(p=>p.classList.toggle('sel',!!k&&p.dataset.k===k));}
@@ -831,7 +858,7 @@ function seeFront(on){
  g('thEz').setAttribute('transform',on?'rotate(180 160 150)':'');
  g('thEh').style.display=on?'none':'';g('thEf').style.display=on?'':'none';
  const l=g('thEl');l.textContent='';
- (on?[['beide Augen',160,266],['ein Auge',44,150],['ein Auge',276,150],['toter Winkel',160,24]]:[['beide Augen',160,82],['ein Auge',44,150],['ein Auge',276,150],['toter Winkel',160,324]]).forEach(([t,x,y])=>{el('text',{class:'lbl',x,y},l).textContent=t;});
+ (on?[['beide Augen',160,266],['ein Auge',72,150],['ein Auge',248,150],['toter Winkel',160,24]]:[['beide Augen',160,82],['ein Auge',72,150],['ein Auge',248,150],['toter Winkel',160,324]]).forEach(([t,x,y])=>{el('text',{class:'lbl',x,y},l).textContent=t;});
  g('thEye').setAttribute('aria-label',on?'Gesichtsfeld des Pferdes, Kopf von vorn':'Gesichtsfeld des Pferdes von oben');
 }
 function seeShow(){
@@ -866,7 +893,7 @@ function vAsk(){
 function vAnswer(t,b){
  if(vdone)return;vdone=true;vm++;const ok=t===VA[vk];
  if(ok){vs++;b.classList.add('ok');g('thVfb').textContent='Richtig.';}
- else{b.classList.add('bad');[...g('thVopts').children].find(x=>x.textContent===VA[vk]).classList.add('ok');g('thVfb').textContent='Richtig wäre: '+VA[vk]+'.';}
+ else{b.classList.add('bad');[...g('thVopts').children].find(x=>x.textContent===VA[vk]).classList.add('ok');g('thVfb').textContent='Leider falsch.';}
  g('thEye').classList.remove('quiz');seeMark(vk);why('thVwhy',VW[vk]);
  g('thVsc').textContent=vs;g('thVmx').textContent=vm;g('thVnext').disabled=false;
  g('thVnext').textContent=vn>=VR?'Ergebnis →':'Weiter →';
@@ -878,7 +905,7 @@ function vEnd(){
  g('thVnext').disabled=true;
 }
 function vStart(){vq=[];vn=vs=vm=0;g('thVsc').textContent=0;g('thVmx').textContent=0;g('thVnext').textContent='Weiter →';vAsk();}
-function seeMode(m){vMode=m;lockSoon();if(m==='q')seeFront(false);g('thEye').classList.remove('quiz');g('thVlearn').hidden=m!=='l';g('thVquiz').hidden=m!=='q';if(m==='q')vStart();else seeShow();}
+function seeMode(m){vMode=m;lockSoon();seeUi();if(m==='q')seeFront(false);g('thEye').classList.remove('quiz');g('thVlearn').hidden=m!=='l';g('thVquiz').hidden=m!=='q';if(m==='q')vStart();else seeShow();}
 g('thVgo').onclick=()=>seeMode('q');g('thVback').onclick=()=>seeMode('l');g('thVnext').onclick=vAsk;
 
 /* ---- Pferdewissen: Geschichte und Zitate ---- */
@@ -1009,7 +1036,7 @@ function sub(which){
  g('thArena').style.display=which==='thsV'?'none':'';g('thEye').style.display=which==='thsV'?'':'none';
  if(quest&&!wip){const set=which==='thsS'?S:Q;if(QS!==set){QS=set;fillChap();qbag=[];qs=qm=0;g('thQsc').textContent=0;g('thQmx').textContent=0;}}
  if(which==='thsF')showLearn();else if(which==='thsG')ask();else if(which==='thsV')seeMode(vMode);else if(which==='thsH')hist();else if(which==='thsZ')quotes();else if(which==='thsP')horses();else if(which==='thsA')anaOpen();else if(which==='thsB'&&window.vierOpen)vierOpen();else if(!wip)qask();
- lockSoon();
+ lockSoon();seeUi();
 }
 SUBS.forEach(id=>g(id).onclick=()=>sub(id));
 
@@ -1020,11 +1047,26 @@ function lockAll(){
  if(g('theo').hidden)return;
  if(!g('thSee').hidden){
   if(!g('thVlearn').hidden)lockCard(g('thVlearn').querySelector('.card'),k=>{g('thVnm').textContent=V[k].n;g('thVds').textContent=V[k].d;},V.length,()=>seeShow());
-  else if(!g('thVquiz').hidden)lockWhy('thVfb','thVwhy',Object.values(VW));
+  else if(!g('thVquiz').hidden)lockQuiz();
  }
  if(!g('thLearn').hidden)lockCard(g('thLearn').querySelector('.card'),k=>{const f=F[k];g('thNm').textContent=f.n;g('thDs').textContent=f.d;g('thDe').textContent=f.g?(f.g.startsWith('Österr')?f.g:'Deutsch (FN): '+f.g):'';},F.length,()=>showLearn());
  if(!g('thGame').hidden)lockWhy('thFb','thWhy',F.map(f=>f.d));
 }
+/* Sehen: Popup-Look, Schalter und Pfeile steuern die vorhandenen Knoepfe */
+function seeUi(){const on=!g('thSee').hidden,q=vMode==='q';
+ g('thVseg').hidden=!on;g('thVhint').hidden=!(on&&q);g('thVa').hidden=!(on&&!q);g('thVe').hidden=!on;
+ g('thVsL').setAttribute('aria-pressed',!q);g('thVsQ').setAttribute('aria-pressed',q);
+ g('thVa').disabled=g('thVpv').disabled;g('thVe').disabled=q?g('thVnext').disabled:false;
+ g('thVe').setAttribute('aria-label',q?g('thVnext').textContent.replace(/\s*→/,''):'Weiter');}
+g('thVsL').onclick=()=>{if(vMode==='q')g('thVback').click();};
+g('thVsQ').onclick=()=>{if(vMode!=='q')g('thVgo').click();};
+g('thVa').onclick=()=>g('thVpv').click();
+g('thVe').onclick=()=>{if(vMode==='q')g('thVnext').click();else g('thVnx').click();};
+['thVnext','thVpv'].forEach(id=>new MutationObserver(seeUi).observe(g(id),{attributes:true,childList:true,characterData:true,subtree:true}));
+function lockQuiz(){const f=g('thVfb'),w=g('thVwhy');f.style.minHeight='';w.style.minHeight='';const kf=f.textContent,kw=w.innerHTML;let mf=0,mw=0;
+ ['Richtig.','Leider falsch.','Fertig: '+VR+' von '+VR+' richtig.'].forEach(t=>{f.textContent=t;mf=Math.max(mf,f.offsetHeight);});
+ Object.values(VW).forEach(t=>{why('thVwhy',t);mw=Math.max(mw,w.offsetHeight);});
+ f.textContent=kf;w.innerHTML=kw;f.style.minHeight=mf+'px';w.style.minHeight=mw+'px';}
 let lockT=0;function lockSoon(){clearTimeout(lockT);lockT=setTimeout(()=>requestAnimationFrame(lockAll),60);}
 addEventListener('resize',lockSoon);addEventListener('orientationchange',lockSoon);
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(lockSoon);
