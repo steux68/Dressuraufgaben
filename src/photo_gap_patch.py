@@ -8,7 +8,7 @@ CSS='''
 .zqt{padding:8px 0!important;min-height:0!important}
 .zqt .zpic{margin:0!important}
 .zqt>:last-child{padding:0 8px 0 0!important}
-.zqt b.who{line-height:1.1;display:block;margin-top:-3px}
+.zqt b.who{line-height:1.1;display:block;margin-top:-1px}
 #p-w .tile{padding-top:8px!important;padding-bottom:8px!important;min-height:0!important}
 #p-w .tile .code{margin:0!important}
 '''
