@@ -13,8 +13,11 @@ CSS = '''
 footer.copy{position:fixed;left:auto;top:auto;right:14px;bottom:calc(10px + env(safe-area-inset-bottom,0px));width:var(--cw,270px);height:24px;z-index:46;
  border:0;padding:0;margin:0;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:8px;white-space:nowrap;
  writing-mode:horizontal-tb;transform-origin:100% 100%;transform:translateY(0) rotate(0);opacity:0;pointer-events:none;
- transition:transform .65s cubic-bezier(.4,.1,.2,1),bottom .65s cubic-bezier(.4,.1,.2,1),opacity .35s}
+ transition:transform .65s cubic-bezier(.4,.1,.2,1),width .65s,right .65s,bottom .65s cubic-bezier(.4,.1,.2,1),opacity .35s}
 footer.copy.cv,footer.copy.ch{opacity:1;pointer-events:auto}
+footer.copy.ch{right:8px;width:calc(100vw - 16px);border-top:1px dotted #b8b8b8;box-sizing:border-box;height:28px;padding-top:2px;gap:6px;background:#fff}
+footer.copy.ch .cimg img{height:13px}
+footer.copy.ch span,footer.copy.ch .ilink{font-size:11px}
 footer.copy.cv{bottom:var(--cb,150px);transform:translateY(calc(var(--cw,270px) * -1)) rotate(-90deg)}
 footer.copy .cimg{position:static;flex:none;width:auto;height:auto;display:block}
 footer.copy .cimg img{position:static;display:block;height:20px;width:auto;max-width:none;transform:none}
