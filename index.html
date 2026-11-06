@@ -11,7 +11,7 @@
 #thBody:not([hidden]),#thGes:not([hidden]){padding-bottom:12px}
 </style>
 <!--type-scale--></head><body>
-<meta name="app-version" content="2026-11-06zzz85t"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-06zzz86"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -2294,6 +2294,16 @@ a.tile.oeps{padding-left:8px!important;padding-right:8px!important}
 .anapop.full #aXc{display:block;pointer-events:auto;flex:none;margin:0;padding:2px 10px;font-size:14px;line-height:18px;color:#fff;background:transparent;border:0}
 .anapop.full .aOv{justify-content:space-between;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,0))!important;padding:8px 10px 18px}
 .anapop.full .aOv #aFull{order:-1}
+
+/* bands-grey */
+.anapop .anaBar,#thVi .viTabs{display:flex;gap:1px;margin:0;padding:0;background:#fff;border:0!important}
+.anapop .anaBar button,#thVi .viTabs button{background:#efefef!important;border:0!important;outline:0!important;color:#333;font-size:14px;font-weight:400;min-height:34px;box-shadow:none}
+.anapop .anaBar button[aria-pressed="true"],#thVi .viTabs button[aria-pressed="true"]{background:#ffec99!important;color:#111;font-weight:700}
+.anapop .anaBar #aLang button[aria-pressed="false"] .fl{opacity:.55}
+#thAna .blseg{display:flex;flex-wrap:nowrap;gap:1px;width:100%;margin:2px 0 12px;padding:0;background:#fff;border:0!important}
+#thAna .blseg button{flex:1 1 auto;min-width:0;white-space:nowrap;margin:0!important;padding:8px 4px;background:#efefef!important;border:0!important;outline:0!important;border-radius:0;font-size:14px;font-weight:400;color:#333;box-shadow:none}
+#thAna .blseg button[aria-pressed="true"]{background:#ffec99!important;color:#111;font-weight:700}
+.anapop .tltop{border-top:0}
 </style>
 <script>
 /* Zurück auf der langen Startseite: erst nach oben zur Titelseite, dann aus der App */
