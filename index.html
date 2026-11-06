@@ -11,7 +11,7 @@
 #thBody:not([hidden]),#thGes:not([hidden]){padding-bottom:12px}
 </style>
 <!--type-scale--></head><body>
-<meta name="app-version" content="2026-11-06zzz97"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-06zzz98"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -2333,6 +2333,9 @@ footer.copy .ilink{margin:0;padding:2px 4px;font-size:12px}
 @media (max-height:700px){footer.copy{--cw:240px}footer.copy .cimg{display:none}footer.copy span,footer.copy .ilink{font-size:11px}}
 
 /* lime-out */
+
+/* ticks-short */
+.tk{background:repeating-linear-gradient(to right,#b8b8b8 0 4px,transparent 4px 6px) left top/7px 1px no-repeat,repeating-linear-gradient(to right,#b8b8b8 0 4px,transparent 4px 6px) left bottom/7px 1px no-repeat,repeating-linear-gradient(to right,#b8b8b8 0 4px,transparent 4px 6px) right top/7px 1px no-repeat,repeating-linear-gradient(to right,#b8b8b8 0 4px,transparent 4px 6px) right bottom/7px 1px no-repeat!important}
 </style>
 <script>
 /* Zurück auf der langen Startseite: erst nach oben zur Titelseite, dann aus der App */
@@ -3374,7 +3377,7 @@ function place(){var t=q('.tk.t'),b=q('.tk.b'),m=q('.tk.m');if(!t||!b)return;
  function set(e,top,h){if(top===null){e.style.removeProperty('top');e.style.removeProperty('height');e.style.removeProperty('bottom');return;}e.style.setProperty('top',Math.round(top-off(e))+'px','important');e.style.setProperty('bottom','auto','important');e.style.setProperty('height',h+'px','important');e.style.setProperty('display','block','important');}
  if(hl!==null)set(t,hl,11);
  set(m,innerHeight/2-5.5,11);
- if(last){var rh=Math.round(last.getBoundingClientRect().height),bt=hs&&vis(hs)&&!last.classList.contains('pbar')?hs.getBoundingClientRect().bottom:innerHeight-(parseFloat(getComputedStyle(last).bottom)||0);set(b,bt-rh,rh);}else set(b,null);}
+ if(last){var rh=Math.round(last.getBoundingClientRect().height),bt=hs&&vis(hs)&&!last.classList.contains('pbar')?hs.getBoundingClientRect().bottom:innerHeight-(parseFloat(getComputedStyle(last).bottom)||0);set(b,bt-11,11);}else set(b,null);}
 place();addEventListener('resize',place);setInterval(place,600);
 })();</script>
 </body></html>
