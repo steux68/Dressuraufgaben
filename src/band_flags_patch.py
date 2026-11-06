@@ -50,20 +50,19 @@ rep(" sc.addEventListener('touchstart',",
 # ---------- CSS ----------
 CSS = '''
 /* band-flags */
-/* Viereck: Lernen / Spiel / Geschichte als durchgehendes Band, anders als die grauen Kacheln darueber */
-#thVi .viTabs{display:flex;gap:0;justify-content:stretch;padding:0;margin:12px 0 8px;background:#fff;border-top:2px solid #22281f;border-bottom:2px solid #22281f}
-#thVi .viTabs button{flex:1 1 0;min-height:44px;padding:10px 0;font-size:1rem;font-weight:400;color:#555;background:transparent!important;border:0!important;border-left:1px solid #c9c9c9!important;border-radius:0}
+/* Viereck: Lernen / Spiel / Geschichte als schmales durchgehendes Band (wie Lernen/Quiz bei Sehen, nur ueber die ganze Breite) */
+#thVi .viTabs{display:flex;gap:0;justify-content:stretch;padding:0;margin:10px 0 6px;background:#fff;border:0;border-top:1px dotted #b8b8b8;border-bottom:1px dotted #b8b8b8}
+#thVi .viTabs button{flex:1 1 0;min-height:30px;padding:5px 0;font-size:.9rem;font-weight:400;color:#444;background:#fff!important;border:0!important;border-left:1px dotted #b8b8b8!important;border-radius:0}
 #thVi .viTabs button:first-child{border-left:0!important}
-#thVi .viTabs button[aria-pressed="true"]{background:#ffd400!important;color:#111;font-weight:700}
-/* Anatomie: Leiste als Band, Flaggen rechts */
-.anapop .anaBar{display:flex;flex-wrap:nowrap;align-items:stretch;gap:0;margin:0 -10px;background:#fff;border-top:2px solid #22281f;border-bottom:2px solid #22281f}
+#thVi .viTabs button[aria-pressed="true"]{background:#ffec99!important;color:#111;font-weight:700}
+/* Anatomie: Leiste als schmales Band, Flaggen rechts */
+.anapop .anaBar{display:flex;flex-wrap:nowrap;align-items:stretch;gap:0;margin:0 -10px;background:#fff;border:0;border-top:1px dotted #b8b8b8;border-bottom:1px dotted #b8b8b8}
 .anapop .anaBar .anaSeg{display:contents}
-.anapop .anaBar button{flex:1 1 0;min-height:44px;margin:0;padding:0 6px;font-size:.95rem;font-weight:400;color:#555;background:transparent;border:0;border-left:1px solid #c9c9c9;border-radius:0}
+.anapop .anaBar button{flex:1 1 0;min-height:30px;margin:0;padding:5px 6px;font-size:.9rem;font-weight:400;color:#444;background:#fff;border:0;border-left:1px dotted #b8b8b8;border-radius:0}
 .anapop .anaBar>button:first-child,.anapop .anaBar #aMode button:first-child{border-left:0}
-.anapop .anaBar button[aria-pressed="true"]{background:#ffd400;color:#111;font-weight:700}
-.anapop .anaBar #aLang button{flex:0 0 52px;display:flex;align-items:center;justify-content:center}
-.anapop .anaBar #aLang button:first-child{border-left:2px solid #22281f}
-.anapop .anaBar #aLang .fl{display:block;box-shadow:0 0 0 1px rgba(0,0,0,.35)}
+.anapop .anaBar button[aria-pressed="true"]{background:#ffec99;color:#111;font-weight:700}
+.anapop .anaBar #aLang button{flex:0 0 44px;display:flex;align-items:center;justify-content:center;padding:0}
+.anapop .anaBar #aLang .fl{display:block;height:14px;width:auto;box-shadow:0 0 0 1px rgba(0,0,0,.3)}
 .anapop .anaBar #aLang button[aria-pressed="false"] .fl{opacity:.45}
 /* Hinweisband auf dem Bild: weisse Schrift auf dunklem, halbdurchsichtigem Band */
 .anapop .aOv{position:absolute;left:0;right:0;top:0;z-index:4;display:flex;justify-content:flex-end;align-items:center;gap:8px;padding:3px 8px;background:rgba(0,0,0,.62);color:#fff;pointer-events:none}
@@ -77,6 +76,6 @@ i = s.index('</style>', s.index('.anapop #aCap{display:none}'))
 s = s[:i] + CSS + s[i:]
 
 if '--noversion' not in sys.argv:
-    s = re.sub(r'(<meta name="app-version" content=")([^"]*)(")', lambda m: m.group(1) + '2026-11-06zzz77' + m.group(3), s, count=1)
+    s = re.sub(r'(<meta name="app-version" content=")([^"]*)(")', lambda m: m.group(1) + '2026-11-06zzz78' + m.group(3), s, count=1)
 open('index.html', 'w', encoding='utf-8').write(s)
 print('ok')
