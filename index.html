@@ -11,7 +11,7 @@
 #thBody:not([hidden]),#thGes:not([hidden]){padding-bottom:12px}
 </style>
 </head><body>
-<meta name="app-version" content="2026-11-06zzz73"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-06zzz74"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -364,12 +364,12 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 <button id="thsF" aria-pressed="true">Figuren</button>
 <button id="thsG" aria-pressed="false">Figuren-Quiz</button>
 <button id="thsQ" aria-pressed="false">Fragen</button>
-<button id="thsS" aria-pressed="false">Situationen</button>
+<button id="thsB" aria-pressed="false">Viereck</button>
+<button id="thsA" aria-pressed="false">Anatomie</button>
 <button id="thsV" aria-pressed="false">Sehen</button>
 <button id="thsK" aria-pressed="false">Körpersprache</button>
+<button id="thsS" aria-pressed="false">Situationen</button>
 <button id="thsGe" aria-pressed="false">Gesundheit</button>
-<button id="thsA" aria-pressed="false">Anatomie</button>
-<button id="thsB" aria-pressed="false">Viereck</button>
 <button id="thsH" aria-pressed="false">Geschichte</button>
 <button id="thsZ" aria-pressed="false">Zitate</button>
 <button id="thsP" aria-pressed="false">Unsere Pferde</button>
@@ -1179,7 +1179,7 @@ function horses(){
 }
 
 let current='thsF';
-const SUBS=['thsF','thsG','thsQ','thsS','thsV','thsK','thsGe','thsA','thsB','thsH','thsZ','thsP'],SUBT=['thsF','thsG','thsQ'],SUBG=['thsS','thsV','thsK','thsGe','thsA','thsB'],SUBH=['thsH','thsZ'];let gen=false,curT='thsF',curG='thsS',curH='thsH';
+const SUBS=['thsF','thsG','thsQ','thsS','thsV','thsK','thsGe','thsA','thsB','thsH','thsZ','thsP'],SUBT=['thsF','thsG','thsQ'],SUBG=['thsB','thsA','thsV','thsK','thsS','thsGe'],SUBH=['thsH','thsZ'];let gen=false,curT='thsF',curG='thsB',curH='thsH';
 function group(G){gen=G;const set=G==='h'?SUBH:G?SUBG:SUBT;SUBS.forEach(id=>g(id).hidden=!set.includes(id));}
 function sub(which){
  current=which;if(gen==='h')curH=which;else if(gen)curG=which;else curT=which;
@@ -1598,12 +1598,12 @@ GAL.reverse();/* neueste zuerst: neue Eintraege ans Ende der Liste schreiben */
  const PA=mk('p-a','hsec');PA.appendChild(HOME);
  /* 02 Pferdewissen: Einstiege */
  const PW=mk('p-w','hsec');
- [['thsS','Si','Situationen','„Was tust du, wenn …?“ Reitbahn, Stall, Gelände, Straße'],
+ [['thsB','Vi','Das Viereck','Buchstaben, Maße, Spiel und Geschichte der Bahn'],
+  ['thsA','An','Anatomie','Skelett des Pferdes: Knochen benennen, Quiz (Deutsch / English)'],
   ['thsV','Se','Sehen','Wie das Pferd sieht: Gesichtsfeld, tote Winkel, Quiz'],
   ['thsK','Kö','Körpersprache','Ohren, Augen, Maul, Schweif und Haltung: was dir das Pferd zeigt'],
-  ['thsGe','Ge','Gesundheit','Puls, Atmung, Temperatur, Kolik: normal oder Tierarzt?'],
-  ['thsA','An','Anatomie','Skelett des Pferdes: Knochen benennen, Quiz (Deutsch / English)'],
-  ['thsB','Vi','Das Viereck','Buchstaben, Maße, Spiel und Geschichte der Bahn']].forEach(([id,c,n,d])=>{
+  ['thsS','Si','Situationen','„Was tust du, wenn …?“ Reitbahn, Stall, Gelände, Straße'],
+  ['thsGe','Ge','Gesundheit','Puls, Atmung, Temperatur, Kolik: normal oder Tierarzt?']].forEach(([id,c,n,d])=>{
   const b=document.createElement('button');b.className='tile ready wrow';
   b.innerHTML='<span class="code"></span><span><div class="nm"></div><div class="ds"></div></span><span class="st ready">Öffnen</span>';
   b.querySelector('.code').textContent=c;{const KB={thsV:'img/kreis_sehen.jpg',thsA:'img/kreis_anatomie.jpg',thsB:'img/kreis_viereck.svg',thsP:'img/kreis_pferde.jpg'}[id];if(KB){const cd=b.querySelector('.code');cd.textContent='';cd.setAttribute('role','img');cd.setAttribute('aria-label',n);cd.style.setProperty('background','#fff url('+KB+') center/'+(KB.slice(-4)==='.svg'?'118%':'cover')+' no-repeat','important');}}/* kreisbild */b.querySelector('.nm').textContent=n;b.querySelector('.ds').textContent=d;
