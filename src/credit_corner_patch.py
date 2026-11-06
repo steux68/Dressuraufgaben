@@ -20,7 +20,7 @@ footer.copy .cimg{position:static;flex:none;width:auto;height:auto;display:block
 footer.copy .cimg img{position:static;display:block;height:20px;width:auto;max-width:none;transform:none}
 footer.copy span{font-size:12px;color:var(--muted)}
 footer.copy .ilink{margin:0;padding:2px 4px;font-size:12px}
-#hscroll{padding-bottom:40px!important}
+#p-x{padding-bottom:40px!important}
 .pwlink{display:block;margin:14px 0 6px;font:inherit;font-size:14px;font-style:italic;color:#0057d8;background:none;border:0;padding:6px 0;cursor:pointer;text-align:left}
 @media (max-height:700px){footer.copy{--cw:240px}footer.copy .cimg{display:none}footer.copy span,footer.copy .ilink{font-size:11px}}
 '''
