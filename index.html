@@ -11,7 +11,7 @@
 #thBody:not([hidden]),#thGes:not([hidden]){padding-bottom:12px}
 </style>
 </head><body>
-<meta name="app-version" content="2026-11-06zzz74"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-06zzz75"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -2661,8 +2661,11 @@ function geschichte(){
  P('Das große Viereck ist 20 × 60 m, das kleine 20 × 40 m. Warum genau diese Maße, ist nicht geklärt. Oft heißt es, sie kommen von Kasernenhöfen der Kavallerie.');
  H('Die große Bahn');
  P('Das große Viereck hat zusätzliche Buchstaben: V, S, R, P an den langen Seiten und D, L, I, G auf der Mittellinie. Man sagt, deutsche Kavalleristen hätten sie im 20. Jahrhundert eingeführt. In den Aufgaben R1–R6 brauchst du sie nicht.');
+ H('Eine Reitbahn früher');
+ P('So sah eine Reitbahn auf einer alten Radierung aus: Reiter üben, in der Mitte stehen Zuschauer, am Rand stehen Pfosten mit Zielen. Auf dem Bild gibt es noch keine Dressurbuchstaben. Aber es sind schon feste Punkte beschriftet, an denen die Reiter wenden („1e Demi-Volte“, „Tête de Méduse“, „Tête du Pistolet“). Das Bild zeigt Kopf- und Ringstechen, ein Reiterspiel, und keine Dressur im heutigen Sinn.');
+ const VB=[['img/parrocel_bahn.jpg','Alte Radierung einer Reitbahn: Reiter üben Wendungen an beschrifteten Punkten, Zuschauer stehen in der Mitte','„La course des têtes et de la bague“, Radierung von C. Parrocel. Wellcome Collection, V0021787, CC BY 4.0, über Wikimedia Commons (Bild verkleinert).']];
  const im=el('div','viImgs');w.appendChild(im);
- (window.VIER_BILDER||[]).forEach(b=>{const f=el('figure');const i=new Image();i.src=b[0];i.alt=b[1];i.loading='lazy';f.appendChild(i);f.appendChild(el('figcaption',null,b[2]));im.appendChild(f)});
+ (window.VIER_BILDER||VB).forEach(b=>{const f=el('figure');const i=new Image();i.src=b[0];i.alt=b[1];i.loading='lazy';f.appendChild(i);f.appendChild(el('figcaption',null,b[2]));im.appendChild(f)});
  P('Quellen: Horse and Hound („Ask H&H: dressage letter markers“), The Saddlery Shop („The history of dressage markers“). Weitere Hinweise aus Texten von tempusrenatus.org, eurodressage.com und howtodressage.com, von mir noch nicht im Original geprüft.','viSrc');
  return w;
 }
