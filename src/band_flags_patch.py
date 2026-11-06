@@ -56,7 +56,7 @@ CSS = '''
 #thVi .viTabs button:first-child{border-left:0!important}
 #thVi .viTabs button[aria-pressed="true"]{background:#ffec99!important;color:#111;font-weight:700}
 /* Anatomie: Leiste als schmales Band, Flaggen rechts */
-.anapop .anaBar{display:flex;flex-wrap:nowrap;align-items:stretch;gap:0;margin:0 -10px;background:#fff;border:0;border-top:1px dotted #b8b8b8;border-bottom:1px dotted #b8b8b8}
+.anapop .anaBar{display:flex;flex-wrap:nowrap;align-items:stretch;gap:0;margin:0;background:#fff;border:0;border-top:1px dotted #b8b8b8;border-bottom:1px dotted #b8b8b8}
 .anapop .anaBar .anaSeg{display:contents}
 .anapop .anaBar button{flex:1 1 0;min-height:30px;margin:0;padding:5px 6px;font-size:.9rem;font-weight:400;color:#444;background:#fff;border:0;border-left:1px dotted #b8b8b8;border-radius:0}
 .anapop .anaBar>button:first-child,.anapop .anaBar #aMode button:first-child{border-left:0}
