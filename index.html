@@ -14,8 +14,15 @@
 .gpop{padding-left:18px!important;padding-right:18px!important}
 .tlpop{padding-left:18px!important;padding-right:18px!important}
 </style>
+<style id="wthumbs-css">
+#p-w{gap:0!important}
+#p-w .tline.intro{margin-bottom:8px!important}
+#p-w .tile{align-items:start!important}
+#p-w .tile .nm{line-height:1.1;margin-top:-1px}
+#p-w .tile .st{align-self:center}
+</style>
 </head><body>
-<meta name="app-version" content="2026-11-07zzz107"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-07zzz108"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -1614,7 +1621,7 @@ GAL.reverse();/* neueste zuerst: neue Eintraege ans Ende der Liste schreiben */
   ['thsGe','Ge','Gesundheit','Puls, Atmung, Temperatur, Kolik: normal oder Tierarzt?']].forEach(([id,c,n,d])=>{
   const b=document.createElement('button');b.className='tile ready wrow';
   b.innerHTML='<span class="code"></span><span><div class="nm"></div><div class="ds"></div></span><span class="st ready">Öffnen</span>';
-  b.querySelector('.code').textContent=c;{const KB={thsV:'img/kreis_sehen.jpg',thsA:'img/kreis_anatomie.jpg',thsB:'img/kreis_viereck.svg',thsP:'img/kreis_pferde.jpg'}[id];if(KB){const cd=b.querySelector('.code');cd.textContent='';cd.setAttribute('role','img');cd.setAttribute('aria-label',n);cd.style.setProperty('background','#fff url('+KB+') center/'+(KB.slice(-4)==='.svg'?'118%':'cover')+' no-repeat','important');}}/* kreisbild */b.querySelector('.nm').textContent=n;b.querySelector('.ds').textContent=d;
+  b.querySelector('.code').textContent=c;{const KB={thsV:'img/kreis_sehen.jpg',thsA:'img/skelett.jpg',thsB:'img/viereck_real.svg',thsP:'img/kreis_pferde.jpg'}[id];const CR={thsA:'#fff url(img/skelett.jpg) 0% 4%/300% no-repeat',thsB:'#fff url(img/viereck_real.svg) 22% 58%/185% no-repeat',thsV:'#fff url(img/sehen_real.svg) 50% 50%/118% no-repeat'}[id];if(KB){const cd=b.querySelector('.code');cd.textContent='';cd.setAttribute('role','img');cd.setAttribute('aria-label',n);cd.style.setProperty('background',CR||('#fff url('+KB+') center/cover no-repeat'),'important');}}/* kreisbild */b.querySelector('.nm').textContent=n;b.querySelector('.ds').textContent=d;
   b.onclick=()=>{openWissen();setTimeout(()=>$(id).click(),0);};PW.appendChild(b);});
  {const ln=document.createElement('p');ln.className='tline intro';const w=document.createElement('span');w.className='inter';w.textContent='interaktiv';{const d=document.createElement('i');d.className='idot';w.prepend(d);}ln.append(w,' Tippe auf Bilder, Punkte und Quiz.');PW.insertBefore(ln,PW.querySelector('.tile'));}
  /* 03 Geschichte & Zitate */
