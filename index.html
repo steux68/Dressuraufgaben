@@ -27,7 +27,7 @@
 .ohrfig .ohrcap{margin:0;font-size:12px;color:var(--muted)}
 </style>
 </head><body>
-<meta name="app-version" content="2026-11-07zzz113"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-07zzz114"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -2391,6 +2391,22 @@ footer.copy .ilink{margin:0;padding:2px 4px;font-size:12px}
 .zqt b.who{line-height:1.1;display:block;margin-top:-1px}
 #p-w .tile{padding-top:8px!important;padding-bottom:8px!important;min-height:0!important}
 #p-w .tile .code{margin:0!important}
+/* sitquiz-css */
+#thQuest>.score{display:flex;align-items:center;gap:10px;margin:8px 0 0;padding:0 0 8px;border-top:0;font-size:12px;color:#888}
+#thQuest>.score select{flex:1 1 auto;min-width:0;height:44px;padding:0 10px;background:#fff;color:#222;border:0;outline:1px dotted #9a9a96;outline-offset:-1px;border-radius:0;font-size:14px}
+#thQuest>.score>span{flex:none;white-space:nowrap}
+#thQuest #thChap{-webkit-appearance:none;appearance:none;height:44px;padding:0 34px 0 10px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 8l5 5 5-5' fill='none' stroke='%23555' stroke-width='2'/%3E%3C/svg%3E") right 10px center/16px no-repeat!important;border:0!important;outline:1px dotted #9a9a96;outline-offset:-1px;border-radius:0!important;box-shadow:none!important;color:#222;font-size:14px}
+#thQuest .q{margin:10px 0 8px;font-size:1.05rem;line-height:1.3;font-weight:700;color:#111}
+#thQuest .opts{gap:6px}
+#thQuest .opt{height:auto!important;min-height:44px!important;overflow:visible!important;padding:10px 12px!important;font-size:.95rem!important;line-height:1.35!important;color:#222;background:#fff!important;border:0!important;outline:1px dotted #9a9a96;outline-offset:-1px;border-radius:0!important;box-shadow:none!important;text-align:left}
+#thQuest .opt span{display:block!important;-webkit-line-clamp:unset!important;overflow:visible!important}
+#thQuest .opt:disabled{opacity:1;color:#222}
+#thQuest .opt.ok{background:#cdff3e!important;outline:1px solid #7a9a00;font-weight:700}
+#thQuest .opt.bad{background:#fbe3e1!important;outline:1px dotted #e30613;color:#e30613}
+#thQuest .fb{margin:10px 0 2px;font-size:.98rem;line-height:1.3;text-transform:none;letter-spacing:0;font-weight:700;color:#1a7f37}
+#thQuest .card:has(.opt.bad) .fb{color:#e30613}
+#thQuest .why{margin:0 0 4px}
+/* /sitquiz-css */
 </style>
 <script>
 /* Zurück auf der langen Startseite: erst nach oben zur Titelseite, dann aus der App */
