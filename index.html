@@ -27,7 +27,7 @@
 .ohrfig .ohrcap{margin:0;font-size:12px;color:var(--muted)}
 </style>
 </head><body>
-<meta name="app-version" content="2026-11-07zzz115"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-07zzz116"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -426,6 +426,7 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 <div class="tp" id="thWip" hidden><div class="card wip"><p class="wipt">In Arbeit · Work in progress</p><p class="ds">Die Theoriefragen für diese Prüfung werden gerade erstellt.</p><p class="ds">Theory questions for this test are being prepared.</p><p class="ds wipn">Hufschlagfiguren und Figuren-Quiz gibt es schon für alle Aufgaben.</p></div></div>
 <div class="tp" id="thQuest" hidden>
 <div class="score"><select id="thChap" aria-label="Kapitel"></select><span>Frage <strong id="thQnum">1</strong> / <span id="thQtot">1</span> · Punkte <strong id="thQsc">0</strong> / <span id="thQmx">0</span></span></div>
+<details class="schreck" id="schreck"><summary>Wenn das Pferd erschrickt</summary><dl class="schdl"><dt>Warum es erschrickt</dt><dd>Das Pferd ist ein Fluchttier. Plötzliche Geräusche, flatternde Dinge oder schnelle Bewegungen lösen den Fluchtreflex aus, noch bevor es nachdenkt.</dd><dt>Warnzeichen</dt><dd>Kopf hoch, Hals gespannt, die Ohren zeigen auf das Geräusch, das Weiße im Auge ist zu sehen, die Nüstern sind weit, die Atmung ist schnell, der Schweif ist eingeklemmt.</dd><dt>Tote Winkel</dt><dd>Direkt hinter dem Pferd und direkt vor seiner Nase sieht es nichts. Von dort nie schnell oder ohne Ansprache kommen.</dd><dt>Ruhig bleiben</dt><dd>Pferde spüren deine Anspannung. Leise und gleichmäßig sprechen, ruhig atmen, keine hektischen Bewegungen.</dd><dt>Wo du stehst</dt><dd>Neben der Schulter, nie direkt hinter dem Pferd und nie zwischen Pferd und Wand oder Zaun. Den Strick nie um die Hand wickeln.</dd><dt>Platz zum Ausweichen</dt><dd>Nicht festhalten und nicht in die Enge treiben. Ein eingeengtes Pferd drängt oder tritt. Gib ihm Raum, bis es sich beruhigt, und hol Hilfe.</dd><dt>Im Sattel</dt><dd>Ruhig sitzen bleiben, Zügel aufnehmen, durchparieren. Nicht festklammern und nicht an den Zügeln reißen.</dd></dl><p class="schnote">Entwurf, mit Reitlehrer abgleichen. Nach allgemeinen Verhaltensratgebern, in eigenen Worten.</p></details>
 <div class="card">
 <div class="top"><span class="badge" id="thQch"></span><span class="draft">Entwurf · mit Lehrbuch prüfen</span></div>
 <p class="q" id="thQq"></p>
@@ -2418,6 +2419,19 @@ footer.copy .ilink{margin:0;padding:2px 4px;font-size:12px}
 #theo #thSee #thVfb{margin:10px 0 2px;font-size:.98rem;line-height:1.3;text-transform:none;letter-spacing:0;font-weight:700;color:#1a7f37}
 #theo #thSee .card:has(.opt.bad) #thVfb,#theo #thSee:has(.opt.bad) #thVfb{color:#e30613}
 /* /quizcards-css */
+/* schreck-css */
+#thQuest{overflow-y:auto}
+#thQuest .schreck{margin:0 0 8px}
+#thQuest .schreck summary{list-style:none;display:flex;align-items:center;justify-content:space-between;min-height:44px;padding:0 12px;background:#fff;outline:1px dotted #9a9a96;outline-offset:-1px;font-weight:700;font-size:.95rem;color:#111;cursor:pointer}
+#thQuest .schreck summary::-webkit-details-marker{display:none}
+#thQuest .schreck summary::after{content:"";width:16px;height:16px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 8l5 5 5-5' fill='none' stroke='%23555' stroke-width='2'/%3E%3C/svg%3E") center/16px no-repeat;transition:transform .15s}
+#thQuest .schreck[open] summary::after{transform:rotate(180deg)}
+#thQuest .schreck[open] summary{background:#cdff3e}
+#thQuest .schdl{margin:8px 0 0;display:flex;flex-direction:column;gap:0}
+#thQuest .schdl dt{margin:8px 0 0;font-weight:700;font-size:14px;color:#111}
+#thQuest .schdl dd{margin:0;font-size:14px;line-height:1.4;color:#222}
+#thQuest .schnote{margin:10px 0 0;padding-top:6px;border-top:1px dotted #b8b8b8;font-size:12px;color:#888}
+/* /schreck-css */
 </style>
 <script>
 /* Zurück auf der langen Startseite: erst nach oben zur Titelseite, dann aus der App */
