@@ -27,7 +27,7 @@
 .ohrfig .ohrcap{margin:0;font-size:12px;color:var(--muted)}
 </style>
 </head><body>
-<meta name="app-version" content="2026-11-07zzz111"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-07zzz112"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -1068,14 +1068,17 @@ function bodyLang(){
 
 const GE=[
  {k:'Normalwerte',t:'Normalwerte in Ruhe',rows:[
-  ['Puls','28 bis 44 Schläge pro Minute. Fühlen an der Innenseite des Unterkiefers oder mit dem Stethoskop hinter dem Ellbogen. Eine halbe Minute zählen und mal 2 rechnen.'],
-  ['Atmung','8 bis 16 Atemzüge pro Minute. Die Flanke hebt und senkt sich, ein Zug = heben und senken.'],
-  ['Temperatur','37,5 bis 38,2 °C, rektal mit einem Digitalthermometer (festhalten, Schweif zur Seite).'],
-  ['Schleimhaut','Zahnfleisch blassrosa und feucht. Daumendruck: nach 1 bis 2 Sekunden wieder rosa.']]},
+  ['Puls','28 bis 44 Schläge pro Minute. Fühlen an der Innenseite des Unterkiefers oder mit dem Stethoskop hinter dem Ellbogen. Eine halbe Minute zählen und mal 2 rechnen. Über 50 in Ruhe: Stress, Schmerz, Fieber oder beginnende Kolik.'],
+  ['Atmung','8 bis 16 Atemzüge pro Minute. Die Flanke hebt und senkt sich, ein Zug = heben und senken. Über 20 in Ruhe, weite Nüstern oder doppeltes Heben der Flanke: den Tierarzt anrufen.'],
+  ['Temperatur','37,5 bis 38,2 °C, rektal mit einem Digitalthermometer (festhalten, Schweif zur Seite). Über 38,5 °C ist Fieber, unter 37,0 °C ein Warnzeichen (Schock).'],
+  ['Schleimhaut','Zahnfleisch blassrosa und feucht. Daumendruck: nach 1 bis 2 Sekunden wieder rosa. Blass oder weiß, dunkelrot oder violett, gelblich: nicht normal, Tierarzt anrufen.']]},
  {k:'Täglicher Check',t:'Der tägliche Blick',rows:[
   ['Verhalten','Munter, frisst gierig, interessiert sich für die Umgebung.'],
   ['Augen & Nase','Klar und offen, kein Ausfluss, kein Husten.'],
   ['Beine & Hufe','Keine Wärme, keine Schwellung, Pferd geht gleichmäßig.'],
+  ['Digitalpuls','Hinten am Fesselgelenk fühlen. Ein kräftig pochender Puls zeigt eine Entzündung im Huf (zum Beispiel Hufrehe oder einen Abszess). Tierarzt anrufen.'],
+  ['Darmgeräusche','Ohr oder Stethoskop an die Flanke, auf beiden Seiten oben und unten. Es gluckert und rumpelt regelmäßig. Stille ist ein Notfall.'],
+  ['Hautfalte','Eine Hautfalte am Hals anheben. Sie springt innerhalb von 2 Sekunden flach zurück. Bleibt sie stehen, fehlt dem Pferd Wasser.'],
   ['Kot & Wasser','Kot in normaler Menge und Form, das Pferd säuft.'],
   ['Haut','Keine Wunden, Schwellungen oder Scheuerstellen vom Sattel.']]},
  {k:'Kolik',t:'Kolik: Warnzeichen',rows:[
@@ -1085,8 +1088,9 @@ const GE=[
   ['Kein Fressen, kein Kot','Futter bleibt liegen, die Därme sind still.'],
   ['Was tun?','Sofort den Tierarzt rufen und den Stallbesitzer holen. Nicht reiten, nichts füttern. Ruhig führen, wenn es sich nicht hinwirft. Puls und Atmung zählen und dem Tierarzt sagen.']]},
  {k:'Tierarzt',t:'Wann sofort zum Tierarzt?',rows:[
-  ['Sofort','Kolik-Zeichen, starke Lahmheit, tiefe Wunden, Fieber über 38,5 °C, Atemnot, Pferd steht nicht auf, Augenverletzung.'],
+  ['Sofort','Kolik-Zeichen, starke Lahmheit, tiefe Wunden, Fieber über 38,5 °C, Puls in Ruhe dauernd über 50, dunkle oder violette Schleimhaut, Atemnot, Pferd steht nicht auf, Augenverletzung.'],
   ['Am selben Tag','Verweigert Futter, Husten mit Ausfluss, dicke Beine, anhaltender Durchfall.'],
+  ['Das sagst du am Telefon','Puls, Atmung und Temperatur. Seit wann die Zeichen bestehen. Wann das Pferd zuletzt Kot und Urin abgesetzt hat. Ob sich Futter oder Training geändert haben.'],
   ['Merke','Im Zweifel anrufen. Lieber einmal zu viel als zu spät.']]}
 ];
 let gei=0;
