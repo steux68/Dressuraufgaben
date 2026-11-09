@@ -9,7 +9,7 @@ new=("bt.className='tile pwtile';bt.innerHTML='<span class=\"code\"><svg viewBox
  "<span><div class=\"nm\">Was heißt PASSAGE?</div><div class=\"ds\">Der Name, die Lektion und wie sie entstand</div></span><span class=\"st soon\">↗</span>';")
 s=s.replace(old,new,1)
 CSS='''<style id="pwbtn-css">
-#xyz .pwtile{width:100%;margin:18px 0 0;font:inherit;color:inherit;cursor:pointer;text-align:left}
+#xyz .pwtile{background:none!important;width:100%;margin:18px 0 0;font:inherit;color:inherit;cursor:pointer;text-align:left}
 #xyz .pwtile .code{background:none!important;width:46px;height:46px;overflow:hidden;display:block!important}
 #xyz .pwtile .code svg{display:block}
 </style>
