@@ -27,7 +27,7 @@
 .ohrfig .ohrcap{margin:0;font-size:12px;color:var(--muted)}
 </style>
 </head><body>
-<meta name="app-version" content="2026-11-09zzz117"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-09zzz118"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -2433,6 +2433,12 @@ footer.copy .ilink{margin:0;padding:2px 4px;font-size:12px}
 #thQuest .schnote{margin:10px 0 0;padding-top:6px;border-top:1px dotted #b8b8b8;font-size:12px;color:#888}
 /* /schreck-css */
 </style>
+<style id="pwbtn-css">
+#xyz .pwtile{width:100%;margin:18px 0 0;font:inherit;color:inherit;cursor:pointer;text-align:left}
+#xyz .pwtile .code{background:none!important;width:46px;height:46px;overflow:hidden;display:block!important}
+#xyz .pwtile .code svg{display:block}
+</style>
+
 <script>
 /* Zurück auf der langen Startseite: erst nach oben zur Titelseite, dann aus der App */
 (function(){const $=id=>document.getElementById(id),SC=$('hscroll');if(!SC)return;
@@ -3466,7 +3472,7 @@ upd();h.addEventListener('scroll',upd,{passive:true});document.addEventListener(
 [300,1200,2500].forEach(function(ms){setTimeout(upd,ms)});
 var br=$('brand'),n=0,t0=0;
 if(br)br.addEventListener('click',function(){var now=Date.now();n=(now-t0<900)?n+1:1;t0=now;if(n>=3){n=0;var d=$('pwhat');if(d)d.hidden=false;}},true);
-var g=$('xyz');if(g&&!$('pwhatG')){var bt=document.createElement('button');bt.type='button';bt.id='pwhatG';bt.className='pwlink';bt.textContent='Was heißt PASSAGE? ↗';
+var g=$('xyz');if(g&&!$('pwhatG')){var bt=document.createElement('button');bt.type='button';bt.id='pwhatG';bt.className='tile pwtile';bt.innerHTML='<span class="code"><svg viewBox="0 0 48 48" width="46" height="46" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#e30613"/><text x="11" y="33" font-size="30" font-weight="700" fill="#fff" font-family="Lato,sans-serif">P</text><text x="21" y="38" font-size="9.5" font-weight="700" fill="#fff" font-family="Lato,sans-serif">a–x</text></svg></span><span><div class="nm">Was heißt PASSAGE?</div><div class="ds">Der Name, die Lektion und wie sie entstand</div></span><span class="st soon">↗</span>';
  bt.onclick=function(){var d=$('pwhat');if(d)d.hidden=false;};g.appendChild(bt);}
 })();</script><script id="ticks-js">(function(){var q=function(s){return document.querySelector(s)};
 function vis(e){return e&&e.offsetParent!==null&&e.getBoundingClientRect().height>0;}
