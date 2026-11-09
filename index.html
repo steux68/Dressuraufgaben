@@ -27,7 +27,7 @@
 .ohrfig .ohrcap{margin:0;font-size:12px;color:var(--muted)}
 </style>
 </head><body>
-<meta name="app-version" content="2026-11-07zzz116"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-09zzz117"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -3466,7 +3466,7 @@ upd();h.addEventListener('scroll',upd,{passive:true});document.addEventListener(
 [300,1200,2500].forEach(function(ms){setTimeout(upd,ms)});
 var br=$('brand'),n=0,t0=0;
 if(br)br.addEventListener('click',function(){var now=Date.now();n=(now-t0<900)?n+1:1;t0=now;if(n>=3){n=0;var d=$('pwhat');if(d)d.hidden=false;}},true);
-var g=$('p-g');if(g&&!$('pwhatG')){var bt=document.createElement('button');bt.type='button';bt.id='pwhatG';bt.className='pwlink';bt.textContent='Was heißt PASSAGE? ↗';
+var g=$('xyz');if(g&&!$('pwhatG')){var bt=document.createElement('button');bt.type='button';bt.id='pwhatG';bt.className='pwlink';bt.textContent='Was heißt PASSAGE? ↗';
  bt.onclick=function(){var d=$('pwhat');if(d)d.hidden=false;};g.appendChild(bt);}
 })();</script><script id="ticks-js">(function(){var q=function(s){return document.querySelector(s)};
 function vis(e){return e&&e.offsetParent!==null&&e.getBoundingClientRect().height>0;}
