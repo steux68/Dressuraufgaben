@@ -36,7 +36,7 @@
 a[target="_blank"]:not([class]){color:#1a5fd0;text-decoration:none}
 </style>
 </head><body>
-<meta name="app-version" content="2026-11-13a"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-13b"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -590,7 +590,7 @@ const TESTVIEW=['seg','lg','stage','panels'];
 let view='home';
 function show(v){view=v;{const ie=document.getElementById('intro');if(ie)ie.hidden=v!=='intro';}for(const id of ['gal','xyz']){const e=document.getElementById(id);if(e)e.hidden=v!==id;}setTimeout(()=>window.navMark&&navMark());$('info').hidden=true;$('infoBtn').setAttribute('aria-expanded',false);
 $('home').hidden=v!=='home';$('mat').hidden=v!=='mat';$('toprow').hidden=true;$('lockup').hidden=false;if(v!=='home')$('tip').hidden=true;else if(!ls('r2tip'))$('tip').hidden=false;TESTVIEW.forEach(id=>$(id).hidden=v!=='test');$('backBtn').hidden=v==='home'||v==='intro';
-$('title').classList.toggle('home',v!=='test');$('title').textContent=v==='test'?(T.id+' · '+(T.short||T.name)):(v==='mat'?'Materialien':v==='wissen'?'Pferdewissen':v==='gesch'?'Geschichte & Zitate':v==='intro'?'':v==='gal'?'Galerie':v==='xyz'?'Links':'Dressuraufgaben (R1–R6)');
+$('title').classList.toggle('home',v!=='test');$('title').textContent=v==='test'?(T.id+' · '+(T.short||T.name)):(v==='mat'?'Materialien':v==='wissen'?'Pferdewissen':v==='gesch'?'Geschichte':v==='intro'?'':v==='gal'?'Galerie':v==='xyz'?'Links':'Dressuraufgaben (R1–R6)');
 $('src').textContent=v==='test'&&T.src?T.src:'Dressuraufgaben des Österreichischen Pferdesportverbands (OEPS).';
 $('critBox').hidden=!(v==='test'&&T.crit);if(v==='test'&&T.crit)$('crit').textContent=T.crit;if(window.THEO_READY){THEO.off();THEO.avail(v==='test'?T.id:'')}}
 function openTest(id){const t=TESTS.find(x=>x.id===id);if(!t)return;
@@ -1568,36 +1568,36 @@ GAL.reverse();/* neueste zuerst: neue Eintraege ans Ende der Liste schreiben */
  if(window.navMark)navMark();
 })();
 </script>
-<style>#theo2 .wsec{margin:12px 0 4px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--theo)}
-#theo2 .wsec:first-child{margin-top:2px}
-#theo2 .hr{display:grid;grid-template-columns:5.6em minmax(0,1fr);gap:10px;padding:8px 6px;border-bottom:1px solid transparent;font-size:14px;line-height:1.4;background-image:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px);background-position:left bottom;background-size:100% 1px;background-repeat:no-repeat;background-origin:border-box}
-#theo2 .hr.alt,#theo2 .zq.alt{background:color-mix(in srgb,var(--sand) 45%,transparent)}
-#theo2 .hr .d{font-weight:700;color:var(--theo);font-size:12px;line-height:1.3;padding-top:1px}
-#theo2 .hr a{white-space:nowrap;margin-left:6px;font-size:12px;color:var(--theo);font-weight:600;text-decoration:none}
-#theo2 .zq{display:grid;grid-template-columns:44px minmax(0,1fr);gap:10px;padding:9px 6px;border-bottom:1px solid transparent;color:inherit;text-decoration:none;background-image:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px);background-position:left bottom;background-size:100% 1px;background-repeat:no-repeat;background-origin:border-box}
-#theo2 .zq .pic{width:44px;height:54px;display:grid;place-items:center;font-weight:700;font-size:14px;color:var(--theo);border:1px solid transparent;border-radius:4px;background:var(--surface);background-image:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px),repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px),repeating-linear-gradient(to bottom,#b8b8b8 0 1px,transparent 1px 3px),repeating-linear-gradient(to bottom,#b8b8b8 0 1px,transparent 1px 3px);background-position:left top,left bottom,left top,right top;background-size:100% 1px,100% 1px,1px 100%,1px 100%;background-repeat:no-repeat;background-origin:border-box}
-#theo2 .zq b{font-size:14px}
-#theo2 .zq small{display:block;font-size:12px;color:var(--muted);margin-bottom:3px}
-#theo2 .zq q{display:block;font-size:14px;line-height:1.4;quotes:'„' '“'}
-#theo2 .zq .o{display:block;font-size:12px;font-style:italic;color:var(--muted);margin-top:2px}
-#theo2 .zq .n{display:block;font-size:12px;color:var(--muted);margin-top:3px;line-height:1.3}
-#theo2 .zq .go{font-size:12px;color:var(--theo);font-weight:600;margin-top:3px;display:block}
-#theo2 .tline{font-size:12px;color:var(--muted);margin:8px 6px 4px;line-height:1.3}
+<style>#theo2 .wsec,#theo3 .wsec{margin:12px 0 4px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--theo)}
+#theo2 .wsec:first-child,#theo3 .wsec:first-child{margin-top:2px}
+#theo2 .hr,#theo3 .hr{display:grid;grid-template-columns:5.6em minmax(0,1fr);gap:10px;padding:8px 6px;border-bottom:1px solid transparent;font-size:14px;line-height:1.4;background-image:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px);background-position:left bottom;background-size:100% 1px;background-repeat:no-repeat;background-origin:border-box}
+#theo2 .hr.alt,#theo3 .hr.alt,#theo2 .zq.alt,#theo3 .zq.alt{background:color-mix(in srgb,var(--sand) 45%,transparent)}
+#theo2 .hr .d,#theo3 .hr .d{font-weight:700;color:var(--theo);font-size:12px;line-height:1.3;padding-top:1px}
+#theo2 .hr a,#theo3 .hr a{white-space:nowrap;margin-left:6px;font-size:12px;color:var(--theo);font-weight:600;text-decoration:none}
+#theo2 .zq,#theo3 .zq{display:grid;grid-template-columns:44px minmax(0,1fr);gap:10px;padding:9px 6px;border-bottom:1px solid transparent;color:inherit;text-decoration:none;background-image:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px);background-position:left bottom;background-size:100% 1px;background-repeat:no-repeat;background-origin:border-box}
+#theo2 .zq .pic,#theo3 .zq .pic{width:44px;height:54px;display:grid;place-items:center;font-weight:700;font-size:14px;color:var(--theo);border:1px solid transparent;border-radius:4px;background:var(--surface);background-image:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px),repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px),repeating-linear-gradient(to bottom,#b8b8b8 0 1px,transparent 1px 3px),repeating-linear-gradient(to bottom,#b8b8b8 0 1px,transparent 1px 3px);background-position:left top,left bottom,left top,right top;background-size:100% 1px,100% 1px,1px 100%,1px 100%;background-repeat:no-repeat;background-origin:border-box}
+#theo2 .zq b,#theo3 .zq b{font-size:14px}
+#theo2 .zq small,#theo3 .zq small{display:block;font-size:12px;color:var(--muted);margin-bottom:3px}
+#theo2 .zq q,#theo3 .zq q{display:block;font-size:14px;line-height:1.4;quotes:'„' '“'}
+#theo2 .zq .o,#theo3 .zq .o{display:block;font-size:12px;font-style:italic;color:var(--muted);margin-top:2px}
+#theo2 .zq .n,#theo3 .zq .n{display:block;font-size:12px;color:var(--muted);margin-top:3px;line-height:1.3}
+#theo2 .zq .go,#theo3 .zq .go{font-size:12px;color:var(--theo);font-weight:600;margin-top:3px;display:block}
+#theo2 .tline,#theo3 .tline{font-size:12px;color:var(--muted);margin:8px 6px 4px;line-height:1.3}
 /* Listen: Geschichte & Zitate wie in der Deutsch-App */
-#theo2 .wsec{color:var(--dred);letter-spacing:.12em;font-size:12px}
-#theo2 .hr,#theo2 .zq{border-bottom:0!important;background:var(--df) left bottom/100% 1px no-repeat!important;padding:11px 2px!important}
-#theo2 .hr.alt,#theo2 .zq.alt{background:var(--df) left bottom/100% 1px no-repeat!important}
-#theo2 .hr .d{color:var(--fg)!important}
-#theo2 .hr a,#theo2 .zq .go{display:inline-block;background:var(--grey);color:#1a5fd0!important;padding:1px 8px;margin-top:4px;font-weight:700}
-#theo2 .zq .pic{border:0!important;border-radius:0!important;background:var(--pale)!important;color:var(--ink)!important;letter-spacing:.18em;font-weight:400;
+#theo2 .wsec,#theo3 .wsec{color:var(--dred);letter-spacing:.12em;font-size:12px}
+#theo2 .hr,#theo3 .hr,#theo2 .zq,#theo3 .zq{border-bottom:0!important;background:var(--df) left bottom/100% 1px no-repeat!important;padding:11px 2px!important}
+#theo2 .hr.alt,#theo3 .hr.alt,#theo2 .zq.alt,#theo3 .zq.alt{background:var(--df) left bottom/100% 1px no-repeat!important}
+#theo2 .hr .d,#theo3 .hr .d{color:var(--fg)!important}
+#theo2 .hr a,#theo3 .hr a,#theo2 .zq .go,#theo3 .zq .go{display:inline-block;background:var(--grey);color:#1a5fd0!important;padding:1px 8px;margin-top:4px;font-weight:700}
+#theo2 .zq .pic,#theo3 .zq .pic{border:0!important;border-radius:0!important;background:var(--pale)!important;color:var(--ink)!important;letter-spacing:.18em;font-weight:400;
  box-shadow:inset 0 0 0 1px var(--dot)}
-#theo2 .wsec{color:var(--dred)!important}
-#theo2 .hr a,#theo2 .zq .go{display:inline-block!important;width:auto!important;background:var(--grey)!important;color:#1a5fd0!important;padding:1px 8px!important}
-#theo2 .hr .d{color:var(--fg)!important;font-weight:700}
-#theo2 .zq .pic{color:var(--ink)!important;background:var(--pale)!important}
-#theo2 .hr,#theo2 .zq{padding:10px 8px!important;background:#fff!important}
-#theo2 .hr.alt,#theo2 .zq.alt{background:#f4f4f2!important}
-#theo2 .hr a,#theo2 .zq .go{background:#dfe9fa!important;color:#1a5fd0!important;font-size:12px!important;letter-spacing:.04em;padding:1px 8px 2px!important}
+#theo2 .wsec,#theo3 .wsec{color:var(--dred)!important}
+#theo2 .hr a,#theo3 .hr a,#theo2 .zq .go,#theo3 .zq .go{display:inline-block!important;width:auto!important;background:var(--grey)!important;color:#1a5fd0!important;padding:1px 8px!important}
+#theo2 .hr .d,#theo3 .hr .d{color:var(--fg)!important;font-weight:700}
+#theo2 .zq .pic,#theo3 .zq .pic{color:var(--ink)!important;background:var(--pale)!important}
+#theo2 .hr,#theo3 .hr,#theo2 .zq,#theo3 .zq{padding:10px 8px!important;background:#fff!important}
+#theo2 .hr.alt,#theo3 .hr.alt,#theo2 .zq.alt,#theo3 .zq.alt{background:#f4f4f2!important}
+#theo2 .hr a,#theo3 .hr a,#theo2 .zq .go,#theo3 .zq .go{background:#dfe9fa!important;color:#1a5fd0!important;font-size:12px!important;letter-spacing:.04em;padding:1px 8px 2px!important}
 #dnav{display:none!important}
 #home{overflow:hidden!important;padding:0!important;gap:0!important;position:relative}
 .hbody{flex:1 1 auto;min-height:0;position:relative;overflow:hidden}
@@ -1623,7 +1623,7 @@ GAL.reverse();/* neueste zuerst: neue Eintraege ans Ende der Liste schreiben */
 <script>
 (function(){
  const $=id=>document.getElementById(id),reduceM=matchMedia('(prefers-reduced-motion: reduce)').matches;
- const SECS=[['a','Dressuraufgaben'],['w','Pferdewissen'],['g','Geschichte & Zitate'],['m','Materialien'],['x','Links']];
+ const SECS=[['a','Dressuraufgaben'],['w','Pferdewissen'],['g','Geschichte'],['z','Zitate'],['m','Materialien'],['x','Links']];
  const HB=22,ROWS=Math.ceil(SECS.length/2),HOME=$('home');
  const HBODY=document.createElement('div');HBODY.className='hbody';HBODY.id='hbody';
  const SC=document.createElement('div');SC.className='hscroll';SC.id='hscroll';HBODY.appendChild(SC);
@@ -1648,16 +1648,16 @@ GAL.reverse();/* neueste zuerst: neue Eintraege ans Ende der Liste schreiben */
   b.querySelector('.code').textContent=c;{const KB={thsV:'img/kreis_sehen.jpg',thsA:'img/skelett.jpg',thsB:'img/viereck_real.svg',thsK:'img/koerper_ohren_1.jpg',thsS:'img/situationen_icon.jpg',thsGe:'img/gesundheit_check.jpg',thsP:'img/kreis_pferde.jpg'}[id];const CR={thsA:'#fff url(img/skelett.jpg) 0% 4%/300% no-repeat',thsB:'#fff url(img/viereck_real.svg) 22% 58%/185% no-repeat',thsK:'#fff url(img/koerper_ohren_1.jpg) 52% 16%/289% no-repeat',thsS:'#fff url(img/situationen_icon.jpg) center/cover no-repeat',thsGe:'#fff url(img/gesundheit_check.jpg) 42% 22%/217% no-repeat',thsV:'#fff url(img/sehen_real.svg) 50% 50%/118% no-repeat'}[id];if(KB){const cd=b.querySelector('.code');cd.textContent='';cd.setAttribute('role','img');cd.setAttribute('aria-label',n);cd.style.setProperty('background',CR||('#fff url('+KB+') center/cover no-repeat'),'important');}}/* kreisbild */b.querySelector('.nm').textContent=n;b.querySelector('.ds').textContent=d;
   b.onclick=()=>{openWissen();setTimeout(()=>$(id).click(),0);};PW.appendChild(b);});
  {const ln=document.createElement('p');ln.className='tline intro';const w=document.createElement('span');w.className='inter';w.textContent='interaktiv';{const d=document.createElement('i');d.className='idot';w.prepend(d);}ln.append(w,' Tippe auf Bilder, Punkte und Quiz.');PW.insertBefore(ln,PW.querySelector('.tile'));}
- /* 03 Geschichte & Zitate */
+ /* 03 Geschichte, 04 Zitate */
  const PG=mk('p-g','hsec');if(window.THEO_LISTS)THEO_LISTS();
  const h1=document.createElement('p');h1.className='wsec';h1.textContent='Kleine Geschichte des Pferdes';
- const h2=document.createElement('p');h2.className='wsec';h2.textContent='Zitate';
- const pg=document.createElement('div');pg.id='theo2';pg.append(h1,$('thHl'),h2,$('thZl'));PG.appendChild(pg);
+ const pg=document.createElement('div');pg.id='theo2';pg.append(h1,$('thHl'));PG.appendChild(pg);
+ const PZ=mk('p-z','hsec');const pz=document.createElement('div');pz.id='theo3';pz.append($('thZl'));PZ.appendChild(pz);
  /* 04 Galerie, 05 Materialien, 06 XYZ: ganze Abschnitte */
  
  const PM=mk('p-m','hsec');PM.appendChild($('mat'));
  const PX=mk('p-x','hsec');PX.appendChild($('xyz'));
- const PAGES=[PA,PW,PG,PM,PX];
+ const PAGES=[PA,PW,PG,PZ,PM,PX];
  SC.appendChild(TP);
  const BARS=SECS.map(([k,n],i)=>{const r=i>>1,b=document.createElement('div');b.className='hb '+(i&1?'hr':'hl')+(i===0?' first':'');
   b.innerHTML='<b></b><small>['+String(i+1).padStart(2,'0')+']</small>';b.firstChild.textContent=n;
@@ -1693,19 +1693,19 @@ GAL.reverse();/* neueste zuerst: neue Eintraege ans Ende der Liste schreiben */
  function sync(){HBODY.hidden=!(view==='home'&&$('info').hidden);['home','mat','xyz','intro'].forEach(id=>{const e=$(id);if(e)e.hidden=false;});if(!HBODY.hidden){lastFit();upd();}}
  const _info=info;window.info=function(o){_info(o);sync();};$('infoBtn').onclick=()=>info($('info').hidden);$('infoClose').onclick=()=>info(false);
  addEventListener('popstate',()=>setTimeout(sync,0));
- const IDX={mat:3,gesch:2,xyz:4};let saved=0;const _show=show;
+ const IDX={mat:4,gesch:2,zit:3,xyz:5};let saved=0;const _show=show;
  const goSec=(i,smooth)=>{sync();requestAnimationFrame(()=>{lastFit();SC.scrollTo({top:i<0?0:secTop(i),behavior:smooth&&!reduceM?'smooth':'auto'});upd();});};
  window.show=function(v){if(view==='home'&&v!=='home')saved=SC.scrollTop;
   if(v==='intro'){_show('home');goSec(-1);return;}
   if(v in IDX){_show('home');goSec(IDX[v]);return;}
   _show(v);sync();if(v==='home')requestAnimationFrame(()=>{lastFit();SC.scrollTop=saved;upd();});};
  const toHome=i=>{if(view!=='home'){try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}home();}goSec(i,true);};
- window.openMat=()=>toHome(3);window.openGesch=()=>toHome(2);window.openXyz=()=>toHome(4);window.openIntro=()=>toHome(-1);
- window.geschRaw=()=>{_show('home');goSec(2);};window.xyzRaw=()=>{_show('home');goSec(4);};window.introRaw=()=>{_show('home');goSec(-1);};
+ window.openMat=()=>toHome(4);window.openGesch=()=>toHome(2);window.openZit=()=>toHome(3);window.openXyz=()=>toHome(5);window.openIntro=()=>toHome(-1);
+ window.geschRaw=()=>{_show('home');goSec(2);};window.xyzRaw=()=>{_show('home');goSec(5);};window.introRaw=()=>{_show('home');goSec(-1);};
  $('introGo').onclick=()=>goSec(0,true);
  $('title').onclick=()=>{if(view==='home')goSec(-1,true);else home();};
  /* Start: Adresszusatz auswerten */
- const S=window.START_H||'';const m={'#material':3,'#geschichte':2,'#xyz':4,'#links':4};
+ const S=window.START_H||'';const m={'#material':4,'#geschichte':2,'#zitate':3,'#xyz':5,'#links':5};
  if(S in m){try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}_show('home');goSec(m[S]);}
  else if(!S||S==='#start'){_show('home');goSec(-1);}
  sync();requestAnimationFrame(()=>{lastFit();upd();});
@@ -1880,7 +1880,7 @@ body.bv .titlebar .wsw{display:flex}
 body.introOn .hb{animation:hbp 3.4s ease-in-out infinite}
 body.introOn .hb[data-pc="0"]{--pc:#fbe0e3} body.introOn .hb[data-pc="1"]{--pc:#e6f4c8;animation-delay:-.7s}
 body.introOn .hb[data-pc="2"]{--pc:#dfe9fb;animation-delay:-1.4s} body.introOn .hb[data-pc="3"]{--pc:#fdf0c2;animation-delay:-2.1s}
-body.introOn .hb[data-pc="4"]{--pc:#ece2f8;animation-delay:-2.8s}
+body.introOn .hb[data-pc="4"]{--pc:#ece2f8;animation-delay:-2.8s} body.introOn .hb[data-pc="5"]{--pc:#dff3ea;animation-delay:-3.5s}
 @media (prefers-reduced-motion:reduce){body.introOn .hb{animation:none}.wsw .tg b::after{animation:none}}
 
 /* ---- Zitate wie in der Deutsch-App: Filter-Knöpfe, gepunktete Linien, Bild, grau/weiß im Wechsel ---- */
@@ -2485,7 +2485,7 @@ footer.copy .ilink{margin:0;padding:2px 4px;font-size:12px}
  const brand=()=>{if($('title').onclick)$('title').onclick();};
  $('brand').onclick=brand;$('brand').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();brand();}};
  /* Nach dem ersten Layout (Kopfzeile aendert die Hoehe) erneut an den Abschnitt andocken, wenn per Adresse angesprungen wurde */
- const ANCH={'#material':3,'#geschichte':2,'#xyz':4,'#links':4},ST=(window.START_H||'');
+ const ANCH={'#material':4,'#geschichte':2,'#zitate':3,'#xyz':5,'#links':5},ST=(window.START_H||'');
  if(ST in ANCH){const snap=()=>{if(view!=='home')return;const S=$('hscroll'),P=S&&S.querySelectorAll('section.hsec')[ANCH[ST]];if(P)S.scrollTop=P.offsetTop-parseFloat(P.style.scrollMarginTop||0);};
   setTimeout(snap,120);setTimeout(snap,500);}
  bv();
@@ -2544,7 +2544,7 @@ footer.copy .ilink{margin:0;padding:2px 4px;font-size:12px}
 <i class="rule l" aria-hidden="true"></i><i class="rule m" aria-hidden="true"></i><i class="rule r" aria-hidden="true"></i><i class="tk t" aria-hidden="true"></i><i class="tk m" aria-hidden="true"></i><i class="tk b" aria-hidden="true"></i>
 <script id="dd-js">
 (function(){const T=document.querySelector('.titlebar');if(!T)return;const set=()=>document.documentElement.style.setProperty('--head',Math.round(T.getBoundingClientRect().bottom)+'px');
- document.querySelectorAll('.hb').forEach((b,i)=>b.setAttribute('data-pc',i%5));set();addEventListener('resize',set);addEventListener('load',set);setTimeout(set,400);if(window.ResizeObserver)new ResizeObserver(set).observe(T);})();
+ document.querySelectorAll('.hb').forEach((b,i)=>b.setAttribute('data-pc',i%6));set();addEventListener('resize',set);addEventListener('load',set);setTimeout(set,400);if(window.ResizeObserver)new ResizeObserver(set).observe(T);})();
 </script>
 <script id="zeit-js">
 /* Zeitleiste "Pferd und Reitkunst": Einträge. y = Jahr (negativ = v. Chr.), e = Ende (Balken), d = Datumstext, lab = Kurzdatum auf der Leiste,
@@ -2796,6 +2796,9 @@ window.qSlider=function(sc,sl){var th=sl.querySelector("i"),dr=false,tH=0;
 .qpop .tlbody p.qo{font-style:italic;font-size:14px;color:#555}.qpop .tlbody p.qn{font-size:14px;color:#555}
 .tlbody dl.qd{margin:6px 0 0;padding-top:8px;display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:12px;line-height:1.35;background:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px) left top/100% 1px no-repeat}
 .tlbody dl.qd dt{color:#8a8a86}.tlbody dl.qd dd{margin:0;color:#222}
+
+/* zitate-split */
+footer.copy.cv{background-image:none!important;border-top:0!important;padding-top:0!important}
 </style>
 <script id="vier-js">
 (function(){
