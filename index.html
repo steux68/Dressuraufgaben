@@ -36,7 +36,7 @@
 a[target="_blank"]:not([class]){color:#1a5fd0;text-decoration:none}
 </style>
 </head><body>
-<meta name="app-version" content="2026-11-15c"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-15d"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -489,7 +489,7 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 <p><b>Quelle:</b> <span id="src">Dressuraufgaben des Österreichischen Pferdesportverbands (OEPS).</span></p>
 <p>Inoffizielle Lernhilfe, ohne Gewähr. Bitte vor der Prüfung die aktuelle Aufgabe auf oeps.at (Dressur → Aufgaben) prüfen – Änderungen sind möglich. Verbindlich ist immer die OEPS-Fassung.</p>
 <p style="margin-top:8px">App, Gestaltung und Lernkarten © Steuart JM HARRISON (steux) · Aufgabeninhalte: OEPS · Logo: Reitschule Steinbach</p>
-<p class="small"><button type="button" id="updbtn" class="small" style="padding:6px 12px;font-size:14px">Neueste Version laden</button> App neu laden, Punkte bleiben.</p>
+<div class="utl"><button type="button" id="updbtn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20 4v5h-5"/></svg>update</button><button type="button" id="homebtn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></svg>home</button></div><p class="small" style="margin-top:0">update lädt die neueste Version, Punkte bleiben.</p>
 <p class="small"><b>Impressum:</b> Medieninhaber, Herausgeber und Verantwortlicher: Steuart JM Harrison, Wien. Privates, nicht kommerzielles Lernangebot ohne Werbung. Es werden keine Cookies gesetzt; Punkte und Lernstand bleiben auf dem Gerät. Bilder werden direkt von Wikipedia / Wikimedia Commons geladen, dabei sieht Wikimedia die IP-Adresse.</p>
 <p class="small">Galoppierendes Pferd (Überraschung): Eadweard Muybridge, „The Horse in Motion“, 1878 – gemeinfrei. <a href="https://de.wikipedia.org/wiki/Eadweard_Muybridge" target="_blank" rel="noopener">Wikipedia</a></p>
 <p class="small">Galerie: Johann Daniel Meyer (1713–1752), „Das Sceletirte Pferd worauf ein Menschen Gerippe sitzet“, Tab. XXV aus „Angenehmer und nützlicher Zeit-Vertreib“, Bd. 1, Nürnberg 1748 – gemeinfrei. Bildausschnitt; Scan über <a href="https://commons.wikimedia.org/wiki/File:Meyer_Zeit-Vertreib_1_Tafel_025.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>.</p>
@@ -2809,6 +2809,15 @@ footer.copy.cv{background-image:none!important;border-top:0!important;padding-to
 /* linie-breite */
 .titlebar{background-image:none!important;position:relative}
 .titlebar::after{content:"";position:absolute;left:-10px;right:-10px;bottom:0;height:1px;background:repeating-linear-gradient(to right,#b8b8b8 0 4px,transparent 4px 7px);pointer-events:none}
+/* info-credit */
+.utl{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0 4px}
+.utl button{display:flex;align-items:center;justify-content:center;gap:6px;height:36px;padding:0 10px;font:inherit;font-size:14px;color:#222;cursor:pointer;border:1px solid transparent;border-radius:0;
+ background-color:#fff!important;background-image:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px),repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px),repeating-linear-gradient(to bottom,#b8b8b8 0 1px,transparent 1px 3px),repeating-linear-gradient(to bottom,#b8b8b8 0 1px,transparent 1px 3px)!important;background-position:left top,left bottom,left top,right top!important;background-size:100% 1px,100% 1px,1px 100%,1px 100%!important;background-repeat:no-repeat!important;background-origin:border-box!important}
+.utl button svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.utl button:active{background-color:#f4f4f4!important}
+.ucr{display:flex;flex-direction:column;align-items:center;gap:4px;margin:14px auto 0;max-width:200px;font-size:12px;color:#777;text-align:center;line-height:1.2}
+.ucr .bx{width:100%;height:46px;display:grid;place-items:center;padding:3px 6px;border:1px solid transparent;box-sizing:border-box;background-color:#fff!important;background-image:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px),repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px),repeating-linear-gradient(to bottom,#b8b8b8 0 1px,transparent 1px 3px),repeating-linear-gradient(to bottom,#b8b8b8 0 1px,transparent 1px 3px)!important;background-position:left top,left bottom,left top,right top!important;background-size:100% 1px,100% 1px,1px 100%,1px 100%!important;background-repeat:no-repeat!important;background-origin:border-box!important}
+.ucr .bx img{max-height:38px;max-width:100%;display:block}
 </style>
 <script id="vier-js">
 (function(){
@@ -3518,7 +3527,7 @@ window.anaClose=function(){closeSet();};
 })();
 </script>
 <script id="info-move-js">(function(){var b=document.getElementById("infoBtn");function o(){if(b)b.click();}var t=document.getElementById("tipInfo");if(t)t.addEventListener("click",o);var l=document.getElementById("infoLink");if(l)l.addEventListener("click",o);})();</script><script>/* Von Hand aktualisieren: Zwischenspeicher und Service Worker leeren, dann mit neuer Adresse neu laden (Punkte liegen in localStorage und bleiben) */
-document.getElementById("updbtn").onclick=function(){this.textContent="…";var go=function(){location.replace(location.pathname+"?v="+Date.now());};
+document.getElementById("homebtn").onclick=function(){location.replace(location.pathname);};document.getElementById("updbtn").onclick=function(){var tb=this;tb.style.opacity=".5";var go=function(){location.replace(location.pathname+"?v="+Date.now());};
  Promise.all([("caches" in window)?caches.keys().then(function(k){return Promise.all(k.map(function(x){return caches.delete(x);}));}):0,
   (navigator.serviceWorker&&navigator.serviceWorker.getRegistrations)?navigator.serviceWorker.getRegistrations().then(function(r){return Promise.all(r.map(function(x){return x.unregister();}));}):0]).then(go,go);};
 </script>
