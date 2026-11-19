@@ -52,8 +52,12 @@ a[target="_blank"]:not([class]){color:#1a5fd0;text-decoration:none}
 .hscroll{scroll-snap-type:y proximity!important}
 #p-title,#p-a,#p-w,#p-g,#p-z,#p-m,#p-x{scroll-snap-align:start}
 </style>
+<style id="matlinks-css">
+/* Material & Links: ein Abschnitt, letzter Abschnitt der Seite (kein Abstand darunter) */
+#p-m{padding-bottom:40px!important;margin-bottom:0!important}
+</style>
 </head><body>
-<meta name="app-version" content="2026-11-19a"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-19b"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -1646,7 +1650,7 @@ GAL.reverse();/* neueste zuerst: neue Eintraege ans Ende der Liste schreiben */
 <script>
 (function(){
  const $=id=>document.getElementById(id),reduceM=matchMedia('(prefers-reduced-motion: reduce)').matches;
- const SECS=[['a','Dressuraufgaben'],['w','Pferdewissen'],['g','Geschichte'],['z','Zitate'],['m','Materialien'],['x','Links']];
+ const SECS=[['a','Dressuraufgaben'],['w','Pferdewissen'],['g','Geschichte'],['z','Zitate'],['m','Material & Links']];
  const HB=24,ROWS=SECS.length,HOME=$('home');
  const HBODY=document.createElement('div');HBODY.className='hbody';HBODY.id='hbody';
  const SC=document.createElement('div');SC.className='hscroll';SC.id='hscroll';HBODY.appendChild(SC);
@@ -1679,8 +1683,8 @@ GAL.reverse();/* neueste zuerst: neue Eintraege ans Ende der Liste schreiben */
  /* 04 Galerie, 05 Materialien, 06 XYZ: ganze Abschnitte */
  
  const PM=mk('p-m','hsec');PM.appendChild($('mat'));
- const PX=mk('p-x','hsec');PX.appendChild($('xyz'));
- const PAGES=[PA,PW,PG,PZ,PM,PX];
+ PM.appendChild($('xyz'));
+ const PAGES=[PA,PW,PG,PZ,PM];
  SC.appendChild(TP);
  const BARS=SECS.map(([k,n],i)=>{const r=i,b=document.createElement('div');b.className='hb '+(i&1?'hr':'hl')+(i===0?' first':'')+(r===0?' r0':'');
   b.innerHTML='<b></b><small>['+String(i+1).padStart(2,'0')+']</small>';b.firstChild.textContent=n;
@@ -1716,19 +1720,19 @@ GAL.reverse();/* neueste zuerst: neue Eintraege ans Ende der Liste schreiben */
  function sync(){HBODY.hidden=!(view==='home'&&$('info').hidden);['home','mat','xyz','intro'].forEach(id=>{const e=$(id);if(e)e.hidden=false;});if(!HBODY.hidden){lastFit();upd();}}
  const _info=info;window.info=function(o){_info(o);sync();};$('infoBtn').onclick=()=>info($('info').hidden);$('infoClose').onclick=()=>info(false);
  addEventListener('popstate',()=>setTimeout(sync,0));
- const IDX={mat:4,gesch:2,zit:3,xyz:5};let saved=0;const _show=show;
+ const IDX={mat:4,gesch:2,zit:3,xyz:4};let saved=0;const _show=show;
  const goSec=(i,smooth)=>{sync();requestAnimationFrame(()=>{lastFit();SC.scrollTo({top:i<0?0:secTop(i),behavior:smooth&&!reduceM?'smooth':'auto'});upd();});};
  window.show=function(v){if(view==='home'&&v!=='home')saved=SC.scrollTop;
   if(v==='intro'){_show('home');goSec(-1);return;}
   if(v in IDX){_show('home');goSec(IDX[v]);return;}
   _show(v);sync();if(v==='home')requestAnimationFrame(()=>{lastFit();SC.scrollTop=saved;upd();});};
  const toHome=i=>{if(view!=='home'){try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}home();}goSec(i,true);};
- window.openMat=()=>toHome(4);window.openGesch=()=>toHome(2);window.openZit=()=>toHome(3);window.openXyz=()=>toHome(5);window.openIntro=()=>toHome(-1);
- window.geschRaw=()=>{_show('home');goSec(2);};window.xyzRaw=()=>{_show('home');goSec(5);};window.introRaw=()=>{_show('home');goSec(-1);};
+ window.openMat=()=>toHome(4);window.openGesch=()=>toHome(2);window.openZit=()=>toHome(3);window.openXyz=()=>toHome(4);window.openIntro=()=>toHome(-1);
+ window.geschRaw=()=>{_show('home');goSec(2);};window.xyzRaw=()=>{_show('home');goSec(4);};window.introRaw=()=>{_show('home');goSec(-1);};
  $('introGo').onclick=()=>goSec(0,true);
  $('title').onclick=()=>{if(view==='home')goSec(-1,true);else home();};
  /* Start: Adresszusatz auswerten */
- const S=window.START_H||'';const m={'#material':4,'#geschichte':2,'#zitate':3,'#xyz':5,'#links':5};
+ const S=window.START_H||'';const m={'#material':4,'#geschichte':2,'#zitate':3,'#xyz':4,'#links':4};
  if(S in m){try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}_show('home');goSec(m[S]);}
  else if(!S||S==='#start'){_show('home');goSec(-1);}
  sync();requestAnimationFrame(()=>{lastFit();upd();});
@@ -2508,7 +2512,7 @@ footer.copy .ilink{margin:0;padding:2px 4px;font-size:12px}
  const brand=()=>{if($('title').onclick)$('title').onclick();};
  $('brand').onclick=brand;$('brand').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();brand();}};
  /* Nach dem ersten Layout (Kopfzeile aendert die Hoehe) erneut an den Abschnitt andocken, wenn per Adresse angesprungen wurde */
- const ANCH={'#material':4,'#geschichte':2,'#zitate':3,'#xyz':5,'#links':5},ST=(window.START_H||'');
+ const ANCH={'#material':4,'#geschichte':2,'#zitate':3,'#xyz':4,'#links':4},ST=(window.START_H||'');
  if(ST in ANCH){const snap=()=>{if(view!=='home')return;const S=$('hscroll'),P=S&&S.querySelectorAll('section.hsec')[ANCH[ST]];if(P)S.scrollTop=P.offsetTop-parseFloat(P.style.scrollMarginTop||0);};
   setTimeout(snap,120);setTimeout(snap,500);}
  bv();
