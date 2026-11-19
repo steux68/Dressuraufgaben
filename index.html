@@ -57,7 +57,7 @@ a[target="_blank"]:not([class]){color:#1a5fd0;text-decoration:none}
 #p-m{padding-bottom:40px!important;margin-bottom:0!important}
 </style>
 </head><body>
-<meta name="app-version" content="2026-11-19b"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-19c"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -3647,6 +3647,14 @@ mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='
 @keyframes ripr{0%{transform:scale(.12);opacity:1}100%{transform:scale(1);opacity:0}}
 @keyframes ripd{0%{opacity:1}100%{opacity:0}}
 @media (prefers-reduced-motion:reduce){.rip{animation-duration:.01s}}
+
+/* fbx */
+#theo .sub button{min-height:32px!important;line-height:1.2}
+.zch{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px!important;padding:2px 0 8px}
+.zch button{background:#ebebeb!important;color:#222;padding:6px 8px!important;min-height:32px;font-size:14px;font-weight:700!important;line-height:1.2;text-align:left;border:0!important;border-radius:0!important;box-shadow:none!important;min-width:0}
+.zch button[aria-pressed="true"]{background:#cdff3e!important}
+.wchips:not(.zch){gap:2px!important}
+.wchip{height:32px!important;padding:0 8px!important;text-align:left}
 </style>
 <script id="ripple-js">(function(){
 /* Tipp-Welle: schwarzer Punkt + graue Ringe, folgt dem Finger ein Stück */
