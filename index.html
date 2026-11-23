@@ -77,7 +77,7 @@ html body .hb.on[data-i]{box-shadow:inset 4px 0 0 #222!important}
 html body .hb.on[data-i] b{padding-left:8px}
 </style>
 </head><body>
-<meta name="app-version" content="2026-11-22b"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-23a"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -612,8 +612,8 @@ b.onclick=()=>pick(b,k===gk);b.dataset.right=k===gk?'1':'';box.appendChild(b)});
 $('sc').textContent=score;$('mx').textContent=gk;$('sr').textContent=streak;$('bs').textContent=best}
 function pick(b,ok){if(answered)return;answered=true;
 document.querySelectorAll('.opt').forEach(o=>{if(o.dataset.right)o.classList.add('ok')});
-if(ok){score++;streak++;$('gq').textContent='Richtig!';$('gq').style.color='var(--ok)'}
-else{streak=0;b.classList.add('bad');$('gq').textContent='Falsch – richtig ist grün.';$('gq').style.color='var(--bad)'}
+if(ok){score++;streak++;$('gq').textContent='Richtig!';$('gq').style.color='#222'}
+else{streak=0;b.classList.add('bad');$('gq').textContent='Falsch – richtig ist die Antwort mit ✓.';$('gq').style.color='var(--bad)'}
 gDraw(true);$('sc').textContent=score;$('mx').textContent=gk+1;$('sr').textContent=streak;
 if(gk===S.length-1){if(score>best){best=score;ls('best_'+T.id,best)}
 $('bs').textContent=best;$('gq').style.color='var(--fg)';$('gq').textContent='Fertig! '+score+' von '+S.length+' richtig'+(score===S.length?' – perfekt geritten!':'');$('gn').hidden=true}
@@ -3725,6 +3725,47 @@ addEventListener("mousemove",function(e){if(e.buttons)fol(e.clientX,e.clientY)},
 @keyframes blkt{0%{transform:none}32%{transform:scale(1.3,.867)}68%{transform:scale(.95,1.11)}100%{transform:none}}
 @media (prefers-reduced-motion:reduce){.hb,.hb>b,.hb>small{transition:none!important;animation:none!important}}
 </style>
+<style id="doch-uebertrag-css">
+/* 23.11.2026 Uebertrag aus DOCH!: Linien, Auswahl = Fuellung, richtig/falsch farbenblind-sicher */
+:root{--dd:repeating-linear-gradient(to right,#b8b8b8 0 1px,transparent 1px 3px);--dv:repeating-linear-gradient(to bottom,#b8b8b8 0 1px,transparent 1px 3px);
+ --box:var(--dd) left top/100% 1px no-repeat,var(--dd) left bottom/100% 1px no-repeat,var(--dv) left top/1px 100% no-repeat,var(--dv) right top/1px 100% no-repeat}
+/* 1 Reiter */
+:is(.seg,#theo .sub,#thVi .viTabs,.anaSeg,.anapop .anaBar){gap:0!important;column-gap:0!important;row-gap:0!important}
+:is(.seg,#theo .sub,#thVi .viTabs,.anaSeg,.anapop .anaBar)>button{
+ --bt:var(--dd) left top/100% 1px no-repeat;--bb:var(--dd) left bottom/100% 1px no-repeat;--bl:var(--dv) left top/1px 100% no-repeat;--bc:#f2f2f2;
+ box-sizing:border-box;height:23px!important;min-height:0!important;margin:0!important;padding:0 10px!important;
+ display:flex!important;align-items:center!important;justify-content:flex-start!important;text-align:left!important;
+ font-size:12px!important;line-height:1!important;font-weight:400!important;color:#222!important;white-space:nowrap;overflow:hidden;text-transform:none;
+ border:0!important;border-radius:0!important;box-shadow:none!important;outline:0!important;
+ background:var(--bt),var(--bb),var(--bl),var(--bc)!important}
+:is(.seg,#theo .sub,#thVi .viTabs,.anaSeg,.anapop .anaBar)>button[hidden]{display:none!important}
+:is(.seg,#theo .sub,#thVi .viTabs,.anaSeg,.anapop .anaBar)>button:first-child{--bl:none}
+#theo .sub>button:nth-child(3n+1){--bl:none}
+#theo .sub>button:nth-child(n+4){--bt:none}
+:is(.seg,#theo .sub,#thVi .viTabs,.anaSeg,.anapop .anaBar)>button[aria-pressed="true"]{--bc:#cdff3e;font-weight:700!important;color:#222!important;background:var(--bt),var(--bb),var(--bl),var(--bc)!important}
+.anaSeg.blseg,#thVi .viTabs{margin:8px 0!important}
+.anapop .anaBar #aLang>button:first-child{--bl:var(--dv) left top/1px 100% no-repeat}
+/* Chip "Masse" (Viereck): gewaehlt = Lime statt Gelb */
+#thVi .viChip{height:23px;box-sizing:border-box;padding:0 10px!important;border:0!important;font-size:12px!important;font-weight:400;color:#222!important;background:var(--box),#f2f2f2!important}
+#thVi .viChip[aria-pressed="true"]{background:var(--box),#cdff3e!important;font-weight:700}
+/* Selbsttest-Schalter: an = Lime + fett */
+#qz[aria-pressed="true"]{background:#cdff3e!important;font-weight:700}
+/* 2 richtig / falsch: Lime + Haken, rosa + rot + Kreuz */
+.opt.ok::after{background:#222!important}
+.opt.bad::after{background:#e30613!important}
+#opts .opt.ok,#theo .opt.ok{background:#cdff3e!important;box-shadow:none!important;border-color:transparent!important;font-weight:700}
+#opts .opt.bad,#theo .opt.bad{box-shadow:none!important;border-color:transparent!important;outline:0;color:#e30613;
+ background:repeating-linear-gradient(to right,#e30613 0 1px,transparent 1px 3px) left top/100% 1px no-repeat,repeating-linear-gradient(to right,#e30613 0 1px,transparent 1px 3px) left bottom/100% 1px no-repeat,repeating-linear-gradient(to bottom,#e30613 0 1px,transparent 1px 3px) left top/1px 100% no-repeat,repeating-linear-gradient(to bottom,#e30613 0 1px,transparent 1px 3px) right top/1px 100% no-repeat,#fbe3e1!important}
+/* Rueckmeldung: richtig = dunkel (nie gruen), falsch = rot */
+#thGame .fb,#thVquiz .fb,#thQuest .fb,#theo #thSee #thVfb{color:#222!important}
+#thGame:has(.opt.bad) .fb,#thVquiz:has(.opt.bad) .fb,#thQuest .card:has(.opt.bad) .fb,#theo #thSee:has(.opt.bad) #thVfb{color:#e30613!important}
+/* 3 punktiert nur ueber Verlauf, nie CSS dotted */
+#theo .zq .zqq.sep{border-top:0!important;background:var(--dd) left top/100% 1px no-repeat}
+.qvimg{outline:0!important}
+.qvimg::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:3;background:var(--box)}
+/* 4 kleine rote Grossbuchstaben fuer Kopfzeilen */
+#thCx p b{color:#e30613}
+</style>
 <script id="barfx-js">(function(){
 var held=[],t0=0,stuck=new WeakMap(),scm=new WeakMap(),raf=0,ready=0;
 function on(e){var b=e.target&&e.target.closest?e.target.closest(".hb"):null;if(!b)return;b.classList.remove("lock");b.classList.add("hold");held.push(b);t0=Date.now();}
@@ -3742,5 +3783,8 @@ function check(){raf=0;var bars=document.querySelectorAll(".hb"),i,b,r,c,ct,top,
 document.addEventListener("scroll",function(){if(!raf)raf=requestAnimationFrame(check)},{passive:true,capture:true});
 setTimeout(check,300);
 })();</script>
+<script id="doch-uebertrag-js">(function(){var q=document.getElementById("qz");if(!q)return;
+function sync(){q.setAttribute("aria-pressed",/an$/.test(q.textContent.trim())?"true":"false");}
+sync();new MutationObserver(sync).observe(q,{childList:true,characterData:true,subtree:true});})();</script>
 </body></html>
 <script>(function(){function f(){document.querySelectorAll(".hb").forEach(function(b,i){if(b.dataset.i==null)b.dataset.i=i;});}f();setTimeout(f,60);window.addEventListener("load",f);})();</script>
