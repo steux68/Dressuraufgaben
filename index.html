@@ -101,7 +101,7 @@ html body .hb.on[data-i] b{padding-left:8px}
 #thHi .hiSrc{margin:10px 2px 0}
 </style>
 </head><body>
-<meta name="app-version" content="2026-11-24e"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-24f"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -1303,7 +1303,7 @@ function hlRender(){
  }
  if(hls.m==='z'){o+='<div class="hiLeg">'+HLK.map(q=>'<div>'+hlMini(q[0])+'<span>'+q[1]+'</span></div>').join('')+'</div>';}
  if(hls.m==='q')o+='<div class="hiCard hiQ"></div>';
- o+='<p class="tline hiSrc">Piktogramme neu gezeichnet, nach der Hilfentafel von S. Steinbach (2000). Entwurf, mit Reitlehrer abgleichen.</p>';
+ o+='<p class="tline hiSrc">Piktogramme neu gezeichnet, nach einer Hilfentafel. Entwurf, mit Reitlehrer abgleichen.</p>';
  root.innerHTML=o;
  if(hls.m==='l')hlLock();
  if(hls.m==='q')hlQDraw();
@@ -2835,7 +2835,7 @@ const ZL_B=[
  {y:-2200,d:"um 2200 v. Chr.",lab:"2200 v.",t:"Das Hauspferd breitet sich aus",ini:"Hp",w:["de:Hauspferd","en:Domestication_of_the_horse"],x:"Die Vorfahren aller heutigen Hauspferde leben in der Steppe an Wolga und Don. In rund 500 Jahren verbreiten sie sich über ganz Asien und Europa, mit Reitern und Streitwagen (Studie in „Nature“, 2021).",l:["https://www.sci.news/paleontology/horse-domestication-western-eurasian-steppes-10191.html","sci.news"]},
  {y:-330,d:"Antike",lab:"Antike",t:"Alexander & Bukephalos",ini:"Bk",w:["de:Bukephalos","en:Bucephalus"],x:"Der junge Alexander der Große zähmt das wilde Pferd Bukephalos: Er merkt, dass es vor seinem eigenen Schatten scheut, und dreht es zur Sonne. So erzählt es Plutarch.",l:["https://www.livius.org/sources/content/plutarch/plutarchs-alexander/alexander-and-bucephalus/","Livius"]},
  {y:1493,d:"ab 1493",lab:"1493",t:"Pferde kehren nach Amerika zurück",ini:"Mu",w:["de:Mustang_(Pferd)","en:Mustang_horse"],x:"Die Spanier bringen Pferde nach Amerika zurück, wo sie seit Jahrtausenden ausgestorben waren.",l:["https://www.britannica.com/animal/horse/Evolution-of-the-horse","Britannica"]},
- {y:1748,d:"1748",lab:"1748",t:"Meyers Pferdeskelett",ini:"JM",w:["de:Johann_Daniel_Meyer"],x:"Der Nürnberger Maler und Kupferstecher Johann Daniel Meyer (1713–1752) beginnt sein Tierbuch „Angenehmer und nützlicher Zeit-Vertreib“ (bis 1756). Er zeichnet auch Skelette, darunter ein Pferdeskelett mit einem Menschenskelett als Reiter (zu sehen in der Galerie).",l:["https://commons.wikimedia.org/wiki/File:Meyer_Zeit-Vertreib_1_Tafel_025.jpg","Wikimedia Commons"]},
+ {y:1748,d:"1748",lab:"1748",t:"Meyers Pferdeskelett",ini:"JM",w:["img/galerie/meyer_skelett_kol.jpg","de:Johann_Daniel_Meyer"],x:"Der Nürnberger Maler und Kupferstecher Johann Daniel Meyer (1713–1752) beginnt sein Tierbuch „Angenehmer und nützlicher Zeit-Vertreib“ (bis 1756). Er zeichnet auch Skelette, darunter ein Pferdeskelett mit einem Menschenskelett als Reiter (zu sehen in der Galerie).",l:["https://commons.wikimedia.org/wiki/File:Meyer_Zeit-Vertreib_1_Tafel_025.jpg","Wikimedia Commons"]},
  {y:1766,d:"1766",lab:"1766",t:"Stubbs: Anatomie",ini:"Sb",w:["de:George_Stubbs","en:George_Stubbs"],x:"Der Maler George Stubbs seziert über ein Jahr lang Pferde und veröffentlicht 1766 „The Anatomy of the Horse“ mit 18 Kupferstichen. Das Buch gilt bis heute als Meisterwerk der Tieranatomie.",l:["https://de.wikipedia.org/wiki/George_Stubbs","Wikipedia"]},
  {y:1832,d:"1832",lab:"1832",t:"Pferdeeisenbahn Budweis–Linz",ini:"PE",w:["de:Pferdeeisenbahn_Budweis–Linz–Gmunden","de:Pferdeeisenbahn"],x:"Die Pferdeeisenbahn Budweis–Linz fährt: Pferde ziehen die Waggons auf Schienen. Sie gilt als erste öffentliche Eisenbahn auf dem europäischen Festland.",l:["https://de.wikipedia.org/wiki/Pferdeeisenbahn_Budweis–Linz–Gmunden","Wikipedia"]},
  {y:1878,d:"1878",lab:"1878",t:"Muybridge: Pferd in Bewegung",ini:"Mu",w:["de:Eadweard_Muybridge","en:Eadweard_Muybridge"],x:"Eadweard Muybridge fotografiert ein galoppierendes Pferd in schneller Folge. Die Bilder zeigen: Für einen Moment sind alle vier Hufe in der Luft.",l:["https://de.wikipedia.org/wiki/Eadweard_Muybridge","Wikipedia"]},
@@ -2857,7 +2857,7 @@ const ZL_B=[
  let cache={};try{cache=JSON.parse(localStorage.getItem('zl_pics')||'{}')}catch(e){}
  const saveC=()=>{try{localStorage.setItem('zl_pics',JSON.stringify(cache))}catch(e){}};
  function loadPics(root){root.querySelectorAll('img[data-w]').forEach(im=>{const list=im.dataset.w.split('|'),key=list.join('|'),show=u=>{im.onload=()=>im.parentNode.classList.add('has');im.src=u;};
-  if(cache[key]){show(cache[key]);return;}if(cache[key]===0)return;
+  if(list[0].startsWith('img/')){show(list[0]);return;}if(cache[key]){show(cache[key]);return;}if(cache[key]===0)return;
   const next=i=>{if(i>=list.length){cache[key]=0;saveC();return;}const p=list[i].indexOf(':'),lg=list[i].slice(0,p),t=list[i].slice(p+1);
    fetch('https://'+lg+'.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(t)).then(r=>r.ok?r.json():null).then(j=>{const u=j&&(j.thumbnail&&j.thumbnail.source||j.originalimage&&j.originalimage.source);if(u){cache[key]=u;saveC();show(u);}else next(i+1);}).catch(()=>next(i+1));};
   next(0);});}
@@ -2918,7 +2918,7 @@ const ZL_B=[
  let cache={};try{cache=JSON.parse(localStorage.getItem('zl_pics')||'{}')}catch(e){}
  const saveC=()=>{try{localStorage.setItem('zl_pics',JSON.stringify(cache))}catch(e){}};
  function loadPics(root){root.querySelectorAll('img[data-w]').forEach(im=>{const list=im.dataset.w.split('|'),key=list.join('|'),show=u=>{im.onload=()=>im.parentNode.classList.add('has');im.src=u;};
-  if(cache[key]){show(cache[key]);return;}if(cache[key]===0)return;
+  if(list[0].startsWith('img/')){show(list[0]);return;}if(cache[key]){show(cache[key]);return;}if(cache[key]===0)return;
   const next=i=>{if(i>=list.length){cache[key]=0;saveC();return;}const p=list[i].indexOf(':'),lg=list[i].slice(0,p),t=list[i].slice(p+1);
    fetch('https://'+lg+'.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(t)).then(r=>r.ok?r.json():null).then(j=>{const u=j&&(j.thumbnail&&j.thumbnail.source||j.originalimage&&j.originalimage.source);if(u){cache[key]=u;saveC();show(u);}else next(i+1);}).catch(()=>next(i+1));};
   next(0);});}
@@ -2988,7 +2988,7 @@ window.qSlider=function(sc,sl){var th=sl.querySelector("i"),dr=false,tH=0;
  let cache={};try{cache=JSON.parse(localStorage.getItem('zl_pics')||'{}')}catch(e){}
  const saveC=()=>{try{localStorage.setItem('zl_pics',JSON.stringify(cache))}catch(e){}};
  function loadPics(root){root.querySelectorAll('img[data-w]').forEach(im=>{const list=im.dataset.w.split('|'),key=list.join('|'),show=u=>{im.onload=()=>im.parentNode.classList.add('has');im.src=u;};
-  if(cache[key]){show(cache[key]);return;}if(cache[key]===0)return;
+  if(list[0].startsWith('img/')){show(list[0]);return;}if(cache[key]){show(cache[key]);return;}if(cache[key]===0)return;
   const next=i=>{if(i>=list.length){cache[key]=0;saveC();return;}const p=list[i].indexOf(':'),lg=list[i].slice(0,p),t=list[i].slice(p+1);
    fetch('https://'+lg+'.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(t)).then(r=>r.ok?r.json():null).then(j=>{const u=j&&(j.thumbnail&&j.thumbnail.source||j.originalimage&&j.originalimage.source);if(u){cache[key]=u;saveC();show(u);}else next(i+1);}).catch(()=>next(i+1));};
   next(0);});}

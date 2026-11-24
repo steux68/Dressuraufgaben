@@ -1,4 +1,4 @@
-# Pferdewissen: neuer Reiter "Hilfen" (21 Piktogramme: Zuegel, Sitz, Schenkel; nach der Hilfentafel von S. Steinbach 2000, neu gezeichnet). Idempotent. 24.11.2026
+# Pferdewissen: neuer Reiter "Hilfen" (21 Piktogramme: Zuegel, Sitz, Schenkel; nach einer Hilfentafel, neu gezeichnet). Idempotent. 24.11.2026
 import re,sys
 s=open('index.html',encoding='utf-8').read()
 if 'id="thsHi"' in s: sys.exit('schon angewendet')
@@ -98,7 +98,7 @@ function hlRender(){
    +L.map((p,j)=>'<button type="button" class="hiTile" data-a="o" data-v="'+j+'">'+hlPic(p,40,71)+'<span>'+p.n+'</span></button>').join('')+'</div>';
  }
  if(hls.m==='z'){o+='<div class="hiLeg">'+HLK.map(q=>'<div>'+hlMini(q[0])+'<span>'+q[1]+'</span></div>').join('')+'</div>';}
- o+='<p class="tline hiSrc">Piktogramme neu gezeichnet, nach der Hilfentafel von S. Steinbach (2000). Entwurf, mit Reitlehrer abgleichen.</p>';
+ o+='<p class="tline hiSrc">Piktogramme neu gezeichnet, nach einer Hilfentafel. Entwurf, mit Reitlehrer abgleichen.</p>';
  root.innerHTML=o;
  if(hls.m==='l')hlLock();
 }
