@@ -100,8 +100,9 @@ html body .hb.on[data-i] b{padding-left:8px}
 #thHi .hiLeg span{font-size:.8rem;line-height:1.3;color:#222}
 #thHi .hiSrc{margin:10px 2px 0}
 </style>
+<style id="zitate-portrait-css">#theo2 .zq .pic.has,#theo3 .zq .pic.has{padding:0;overflow:hidden;background:#ddd!important}#theo2 .zq .pic img,#theo3 .zq .pic img{width:100%;height:100%;object-fit:cover;display:block}</style>
 </head><body>
-<meta name="app-version" content="2026-11-24g"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-24i"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -1388,6 +1389,8 @@ function hist(){
   row.append(d,t);box.appendChild(row);
  });
 }
+const ZP={'Xenophon':'img/zitate/xenophon_buste_q.jpg','Seneca':'img/zitate/seneca_gemaelde.jpg'};
+function zPort(p,who){const u=ZP[who];if(!u)return;const im=document.createElement('img');im.alt='';im.onload=()=>{p.textContent='';p.classList.add('has');p.appendChild(im);};im.src=u;}
 function quotes(){
  const box=g('thZl');if(box.childElementCount)return;let k=0;
  /* one entry per person and section: several quotes of the same person share one portrait box */
@@ -1395,7 +1398,7 @@ function quotes(){
  G.forEach(z=>{
   if(z.sec){const h=document.createElement('p');h.className='wsec';h.textContent=z.sec;box.appendChild(h);k=0;return;}
   if(z.more&&z.more.length){const a=document.createElement('div');a.className='zq grp'+(k++%2?' alt':'');
-   const p=document.createElement('span');p.className='pic';p.setAttribute('aria-hidden','true');p.textContent=z.i;
+   const p=document.createElement('span');p.className='pic';p.setAttribute('aria-hidden','true');p.textContent=z.i;zPort(p,z.who);
    const b=document.createElement('span');const w=document.createElement('b');w.textContent=z.who;b.appendChild(w);
    [z].concat(z.more).forEach((m,i)=>{const d=document.createElement('span');d.className='zqq'+(i?' sep':'');
     const sm=document.createElement('small');sm.textContent=m.when;const q=document.createElement('q');q.textContent=m.q;d.append(sm,q);
@@ -1404,7 +1407,7 @@ function quotes(){
     const go=document.createElement('a');go.className='go';go.href=m.u;go.target='_blank';go.rel='noopener';go.textContent='Quelle ↗';d.appendChild(go);b.appendChild(d);});
    a.append(p,b);box.appendChild(a);return;}
   const a=document.createElement('a');a.className='zq'+(k++%2?' alt':'');a.href=z.u;a.target='_blank';a.rel='noopener';
-  const p=document.createElement('span');p.className='pic';p.setAttribute('aria-hidden','true');p.textContent=z.i;
+  const p=document.createElement('span');p.className='pic';p.setAttribute('aria-hidden','true');p.textContent=z.i;zPort(p,z.who);
   const b=document.createElement('span');
   const w=document.createElement('b');w.textContent=z.who;
   const s=document.createElement('small');s.textContent=z.when;
@@ -2812,7 +2815,7 @@ footer.copy .ilink{margin:0;padding:2px 4px;font-size:12px}
    t = Titel, ini = Kürzel, w = Wikipedia-Artikel für das Bild (Sprache:Titel, erster Treffer mit Bild gilt), x = Text, l = Wikipedia-Artikel für "mehr", h = Zeitgeschehen (dunkles Feld). */
 const ZL_A=[
  {y:-1350,d:"um 1350 v. Chr.",lab:"1350 v.",t:"Kikkulis Tontafeln",ini:"Ki",w:["de:Kikkuli","en:Kikkuli"],x:"Der Pferdetrainer Kikkuli schreibt für den hethitischen König auf Tontafeln, wie man Streitwagenpferde in 184 Tagen trainiert. Es ist der älteste bekannte Text über Pferdetraining.",l:["https://de.wikipedia.org/wiki/Kikkuli","Wikipedia"]},
- {y:-350,d:"um 350 v. Chr.",lab:"350 v.",t:"Xenophon: Über die Reitkunst",ini:"Xe",w:["de:Xenophon","en:Xenophon"],x:"Der Athener Xenophon schreibt das älteste erhaltene Buch über Reitkunst. Er fordert, Pferde ohne Härte und Zorn auszubilden: Wer ein Pferd im Zorn behandelt, erreicht wenig.",l:["https://de.wikipedia.org/wiki/Xenophon","Wikipedia"]},
+ {y:-350,d:"um 350 v. Chr.",lab:"350 v.",t:"Xenophon: Über die Reitkunst",ini:"Xe",w:["img/zitate/xenophon_buste_q.jpg","de:Xenophon","en:Xenophon"],x:"Der Athener Xenophon schreibt das älteste erhaltene Buch über Reitkunst. Er fordert, Pferde ohne Härte und Zorn auszubilden: Wer ein Pferd im Zorn behandelt, erreicht wenig.",l:["https://de.wikipedia.org/wiki/Xenophon","Wikipedia"]},
  {y:300,d:"ab 4. Jh.",lab:"4. Jh.",t:"Der Steigbügel",ini:"St",w:["de:Steigbügel","en:Stirrup"],x:"Der Steigbügel kommt aus Ostasien (frühe Belege aus China im 4. Jahrhundert) und erreicht Europa erst im frühen Mittelalter. Er gibt dem Reiter einen sichereren Sitz.",l:["https://de.wikipedia.org/wiki/Steigbügel","Wikipedia"]},
  {y:1100,d:"Hochmittelalter",lab:"12. Jh.",t:"Ritter & Schlachtross",ini:"Ri",w:["de:Schlachtross","en:Destrier"],x:"Ritter reiten schwere, kräftige Pferde, die Schlachtrösser (Destrier). Reitkunst bedeutet vor allem Kampf: Wendigkeit und Gehorsam entscheiden über Leben und Tod.",l:["https://de.wikipedia.org/wiki/Schlachtross","Wikipedia"]},
  {y:1550,d:"1550",lab:"1550",t:"Grisone: Reitlehrbuch aus Neapel",ini:"Gr",w:["de:Federico_Grisone","en:Federico_Grisone"],x:"Federico Grisone leitet in Neapel eine Reitschule und veröffentlicht 1550 das erste Reitlehrbuch der Neuzeit. Seine Methoden sind hart, mit scharfen Gebissen. Später wenden sich Reitmeister davon ab.",l:["https://de.wikipedia.org/wiki/Federico_Grisone","Wikipedia"]},
@@ -2984,7 +2987,7 @@ window.qSlider=function(sc,sl){var th=sl.querySelector("i"),dr=false,tH=0;
 <script id="zitate-js">
 (function(){
  const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
- const WIKI={'Xenophon':['de:Xenophon','en:Xenophon'],'Gustav Steinbrecht':['de:Gustav_Steinbrecht','en:Gustav_Steinbrecht'],'Seneca':['img/zitate/seneca_gemaelde.jpg','de:Lucius_Annaeus_Seneca','de:Seneca','en:Seneca_the_Younger'],'William Shakespeare':['de:William_Shakespeare','en:William_Shakespeare'],
+ const WIKI={'Xenophon':['img/zitate/xenophon_buste_q.jpg','de:Xenophon','en:Xenophon'],'Gustav Steinbrecht':['de:Gustav_Steinbrecht','en:Gustav_Steinbrecht'],'Seneca':['img/zitate/seneca_gemaelde.jpg','de:Lucius_Annaeus_Seneca','de:Seneca','en:Seneca_the_Younger'],'William Shakespeare':['de:William_Shakespeare','en:William_Shakespeare'],
   'Friedrich von Bodenstedt':['de:Friedrich_von_Bodenstedt','en:Friedrich_von_Bodenstedt'],'Karl V. (zugeschrieben)':['de:Karl_V._(HRR)','en:Charles_V,_Holy_Roman_Emperor'],'Winston Churchill':['de:Winston_Churchill','en:Winston_Churchill']};
  let cache={};try{cache=JSON.parse(localStorage.getItem('zl_pics')||'{}')}catch(e){}
  const saveC=()=>{try{localStorage.setItem('zl_pics',JSON.stringify(cache))}catch(e){}};
