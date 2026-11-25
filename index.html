@@ -2001,8 +2001,8 @@ GAL.reverse();/* neueste zuerst: neue Eintraege ans Ende der Liste schreiben */
   const settle=()=>{if(touching||HBODY.hidden||document.querySelector('.tlpop:not([hidden])'))return;const y=SC.scrollTop,V=SC.clientHeight,max=SC.scrollHeight-V;let best=null,bd=1e9;
    const S0=PAGES.map((_,i)=>Math.round(secTop(i))),E0=ends(),over=S0.map((s,i)=>E0[i]>s+6&&E0[i]<=max+2);
    const z=S0.findIndex((s,i)=>over[i]&&y>s+2&&y<E0[i]-2);
-   if(z>=0){const a=y-S0[z],b=E0[z]-y;const t=a<40?S0[z]:b<40?E0[z]:null;if(t!==null){busy=Date.now()+900;SC.scrollTo({top:t,behavior:reduceM?'auto':'smooth'});}return;}
-   pts().concat(E0.filter((e,i)=>over[i])).forEach(p=>{if(p>max+2)return;const d=p-y,a=Math.abs(d);if(a<3)return;const lim=d>0?(dir>=0?.45:.18):(dir<=0?.45:.18);if(a<lim*V&&a<bd){bd=a;best=p;}});
+   if(z>=0){const a=y-S0[z],b=E0[z]-y;const t=a<14?S0[z]:b<40?E0[z]:null;if(t!==null){busy=Date.now()+900;SC.scrollTo({top:t,behavior:reduceM?'auto':'smooth'});}return;}
+   pts().concat(E0.filter((e,i)=>over[i])).forEach(p=>{if(E0.includes(p)&&!S0.includes(p)&&p<y&&dir>0)return;/* wer ueber das Ende hinaus weiterscrollt, wird nicht zurueckgezogen */if(p>max+2)return;const d=p-y,a=Math.abs(d);if(a<3)return;const lim=d>0?(dir>=0?.45:.18):(dir<=0?.45:.18);if(a<lim*V&&a<bd){bd=a;best=p;}});
    if(best===null)return;busy=Date.now()+900;SC.scrollTo({top:best,behavior:reduceM?'auto':'smooth'});};
   SC.addEventListener('scroll',()=>{const y=SC.scrollTop;if(y!==last){dir=y>last?1:-1;last=y;}if(Date.now()<busy)return;clearTimeout(timer);timer=setTimeout(settle,160);},{passive:true});
   SC.addEventListener('touchstart',()=>{touching=true;clearTimeout(timer);},{passive:true});
