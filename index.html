@@ -148,7 +148,7 @@ html body .hb.on[data-i] b{padding-left:8px}
 .tlw>.tlar[data-off] svg{opacity:.3}
 </style>
 <style id="info-uni">.info{gap:8px;font-size:14px}.info p,.info .small,.info .small p{font-size:14px;line-height:1.4;color:#555;margin:0}.info p b{color:#222}.info .ih{margin:16px 0 4px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#e30613;font-family:inherit;line-height:1.3}.info>.ucr+.utl+p+.ih,.info>.ucr+.utl+.small+.ih{margin-top:12px}.info a{color:#1a5fd0;text-decoration:none}.info div.small>p{margin:0 0 8px}.info div.small .ih{margin:14px 0 6px}.info #verline{font-size:14px!important;color:#555!important}</style><style id="side-credit">footer.copy>span:not(.cimg){color:#e30613!important}footer.copy .ilink{display:inline-block!important;color:#1a5fd0!important;background:#dfe9fa!important;text-decoration:none!important;font-size:12px!important;font-weight:700;letter-spacing:.04em;padding:1px 8px 2px!important;margin:0 0 0 4px!important;border:0;line-height:1.2;cursor:pointer}</style></head><body>
-<meta name="app-version" content="2026-11-26a"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-26b"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
 :root{--bg:#f5f6f2;--surface:#ffffff;--fg:#22281f;--muted:#5d6656;--line:#c9cec1;--sand:#ebe3d0;--accent:#2f6b4a;
@@ -486,7 +486,7 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 <button id="pv">← Zurück</button>
 <button id="nx" class="primary">Weiter →</button>
 <button id="qz">Selbsttest: aus</button>
-<button id="al">Ganze Aufgabe</button>
+<button id="cl" type="button">Ansage: aus</button><button id="al">Ganze Aufgabe</button>
 </div>
 </section>
 <section class="panel off" id="game" aria-hidden="true">
@@ -4075,5 +4075,20 @@ a.addEventListener('click',function(){document.getElementById('pv').click()});
 e.addEventListener('click',function(){document.getElementById('nx').click()});
 })();
 </script>
-</body></html>
+<script id="caller-js">(function(){
+var cl=document.getElementById('cl'),tx=document.getElementById('tx');if(!cl||!tx||!('speechSynthesis' in window)){if(cl)cl.hidden=true;return;}
+var M=0,LAB=['Ansage: aus','Ansage: an','Ansage: Auto'],tm=0,last='';
+function voice(){var vs=speechSynthesis.getVoices();return vs.find(function(v){return /^de-AT/i.test(v.lang)})||vs.find(function(v){return /^de/i.test(v.lang)});}
+function stop(){clearTimeout(tm);try{speechSynthesis.cancel()}catch(e){}}
+function active(){var l=document.getElementById('learn');return M>0&&l&&!l.classList.contains('off')&&!l.closest('[hidden]')&&document.getElementById('qz').textContent.indexOf('an')<0;}
+function say(){if(!active())return;var t=(tx.textContent||'').trim();if(!t)return;stop();
+ var lt=(document.getElementById('lt').textContent||'').trim();if(/^[A-Z]$/.test(lt))t='bei '+lt+': '+t;var u=new SpeechSynthesisUtterance(t),v=voice();if(v){u.voice=v;u.lang=v.lang}else u.lang='de-DE';u.rate=.95;
+ u.onend=function(){if(M===2&&active()){tm=setTimeout(function(){if(!active())return;var c=document.getElementById('ct').textContent.split('/');if(parseInt(c[0],10)<parseInt(c[1],10))document.getElementById('nx').click();else{M=1;cl.textContent=LAB[1];}},3500);}};
+ speechSynthesis.speak(u);}
+cl.onclick=function(){M=(M+1)%3;cl.textContent=LAB[M];cl.setAttribute('aria-pressed',M>0);stop();if(M>0)say();};
+new MutationObserver(function(){var t=(tx.textContent||'').trim();if(t===last)return;last=t;say();}).observe(tx,{childList:true,characterData:true,subtree:true});
+document.addEventListener('visibilitychange',function(){if(document.hidden)stop();});
+['pv','nx','al','qz'].forEach(function(id){var b=document.getElementById(id);if(b)b.addEventListener('click',function(){clearTimeout(tm);},true);});
+document.getElementById('nx').addEventListener('click',function(){clearTimeout(tm);},true);
+})();</script></body></html>
 <script>(function(){function f(){document.querySelectorAll(".hb").forEach(function(b,i){if(b.dataset.i==null)b.dataset.i=i;});}f();setTimeout(f,60);window.addEventListener("load",f);})();</script>
