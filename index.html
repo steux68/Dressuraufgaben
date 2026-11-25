@@ -141,8 +141,14 @@ html body .hb.on[data-i] b{padding-left:8px}
 #thBody dd,#thGes dd,#thBody .bldl dd,#thGes .bldl dd{font-size:14px!important;line-height:1.4!important}
 #thBody dt,#thGes dt{font-size:14px!important}
 </style>
-<meta id="schriftgelb-done" name="schriftgelb" content="1"><!--skala2--></head><body>
-<meta name="app-version" content="2026-11-25j"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta id="schriftgelb-done" name="schriftgelb" content="1"><!--skala2--><style id="zeitpfeile-css">
+/* Jahresleiste: .tltk top calc(50% - 6px), 23 px hoch -> Mitte bei 50% + 5.5px; Pfeil 26 px, margin-top -13 px */
+.tlw>.tlar{top:calc(50% + 5.5px);background:#fff!important;box-shadow:0 0 0 1px rgba(0,0,0,.18)!important}
+.tlw>.tlar[data-off]{opacity:1}
+.tlw>.tlar[data-off] svg{opacity:.3}
+</style>
+</head><body>
+<meta name="app-version" content="2026-11-25k"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
 :root{--bg:#f5f6f2;--surface:#ffffff;--fg:#22281f;--muted:#5d6656;--line:#c9cec1;--sand:#ebe3d0;--accent:#2f6b4a;
