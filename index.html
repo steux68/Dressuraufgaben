@@ -49,7 +49,7 @@ a[target="_blank"]:not([class]){color:#1a5fd0;text-decoration:none}
 #p-a,#p-w,#p-g,#p-z,#p-m,#p-x{background:#f4f4f2!important}
 #p-a,#p-w,#p-g,#p-z,#p-m{margin-bottom:12px!important}
 /* Einrasten am Balken, Start auf der Titelseite */
-.hscroll{scroll-snap-type:y proximity!important}
+.hscroll{scroll-snap-type:none!important}/* 25.11: nur noch das Script rastet ein (kennt Abschnitte, die hoeher sind als der freie Platz) */
 #p-title,#p-a,#p-w,#p-g,#p-z,#p-m,#p-x{scroll-snap-align:start}
 </style>
 <style id="matlinks-css">
@@ -1996,8 +1996,13 @@ GAL.reverse();/* neueste zuerst: neue Eintraege ans Ende der Liste schreiben */
  /* rastet am Abschnittsanfang ein, wenn das Scrollen aufhoert und ein Anfang nah ist (vorwaerts bis 45 %, zurueck bis 18 % der Hoehe) */
  {let last=SC.scrollTop,dir=0,timer=0,touching=false,busy=0;
   const pts=()=>[0].concat(PAGES.map((_,i)=>Math.round(secTop(i))));
+  /* 25.11: ist ein Abschnitt hoeher als der freie Platz zwischen den Leisten (z. B. Geschichte mit zwei Zeitleisten), liegt sein Ende (letzter Inhalt knapp ueber den unteren Leisten) bei ends()[i]. Zwischen Anfang und Ende wird nicht eingerastet (ausser nahe an einem der beiden Enden), und das Ende ist selbst ein Rastpunkt - sonst springt das Scrollen zurueck zum Anfang, bevor man die zweite Zeitleiste sieht. */
+  const ends=()=>{const V=SC.clientHeight;return PAGES.map((pg,i)=>Math.round(pg.offsetTop+pg.offsetHeight-V+(ROWS-1-i)*HB));};
   const settle=()=>{if(touching||HBODY.hidden||document.querySelector('.tlpop:not([hidden])'))return;const y=SC.scrollTop,V=SC.clientHeight,max=SC.scrollHeight-V;let best=null,bd=1e9;
-   pts().forEach(p=>{if(p>max+2)return;const d=p-y,a=Math.abs(d);if(a<3)return;const lim=d>0?(dir>=0?.45:.18):(dir<=0?.45:.18);if(a<lim*V&&a<bd){bd=a;best=p;}});
+   const S0=PAGES.map((_,i)=>Math.round(secTop(i))),E0=ends(),over=S0.map((s,i)=>E0[i]>s+6&&E0[i]<=max+2);
+   const z=S0.findIndex((s,i)=>over[i]&&y>s+2&&y<E0[i]-2);
+   if(z>=0){const a=y-S0[z],b=E0[z]-y;const t=a<40?S0[z]:b<40?E0[z]:null;if(t!==null){busy=Date.now()+900;SC.scrollTo({top:t,behavior:reduceM?'auto':'smooth'});}return;}
+   pts().concat(E0.filter((e,i)=>over[i])).forEach(p=>{if(p>max+2)return;const d=p-y,a=Math.abs(d);if(a<3)return;const lim=d>0?(dir>=0?.45:.18):(dir<=0?.45:.18);if(a<lim*V&&a<bd){bd=a;best=p;}});
    if(best===null)return;busy=Date.now()+900;SC.scrollTo({top:best,behavior:reduceM?'auto':'smooth'});};
   SC.addEventListener('scroll',()=>{const y=SC.scrollTop;if(y!==last){dir=y>last?1:-1;last=y;}if(Date.now()<busy)return;clearTimeout(timer);timer=setTimeout(settle,160);},{passive:true});
   SC.addEventListener('touchstart',()=>{touching=true;clearTimeout(timer);},{passive:true});
