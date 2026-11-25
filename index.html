@@ -142,7 +142,7 @@ html body .hb.on[data-i] b{padding-left:8px}
 #thBody dt,#thGes dt{font-size:14px!important}
 </style>
 </head><body>
-<meta name="app-version" content="2026-11-25e"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-25f"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
@@ -455,6 +455,7 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 <span><svg width="22" height="8"><line x1="0" y1="4" x2="22" y2="4" stroke="var(--galopp)" stroke-width="4.5"/></svg>Galopp</span>
 </div>
 <div class="stage" id="stage">
+<button type="button" class="tlar pw" id="lnA" aria-label="Zurück"><svg class="ar" width="28" height="28" viewBox="-12 -12 24 24" aria-hidden="true"><circle class="tr" r="9.5"/><path class="rg" d="M-7.88 -5.31A9.5 9.5 0 1 1 -7.88 5.31"/><path class="dt" transform="rotate(180)" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="-9.50" y="0">W</text></svg></button><button type="button" class="tlar pe" id="lnE" aria-label="Weiter"><svg class="ar" width="28" height="28" viewBox="-12 -12 24 24" aria-hidden="true"><circle class="tr" r="9.5"/><path class="rg" d="M7.88 5.31A9.5 9.5 0 1 1 7.88 -5.31"/><path class="dt" transform="rotate(0)" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="9.50" y="0">E</text></svg></button>
 <svg class="arena" viewBox="70 6 240 386" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Dressurviereck mit dem Weg der aktuellen Lektion">
 <defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
 <rect x="110" y="40" width="160" height="320" rx="2" fill="var(--sand)" stroke="var(--muted)" stroke-width="1"/>
@@ -4012,6 +4013,17 @@ addEventListener("mousemove",function(e){if(e.buttons)fol(e.clientX,e.clientY)},
 #thHi .hiQd{align-items:center;min-height:50px;margin-top:8px}
 #thHi .hiQ{display:flex;flex-direction:column}#thHi .hiQ .hiQd{margin-top:auto}
 </style>
+<style id="lnpf-css">
+/* Lernen: Pfeile auf dem Viereck, kein Knopf Zurück/Weiter mehr (25.11.) */
+#stage{position:relative}
+#pv,#nx{display:none!important}
+body:has(#learn.off) #lnA,body:has(#learn.off) #lnE{display:none}
+.panels:has(#learn:not(.off)){height:166px}
+@media (max-height:720px){.panels:has(#learn:not(.off)){height:152px}}
+#lnA,#lnE{z-index:3;border-radius:50%!important}
+#lnA{left:2px}#lnE{right:2px}
+</style>
+
 <script id="barfx-js">(function(){
 var held=[],t0=0,stuck=new WeakMap(),scm=new WeakMap(),raf=0,ready=0;
 function on(e){var b=e.target&&e.target.closest?e.target.closest(".hb"):null;if(!b)return;b.classList.remove("lock");b.classList.add("hold");held.push(b);t0=Date.now();}
@@ -4033,5 +4045,12 @@ setTimeout(check,300);
 function sync(){q.setAttribute("aria-pressed",/an$/.test(q.textContent.trim())?"true":"false");}
 sync();new MutationObserver(sync).observe(q,{childList:true,characterData:true,subtree:true});})();</script>
 <script id="ana-preload-js">addEventListener("load",function(){setTimeout(function(){["auge_ballou.jpg","skelett.jpg","exterieur.jpg","hinterbein_plate3.jpg","kopf.jpg","unterkiefer.jpg","huf.jpg","huf_unten.jpg","huf_gefaesse.jpg","fessel.jpg","huf_innen.jpg","auge.jpg","augapfel.jpg","hebel_axe_1905.jpg","pferd_tafel6_kopf.jpg","pferd_tafel15_huf.jpg"].forEach(function(f){var i=new Image();i.src="img/ana_k/"+f;});},600);});</script>
+<script id="lnpf-js">
+(function(){var a=document.getElementById('lnA'),e=document.getElementById('lnE');
+if(!a||!e)return;
+a.addEventListener('click',function(){document.getElementById('pv').click()});
+e.addEventListener('click',function(){document.getElementById('nx').click()});
+})();
+</script>
 </body></html>
 <script>(function(){function f(){document.querySelectorAll(".hb").forEach(function(b,i){if(b.dataset.i==null)b.dataset.i=i;});}f();setTimeout(f,60);window.addEventListener("load",f);})();</script>
