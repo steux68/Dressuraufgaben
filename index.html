@@ -148,7 +148,7 @@ html body .hb.on[data-i] b{padding-left:8px}
 .tlw>.tlar[data-off] svg{opacity:.3}
 </style>
 <style id="info-uni">.info{gap:8px;font-size:14px}.info p,.info .small,.info .small p{font-size:14px;line-height:1.4;color:#555;margin:0}.info p b{color:#222}.info .ih{margin:16px 0 4px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#e30613;font-family:inherit;line-height:1.3}.info>.ucr+.utl+p+.ih,.info>.ucr+.utl+.small+.ih{margin-top:12px}.info a{color:#1a5fd0;text-decoration:none}.info div.small>p{margin:0 0 8px}.info div.small .ih{margin:14px 0 6px}.info #verline{font-size:14px!important;color:#555!important}</style><style id="side-credit">footer.copy>span:not(.cimg){color:#e30613!important}footer.copy .ilink{display:inline-block!important;color:#1a5fd0!important;background:#dfe9fa!important;text-decoration:none!important;font-size:12px!important;font-weight:700;letter-spacing:.04em;padding:1px 8px 2px!important;margin:0 0 0 4px!important;border:0;line-height:1.2;cursor:pointer}</style></head><body>
-<meta name="app-version" content="2026-11-26d"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-26e"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
 :root{--bg:#f5f6f2;--surface:#ffffff;--fg:#22281f;--muted:#5d6656;--line:#c9cec1;--sand:#ebe3d0;--accent:#2f6b4a;
@@ -485,7 +485,7 @@ h1.home{text-transform:uppercase;letter-spacing:.06em}
 <div class="btns">
 <button id="pv">← Zurück</button>
 <button id="nx" class="primary">Weiter →</button>
-<button id="qz">Selbsttest: aus</button>
+<button id="qz">Selbsttest: aus</button><button id="dz" type="button">Zeichnen: aus</button>
 <button id="cl" type="button">Ansage: aus</button><button id="al">Ganze Aufgabe</button>
 </div>
 </section>
@@ -4105,5 +4105,53 @@ new MutationObserver(function(){var t=(tx.textContent||'').trim();if(t===last)re
 document.addEventListener('visibilitychange',function(){if(document.hidden)stop();});
 ['pv','nx','al','qz'].forEach(function(id){var b=document.getElementById(id);if(b)b.addEventListener('click',function(){clearTimeout(tm);},true);});
 document.getElementById('nx').addEventListener('click',function(){clearTimeout(tm);},true);
-})();</script></body></html>
+})();</script><script id="zeichnen-js">
+/* Aufgabe zeichnen: Der Weg des Schritts wird mit dem Finger ins Viereck gezeichnet, danach vergleicht die App ihn mit dem richtigen Weg. */
+(function(){
+ if(typeof draw!=='function'||typeof P==='undefined')return;
+ const svg=document.querySelector('svg.arena'),btn=document.getElementById('dz');if(!svg||!btn)return;
+ const NSV='http://www.w3.org/2000/svg',_draw=draw;let dz=false,dzFor=null,dzS=null,tot=0,okn=0,pts=[],drawing=false;
+ const U=document.createElementNS(NSV,'g');U.id='udraw';svg.appendChild(U);
+ const line=document.createElementNS(NSV,'path');line.setAttribute('fill','none');line.setAttribute('stroke','#1a5fd0');line.setAttribute('stroke-width','3');line.setAttribute('stroke-linecap','round');line.setAttribute('stroke-linejoin','round');line.setAttribute('opacity','.85');U.appendChild(line);
+ function lineSet(){line.setAttribute('d',pts.length?'M'+pts.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' L'):'');}
+ function startOf(d){const m=d.match(/^M\s*(-?[\d.]+)[ ,]\s*(-?[\d.]+)/);return m?[+m[1],+m[2]]:null;}
+ function dist(a,b){return Math.hypot(a[0]-b[0],a[1]-b[1]);}
+ function resample(a,n){let L=0;const c=[0];for(let k=1;k<a.length;k++){L+=dist(a[k-1],a[k]);c.push(L);}if(!L)return{p:a.slice(),L:0};const o=[];let j=1;for(let k=0;k<=n;k++){const t=L*k/n;while(j<a.length-1&&c[j]<t)j++;const s=c[j]-c[j-1]||1,f=Math.max(0,Math.min(1,(t-c[j-1])/s));o.push([a[j-1][0]+(a[j][0]-a[j-1][0])*f,a[j-1][1]+(a[j][1]-a[j-1][1])*f]);}return{p:o,L:L};}
+ function judge(d){const q=document.createElementNS(NSV,'path');q.setAttribute('d',d);const L=q.getTotalLength();if(!L)return null;
+  const off=[];for(let k=0;k<=40;k++){const p=q.getPointAtLength(L*k/40);off.push([p.x,p.y]);}
+  const u=resample(pts,40),near=(p,arr)=>Math.min.apply(null,arr.map(r=>dist(p,r))),avg=a=>a.reduce((x,y)=>x+y,0)/a.length;
+  const m=(avg(off.map(p=>near(p,u.p)))+avg(u.p.map(p=>near(p,off))))/2;
+  const rev=dist(u.p[0],off[0])>30&&dist(u.p[0],off[40])<35;
+  return{m:m,short:u.L<L*.5,rev:rev};}
+ function setGt(t){const g=document.getElementById('gt');if(g)g.textContent=t;}
+ function tally(){return tot?' · '+okn+' von '+tot+' richtig':'';}
+ draw=function(){_draw();if(!dz)return;if(dzS!==S){dzS=S;dzFor=null;tot=0;okn=0;}
+  const s=S[i],cur=P.querySelector('path[marker-end]');
+  if(dzFor!==i){if(cur)cur.remove();pts=[];lineSet();const st=s[3]&&startOf(s[3]);
+   if(st){const e=document.createElementNS(NSV,'circle');e.setAttribute('cx',st[0]);e.setAttribute('cy',st[1]);e.setAttribute('r',6);e.style.fill='var(--galopp)';P.appendChild(e);}
+   setGt(s[3]?'Zeichne den Weg mit dem Finger, beginne beim Punkt.'+tally():'Halten – hier gibt es nichts zu zeichnen. Weiter →');}
+ };
+ function mode(on){dz=on;btn.textContent='Zeichnen: '+(on?'an':'aus');svg.style.touchAction=on?'none':'';svg.style.cursor=on?'crosshair':'';
+  if(on){quiz=false;all=false;shown=false;const q=document.getElementById('qz');if(q)q.textContent='Selbsttest: aus';tot=0;okn=0;}
+  dzFor=null;pts=[];lineSet();draw();}
+ btn.onclick=()=>mode(!dz);
+ const qz=document.getElementById('qz');if(qz)qz.addEventListener('click',()=>{if(dz&&quiz)mode(false);});
+ const al=document.getElementById('al');if(al)al.addEventListener('click',()=>{if(dz)mode(false);});
+ function xy(e){const p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;const q=p.matrixTransform(svg.getScreenCTM().inverse());return[q.x,q.y];}
+ svg.addEventListener('pointerdown',e=>{if(!dz||!S[i]||!S[i][3])return;e.preventDefault();if(dzFor===i){dzFor=null;draw();}drawing=true;pts=[xy(e)];lineSet();try{svg.setPointerCapture(e.pointerId);}catch(_){}});
+ svg.addEventListener('pointermove',e=>{if(!drawing)return;const p=xy(e),l=pts[pts.length-1];if(dist(p,l)>1.5){pts.push(p);lineSet();}});
+ function end(){if(!drawing)return;drawing=false;const s=S[i];
+  if(pts.length<3){pts=[];lineSet();return;}
+  const r=judge(s[3]);if(!r){return;}
+  dzFor=i;tot++;let t;
+  if(r.short){t='Zu kurz – der richtige Weg ist länger.';}
+  else if(r.rev){t='Die Richtung stimmt nicht – der Weg läuft andersherum.';}
+  else if(r.m<=12){okn++;t='Gut getroffen.';}
+  else if(r.m<=22){t='Fast – schau, wo der Weg genau läuft.';}
+  else{t='Nicht ganz – so läuft der Weg.';}
+  _draw();setGt(t+tally());}
+ svg.addEventListener('pointerup',end);svg.addEventListener('pointercancel',end);
+})();
+</script>
+</body></html>
 <script>(function(){function f(){document.querySelectorAll(".hb").forEach(function(b,i){if(b.dataset.i==null)b.dataset.i=i;});}f();setTimeout(f,60);window.addEventListener("load",f);})();</script>
