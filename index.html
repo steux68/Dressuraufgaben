@@ -148,7 +148,7 @@ html body .hb.on[data-i] b{padding-left:8px}
 .tlw>.tlar[data-off] svg{opacity:.3}
 </style>
 </head><body>
-<meta name="app-version" content="2026-11-25k"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
+<meta name="app-version" content="2026-11-25l"><script id="start-top">(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var K="start-seen",LIM=5000,base=location.pathname+location.search;function get(){try{return +sessionStorage.getItem(K)||0}catch(e){return 0}}function put(){try{sessionStorage.setItem(K,String(Date.now()))}catch(e){}}function stale(){var p=get();return p&&Date.now()-p>LIM}function reset(){try{sessionStorage.removeItem(K)}catch(e){}location.replace(base)}if(stale()&&location.hash){reset();return}put();function back(){if(stale())reset();else put()}setInterval(function(){if(document.visibilityState==="visible")put()},3000);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")put();else back()});addEventListener("pageshow",function(e){if(e.persisted)location.reload();else back()});addEventListener("focus",back);document.addEventListener("resume",back);addEventListener("pagehide",put);}catch(e){}})();</script>
 <style>
 /* Layout: full-screen app column — logo + title, mode switch, arena that fills the free height, controls pinned below */
 :root{--bg:#f5f6f2;--surface:#ffffff;--fg:#22281f;--muted:#5d6656;--line:#c9cec1;--sand:#ebe3d0;--accent:#2f6b4a;
@@ -2953,7 +2953,7 @@ const ZL_B=[
   M.querySelectorAll('button').forEach(b=>b.onclick=()=>{who='T';t0=now()+400;const i=+b.dataset.i;T.scrollTo({left:X0+i*S-T.clientWidth/2,behavior:reduceM?'auto':'smooth'});setTimeout(()=>{M.scrollTo({left:b.offsetLeft-M.clientWidth/2+b.offsetWidth/2,behavior:reduceM?'auto':'smooth'});},50);});
   mark();}
  function insert(){const box=$('theo2');if(!box||$('zasec'))return false;
-  const c=document.createElement('div');c.className='tc tlsec';c.id='zasec';c.innerHTML=html()+'<p class="tline">Seitlich wischen · antippen für Bild und Text. Dunkle Felder: Zeitgeschehen. Bilder: Wikipedia / Wikimedia Commons.</p>';
+  const c=document.createElement('div');c.className='tc tlsec';c.id='zasec';c.innerHTML=html();
   if(MODE==='A'){const h=document.createElement('p');h.className='wsec';h.textContent=HEAD;box.prepend(h,c);}
   else{const w=[...box.querySelectorAll('.wsec')].find(x=>/Kleine Geschichte/.test(x.textContent));if(!w)return false;w.textContent=HEAD;w.after(c);const l=$('thHl');if(l)l.style.display='none';}
   mkPop();bind(c);return true;}
@@ -3014,7 +3014,7 @@ const ZL_B=[
   M.querySelectorAll('button').forEach(b=>b.onclick=()=>{who='T';t0=now()+400;const i=+b.dataset.i;T.scrollTo({left:X0+i*S-T.clientWidth/2,behavior:reduceM?'auto':'smooth'});setTimeout(()=>{M.scrollTo({left:b.offsetLeft-M.clientWidth/2+b.offsetWidth/2,behavior:reduceM?'auto':'smooth'});},50);});
   mark();}
  function insert(){const box=$('theo2');if(!box||$('zbsec'))return false;
-  const c=document.createElement('div');c.className='tc tlsec';c.id='zbsec';c.innerHTML=html()+'<p class="tline">Seitlich wischen · antippen für Bild und Text. Dunkle Felder: Zeitgeschehen. Bilder: Wikipedia / Wikimedia Commons.</p>';
+  const c=document.createElement('div');c.className='tc tlsec';c.id='zbsec';c.innerHTML=html();
   if(MODE==='A'){const h=document.createElement('p');h.className='wsec';h.textContent=HEAD;box.prepend(h,c);}
   else{const w=[...box.querySelectorAll('.wsec')].find(x=>/Kleine Geschichte/.test(x.textContent));if(!w)return false;w.textContent=HEAD;w.after(c);const l=$('thHl');if(l)l.style.display='none';}
   mkPop();bind(c);return true;}

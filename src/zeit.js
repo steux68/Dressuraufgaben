@@ -56,7 +56,7 @@
   mark();}
  function insert(){const box=$('theo2');if(!box||$('zlsec'))return false;
   const h=document.createElement('p');h.className='wsec';h.textContent='Zeitleiste: Pferd und Reitkunst';
-  const c=document.createElement('div');c.className='tc tlsec';c.id='zlsec';c.innerHTML=html()+'<p class="tline">Seitlich wischen · antippen für Bild und Text. Dunkle Felder: Zeitgeschehen. Bilder: Wikipedia / Wikimedia Commons.</p>';
+  const c=document.createElement('div');c.className='tc tlsec';c.id='zlsec';c.innerHTML=html();
   box.prepend(h,c);mkPop();bind(c);return true;}
  if(!insert()){let n=0;const iv=setInterval(()=>{if(insert()||++n>40)clearInterval(iv);},250);}
 })();

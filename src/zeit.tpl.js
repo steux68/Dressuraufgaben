@@ -54,7 +54,7 @@
   M.querySelectorAll('button').forEach(b=>b.onclick=()=>{who='T';t0=now()+400;const i=+b.dataset.i;T.scrollTo({left:X0+i*S-T.clientWidth/2,behavior:reduceM?'auto':'smooth'});setTimeout(()=>{M.scrollTo({left:b.offsetLeft-M.clientWidth/2+b.offsetWidth/2,behavior:reduceM?'auto':'smooth'});},50);});
   mark();}
  function insert(){const box=$('theo2');if(!box||$('@@sec'))return false;
-  const c=document.createElement('div');c.className='tc tlsec';c.id='@@sec';c.innerHTML=html()+'<p class="tline">Seitlich wischen · antippen für Bild und Text. Dunkle Felder: Zeitgeschehen. Bilder: Wikipedia / Wikimedia Commons.</p>';
+  const c=document.createElement('div');c.className='tc tlsec';c.id='@@sec';c.innerHTML=html();
   if(MODE==='A'){const h=document.createElement('p');h.className='wsec';h.textContent=HEAD;box.prepend(h,c);}
   else{const w=[...box.querySelectorAll('.wsec')].find(x=>/Kleine Geschichte/.test(x.textContent));if(!w)return false;w.textContent=HEAD;w.after(c);const l=$('thHl');if(l)l.style.display='none';}
   mkPop();bind(c);return true;}
