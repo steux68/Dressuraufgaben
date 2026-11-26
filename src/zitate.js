@@ -3,11 +3,11 @@
  const WIKI={'Xenophon':['de:Xenophon','en:Xenophon'],'Gustav Steinbrecht':['de:Gustav_Steinbrecht','en:Gustav_Steinbrecht'],'Seneca':['de:Lucius_Annaeus_Seneca','de:Seneca','en:Seneca_the_Younger'],'William Shakespeare':['de:William_Shakespeare','en:William_Shakespeare'],
   'Friedrich von Bodenstedt':['de:Friedrich_von_Bodenstedt','en:Friedrich_von_Bodenstedt'],'Karl V. (zugeschrieben)':['de:Karl_V._(HRR)','en:Charles_V,_Holy_Roman_Emperor'],'Winston Churchill':['de:Winston_Churchill','en:Winston_Churchill']};
  let cache={};try{cache=JSON.parse(localStorage.getItem('zl_pics')||'{}')}catch(e){}
- const saveC=()=>{try{localStorage.setItem('zl_pics',JSON.stringify(cache))}catch(e){}};
+ const saveC=()=>{try{const o=JSON.parse(localStorage.getItem('zl_pics')||'{}');for(const k in cache)o[k]=cache[k];for(const k in o)if(!(k in cache))cache[k]=o[k];localStorage.setItem('zl_pics',JSON.stringify(o))}catch(e){}}; /* Audit 27.11.: drei Kopien teilen sich zl_pics – zusammenführen statt überschreiben */
  function loadPics(root){root.querySelectorAll('img[data-w]').forEach(im=>{const list=im.dataset.w.split('|'),key=list.join('|'),show=u=>{im.onload=()=>im.parentNode.classList.add('has');im.src=u;};
-  if(cache[key]){show(cache[key]);return;}if(cache[key]===0)return;
-  const next=i=>{if(i>=list.length){cache[key]=0;saveC();return;}const p=list[i].indexOf(':'),lg=list[i].slice(0,p),t=list[i].slice(p+1);
-   fetch('https://'+lg+'.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(t)).then(r=>r.ok?r.json():null).then(j=>{const u=j&&(j.thumbnail&&j.thumbnail.source||j.originalimage&&j.originalimage.source);if(u){cache[key]=u;saveC();show(u);}else next(i+1);}).catch(()=>next(i+1));};
+  if(cache[key]===-1)return;if(cache[key]){show(cache[key]);return;}
+  const next=(i,bad)=>{if(i>=list.length){if(!bad){cache[key]=-1;saveC();}return;}const p=list[i].indexOf(':'),lg=list[i].slice(0,p),t=list[i].slice(p+1);
+   fetch('https://'+lg+'.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(t)).then(r=>r.ok?r.json():r.status===404?null:Promise.reject(r.status)).then(j=>{const u=j&&(j.thumbnail&&j.thumbnail.source||j.originalimage&&j.originalimage.source);if(u){cache[key]=u;saveC();show(u);}else next(i+1,bad);},()=>next(i+1,1));};
   next(0);});}
  const PLUS='<svg class="pl" viewBox="-12 -12 24 24" aria-hidden="true"><circle r="10.5"/><path d="M-5.5 0H5.5M0 -5.5V5.5"/></svg>';
  function build(){const src=$('thZl');if(!src||!src.children.length||$('zqsec'))return false;

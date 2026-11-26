@@ -9,11 +9,11 @@
  const tlX=y=>{const P=ZL.map((e,i)=>[e.y,X0+i*S]);if(y<=P[0][0])return Math.max(2,P[0][1]-(P[0][0]-y)*.2);for(let i=1;i<P.length;i++)if(y<=P[i][0]){const a=P[i-1],b=P[i];return a[1]+(b[1]-a[1])*(y-a[0])/(b[0]-a[0]);}const L=P[P.length-1];return Math.min(G.W-2,L[1]+(y-L[0])*3);};
  /* Bilder: Wikipedia-Zusammenfassung (erster Treffer mit Bild), Ergebnis wird gemerkt */
  let cache={};try{cache=JSON.parse(localStorage.getItem('zl_pics')||'{}')}catch(e){}
- const saveC=()=>{try{localStorage.setItem('zl_pics',JSON.stringify(cache))}catch(e){}};
+ const saveC=()=>{try{const o=JSON.parse(localStorage.getItem('zl_pics')||'{}');for(const k in cache)o[k]=cache[k];for(const k in o)if(!(k in cache))cache[k]=o[k];localStorage.setItem('zl_pics',JSON.stringify(o))}catch(e){}}; /* Audit 27.11.: drei Kopien teilen sich zl_pics – zusammenführen statt überschreiben */
  function loadPics(root){root.querySelectorAll('img[data-w]').forEach(im=>{const list=im.dataset.w.split('|'),key=list.join('|'),show=u=>{im.onload=()=>im.parentNode.classList.add('has');im.src=u;};
-  if(cache[key]){show(cache[key]);return;}if(cache[key]===0)return;
-  const next=i=>{if(i>=list.length){cache[key]=0;saveC();return;}const p=list[i].indexOf(':'),lg=list[i].slice(0,p),t=list[i].slice(p+1);
-   fetch('https://'+lg+'.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(t)).then(r=>r.ok?r.json():null).then(j=>{const u=j&&(j.thumbnail&&j.thumbnail.source||j.originalimage&&j.originalimage.source);if(u){cache[key]=u;saveC();show(u);}else next(i+1);}).catch(()=>next(i+1));};
+  if(cache[key]===-1)return;if(cache[key]){show(cache[key]);return;}
+  const next=(i,bad)=>{if(i>=list.length){if(!bad){cache[key]=-1;saveC();}return;}const p=list[i].indexOf(':'),lg=list[i].slice(0,p),t=list[i].slice(p+1);
+   fetch('https://'+lg+'.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(t)).then(r=>r.ok?r.json():r.status===404?null:Promise.reject(r.status)).then(j=>{const u=j&&(j.thumbnail&&j.thumbnail.source||j.originalimage&&j.originalimage.source);if(u){cache[key]=u;saveC();show(u);}else next(i+1,bad);},()=>next(i+1,1));};
   next(0);});}
  const ARW=k=>'<svg class="ar" width="34" height="34" viewBox="-12 -12 24 24" aria-hidden="true"><path class="rg" d="'+(k<0?'M-7.88 -5.31A9.5 9.5 0 1 1 -7.88 5.31':'M7.88 5.31A9.5 9.5 0 1 1 7.88 -5.31')+'"/><path class="dt" transform="rotate('+(k<0?180:0)+')" d="M5.4 0L-4.6 -4.9L-2.2 0L-4.6 4.9Z"/><text x="'+(k<0?-9.5:9.5)+'" y="0">'+(k<0?'W':'E')+'</text></svg>';
  const lab=e=>e.lab||String(e.y);
