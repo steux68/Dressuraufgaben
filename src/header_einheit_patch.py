@@ -2,8 +2,8 @@
 import re, sys
 s = open('index.html', encoding='utf-8').read()
 if 'id="header-einheit-css"' in s: sys.exit('schon angewendet')
-css = ('<style id="header-einheit-css">.titlebar{height:58px!important;box-sizing:border-box!important;padding-top:0!important;padding-bottom:0!important}'
-       '#brand svg,.titlebar .bmark,.titlebar .brand{height:42px!important;width:auto!important}</style>')
+css = ('<style id="header-einheit-css">.titlebar{height:54px!important;box-sizing:border-box!important;padding-top:0!important;padding-bottom:0!important}'
+       '#brand .bmark.bmark{width:min(150px,calc(44vw - 2px))!important;height:auto!important}.titlebar .brand{height:auto!important;width:auto!important}</style>')
 s = s.replace('</head>', css + '</head>', 1)
 if '--noversion' not in sys.argv:
     s = re.sub(r'(<meta name="app-version" content=")([^"]*)(")', lambda m: m.group(1) + '2026-11-26q' + m.group(3), s, count=1)
