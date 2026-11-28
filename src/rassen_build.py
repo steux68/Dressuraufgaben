@@ -9,7 +9,7 @@ body{font-family:"Carlito",Calibri,system-ui,sans-serif;color:var(--ink);backgro
 .dot{height:1px;background:repeating-linear-gradient(to right,var(--line) 0 1px,transparent 1px 3px)}
 .zurueck{display:inline-block;margin:10px 0 0 14px;font:700 13px Carlito,sans-serif;letter-spacing:.06em;color:#1a1a1a;text-decoration:none}
 h1{font-size:13px;letter-spacing:.08em;color:var(--red);font-weight:700;text-transform:uppercase;padding:8px 0}
-.tabs{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:8px 0}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:4px 0}
 .tabs button{border:0;border-radius:0;height:32px;padding:0 10px;text-align:center;font:400 13px Carlito,sans-serif;cursor:pointer;color:#222;background:#ebebeb}
 .tabs button.on{background:var(--lime);font-weight:700;box-shadow:inset 0 -2px 0 var(--ink)}
 .intro{font-size:14px;line-height:1.4;color:#444;margin:6px 0 10px}
