@@ -12,8 +12,8 @@ h1{font-size:13px;letter-spacing:.08em;color:var(--red);font-weight:700;text-tra
 .tabs{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:4px 0}
 .tabs button{border:0;border-radius:0;height:32px;padding:0 10px;text-align:center;font:400 13px Carlito,sans-serif;cursor:pointer;color:#222;background:#ebebeb}
 .tabs button.on{background:var(--lime);font-weight:700;box-shadow:inset 0 -2px 0 var(--ink)}
-.intro{font-size:14px;line-height:1.4;color:#444;margin:6px 0 10px}
-.card{background:var(--grey);margin:8px 0}
+.intro{font-size:14px;line-height:1.4;color:#444;margin:6px 0 8px}
+.card{background:var(--grey);margin:0 0 2px}
 .card>button{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:10px;width:100%;padding:12px;cursor:pointer}
 .card .nm{font-size:18px;font-weight:700;flex:1}.card .kt{font-size:12px;color:#777}
 .card .pl{font-size:18px;color:#999;transition:transform .15s}.card.open .pl{transform:rotate(45deg)}
