@@ -9,9 +9,11 @@ body{font-family:"Carlito",Calibri,system-ui,sans-serif;color:var(--ink);backgro
 .dot{height:1px;background:repeating-linear-gradient(to right,var(--line) 0 1px,transparent 1px 3px)}
 .zurueck{display:inline-block;margin:10px 0 0 14px;font:700 13px Carlito,sans-serif;letter-spacing:.06em;color:#1a1a1a;text-decoration:none}
 h1{font-size:13px;letter-spacing:.08em;color:var(--red);font-weight:700;text-transform:uppercase;padding:8px 0}
-.tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:8px 0}
-.tabs button{border:0;background:var(--grey);font:700 14px Carlito,sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:11px 0;cursor:pointer;color:#555}
-.tabs button.on{background:var(--lime);color:var(--ink)}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:8px 0}
+.tabs button{border:0;border-radius:0;height:23px;padding:0 10px;text-align:left;font:400 12px Carlito,sans-serif;letter-spacing:0;text-transform:none;cursor:pointer;color:#222;background:linear-gradient(var(--line),var(--line)) left top/100% 1px no-repeat,linear-gradient(var(--line),var(--line)) left bottom/100% 1px no-repeat,linear-gradient(var(--line),var(--line)) left top/1px 100% no-repeat,var(--grey)}
+.tabs button:first-child{background:linear-gradient(var(--line),var(--line)) left top/100% 1px no-repeat,linear-gradient(var(--line),var(--line)) left bottom/100% 1px no-repeat,var(--grey)}
+.tabs button.on{background:linear-gradient(var(--line),var(--line)) left top/100% 1px no-repeat,linear-gradient(var(--line),var(--line)) left bottom/100% 1px no-repeat,var(--lime);font-weight:700;box-shadow:inset 0 -2px 0 var(--ink)}
+.tabs button.on:not(:first-child){background:linear-gradient(var(--line),var(--line)) left top/100% 1px no-repeat,linear-gradient(var(--line),var(--line)) left bottom/100% 1px no-repeat,linear-gradient(var(--line),var(--line)) left top/1px 100% no-repeat,var(--lime)}
 .intro{font-size:14px;line-height:1.4;color:#444;margin:6px 0 10px}
 .card{background:var(--grey);margin:8px 0}
 .card>button{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:10px;width:100%;padding:12px;cursor:pointer}
