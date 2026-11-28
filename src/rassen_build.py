@@ -22,6 +22,7 @@ h1{font-size:13px;letter-spacing:.08em;color:var(--red);font-weight:700;text-tra
 .card .body .r{display:grid;grid-template-columns:92px 1fr;gap:8px;padding:6px 0;border-top:1px dotted var(--line)}
 .card .body .r b{color:var(--red);font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding-top:2px}
 .ph{margin:2px 0 10px;text-align:center}.ph img{display:block;max-width:100%;max-height:260px;margin:0 auto}.ph figcaption{font-size:11px;color:#777;margin-top:4px}.ph a{color:#777}
+.titel{margin:4px 0 10px;cursor:pointer}.titel img{display:block;width:100%;height:210px;object-fit:cover;object-position:top;background:#f4efe6}.titel.gross img{height:auto}.titel figcaption{font-size:11px;color:#777;margin-top:4px;line-height:1.3}
 .grp{font-size:12px;letter-spacing:.08em;color:var(--red);font-weight:700;text-transform:uppercase;margin:18px 0 4px}
 .row{display:grid;grid-template-columns:104px 1fr;gap:10px;padding:9px 0;font-size:14px;line-height:1.4;border-bottom:1px dotted var(--line)}
 .row b{font-size:15px}
@@ -39,7 +40,7 @@ RASSEN=[
  ('Islandpferd','Islandpferd','fünf Gangarten',[('Typ','klein, robust, dichtes Fell'),('Herkunft','Island, seit der Besiedlung im 9./10. Jahrhundert fast rein gezüchtet'),('Gangarten','zusätzlich zu Schritt, Trab und Galopp: Tölt (viertaktig) und Rennpass'),('Stockmaß','meist 130–145 cm'),('Heute','Freizeit- und Turnierreiten (Tölt)')]),
  ('Shetlandpony','Shetlandpony','Pony, klein',[('Typ','sehr klein, kräftig, dichtes Fell und lange Mähne'),('Herkunft','Shetlandinseln, Schottland'),('Stockmaß','bis etwa 107 cm'),('Wesen','klug, robust, bisweilen eigenwillig'),('Heute','Kinderpony, Fahren')]),
 ]
-LOCAL={'Vollblut':('vollblut.webp','Thoms von Nathusius (1866–1904): Englisches Vollblut „No Chance“, um 1880 · gemeinfrei · Wikimedia Commons')}
+LOCAL={'Noriker':('noriker.webp','Noriker im Tiergarten Kleve · Foto: Pieter Delicaat, 2015, CC BY-SA 4.0 (verkleinert) · Wikimedia Commons'),'Vollblut':('vollblut.webp','Thoms von Nathusius (1866–1904): Englisches Vollblut „No Chance“, um 1880 · gemeinfrei · Wikimedia Commons')}
 WIKI={'Vollblut': 'de:Englisches_Vollblut|en:Thoroughbred', 'Araber': 'de:Araber_(Pferd)|en:Arabian_horse', 'Hannoveraner': 'de:Hannoveraner|en:Hanoverian_horse', 'Lipizzaner': 'de:Lipizzaner|en:Lipizzan', 'Haflinger': 'de:Haflinger|en:Haflinger', 'Noriker': 'de:Noriker|en:Noric_horse', 'Islandpferd': 'de:Islandpferd|en:Icelandic_horse', 'Shetlandpony': 'de:Shetlandpony|en:Shetland_pony'}
 GR=[('Geschlecht und Alter',[('Hengst','männliches Pferd, nicht kastriert; wird für die Zucht verwendet'),('Stute','weibliches Pferd; die Tragzeit dauert etwa elf Monate'),('Wallach','männliches Pferd, das kastriert wurde; meist ruhiger und deshalb das typische Reitpferd'),('Fohlen','Jungtier im ersten Lebensjahr; je nach Geschlecht Hengstfohlen oder Stutfohlen'),('Jährling','Pferd im zweiten Lebensjahr')]),
  ('Maß und Typ',[('Stockmaß','Höhe vom Boden bis zum höchsten Punkt des Widerrists, mit dem Messstock gemessen'),('Pony','Stockmaß bis 148 cm (ohne Hufeisen); größere Tiere heißen Pferde'),('Vollblut','Rennpferd-Zucht; schlank, schnell, sensibel'),('Warmblut','Reit- und Sportpferde; ausgeglichener als Vollblüter, leichter als Kaltblüter'),('Kaltblut','schweres Arbeitspferd, ruhig und kräftig. „Kalt“ und „warm“ meinen das Temperament, nicht die Körpertemperatur')]),
@@ -51,7 +52,8 @@ html=pre+CSS+'''
 <h1>Rassen und Begriffe</h1>
 <div class="dot"></div>
 <div class="tabs" role="tablist"><button class="on" data-t="r" role="tab">Rassen</button><button data-t="b" role="tab">Begriffe</button></div>
-<div id="r"><p class="intro">Acht Rassen, die man im Reitstall und in Österreich kennt. Tippe auf eine Rasse.</p><div id="rl"></div></div>
+<div id="r"><figure class="titel" id="tt"><img src="img/rassen/titel_adam.webp" alt="Tafel mit fünfzehn Pferderassen" decoding="async"><figcaption>Albert Adam: „Tableau des principales races de chevaux“, 1903 · gemeinfrei · Gallica (BnF) / Wikimedia Commons · Tippen zum Vergrößern</figcaption></figure>
+<p class="intro">Acht Rassen, die man im Reitstall und in Österreich kennt. Tippe auf eine Rasse.</p><div id="rl"></div></div>
 <div id="b" hidden><div id="bl"></div></div>
 <p class="note">Angaben zu Größe und Herkunft sind Richtwerte. Testseite PASSAGE · Rassen und Begriffe · Entwurf, eigene Formulierung</p>
 <script>
@@ -65,7 +67,7 @@ function pic(f){if(!f.dataset.w||f.dataset.done)return;f.dataset.done=1;const L=
  const k=f.dataset.w;if(C[k]){show(C[k]);return}
  const nx=i=>{if(i>=L.length)return;const q=L[i].indexOf(':'),lg=L[i].slice(0,q),t=L[i].slice(q+1);
   fetch('https://'+lg+'.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(t)).then(r=>r.ok?r.json():null).then(j=>{const u=j&&j.thumbnail&&j.thumbnail.source;if(u){C[k]={u:u,p:j.content_urls.desktop.page};try{localStorage.setItem('ra_pics',JSON.stringify(C))}catch(e){}show(C[k])}else nx(i+1)},()=>nx(i+1))};nx(0)}
-document.addEventListener('click',e=>{const c=e.target.closest('.card>button');if(c){const p=c.parentNode;p.classList.toggle('open');if(p.classList.contains('open')){const f=p.querySelector('.ph');if(f)pic(f)}c.setAttribute('aria-expanded',p.classList.contains('open'));return}
+document.addEventListener('click',e=>{if(e.target.closest('#tt')){$('#tt').classList.toggle('gross');return}const c=e.target.closest('.card>button');if(c){const p=c.parentNode;p.classList.toggle('open');if(p.classList.contains('open')){const f=p.querySelector('.ph');if(f)pic(f)}c.setAttribute('aria-expanded',p.classList.contains('open'));return}
  const t=e.target.closest('.tabs button');if(t){document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('on',b===t));$('#r').hidden=t.dataset.t!=='r';$('#b').hidden=t.dataset.t!=='b'}});
 </script>
 </body></html>
